@@ -17,18 +17,18 @@ class iGenDataService {
                 switch response.result {
                 case .success:
                     print("Validation Successful")
-                    var temp: [Humans] = []
+                    var temp: [String : Humans] = [:]
                     if let jsonDict = response.result.value as? NSDictionary {
                         for (key, humanDict) in jsonDict["FamilyID1"] as! NSDictionary {
                             print(humanDict)
                             let humanobject = Humans.init(dictionary: humanDict as! NSDictionary)
                             print(humanobject)
-                            temp.append(humanobject!)
+                            temp[key as! String] = humanobject
                         }
                         print(temp)
                         NotificationCenter.default.post(name: Notification.Name(rawValue: "iGenData"),
                                                         object: self,
-                                                        userInfo: ["results" :  temp])
+                                                        userInfo: temp)
                     }
                 case .failure(let error):
                     print(error)

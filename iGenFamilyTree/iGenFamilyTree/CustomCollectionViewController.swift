@@ -9,11 +9,12 @@
 import UIKit
 
 let reuseIdentifier = "collectionViewCell"
-    var familyItems: [Humans] = []
 
 
 class CustomCollectionViewController: UICollectionViewController {
-        
+    
+    var familyItems: [Humans] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         iGenDataService.parseiGenData()
@@ -27,9 +28,11 @@ class CustomCollectionViewController: UICollectionViewController {
         // Do any additional setup after loading the view.
     }
     func notifyObservers(notification: NSNotification) {
-        var searchesDict: Dictionary<String,[Humans]> = notification.userInfo as! Dictionary<String,[Humans]>
-        familyItems = searchesDict["iGenData"]!
-        print("notify observer \(familyItems)")
+//        var searchesDict: Dictionary<String,[Humans]> = notification.userInfo as! Dictionary<String,[Humans]>
+//        familyItems = searchesDict["iGenData"]!
+        var familyDict:[String: Humans] = notification.userInfo as! [String : Humans]
+        
+        print("notify observer \(familyDict)")
     }
     
     override func didReceiveMemoryWarning() {
@@ -53,10 +56,9 @@ class CustomCollectionViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CustomCollectionViewCell
         
         // Configure the cell
+//        cell.label.text =
         cell.label.text = "Sec \(indexPath.section)/Item \(indexPath.item)"
-//        cell.label.text = "Sec \(indexPath.section)/Item \(indexPath.item)"
-
-
+        
         return cell
     }
 
