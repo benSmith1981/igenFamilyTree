@@ -9,28 +9,38 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 */
 
 import Foundation
- 
+
 /* For support, please feel free to contact me at https://www.linkedin.com/in/syedabsar */
 
-public class Parents {
-	public var father : Father?
+public class Humans {
+    public var FamilyID : Array<Humans>?
+	public var name : String?
+	public var dob : Int?
+	public var id : Int?
+	public var race : String?
+	public var gender : String?
+	public var partners : Array<Humans>?
+	public var parents : Array<Humans>?
+	public var siblings : Array<Humans>?
+    public var children : Array<Humans>?
+    
 
 /**
     Returns an array of models based on given dictionary.
     
     Sample usage:
-    let parents_list = Parents.modelsFromDictionaryArray(someDictionaryArrayFromJSON)
+    let humans_list = Humans.modelsFromDictionaryArray(someDictionaryArrayFromJSON)
 
     - parameter array:  NSArray from JSON dictionary.
 
-    - returns: Array of Parents Instances.
+    - returns: Array of Humans Instances.
 */
-    public class func modelsFromDictionaryArray(array:NSArray) -> [Parents]
+    public class func modelsFromDictionaryArray(array:NSArray) -> [Humans]
     {
-        var models:[Parents] = []
+        var models:[Humans] = []
         for item in array
         {
-            models.append(Parents(dictionary: item as! NSDictionary)!)
+            models.append(Humans(dictionary: item as! NSDictionary)!)
         }
         return models
     }
@@ -39,15 +49,24 @@ public class Parents {
     Constructs the object based on the given dictionary.
     
     Sample usage:
-    let parents = Parents(someDictionaryFromJSON)
+    let humans = Humans(someDictionaryFromJSON)
 
     - parameter dictionary:  NSDictionary from JSON.
 
-    - returns: Parents Instance.
+    - returns: Humans Instance.
 */
 	required public init?(dictionary: NSDictionary) {
 
-		if (dictionary["father"] != nil) { father = Father(dictionary: dictionary["father"] as! NSDictionary) }
+		name = dictionary["name"] as? String
+		dob = dictionary["dob"] as? Int
+		id = dictionary["id"] as? Int
+		race = dictionary["race"] as? String
+		gender = dictionary["gender"] as? String
+		if (dictionary["partners"] != nil) { partners = Humans.modelsFromDictionaryArray(array: dictionary["partners"] as! NSArray) }
+		if (dictionary["parents"] != nil) { parents = Humans.modelsFromDictionaryArray(array: dictionary["parents"] as! NSArray) }
+		if (dictionary["siblings"] != nil) { siblings = Humans.modelsFromDictionaryArray(array: dictionary["siblings"] as! NSArray) }
+        if (dictionary["children"] != nil) { siblings = Humans.modelsFromDictionaryArray(array: dictionary["children"] as! NSArray) }
+        
 	}
 
 		
@@ -60,7 +79,13 @@ public class Parents {
 
 		let dictionary = NSMutableDictionary()
 
-		dictionary.setValue(self.father?.dictionaryRepresentation(), forKey: "father")
+		dictionary.setValue(self.name, forKey: "name")
+		dictionary.setValue(self.dob, forKey: "dob")
+		dictionary.setValue(self.id, forKey: "id")
+		dictionary.setValue(self.race, forKey: "race")
+		dictionary.setValue(self.gender, forKey: "gender")
+        dictionary.setValue(self.children, forKey: "children")
+        dictionary.setValue(self.FamilyID, forKey: "familyID1")
 
 		return dictionary
 	}

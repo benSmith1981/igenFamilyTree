@@ -7,20 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		68CD96851F03B472003F1013 /* Humans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CD96801F03B472003F1013 /* Humans.swift */; };
+		68CD968B1F03B6C3003F1013 /* iGenDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CD968A1F03B6C3003F1013 /* iGenDataService.swift */; };
+		68CD968E1F03B73C003F1013 /* iGen.json in Resources */ = {isa = PBXBuildFile; fileRef = 68CD968D1F03B73C003F1013 /* iGen.json */; };
+		68E8DD551F03D51800EB0A6D /* CustomCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E8DD541F03D51800EB0A6D /* CustomCollectionViewController.swift */; };
+		68E8DD581F03D87200EB0A6D /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E8DD561F03D87200EB0A6D /* CustomCollectionViewCell.swift */; };
 		B5EAC17C1F01390800151D52 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EAC17B1F01390800151D52 /* AppDelegate.swift */; };
-		B5EAC17E1F01390800151D52 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EAC17D1F01390800151D52 /* ViewController.swift */; };
 		B5EAC1811F01390800151D52 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5EAC17F1F01390800151D52 /* Main.storyboard */; };
 		B5EAC1841F01390800151D52 /* iGenFamilyTree.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B5EAC1821F01390800151D52 /* iGenFamilyTree.xcdatamodeld */; };
 		B5EAC1861F01390800151D52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5EAC1851F01390800151D52 /* Assets.xcassets */; };
 		B5EAC1891F01390800151D52 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5EAC1871F01390800151D52 /* LaunchScreen.storyboard */; };
 		B5EAC1941F01390900151D52 /* iGenFamilyTreeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EAC1931F01390900151D52 /* iGenFamilyTreeTests.swift */; };
 		B5EAC19F1F01390900151D52 /* iGenFamilyTreeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EAC19E1F01390900151D52 /* iGenFamilyTreeUITests.swift */; };
-		CF70400D1F02532E00FEB1C5 /* Ethnicity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF703FFC1F02532E00FEB1C5 /* Ethnicity.swift */; };
-		CF70400E1F02532E00FEB1C5 /* Father.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF703FFD1F02532E00FEB1C5 /* Father.swift */; };
-		CF70400F1F02532E00FEB1C5 /* Health History.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF703FFE1F02532E00FEB1C5 /* Health History.swift */; };
-		CF7040101F02532E00FEB1C5 /* Json4Swift_Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF703FFF1F02532E00FEB1C5 /* Json4Swift_Base.swift */; };
-		CF7040141F02532E00FEB1C5 /* Parents.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7040031F02532E00FEB1C5 /* Parents.swift */; };
-		CF7040181F02532E00FEB1C5 /* Race.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7040071F02532E00FEB1C5 /* Race.swift */; };
+		CCBF35437ABE69D8098FB154 /* Pods_iGenFamilyTree.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC62A019809C41BB3A63BC02 /* Pods_iGenFamilyTree.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,9 +40,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		177D4675179C503E9DE9CD20 /* Pods-iGenFamilyTree.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iGenFamilyTree.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iGenFamilyTree/Pods-iGenFamilyTree.debug.xcconfig"; sourceTree = "<group>"; };
+		4D8F669182C316A6E475A08F /* Pods-iGenFamilyTree.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iGenFamilyTree.release.xcconfig"; path = "Pods/Target Support Files/Pods-iGenFamilyTree/Pods-iGenFamilyTree.release.xcconfig"; sourceTree = "<group>"; };
+		68CD96801F03B472003F1013 /* Humans.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Humans.swift; sourceTree = "<group>"; };
+		68CD968A1F03B6C3003F1013 /* iGenDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iGenDataService.swift; sourceTree = "<group>"; };
+		68CD968D1F03B73C003F1013 /* iGen.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = iGen.json; sourceTree = "<group>"; };
+		68E8DD541F03D51800EB0A6D /* CustomCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewController.swift; sourceTree = "<group>"; };
+		68E8DD561F03D87200EB0A6D /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		B5EAC1781F01390800151D52 /* iGenFamilyTree.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iGenFamilyTree.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5EAC17B1F01390800151D52 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B5EAC17D1F01390800151D52 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B5EAC1801F01390800151D52 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B5EAC1831F01390800151D52 /* iGenFamilyTree.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iGenFamilyTree.xcdatamodel; sourceTree = "<group>"; };
 		B5EAC1851F01390800151D52 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -55,12 +60,7 @@
 		B5EAC19A1F01390900151D52 /* iGenFamilyTreeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iGenFamilyTreeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5EAC19E1F01390900151D52 /* iGenFamilyTreeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iGenFamilyTreeUITests.swift; sourceTree = "<group>"; };
 		B5EAC1A01F01390900151D52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CF703FFC1F02532E00FEB1C5 /* Ethnicity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ethnicity.swift; sourceTree = "<group>"; };
-		CF703FFD1F02532E00FEB1C5 /* Father.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Father.swift; sourceTree = "<group>"; };
-		CF703FFE1F02532E00FEB1C5 /* Health History.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Health History.swift"; sourceTree = "<group>"; };
-		CF703FFF1F02532E00FEB1C5 /* Json4Swift_Base.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Json4Swift_Base.swift; sourceTree = "<group>"; };
-		CF7040031F02532E00FEB1C5 /* Parents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parents.swift; sourceTree = "<group>"; };
-		CF7040071F02532E00FEB1C5 /* Race.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Race.swift; sourceTree = "<group>"; };
+		CC62A019809C41BB3A63BC02 /* Pods_iGenFamilyTree.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iGenFamilyTree.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCBF35437ABE69D8098FB154 /* Pods_iGenFamilyTree.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +89,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C49B1128655911EB353B6C5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CC62A019809C41BB3A63BC02 /* Pods_iGenFamilyTree.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		62B39DC2B89E13D9C59373F9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				177D4675179C503E9DE9CD20 /* Pods-iGenFamilyTree.debug.xcconfig */,
+				4D8F669182C316A6E475A08F /* Pods-iGenFamilyTree.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		68CD968C1F03B6DE003F1013 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				68CD968D1F03B73C003F1013 /* iGen.json */,
+			);
+			name = JSON;
+			sourceTree = "<group>";
+		};
 		B5EAC16F1F01390800151D52 = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +121,8 @@
 				B5EAC1921F01390800151D52 /* iGenFamilyTreeTests */,
 				B5EAC19D1F01390900151D52 /* iGenFamilyTreeUITests */,
 				B5EAC1791F01390800151D52 /* Products */,
+				62B39DC2B89E13D9C59373F9 /* Pods */,
+				0C49B1128655911EB353B6C5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -112,7 +140,10 @@
 			isa = PBXGroup;
 			children = (
 				B5EAC17B1F01390800151D52 /* AppDelegate.swift */,
-				B5EAC17D1F01390800151D52 /* ViewController.swift */,
+				68E8DD541F03D51800EB0A6D /* CustomCollectionViewController.swift */,
+				68E8DD561F03D87200EB0A6D /* CustomCollectionViewCell.swift */,
+				68CD968C1F03B6DE003F1013 /* JSON */,
+				68CD968A1F03B6C3003F1013 /* iGenDataService.swift */,
 				CF703FF71F02516200FEB1C5 /* dataObjects */,
 				B5EAC17F1F01390800151D52 /* Main.storyboard */,
 				B5EAC1851F01390800151D52 /* Assets.xcassets */,
@@ -144,12 +175,7 @@
 		CF703FF71F02516200FEB1C5 /* dataObjects */ = {
 			isa = PBXGroup;
 			children = (
-				CF703FFF1F02532E00FEB1C5 /* Json4Swift_Base.swift */,
-				CF703FFD1F02532E00FEB1C5 /* Father.swift */,
-				CF703FFC1F02532E00FEB1C5 /* Ethnicity.swift */,
-				CF703FFE1F02532E00FEB1C5 /* Health History.swift */,
-				CF7040031F02532E00FEB1C5 /* Parents.swift */,
-				CF7040071F02532E00FEB1C5 /* Race.swift */,
+				68CD96801F03B472003F1013 /* Humans.swift */,
 			);
 			name = dataObjects;
 			sourceTree = "<group>";
@@ -161,9 +187,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B5EAC1A31F01390900151D52 /* Build configuration list for PBXNativeTarget "iGenFamilyTree" */;
 			buildPhases = (
+				83C9C1E372F4947290F777C5 /* [CP] Check Pods Manifest.lock */,
 				B5EAC1741F01390800151D52 /* Sources */,
 				B5EAC1751F01390800151D52 /* Frameworks */,
 				B5EAC1761F01390800151D52 /* Resources */,
+				2BD67E160AFD81FD794D9C20 /* [CP] Embed Pods Frameworks */,
+				E145A5499F580AAF8D552C53 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -264,6 +293,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68CD968E1F03B73C003F1013 /* iGen.json in Resources */,
 				B5EAC1891F01390800151D52 /* LaunchScreen.storyboard in Resources */,
 				B5EAC1861F01390800151D52 /* Assets.xcassets in Resources */,
 				B5EAC1811F01390800151D52 /* Main.storyboard in Resources */,
@@ -286,20 +316,65 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2BD67E160AFD81FD794D9C20 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iGenFamilyTree/Pods-iGenFamilyTree-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		83C9C1E372F4947290F777C5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E145A5499F580AAF8D552C53 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iGenFamilyTree/Pods-iGenFamilyTree-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B5EAC1741F01390800151D52 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5EAC17E1F01390800151D52 /* ViewController.swift in Sources */,
-				CF70400E1F02532E00FEB1C5 /* Father.swift in Sources */,
+				68E8DD551F03D51800EB0A6D /* CustomCollectionViewController.swift in Sources */,
+				68E8DD581F03D87200EB0A6D /* CustomCollectionViewCell.swift in Sources */,
 				B5EAC17C1F01390800151D52 /* AppDelegate.swift in Sources */,
-				CF7040101F02532E00FEB1C5 /* Json4Swift_Base.swift in Sources */,
-				CF70400D1F02532E00FEB1C5 /* Ethnicity.swift in Sources */,
 				B5EAC1841F01390800151D52 /* iGenFamilyTree.xcdatamodeld in Sources */,
-				CF7040141F02532E00FEB1C5 /* Parents.swift in Sources */,
-				CF70400F1F02532E00FEB1C5 /* Health History.swift in Sources */,
-				CF7040181F02532E00FEB1C5 /* Race.swift in Sources */,
+				68CD96851F03B472003F1013 /* Humans.swift in Sources */,
+				68CD968B1F03B6C3003F1013 /* iGenDataService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,6 +526,7 @@
 		};
 		B5EAC1A41F01390900151D52 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 177D4675179C503E9DE9CD20 /* Pods-iGenFamilyTree.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = HZWL927386;
@@ -466,6 +542,7 @@
 		};
 		B5EAC1A51F01390900151D52 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4D8F669182C316A6E475A08F /* Pods-iGenFamilyTree.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = "";
