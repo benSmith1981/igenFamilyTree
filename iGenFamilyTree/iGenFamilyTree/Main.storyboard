@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--TvN Family Tree CollectionView-->
+        <!--iGen Family Tree-->
         <scene sceneID="Y0N-g9-AQb">
             <objects>
                 <collectionViewController automaticallyAdjustsScrollViewInsets="NO" id="hWx-t7-1N7" customClass="CustomCollectionViewController" customModule="iGenFamilyTree" customModuleProvider="target" sceneMemberID="viewController">
@@ -51,7 +51,7 @@
                         </connections>
                     </collectionView>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <navigationItem key="navigationItem" title="TvN Family Tree CollectionView" id="kqZ-Ux-cJd"/>
+                    <navigationItem key="navigationItem" title="iGen Family Tree" id="kqZ-Ux-cJd" userLabel="iGen Family Tree "/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JXE-vt-Zcj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

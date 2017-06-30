@@ -16,6 +16,8 @@ class CustomCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
         
         fillFamilyTreeFor("Ton")
+        makeTreeFor("Ton")
+        makeModelFromTree()
     }
     
     override func didReceiveMemoryWarning() {
@@ -26,12 +28,12 @@ class CustomCollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDataSource
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 20
+        return 15
     }
     
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return 15
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
