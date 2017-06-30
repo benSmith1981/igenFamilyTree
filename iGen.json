@@ -1,0 +1,55 @@
+{ 
+	"Humans": [ 
+		{
+			"name": "Achid",
+		    "dob": "1989",
+		    "id": "1",
+		    "race": "w",
+		    "gender": "m",
+		    "partners": [{ "id" : "2" }],
+		    "parents": [{ "id" : "3" }, { "id" : "4"}],
+		    "siblings": [{ "id" : "5" }, { "id" : "6"}]
+		},
+	    {
+			"name": "Puna",
+		    "dob": "1993",
+		    "id": "5",
+		    "race": "w",
+			"gender": "f",
+		     "partners": [ ],
+		    "parents": [{ "id" : "3" }, { "id" : "4"}],
+		    "children": [ ],
+		    "siblings": [{ "id" : "1" }, { "id" : "6"}]
+		},
+		{
+			"name": "Mashid",
+		    "dob": "1997",
+		    "id": "6",
+		    "race": "w",
+			"gender": "f",
+		     "partners": [ ],
+		    "parents": [{ "id" : "3" }, { "id" : "4"}],
+		    "children": [ ],
+		    "siblings": [{ "id" : "1" }, { "id" : "5"}]
+		},
+		{
+			"name": "Aziz",
+		    "dob": "1958",
+		    "id": "3",
+		    "race": "w",
+			"gender": "m",
+		    "partners": [{ "id" : "4" }],
+		    "parents": [],
+		    "children": [{ "id" : "1" }, { "id" : "5" }, { "id" : "6" }]
+		},
+		{
+			"name": "Shekeba",
+		    "dob": "1967",
+		    "id": "4",
+		    "race": "w",
+			"gender": "f",
+		    "partners": [{ "id" : "3" }],
+		    "parents": [],
+		    "children": [{ "id" : "1" }, { "id" : "5" }, { "id" : "6" }]}
+	]
+}

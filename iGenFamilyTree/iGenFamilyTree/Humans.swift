@@ -9,30 +9,38 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 */
 
 import Foundation
- 
+
 /* For support, please feel free to contact me at https://www.linkedin.com/in/syedabsar */
 
-public class HealthHistory {
-	public var diseaseName : String?
-	public var detailedDiseaseName : String?
-	public var ageAtDiagnosis : String?
+public class Humans {
+    public var FamilyID : Array<Humans>?
+	public var name : String?
+	public var dob : Int?
+	public var id : Int?
+	public var race : String?
+	public var gender : String?
+	public var partners : Array<Humans>?
+	public var parents : Array<Humans>?
+	public var siblings : Array<Humans>?
+    public var children : Array<Humans>?
+    
 
 /**
     Returns an array of models based on given dictionary.
     
     Sample usage:
-    let health History_list = Health History.modelsFromDictionaryArray(someDictionaryArrayFromJSON)
+    let humans_list = Humans.modelsFromDictionaryArray(someDictionaryArrayFromJSON)
 
     - parameter array:  NSArray from JSON dictionary.
 
-    - returns: Array of Health History Instances.
+    - returns: Array of Humans Instances.
 */
-    public class func modelsFromDictionaryArray(array:NSArray) -> [HealthHistory]
+    public class func modelsFromDictionaryArray(array:NSArray) -> [Humans]
     {
-        var models:[HealthHistory] = []
+        var models:[Humans] = []
         for item in array
         {
-            models.append(HealthHistory(dictionary: item as! NSDictionary)!)
+            models.append(Humans(dictionary: item as! NSDictionary)!)
         }
         return models
     }
@@ -41,15 +49,24 @@ public class HealthHistory {
     Constructs the object based on the given dictionary.
     
     Sample usage:
-    let health History = Health History(someDictionaryFromJSON)
+    let humans = Humans(someDictionaryFromJSON)
+
     - parameter dictionary:  NSDictionary from JSON.
-    - returns: Health History Instance.
+
+    - returns: Humans Instance.
 */
 	required public init?(dictionary: NSDictionary) {
 
-		diseaseName = dictionary["Disease Name"] as? String
-		detailedDiseaseName = dictionary["Detailed Disease Name"] as? String
-		ageAtDiagnosis = dictionary["Age At Diagnosis"] as? String
+		name = dictionary["name"] as? String
+		dob = dictionary["dob"] as? Int
+		id = dictionary["id"] as? Int
+		race = dictionary["race"] as? String
+		gender = dictionary["gender"] as? String
+		if (dictionary["partners"] != nil) { partners = Humans.modelsFromDictionaryArray(array: dictionary["partners"] as! NSArray) }
+		if (dictionary["parents"] != nil) { parents = Humans.modelsFromDictionaryArray(array: dictionary["parents"] as! NSArray) }
+		if (dictionary["siblings"] != nil) { siblings = Humans.modelsFromDictionaryArray(array: dictionary["siblings"] as! NSArray) }
+        if (dictionary["children"] != nil) { siblings = Humans.modelsFromDictionaryArray(array: dictionary["children"] as! NSArray) }
+        
 	}
 
 		
@@ -62,9 +79,13 @@ public class HealthHistory {
 
 		let dictionary = NSMutableDictionary()
 
-		dictionary.setValue(self.diseaseName, forKey: "Disease Name")
-		dictionary.setValue(self.detailedDiseaseName, forKey: "Detailed Disease Name")
-		dictionary.setValue(self.ageAtDiagnosis, forKey: "Age At Diagnosis")
+		dictionary.setValue(self.name, forKey: "name")
+		dictionary.setValue(self.dob, forKey: "dob")
+		dictionary.setValue(self.id, forKey: "id")
+		dictionary.setValue(self.race, forKey: "race")
+		dictionary.setValue(self.gender, forKey: "gender")
+        dictionary.setValue(self.children, forKey: "children")
+        dictionary.setValue(self.FamilyID, forKey: "familyID1")
 
 		return dictionary
 	}

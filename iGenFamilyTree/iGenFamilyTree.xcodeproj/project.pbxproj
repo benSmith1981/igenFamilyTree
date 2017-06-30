@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		68F4CAC21F0699790036946B /* iGenDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F4CAC11F0699790036946B /* iGenDataService.swift */; };
+		68F4CAC41F0699840036946B /* iGen.json in Resources */ = {isa = PBXBuildFile; fileRef = 68F4CAC31F0699840036946B /* iGen.json */; };
 		B5EAC17C1F01390800151D52 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EAC17B1F01390800151D52 /* AppDelegate.swift */; };
 		B5EAC1841F01390800151D52 /* iGenFamilyTree.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B5EAC1821F01390800151D52 /* iGenFamilyTree.xcdatamodeld */; };
 		B5EAC1861F01390800151D52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5EAC1851F01390800151D52 /* Assets.xcassets */; };
@@ -18,12 +20,6 @@
 		E6644EB31F052D4800C66427 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6644EAF1F052D4800C66427 /* CustomCollectionViewCell.swift */; };
 		E6644EB41F052D4800C66427 /* CustomCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6644EB01F052D4800C66427 /* CustomCollectionViewLayout.swift */; };
 		E6644EB51F052D4800C66427 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6644EB11F052D4800C66427 /* Main.storyboard */; };
-		CF70400D1F02532E00FEB1C5 /* Ethnicity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF703FFC1F02532E00FEB1C5 /* Ethnicity.swift */; };
-		CF70400E1F02532E00FEB1C5 /* Father.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF703FFD1F02532E00FEB1C5 /* Father.swift */; };
-		CF70400F1F02532E00FEB1C5 /* Health History.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF703FFE1F02532E00FEB1C5 /* Health History.swift */; };
-		CF7040101F02532E00FEB1C5 /* Json4Swift_Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF703FFF1F02532E00FEB1C5 /* Json4Swift_Base.swift */; };
-		CF7040141F02532E00FEB1C5 /* Parents.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7040031F02532E00FEB1C5 /* Parents.swift */; };
-		CF7040181F02532E00FEB1C5 /* Race.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7040071F02532E00FEB1C5 /* Race.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		68F4CAC11F0699790036946B /* iGenDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iGenDataService.swift; sourceTree = "<group>"; };
+		68F4CAC31F0699840036946B /* iGen.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = iGen.json; sourceTree = "<group>"; };
 		B5EAC1781F01390800151D52 /* iGenFamilyTree.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iGenFamilyTree.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5EAC17B1F01390800151D52 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5EAC1831F01390800151D52 /* iGenFamilyTree.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iGenFamilyTree.xcdatamodel; sourceTree = "<group>"; };
@@ -61,12 +59,6 @@
 		E6644EAF1F052D4800C66427 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		E6644EB01F052D4800C66427 /* CustomCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewLayout.swift; sourceTree = "<group>"; };
 		E6644EB11F052D4800C66427 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		CF703FFC1F02532E00FEB1C5 /* Ethnicity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ethnicity.swift; sourceTree = "<group>"; };
-		CF703FFD1F02532E00FEB1C5 /* Father.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Father.swift; sourceTree = "<group>"; };
-		CF703FFE1F02532E00FEB1C5 /* Health History.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Health History.swift"; sourceTree = "<group>"; };
-		CF703FFF1F02532E00FEB1C5 /* Json4Swift_Base.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Json4Swift_Base.swift; sourceTree = "<group>"; };
-		CF7040031F02532E00FEB1C5 /* Parents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parents.swift; sourceTree = "<group>"; };
-		CF7040071F02532E00FEB1C5 /* Race.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Race.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,9 +115,7 @@
 				E6644EB01F052D4800C66427 /* CustomCollectionViewLayout.swift */,
 				E6644EB11F052D4800C66427 /* Main.storyboard */,
 				B5EAC17B1F01390800151D52 /* AppDelegate.swift */,
-				B5EAC17D1F01390800151D52 /* ViewController.swift */,
 				CF703FF71F02516200FEB1C5 /* dataObjects */,
-				B5EAC17F1F01390800151D52 /* Main.storyboard */,
 				B5EAC1851F01390800151D52 /* Assets.xcassets */,
 				B5EAC1871F01390800151D52 /* LaunchScreen.storyboard */,
 				B5EAC18A1F01390800151D52 /* Info.plist */,
@@ -155,12 +145,8 @@
 		CF703FF71F02516200FEB1C5 /* dataObjects */ = {
 			isa = PBXGroup;
 			children = (
-				CF703FFF1F02532E00FEB1C5 /* Json4Swift_Base.swift */,
-				CF703FFD1F02532E00FEB1C5 /* Father.swift */,
-				CF703FFC1F02532E00FEB1C5 /* Ethnicity.swift */,
-				CF703FFE1F02532E00FEB1C5 /* Health History.swift */,
-				CF7040031F02532E00FEB1C5 /* Parents.swift */,
-				CF7040071F02532E00FEB1C5 /* Race.swift */,
+				68F4CAC31F0699840036946B /* iGen.json */,
+				68F4CAC11F0699790036946B /* iGenDataService.swift */,
 			);
 			name = dataObjects;
 			sourceTree = "<group>";
@@ -275,6 +261,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68F4CAC41F0699840036946B /* iGen.json in Resources */,
 				E6644EB51F052D4800C66427 /* Main.storyboard in Resources */,
 				B5EAC1891F01390800151D52 /* LaunchScreen.storyboard in Resources */,
 				B5EAC1861F01390800151D52 /* Assets.xcassets in Resources */,
@@ -302,19 +289,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5EAC17E1F01390800151D52 /* ViewController.swift in Sources */,
-				CF70400E1F02532E00FEB1C5 /* Father.swift in Sources */,
 				E6644EB31F052D4800C66427 /* CustomCollectionViewCell.swift in Sources */,
 				E6644EAD1F052CA600C66427 /* TvN family.swift in Sources */,
 				E6644EB21F052D4800C66427 /* CustomCollectionViewController.swift in Sources */,
 				B5EAC17C1F01390800151D52 /* AppDelegate.swift in Sources */,
-				CF7040101F02532E00FEB1C5 /* Json4Swift_Base.swift in Sources */,
-				CF70400D1F02532E00FEB1C5 /* Ethnicity.swift in Sources */,
+				68F4CAC21F0699790036946B /* iGenDataService.swift in Sources */,
 				B5EAC1841F01390800151D52 /* iGenFamilyTree.xcdatamodeld in Sources */,
 				E6644EB41F052D4800C66427 /* CustomCollectionViewLayout.swift in Sources */,
-				CF7040141F02532E00FEB1C5 /* Parents.swift in Sources */,
-				CF70400F1F02532E00FEB1C5 /* Health History.swift in Sources */,
-				CF7040181F02532E00FEB1C5 /* Race.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
