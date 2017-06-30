@@ -4,29 +4,38 @@ typealias ID = String
 
 struct Human {
     var name: String
+    var gender: String
     var processed: Bool = false
     var spouses: [ID] = []
     var parents: [ID] = []
     var children: [ID] = []
     var siblings: [ID] = []
     
-    init(name: String) {
+    init(name: String, gender: String) {
         self.name = name
+        self.gender = gender
     }
 }
 
 var humans: [ID: Human] = [:]
 
-//var row: [Int] = []
-//var column: [Int] = []
-
-struct Model {
-    static var minLevel = 0
-    static var maxLevel = 0
-    static var cell: [[ID]] = Array(repeating: Array(repeating: "", count: 10), count: 10)
-    //    static var cell: [[ID]] = [[]]
+struct Patient {
+    static var id: ID = ""
+    static var row = 10
+    static var col = 10
+    static var mySpousesIDs: [ID] = []
+    static var myParentsIDs: [ID] = []
+    static var myChildrenIDs: [ID] = []
+    static var mySiblingsIDs: [ID] = []
+    static var fatherSiblingsIDs: [ID] = []
+    static var motherSiblingsIDs: [ID] = []
 }
 
+struct Model {
+    static var minLevel = 1
+    static var maxLevel = 1
+    static var cell: [[ID]] = Array(repeating: Array(repeating: "", count: 20), count: 20)
+}
 
 func addSpouseFor(_ id: ID, spouse: ID) {
     humans[id]!.spouses.append(spouse)
@@ -61,83 +70,117 @@ func printHuman(_ id: ID) {
     print("")
 }
 
-func makeTreeFor(_ id: ID, _ level: Int = 5) {
+func makeTreeFor(_ id: ID) {
+    let level = 1
+    Patient.id = id
     print("Family tree for", humans[id]!.name, "is on level", level)
-    fillModelFor(id, level: level)
     traverseTreeFor(id, level)
     print("minLevel=", Model.minLevel)
     print("maxLevel=", Model.maxLevel)
+    print("")
 }
 
 func traverseTreeFor(_ id: ID, _ level: Int) {
-    humans[id]!.processed = true
-    Model.maxLevel = max(Model.maxLevel, level)
-    Model.minLevel = min(Model.minLevel, level)
-    for spouseID in humans[id]!.spouses {
-        if humans[spouseID]!.processed == false {
+    if humans[id]!.processed == false {
+        humans[id]!.processed = true
+        Model.maxLevel = max(Model.maxLevel, level)
+        Model.minLevel = min(Model.minLevel, level)
+        for spouseID in humans[id]!.spouses {
             print("spouse of", humans[id]!.name, "is", humans[spouseID]!.name, "on level", level)
-            fillModelFor(spouseID, level: level)
+            if id == Patient.id {
+                Patient.mySpousesIDs.append(spouseID)
+            }
             traverseTreeFor(spouseID, level)
         }
-    }
-    for parentID in humans[id]!.parents {
-        if humans[parentID]!.processed == false {
-            print("parent of", humans[id]!.name, "is", humans[parentID]!.name, "on level", level + 1)
-            fillModelFor(parentID, level: level + 1)
-            traverseTreeFor(parentID, level + 1)
+        for parentID in humans[id]!.parents {
+            print("parent of", humans[id]!.name, "is", humans[parentID]!.name, "on level", level - 1)
+            if id == Patient.id {
+                Patient.myParentsIDs.append(parentID)
+            }
+            traverseTreeFor(parentID, level - 1)
         }
-    }
-    for childID in humans[id]!.children {
-        if humans[childID]!.processed == false {
-            print("child of", humans[id]!.name, "is", humans[childID]!.name, "on level", level - 1)
-            fillModelFor(childID, level: level - 1)
-            traverseTreeFor(childID, level - 1)
+        for childID in humans[id]!.children {
+            print("child of", humans[id]!.name, "is", humans[childID]!.name, "on level", level + 1)
+            if id == Patient.id {
+                Patient.myChildrenIDs.append(childID)
+            }
+            traverseTreeFor(childID, level + 1)
         }
-    }
-    for siblingID in humans[id]!.siblings {
-        if humans[siblingID]!.processed == false {
+        for siblingID in humans[id]!.siblings {
             print("sibling of", humans[id]!.name, "is", humans[siblingID]!.name, "on level", level)
-            fillModelFor(siblingID, level: level)
+            if id == Patient.id {
+                Patient.mySiblingsIDs.append(siblingID)
+            } else if Patient.myParentsIDs.contains(id) {
+                if humans[id]!.gender == "M" {
+                    Patient.fatherSiblingsIDs.append(siblingID)
+                } else {
+                    Patient.motherSiblingsIDs.append(siblingID)
+                }
+            }
             traverseTreeFor(siblingID, level)
         }
     }
 }
 
-func fillModelFor(_ id: ID, level: Int) {
-    for i in 0 ... 9 {
-        if Model.cell[level][i] == "" {
-            Model.cell[level][i] = id
-            break
+func makeModelFromTree() {
+    var row = Patient.row
+    var col = Patient.col
+    Model.cell[row][col] = Patient.id
+    col = Patient.col - 1
+    for id in Patient.mySpousesIDs {
+//        Model.cell[row][col] = "--|--"
+       col -= 1
+        Model.cell[row][col] = id
+    }
+    row = Patient.row
+    col = Patient.col
+    for id in Patient.mySiblingsIDs {
+        col += 1
+        Model.cell[row][col] = id
+    }
+    row = Patient.row - 2
+    for id in Patient.myParentsIDs {
+        if humans[id]!.gender == "M" {
+            col = Patient.col + 1
+        } else {
+            col = Patient.col - 1
         }
+        Model.cell[row][col] = id
+    }
+    row = Patient.row - 2
+    col = Patient.col + 1
+    for id in Patient.fatherSiblingsIDs {
+        col += 1
+        Model.cell[row][col] = id
+    }
+    row = Patient.row - 2
+    col = Patient.col - 1
+    for id in Patient.motherSiblingsIDs {
+        col -= 1
+        Model.cell[row][col] = id
+    }
+    row = Patient.row + 2
+    col = Patient.col - 2
+    for id in Patient.myChildrenIDs {
+        col += 1
+        Model.cell[row][col] = id
     }
 }
 
-//    func findParents(_ level: Int = 1) {
-//        for parent in parents {
-//            print("parent of", self.name, "is", parent.name, "on level", level)
-//            parent.findParents(level + 1)
-//        }
-//    }
-//
-//    func findChildren(_ level: Int = 1) {
-//        for child in children {
-//            print("child of", self.name, "is", child.name, "on level", level)
-//            child.findChildren(level + 1)
-//        }
-//    }
-
 func fillFamilyTreeFor(_ id: ID) {
-    humans["Ton"] = Human(name: "Ton")
-    humans["Dorine"] = Human(name: "Dorine")
-    humans["Tim"] = Human(name: "Tim")
-    humans["Iris"] = Human(name: "Iris")
-    humans["Wim"] = Human(name: "Wim")
-    humans["An"] = Human(name: "An")
-    humans["Frans"] = Human(name: "Frans")
-    humans["Dora"] = Human(name: "Dora")
-    humans["Mike"] = Human(name: "Mike")
-    humans["Rianne"] = Human(name: "Rianne")
-    humans["Annemieke"] = Human(name: "Annemieke")
+    humans["Ton"] = Human(name: "Ton", gender: "M")
+    humans["Dorine"] = Human(name: "Dorine", gender: "F")
+    humans["Tim"] = Human(name: "Tim", gender: "M")
+    humans["Iris"] = Human(name: "Iris", gender: "F")
+    humans["Frans"] = Human(name: "Frans", gender: "M")
+    humans["Dora"] = Human(name: "Dora", gender: "F")
+    humans["Rianne"] = Human(name: "Rianne", gender: "F")
+    humans["Annemieke"] = Human(name: "Annemieke", gender: "F")
+    humans["Ad"] = Human(name: "Ad", gender: "M")
+    humans["Willy"] = Human(name: "Willy", gender: "M")
+    humans["Tiny"] = Human(name: "Tiny", gender: "M")
+    humans["Toos"] = Human(name: "Toos", gender: "F")
+    humans["Mien"] = Human(name: "Mien", gender: "F")
     
     addSpouseFor("Ton", spouse: "Dorine")
     addChildFor("Ton", child: "Tim")
@@ -150,39 +193,57 @@ func fillFamilyTreeFor(_ id: ID) {
     addSpouseFor("Dorine", spouse: "Ton")
     addChildFor("Dorine", child: "Tim")
     addChildFor("Dorine", child: "Iris")
-    addParentFor("Dorine", parent: "Wim")
-    addParentFor("Dorine", parent: "An")
-    addSiblingFor("Dorine", sibling: "Mike")
     
     addParentFor("Tim", parent: "Ton")
-    addParentFor("Tim", parent: "Dorine")
     addSiblingFor("Tim", sibling: "Iris")
     
     addParentFor("Iris", parent: "Ton")
-    addParentFor("Iris", parent: "Dorine")
     addSiblingFor("Iris", sibling: "Tim")
-    
-    addSpouseFor("Wim", spouse: "An")
-    addChildFor("Wim", child: "Dorine")
-    addChildFor("Wim", child: "Mike")
-    
-    addSpouseFor("An", spouse: "Wim")
-    addChildFor("An", child: "Dorine")
-    addChildFor("An", child: "Mike")
     
     addSpouseFor("Frans", spouse: "Dora")
     addChildFor("Frans", child: "Ton")
     addChildFor("Frans", child: "Rianne")
     addChildFor("Frans", child: "Annemieke")
+    addSiblingFor("Frans", sibling: "Ad")
+    addSiblingFor("Frans", sibling: "Willy")
+    addSiblingFor("Frans", sibling: "Tiny")
+    addSiblingFor("Frans", sibling: "Toos")
+    addSiblingFor("Frans", sibling: "Mien")
+    
+    addSiblingFor("Ad", sibling: "Frans")
+    addSiblingFor("Ad", sibling: "Willy")
+    addSiblingFor("Ad", sibling: "Tiny")
+    addSiblingFor("Ad", sibling: "Toos")
+    addSiblingFor("Ad", sibling: "Mien")
+    
+    addSiblingFor("Willy", sibling: "Ad")
+    addSiblingFor("Willy", sibling: "Frans")
+    addSiblingFor("Willy", sibling: "Tiny")
+    addSiblingFor("Willy", sibling: "Toos")
+    addSiblingFor("Willy", sibling: "Mien")
+    
+    addSiblingFor("Tiny", sibling: "Ad")
+    addSiblingFor("Tiny", sibling: "Willy")
+    addSiblingFor("Tiny", sibling: "Frans")
+    addSiblingFor("Tiny", sibling: "Toos")
+    addSiblingFor("Tiny", sibling: "Mien")
+    
+    addSiblingFor("Toos", sibling: "Ad")
+    addSiblingFor("Toos", sibling: "Willy")
+    addSiblingFor("Toos", sibling: "Tiny")
+    addSiblingFor("Toos", sibling: "Frans")
+    addSiblingFor("Toos", sibling: "Mien")
+    
+    addSiblingFor("Mien", sibling: "Ad")
+    addSiblingFor("Mien", sibling: "Willy")
+    addSiblingFor("Mien", sibling: "Tiny")
+    addSiblingFor("Mien", sibling: "Toos")
+    addSiblingFor("Mien", sibling: "Frans")
     
     addSpouseFor("Dora", spouse: "Frans")
     addChildFor("Dora", child: "Ton")
     addChildFor("Dora", child: "Rianne")
     addChildFor("Dora", child: "Annemieke")
-    
-    addParentFor("Mike", parent: "Wim")
-    addParentFor("Mike", parent: "An")
-    addSiblingFor("Mike", sibling: "Dorine")
     
     addParentFor("Rianne", parent: "Frans")
     addParentFor("Rianne", parent: "Dora")
@@ -196,13 +257,33 @@ func fillFamilyTreeFor(_ id: ID) {
     
     makeTreeFor(id)
     
-    for i in (Model.minLevel ... Model.maxLevel).reversed() {
-        for j in 0 ... 9 {
+    for id in Patient.myParentsIDs {
+        print("myParentsIDs", id)
+    }
+    for id in Patient.fatherSiblingsIDs {
+        print("fatherSiblingsIDs", id)
+    }
+    for id in Patient.motherSiblingsIDs {
+        print("motherSiblingsIDs", id)
+    }
+    for id in Patient.mySpousesIDs {
+        print("mySpousesIDs", id)
+    }
+    for id in Patient.mySiblingsIDs {
+        print("mySiblingsIDs", id)
+    }
+    for id in Patient.myChildrenIDs {
+        print("myChildrenIDs", id)
+    }
+    print("")
+    
+    makeModelFromTree()
+    
+    for i in Patient.row - 2 ... Patient.row + 2 {
+        for j in 0 ... 19 {
             print(Model.cell[i][j], " ", terminator: "")
         }
         print("")
     }
     
 }
-
-//fillFamilyTreeFor("Ton")
