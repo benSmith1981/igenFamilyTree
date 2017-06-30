@@ -4,7 +4,10 @@ typealias ID = String
 
 struct Human {
     var name: String
+    var id: ID?
     var gender: String
+    var dob : String?
+    var race : String?
     var processed: Bool = false
     var spouses: [ID] = []
     var parents: [ID] = []
@@ -15,6 +18,73 @@ struct Human {
         self.name = name
         self.gender = gender
     }
+    
+    init?(id: ID, dictionary: NSDictionary) {
+        
+        self.init(name: (dictionary["name"] as? String)!,
+                  gender: (dictionary["gender"] as? String)!)
+        self.id = id
+        self.dob = dictionary["dob"] as? String
+        self.race = dictionary["race"] as? String
+        let parentsParsed = dictionary["parents"] as! NSArray
+        
+        for parent in parentsParsed {
+            if let parent = parent as? NSDictionary, let parentID = parent["id"] as? ID {
+                self.parents.append(parentID)
+            }
+        }
+        
+        let siblingsParsed = dictionary["siblings"] as! NSArray
+        for sibling in siblingsParsed {
+            if let sibling = sibling as? NSDictionary, let siblingID = sibling["id"] as? ID {
+                siblings.append(siblingID)
+            }
+        }
+        
+        let childrenParsed = dictionary["children"] as! NSArray
+        for child in childrenParsed {
+            if let child = child as? NSDictionary, let childID = child["id"] as? ID {
+                children.append(childID)
+            }
+        }
+        
+        //ADD PARTNERS
+        let partnersParsed = dictionary["partners"] as! NSArray
+        for partner in partnersParsed {
+            if let partner = partner as? NSDictionary, let partnerID = partner["id"] as? ID {
+                spouses.append(partnerID)
+            }
+        }
+        
+    }
+    
+    func modelsFromDictionaryArray(array:NSArray) -> [Human]
+    {
+        var models:[Human] = []
+        for item in array
+        {
+            models.append(Human(id: "", dictionary: item as! NSDictionary)!)
+        }
+        return models
+    }
+    
+    func addSpouseFor(_ id: ID, spouse: ID) {
+        humans[id]!.spouses.append(spouse)
+    }
+    
+    func addParentFor(_ id: ID, parent: ID) {
+        humans[id]!.parents.append(parent)
+    }
+    
+    func addChildFor(_ id: ID, child: ID) {
+        humans[id]!.children.append(child)
+    }
+    
+    func addSiblingFor(_ id: ID, sibling: ID) {
+        humans[id]!.siblings.append(sibling)
+    }
+
+
 }
 
 var humans: [ID: Human] = [:]
@@ -37,21 +107,6 @@ struct Model {
     static var cell: [[ID]] = Array(repeating: Array(repeating: "", count: 20), count: 20)
 }
 
-func addSpouseFor(_ id: ID, spouse: ID) {
-    humans[id]!.spouses.append(spouse)
-}
-
-func addParentFor(_ id: ID, parent: ID) {
-    humans[id]!.parents.append(parent)
-}
-
-func addChildFor(_ id: ID, child: ID) {
-    humans[id]!.children.append(child)
-}
-
-func addSiblingFor(_ id: ID, sibling: ID) {
-    humans[id]!.siblings.append(sibling)
-}
 
 func printHuman(_ id: ID) {
     print("name:", humans[id]!.name)
@@ -167,7 +222,31 @@ func makeModelFromTree() {
     }
 }
 
-func fillFamilyTreeFor(_ id: ID) {
+func fillFamilyTreeFor(patientID: ID, family: [ID:Human], onCompletion: ()->Void) {
+    humans = family
+    for (id , human) in family {
+        print(patientID)
+        print(human.id)
+        print(id)
+
+        for parentID in human.parents {
+            human.addParentFor(id, parent: parentID)
+        }
+        
+        for spouseID in human.spouses {
+            human.addSpouseFor(id, spouse: spouseID)
+        }
+        
+        for childID in human.children {
+            human.addChildFor(id, child: childID)
+        }
+        
+        for siblingID in human.siblings {
+            human.addSiblingFor(id, sibling: siblingID)
+        }
+    }
+    
+
 //    humans["Ton"] = Human(name: "Ton", gender: "M")
 //    humans["Dorine"] = Human(name: "Dorine", gender: "F")
 //    humans["Tim"] = Human(name: "Tim", gender: "M")
@@ -255,7 +334,7 @@ func fillFamilyTreeFor(_ id: ID) {
 //    addSiblingFor("Annemieke", sibling: "Ton")
 //    addSiblingFor("Annemieke", sibling: "Rianne")
 //    
-    makeTreeFor(id)
+    makeTreeFor(patientID)
     
     for id in Patient.myParentsIDs {
         print("myParentsIDs", id)
@@ -285,5 +364,7 @@ func fillFamilyTreeFor(_ id: ID) {
         }
         print("")
     }
+    onCompletion()
+
     
 }

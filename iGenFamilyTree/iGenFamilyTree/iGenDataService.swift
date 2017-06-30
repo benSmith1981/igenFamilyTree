@@ -17,12 +17,11 @@ class iGenDataService {
                 switch response.result {
                 case .success:
                     print("Validation Successful")
-                    var temp: [String : Humans] = [:]
+                    var temp: [ID : Human] = [:]
                     if let jsonDict = response.result.value as? NSDictionary {
                         let topkey = jsonDict.allKeys
                         for (key, humanDict) in jsonDict[topkey[0]] as! NSDictionary {
-                            print(humanDict0)
-                            let humanobject = Humans.init(dictionary: humanDict as! NSDictionary)
+                            let humanobject = Human.init(id: key as! ID, dictionary: humanDict as! NSDictionary)
                             print(humanobject)
                             temp[key as! String] = humanobject
                         }

@@ -12,7 +12,11 @@ let reuseIdentifier = "customCell"
 
 class CustomCollectionViewController: UICollectionViewController {
     
-    var familyItems: [Humans] = []
+    var familyItems: [ID : Human] = [:] {
+        didSet{
+            self.collectionView?.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,10 +33,13 @@ class CustomCollectionViewController: UICollectionViewController {
     func notifyObservers(notification: NSNotification) {
         //        var searchesDict: Dictionary<String,[Humans]> = notification.userInfo as! Dictionary<String,[Humans]>
         //        familyItems = searchesDict["iGenData"]!
-        let familyDict: [String: Humans] = notification.userInfo as! [String : Humans]
+        let familyDict: [ID: Human] = notification.userInfo as! [ID : Human]
 //        let human = familyDict["id1"] as! Human
-        let key = familyDict
-        fillFamilyTreeFor("ID1")
+        
+        //we assume you are the patient, maybe this comes from whoever logged in? So changed ID1 accordingly
+        fillFamilyTreeFor(patientID: "id1", family: familyDict, onCompletion: { 
+            self.collectionView?.reloadData()
+        })
 
         print("notify observer \(familyDict)")
     }
@@ -57,8 +64,10 @@ class CustomCollectionViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CustomCollectionViewCell
         
         // Configure the cell
-        cell.label.text = Model.cell[indexPath.section][indexPath.item]
-        
+        let model = Model.cell[indexPath.section][indexPath.item]
+        let currentHuman = humans[model]
+//        print(currentHuman?.name)
+        cell.label.text = currentHuman?.name
         return cell
     }
     
