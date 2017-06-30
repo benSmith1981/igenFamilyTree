@@ -12,6 +12,7 @@ let reuseIdentifier = "customCell"
 
 class CustomCollectionViewController: UICollectionViewController {
     
+    var familyTree = FamilyTree()
     var familyItems: [ID : Human] = [:] {
         didSet{
             self.collectionView?.reloadData()
@@ -37,9 +38,10 @@ class CustomCollectionViewController: UICollectionViewController {
 //        let human = familyDict["id1"] as! Human
         
         //we assume you are the patient, maybe this comes from whoever logged in? So changed ID1 accordingly
-        fillFamilyTreeFor(patientID: "id1", family: familyDict, onCompletion: { 
-            self.collectionView?.reloadData()
-        })
+        
+        familyTree.fillFamilyTreeFor(patientID: "id1", family: familyDict)
+        self.collectionView?.reloadData()
+        
 
         print("notify observer \(familyDict)")
     }
@@ -65,9 +67,9 @@ class CustomCollectionViewController: UICollectionViewController {
         
         // Configure the cell
         let model = Model.cell[indexPath.section][indexPath.item]
-        let currentHuman = humans[model]
+//        let currentHuman = humans[model]
 //        print(currentHuman?.name)
-        cell.label.text = currentHuman?.name
+        cell.label.text = model
         return cell
     }
     

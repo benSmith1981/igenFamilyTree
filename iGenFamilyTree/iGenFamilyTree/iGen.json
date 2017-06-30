@@ -16,10 +16,21 @@
             "race": "brown",
             "gender": "male",
             "partners": [{ "id" : "id3" }],
-            "parents": [],
+            "parents": [{ "id" : "id5" }],
             "siblings": [],
             "children": [{ "id" : "id1" }]
         },
+        "id5":{
+            "name": "Grandad",
+            "dob": "1918",
+            "race": "brown",
+            "gender": "male",
+            "partners": [],
+            "parents": [],
+            "siblings": [],
+            "children": [{ "id" : "id2" }]
+        }
+        ,
         "id3":{
             "name": "Shekeba",
             "dob": "1967",
@@ -29,6 +40,17 @@
             "parents": [],
             "siblings": [],
             "children": [{ "id" : "id1" }]
+        }
+        ,
+        "id4":{
+            "name": "Ben",
+            "dob": "1981",
+            "race": "White",
+            "gender": "male",
+            "partners": [ ],
+            "parents": [{ "id" : "id2" }, { "id" : "id3"} ],
+            "siblings": [{ "id" : "id1" }],
+            "children": []
         }
     }
 }
