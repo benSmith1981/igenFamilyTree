@@ -30,7 +30,7 @@ class CustomCollectionViewController: UICollectionViewController {
     func notifyObservers(notification: NSNotification) {
 //        var searchesDict: Dictionary<String,[Humans]> = notification.userInfo as! Dictionary<String,[Humans]>
 //        familyItems = searchesDict["iGenData"]!
-        var familyDict:[String: Humans] = notification.userInfo as! [String : Humans]
+        let familyDict:[String: Humans] = notification.userInfo as! [String : Humans]
         
         print("notify observer \(familyDict)")
     }
@@ -57,7 +57,18 @@ class CustomCollectionViewController: UICollectionViewController {
         
         // Configure the cell
 //        cell.label.text =
+        
+        var familyName = [String]()
+        let keyArray = familyItems["FamilyID1"] as! [String]
+        for name in nameArray {
+            let nameDic = familyItems.valueForKey(key) as! Dictionary<String,AnyObject>
+            name.append(nameDic.valueForKey("name") as! String)
+        }
+        
         cell.label.text = "Sec \(indexPath.section)/Item \(indexPath.item)"
+//        cell.label.text = "Sec \(indexPath.section)/Item \(indexPath.item)"
+
+        
         
         return cell
     }
