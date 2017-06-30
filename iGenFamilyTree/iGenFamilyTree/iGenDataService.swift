@@ -19,8 +19,9 @@ class iGenDataService {
                     print("Validation Successful")
                     var temp: [String : Humans] = [:]
                     if let jsonDict = response.result.value as? NSDictionary {
-                        for (key, humanDict) in jsonDict["FamilyID1"] as! NSDictionary {
-                            print(humanDict)
+                        let topkey = jsonDict.allKeys
+                        for (key, humanDict) in jsonDict[topkey[0]] as! NSDictionary {
+                            print(humanDict0)
                             let humanobject = Humans.init(dictionary: humanDict as! NSDictionary)
                             print(humanobject)
                             temp[key as! String] = humanobject

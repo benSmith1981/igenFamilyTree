@@ -1,6 +1,6 @@
 {
-    "FamilyID1": {
-        "id1":{
+    "ID1": {
+        "ID1":{
             "name": "Achid",
             "dob": "1989",
             "race": "brown",
@@ -10,7 +10,7 @@
             "siblings": [],
             "children": []
         },
-        "id2":{
+        "ID2":{
             "name": "Aziz",
             "dob": "1958",
             "race": "brown",
@@ -20,7 +20,7 @@
             "siblings": [],
             "children": [{ "id" : "id1" }]
         },
-        "id3":{
+        "ID3":{
             "name": "Shekeba",
             "dob": "1967",
             "race": "brown",

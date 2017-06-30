@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		68F4CAC21F0699790036946B /* iGenDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F4CAC11F0699790036946B /* iGenDataService.swift */; };
 		68F4CAC41F0699840036946B /* iGen.json in Resources */ = {isa = PBXBuildFile; fileRef = 68F4CAC31F0699840036946B /* iGen.json */; };
+		6D74ABEB9AFFE4B981607D83 /* Pods_iGenFamilyTree.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05146668421A3773640975C1 /* Pods_iGenFamilyTree.framework */; };
 		B5EAC17C1F01390800151D52 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EAC17B1F01390800151D52 /* AppDelegate.swift */; };
 		B5EAC1841F01390800151D52 /* iGenFamilyTree.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B5EAC1821F01390800151D52 /* iGenFamilyTree.xcdatamodeld */; };
 		B5EAC1861F01390800151D52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5EAC1851F01390800151D52 /* Assets.xcassets */; };
@@ -40,8 +41,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		05146668421A3773640975C1 /* Pods_iGenFamilyTree.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iGenFamilyTree.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A3A17B3E3CD842580CECBAA /* Pods-iGenFamilyTree.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iGenFamilyTree.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iGenFamilyTree/Pods-iGenFamilyTree.debug.xcconfig"; sourceTree = "<group>"; };
 		68F4CAC11F0699790036946B /* iGenDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iGenDataService.swift; sourceTree = "<group>"; };
 		68F4CAC31F0699840036946B /* iGen.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = iGen.json; sourceTree = "<group>"; };
+		766023BC6D2C08F6E70170F2 /* Pods-iGenFamilyTree.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iGenFamilyTree.release.xcconfig"; path = "Pods/Target Support Files/Pods-iGenFamilyTree/Pods-iGenFamilyTree.release.xcconfig"; sourceTree = "<group>"; };
 		B5EAC1781F01390800151D52 /* iGenFamilyTree.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iGenFamilyTree.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5EAC17B1F01390800151D52 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5EAC1831F01390800151D52 /* iGenFamilyTree.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iGenFamilyTree.xcdatamodel; sourceTree = "<group>"; };
@@ -66,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D74ABEB9AFFE4B981607D83 /* Pods_iGenFamilyTree.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +98,8 @@
 				B5EAC1921F01390800151D52 /* iGenFamilyTreeTests */,
 				B5EAC19D1F01390900151D52 /* iGenFamilyTreeUITests */,
 				B5EAC1791F01390800151D52 /* Products */,
+				E4015B16643BDF179DA0A98D /* Pods */,
+				C5AD5AF6C9C32E3A2F8F9A31 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -142,6 +149,14 @@
 			path = iGenFamilyTreeUITests;
 			sourceTree = "<group>";
 		};
+		C5AD5AF6C9C32E3A2F8F9A31 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				05146668421A3773640975C1 /* Pods_iGenFamilyTree.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CF703FF71F02516200FEB1C5 /* dataObjects */ = {
 			isa = PBXGroup;
 			children = (
@@ -151,6 +166,15 @@
 			name = dataObjects;
 			sourceTree = "<group>";
 		};
+		E4015B16643BDF179DA0A98D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4A3A17B3E3CD842580CECBAA /* Pods-iGenFamilyTree.debug.xcconfig */,
+				766023BC6D2C08F6E70170F2 /* Pods-iGenFamilyTree.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -158,9 +182,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B5EAC1A31F01390900151D52 /* Build configuration list for PBXNativeTarget "iGenFamilyTree" */;
 			buildPhases = (
+				215FB123333459F93A9480DB /* [CP] Check Pods Manifest.lock */,
 				B5EAC1741F01390800151D52 /* Sources */,
 				B5EAC1751F01390800151D52 /* Frameworks */,
 				B5EAC1761F01390800151D52 /* Resources */,
+				E78632038BC49722354DEFE1 /* [CP] Embed Pods Frameworks */,
+				CEE2997810FD85A6E4A3997E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -283,6 +310,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		215FB123333459F93A9480DB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		CEE2997810FD85A6E4A3997E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iGenFamilyTree/Pods-iGenFamilyTree-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E78632038BC49722354DEFE1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iGenFamilyTree/Pods-iGenFamilyTree-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B5EAC1741F01390800151D52 /* Sources */ = {
@@ -439,6 +514,7 @@
 		};
 		B5EAC1A41F01390900151D52 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4A3A17B3E3CD842580CECBAA /* Pods-iGenFamilyTree.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -455,6 +531,7 @@
 		};
 		B5EAC1A51F01390900151D52 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 766023BC6D2C08F6E70170F2 /* Pods-iGenFamilyTree.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";

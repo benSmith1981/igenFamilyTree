@@ -12,10 +12,29 @@ let reuseIdentifier = "customCell"
 
 class CustomCollectionViewController: UICollectionViewController {
     
+    var familyItems: [Humans] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        iGenDataService.parseiGenData()
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(CustomCollectionViewController.notifyObservers),
+                                               name:  NSNotification.Name(rawValue: "iGenData" ),
+                                               object: nil)
         
-        fillFamilyTreeFor("Ton")
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+        // Do any additional setup after loading the view.
+    }
+    func notifyObservers(notification: NSNotification) {
+        //        var searchesDict: Dictionary<String,[Humans]> = notification.userInfo as! Dictionary<String,[Humans]>
+        //        familyItems = searchesDict["iGenData"]!
+        let familyDict: [String: Humans] = notification.userInfo as! [String : Humans]
+//        let human = familyDict["id1"] as! Human
+        let key = familyDict
+        fillFamilyTreeFor("ID1")
+
+        print("notify observer \(familyDict)")
     }
     
     override func didReceiveMemoryWarning() {
