@@ -19,7 +19,7 @@ class FamilyTreeTests {
         self.patient = patient
     }
     
-    func setupTestFamily() {
+    func setupTestFamily() -> [ID: Human] {
         humans["Ton"] = Human(name: "Ton", gender: "M")
         humans["Dorine"] = Human(name: "Dorine", gender: "F")
         humans["Tim"] = Human(name: "Tim", gender: "M")
@@ -106,6 +106,8 @@ class FamilyTreeTests {
         familyTree.addParentFor("Annemieke", parent: "Dora")
         familyTree.addSiblingFor("Annemieke", sibling: "Ton")
         familyTree.addSiblingFor("Annemieke", sibling: "Rianne")
+        
+        return humans
     }
     
     func printHuman(_ id: ID) {

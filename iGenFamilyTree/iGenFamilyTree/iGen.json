@@ -7,7 +7,7 @@
             "gender": "male",
             "partners": [],
             "parents": [ { "id" : "id2" }, { "id" : "id3"} ],
-            "siblings": [],
+            "siblings": [{ "id" : "id4" }],
             "children": []
         },
         "id2":{

@@ -5,8 +5,6 @@ class FamilyTree {
     var humans: [ID: Human] = [:]
 
     var tests: FamilyTreeTests?
-    init() {
-    }
 
     func makeTreeFor(_ id: ID) {
         let level = 1
@@ -146,9 +144,6 @@ class FamilyTree {
                 addSiblingFor(id, sibling: siblingID)
             }
         }
-        
-        tests = FamilyTreeTests.init(familyTree: self, humans: humans, patient: patient)
-        tests?.printHuman(patientID)
-        tests?.printResults()
+    
     }
 }
