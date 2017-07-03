@@ -40,6 +40,9 @@ class CustomCollectionViewController: UICollectionViewController {
         //we assume you are the patient, maybe this comes from whoever logged in? So changed ID1 accordingly
         
         familyTree.fillFamilyTreeFor(patientID: "id1", family: familyDict)
+        familyTree.makeTreeFor("id1")
+        familyTree.makeModelFromTree()
+
         self.collectionView?.reloadData()
         
 
