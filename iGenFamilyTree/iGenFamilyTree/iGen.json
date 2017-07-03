@@ -18,7 +18,7 @@
             "partners": [{ "id" : "id3" }],
             "parents": [{ "id" : "id5" }],
             "siblings": [],
-            "children": [{ "id" : "id1" }]
+            "children": [{ "id" : "id1" },{ "id" : "id4" }]
         },
         "id5":{
             "name": "Grandad",
@@ -38,7 +38,7 @@
             "partners": [ { "id" : "id2" }],
             "parents": [],
             "siblings": [],
-            "children": [{ "id" : "id1" }]
+            "children": [{ "id" : "id1" },{ "id" : "id4" }]
         },
         "id4":{
             "name": "Ben",

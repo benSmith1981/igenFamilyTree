@@ -37,8 +37,8 @@ class CustomCollectionViewController: UICollectionViewController {
 //        let tests = FamilyTreeTests.init()
         
         familyTreeGenerator = FamilyTreeGenerator.init(familyTree: familyDict)
-        familyTreeGenerator?.fillFamilyTreeFor()
-        familyTreeGenerator?.makeTreeFor("id1")
+//        familyTreeGenerator?.fillFamilyTreeFor()
+        familyTreeGenerator?.makeTreeFor("id2")
         familyTreeGenerator?.makeModelFromTree()
 
         self.collectionView?.reloadData()
@@ -67,10 +67,12 @@ class CustomCollectionViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CustomCollectionViewCell
         
         // Configure the cell
-        let model = familyTreeGenerator?.model?.cell?[indexPath.section][indexPath.item]
-//        let currentHuman = humans[model]
-//        print(currentHuman?.name)
-        cell.label.text = model
+        if let humanID = familyTreeGenerator?.model?.cell?[indexPath.section][indexPath.item] {
+            let currentHuman = familyTreeGenerator?.familyTree[humanID]
+            print(currentHuman?.name)
+            cell.label.text = currentHuman?.name
+        }
+
         return cell
     }
     

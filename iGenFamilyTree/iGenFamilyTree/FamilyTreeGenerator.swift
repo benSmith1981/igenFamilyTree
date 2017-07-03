@@ -109,45 +109,5 @@ class FamilyTreeGenerator {
             model?.cell?[row][col] = id
         }
     }
-    
-    func addSpouseFor(_ id: ID, spouse: ID) {
-        familyTree[id]!.spouses.append(spouse)
-    }
-    
-    func addParentFor(_ id: ID, parent: ID) {
-        familyTree[id]!.parents.append(parent)
-    }
-    
-    func addChildFor(_ id: ID, child: ID) {
-        familyTree[id]!.children.append(child)
-    }
-    
-    func addSiblingFor(_ id: ID, sibling: ID) {
-        familyTree[id]!.siblings.append(sibling)
-    }
-    
-    func fillFamilyTreeFor() {
-        for (id , human) in familyTree {
-            print(patientID)
-            print(human.id)
-            print(id)
-            
-            for parentID in human.parents {
-                addParentFor(id, parent: parentID)
-            }
-            
-            for spouseID in human.spouses {
-                addSpouseFor(id, spouse: spouseID)
-            }
-            
-            for childID in human.children {
-                addChildFor(id, child: childID)
-            }
-            
-            for siblingID in human.siblings {
-                addSiblingFor(id, sibling: siblingID)
-            }
-        }
-    
-    }
+
 }
