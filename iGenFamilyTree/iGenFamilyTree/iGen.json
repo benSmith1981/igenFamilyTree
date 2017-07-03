@@ -29,8 +29,7 @@
             "parents": [],
             "siblings": [],
             "children": [{ "id" : "id2" }]
-        }
-        ,
+        },
         "id3":{
             "name": "Shekeba",
             "dob": "1967",
@@ -40,8 +39,7 @@
             "parents": [],
             "siblings": [],
             "children": [{ "id" : "id1" }]
-        }
-        ,
+        },
         "id4":{
             "name": "Ben",
             "dob": "1981",

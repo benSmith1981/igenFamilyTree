@@ -1,58 +1,56 @@
 import Foundation
 
 class FamilyTree {
-    var patient = Patient()
-    var humans: [ID: Human] = [:]
+    var patient: Patient = Patient(id: "")
+    var familyTree: [ID: Human] = [:]
+    var patientID: ID = ""
 
-    var tests: FamilyTreeTests?
-
-    //  functions for populating the Patient structure by calling function traverseTreeFor,
-    //  which is then again called recursively for every human
-    //  it also calculates the minimum and maximum levels traversed
-    //  for processing siblings we need to test for siblings of the Patient or siblings of the father or mother of the Patient
+    init(familyTree: [ID: Human]) {
+        self.familyTree = familyTree
+    }
     
     func makeTreeFor(_ id: ID) {
+        self.patient = Patient.init(id: id)
         let level = 1
-        patient.id = id
-        print("Family tree for", humans[id]!.name, "is on level", level)
+        print("Family tree for", familyTree[id]!.name, "is on level", level)
         traverseTreeFor(id, level)
         print("minLevel=", Model.minLevel)
         print("maxLevel=", Model.maxLevel)
         print("")
     }
     
-    private func traverseTreeFor(_ id: ID, _ level: Int) {
-        if humans[id]!.processed == false {
-            humans[id]!.processed = true
+    func traverseTreeFor(_ id: ID, _ level: Int) {
+        if familyTree[id]!.processed == false {
+            familyTree[id]!.processed = true
             Model.maxLevel = max(Model.maxLevel, level)
             Model.minLevel = min(Model.minLevel, level)
-            for spouseID in humans[id]!.spouses {
-                print("spouse of", humans[id]!.name, "is", humans[spouseID]!.name, "on level", level)
+            for spouseID in familyTree[id]!.spouses {
+                print("spouse of", familyTree[id]!.name, "is", familyTree[spouseID]!.name, "on level", level)
                 if id == patient.id {
                     patient.mySpousesIDs.append(spouseID)
                 }
                 traverseTreeFor(spouseID, level)
             }
-            for parentID in humans[id]!.parents {
-                print("parent of", humans[id]!.name, "is", humans[parentID]!.name, "on level", level - 1)
+            for parentID in familyTree[id]!.parents {
+                print("parent of", familyTree[id]!.name, "is", familyTree[parentID]!.name, "on level", level - 1)
                 if id == patient.id {
                     patient.myParentsIDs.append(parentID)
                 }
                 traverseTreeFor(parentID, level - 1)
             }
-            for childID in humans[id]!.children {
-                print("child of", humans[id]!.name, "is", humans[childID]!.name, "on level", level + 1)
+            for childID in familyTree[id]!.children {
+                print("child of", familyTree[id]!.name, "is", familyTree[childID]!.name, "on level", level + 1)
                 if id == patient.id {
                     patient.myChildrenIDs.append(childID)
                 }
                 traverseTreeFor(childID, level + 1)
             }
-            for siblingID in humans[id]!.siblings {
-                print("sibling of", humans[id]!.name, "is", humans[siblingID]!.name, "on level", level)
+            for siblingID in familyTree[id]!.siblings {
+                print("sibling of", familyTree[id]!.name, "is", familyTree[siblingID]!.name, "on level", level)
                 if id == patient.id {
                     patient.mySiblingsIDs.append(siblingID)
-                } else if humans[Patient.id]!.parents.contains(id) {
-                    if humans[id]!.gender == "M" {
+                } else if (familyTree[patient.id!]?.parents.contains(id))!{
+                    if familyTree[id]!.gender == "M" {
                         patient.fatherSiblingsIDs.append(siblingID)
                     } else {
                         patient.motherSiblingsIDs.append(siblingID)
@@ -70,7 +68,7 @@ class FamilyTree {
     func makeModelFromTree() {
         var row = patient.row
         var col = patient.col
-        Model.cell[row][col] = patient.id
+        Model.cell[row][col] = patient.id!
         col = patient.col - 1
         for id in patient.mySpousesIDs {
             //        Model.cell[row][col] = "--|--"
@@ -85,7 +83,7 @@ class FamilyTree {
         }
         row = patient.row - 2
         for id in patient.myParentsIDs {
-            if humans[id]!.gender == "M" {
+            if familyTree[id]!.gender == "M" {
                 col = patient.col + 1
             } else {
                 col = patient.col - 1
@@ -113,24 +111,23 @@ class FamilyTree {
     }
     
     func addSpouseFor(_ id: ID, spouse: ID) {
-        humans[id]!.spouses.append(spouse)
+        familyTree[id]!.spouses.append(spouse)
     }
     
     func addParentFor(_ id: ID, parent: ID) {
-        humans[id]!.parents.append(parent)
+        familyTree[id]!.parents.append(parent)
     }
     
     func addChildFor(_ id: ID, child: ID) {
-        humans[id]!.children.append(child)
+        familyTree[id]!.children.append(child)
     }
     
     func addSiblingFor(_ id: ID, sibling: ID) {
-        humans[id]!.siblings.append(sibling)
+        familyTree[id]!.siblings.append(sibling)
     }
     
-    func fillFamilyTreeFor(patientID: ID, family: [ID:Human]) {
-        humans = family
-        for (id , human) in family {
+    func fillFamilyTreeFor() {
+        for (id , human) in familyTree {
             print(patientID)
             print(human.id)
             print(id)

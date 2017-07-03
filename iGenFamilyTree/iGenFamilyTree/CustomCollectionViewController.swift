@@ -12,7 +12,7 @@ let reuseIdentifier = "customCell"
 
 class CustomCollectionViewController: UICollectionViewController {
     
-    var familyTree = FamilyTree()
+    var familyTree: FamilyTree?
     var familyItems: [ID : Human] = [:] {
         didSet{
             self.collectionView?.reloadData()
@@ -39,13 +39,12 @@ class CustomCollectionViewController: UICollectionViewController {
         
         //we assume you are the patient, maybe this comes from whoever logged in? So changed ID1 accordingly
         
-//        var tests = FamilyTreeTests.init(familyTree: self, humans: tests.setupTestFamily(), patient: Patient())
-//        tests?.printHuman(patientID)
-//        tests?.printResults()
+//        let tests = FamilyTreeTests.init(familyTree: familyTree, patientID: "id1")
         
-        familyTree.fillFamilyTreeFor(patientID: "id1", family: familyDict)
-        familyTree.makeTreeFor("id1")
-        familyTree.makeModelFromTree()
+        familyTree = FamilyTree.init(familyTree: familyDict)
+        familyTree?.fillFamilyTreeFor()
+        familyTree?.makeTreeFor("id1")
+        familyTree?.makeModelFromTree()
 
         self.collectionView?.reloadData()
         

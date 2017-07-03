@@ -9,30 +9,37 @@
 import Foundation
 
 class FamilyTreeTests {
-    var humans: [ID: Human] = [:]
-    var patient: Patient
     var familyTree: FamilyTree
+    var humans: [ID: Human] = [:]
+    var patient: Patient = Patient(id: "")
     
-    init(familyTree: FamilyTree, humans: [ID: Human], patient: Patient) {
+    init(familyTree: FamilyTree) {
         self.familyTree = familyTree
-        self.humans = humans
-        self.patient = patient
+//        setupTestFamily()
+//        self.patient = Patient()
+//        
+//        familyTree.fillFamilyTreeFor(patientID: patientID, family: self.humans)
+//        familyTree.makeTreeFor("id1")
+//        familyTree.makeModelFromTree()
+        
+        printHuman("id1")
+        printResults()
     }
     
-    func setupTestFamily() -> [ID: Human] {
-        humans["Ton"] = Human(name: "Ton", gender: "M")
-        humans["Dorine"] = Human(name: "Dorine", gender: "F")
-        humans["Tim"] = Human(name: "Tim", gender: "M")
-        humans["Iris"] = Human(name: "Iris", gender: "F")
-        humans["Frans"] = Human(name: "Frans", gender: "M")
-        humans["Dora"] = Human(name: "Dora", gender: "F")
-        humans["Rianne"] = Human(name: "Rianne", gender: "F")
-        humans["Annemieke"] = Human(name: "Annemieke", gender: "F")
-        humans["Ad"] = Human(name: "Ad", gender: "M")
-        humans["Willy"] = Human(name: "Willy", gender: "M")
-        humans["Tiny"] = Human(name: "Tiny", gender: "M")
-        humans["Toos"] = Human(name: "Toos", gender: "F")
-        humans["Mien"] = Human(name: "Mien", gender: "F")
+    func setupTestFamily() {
+        self.humans["Ton"] = Human(name: "Ton", gender: "M")
+        self.humans["Dorine"] = Human(name: "Dorine", gender: "F")
+        self.humans["Tim"] = Human(name: "Tim", gender: "M")
+        self.humans["Iris"] = Human(name: "Iris", gender: "F")
+        self.humans["Frans"] = Human(name: "Frans", gender: "M")
+        self.humans["Dora"] = Human(name: "Dora", gender: "F")
+        self.humans["Rianne"] = Human(name: "Rianne", gender: "F")
+        self.humans["Annemieke"] = Human(name: "Annemieke", gender: "F")
+        self.humans["Ad"] = Human(name: "Ad", gender: "M")
+        self.humans["Willy"] = Human(name: "Willy", gender: "M")
+        self.humans["Tiny"] = Human(name: "Tiny", gender: "M")
+        self.humans["Toos"] = Human(name: "Toos", gender: "F")
+        self.humans["Mien"] = Human(name: "Mien", gender: "F")
         
         familyTree.addSpouseFor("Ton", spouse: "Dorine")
         familyTree.addChildFor("Ton", child: "Tim")
@@ -107,7 +114,6 @@ class FamilyTreeTests {
         familyTree.addSiblingFor("Annemieke", sibling: "Ton")
         familyTree.addSiblingFor("Annemieke", sibling: "Rianne")
         
-        return humans
     }
     
     func printHuman(_ id: ID) {
