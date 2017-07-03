@@ -1,5 +1,5 @@
 {
-    "id1": {
+    "id2": {
         "id1":{
             "name": "Achid",
             "dob": "1989",
@@ -16,7 +16,7 @@
             "race": "brown",
             "gender": "male",
             "partners": [{ "id" : "id3" }],
-            "parents": [{ "id" : "id5" }],
+            "parents": [{ "id" : "id5" }, { "id" : "id6" }],
             "siblings": [],
             "children": [{ "id" : "id1" }, { "id" : "id4" }]
         },
@@ -25,7 +25,17 @@
             "dob": "1918",
             "race": "brown",
             "gender": "male",
-            "partners": [],
+            "partners": [{ "id" : "id6" }],
+            "parents": [],
+            "siblings": [],
+            "children": [{ "id" : "id2" }]
+        },
+        "id6":{
+            "name": "Grandmom",
+            "dob": "1918",
+            "race": "brown",
+            "gender": "female",
+            "partners": [{ "id" : "id5" }],
             "parents": [],
             "siblings": [],
             "children": [{ "id" : "id2" }]

@@ -67,10 +67,10 @@ class CustomCollectionViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CustomCollectionViewCell
         
         // Configure the cell
-        if let humanID = familyTreeGenerator?.model?.cell?[indexPath.section][indexPath.item] {
-            let currentHuman = familyTreeGenerator?.familyTree[humanID]
-            print(currentHuman?.name)
-            cell.label.text = currentHuman?.name
+        if let cellContent = familyTreeGenerator?.model?.cell?[indexPath.section][indexPath.item] {
+//            let currentHuman = familyTreeGenerator?.familyTree[humanID]
+//            print(currentHuman?.name)
+            cell.label.text = cellContent
         }
 
         return cell

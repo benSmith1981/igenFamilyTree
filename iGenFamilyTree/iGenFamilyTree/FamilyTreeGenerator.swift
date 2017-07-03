@@ -57,7 +57,7 @@ class FamilyTreeGenerator {
                 if id == patient.id {
                     patient.mySiblingsIDs.append(siblingID)
                 } else if (familyTree[patient.id!]?.parents.contains(id))!{
-                    if familyTree[id]!.gender == "M" {
+                    if familyTree[id]!.gender == "male" {
                         patient.fatherSiblingsIDs.append(siblingID)
                     } else {
                         patient.motherSiblingsIDs.append(siblingID)
@@ -67,17 +67,18 @@ class FamilyTreeGenerator {
             }
         }
     }
-
+    
     //  functions for populating the Model structure
     //  Model is a 2D matrix for building the family tree and connecting the nodes
     //  we build this from the Patient structure
-
+    
     func makeModelFromTree() {
         var row = patient.row
         var col = patient.col
         model?.cell?[row][col] = patient.id!
         col = patient.col - 1
         for id in patient.mySpousesIDs {
+            model?.cell?[row][col] = "---,---"
             col -= 1
             model?.cell?[row][col] = id
         }
@@ -86,34 +87,68 @@ class FamilyTreeGenerator {
         for id in patient.mySiblingsIDs {
             col += 1
             model?.cell?[row][col] = id
+            model?.cell?[row - 1][patient.col] = "|--"
+            if id == patient.mySiblingsIDs.last {
+                model?.cell?[row - 1][col] = "--,"
+            } else {
+                model?.cell?[row - 1][col] = "-------"
+            }
         }
         row = patient.row - 2
+        col = patient.col
         for id in patient.myParentsIDs {
-            if familyTree[id]!.gender == "M" {
-                col = patient.col + 1
+            if familyTree[id]!.gender == "male" {
+                model?.cell?[row][col + 1] = id
             } else {
-                col = patient.col - 1
+                model?.cell?[row][col - 1] = id
             }
-            model?.cell?[row][col] = id
+        }
+        if patient.myParentsIDs.count > 0 {
+            model?.cell?[row][col] = "---,---"
+            model?.cell?[row + 1][col] = "  |  "
         }
         row = patient.row - 2
         col = patient.col + 1
         for id in patient.fatherSiblingsIDs {
             col += 1
             model?.cell?[row][col] = id
+            model?.cell?[row - 1][patient.col + 1] = ",--"
+            if id == patient.fatherSiblingsIDs.last {
+                model?.cell?[row - 1][col] = "--,"
+            } else {
+                model?.cell?[row - 1][col] = "-------"
+            }
         }
         row = patient.row - 2
         col = patient.col - 1
         for id in patient.motherSiblingsIDs {
             col -= 1
             model?.cell?[row][col] = id
+            model?.cell?[row - 1][patient.col - 1] = "--,"
+            if id == patient.motherSiblingsIDs.last {
+                model?.cell?[row - 1][col] = ",--"
+            } else {
+                model?.cell?[row - 1][col] = "-------"
+            }
         }
         row = patient.row + 2
         col = patient.col - 2
         for id in patient.myChildrenIDs {
             col += 1
             model?.cell?[row][col] = id
+            if id == patient.myChildrenIDs.last {
+                model?.cell?[row - 1][col] = "--,"
+            } else {
+                model?.cell?[row - 1][col] = "-------"
+            }
+        }
+        if patient.myChildrenIDs.count == 1 {
+            model?.cell?[row - 1][patient.col - 1] = "  |  "
+        } else {
+            if patient.myChildrenIDs.count > 0 {
+                model?.cell?[row - 1][patient.col - 1] = "|--"
+            }
         }
     }
-
+    
 }
