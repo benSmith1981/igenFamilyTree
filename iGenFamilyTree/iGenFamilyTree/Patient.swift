@@ -8,7 +8,7 @@
 
 import Foundation
 struct Patient {
-    var id: ID = ""
+    var id: ID?
     var row = 10
     var col = 10
     var mySpousesIDs: [ID] = []
@@ -17,4 +17,8 @@ struct Patient {
     var mySiblingsIDs: [ID] = []
     var fatherSiblingsIDs: [ID] = []
     var motherSiblingsIDs: [ID] = []
+    
+    init(id: ID) {
+        self.id = id
+    }
 }
