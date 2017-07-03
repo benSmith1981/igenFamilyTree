@@ -9,6 +9,11 @@ class FamilyTree {
         self.familyTree = familyTree
     }
     
+    //  functions for populating the Patient structure by calling function traverseTreeFor,
+    //  which is then again called recursively for every human
+    //  it also calculates the minimum and maximum levels traversed
+    //  for processing siblings we need to test for siblings of the Patient or siblings of the father or mother of the Patient
+    
     func makeTreeFor(_ id: ID) {
         self.patient = Patient.init(id: id)
         let level = 1
@@ -71,7 +76,6 @@ class FamilyTree {
         Model.cell[row][col] = patient.id!
         col = patient.col - 1
         for id in patient.mySpousesIDs {
-            //        Model.cell[row][col] = "--|--"
             col -= 1
             Model.cell[row][col] = id
         }
@@ -110,18 +114,17 @@ class FamilyTree {
         }
     }
     
+    //  supporting functions for populating the familyTree array
+    
     func addSpouseFor(_ id: ID, spouse: ID) {
         familyTree[id]!.spouses.append(spouse)
     }
-    
     func addParentFor(_ id: ID, parent: ID) {
         familyTree[id]!.parents.append(parent)
     }
-    
     func addChildFor(_ id: ID, child: ID) {
         familyTree[id]!.children.append(child)
     }
-    
     func addSiblingFor(_ id: ID, sibling: ID) {
         familyTree[id]!.siblings.append(sibling)
     }
@@ -131,23 +134,18 @@ class FamilyTree {
             print(patientID)
             print(human.id)
             print(id)
-            
             for parentID in human.parents {
                 addParentFor(id, parent: parentID)
             }
-            
             for spouseID in human.spouses {
                 addSpouseFor(id, spouse: spouseID)
             }
-            
             for childID in human.children {
                 addChildFor(id, child: childID)
             }
-            
             for siblingID in human.siblings {
                 addSiblingFor(id, sibling: siblingID)
             }
         }
-    
     }
 }
