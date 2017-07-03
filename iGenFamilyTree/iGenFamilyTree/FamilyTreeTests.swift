@@ -13,9 +13,9 @@ class FamilyTreeTests {
     var humans: [ID: Human] = [:]
     var patient: Patient = Patient(id: "")
     
-    init() {
+    init(familyTree: FamilyTreeGenerator) {
         self.familyTreeGen = familyTree
-        self.humans = setupTestFamily()
+        setupTestFamily()
    
         familyTreeGen.familyTree = self.humans
         familyTreeGen.fillFamilyTreeFor()
