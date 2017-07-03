@@ -9,7 +9,7 @@
 import Foundation
 typealias ID = String
 
-struct Human {
+class Human {
     var name: String
     var id: ID?
     var gender: String
@@ -26,7 +26,7 @@ struct Human {
         self.gender = gender
     }
     
-    init?(id: ID, dictionary: NSDictionary) {
+    convenience init(id: ID, dictionary: NSDictionary) {
         
         self.init(name: (dictionary["name"] as? String)!,
                   gender: (dictionary["gender"] as? String)!)
@@ -70,7 +70,7 @@ struct Human {
         var models:[Human] = []
         for item in array
         {
-            models.append(Human(id: "", dictionary: item as! NSDictionary)!)
+            models.append(Human(id: "", dictionary: item as! NSDictionary))
         }
         return models
     }

@@ -9,24 +9,24 @@
 import Foundation
 
 class FamilyTreeTests {
-    var familyTree: FamilyTree
+    var familyTreeGen: FamilyTreeGenerator
     var humans: [ID: Human] = [:]
     var patient: Patient = Patient(id: "")
     
-    init(familyTree: FamilyTree) {
-        self.familyTree = familyTree
-//        setupTestFamily()
-//        self.patient = Patient()
-//        
-//        familyTree.fillFamilyTreeFor(patientID: patientID, family: self.humans)
-//        familyTree.makeTreeFor("id1")
-//        familyTree.makeModelFromTree()
+    init() {
+        self.familyTreeGen = familyTree
+        self.humans = setupTestFamily()
+   
+        familyTreeGen.familyTree = self.humans
+        familyTreeGen.fillFamilyTreeFor()
+        familyTreeGen.makeTreeFor("id1")
+        familyTreeGen.makeModelFromTree()
         
-        printHuman("id1")
-        printResults()
+        printCurrent(humans: familyTreeGen.familyTree, with: "id1")
+        printResults(for: familyTree.patient)
     }
     
-    func setupTestFamily() {
+    func setupTestFamily() -> [ID: Human]{
         self.humans["Ton"] = Human(name: "Ton", gender: "M")
         self.humans["Dorine"] = Human(name: "Dorine", gender: "F")
         self.humans["Tim"] = Human(name: "Tim", gender: "M")
@@ -41,82 +41,83 @@ class FamilyTreeTests {
         self.humans["Toos"] = Human(name: "Toos", gender: "F")
         self.humans["Mien"] = Human(name: "Mien", gender: "F")
         
-        familyTree.addSpouseFor("Ton", spouse: "Dorine")
-        familyTree.addChildFor("Ton", child: "Tim")
-        familyTree.addChildFor("Ton", child: "Iris")
-        familyTree.addParentFor("Ton", parent: "Frans")
-        familyTree.addParentFor("Ton", parent: "Dora")
-        familyTree.addSiblingFor("Ton", sibling: "Rianne")
-        familyTree.addSiblingFor("Ton", sibling: "Annemieke")
+        familyTreeGen.addSpouseFor("Ton", spouse: "Dorine")
+        familyTreeGen.addChildFor("Ton", child: "Tim")
+        familyTreeGen.addChildFor("Ton", child: "Iris")
+        familyTreeGen.addParentFor("Ton", parent: "Frans")
+        familyTreeGen.addParentFor("Ton", parent: "Dora")
+        familyTreeGen.addSiblingFor("Ton", sibling: "Rianne")
+        familyTreeGen.addSiblingFor("Ton", sibling: "Annemieke")
         
-        familyTree.addSpouseFor("Dorine", spouse: "Ton")
-        familyTree.addChildFor("Dorine", child: "Tim")
-        familyTree.addChildFor("Dorine", child: "Iris")
+        familyTreeGen.addSpouseFor("Dorine", spouse: "Ton")
+        familyTreeGen.addChildFor("Dorine", child: "Tim")
+        familyTreeGen.addChildFor("Dorine", child: "Iris")
         
-        familyTree.addParentFor("Tim", parent: "Ton")
-        familyTree.addSiblingFor("Tim", sibling: "Iris")
+        familyTreeGen.addParentFor("Tim", parent: "Ton")
+        familyTreeGen.addSiblingFor("Tim", sibling: "Iris")
         
-        familyTree.addParentFor("Iris", parent: "Ton")
-        familyTree.addSiblingFor("Iris", sibling: "Tim")
+        familyTreeGen.addParentFor("Iris", parent: "Ton")
+        familyTreeGen.addSiblingFor("Iris", sibling: "Tim")
         
-        familyTree.addSpouseFor("Frans", spouse: "Dora")
-        familyTree.addChildFor("Frans", child: "Ton")
-        familyTree.addChildFor("Frans", child: "Rianne")
-        familyTree.addChildFor("Frans", child: "Annemieke")
-        familyTree.addSiblingFor("Frans", sibling: "Ad")
-        familyTree.addSiblingFor("Frans", sibling: "Willy")
-        familyTree.addSiblingFor("Frans", sibling: "Tiny")
-        familyTree.addSiblingFor("Frans", sibling: "Toos")
-        familyTree.addSiblingFor("Frans", sibling: "Mien")
+        familyTreeGen.addSpouseFor("Frans", spouse: "Dora")
+        familyTreeGen.addChildFor("Frans", child: "Ton")
+        familyTreeGen.addChildFor("Frans", child: "Rianne")
+        familyTreeGen.addChildFor("Frans", child: "Annemieke")
+        familyTreeGen.addSiblingFor("Frans", sibling: "Ad")
+        familyTreeGen.addSiblingFor("Frans", sibling: "Willy")
+        familyTreeGen.addSiblingFor("Frans", sibling: "Tiny")
+        familyTreeGen.addSiblingFor("Frans", sibling: "Toos")
+        familyTreeGen.addSiblingFor("Frans", sibling: "Mien")
         
-        familyTree.addSiblingFor("Ad", sibling: "Frans")
-        familyTree.addSiblingFor("Ad", sibling: "Willy")
-        familyTree.addSiblingFor("Ad", sibling: "Tiny")
-        familyTree.addSiblingFor("Ad", sibling: "Toos")
-        familyTree.addSiblingFor("Ad", sibling: "Mien")
+        familyTreeGen.addSiblingFor("Ad", sibling: "Frans")
+        familyTreeGen.addSiblingFor("Ad", sibling: "Willy")
+        familyTreeGen.addSiblingFor("Ad", sibling: "Tiny")
+        familyTreeGen.addSiblingFor("Ad", sibling: "Toos")
+        familyTreeGen.addSiblingFor("Ad", sibling: "Mien")
         
-        familyTree.addSiblingFor("Willy", sibling: "Ad")
-        familyTree.addSiblingFor("Willy", sibling: "Frans")
-        familyTree.addSiblingFor("Willy", sibling: "Tiny")
-        familyTree.addSiblingFor("Willy", sibling: "Toos")
-        familyTree.addSiblingFor("Willy", sibling: "Mien")
+        familyTreeGen.addSiblingFor("Willy", sibling: "Ad")
+        familyTreeGen.addSiblingFor("Willy", sibling: "Frans")
+        familyTreeGen.addSiblingFor("Willy", sibling: "Tiny")
+        familyTreeGen.addSiblingFor("Willy", sibling: "Toos")
+        familyTreeGen.addSiblingFor("Willy", sibling: "Mien")
         
-        familyTree.addSiblingFor("Tiny", sibling: "Ad")
-        familyTree.addSiblingFor("Tiny", sibling: "Willy")
-        familyTree.addSiblingFor("Tiny", sibling: "Frans")
-        familyTree.addSiblingFor("Tiny", sibling: "Toos")
-        familyTree.addSiblingFor("Tiny", sibling: "Mien")
+        familyTreeGen.addSiblingFor("Tiny", sibling: "Ad")
+        familyTreeGen.addSiblingFor("Tiny", sibling: "Willy")
+        familyTreeGen.addSiblingFor("Tiny", sibling: "Frans")
+        familyTreeGen.addSiblingFor("Tiny", sibling: "Toos")
+        familyTreeGen.addSiblingFor("Tiny", sibling: "Mien")
         
-        familyTree.addSiblingFor("Toos", sibling: "Ad")
-        familyTree.addSiblingFor("Toos", sibling: "Willy")
-        familyTree.addSiblingFor("Toos", sibling: "Tiny")
-        familyTree.addSiblingFor("Toos", sibling: "Frans")
-        familyTree.addSiblingFor("Toos", sibling: "Mien")
+        familyTreeGen.addSiblingFor("Toos", sibling: "Ad")
+        familyTreeGen.addSiblingFor("Toos", sibling: "Willy")
+        familyTreeGen.addSiblingFor("Toos", sibling: "Tiny")
+        familyTreeGen.addSiblingFor("Toos", sibling: "Frans")
+        familyTreeGen.addSiblingFor("Toos", sibling: "Mien")
         
-        familyTree.addSiblingFor("Mien", sibling: "Ad")
-        familyTree.addSiblingFor("Mien", sibling: "Willy")
-        familyTree.addSiblingFor("Mien", sibling: "Tiny")
-        familyTree.addSiblingFor("Mien", sibling: "Toos")
-        familyTree.addSiblingFor("Mien", sibling: "Frans")
+        familyTreeGen.addSiblingFor("Mien", sibling: "Ad")
+        familyTreeGen.addSiblingFor("Mien", sibling: "Willy")
+        familyTreeGen.addSiblingFor("Mien", sibling: "Tiny")
+        familyTreeGen.addSiblingFor("Mien", sibling: "Toos")
+        familyTreeGen.addSiblingFor("Mien", sibling: "Frans")
         
-        familyTree.addSpouseFor("Dora", spouse: "Frans")
-        familyTree.addChildFor("Dora", child: "Ton")
-        familyTree.addChildFor("Dora", child: "Rianne")
-        familyTree.addChildFor("Dora", child: "Annemieke")
+        familyTreeGen.addSpouseFor("Dora", spouse: "Frans")
+        familyTreeGen.addChildFor("Dora", child: "Ton")
+        familyTreeGen.addChildFor("Dora", child: "Rianne")
+        familyTreeGen.addChildFor("Dora", child: "Annemieke")
         
-        familyTree.addParentFor("Rianne", parent: "Frans")
-        familyTree.addParentFor("Rianne", parent: "Dora")
-        familyTree.addSiblingFor("Rianne", sibling: "Ton")
-        familyTree.addSiblingFor("Rianne", sibling: "Annemieke")
+        familyTreeGen.addParentFor("Rianne", parent: "Frans")
+        familyTreeGen.addParentFor("Rianne", parent: "Dora")
+        familyTreeGen.addSiblingFor("Rianne", sibling: "Ton")
+        familyTreeGen.addSiblingFor("Rianne", sibling: "Annemieke")
         
-        familyTree.addParentFor("Annemieke", parent: "Frans")
-        familyTree.addParentFor("Annemieke", parent: "Dora")
-        familyTree.addSiblingFor("Annemieke", sibling: "Ton")
-        familyTree.addSiblingFor("Annemieke", sibling: "Rianne")
+        familyTreeGen.addParentFor("Annemieke", parent: "Frans")
+        familyTreeGen.addParentFor("Annemieke", parent: "Dora")
+        familyTreeGen.addSiblingFor("Annemieke", sibling: "Ton")
+        familyTreeGen.addSiblingFor("Annemieke", sibling: "Rianne")
         
+        return humans
     }
     
-    func printHuman(_ id: ID) {
+    func printCurrent(humans: [ID: Human] , with id: ID) {
         print("name:", humans[id]!.name)
         for spouseID in humans[id]!.spouses {
             print("spouse:", humans[spouseID]!.name)
@@ -133,7 +134,7 @@ class FamilyTreeTests {
         print("")
     }
     
-    func printResults() {
+    func printResults(for patient: Patient) {
         for id in patient.myParentsIDs {
             print("myParentsIDs", id)
         }
@@ -157,7 +158,7 @@ class FamilyTreeTests {
         
         for i in patient.row - 2 ... patient.row + 2 {
             for j in 0 ... 19 {
-                print(Model.cell[i][j], " ", terminator: "")
+                print(familyTreeGen.model?.cell?[i][j], " ", terminator: "")
             }
             print("")
         }

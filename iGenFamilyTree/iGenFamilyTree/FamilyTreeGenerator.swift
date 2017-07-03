@@ -1,12 +1,14 @@
 import Foundation
 
-class FamilyTree {
+class FamilyTreeGenerator {
     var patient: Patient = Patient(id: "")
     var familyTree: [ID: Human] = [:]
     var patientID: ID = ""
-
+    var model: Model?
+    
     init(familyTree: [ID: Human]) {
         self.familyTree = familyTree
+        self.model = Model.init()
     }
     
     func makeTreeFor(_ id: ID) {
@@ -14,16 +16,16 @@ class FamilyTree {
         let level = 1
         print("Family tree for", familyTree[id]!.name, "is on level", level)
         traverseTreeFor(id, level)
-        print("minLevel=", Model.minLevel)
-        print("maxLevel=", Model.maxLevel)
+        print("minLevel=", model?.minLevel)
+        print("maxLevel=", model?.maxLevel)
         print("")
     }
     
     func traverseTreeFor(_ id: ID, _ level: Int) {
         if familyTree[id]!.processed == false {
             familyTree[id]!.processed = true
-            Model.maxLevel = max(Model.maxLevel, level)
-            Model.minLevel = min(Model.minLevel, level)
+            model?.maxLevel = max((model?.maxLevel)!, level)
+            model?.minLevel = min((model?.minLevel)!, level)
             for spouseID in familyTree[id]!.spouses {
                 print("spouse of", familyTree[id]!.name, "is", familyTree[spouseID]!.name, "on level", level)
                 if id == patient.id {
@@ -66,18 +68,18 @@ class FamilyTree {
     func makeModelFromTree() {
         var row = patient.row
         var col = patient.col
-        Model.cell[row][col] = patient.id!
+        model?.cell?[row][col] = patient.id!
         col = patient.col - 1
         for id in patient.mySpousesIDs {
             //        Model.cell[row][col] = "--|--"
             col -= 1
-            Model.cell[row][col] = id
+            model?.cell?[row][col] = id
         }
         row = patient.row
         col = patient.col
         for id in patient.mySiblingsIDs {
             col += 1
-            Model.cell[row][col] = id
+            model?.cell?[row][col] = id
         }
         row = patient.row - 2
         for id in patient.myParentsIDs {
@@ -86,25 +88,25 @@ class FamilyTree {
             } else {
                 col = patient.col - 1
             }
-            Model.cell[row][col] = id
+            model?.cell?[row][col] = id
         }
         row = patient.row - 2
         col = patient.col + 1
         for id in patient.fatherSiblingsIDs {
             col += 1
-            Model.cell[row][col] = id
+            model?.cell?[row][col] = id
         }
         row = patient.row - 2
         col = patient.col - 1
         for id in patient.motherSiblingsIDs {
             col -= 1
-            Model.cell[row][col] = id
+            model?.cell?[row][col] = id
         }
         row = patient.row + 2
         col = patient.col - 2
         for id in patient.myChildrenIDs {
             col += 1
-            Model.cell[row][col] = id
+            model?.cell?[row][col] = id
         }
     }
     

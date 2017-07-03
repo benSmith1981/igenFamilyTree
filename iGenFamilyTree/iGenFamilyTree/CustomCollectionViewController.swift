@@ -12,12 +12,8 @@ let reuseIdentifier = "customCell"
 
 class CustomCollectionViewController: UICollectionViewController {
     
-    var familyTree: FamilyTree?
-    var familyItems: [ID : Human] = [:] {
-        didSet{
-            self.collectionView?.reloadData()
-        }
-    }
+    var familyTreeGenerator: FamilyTreeGenerator?
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,18 +29,17 @@ class CustomCollectionViewController: UICollectionViewController {
     }
     func notifyObservers(notification: NSNotification) {
         //        var searchesDict: Dictionary<String,[Humans]> = notification.userInfo as! Dictionary<String,[Humans]>
-        //        familyItems = searchesDict["iGenData"]!
         let familyDict: [ID: Human] = notification.userInfo as! [ID : Human]
 //        let human = familyDict["id1"] as! Human
         
         //we assume you are the patient, maybe this comes from whoever logged in? So changed ID1 accordingly
         
-//        let tests = FamilyTreeTests.init(familyTree: familyTree, patientID: "id1")
+//        let tests = FamilyTreeTests.init()
         
-        familyTree = FamilyTree.init(familyTree: familyDict)
-        familyTree?.fillFamilyTreeFor()
-        familyTree?.makeTreeFor("id1")
-        familyTree?.makeModelFromTree()
+        familyTreeGenerator = FamilyTreeGenerator.init(familyTree: familyDict)
+        familyTreeGenerator?.fillFamilyTreeFor()
+        familyTreeGenerator?.makeTreeFor("id1")
+        familyTreeGenerator?.makeModelFromTree()
 
         self.collectionView?.reloadData()
         
@@ -72,7 +67,7 @@ class CustomCollectionViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CustomCollectionViewCell
         
         // Configure the cell
-        let model = Model.cell[indexPath.section][indexPath.item]
+        let model = familyTreeGenerator?.model?.cell?[indexPath.section][indexPath.item]
 //        let currentHuman = humans[model]
 //        print(currentHuman?.name)
         cell.label.text = model

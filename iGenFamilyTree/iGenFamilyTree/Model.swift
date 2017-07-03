@@ -8,7 +8,11 @@
 
 import Foundation
 struct Model {
-    static var minLevel = 1
-    static var maxLevel = 1
-    static var cell: [[ID]] = Array(repeating: Array(repeating: "", count: 20), count: 20)
+    var minLevel = 1
+    var maxLevel = 1
+    var cell: [[ID]]?
+    
+    init(){
+       self.cell = Array(repeating: Array(repeating: "", count: 20), count: 20)
+    }
 }

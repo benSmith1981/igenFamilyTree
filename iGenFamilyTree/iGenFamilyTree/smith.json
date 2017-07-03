@@ -1,0 +1,61 @@
+{
+    "id1": {
+        "id1":{
+            "name": "Ben",
+            "modificationdate" : "",
+            "dob": "1981",
+            "race": "white",
+            "gender": "male",
+            "twin" : "",
+            "adopted" : "",
+            "height" : "",
+            "weight" : "",
+            "race" : "",
+            "ethnicity" : "",
+            "smoker" : "",
+            "workout" : "",
+            "partners": [],
+            "parents": [ { "id" : "id2" }, { "id" : "id3"} ],
+            "siblings": [],
+            "children": []
+        },
+        "id2":{
+            "name": "Terry Smith",
+            "modificationdate" : "",
+            "dob": "1939",
+            "race": "white",
+            "gender": "male",
+            "twin" : "",
+            "adopted" : "",
+            "height" : "",
+            "weight" : "",
+            "race" : "",
+            "ethnicity" : "",
+            "smoker" : "",
+            "workout" : "",
+            "partners": [{ "id" : "id3" }],
+            "parents": [],
+            "siblings": [],
+            "children": [{ "id" : "id1" }]
+        },
+        "id3":{
+            "name": "Maureen Smith",
+            "modificationdate" : "",
+            "dob": "1940",
+            "race": "white",
+            "gender": "female",
+            "twin" : "",
+            "adopted" : "",
+            "height" : "",
+            "weight" : "",
+            "race" : "",
+            "ethnicity" : "",
+            "smoker" : "",
+            "workout" : "",
+            "partners": [ { "id" : "id2" }],
+            "parents": [],
+            "siblings": [],
+            "children": [{ "id" : "id1" }]
+        }
+    }
+}
