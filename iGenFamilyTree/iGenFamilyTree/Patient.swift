@@ -7,6 +7,11 @@
 //
 
 import Foundation
+
+//  Patient for whom we have to maintain a family tree
+//  row and col are starting points for the modelling of the family tree
+//  we build this structure from the humans array, which contains all humans in this family
+
 struct Patient {
     var id: ID = ""
     var row = 10

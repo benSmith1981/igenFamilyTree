@@ -6,6 +6,11 @@ class FamilyTree {
 
     var tests: FamilyTreeTests?
 
+    //  functions for populating the Patient structure by calling function traverseTreeFor,
+    //  which is then again called recursively for every human
+    //  it also calculates the minimum and maximum levels traversed
+    //  for processing siblings we need to test for siblings of the Patient or siblings of the father or mother of the Patient
+    
     func makeTreeFor(_ id: ID) {
         let level = 1
         patient.id = id
@@ -16,7 +21,7 @@ class FamilyTree {
         print("")
     }
     
-    func traverseTreeFor(_ id: ID, _ level: Int) {
+    private func traverseTreeFor(_ id: ID, _ level: Int) {
         if humans[id]!.processed == false {
             humans[id]!.processed = true
             Model.maxLevel = max(Model.maxLevel, level)
@@ -46,20 +51,22 @@ class FamilyTree {
                 print("sibling of", humans[id]!.name, "is", humans[siblingID]!.name, "on level", level)
                 if id == patient.id {
                     patient.mySiblingsIDs.append(siblingID)
-                } else if patient.myParentsIDs.contains(id) {
+                } else if humans[Patient.id]!.parents.contains(id) {
                     if humans[id]!.gender == "M" {
                         patient.fatherSiblingsIDs.append(siblingID)
                     } else {
                         patient.motherSiblingsIDs.append(siblingID)
                     }
                 }
-                
                 traverseTreeFor(siblingID, level)
             }
-            
         }
     }
-    
+
+    //  functions for populating the Model structure
+    //  Model is a 2D matrix for building the family tree and connecting the nodes
+    //  we build this from the Patient structure
+
     func makeModelFromTree() {
         var row = patient.row
         var col = patient.col

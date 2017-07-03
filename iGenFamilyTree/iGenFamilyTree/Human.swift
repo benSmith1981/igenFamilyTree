@@ -9,6 +9,9 @@
 import Foundation
 typealias ID = String
 
+//  Human is a very generic structure of all relationships a human can have in this family
+//  the processed boolean variable is used in function traverseTreeFor to prevent endless looping
+
 struct Human {
     var name: String
     var id: ID?
@@ -55,7 +58,6 @@ struct Human {
             }
         }
         
-        //ADD PARTNERS
         let partnersParsed = dictionary["partners"] as! NSArray
         for partner in partnersParsed {
             if let partner = partner as? NSDictionary, let partnerID = partner["id"] as? ID {

@@ -7,8 +7,12 @@
 //
 
 import Foundation
+
+//  Model is a 2D matrix for building the family tree and connecting the nodes
+//  we build this from the Patient structure
+
 struct Model {
     static var minLevel = 1
     static var maxLevel = 1
-    static var cell: [[ID]] = Array(repeating: Array(repeating: "", count: 20), count: 20)
+    static var cell: [[String]] = Array(repeating: Array(repeating: "", count: 20), count: 20)
 }
