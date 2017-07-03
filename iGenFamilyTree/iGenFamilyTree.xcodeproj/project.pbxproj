@@ -7,24 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		68F4CAC21F0699790036946B /* iGenDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F4CAC11F0699790036946B /* iGenDataService.swift */; };
+		68F4CAC41F0699840036946B /* iGen.json in Resources */ = {isa = PBXBuildFile; fileRef = 68F4CAC31F0699840036946B /* iGen.json */; };
+		6D74ABEB9AFFE4B981607D83 /* Pods_iGenFamilyTree.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05146668421A3773640975C1 /* Pods_iGenFamilyTree.framework */; };
+		B51B62C31F0A23D400AB11CC /* Human.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51B62C21F0A23D400AB11CC /* Human.swift */; };
+		B51B62C51F0A244400AB11CC /* Patient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51B62C41F0A244400AB11CC /* Patient.swift */; };
+		B51B62C71F0A246500AB11CC /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51B62C61F0A246500AB11CC /* Model.swift */; };
+		B51B62C91F0A258F00AB11CC /* FamilyTreeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51B62C81F0A258F00AB11CC /* FamilyTreeTests.swift */; };
 		B5EAC17C1F01390800151D52 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EAC17B1F01390800151D52 /* AppDelegate.swift */; };
 		B5EAC1841F01390800151D52 /* iGenFamilyTree.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B5EAC1821F01390800151D52 /* iGenFamilyTree.xcdatamodeld */; };
 		B5EAC1861F01390800151D52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5EAC1851F01390800151D52 /* Assets.xcassets */; };
 		B5EAC1891F01390800151D52 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5EAC1871F01390800151D52 /* LaunchScreen.storyboard */; };
 		B5EAC1941F01390900151D52 /* iGenFamilyTreeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EAC1931F01390900151D52 /* iGenFamilyTreeTests.swift */; };
 		B5EAC19F1F01390900151D52 /* iGenFamilyTreeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EAC19E1F01390900151D52 /* iGenFamilyTreeUITests.swift */; };
-		CF70400D1F02532E00FEB1C5 /* Ethnicity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF703FFC1F02532E00FEB1C5 /* Ethnicity.swift */; };
-		CF70400E1F02532E00FEB1C5 /* Father.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF703FFD1F02532E00FEB1C5 /* Father.swift */; };
-		CF70400F1F02532E00FEB1C5 /* Health History.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF703FFE1F02532E00FEB1C5 /* Health History.swift */; };
-		CF7040101F02532E00FEB1C5 /* Json4Swift_Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF703FFF1F02532E00FEB1C5 /* Json4Swift_Base.swift */; };
-		CF7040141F02532E00FEB1C5 /* Parents.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7040031F02532E00FEB1C5 /* Parents.swift */; };
-		CF7040181F02532E00FEB1C5 /* Race.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7040071F02532E00FEB1C5 /* Race.swift */; };
-		E6644EAD1F052CA600C66427 /* TvN family.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6644EAC1F052CA600C66427 /* TvN family.swift */; };
+		E6644EAD1F052CA600C66427 /* FamilyTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6644EAC1F052CA600C66427 /* FamilyTree.swift */; };
 		E6644EB21F052D4800C66427 /* CustomCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6644EAE1F052D4800C66427 /* CustomCollectionViewController.swift */; };
 		E6644EB31F052D4800C66427 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6644EAF1F052D4800C66427 /* CustomCollectionViewCell.swift */; };
 		E6644EB41F052D4800C66427 /* CustomCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6644EB01F052D4800C66427 /* CustomCollectionViewLayout.swift */; };
 		E6644EB51F052D4800C66427 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6644EB11F052D4800C66427 /* Main.storyboard */; };
-		E6644EB81F069C1D00C66427 /* Family Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6644EB71F069C1D00C66427 /* Family Tree.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +45,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		05146668421A3773640975C1 /* Pods_iGenFamilyTree.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iGenFamilyTree.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A3A17B3E3CD842580CECBAA /* Pods-iGenFamilyTree.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iGenFamilyTree.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iGenFamilyTree/Pods-iGenFamilyTree.debug.xcconfig"; sourceTree = "<group>"; };
+		68F4CAC11F0699790036946B /* iGenDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iGenDataService.swift; sourceTree = "<group>"; };
+		68F4CAC31F0699840036946B /* iGen.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = iGen.json; sourceTree = "<group>"; };
+		766023BC6D2C08F6E70170F2 /* Pods-iGenFamilyTree.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iGenFamilyTree.release.xcconfig"; path = "Pods/Target Support Files/Pods-iGenFamilyTree/Pods-iGenFamilyTree.release.xcconfig"; sourceTree = "<group>"; };
+		B51B62C21F0A23D400AB11CC /* Human.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Human.swift; sourceTree = "<group>"; };
+		B51B62C41F0A244400AB11CC /* Patient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Patient.swift; sourceTree = "<group>"; };
+		B51B62C61F0A246500AB11CC /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		B51B62C81F0A258F00AB11CC /* FamilyTreeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FamilyTreeTests.swift; sourceTree = "<group>"; };
 		B5EAC1781F01390800151D52 /* iGenFamilyTree.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iGenFamilyTree.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5EAC17B1F01390800151D52 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5EAC1831F01390800151D52 /* iGenFamilyTree.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iGenFamilyTree.xcdatamodel; sourceTree = "<group>"; };
@@ -57,18 +66,11 @@
 		B5EAC19A1F01390900151D52 /* iGenFamilyTreeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iGenFamilyTreeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5EAC19E1F01390900151D52 /* iGenFamilyTreeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iGenFamilyTreeUITests.swift; sourceTree = "<group>"; };
 		B5EAC1A01F01390900151D52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CF703FFC1F02532E00FEB1C5 /* Ethnicity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ethnicity.swift; sourceTree = "<group>"; };
-		CF703FFD1F02532E00FEB1C5 /* Father.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Father.swift; sourceTree = "<group>"; };
-		CF703FFE1F02532E00FEB1C5 /* Health History.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Health History.swift"; sourceTree = "<group>"; };
-		CF703FFF1F02532E00FEB1C5 /* Json4Swift_Base.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Json4Swift_Base.swift; sourceTree = "<group>"; };
-		CF7040031F02532E00FEB1C5 /* Parents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parents.swift; sourceTree = "<group>"; };
-		CF7040071F02532E00FEB1C5 /* Race.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Race.swift; sourceTree = "<group>"; };
-		E6644EAC1F052CA600C66427 /* TvN family.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TvN family.swift"; sourceTree = "<group>"; };
+		E6644EAC1F052CA600C66427 /* FamilyTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FamilyTree.swift; sourceTree = "<group>"; };
 		E6644EAE1F052D4800C66427 /* CustomCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewController.swift; sourceTree = "<group>"; };
 		E6644EAF1F052D4800C66427 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		E6644EB01F052D4800C66427 /* CustomCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewLayout.swift; sourceTree = "<group>"; };
 		E6644EB11F052D4800C66427 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		E6644EB71F069C1D00C66427 /* Family Tree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Family Tree.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D74ABEB9AFFE4B981607D83 /* Pods_iGenFamilyTree.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,6 +99,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B51B62CA1F0A261100AB11CC /* DrawFamilyTree */ = {
+			isa = PBXGroup;
+			children = (
+				E6644EAC1F052CA600C66427 /* FamilyTree.swift */,
+				B51B62C21F0A23D400AB11CC /* Human.swift */,
+				B51B62C41F0A244400AB11CC /* Patient.swift */,
+				B51B62C61F0A246500AB11CC /* Model.swift */,
+				B51B62C81F0A258F00AB11CC /* FamilyTreeTests.swift */,
+			);
+			name = DrawFamilyTree;
+			sourceTree = "<group>";
+		};
 		B5EAC16F1F01390800151D52 = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +118,8 @@
 				B5EAC1921F01390800151D52 /* iGenFamilyTreeTests */,
 				B5EAC19D1F01390900151D52 /* iGenFamilyTreeUITests */,
 				B5EAC1791F01390800151D52 /* Products */,
+				E4015B16643BDF179DA0A98D /* Pods */,
+				C5AD5AF6C9C32E3A2F8F9A31 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -119,8 +136,7 @@
 		B5EAC17A1F01390800151D52 /* iGenFamilyTree */ = {
 			isa = PBXGroup;
 			children = (
-				E6644EAC1F052CA600C66427 /* TvN family.swift */,
-				E6644EB71F069C1D00C66427 /* Family Tree.swift */,
+				B51B62CA1F0A261100AB11CC /* DrawFamilyTree */,
 				E6644EAE1F052D4800C66427 /* CustomCollectionViewController.swift */,
 				E6644EAF1F052D4800C66427 /* CustomCollectionViewCell.swift */,
 				E6644EB01F052D4800C66427 /* CustomCollectionViewLayout.swift */,
@@ -153,17 +169,30 @@
 			path = iGenFamilyTreeUITests;
 			sourceTree = "<group>";
 		};
+		C5AD5AF6C9C32E3A2F8F9A31 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				05146668421A3773640975C1 /* Pods_iGenFamilyTree.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CF703FF71F02516200FEB1C5 /* dataObjects */ = {
 			isa = PBXGroup;
 			children = (
-				CF703FFF1F02532E00FEB1C5 /* Json4Swift_Base.swift */,
-				CF703FFD1F02532E00FEB1C5 /* Father.swift */,
-				CF703FFC1F02532E00FEB1C5 /* Ethnicity.swift */,
-				CF703FFE1F02532E00FEB1C5 /* Health History.swift */,
-				CF7040031F02532E00FEB1C5 /* Parents.swift */,
-				CF7040071F02532E00FEB1C5 /* Race.swift */,
+				68F4CAC31F0699840036946B /* iGen.json */,
+				68F4CAC11F0699790036946B /* iGenDataService.swift */,
 			);
 			name = dataObjects;
+			sourceTree = "<group>";
+		};
+		E4015B16643BDF179DA0A98D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4A3A17B3E3CD842580CECBAA /* Pods-iGenFamilyTree.debug.xcconfig */,
+				766023BC6D2C08F6E70170F2 /* Pods-iGenFamilyTree.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -173,9 +202,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B5EAC1A31F01390900151D52 /* Build configuration list for PBXNativeTarget "iGenFamilyTree" */;
 			buildPhases = (
+				215FB123333459F93A9480DB /* [CP] Check Pods Manifest.lock */,
 				B5EAC1741F01390800151D52 /* Sources */,
 				B5EAC1751F01390800151D52 /* Frameworks */,
 				B5EAC1761F01390800151D52 /* Resources */,
+				E78632038BC49722354DEFE1 /* [CP] Embed Pods Frameworks */,
+				CEE2997810FD85A6E4A3997E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -276,6 +308,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68F4CAC41F0699840036946B /* iGen.json in Resources */,
 				E6644EB51F052D4800C66427 /* Main.storyboard in Resources */,
 				B5EAC1891F01390800151D52 /* LaunchScreen.storyboard in Resources */,
 				B5EAC1861F01390800151D52 /* Assets.xcassets in Resources */,
@@ -298,24 +331,70 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		215FB123333459F93A9480DB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		CEE2997810FD85A6E4A3997E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iGenFamilyTree/Pods-iGenFamilyTree-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E78632038BC49722354DEFE1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iGenFamilyTree/Pods-iGenFamilyTree-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B5EAC1741F01390800151D52 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF70400E1F02532E00FEB1C5 /* Father.swift in Sources */,
 				E6644EB31F052D4800C66427 /* CustomCollectionViewCell.swift in Sources */,
-				E6644EAD1F052CA600C66427 /* TvN family.swift in Sources */,
+				E6644EAD1F052CA600C66427 /* FamilyTree.swift in Sources */,
+				B51B62C51F0A244400AB11CC /* Patient.swift in Sources */,
 				E6644EB21F052D4800C66427 /* CustomCollectionViewController.swift in Sources */,
+				B51B62C31F0A23D400AB11CC /* Human.swift in Sources */,
+				B51B62C71F0A246500AB11CC /* Model.swift in Sources */,
 				B5EAC17C1F01390800151D52 /* AppDelegate.swift in Sources */,
-				CF7040101F02532E00FEB1C5 /* Json4Swift_Base.swift in Sources */,
-				CF70400D1F02532E00FEB1C5 /* Ethnicity.swift in Sources */,
+				68F4CAC21F0699790036946B /* iGenDataService.swift in Sources */,
 				B5EAC1841F01390800151D52 /* iGenFamilyTree.xcdatamodeld in Sources */,
-				E6644EB81F069C1D00C66427 /* Family Tree.swift in Sources */,
+				B51B62C91F0A258F00AB11CC /* FamilyTreeTests.swift in Sources */,
 				E6644EB41F052D4800C66427 /* CustomCollectionViewLayout.swift in Sources */,
-				CF7040141F02532E00FEB1C5 /* Parents.swift in Sources */,
-				CF70400F1F02532E00FEB1C5 /* Health History.swift in Sources */,
-				CF7040181F02532E00FEB1C5 /* Race.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -459,6 +538,7 @@
 		};
 		B5EAC1A41F01390900151D52 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4A3A17B3E3CD842580CECBAA /* Pods-iGenFamilyTree.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -475,6 +555,7 @@
 		};
 		B5EAC1A51F01390900151D52 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 766023BC6D2C08F6E70170F2 /* Pods-iGenFamilyTree.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
