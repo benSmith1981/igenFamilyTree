@@ -54,7 +54,7 @@
             "name": "Ben",
             "dob": "1981",
             "race": "White",
-            "gender": "male",
+            "gender": "female",
             "partners": [ ],
             "parents": [{ "id" : "id2" }, { "id" : "id3"} ],
             "siblings": [{ "id" : "id1" }],

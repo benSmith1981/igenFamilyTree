@@ -94,8 +94,18 @@ class FamilyTreeGenerator {
                 }
             }
             
+            //resetting the point from where you will draw
             row = patient.row
             col = patient.col
+            
+            // TO DO: Added a statement if someone does not have parents, but probably this will never happen..
+            if patient.myParentsIDs.count == 0 {
+                model?.cell?[row - 1][patient.col] = cellState.emptyCell
+            } else if patient.mySiblingsIDs.count == 0 {
+                model?.cell?[row - 1][patient.col] = cellState.straightVertical
+            } else {
+                model?.cell?[row - 1][patient.col] = cellState.patientParentConnector
+            }
             
             for id in patient.mySiblingsIDs {
                 col += 1
@@ -106,84 +116,122 @@ class FamilyTreeGenerator {
                     model?.cell?[row][col] = cellState.aunt(id: patientID)
                 }
                 
-                //Cell above Patient
-                if familyTree[id]!.siblings.count == 0 {
-                    model?.cell?[row - 1][patient.col] = cellState.straightVertical
-                } else {
-                    model?.cell?[row - 1][patient.col] = cellState.patientParentConnector
-                }
-                
                 //Cell above last sibling
                 if id == patient.mySiblingsIDs.last {
-                   model?.cell?[row - 1][col] = cellState.cornerLeftBottom
-                
+                    model?.cell?[row - 1][col] = cellState.cornerLeftBottom
                 } else {
-                   model?.cell?[row - 1][col] = cellState.spouseConnector
+                    model?.cell?[row - 1][col] = cellState.spouseConnector
                 }
-            
-                row = patient.row - 2
-                col = patient.col
-                
             }
             
-            /*
+            //resetting the point from where you will draw
             row = patient.row - 2
             col = patient.col
             
             for id in patient.myParentsIDs {
-                if familyTree[id]!.gender == "male" {
-                    model?.cell?[row][col + 1] = id
+                if familyTree[id]!.gender == jsonKeys.male.rawValue {
+                    model?.cell?[row][col + 1] = cellState.father(id: patientID)
                 } else {
-                    model?.cell?[row][col - 1] = id
+                    model?.cell?[row][col - 1] = cellState.mother(id: patientID)
                 }
             }
+            
             if patient.myParentsIDs.count > 0 {
-                model?.cell?[row][col] = "---,---"
-                model?.cell?[row + 1][col] = "  |  "
+                model?.cell?[row][col] = cellState.spouseConnector
+                model?.cell?[row + 1][col] = cellState.straightVertical
             }
+            
             row = patient.row - 2
             col = patient.col + 1
+            
             for id in patient.fatherSiblingsIDs {
                 col += 1
-                model?.cell?[row][col] = id
-                model?.cell?[row - 1][patient.col + 1] = ",--"
-                if id == patient.fatherSiblingsIDs.last {
-                    model?.cell?[row - 1][col] = "--,"
+                
+                if familyTree[id]!.gender == jsonKeys.male.rawValue {
+                    model?.cell?[row][col] = cellState.father(id: patientID)
                 } else {
-                    model?.cell?[row - 1][col] = "-------"
+                    model?.cell?[row][col] = cellState.mother(id: patientID)
+                }
+                
+                //model?.cell?[row][col] = id
+                model?.cell?[row - 1][patient.col + 1] = cellState.cornerRightBottom
+                
+                if id == patient.fatherSiblingsIDs.last {
+                    model?.cell?[row - 1][col] = cellState.cornerLeftBottom
+                } else {
+                    model?.cell?[row - 1][col] = cellState.spouseConnector
                 }
             }
+            
+            //resetting the point from where you will draw
             row = patient.row - 2
             col = patient.col - 1
+            
             for id in patient.motherSiblingsIDs {
                 col -= 1
-                model?.cell?[row][col] = id
-                model?.cell?[row - 1][patient.col - 1] = "--,"
-                if id == patient.motherSiblingsIDs.last {
-                    model?.cell?[row - 1][col] = ",--"
+                if familyTree[id]!.gender == jsonKeys.male.rawValue {
+                    model?.cell?[row][col] = cellState.father(id: patientID)
                 } else {
-                    model?.cell?[row - 1][col] = "-------"
+                    model?.cell?[row][col] = cellState.mother(id: patientID)
+                }
+                
+                model?.cell?[row - 1][patient.col - 1] = cellState.cornerLeftBottom
+                if id == patient.motherSiblingsIDs.last {
+                    model?.cell?[row - 1][col] = cellState.cornerRightBottom
+                } else {
+                    model?.cell?[row - 1][col] = cellState.spouseConnector
                 }
             }
+            
+            //resetting the point from where you will draw
             row = patient.row + 2
             col = patient.col - 2
+            
             for id in patient.myChildrenIDs {
                 col += 1
-                model?.cell?[row][col] = id
-                if id == patient.myChildrenIDs.last {
-                    model?.cell?[row - 1][col] = "--,"
+                
+                //model?.cell?[row][col] = id
+                if familyTree[id]!.gender == jsonKeys.male.rawValue {
+                    model?.cell?[row][col] = cellState.son(id: patientID)
                 } else {
-                    model?.cell?[row - 1][col] = "-------"
+                    model?.cell?[row][col] = cellState.daughter(id: patientID)
+                }
+                
+                if id == patient.myChildrenIDs.last {
+                    model?.cell?[row - 1][col] = cellState.cornerLeftBottom
+                } else {
+                    model?.cell?[row - 1][col] = cellState.spouseConnector
                 }
             }
             if patient.myChildrenIDs.count == 1 {
-                model?.cell?[row - 1][patient.col - 1] = "  |  "
+                model?.cell?[row - 1][patient.col - 1] = cellState.straightVertical
             } else {
                 if patient.myChildrenIDs.count > 0 {
-                    model?.cell?[row - 1][patient.col - 1] = "|--"
+                    model?.cell?[row - 1][patient.col - 1] = cellState.patientParentConnector
                 }
-            }*/
+            }
         }
+        
+        
+        /*
+         
+         row = patient.row + 2
+         col = patient.col - 2
+         for id in patient.myChildrenIDs {
+         col += 1
+         model?.cell?[row][col] = id
+         if id == patient.myChildrenIDs.last {
+         model?.cell?[row - 1][col] = "--,"
+         } else {
+         model?.cell?[row - 1][col] = "-------"
+         }
+         }
+         if patient.myChildrenIDs.count == 1 {
+         model?.cell?[row - 1][patient.col - 1] = "  |  "
+         } else {
+         if patient.myChildrenIDs.count > 0 {
+         model?.cell?[row - 1][patient.col - 1] = "|--"
+         }
+         }*/
     }
-    
 }

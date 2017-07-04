@@ -41,7 +41,7 @@ enum cellState {
         case .son:
             return imageRotatedByDegrees(oldImage: #imageLiteral(resourceName: "paths-male-1-connector"), deg: 180)
         case .daughter:
-            return imageRotatedByDegrees(oldImage: #imageLiteral(resourceName: "paths-female-1-connector"), deg: 180)
+            return #imageLiteral(resourceName: "paths-TEST-female-daughter")
         case .malePatient:
             return #imageLiteral(resourceName: "paths-male-corner-2-connectors")
         case .femalePatient:
@@ -49,15 +49,15 @@ enum cellState {
         case .maleSpouse:
             return imageRotatedByDegrees(oldImage: #imageLiteral(resourceName: "paths-male-corner-2-connectors"), deg: 90)
         case .femaleSpouse:
-            return #imageLiteral(resourceName: "paths-female-corner-2-connectors")
+            return imageRotatedByDegrees(oldImage: #imageLiteral(resourceName: "paths-female-1-connector"), deg: -90)
         case .aunt:
-            return #imageLiteral(resourceName: "paths-female-1-connector")
+            return imageRotatedByDegrees(oldImage: #imageLiteral(resourceName: "paths-female-1-connector"), deg: 180)
         case .uncle:
-            return #imageLiteral(resourceName: "paths-male-1-connector")
+            return imageRotatedByDegrees(oldImage: #imageLiteral(resourceName: "paths-male-1-connector"), deg: 180)
         case .father:
-            return #imageLiteral(resourceName: "paths-male-1-connector")
+            return imageRotatedByDegrees(oldImage: #imageLiteral(resourceName: "paths-male-1-connector"), deg: 90)
         case .mother:
-            return #imageLiteral(resourceName: "paths-female-1-connector")
+            return imageRotatedByDegrees(oldImage: #imageLiteral(resourceName: "paths-female-1-connector"), deg: -90)
         case .spouseConnector:
             return #imageLiteral(resourceName: "paths-T-3-connectors")
         case .patientParentConnector:
@@ -71,9 +71,9 @@ enum cellState {
         case .cornerRightTop:
             return imageRotatedByDegrees(oldImage: #imageLiteral(resourceName: "paths-corner"), deg: -90)
         case .straightHorizontal:
-            return UIImage()
+            return #imageLiteral(resourceName: "paths-straight")
         case .straightVertical:
-            return UIImage()
+            return imageRotatedByDegrees(oldImage: #imageLiteral(resourceName: "paths-straight"), deg: 90)
         case .emptyCell:
             return UIImage()
         }
