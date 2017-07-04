@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		680B07C61F0BA98100BF479C /* JSONserialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680B07C51F0BA98100BF479C /* JSONserialization.swift */; };
+		680B07C91F0BC9A800BF479C /* HumanJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680B07C81F0BC9A800BF479C /* HumanJSON.swift */; };
+		680B07CD1F0BCD1800BF479C /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680B07CC1F0BCD1800BF479C /* TableViewController.swift */; };
 		68F4CAC21F0699790036946B /* iGenDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F4CAC11F0699790036946B /* iGenDataService.swift */; };
 		68F4CAC41F0699840036946B /* iGen.json in Resources */ = {isa = PBXBuildFile; fileRef = 68F4CAC31F0699840036946B /* iGen.json */; };
 		6D74ABEB9AFFE4B981607D83 /* Pods_iGenFamilyTree.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05146668421A3773640975C1 /* Pods_iGenFamilyTree.framework */; };
@@ -48,6 +51,9 @@
 /* Begin PBXFileReference section */
 		05146668421A3773640975C1 /* Pods_iGenFamilyTree.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iGenFamilyTree.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A3A17B3E3CD842580CECBAA /* Pods-iGenFamilyTree.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iGenFamilyTree.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iGenFamilyTree/Pods-iGenFamilyTree.debug.xcconfig"; sourceTree = "<group>"; };
+		680B07C51F0BA98100BF479C /* JSONserialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONserialization.swift; sourceTree = "<group>"; };
+		680B07C81F0BC9A800BF479C /* HumanJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HumanJSON.swift; sourceTree = "<group>"; };
+		680B07CC1F0BCD1800BF479C /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		68F4CAC11F0699790036946B /* iGenDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iGenDataService.swift; sourceTree = "<group>"; };
 		68F4CAC31F0699840036946B /* iGen.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = iGen.json; sourceTree = "<group>"; };
 		766023BC6D2C08F6E70170F2 /* Pods-iGenFamilyTree.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iGenFamilyTree.release.xcconfig"; path = "Pods/Target Support Files/Pods-iGenFamilyTree/Pods-iGenFamilyTree.release.xcconfig"; sourceTree = "<group>"; };
@@ -101,6 +107,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		680B07C71F0BC66A00BF479C /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				680B07C51F0BA98100BF479C /* JSONserialization.swift */,
+				680B07C81F0BC9A800BF479C /* HumanJSON.swift */,
+				680B07CC1F0BCD1800BF479C /* TableViewController.swift */,
+			);
+			name = SignUp;
+			sourceTree = "<group>";
+		};
 		B51B62CA1F0A261100AB11CC /* DrawFamilyTree */ = {
 			isa = PBXGroup;
 			children = (
@@ -140,6 +156,7 @@
 			children = (
 				B51B62CA1F0A261100AB11CC /* DrawFamilyTree */,
 				E6644EAE1F052D4800C66427 /* CustomCollectionViewController.swift */,
+				680B07C71F0BC66A00BF479C /* SignUp */,
 				E6644EAF1F052D4800C66427 /* CustomCollectionViewCell.swift */,
 				E6644EB01F052D4800C66427 /* CustomCollectionViewLayout.swift */,
 				E6644EB11F052D4800C66427 /* Main.storyboard */,
@@ -389,11 +406,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6644EB31F052D4800C66427 /* CustomCollectionViewCell.swift in Sources */,
+				680B07CD1F0BCD1800BF479C /* TableViewController.swift in Sources */,
 				E6644EAD1F052CA600C66427 /* FamilyTreeGenerator.swift in Sources */,
+				680B07C91F0BC9A800BF479C /* HumanJSON.swift in Sources */,
 				B51B62C51F0A244400AB11CC /* Patient.swift in Sources */,
 				E6644EB21F052D4800C66427 /* CustomCollectionViewController.swift in Sources */,
 				B51B62C31F0A23D400AB11CC /* Human.swift in Sources */,
 				B51B62C71F0A246500AB11CC /* Model.swift in Sources */,
+				680B07C61F0BA98100BF479C /* JSONserialization.swift in Sources */,
 				B5EAC17C1F01390800151D52 /* AppDelegate.swift in Sources */,
 				68F4CAC21F0699790036946B /* iGenDataService.swift in Sources */,
 				B5EAC1841F01390800151D52 /* iGenFamilyTree.xcdatamodeld in Sources */,
