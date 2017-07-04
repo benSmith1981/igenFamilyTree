@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="iGenIdentifier" id="i7I-fj-z49" customClass="iGenCell" customModule="iGenFamilyTree" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dnk-26-FFz">
+                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                    </imageView>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="dnk-26-FFz" secondAttribute="trailing" id="JdI-Rc-u4A"/>
+                <constraint firstAttribute="bottom" secondItem="dnk-26-FFz" secondAttribute="bottom" id="RZu-1L-Usm"/>
+                <constraint firstItem="dnk-26-FFz" firstAttribute="top" secondItem="i7I-fj-z49" secondAttribute="top" id="e8V-77-zMP"/>
+                <constraint firstItem="dnk-26-FFz" firstAttribute="leading" secondItem="i7I-fj-z49" secondAttribute="leading" id="z7m-Ms-PYm"/>
+            </constraints>
+            <connections>
+                <outlet property="bgImg" destination="dnk-26-FFz" id="OCo-tE-SRx"/>
+            </connections>
+            <point key="canvasLocation" x="-19" y="70"/>
+        </collectionViewCell>
+    </objects>
+</document>
