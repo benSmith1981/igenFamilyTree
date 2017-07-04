@@ -14,7 +14,8 @@
             "ethnicity" : "",
             "smoker" : "",
             "workout" : "",
-            "partners": [],
+            "spouses": [],
+            "patientID": "id2",
             "parents": [ { "id" : "id2" }, { "id" : "id3"} ],
             "siblings": [],
             "children": []
@@ -33,7 +34,7 @@
             "ethnicity" : "",
             "smoker" : "",
             "workout" : "",
-            "partners": [{ "id" : "id3" }],
+            "spouses": [{ "id" : "id3" }],
             "parents": [],
             "siblings": [],
             "children": [{ "id" : "id1" }]
@@ -52,7 +53,7 @@
             "ethnicity" : "",
             "smoker" : "",
             "workout" : "",
-            "partners": [ { "id" : "id2" }],
+            "spouses": [ { "id" : "id2" }],
             "parents": [],
             "siblings": [],
             "children": [{ "id" : "id1" }]

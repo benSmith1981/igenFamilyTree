@@ -3,7 +3,7 @@ import Foundation
 class FamilyTreeGenerator {
     var patient: Patient = Patient(id: "")
     var familyTree: [ID: Human] = [:]
-    var patientID: ID = ""
+//    var patientID: ID = ""
     var model: Model?
     
     init(familyTree: [ID: Human]) {
