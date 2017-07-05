@@ -154,9 +154,9 @@ class FamilyTreeGenerator {
             
             //CHECK GENDER------------------------------------------------------
                 if familyTree[id]!.gender == jsonKeys.male.rawValue {
-                    model?.cell?[row][col] = cellState.maleSpouse(id: patientID)
+                    model?.cell?[row][col] = cellState.maleSpouse(id: id)
                 } else {
-                    model?.cell?[row][col] = cellState.femaleSpouse(id: patientID)
+                    model?.cell?[row][col] = cellState.femaleSpouse(id: id)
                 }
             //CHECK GENDER------------------------------------------------------
                 
@@ -178,9 +178,9 @@ class FamilyTreeGenerator {
                 col += 1
                 
                 if familyTree[id]!.gender == jsonKeys.male.rawValue {
-                    model?.cell?[row][col] = cellState.uncle(id: patientID)
+                    model?.cell?[row][col] = cellState.uncle(id: id)
                 } else {
-                    model?.cell?[row][col] = cellState.aunt(id: patientID)
+                    model?.cell?[row][col] = cellState.aunt(id: id)
                 }
                 
                 //Cell above last sibling
@@ -197,15 +197,20 @@ class FamilyTreeGenerator {
             
             for id in patient.myParentsIDs {
                 if familyTree[id]!.gender == jsonKeys.male.rawValue {
-                    model?.cell?[row][col + 1] = cellState.father(id: patientID)
+                    model?.cell?[row][col + 1] = cellState.father(id: id)
                 } else {
-                    model?.cell?[row][col - 1] = cellState.mother(id: patientID)
+                    model?.cell?[row][col - 1] = cellState.mother(id: id)
                 }
             }
             
             if patient.myParentsIDs.count > 0 {
                 model?.cell?[row][col] = cellState.spouseConnector
-                model?.cell?[row + 1][col] = cellState.straightVertical
+                //*** IF NO BRO's STRAIGHT , ELSE CONNECT
+                if patient.mySiblingsIDs.count > 0 {
+                    model?.cell?[row + 1][col] = cellState.patientParentConnector
+                } else {
+                    model?.cell?[row + 1][col] = cellState.straightVertical
+                }
             }
             
             setDrawingPoints(rowX: -2, colY: 1)
@@ -214,9 +219,9 @@ class FamilyTreeGenerator {
                 col += 1
                 
                 if familyTree[id]!.gender == jsonKeys.male.rawValue {
-                    model?.cell?[row][col] = cellState.father(id: patientID)
+                    model?.cell?[row][col] = cellState.father(id: id)
                 } else {
-                    model?.cell?[row][col] = cellState.mother(id: patientID)
+                    model?.cell?[row][col] = cellState.mother(id: id)
                 }
                 
                 //model?.cell?[row][col] = id
@@ -234,9 +239,9 @@ class FamilyTreeGenerator {
             for id in patient.motherSiblingsIDs {
                 col -= 1
                 if familyTree[id]!.gender == jsonKeys.male.rawValue {
-                    model?.cell?[row][col] = cellState.father(id: patientID)
+                    model?.cell?[row][col] = cellState.father(id: id)
                 } else {
-                    model?.cell?[row][col] = cellState.mother(id: patientID)
+                    model?.cell?[row][col] = cellState.mother(id: id)
                 }
                 
                 model?.cell?[row - 1][patient.col - 1] = cellState.cornerLeftBottom
@@ -254,9 +259,9 @@ class FamilyTreeGenerator {
                 
                 //Check gender function
                 if familyTree[id]!.gender == jsonKeys.male.rawValue {
-                    model?.cell?[row][col] = cellState.son(id: patientID)
+                    model?.cell?[row][col] = cellState.son(id: id)
                 } else {
-                    model?.cell?[row][col] = cellState.daughter(id: patientID)
+                    model?.cell?[row][col] = cellState.daughter(id: id)
                 }
                 
                 if id == patient.myChildrenIDs.last {

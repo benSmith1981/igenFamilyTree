@@ -1,0 +1,84 @@
+{
+    "id2": {
+        "id1":{
+            "name": "Paul",
+            "dob": "1986",
+            "race": "white",
+            "gender": "male",
+            "partners": [],
+            "parents": [ { "id" : "id2" }, { "id" : "id4"} ],
+            "siblings": [{ "id" : "id3" }],
+            "children": []
+        },
+        "id2":{
+            "name": "Clo",
+            "dob": "1955",
+            "race": "white",
+            "gender": "female",
+            "partners": [{ "id" : "id4" }],
+            "parents": [{ "id" : "id7" }, { "id" : "id8" }],
+            "siblings": [{ "id" : "id5" }, { "id" : "id6" }],
+            "children": [{ "id" : "id1" }, { "id" : "id3" }]
+        },
+        "id3":{
+            "name": "Michiel",
+            "dob": "1984",
+            "race": "white",
+            "gender": "male",
+            "partners": [],
+            "parents": [ { "id" : "id2" }, { "id" : "id4"} ],
+            "siblings": [{ "id" : "id1" }],
+            "children": []
+        },
+        "id4":{
+            "name": "Rien",
+            "dob": "1947",
+            "race": "white",
+            "gender": "male",
+            "partners": [{ "id" : "id2" }],
+            "parents": [],
+            "siblings": [],
+            "children": [{ "id" : "id1" }, { "id" : "id3"}]
+        },
+        "id5":{
+            "name": "Wim",
+            "dob": "1960",
+            "race": "white",
+            "gender": "male",
+            "partners": [],
+            "parents": [{ "id" : "id7" }, { "id" : "id8"}],
+            "siblings": [{ "id" : "id6" }, { "id" : "id2"}],
+            "children": []
+        },
+        "id6":{
+            "name": "Paul Sr.",
+            "dob": "1958",
+            "race": "white",
+            "gender": "male",
+            "partners": [],
+            "parents": [{ "id" : "id7" }, { "id" : "id8"}],
+            "siblings": [{ "id" : "id5" }, { "id" : "id2"}],
+            "children": []
+        },
+        "id7":{
+            "name": "Harry",
+            "dob": "1958",
+            "race": "white",
+            "gender": "male",
+            "partners": [{ "id" : "id8" }],
+            "parents": [],
+            "siblings": [],
+            "children": [{ "id" : "id5" }, { "id" : "id2"}, { "id" : "id6"}]
+        },
+        "id8":{
+            "name": "Mimi",
+            "dob": "1958",
+            "race": "white",
+            "gender": "female",
+            "partners": [{ "id" : "id7" }],
+            "parents": [],
+            "siblings": [],
+            "children": [{ "id" : "id5" }, { "id" : "id2"}, { "id" : "id6"}]
+        },
+    }
+}

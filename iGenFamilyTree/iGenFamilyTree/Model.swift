@@ -39,21 +39,21 @@ enum cellState {
         switch self {
             
         case .son:
-            return imageRotatedByDegrees(oldImage: #imageLiteral(resourceName: "paths-male-1-connector"), deg: 180)
+            return #imageLiteral(resourceName: "paths-son-1-connector")
         case .daughter:
             return #imageLiteral(resourceName: "paths-TEST-female-daughter")
         case .malePatient:
             return #imageLiteral(resourceName: "paths-male-corner-2-connectors")
         case .femalePatient:
-            return #imageLiteral(resourceName: "paths-female-corner-2-connectors")
+            return imageRotatedByDegrees(oldImage: #imageLiteral(resourceName: "paths-female-corner-2-connectors"), deg: -90)
         case .maleSpouse:
-            return imageRotatedByDegrees(oldImage: #imageLiteral(resourceName: "paths-male-corner-2-connectors"), deg: 90)
+            return imageRotatedByDegrees(oldImage: #imageLiteral(resourceName: "paths-male-1-connector"), deg: -90)
         case .femaleSpouse:
             return imageRotatedByDegrees(oldImage: #imageLiteral(resourceName: "paths-female-1-connector"), deg: -90)
         case .aunt:
             return imageRotatedByDegrees(oldImage: #imageLiteral(resourceName: "paths-female-1-connector"), deg: 180)
         case .uncle:
-            return imageRotatedByDegrees(oldImage: #imageLiteral(resourceName: "paths-male-1-connector"), deg: 180)
+            return #imageLiteral(resourceName: "paths-son-1-connector")
         case .father:
             return imageRotatedByDegrees(oldImage: #imageLiteral(resourceName: "paths-male-1-connector"), deg: 90)
         case .mother:
@@ -121,6 +121,10 @@ enum cellState {
         case .father(let id):
             return id
         case .mother(let id):
+            return id
+        case .femaleSpouse(let id):
+            return id
+        case .maleSpouse(let id):
             return id
         default:
             return ""
