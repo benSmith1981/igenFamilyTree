@@ -1,6 +1,6 @@
 {
     "id1": {
-        "id1":{
+        "id2":{
             "name": "Ben",
             "modificationdate" : "",
             "dob": "1981",
@@ -15,11 +15,11 @@
             "smoker" : "",
             "workout" : "",
             "partners": [],
-            "parents": [ { "id" : "id2" }, { "id" : "id3"} ],
+            "parents": [ { "id" : "id1" }, { "id" : "id3"} ],
             "siblings": [],
             "children": []
         },
-        "id2":{
+        "id1":{
             "name": "Terry Smith",
             "modificationdate" : "",
             "dob": "1939",
@@ -36,7 +36,7 @@
             "partners": [{ "id" : "id3" }],
             "parents": [],
             "siblings": [],
-            "children": [{ "id" : "id1" }]
+            "children": [{ "id" : "id2" }]
         },
         "id3":{
             "name": "Maureen Smith",
@@ -52,10 +52,10 @@
             "ethnicity" : "",
             "smoker" : "",
             "workout" : "",
-            "partners": [ { "id" : "id2" }],
+            "partners": [ { "id" : "id1" }],
             "parents": [],
             "siblings": [],
-            "children": [{ "id" : "id1" }]
+            "children": [{ "id" : "id2" }]
         }
     }
 }

@@ -68,6 +68,7 @@ class FamilyTreeGenerator {
         }
     }
     
+    
     //  functions for populating the Model structure
     //  Model is a 2D matrix for building the family tree and connecting the nodes
     //  we build this from the Patient structure
@@ -78,7 +79,18 @@ class FamilyTreeGenerator {
         var col = patient.col
         
         //**TO DO**
-        var currentCell = model?.cell?[row][col]
+        //        var currentCell = model?.cell?[row][col]
+        //**TO DO**
+        //        func checkGender(maleState: cellState, femaleState: cellState) {
+        //            if let patientID = patient.id {
+        //
+        //                if familyTree[patientID]?.gender == jsonKeys.male.rawValue {
+        //                    return currentCell = cellState.malePatient(id: patientID)
+        //                } else {
+        //                    return currentCell = cellState.femalePatient(id: patientID)
+        //                }
+        //            }
+        //        }
         
         
         func setDrawingPoints(rowX: Int, colY: Int) {
@@ -94,137 +106,37 @@ class FamilyTreeGenerator {
             row = patient.row + rowX
         }
         
-        
-        //**TO DO**
-        func checkGender(maleState: cellState, femaleState: cellState) {
-            if let patientID = patient.id {
-                
-                
-                //CellState(id:"String")
-                
-                if familyTree[patientID]?.gender == jsonKeys.male.rawValue {
-                    return currentCell = cellState.malePatient(id: patientID)
-                } else {
-                    return currentCell = cellState.femalePatient(id: patientID)
-                }
-            }
-        }
-        
-        /*
-         
-        if let patientID = patient.id {
-            if familyTree[id]!.gender == jsonKeys.male.rawValue {
-                model?.cell?[row][col] = cellState.  **father**  (id: patientID)
-            } else {
-                model?.cell?[row][col] = cellState.  **mother**  (id: patientID)
-            }
-            
-            if familyTree[patientID]?.gender == jsonKeys.male.rawValue {
-                model?.cell?[row][col] = cellState.  **malePatient**  (id: patientID)
-            } else {
-                model?.cell?[row][col] = cellState.  **femalePatient**  (id: patientID)
-            }
-         
-            if familyTree[id]!.gender == jsonKeys.male.rawValue {
-                model?.cell?[row][col] = cellState.  **uncle**  (id: patientID)
-            } else {
-                model?.cell?[row][col] = cellState.  **aunt**  (id: patientID)
-            }
-        }
-         
-        */
-        
-        if let patientID = patient.id {
-            if familyTree[patientID]?.gender == jsonKeys.male.rawValue {
-                //currentCell = cellState.malePatient(id: patientID)
-                model?.cell?[row][col] = cellState.malePatient(id: patientID)
-            } else {
-                model?.cell?[row][col] = cellState.femalePatient(id: patientID)
-            }
-            
-            setDrawingPointY(colY: -1)
-            //col = patient.col - 1
-            
-            
-            
-            
-            for id in patient.mySpousesIDs {
-                model?.cell?[row][col] = cellState.spouseConnector // "---,---"
-                col -= 1
-            
-            //CHECK GENDER------------------------------------------------------
-                if familyTree[id]!.gender == jsonKeys.male.rawValue {
-                    model?.cell?[row][col] = cellState.maleSpouse(id: id)
-                } else {
-                    model?.cell?[row][col] = cellState.femaleSpouse(id: id)
-                }
-            //CHECK GENDER------------------------------------------------------
-                
-            }
-            
-            
-            setDrawingPoints(rowX: 0, colY: 0)
-            
-            // TO DO: Added a statement if someone does not have parents, but probably this will never happen..
-            if patient.myParentsIDs.count == 0 {
-                model?.cell?[row - 1][patient.col] = cellState.emptyCell
-            } else if patient.mySiblingsIDs.count == 0 {
-                model?.cell?[row - 1][patient.col] = cellState.straightVertical
-            } else {
-                model?.cell?[row - 1][patient.col] = cellState.patientParentConnector
-            }
-            
+        func addSiblings() {
             for id in patient.mySiblingsIDs {
                 col += 1
                 
+                //add siblings according to gender
                 if familyTree[id]!.gender == jsonKeys.male.rawValue {
-                    model?.cell?[row][col] = cellState.uncle(id: id)
+                    model?.cell?[row][col] = cellState.brother(id: id)
                 } else {
-                    model?.cell?[row][col] = cellState.aunt(id: id)
+                    model?.cell?[row][col] = cellState.sister(id: id)
                 }
                 
-                //Cell above last sibling
+                //Cell above siblings
                 if id == patient.mySiblingsIDs.last {
                     model?.cell?[row - 1][col] = cellState.cornerLeftBottom
                 } else {
                     model?.cell?[row - 1][col] = cellState.spouseConnector
                 }
             }
-            
-            setDrawingPoints(rowX: -2, colY: 0)
-            
-            
-            
-            for id in patient.myParentsIDs {
-                if familyTree[id]!.gender == jsonKeys.male.rawValue {
-                    model?.cell?[row][col + 1] = cellState.father(id: id)
-                } else {
-                    model?.cell?[row][col - 1] = cellState.mother(id: id)
-                }
-            }
-            
-            if patient.myParentsIDs.count > 0 {
-                model?.cell?[row][col] = cellState.spouseConnector
-                //*** IF NO BRO's STRAIGHT , ELSE CONNECT
-                if patient.mySiblingsIDs.count > 0 {
-                    model?.cell?[row + 1][col] = cellState.patientParentConnector
-                } else {
-                    model?.cell?[row + 1][col] = cellState.straightVertical
-                }
-            }
-            
-            setDrawingPoints(rowX: -2, colY: 1)
-            
+        }
+
+        
+        func addFatherSiblings() {
             for id in patient.fatherSiblingsIDs {
                 col += 1
                 
                 if familyTree[id]!.gender == jsonKeys.male.rawValue {
-                    model?.cell?[row][col] = cellState.father(id: id)
+                    model?.cell?[row][col] = cellState.brother(id: id)
                 } else {
-                    model?.cell?[row][col] = cellState.mother(id: id)
+                    model?.cell?[row][col] = cellState.sister(id: id)
                 }
                 
-                //model?.cell?[row][col] = id
                 model?.cell?[row - 1][patient.col + 1] = cellState.cornerRightBottom
                 
                 if id == patient.fatherSiblingsIDs.last {
@@ -233,15 +145,15 @@ class FamilyTreeGenerator {
                     model?.cell?[row - 1][col] = cellState.spouseConnector
                 }
             }
-            
-            setDrawingPoints(rowX: -2, colY: -1)
-            
+        }
+        
+        func addMotherSiblings() {
             for id in patient.motherSiblingsIDs {
                 col -= 1
                 if familyTree[id]!.gender == jsonKeys.male.rawValue {
-                    model?.cell?[row][col] = cellState.father(id: id)
+                    model?.cell?[row][col] = cellState.brother(id: id)
                 } else {
-                    model?.cell?[row][col] = cellState.mother(id: id)
+                    model?.cell?[row][col] = cellState.sister(id: id)
                 }
                 
                 model?.cell?[row - 1][patient.col - 1] = cellState.cornerLeftBottom
@@ -251,25 +163,119 @@ class FamilyTreeGenerator {
                     model?.cell?[row - 1][col] = cellState.spouseConnector
                 }
             }
-            
-            setDrawingPoints(rowX: 2, colY: -2)
-            
+        }
+        
+        func addChilderen() {
             for id in patient.myChildrenIDs {
                 col += 1
                 
-                //Check gender function
+                //add childeren according to gender
                 if familyTree[id]!.gender == jsonKeys.male.rawValue {
-                    model?.cell?[row][col] = cellState.son(id: id)
+                    model?.cell?[row][col] = cellState.brother(id: id)
                 } else {
-                    model?.cell?[row][col] = cellState.daughter(id: id)
+                    model?.cell?[row][col] = cellState.sister(id: id)
                 }
                 
+                //Cell above childeren
+                //if patient.mySiblingsIDs.count == 2 {
+                //    model?.cell?[row - 1][col] = cellState.cornerLeftBottom
+                //}
                 if id == patient.myChildrenIDs.last {
+                    //if id == patient.mySiblingsIDs.last {
                     model?.cell?[row - 1][col] = cellState.cornerLeftBottom
                 } else {
                     model?.cell?[row - 1][col] = cellState.spouseConnector
                 }
             }
+        }
+        
+        func patientParentConnector() {
+            if patient.myParentsIDs.count == 0 {
+                model?.cell?[row - 1][patient.col] = cellState.emptyCell
+            } else if patient.mySiblingsIDs.count == 0 {
+                model?.cell?[row - 1][patient.col] = cellState.straightVertical
+            } else {
+                model?.cell?[row - 1][patient.col] = cellState.patientParentConnector
+            }
+        }
+        
+        func childerenParentConnector() {
+            if patient.myParentsIDs.count > 0 {
+                model?.cell?[row][col] = cellState.spouseConnector
+                //*** IF NO BRO's STRAIGHT , ELSE CONNECT
+                if patient.mySiblingsIDs.count > 0 {
+                    model?.cell?[row + 1][col] = cellState.patientParentConnector
+                } else {
+                    model?.cell?[row + 1][col] = cellState.straightVertical
+                }
+            }
+        }
+        
+        func addParents(){
+            for id in patient.myParentsIDs {
+                if familyTree[id]!.gender == jsonKeys.male.rawValue {
+                    model?.cell?[row][col + 1] = cellState.father(id: id)
+                } else {
+                    model?.cell?[row][col - 1] = cellState.mother(id: id)
+                }
+            }
+        }
+        
+        
+        if let patientID = patient.id {
+            
+            if familyTree[patientID]?.gender == jsonKeys.male.rawValue {
+                model?.cell?[row][col] = cellState.malePatient(id: patientID)
+            } else {
+                model?.cell?[row][col] = cellState.femalePatient(id: patientID)
+            }
+            
+            setDrawingPointY(colY: -1)
+            
+            for id in patient.mySpousesIDs {
+                model?.cell?[row][col] = cellState.spouseConnector
+                col -= 1
+                
+                if familyTree[id]!.gender == jsonKeys.male.rawValue {
+                    //var currentCell = model?.cell?[row][col] = model?.cell?[row][col] = cellState.maleSpouse(id: id)
+                    //currentCell = cellState.maleSpouse(id: id)
+                    model?.cell?[row][col] = cellState.maleSpouse(id: id)
+                } else {
+                    //currentCell = cellState.femaleSpouse(id: id)
+                    model?.cell?[row][col] = cellState.femaleSpouse(id: id)
+                }
+                
+            }
+            
+            
+            setDrawingPoints(rowX: 0, colY: 0)
+            
+            // TO DO: VERTICAL CONNECTOR ###
+            
+            
+            patientParentConnector()
+            
+            addSiblings()
+            
+            setDrawingPoints(rowX: -2, colY: 0)
+            
+            addParents()
+            
+            childerenParentConnector()
+            
+            setDrawingPoints(rowX: -2, colY: 1)
+            
+            addFatherSiblings()
+            
+            setDrawingPoints(rowX: -2, colY: -1)
+            
+            addMotherSiblings()
+            
+            setDrawingPoints(rowX: 2, colY: -2)
+            
+            addChilderen()
+            
+            
             if patient.myChildrenIDs.count == 1 {
                 model?.cell?[row - 1][patient.col - 1] = cellState.straightVertical
             } else {

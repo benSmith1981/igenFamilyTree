@@ -117,10 +117,10 @@
 			isa = PBXGroup;
 			children = (
 				E6644EAC1F052CA600C66427 /* FamilyTreeGenerator.swift */,
+				CFCFA7C41F0D24DF00BC05E5 /* CellStates.swift */,
 				B51B62C21F0A23D400AB11CC /* Human.swift */,
 				B51B62C41F0A244400AB11CC /* Patient.swift */,
 				B51B62C61F0A246500AB11CC /* Model.swift */,
-				CFCFA7C41F0D24DF00BC05E5 /* CellStates.swift */,
 				B51B62C81F0A258F00AB11CC /* FamilyTreeTests.swift */,
 			);
 			name = DrawFamilyTree;

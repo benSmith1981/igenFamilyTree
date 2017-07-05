@@ -10,8 +10,8 @@ import Foundation
 import UIKit
 
 enum cellState {
-    case son(id: String)
-    case daughter(id: String)
+    case brother(id: String)
+    case sister(id: String)
     case malePatient(id: String)
     case femalePatient(id: String)
     case maleSpouse(id: String)
@@ -36,10 +36,15 @@ enum cellState {
         
         switch self {
             
-        case .son:
+        case .brother:
             return #imageLiteral(resourceName: "paths-son-1-connector")
-        case .daughter:
+        case .uncle:
+            return #imageLiteral(resourceName: "paths-son-1-connector")
+        case .sister:
             return #imageLiteral(resourceName: "paths-TEST-female-daughter")
+        case .aunt:
+            return #imageLiteral(resourceName: "paths-TEST-female-daughter")
+        
         case .malePatient:
             return #imageLiteral(resourceName: "paths-male-corner-2-connectors")
         case .femalePatient:
@@ -48,18 +53,16 @@ enum cellState {
             return #imageLiteral(resourceName: "paths-male-1-connector").imageRotatedByDegrees(deg: -90)
         case .femaleSpouse:
             return #imageLiteral(resourceName: "paths-female-1-connector").imageRotatedByDegrees(deg: -90)
-        case .aunt:
-            return #imageLiteral(resourceName: "paths-female-1-connector").imageRotatedByDegrees(deg: 180)
-        case .uncle:
-            return #imageLiteral(resourceName: "paths-son-1-connector")
         case .father:
             return #imageLiteral(resourceName: "paths-male-1-connector").imageRotatedByDegrees(deg: 90)
         case .mother:
             return #imageLiteral(resourceName: "paths-female-1-connector").imageRotatedByDegrees(deg: -90)
+            
         case .spouseConnector:
             return #imageLiteral(resourceName: "paths-T-3-connectors")
         case .patientParentConnector:
             return #imageLiteral(resourceName: "paths-T-3-connectors").imageRotatedByDegrees(deg: -90)
+        
         case .cornerLeftBottom:
             return #imageLiteral(resourceName: "paths-corner").imageRotatedByDegrees(deg: 90)
         case .cornerLeftTop:
@@ -83,9 +86,9 @@ enum cellState {
     func getID() -> ID {
         switch self {
             
-        case .son(let id):
+        case .brother(let id):
             return id
-        case .daughter(let id):
+        case .sister(let id):
             return id
         case .malePatient(let id):
             return id

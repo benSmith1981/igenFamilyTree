@@ -67,7 +67,7 @@
             "gender": "male",
             "partners": [{ "id" : "id8" }],
             "parents": [],
-            "siblings": [],
+            "siblings": [{ "id" : "id11" }],
             "children": [{ "id" : "id5" }, { "id" : "id2"}, { "id" : "id6"}]
         },
         "id8":{
@@ -77,8 +77,38 @@
             "gender": "female",
             "partners": [{ "id" : "id7" }],
             "parents": [],
-            "siblings": [],
+            "siblings": [{ "id" : "id9" }, { "id" : "id10"}],
             "children": [{ "id" : "id5" }, { "id" : "id2"}, { "id" : "id6"}]
+        },
+        "id9":{
+            "name": "Zus Mimi",
+            "dob": "1912",
+            "race": "white",
+            "gender": "female",
+            "partners": [],
+            "parents": [],
+            "siblings": [{ "id" : "id8" }, { "id" : "id10"}],
+            "children": []
+        },
+        "id10":{
+            "name": "Bro Mimi",
+            "dob": "1913",
+            "race": "white",
+            "gender": "male",
+            "partners": [],
+            "parents": [],
+            "siblings": [{ "id" : "id9" }, { "id" : "id8"}],
+            "children": []
+        },
+        "id11":{
+            "name": "Bro Harry",
+            "dob": "1908",
+            "race": "white",
+            "gender": "male",
+            "partners": [],
+            "parents": [],
+            "siblings": [{ "id" : "id7" }],
+            "children": []
         },
     }
 }
