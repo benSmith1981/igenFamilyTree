@@ -41,22 +41,19 @@ class CustomCollectionViewController: UICollectionViewController {
         
     }
     func notifyObservers(notification: NSNotification) {
-        //        var searchesDict: Dictionary<String,[Humans]> = notification.userInfo as! Dictionary<String,[Humans]>
         let familyDict: [ID: Human] = notification.userInfo as! [ID : Human]
-//        let human = familyDict["id1"] as! Human
-        
-        //we assume you are the patient, maybe this comes from whoever logged in? So changed ID1 accordingly
-        
-//        let tests = FamilyTreeTests.init()
-        
         familyTreeGenerator = FamilyTreeGenerator.init(familyTree: familyDict)
-//        familyTreeGenerator?.fillFamilyTreeFor()
-        familyTreeGenerator?.makeTreeFor("id2")
-        familyTreeGenerator?.makeModelFromTree()
-
+//        extract patientID from the first Human for function MakeTreeFor 
+        if let firstKey = familyTreeGenerator?.familyTree.first?.key,
+            let patientID = familyTreeGenerator?.familyTree[firstKey]?.patientID {
+            familyTreeGenerator?.makeTreeFor(patientID)
+            familyTreeGenerator?.makeModelFromTree()
+        } else {
+            fatalError("Family tree not complete")
+        }
+        
         self.collectionView?.reloadData()
         
-
         print("notify observer \(familyDict)")
     }
     
