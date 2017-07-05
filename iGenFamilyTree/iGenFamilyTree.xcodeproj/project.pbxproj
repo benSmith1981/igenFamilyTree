@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		68AEA8CD1F0D4B34007E5E08 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68AEA8CC1F0D4B33007E5E08 /* Main.storyboard */; };
+		68AEA8D11F0D4B69007E5E08 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68AEA8CE1F0D4B69007E5E08 /* TableViewCell.swift */; };
+		68AEA8D21F0D4B69007E5E08 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68AEA8CF1F0D4B69007E5E08 /* TableViewCell.xib */; };
+		68AEA8D31F0D4B69007E5E08 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68AEA8D01F0D4B69007E5E08 /* TableViewController.swift */; };
+		68AEA8D51F0D4B73007E5E08 /* JSONserialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68AEA8D41F0D4B73007E5E08 /* JSONserialization.swift */; };
 		68F4CAC21F0699790036946B /* iGenDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F4CAC11F0699790036946B /* iGenDataService.swift */; };
 		68F4CAC41F0699840036946B /* iGen.json in Resources */ = {isa = PBXBuildFile; fileRef = 68F4CAC31F0699840036946B /* iGen.json */; };
 		6D74ABEB9AFFE4B981607D83 /* Pods_iGenFamilyTree.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05146668421A3773640975C1 /* Pods_iGenFamilyTree.framework */; };
@@ -54,6 +59,11 @@
 /* Begin PBXFileReference section */
 		05146668421A3773640975C1 /* Pods_iGenFamilyTree.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iGenFamilyTree.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A3A17B3E3CD842580CECBAA /* Pods-iGenFamilyTree.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iGenFamilyTree.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iGenFamilyTree/Pods-iGenFamilyTree.debug.xcconfig"; sourceTree = "<group>"; };
+		68AEA8CC1F0D4B33007E5E08 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		68AEA8CE1F0D4B69007E5E08 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		68AEA8CF1F0D4B69007E5E08 /* TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
+		68AEA8D01F0D4B69007E5E08 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		68AEA8D41F0D4B73007E5E08 /* JSONserialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONserialization.swift; sourceTree = "<group>"; };
 		68F4CAC11F0699790036946B /* iGenDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iGenDataService.swift; sourceTree = "<group>"; };
 		68F4CAC31F0699840036946B /* iGen.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = iGen.json; sourceTree = "<group>"; };
 		766023BC6D2C08F6E70170F2 /* Pods-iGenFamilyTree.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iGenFamilyTree.release.xcconfig"; path = "Pods/Target Support Files/Pods-iGenFamilyTree/Pods-iGenFamilyTree.release.xcconfig"; sourceTree = "<group>"; };
@@ -151,6 +161,10 @@
 		B5EAC17A1F01390800151D52 /* iGenFamilyTree */ = {
 			isa = PBXGroup;
 			children = (
+				68AEA8D41F0D4B73007E5E08 /* JSONserialization.swift */,
+				68AEA8CE1F0D4B69007E5E08 /* TableViewCell.swift */,
+				68AEA8CF1F0D4B69007E5E08 /* TableViewCell.xib */,
+				68AEA8D01F0D4B69007E5E08 /* TableViewController.swift */,
 				B51B62CA1F0A261100AB11CC /* DrawFamilyTree */,
 				E6644EAE1F052D4800C66427 /* CustomCollectionViewController.swift */,
 				E6644EAF1F052D4800C66427 /* CustomCollectionViewCell.swift */,
@@ -159,6 +173,7 @@
 				E6644EB01F052D4800C66427 /* CustomCollectionViewLayout.swift */,
 				E626B3171F0D028B00125D85 /* ChooserViewController.swift */,
 				B5EAC17B1F01390800151D52 /* AppDelegate.swift */,
+				68AEA8CC1F0D4B33007E5E08 /* Main.storyboard */,
 				CF703FF71F02516200FEB1C5 /* dataObjects */,
 				B5EAC1851F01390800151D52 /* Assets.xcassets */,
 				B5EAC1871F01390800151D52 /* LaunchScreen.storyboard */,
@@ -329,10 +344,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68AEA8CD1F0D4B34007E5E08 /* Main.storyboard in Resources */,
 				CFCFA7BD1F0A9FA800BC05E5 /* iGenCell.xib in Resources */,
 				CFCFA7C31F0D163700BC05E5 /* Paul.json in Resources */,
 				B5E0B64F1F0D4A28001A6CAE /* smith.json in Resources */,
 				68F4CAC41F0699840036946B /* iGen.json in Resources */,
+				68AEA8D21F0D4B69007E5E08 /* TableViewCell.xib in Resources */,
 				B5EAC1891F01390800151D52 /* LaunchScreen.storyboard in Resources */,
 				B5EAC1861F01390800151D52 /* Assets.xcassets in Resources */,
 			);
@@ -412,8 +429,10 @@
 				E6644EB31F052D4800C66427 /* CustomCollectionViewCell.swift in Sources */,
 				E6644EAD1F052CA600C66427 /* FamilyTreeGenerator.swift in Sources */,
 				B51B62C51F0A244400AB11CC /* Patient.swift in Sources */,
+				68AEA8D51F0D4B73007E5E08 /* JSONserialization.swift in Sources */,
 				E6644EB21F052D4800C66427 /* CustomCollectionViewController.swift in Sources */,
 				B51B62C31F0A23D400AB11CC /* Human.swift in Sources */,
+				68AEA8D31F0D4B69007E5E08 /* TableViewController.swift in Sources */,
 				B51B62C71F0A246500AB11CC /* Model.swift in Sources */,
 				B5EAC17C1F01390800151D52 /* AppDelegate.swift in Sources */,
 				CFCFA7C51F0D24DF00BC05E5 /* CellStates.swift in Sources */,
@@ -421,6 +440,7 @@
 				B51B62CE1F0CCB1000AB11CC /* UIImageExtension.swift in Sources */,
 				B5EAC1841F01390800151D52 /* iGenFamilyTree.xcdatamodeld in Sources */,
 				CFCFA7C11F0B960E00BC05E5 /* Constants.swift in Sources */,
+				68AEA8D11F0D4B69007E5E08 /* TableViewCell.swift in Sources */,
 				B51B62C91F0A258F00AB11CC /* FamilyTreeTests.swift in Sources */,
 				E6644EB41F052D4800C66427 /* CustomCollectionViewLayout.swift in Sources */,
 			);

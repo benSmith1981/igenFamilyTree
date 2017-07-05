@@ -56,7 +56,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JXE-vt-Zcj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2682" y="1101"/>
+            <point key="canvasLocation" x="3112" y="1503"/>
         </scene>
         <!--iGen Family Tree chooser-->
         <scene sceneID="qey-8s-dXm">
@@ -195,7 +195,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cEo-r7-b6W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1849" y="1920"/>
+            <point key="canvasLocation" x="1783" y="1920"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
