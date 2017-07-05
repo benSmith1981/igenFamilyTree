@@ -10,6 +10,12 @@
 		680B07C61F0BA98100BF479C /* JSONserialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680B07C51F0BA98100BF479C /* JSONserialization.swift */; };
 		680B07C91F0BC9A800BF479C /* HumanJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680B07C81F0BC9A800BF479C /* HumanJSON.swift */; };
 		680B07CD1F0BCD1800BF479C /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680B07CC1F0BCD1800BF479C /* TableViewController.swift */; };
+		68AEA8A51F0CEF6B007E5E08 /* Eureka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68AEA8A41F0CEF6B007E5E08 /* Eureka.framework */; };
+		68AEA8A81F0D0036007E5E08 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68AEA8A61F0D0036007E5E08 /* TableViewCell.swift */; };
+		68AEA8A91F0D0036007E5E08 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68AEA8A71F0D0036007E5E08 /* TableViewCell.xib */; };
+		68AEA8AB1F0D2111007E5E08 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68AEA8AA1F0D2111007E5E08 /* Enums.swift */; };
+		68AEA8B71F0D2B44007E5E08 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68AEA8B91F0D2B44007E5E08 /* Main.storyboard */; };
+		68AEA8C41F0D2EE2007E5E08 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 68AEA8C61F0D2EE2007E5E08 /* Localizable.strings */; };
 		68F4CAC21F0699790036946B /* iGenDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F4CAC11F0699790036946B /* iGenDataService.swift */; };
 		68F4CAC41F0699840036946B /* iGen.json in Resources */ = {isa = PBXBuildFile; fileRef = 68F4CAC31F0699840036946B /* iGen.json */; };
 		6D74ABEB9AFFE4B981607D83 /* Pods_iGenFamilyTree.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05146668421A3773640975C1 /* Pods_iGenFamilyTree.framework */; };
@@ -28,7 +34,6 @@
 		E6644EB21F052D4800C66427 /* CustomCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6644EAE1F052D4800C66427 /* CustomCollectionViewController.swift */; };
 		E6644EB31F052D4800C66427 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6644EAF1F052D4800C66427 /* CustomCollectionViewCell.swift */; };
 		E6644EB41F052D4800C66427 /* CustomCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6644EB01F052D4800C66427 /* CustomCollectionViewLayout.swift */; };
-		E6644EB51F052D4800C66427 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6644EB11F052D4800C66427 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +59,16 @@
 		680B07C51F0BA98100BF479C /* JSONserialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONserialization.swift; sourceTree = "<group>"; };
 		680B07C81F0BC9A800BF479C /* HumanJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HumanJSON.swift; sourceTree = "<group>"; };
 		680B07CC1F0BCD1800BF479C /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		68AEA8A41F0CEF6B007E5E08 /* Eureka.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Eureka.framework; path = "../../../Library/Developer/Xcode/DerivedData/iGenFamilyTree-blfktyfbsdtfghbewlxycsdgqdyi/Build/Products/Debug-iphonesimulator/Eureka/Eureka.framework"; sourceTree = "<group>"; };
+		68AEA8A61F0D0036007E5E08 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		68AEA8A71F0D0036007E5E08 /* TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
+		68AEA8AA1F0D2111007E5E08 /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		68AEA8BA1F0D2B51007E5E08 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		68AEA8C51F0D2EE2007E5E08 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		68AEA8C71F0D2EFA007E5E08 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Main.strings; sourceTree = "<group>"; };
+		68AEA8C81F0D2EFA007E5E08 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		68AEA8C91F0D2EFB007E5E08 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		68AEA8CB1F0D3020007E5E08 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		68F4CAC11F0699790036946B /* iGenDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iGenDataService.swift; sourceTree = "<group>"; };
 		68F4CAC31F0699840036946B /* iGen.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = iGen.json; sourceTree = "<group>"; };
 		766023BC6D2C08F6E70170F2 /* Pods-iGenFamilyTree.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iGenFamilyTree.release.xcconfig"; path = "Pods/Target Support Files/Pods-iGenFamilyTree/Pods-iGenFamilyTree.release.xcconfig"; sourceTree = "<group>"; };
@@ -78,7 +93,6 @@
 		E6644EAE1F052D4800C66427 /* CustomCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewController.swift; sourceTree = "<group>"; };
 		E6644EAF1F052D4800C66427 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		E6644EB01F052D4800C66427 /* CustomCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewLayout.swift; sourceTree = "<group>"; };
-		E6644EB11F052D4800C66427 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68AEA8A51F0CEF6B007E5E08 /* Eureka.framework in Frameworks */,
 				6D74ABEB9AFFE4B981607D83 /* Pods_iGenFamilyTree.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -113,6 +128,9 @@
 				680B07C51F0BA98100BF479C /* JSONserialization.swift */,
 				680B07C81F0BC9A800BF479C /* HumanJSON.swift */,
 				680B07CC1F0BCD1800BF479C /* TableViewController.swift */,
+				68AEA8AA1F0D2111007E5E08 /* Enums.swift */,
+				68AEA8A61F0D0036007E5E08 /* TableViewCell.swift */,
+				68AEA8A71F0D0036007E5E08 /* TableViewCell.xib */,
 			);
 			name = SignUp;
 			sourceTree = "<group>";
@@ -159,13 +177,14 @@
 				680B07C71F0BC66A00BF479C /* SignUp */,
 				E6644EAF1F052D4800C66427 /* CustomCollectionViewCell.swift */,
 				E6644EB01F052D4800C66427 /* CustomCollectionViewLayout.swift */,
-				E6644EB11F052D4800C66427 /* Main.storyboard */,
 				B5EAC17B1F01390800151D52 /* AppDelegate.swift */,
+				68AEA8B91F0D2B44007E5E08 /* Main.storyboard */,
 				CF703FF71F02516200FEB1C5 /* dataObjects */,
 				B5EAC1851F01390800151D52 /* Assets.xcassets */,
 				B5EAC1871F01390800151D52 /* LaunchScreen.storyboard */,
 				B5EAC18A1F01390800151D52 /* Info.plist */,
 				B5EAC1821F01390800151D52 /* iGenFamilyTree.xcdatamodeld */,
+				68AEA8C61F0D2EE2007E5E08 /* Localizable.strings */,
 			);
 			path = iGenFamilyTree;
 			sourceTree = "<group>";
@@ -191,6 +210,7 @@
 		C5AD5AF6C9C32E3A2F8F9A31 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				68AEA8A41F0CEF6B007E5E08 /* Eureka.framework */,
 				05146668421A3773640975C1 /* Pods_iGenFamilyTree.framework */,
 			);
 			name = Frameworks;
@@ -310,6 +330,7 @@
 			knownRegions = (
 				en,
 				Base,
+				nl,
 			);
 			mainGroup = B5EAC16F1F01390800151D52;
 			productRefGroup = B5EAC1791F01390800151D52 /* Products */;
@@ -329,8 +350,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				68F4CAC41F0699840036946B /* iGen.json in Resources */,
-				E6644EB51F052D4800C66427 /* Main.storyboard in Resources */,
+				68AEA8A91F0D0036007E5E08 /* TableViewCell.xib in Resources */,
 				B5EAC1891F01390800151D52 /* LaunchScreen.storyboard in Resources */,
+				68AEA8C41F0D2EE2007E5E08 /* Localizable.strings in Resources */,
+				68AEA8B71F0D2B44007E5E08 /* Main.storyboard in Resources */,
 				B51B62CC1F0A4BAA00AB11CC /* smith.json in Resources */,
 				B5EAC1861F01390800151D52 /* Assets.xcassets in Resources */,
 			);
@@ -406,6 +429,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6644EB31F052D4800C66427 /* CustomCollectionViewCell.swift in Sources */,
+				68AEA8A81F0D0036007E5E08 /* TableViewCell.swift in Sources */,
 				680B07CD1F0BCD1800BF479C /* TableViewController.swift in Sources */,
 				E6644EAD1F052CA600C66427 /* FamilyTreeGenerator.swift in Sources */,
 				680B07C91F0BC9A800BF479C /* HumanJSON.swift in Sources */,
@@ -418,6 +442,7 @@
 				68F4CAC21F0699790036946B /* iGenDataService.swift in Sources */,
 				B5EAC1841F01390800151D52 /* iGenFamilyTree.xcdatamodeld in Sources */,
 				B51B62C91F0A258F00AB11CC /* FamilyTreeTests.swift in Sources */,
+				68AEA8AB1F0D2111007E5E08 /* Enums.swift in Sources */,
 				E6644EB41F052D4800C66427 /* CustomCollectionViewLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -454,10 +479,30 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		68AEA8B91F0D2B44007E5E08 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				68AEA8BA1F0D2B51007E5E08 /* Base */,
+				68AEA8C71F0D2EFA007E5E08 /* nl */,
+				68AEA8CB1F0D3020007E5E08 /* en */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		68AEA8C61F0D2EE2007E5E08 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				68AEA8C51F0D2EE2007E5E08 /* en */,
+				68AEA8C91F0D2EFB007E5E08 /* nl */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		B5EAC1871F01390800151D52 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				B5EAC1881F01390800151D52 /* Base */,
+				68AEA8C81F0D2EFA007E5E08 /* nl */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -469,6 +514,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -520,6 +566,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";

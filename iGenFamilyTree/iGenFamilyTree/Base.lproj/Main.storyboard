@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="S9Y-Tr-SME">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ip1-R4-5Vw">
     <device id="ipad9_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
@@ -13,7 +13,7 @@
         <scene sceneID="gre-3S-1Kf">
             <objects>
                 <collectionViewController id="WcC-r0-taF" customClass="CustomCollectionViewController" customModule="iGenFamilyTree" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="USF-iz-Ubh">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="USF-iz-Ubh">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -55,25 +55,59 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BDa-o1-eJe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1417.96875" y="67.96875"/>
+            <point key="canvasLocation" x="2142.1875" y="67.96875"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="RxG-BM-qhp">
+            <objects>
+                <tableViewController id="qoi-KY-I2Y" customClass="TableViewController" customModule="iGenFamilyTree" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="40" sectionFooterHeight="28" id="Tld-L9-PXW">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="pUU-Rt-4zc">
+                                <rect key="frame" x="0.0" y="40" width="1024" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pUU-Rt-4zc" id="igj-Pr-NEe">
+                                    <rect key="frame" x="0.0" y="0.0" width="1024" height="60"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="qoi-KY-I2Y" id="56n-Ft-945"/>
+                            <outlet property="delegate" destination="qoi-KY-I2Y" id="eQb-Dc-RoT"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="HyP-3T-LL9">
+                        <barButtonItem key="rightBarButtonItem" title="CreateTree" id="g0a-Wz-6XR"/>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="WcC-r0-taF" kind="show" id="11o-i9-9cW"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AmN-vJ-uz5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1433.203125" y="-68.75"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="gGf-vK-dot">
+        <scene sceneID="bcD-we-bDv">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="S9Y-Tr-SME" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ip1-R4-5Vw" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ieb-rH-hMQ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="tez-HG-sem">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="WcC-r0-taF" kind="relationship" relationship="rootViewController" id="oJl-K7-POK"/>
+                        <segue destination="qoi-KY-I2Y" kind="relationship" relationship="rootViewController" id="Jvb-2E-Eit"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="S5t-ZO-Giw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PTE-AO-cEB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="693.75" y="67.96875"/>
+            <point key="canvasLocation" x="708.984375" y="-68.75"/>
         </scene>
     </scenes>
 </document>

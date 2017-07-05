@@ -1,0 +1,20 @@
+/* 
+  Localizable.strings
+  iGenFamilyTree
+
+  Created by Achid Farooq on 05-07-17.
+  Copyright © 2017 ben. All rights reserved.
+*/
+
+//Questions
+"numberBrothers" = "Hoeveel broers heb je?";
+"numberSisters" = "Hoeveel zussen heb je?";
+"numberSons" = "Hoeveel zonen heb je?";
+"numberDaughters" = "Hoeveel dochters heb je?";
+"numberBrotherfromMother" = "Hoeveel broers heeft je moeder (jouw ooms)?";
+"numberSistersfromMother" = "Hoeveel zussen heeft je moeder (jouw tantes)?";
+"numberBrothersfromFather" = "Hoeveel broers heeft je vader (jouw ooms)?";
+"numberSistersfromFather" = "Hoeveel zussen heeft je vader (jouw tantes)?";
+
+//Create button tableviewcontroller
+"CreateTree" = "Genereer Stamboom";
