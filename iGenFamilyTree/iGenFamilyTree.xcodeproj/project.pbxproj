@@ -32,7 +32,7 @@
 		E6644EB21F052D4800C66427 /* CustomCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6644EAE1F052D4800C66427 /* CustomCollectionViewController.swift */; };
 		E6644EB31F052D4800C66427 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6644EAF1F052D4800C66427 /* CustomCollectionViewCell.swift */; };
 		E6644EB41F052D4800C66427 /* CustomCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6644EB01F052D4800C66427 /* CustomCollectionViewLayout.swift */; };
-		E6644EB51F052D4800C66427 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6644EB11F052D4800C66427 /* Main.storyboard */; };
+		E6644EB51F052D4800C66427 /* TonsMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6644EB11F052D4800C66427 /* TonsMain.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,7 +86,7 @@
 		E6644EAE1F052D4800C66427 /* CustomCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewController.swift; sourceTree = "<group>"; };
 		E6644EAF1F052D4800C66427 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		E6644EB01F052D4800C66427 /* CustomCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewLayout.swift; sourceTree = "<group>"; };
-		E6644EB11F052D4800C66427 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		E6644EB11F052D4800C66427 /* TonsMain.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TonsMain.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,7 +159,7 @@
 				CFCFA7BA1F0A9FA800BC05E5 /* iGenCell.swift */,
 				CFCFA7BB1F0A9FA800BC05E5 /* iGenCell.xib */,
 				E6644EB01F052D4800C66427 /* CustomCollectionViewLayout.swift */,
-				E6644EB11F052D4800C66427 /* Main.storyboard */,
+				E6644EB11F052D4800C66427 /* TonsMain.storyboard */,
 				E626B3171F0D028B00125D85 /* ChooserViewController.swift */,
 				B5EAC17B1F01390800151D52 /* AppDelegate.swift */,
 				CF703FF71F02516200FEB1C5 /* dataObjects */,
@@ -336,7 +336,7 @@
 				CFCFA7BD1F0A9FA800BC05E5 /* iGenCell.xib in Resources */,
 				CFCFA7C31F0D163700BC05E5 /* Paul.json in Resources */,
 				68F4CAC41F0699840036946B /* iGen.json in Resources */,
-				E6644EB51F052D4800C66427 /* Main.storyboard in Resources */,
+				E6644EB51F052D4800C66427 /* TonsMain.storyboard in Resources */,
 				B5EAC1891F01390800151D52 /* LaunchScreen.storyboard in Resources */,
 				B5EAC1861F01390800151D52 /* Assets.xcassets in Resources */,
 			);
