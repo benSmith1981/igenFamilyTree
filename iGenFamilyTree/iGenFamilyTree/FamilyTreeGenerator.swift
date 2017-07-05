@@ -57,7 +57,7 @@ class FamilyTreeGenerator {
                 if id == patient.id {
                     patient.mySiblingsIDs.append(siblingID)
                 } else if (familyTree[patient.id!]?.parents.contains(id))!{
-                    if familyTree[id]!.gender == "male" {
+                    if familyTree[id]!.gender == jsonKeys.male.rawValue {
                         patient.fatherSiblingsIDs.append(siblingID)
                     } else {
                         patient.motherSiblingsIDs.append(siblingID)
