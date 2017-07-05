@@ -17,4 +17,5 @@ enum jsonKeys: String {
 
 enum segues: String {
     case familytreeSegue
+    case createFamilyTreeSegue
 }

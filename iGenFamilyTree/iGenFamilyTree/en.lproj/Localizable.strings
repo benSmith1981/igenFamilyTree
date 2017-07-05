@@ -1,0 +1,20 @@
+/* 
+  Localizable.strings
+  iGenFamilyTree
+
+  Created by Achid Farooq on 05-07-17.
+  Copyright © 2017 ben. All rights reserved.
+*/
+//Questions
+"numberBrothers" = "How many brothers do you have?";
+"numberSisters" = "How many sisters do you have?";
+"numberSons" = "How many sons do you have?";
+"numberDaughters" = "How many daughters do you have?";
+"numberBrotherfromMother" = "How many brothers does your mother have?";
+"numberSistersfromMother" = "How many sisters does your mother have?";
+"numberBrothersfromFather" = "How many brothers does your father have?";
+"numberSistersfromFather" = "How many sisters does your father have?";
+
+
+//Button label
+"CreateTree" = "Generate Tree";
