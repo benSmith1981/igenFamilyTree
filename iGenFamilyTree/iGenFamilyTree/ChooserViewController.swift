@@ -24,7 +24,9 @@ class ChooserViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        iGenDataService.parseiGenData(jsonName:familyJsonToLoad!)
+        if segue.identifier = segues.familytreeSegue.rawValue {
+            iGenDataService.parseiGenData(jsonName:familyJsonToLoad!)
+        }
 
     }
     
