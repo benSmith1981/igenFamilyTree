@@ -1,9 +1,22 @@
+////
+////  FamilyTreeTests.swift
+////  iGenFamilyTree
+////
+////  Created by ben on 03/07/2017.
+////  Copyright © 2017 ben. All rights reserved.
+////
 //
-//  FamilyTreeTests.swift
-//  iGenFamilyTree
+//import Foundation
 //
-//  Created by ben on 03/07/2017.
-//  Copyright © 2017 ben. All rights reserved.
+//class FamilyTreeTests {
+//    var familyTreeGen: FamilyTreeGenerator
+//    var humans: [ID: Human] = [:]
+//    var patient: Patient = Patient(id: "")
+//    
+//    init(familyTree: FamilyTreeGenerator) {
+//        self.familyTreeGen = familyTree
+//        setupTestFamily()
+//        fillFamilyTreeFor()
 //
 
 import Foundation
