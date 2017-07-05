@@ -18,7 +18,7 @@ class CustomCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        iGenDataService.parseiGenData()
+//        iGenDataService.parseiGenData()
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(CustomCollectionViewController.notifyObservers),
                                                name:  NSNotification.Name(rawValue: "iGenData" ),

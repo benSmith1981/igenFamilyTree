@@ -132,7 +132,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="iGen Family Tree chooser" id="xkp-hy-BVy"/>
                     <connections>
-                        <segue destination="hWx-t7-1N7" kind="show" id="4wb-NM-puH"/>
+                        <segue destination="hWx-t7-1N7" kind="show" identifier="familytreeSegue" id="4wb-NM-puH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yb3-4J-uBU" userLabel="First Responder" sceneMemberID="firstResponder"/>

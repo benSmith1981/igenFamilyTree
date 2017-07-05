@@ -10,6 +10,8 @@ import UIKit
 
 class ChooserViewController: UIViewController {
 
+    var familyJsonToLoad: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,19 +23,33 @@ class ChooserViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        iGenDataService.parseiGenData(jsonName:familyJsonToLoad!)
+
+    }
+    
     @IBAction func buttonBen(_ sender: UIButton) {
+        familyJsonToLoad = "smith"
+        self.performSegue(withIdentifier: segues.familytreeSegue.rawValue, sender: self)
     }
 
     @IBAction func buttonPaul(_ sender: UIButton) {
+        familyJsonToLoad = "iGen"
+        self.performSegue(withIdentifier: segues.familytreeSegue.rawValue, sender: self)
     }
     
     @IBAction func buttonAchid(_ sender: UIButton) {
+        familyJsonToLoad = "iGen"
+        self.performSegue(withIdentifier: segues.familytreeSegue.rawValue, sender: self)
     }
     
     @IBAction func buttonTon(_ sender: UIButton) {
+        familyJsonToLoad = "iGen"
+        self.performSegue(withIdentifier: segues.familytreeSegue.rawValue, sender: self)
     }
     
     @IBAction func buttonNieuwePatient(_ sender: UIButton) {
+        //go to achids view
     }
     
     /*
