@@ -15,7 +15,7 @@
 		B51B62C71F0A246500AB11CC /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51B62C61F0A246500AB11CC /* Model.swift */; };
 		B51B62C91F0A258F00AB11CC /* FamilyTreeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51B62C81F0A258F00AB11CC /* FamilyTreeTests.swift */; };
 		B51B62CE1F0CCB1000AB11CC /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51B62CD1F0CCB1000AB11CC /* UIImageExtension.swift */; };
-		B51B62D01F0D336500AB11CC /* smith.json in Resources */ = {isa = PBXBuildFile; fileRef = B51B62CF1F0D336500AB11CC /* smith.json */; };
+		B51B62D21F0D355100AB11CC /* smith.json in Resources */ = {isa = PBXBuildFile; fileRef = B51B62D11F0D355100AB11CC /* smith.json */; };
 		B5EAC17C1F01390800151D52 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EAC17B1F01390800151D52 /* AppDelegate.swift */; };
 		B5EAC1841F01390800151D52 /* iGenFamilyTree.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B5EAC1821F01390800151D52 /* iGenFamilyTree.xcdatamodeld */; };
 		B5EAC1861F01390800151D52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5EAC1851F01390800151D52 /* Assets.xcassets */; };
@@ -63,7 +63,7 @@
 		B51B62C61F0A246500AB11CC /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		B51B62C81F0A258F00AB11CC /* FamilyTreeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FamilyTreeTests.swift; sourceTree = "<group>"; };
 		B51B62CD1F0CCB1000AB11CC /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
-		B51B62CF1F0D336500AB11CC /* smith.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = smith.json; sourceTree = "<group>"; };
+		B51B62D11F0D355100AB11CC /* smith.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = smith.json; sourceTree = "<group>"; };
 		B5EAC1781F01390800151D52 /* iGenFamilyTree.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iGenFamilyTree.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5EAC17B1F01390800151D52 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5EAC1831F01390800151D52 /* iGenFamilyTree.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iGenFamilyTree.xcdatamodel; sourceTree = "<group>"; };
@@ -202,7 +202,7 @@
 		CF703FF71F02516200FEB1C5 /* dataObjects */ = {
 			isa = PBXGroup;
 			children = (
-				B51B62CF1F0D336500AB11CC /* smith.json */,
+				B51B62D11F0D355100AB11CC /* smith.json */,
 				68F4CAC31F0699840036946B /* iGen.json */,
 				CFCFA7C21F0D163700BC05E5 /* Paul.json */,
 				68F4CAC11F0699790036946B /* iGenDataService.swift */,
@@ -332,8 +332,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B51B62D21F0D355100AB11CC /* smith.json in Resources */,
 				CFCFA7BD1F0A9FA800BC05E5 /* iGenCell.xib in Resources */,
-				B51B62D01F0D336500AB11CC /* smith.json in Resources */,
 				CFCFA7C31F0D163700BC05E5 /* Paul.json in Resources */,
 				68F4CAC41F0699840036946B /* iGen.json in Resources */,
 				E6644EB51F052D4800C66427 /* Main.storyboard in Resources */,
