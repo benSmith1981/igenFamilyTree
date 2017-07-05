@@ -21,16 +21,37 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dnk-26-FFz">
                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o3E-qh-LYM">
+                        <rect key="frame" x="0.0" y="35" width="30" height="15"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="6"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bHI-gV-RwV">
+                        <rect key="frame" x="30" y="35" width="20" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="MS5-1p-d1l"/>
+                            <constraint firstAttribute="height" constant="15" id="t52-CS-AN5"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="6"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="dnk-26-FFz" secondAttribute="trailing" id="JdI-Rc-u4A"/>
                 <constraint firstAttribute="bottom" secondItem="dnk-26-FFz" secondAttribute="bottom" id="RZu-1L-Usm"/>
+                <constraint firstAttribute="trailing" secondItem="bHI-gV-RwV" secondAttribute="trailing" id="cSh-aY-isV"/>
                 <constraint firstItem="dnk-26-FFz" firstAttribute="top" secondItem="i7I-fj-z49" secondAttribute="top" id="e8V-77-zMP"/>
                 <constraint firstItem="dnk-26-FFz" firstAttribute="leading" secondItem="i7I-fj-z49" secondAttribute="leading" id="z7m-Ms-PYm"/>
+                <constraint firstAttribute="bottom" secondItem="bHI-gV-RwV" secondAttribute="bottom" id="zQ1-Kf-QiX"/>
             </constraints>
             <connections>
                 <outlet property="bgImg" destination="dnk-26-FFz" id="OCo-tE-SRx"/>
+                <outlet property="patientAge" destination="bHI-gV-RwV" id="V2T-T9-xg6"/>
+                <outlet property="patientName" destination="o3E-qh-LYM" id="XJw-EM-v0y"/>
             </connections>
             <point key="canvasLocation" x="-19" y="70"/>
         </collectionViewCell>

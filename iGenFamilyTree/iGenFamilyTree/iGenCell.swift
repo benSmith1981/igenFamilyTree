@@ -11,6 +11,8 @@ import UIKit
 class iGenCell: UICollectionViewCell {
     
     @IBOutlet weak var bgImg: UIImageView!
+    @IBOutlet weak var patientAge: UILabel!
+    @IBOutlet weak var patientName: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

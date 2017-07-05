@@ -84,6 +84,8 @@ class CustomCollectionViewController: UICollectionViewController {
             let currentHuman = familyTreeGenerator?.familyTree[cellContent.getID()]
             print(currentHuman?.name)
             cell.bgImg.image = cellContent.switchBG()
+            cell.patientName.text = currentHuman?.name
+            cell.patientAge.text = currentHuman?.dob
         }
 
         return cell

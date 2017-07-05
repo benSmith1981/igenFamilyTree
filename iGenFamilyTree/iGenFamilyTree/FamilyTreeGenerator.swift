@@ -25,6 +25,7 @@ class FamilyTreeGenerator {
         print("")
     }
     
+    
     func traverseTreeFor(_ id: ID, _ level: Int) {
         if familyTree[id]!.processed == false {
             familyTree[id]!.processed = true
@@ -72,31 +73,97 @@ class FamilyTreeGenerator {
     //  we build this from the Patient structure
     
     func makeModelFromTree() {
+        
         var row = patient.row
         var col = patient.col
         
+        //**TO DO**
+        var currentCell = model?.cell?[row][col]
+        
+        
+        func setDrawingPoints(rowX: Int, colY: Int) {
+            row = patient.row + rowX
+            col = patient.col + colY
+        }
+        
+        func setDrawingPointY(colY: Int) {
+            col = patient.col + colY
+        }
+        
+        func setDrawingPointX(rowX: Int) {
+            row = patient.row + rowX
+        }
+        
+        
+        //**TO DO**
+        func checkGender(maleState: cellState, femaleState: cellState) {
+            if let patientID = patient.id {
+                
+                
+                //CellState(id:"String")
+                
+                if familyTree[patientID]?.gender == jsonKeys.male.rawValue {
+                    return currentCell = cellState.malePatient(id: patientID)
+                } else {
+                    return currentCell = cellState.femalePatient(id: patientID)
+                }
+            }
+        }
+        
+        /*
+         
+        if let patientID = patient.id {
+            if familyTree[id]!.gender == jsonKeys.male.rawValue {
+                model?.cell?[row][col] = cellState.  **father**  (id: patientID)
+            } else {
+                model?.cell?[row][col] = cellState.  **mother**  (id: patientID)
+            }
+            
+            if familyTree[patientID]?.gender == jsonKeys.male.rawValue {
+                model?.cell?[row][col] = cellState.  **malePatient**  (id: patientID)
+            } else {
+                model?.cell?[row][col] = cellState.  **femalePatient**  (id: patientID)
+            }
+         
+            if familyTree[id]!.gender == jsonKeys.male.rawValue {
+                model?.cell?[row][col] = cellState.  **uncle**  (id: patientID)
+            } else {
+                model?.cell?[row][col] = cellState.  **aunt**  (id: patientID)
+            }
+        }
+         
+        */
+        
         if let patientID = patient.id {
             if familyTree[patientID]?.gender == jsonKeys.male.rawValue {
+                //currentCell = cellState.malePatient(id: patientID)
                 model?.cell?[row][col] = cellState.malePatient(id: patientID)
             } else {
                 model?.cell?[row][col] = cellState.femalePatient(id: patientID)
             }
-            col = patient.col - 1
+            
+            setDrawingPointY(colY: -1)
+            //col = patient.col - 1
+            
+            
+            
             
             for id in patient.mySpousesIDs {
                 model?.cell?[row][col] = cellState.spouseConnector // "---,---"
                 col -= 1
-                
+            
+            //CHECK GENDER------------------------------------------------------
                 if familyTree[id]!.gender == jsonKeys.male.rawValue {
                     model?.cell?[row][col] = cellState.maleSpouse(id: patientID)
                 } else {
                     model?.cell?[row][col] = cellState.femaleSpouse(id: patientID)
                 }
+            //CHECK GENDER------------------------------------------------------
+                
             }
             
-            //resetting the point from where you will draw
-            row = patient.row
-            col = patient.col
+            
+            setDrawingPoints(rowX: 0, colY: 0)
             
             // TO DO: Added a statement if someone does not have parents, but probably this will never happen..
             if patient.myParentsIDs.count == 0 {
@@ -124,9 +191,9 @@ class FamilyTreeGenerator {
                 }
             }
             
-            //resetting the point from where you will draw
-            row = patient.row - 2
-            col = patient.col
+            setDrawingPoints(rowX: -2, colY: 0)
+            
+            
             
             for id in patient.myParentsIDs {
                 if familyTree[id]!.gender == jsonKeys.male.rawValue {
@@ -141,8 +208,7 @@ class FamilyTreeGenerator {
                 model?.cell?[row + 1][col] = cellState.straightVertical
             }
             
-            row = patient.row - 2
-            col = patient.col + 1
+            setDrawingPoints(rowX: -2, colY: 1)
             
             for id in patient.fatherSiblingsIDs {
                 col += 1
@@ -163,9 +229,7 @@ class FamilyTreeGenerator {
                 }
             }
             
-            //resetting the point from where you will draw
-            row = patient.row - 2
-            col = patient.col - 1
+            setDrawingPoints(rowX: -2, colY: -1)
             
             for id in patient.motherSiblingsIDs {
                 col -= 1
@@ -183,14 +247,12 @@ class FamilyTreeGenerator {
                 }
             }
             
-            //resetting the point from where you will draw
-            row = patient.row + 2
-            col = patient.col - 2
+            setDrawingPoints(rowX: 2, colY: -2)
             
             for id in patient.myChildrenIDs {
                 col += 1
                 
-                //model?.cell?[row][col] = id
+                //Check gender function
                 if familyTree[id]!.gender == jsonKeys.male.rawValue {
                     model?.cell?[row][col] = cellState.son(id: patientID)
                 } else {
@@ -212,26 +274,6 @@ class FamilyTreeGenerator {
             }
         }
         
-        
-        /*
-         
-         row = patient.row + 2
-         col = patient.col - 2
-         for id in patient.myChildrenIDs {
-         col += 1
-         model?.cell?[row][col] = id
-         if id == patient.myChildrenIDs.last {
-         model?.cell?[row - 1][col] = "--,"
-         } else {
-         model?.cell?[row - 1][col] = "-------"
-         }
-         }
-         if patient.myChildrenIDs.count == 1 {
-         model?.cell?[row - 1][patient.col - 1] = "  |  "
-         } else {
-         if patient.myChildrenIDs.count > 0 {
-         model?.cell?[row - 1][patient.col - 1] = "|--"
-         }
-         }*/
     }
+    
 }
