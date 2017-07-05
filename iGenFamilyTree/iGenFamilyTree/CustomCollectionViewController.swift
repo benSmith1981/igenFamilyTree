@@ -8,7 +8,8 @@
 
 import UIKit
 
-let reuseIdentifier = "customCell"
+//let reuseIdentifier = "customCell"
+let reuseIdentifier = "iGenIdentifier"
 
 class CustomCollectionViewController: UICollectionViewController {
     
@@ -26,6 +27,18 @@ class CustomCollectionViewController: UICollectionViewController {
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         // Do any additional setup after loading the view.
+        
+        
+        configureCollectionView()
+        
+        
+    }
+    
+    func configureCollectionView() {
+        
+        let defaultCell = UINib(nibName: "iGenCell", bundle:nil)
+        self.collectionView?.register(defaultCell, forCellWithReuseIdentifier: "iGenIdentifier")
+        
     }
     func notifyObservers(notification: NSNotification) {
         //        var searchesDict: Dictionary<String,[Humans]> = notification.userInfo as! Dictionary<String,[Humans]>
@@ -55,22 +68,24 @@ class CustomCollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDataSource
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 20
+        return 10
     }
     
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return 10
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CustomCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! iGenCell
         
         // Configure the cell
-        if let humanID = familyTreeGenerator?.model?.cell?[indexPath.section][indexPath.item] {
-            let currentHuman = familyTreeGenerator?.familyTree[humanID]
+        if let cellContent = familyTreeGenerator?.model?.cell?[indexPath.section][indexPath.item] {
+            let currentHuman = familyTreeGenerator?.familyTree[cellContent.getID()]
             print(currentHuman?.name)
-            cell.label.text = currentHuman?.name
+            cell.bgImg.image = cellContent.switchBG()
+            cell.patientName.text = currentHuman?.name
+            cell.patientAge.text = currentHuman?.dob
         }
 
         return cell

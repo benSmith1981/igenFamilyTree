@@ -2,17 +2,15 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "paths-male-1-connector.png",
+      "filename" : "paths-straight.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "paths-male-1-connector@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "paths-male-1-connector@3x.png",
       "scale" : "3x"
     }
   ],
