@@ -8,7 +8,8 @@
 
 import UIKit
 
-let reuseIdentifier = "customCell"
+//let reuseIdentifier = "customCell"
+let reuseIdentifier = "iGenIdentifier"
 
 class CustomCollectionViewController: UICollectionViewController {
     
@@ -17,7 +18,7 @@ class CustomCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        iGenDataService.parseiGenData()
+//        iGenDataService.parseiGenData()
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(CustomCollectionViewController.notifyObservers),
                                                name:  NSNotification.Name(rawValue: "iGenData" ),
@@ -26,24 +27,33 @@ class CustomCollectionViewController: UICollectionViewController {
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         // Do any additional setup after loading the view.
+        
+        
+        configureCollectionView()
+        
+        
+    }
+    
+    func configureCollectionView() {
+        
+        let defaultCell = UINib(nibName: "iGenCell", bundle:nil)
+        self.collectionView?.register(defaultCell, forCellWithReuseIdentifier: "iGenIdentifier")
+        
     }
     func notifyObservers(notification: NSNotification) {
-        //        var searchesDict: Dictionary<String,[Humans]> = notification.userInfo as! Dictionary<String,[Humans]>
         let familyDict: [ID: Human] = notification.userInfo as! [ID : Human]
-//        let human = familyDict["id1"] as! Human
-        
-        //we assume you are the patient, maybe this comes from whoever logged in? So changed ID1 accordingly
-        
-//        let tests = FamilyTreeTests.init()
-        
         familyTreeGenerator = FamilyTreeGenerator.init(familyTree: familyDict)
-//        familyTreeGenerator?.fillFamilyTreeFor()
-        familyTreeGenerator?.makeTreeFor("id2")
-        familyTreeGenerator?.makeModelFromTree()
-
+//        extract patientID from the first Human for function MakeTreeFor 
+        if let firstKey = familyTreeGenerator?.familyTree.first?.key,
+            let patientID = familyTreeGenerator?.familyTree[firstKey]?.patientID {
+            familyTreeGenerator?.makeTreeFor(patientID)
+            familyTreeGenerator?.makeModelFromTree()
+        } else {
+            fatalError("Family tree not complete")
+        }
+        
         self.collectionView?.reloadData()
         
-
         print("notify observer \(familyDict)")
     }
     
@@ -55,22 +65,24 @@ class CustomCollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDataSource
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 20
+        return 10
     }
     
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return 10
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CustomCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! iGenCell
         
         // Configure the cell
-        if let humanID = familyTreeGenerator?.model?.cell?[indexPath.section][indexPath.item] {
-            let currentHuman = familyTreeGenerator?.familyTree[humanID]
+        if let cellContent = familyTreeGenerator?.model?.cell?[indexPath.section][indexPath.item] {
+            let currentHuman = familyTreeGenerator?.familyTree[cellContent.getID()]
             print(currentHuman?.name)
-            cell.label.text = currentHuman?.name
+            cell.bgImg.image = cellContent.switchBG()
+            cell.patientName.text = currentHuman?.name
+            cell.patientAge.text = currentHuman?.dob
         }
 
         return cell

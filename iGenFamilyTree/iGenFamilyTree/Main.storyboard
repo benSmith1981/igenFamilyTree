@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2tC-LR-z4U">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--iGen Family Tree-->
+        <scene sceneID="Y0N-g9-AQb">
+            <objects>
+                <collectionViewController automaticallyAdjustsScrollViewInsets="NO" id="hWx-t7-1N7" customClass="CustomCollectionViewController" customModule="iGenFamilyTree" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="3" maximumZoomScale="3" dataMode="prototypes" id="dRO-ju-tAH">
+                        <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <inset key="scrollIndicatorInsets" minX="0.0" minY="20" maxX="0.0" maxY="0.0"/>
+                        <collectionViewLayout key="collectionViewLayout" id="uMq-1X-3r9" customClass="CustomCollectionViewLayout" customModule="iGenFamilyTree" customModuleProvider="target"/>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="customCell" id="xxa-6U-Woe" customClass="CustomCollectionViewCell" customModule="iGenFamilyTree" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="100" height="30"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="100" height="30"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Sec 0 / Item 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="92" translatesAutoresizingMaskIntoConstraints="NO" id="zgU-1g-Lj1">
+                                            <rect key="frame" x="11" y="7" width="78" height="15"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </view>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="centerY" secondItem="zgU-1g-Lj1" secondAttribute="centerY" constant="0.5" id="LdE-NV-9NP"/>
+                                    <constraint firstAttribute="centerX" secondItem="zgU-1g-Lj1" secondAttribute="centerX" id="Wo0-VM-HhI"/>
+                                </constraints>
+                                <size key="customSize" width="100" height="30"/>
+                                <connections>
+                                    <outlet property="label" destination="zgU-1g-Lj1" id="bMY-eD-Xr0"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="hWx-t7-1N7" id="5s1-GP-TGI"/>
+                            <outlet property="delegate" destination="hWx-t7-1N7" id="X3s-uz-0Ex"/>
+                        </connections>
+                    </collectionView>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <navigationItem key="navigationItem" title="iGen Family Tree" id="kqZ-Ux-cJd" userLabel="iGen Family Tree "/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JXE-vt-Zcj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2682" y="1101"/>
+        </scene>
+        <!--iGen Family Tree chooser-->
+        <scene sceneID="qey-8s-dXm">
+            <objects>
+                <viewController id="t7Q-Y0-Rfq" customClass="ChooserViewController" customModule="iGenFamilyTree" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4fd-HE-K5K"/>
+                        <viewControllerLayoutGuide type="bottom" id="blF-yp-qD4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zyv-B9-dhq">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lVb-bJ-pag">
+                                <rect key="frame" x="28" y="72" width="358" height="656"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="230" verticalCompressionResistancePriority="740" text="Kies een patiënt" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uns-7c-jaG">
+                                        <rect key="frame" x="0.0" y="0.0" width="358" height="266"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pzv-TX-aVA">
+                                        <rect key="frame" x="0.0" y="266" width="358" height="58"/>
+                                        <inset key="contentEdgeInsets" minX="0.0" minY="20" maxX="0.0" maxY="20"/>
+                                        <state key="normal" title="Ben"/>
+                                        <connections>
+                                            <action selector="buttonBen:" destination="t7Q-Y0-Rfq" eventType="touchUpInside" id="jym-jh-oRc"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2vl-OR-U1U">
+                                        <rect key="frame" x="0.0" y="324" width="358" height="58"/>
+                                        <inset key="contentEdgeInsets" minX="0.0" minY="20" maxX="0.0" maxY="20"/>
+                                        <state key="normal" title="Paul"/>
+                                        <connections>
+                                            <action selector="buttonPaul:" destination="t7Q-Y0-Rfq" eventType="touchUpInside" id="mMX-xi-p7m"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ao3-s8-Nky">
+                                        <rect key="frame" x="0.0" y="382" width="358" height="58"/>
+                                        <inset key="contentEdgeInsets" minX="0.0" minY="20" maxX="0.0" maxY="20"/>
+                                        <state key="normal" title="Achid"/>
+                                        <connections>
+                                            <action selector="buttonAchid:" destination="t7Q-Y0-Rfq" eventType="touchUpInside" id="16T-En-xfZ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="evR-mC-RBm">
+                                        <rect key="frame" x="0.0" y="440" width="358" height="58"/>
+                                        <inset key="contentEdgeInsets" minX="0.0" minY="20" maxX="0.0" maxY="20"/>
+                                        <state key="normal" title="Ton"/>
+                                        <connections>
+                                            <action selector="buttonTon:" destination="t7Q-Y0-Rfq" eventType="touchUpInside" id="OGr-Qn-iXn"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="240" verticalCompressionResistancePriority="740" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pa1-Jj-lLL">
+                                        <rect key="frame" x="0.0" y="498" width="358" height="158"/>
+                                        <inset key="contentEdgeInsets" minX="0.0" minY="40" maxX="0.0" maxY="100"/>
+                                        <state key="normal" title="Nieuwe patiënt"/>
+                                        <connections>
+                                            <action selector="buttonNieuwePatient:" destination="t7Q-Y0-Rfq" eventType="touchUpInside" id="Pti-5f-XaP"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="lVb-bJ-pag" secondAttribute="trailing" constant="8" id="17y-gx-dBp"/>
+                            <constraint firstItem="lVb-bJ-pag" firstAttribute="top" secondItem="4fd-HE-K5K" secondAttribute="bottom" constant="8" id="J8Q-rW-Vpr"/>
+                            <constraint firstItem="lVb-bJ-pag" firstAttribute="leading" secondItem="zyv-B9-dhq" secondAttribute="leadingMargin" constant="8" id="MpF-ZQ-tW5"/>
+                            <constraint firstItem="blF-yp-qD4" firstAttribute="top" secondItem="lVb-bJ-pag" secondAttribute="bottom" constant="8" id="lhI-FW-Vxv"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="iGen Family Tree chooser" id="xkp-hy-BVy"/>
+                    <connections>
+                        <segue destination="hWx-t7-1N7" kind="show" identifier="familytreeSegue" id="4wb-NM-puH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yb3-4J-uBU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1783" y="1101"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Q5v-UT-k5Z">
+            <objects>
+                <navigationController id="2tC-LR-z4U" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7ar-EM-ml1">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="JtS-OW-vCD">
+                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="t7Q-Y0-Rfq" kind="relationship" relationship="rootViewController" id="Gjs-WP-dFz"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vow-OX-rbt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="951" y="1102"/>
+        </scene>
+    </scenes>
+</document>
