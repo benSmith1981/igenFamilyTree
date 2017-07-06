@@ -11,10 +11,10 @@ import Alamofire
 
 class iGenDataService {
     
-    public static func parseiGenData(){
+    public static func parseiGenData(jsonName: String){
         //if let pathURL = Bundle.main.url(forResource: "iGen", withExtension: "json"){
         //if let pathURL = Bundle.main.url(forResource: "smith", withExtension: "json"){
-        if let pathURL = Bundle.main.url(forResource: "Paul", withExtension: "json"){
+        if let pathURL = Bundle.main.url(forResource: jsonName, withExtension: "json"){
             Alamofire.request(pathURL).validate().responseJSON { (response) in
                 switch response.result {
                 case .success:

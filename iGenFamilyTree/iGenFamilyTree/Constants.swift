@@ -13,3 +13,9 @@ let gridSize = 20
 enum jsonKeys: String {
     case male
 }
+
+
+enum segues: String {
+    case familytreeSegue
+    case createFamilyTreeSegue
+}
