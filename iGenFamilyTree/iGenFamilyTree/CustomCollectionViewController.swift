@@ -14,7 +14,6 @@ let reuseIdentifier = "iGenIdentifier"
 class CustomCollectionViewController: UICollectionViewController {
     
     var familyTreeGenerator: FamilyTreeGenerator?
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +23,12 @@ class CustomCollectionViewController: UICollectionViewController {
                                                name:  NSNotification.Name(rawValue: "iGenData" ),
                                                object: nil)
         
+        if let firstKey = familyTreeGenerator?.familyTree.first?.key,
+            let patientID = familyTreeGenerator?.familyTree[firstKey]?.patientID {
+            familyTreeGenerator?.makeTreeFor(patientID)
+            familyTreeGenerator?.makeModelFromTree()
+        }
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         // Do any additional setup after loading the view.
@@ -32,6 +37,10 @@ class CustomCollectionViewController: UICollectionViewController {
         configureCollectionView()
         
         
+    }
+    
+    override func unwind(for unwindSegue: UIStoryboardSegue, towardsViewController subsequentVC: UIViewController) {
+        print("unwinf")
     }
     
     func configureCollectionView() {
