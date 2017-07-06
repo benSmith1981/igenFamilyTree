@@ -42,148 +42,199 @@ enum QuestionType: Int {
     }
 }
 
-class TableViewController: UITableViewController {
-    var numberOfSiblings:Int = 0
-    var numberOfParents:Int = 0
-    var numberOfChildren:Int = 0
+protocol SetNumberOfFamilyMembers {
+    func sendNumber(number: Int, cellType: QuestionType)
+}
 
+class TableViewController: UITableViewController, SetNumberOfFamilyMembers {
+    
+    var numberOfBrothers: Int = 0
+    var numberOfSisters: Int = 0
+    var numberOfSons: Int = 0
+    var numberOfDaughters: Int = 0
+    var numberOfBrotherMother: Int = 0
+    var numberOfSisterMother: Int = 0
+    var numberOfBrotherFather: Int = 0
+    var numberOfSisterFather: Int = 0
+    
+    func sendNumber(number: Int, cellType: QuestionType){
+        switch cellType {
+        case .brother:
+            numberOfBrothers = number
+        case .sister:
+            numberOfSisters = number
+        case .sons:
+            numberOfSons = number
+        case .daughters:
+            numberOfDaughters = number
+        case .brotherMother:
+            numberOfBrotherMother = number
+        case .sisterMother:
+            numberOfSisterMother = number
+        case .brotherFather:
+            numberOfBrotherFather = number
+        case .sisterFather:
+            numberOfSisterFather = number
+        default:
+            break
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let nib = UINib(nibName: "TableViewCell", bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: "TableViewCell")
-
+        
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
+        
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-
-
+    
+    
     @IBAction func generateTree(_ sender: Any) {
         
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return 8
     }
-
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         switch indexPath.row {
-
+            
         case QuestionType.brother.rawValue:
             let cellBrothers = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
             cellBrothers.questionLabel.text = QuestionType.brother.selectQuestion()
             cellBrothers.awakeFromNib()
-            
+            cellBrothers.cellType = .brother
+            cellBrothers.setNumberDelegate = self
             return cellBrothers
             
         case QuestionType.sister.rawValue:
             let cellSisters = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
             cellSisters.questionLabel.text = QuestionType.sister.selectQuestion()
-
+            cellSisters.cellType = .sister
+            cellSisters.setNumberDelegate = self
+            
             return cellSisters
             
         case QuestionType.sons.rawValue:
             let cellSons = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
             cellSons.questionLabel.text = QuestionType.sons.selectQuestion()
+            cellSons.cellType = .sons
+            cellSons.setNumberDelegate = self
             
             return cellSons
             
         case QuestionType.daughters.rawValue:
             let cellDaughters = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
             cellDaughters.questionLabel.text = QuestionType.daughters.selectQuestion()
+            cellDaughters.cellType = .daughters
+            cellDaughters.setNumberDelegate = self
             
             return cellDaughters
             
         case QuestionType.brotherMother.rawValue:
             let cellBrotherMother = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
             cellBrotherMother.questionLabel.text = QuestionType.brotherMother.selectQuestion()
+            cellBrotherMother.cellType = .brotherMother
+            cellBrotherMother.setNumberDelegate = self
             
             return cellBrotherMother
-        
+            
         case QuestionType.sisterMother.rawValue:
             let cellSisterMother = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
             cellSisterMother.questionLabel.text = QuestionType.sisterMother.selectQuestion()
+            cellSisterMother.cellType = .sisterMother
+            cellSisterMother.setNumberDelegate = self
             
             return cellSisterMother
             
         case QuestionType.brotherFather.rawValue:
             let cellBrotherFather = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
             cellBrotherFather.questionLabel.text = QuestionType.brotherFather.selectQuestion()
+            cellBrotherFather.cellType = .brotherFather
+            cellBrotherFather.setNumberDelegate = self
             
             return cellBrotherFather
             
         case QuestionType.sisterFather.rawValue:
             let cellSisterFather = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
             cellSisterFather.questionLabel.text = QuestionType.sisterFather.selectQuestion()
+            cellSisterFather.cellType = .sisterFather
+            cellSisterFather.setNumberDelegate = self
             
             return cellSisterFather
-        
+            
         default:
             let cellBrothers = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
+            cellBrothers.setNumberDelegate = self
             return cellBrothers
         }
     }
- 
-
+    
+    
     /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
+     // Override to support conditional editing of the table view.
+     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+     // Return false if you do not want the specified item to be editable.
+     return true
+     }
+     */
+    
     /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
+     // Override to support editing the table view.
+     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+     if editingStyle == .delete {
+     // Delete the row from the data source
+     tableView.deleteRows(at: [indexPath], with: .fade)
+     } else if editingStyle == .insert {
+     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+     }
+     }
+     */
+    
     /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
+     // Override to support rearranging the table view.
+     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+     
+     }
+     */
+    
     /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
+     // Override to support conditional rearranging of the table view.
+     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+     // Return false if you do not want the item to be re-orderable.
+     return true
+     }
+     */
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
