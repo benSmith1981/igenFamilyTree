@@ -14,7 +14,7 @@ enum cellState {
     case sister(id: String)
     case malePatient(id: String)
     case femalePatient(id: String)
-    case femalePatient1(id: String)
+    case motherWithSiblings(id: String)
     case maleSpouse(id: String)
     case femaleSpouse(id: String)
     case aunt(id: String)
@@ -50,7 +50,7 @@ enum cellState {
             return #imageLiteral(resourceName: "paths-male-corner-2-connectors")
         case .femalePatient:
             return #imageLiteral(resourceName: "paths-female-corner-2-connectors").imageRotatedByDegrees(deg: -90)
-        case .femalePatient1:
+        case .motherWithSiblings:
             return #imageLiteral(resourceName: "paths-female-corner-2-connectors")
         case .maleSpouse:
             return #imageLiteral(resourceName: "paths-male-1-connector").imageRotatedByDegrees(deg: -90)
@@ -97,7 +97,7 @@ enum cellState {
             return id
         case .femalePatient(let id):
             return id
-        case .femalePatient1(let id):
+        case .motherWithSiblings(let id):
             return id
         case .aunt(let id):
             return id

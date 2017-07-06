@@ -212,7 +212,7 @@ class FamilyTreeGenerator {
                 
                 if familyTree[id]!.gender != jsonKeys.male.rawValue {
                     if patient.motherSiblingsIDs.count > 0 {
-                        model?.cell?[row][col - 1] = cellState.femalePatient1(id: id)
+                        model?.cell?[row][col - 1] = cellState.motherWithSiblings(id: id)
                     } else {
                         model?.cell?[row][col - 1] = cellState.mother(id: id)
                     }
