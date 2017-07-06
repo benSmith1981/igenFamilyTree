@@ -88,7 +88,8 @@ class TableViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == segues.familytreeSegue.rawValue {
-            familyTreeGenerator.familyTree
+            let c = segue.destination as! CustomCollectionViewController
+            c.familyTreeGenerator = familyTreeGenerator
         }
         
     }
