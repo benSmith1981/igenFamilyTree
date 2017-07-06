@@ -14,8 +14,8 @@ typealias ID = String
 
 class Human {
     var name: String
-    var id: ID?
-    var patientID: ID?
+    var id: ID
+    var patientID: ID
     var gender: String
     var dob : String?
     var race : String?
@@ -25,17 +25,19 @@ class Human {
     var children: [ID] = []
     var siblings: [ID] = []
     
-    init(name: String, gender: String) {
+    init(name: String, id: ID, patientID: ID, gender: String) {
         self.name = name
+        self.id = id
+        self.patientID = patientID
         self.gender = gender
     }
     
     convenience init(id: ID, dictionary: NSDictionary) {
         
         self.init(name: (dictionary["name"] as? String)!,
+                  id: (dictionary["id"] as? String)!,
+                  patientID: (dictionary["patientID"] as? String)!,
                   gender: (dictionary["gender"] as? String)!)
-        self.id = id
-        self.patientID = dictionary["patientID"] as? String
         self.dob = dictionary["dob"] as? String
         self.race = dictionary["race"] as? String
         let parentsParsed = dictionary["parents"] as! NSArray

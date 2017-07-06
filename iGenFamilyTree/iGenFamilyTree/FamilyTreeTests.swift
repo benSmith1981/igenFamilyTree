@@ -12,7 +12,7 @@
 //    var familyTreeGen: FamilyTreeGenerator
 //    var humans: [ID: Human] = [:]
 //    var patient: Patient = Patient(id: "")
-//    
+//
 //    init(familyTree: FamilyTreeGenerator) {
 //        self.familyTreeGen = familyTree
 //        setupTestFamily()
@@ -22,123 +22,198 @@
 import Foundation
 
 class FamilyTreeTests {
+    var patient: Patient = Patient(id: "")
     var familyTree: [ID: Human] = [:]
+    
+    var newUUID = ""
+    
     let brothers = 2
     let sisters = 0
     let sons = 1
     let daughters = 1
-    let brothersOfMother = 1
+    let brothersOfMother = 3
     let sistersOfMother = 1
     let brothersOfFather = 0
-    let brothersOfFather = 1
+    let sistersOfFather = 1
     
-    
-    func setupTestFamily() -> [ID: Human]{
-        self.familyTree["Ton"] = Human(name: "Ton", gender: "M")
-        self.familyTree["Dorine"] = Human(name: "Dorine", gender: "F")
-        self.familyTree["Tim"] = Human(name: "Tim", gender: "M")
-        self.familyTree["Iris"] = Human(name: "Iris", gender: "F")
-        self.familyTree["Frans"] = Human(name: "Frans", gender: "M")
-        self.familyTree["Dora"] = Human(name: "Dora", gender: "F")
-        self.familyTree["Rianne"] = Human(name: "Rianne", gender: "F")
-        self.familyTree["Annemieke"] = Human(name: "Annemieke", gender: "F")
-        self.familyTree["Ad"] = Human(name: "Ad", gender: "M")
-        self.familyTree["Willy"] = Human(name: "Willy", gender: "M")
-        self.familyTree["Tiny"] = Human(name: "Tiny", gender: "M")
-        self.familyTree["Toos"] = Human(name: "Toos", gender: "F")
-        self.familyTree["Mien"] = Human(name: "Mien", gender: "F")
+    func setupEmptyFamily() {
         
-        addSpouseFor("Ton", spouse: "Dorine")
-        addChildFor("Ton", child: "Tim")
-        addChildFor("Ton", child: "Iris")
-        addParentFor("Ton", parent: "Frans")
-        addParentFor("Ton", parent: "Dora")
-        addSiblingFor("Ton", sibling: "Rianne")
-        addSiblingFor("Ton", sibling: "Annemieke")
+        // create empty Humans
         
-        addSpouseFor("Dorine", spouse: "Ton")
-        addChildFor("Dorine", child: "Tim")
-        addChildFor("Dorine", child: "Iris")
+        patient.id = NSUUID().uuidString
+        familyTree[patient.id!] = Human(name: "Patient", id: patient.id!, patientID: patient.id!, gender: "unknown")
+        newUUID = NSUUID().uuidString
+        patient.myParentsIDs.append(newUUID)
+        familyTree[newUUID] = Human(name: "Father", id: newUUID, patientID: patient.id!, gender: "male")
+        newUUID = NSUUID().uuidString
+        patient.myParentsIDs.append(newUUID)
+        familyTree[newUUID] = Human(name: "Mother", id: newUUID, patientID: patient.id!, gender: "female")
+        if sons + daughters > 0  { // add a spouse if patient has children
+            newUUID = NSUUID().uuidString
+            patient.mySpousesIDs.append(newUUID)
+            familyTree[newUUID] = Human(name: "Spouse", id: newUUID, patientID: patient.id!, gender: "unknown")
+        }
         
-        addParentFor("Tim", parent: "Ton")
-        addSiblingFor("Tim", sibling: "Iris")
+        for i in 1 ... brothers {
+            newUUID = NSUUID().uuidString
+            patient.mySiblingsIDs.append(newUUID)
+            familyTree[newUUID] = Human(name: "Brother \(i)", id: newUUID, patientID: patient.id!, gender: "male")
+        }
+        for i in 1 ... sisters {
+            newUUID = NSUUID().uuidString
+            patient.mySiblingsIDs.append(newUUID)
+            familyTree[newUUID] = Human(name: "Sister \(i)", id: newUUID, patientID: patient.id!, gender: "female")
+        }
+        for i in 1 ... sons {
+            newUUID = NSUUID().uuidString
+            patient.myChildrenIDs.append(newUUID)
+            familyTree[newUUID] = Human(name: "Son \(i)", id: newUUID, patientID: patient.id!, gender: "male")
+        }
+        for i in 1 ... daughters {
+            newUUID = NSUUID().uuidString
+            patient.myChildrenIDs.append(newUUID)
+            familyTree[newUUID] = Human(name: "Daughter \(i)", id: newUUID, patientID: patient.id!, gender: "female")
+        }
+        for i in 1 ... brothersOfMother {
+            newUUID = NSUUID().uuidString
+            patient.motherSiblingsIDs.append(newUUID)
+            familyTree[newUUID] = Human(name: "brotherOfMother \(i)", id: newUUID, patientID: patient.id!, gender: "male")
+        }
+        for i in 1 ... sistersOfMother {
+            newUUID = NSUUID().uuidString
+            patient.motherSiblingsIDs.append(newUUID)
+            familyTree[newUUID] = Human(name: "sisterOfMother \(i)", id: newUUID, patientID: patient.id!, gender: "female")
+        }
+        for i in 1 ... brothersOfFather {
+            newUUID = NSUUID().uuidString
+            patient.fatherSiblingsIDs.append(newUUID)
+            familyTree[newUUID] = Human(name: "brotherOfFather \(i)", id: newUUID, patientID: patient.id!, gender: "male")
+        }
+        for i in 1 ... sistersOfFather {
+            newUUID = NSUUID().uuidString
+            patient.fatherSiblingsIDs.append(newUUID)
+            familyTree[newUUID] = Human(name: "sisterOfFather \(i)", id: newUUID, patientID: patient.id!, gender: "female")
+        }
         
-        addParentFor("Iris", parent: "Ton")
-        addSiblingFor("Iris", sibling: "Tim")
+        printResults(for: patient)
         
-        addSpouseFor("Frans", spouse: "Dora")
-        addChildFor("Frans", child: "Ton")
-        addChildFor("Frans", child: "Rianne")
-        addChildFor("Frans", child: "Annemieke")
-        addSiblingFor("Frans", sibling: "Ad")
-        addSiblingFor("Frans", sibling: "Willy")
-        addSiblingFor("Frans", sibling: "Tiny")
-        addSiblingFor("Frans", sibling: "Toos")
-        addSiblingFor("Frans", sibling: "Mien")
+        // create all relationships for every human
         
-        addSiblingFor("Ad", sibling: "Frans")
-        addSiblingFor("Ad", sibling: "Willy")
-        addSiblingFor("Ad", sibling: "Tiny")
-        addSiblingFor("Ad", sibling: "Toos")
-        addSiblingFor("Ad", sibling: "Mien")
+        for id in familyTree.keys {
+            if id == patient.id! { // this is the patient
+                familyTree[id]?.spouses = patient.mySpousesIDs
+                familyTree[id]?.parents = patient.myParentsIDs
+                familyTree[id]?.children = patient.myChildrenIDs
+                familyTree[id]?.siblings = patient.mySiblingsIDs
+            } else if patient.mySpousesIDs.contains(id) { // this is a spouse of the patient
+                familyTree[id]?.spouses.append(patient.id!) // add patient as spouse
+                familyTree[id]?.children = patient.myChildrenIDs // add children of the patient            
+            } else if patient.myParentsIDs.contains(id) { // this is a parent of the patient
+                for arrayID in patient.myParentsIDs {
+                    if id != arrayID {
+                        familyTree[id]?.spouses.append(arrayID) // add other parent as spouse
+                    }
+                }
+                familyTree[id]?.children.append(patient.id!) // add patient as child
+                if familyTree[id]?.gender == "male" {
+                    familyTree[id]?.siblings = patient.fatherSiblingsIDs // add siblings of my father
+                } else {
+                    familyTree[id]?.siblings = patient.motherSiblingsIDs // add siblings of my mother
+                }
+            } else if patient.myChildrenIDs.contains(id) { // this is a child of the patient
+                familyTree[id]?.parents.append(patient.id!) // add patient as parent
+                if familyTree[id]?.gender == "male" {
+                    familyTree[id]?.siblings = patient.fatherSiblingsIDs // add siblings of my father
+                } else {
+                    familyTree[id]?.siblings = patient.motherSiblingsIDs // add siblings of my mother
+                }
+            } else if patient.mySiblingsIDs.contains(id) { // this is a sibling of the patient
+                familyTree[id]?.parents = patient.myParentsIDs // add parents of the patient as parents of my sibling
+                familyTree[id]?.siblings.append(patient.id!) // add patient as sibling
+                for arrayID in patient.mySiblingsIDs {
+                    if id != arrayID {
+                        familyTree[id]?.siblings.append(arrayID) // add other siblings as sibling
+                    }
+                }
+            } else if patient.fatherSiblingsIDs.contains(id) { // this is a sibling of the father of the patient
+                for arrayID in patient.fatherSiblingsIDs {
+                    if id != arrayID {
+                        familyTree[id]?.siblings.append(arrayID) // add other siblings as sibling
+                    }
+                }
+                for arrayID in patient.myParentsIDs {
+                    if familyTree[arrayID]?.gender == "male" {
+                        familyTree[id]?.siblings.append(arrayID) // add my father as sibling
+                    }
+                }
+            } else if patient.motherSiblingsIDs.contains(id) { // this is a sibling of the mother of the patient
+                for arrayID in patient.motherSiblingsIDs {
+                    if id != arrayID {
+                        familyTree[id]?.siblings.append(arrayID) // add other siblings as sibling
+                    }
+                }
+                for arrayID in patient.myParentsIDs {
+                    if familyTree[arrayID]?.gender == "female" {
+                        familyTree[id]?.siblings.append(arrayID) // add my mother as sibling
+                    }
+                }
+            }
+        }
         
-        addSiblingFor("Willy", sibling: "Ad")
-        addSiblingFor("Willy", sibling: "Frans")
-        addSiblingFor("Willy", sibling: "Tiny")
-        addSiblingFor("Willy", sibling: "Toos")
-        addSiblingFor("Willy", sibling: "Mien")
+        printCurrent(familyTree: familyTree)
         
-        addSiblingFor("Tiny", sibling: "Ad")
-        addSiblingFor("Tiny", sibling: "Willy")
-        addSiblingFor("Tiny", sibling: "Frans")
-        addSiblingFor("Tiny", sibling: "Toos")
-        addSiblingFor("Tiny", sibling: "Mien")
-        
-        addSiblingFor("Toos", sibling: "Ad")
-        addSiblingFor("Toos", sibling: "Willy")
-        addSiblingFor("Toos", sibling: "Tiny")
-        addSiblingFor("Toos", sibling: "Frans")
-        addSiblingFor("Toos", sibling: "Mien")
-        
-        addSiblingFor("Mien", sibling: "Ad")
-        addSiblingFor("Mien", sibling: "Willy")
-        addSiblingFor("Mien", sibling: "Tiny")
-        addSiblingFor("Mien", sibling: "Toos")
-        addSiblingFor("Mien", sibling: "Frans")
-        
-        addSpouseFor("Dora", spouse: "Frans")
-        addChildFor("Dora", child: "Ton")
-        addChildFor("Dora", child: "Rianne")
-        addChildFor("Dora", child: "Annemieke")
-        
-        addParentFor("Rianne", parent: "Frans")
-        addParentFor("Rianne", parent: "Dora")
-        addSiblingFor("Rianne", sibling: "Ton")
-        addSiblingFor("Rianne", sibling: "Annemieke")
-        
-        addParentFor("Annemieke", parent: "Frans")
-        addParentFor("Annemieke", parent: "Dora")
-        addSiblingFor("Annemieke", sibling: "Ton")
-        addSiblingFor("Annemieke", sibling: "Rianne")
-        
-        return familyTree
     }
     
-    func printCurrent(familyTree: [ID: Human] , with id: ID) {
-        print("name:", familyTree[id]!.name)
-        for spouseID in familyTree[id]!.spouses {
-            print("spouse:", familyTree[spouseID]!.name)
+    //        familyTree[patientUUID]?.parents.append(newUUID) // add parentID to patient
+    //        familyTree[newUUID]?.children.append(patientUUID) // add patientID to parent
+    //
+    //        familyTree[patientUUID]?.siblings.append(newUUID) // add siblingID to patient
+    //
+    //        familyTree[patientUUID]?.siblings.append(newUUID) // add childrenID to patient
+    //
+    //        familyTree[patient.id]?.siblings.append(newUUID) // add siblingID to patient
+    //        familyTree[patientUUID]?.siblings.append(newUUID) // add childrenID to patient
+    //
+    //
+    //         self.familyTree["Mien"] = Human(name: "Mien", gender: "F")
+    //
+    //        addSpouseFor("Ton", spouse: "Dorine")
+    //        addChildFor("Ton", child: "Tim")
+    //        addChildFor("Ton", child: "Iris")
+    //        addParentFor("Ton", parent: "Frans")
+    //        addParentFor("Ton", parent: "Dora")
+    //        addSiblingFor("Ton", sibling: "Rianne")
+    //        addSiblingFor("Ton", sibling: "Annemieke")
+    //
+    //        addSpouseFor("Dorine", spouse: "Ton")
+    //        addChildFor("Dorine", child: "Tim")
+    //        addChildFor("Dorine", child: "Iris")
+    //
+    //        addParentFor("Tim", parent: "Ton")
+    //        addSiblingFor("Tim", sibling: "Iris")
+    //
+    //        addParentFor("Iris", parent: "Ton")
+    //        addSiblingFor("Iris", sibling: "Tim")
+    //
+    //    }
+    
+    func printCurrent(familyTree: [ID: Human]) {
+        for id in familyTree.keys {
+            print("name:", familyTree[id]!.name)
+            for spouseID in familyTree[id]!.spouses {
+                print("spouse:", familyTree[spouseID]!.name)
+            }
+            for parentID in familyTree[id]!.parents {
+                print("parent:", familyTree[parentID]!.name)
+            }
+            for childID in familyTree[id]!.children {
+                print("child:", familyTree[childID]!.name)
+            }
+            for siblingID in familyTree[id]!.siblings {
+                print("sibling:", familyTree[siblingID]!.name)
+            }
+            print("")
         }
-        for parentID in familyTree[id]!.parents {
-            print("parent:", familyTree[parentID]!.name)
-        }
-        for childID in familyTree[id]!.children {
-            print("child:", familyTree[childID]!.name)
-        }
-        for siblingID in familyTree[id]!.siblings {
-            print("sibling:", familyTree[siblingID]!.name)
-        }
-        print("")
     }
     
     func printResults(for patient: Patient) {
@@ -163,53 +238,51 @@ class FamilyTreeTests {
         print("")
         
         
-        for i in patient.row - 2 ... patient.row + 2 {
-            for j in 0 ... 19 {
-                print(familyTreeGen.model?.cell?[i][j], " ", terminator: "")
-            }
-            print("")
-        }
+        //        for i in patient.row - 2 ... patient.row + 2 {
+        //            for j in 0 ... 19 {
+        //                print(familyTree.model?.cell?[i][j], " ", terminator: "")
+        //            }
+        //            print("")
+        //        }
     }
     
     
-    func addSpouseFor(_ id: ID, spouse: ID) {
-        familyTreeGen.familyTree[id]!.spouses.append(spouse)
-    }
+    //    func addSpouseFor(_ id: ID, spouse: ID) {
+    //        familyTreeGen.familyTree[id]!.spouses.append(spouse)
+    //    }
+    //
+    //    func addParentFor(_ id: ID, parent: ID) {
+    //        familyTreeGen.familyTree[id]!.parents.append(parent)
+    //    }
+    //
+    //    func addChildFor(_ id: ID, child: ID) {
+    //        familyTreeGen.familyTree[id]!.children.append(child)
+    //    }
+    //
+    //    func addSiblingFor(_ id: ID, sibling: ID) {
+    //        familyTreeGen.familyTree[id]!.siblings.append(sibling)
+    //    }
     
-    func addParentFor(_ id: ID, parent: ID) {
-        familyTreeGen.familyTree[id]!.parents.append(parent)
-    }
-    
-    func addChildFor(_ id: ID, child: ID) {
-        familyTreeGen.familyTree[id]!.children.append(child)
-    }
-    
-    func addSiblingFor(_ id: ID, sibling: ID) {
-        familyTreeGen.familyTree[id]!.siblings.append(sibling)
-    }
-    
-    func fillFamilyTreeFor() {
-        for (id , human) in familyTreeGen.familyTree {
-//            print(patientID)
-//            print(human.id)
-            print(id)
-            
-            for parentID in human.parents {
-                addParentFor(id, parent: parentID)
-            }
-            
-            for spouseID in human.spouses {
-                addSpouseFor(id, spouse: spouseID)
-            }
-            
-            for childID in human.children {
-                addChildFor(id, child: childID)
-            }
-            
-            for siblingID in human.siblings {
-                addSiblingFor(id, sibling: siblingID)
-            }
-        }
-        
-    }
+    //    func fillFamilyTreeFor() {
+    //        for (id , human) in familyTree {
+    //            print(id)
+    //
+    //            for parentID in human.parents {
+    //                addParentFor(id, parent: parentID)
+    //            }
+    //
+    //            for spouseID in human.spouses {
+    //                addSpouseFor(id, spouse: spouseID)
+    //            }
+    //
+    //            for childID in human.children {
+    //                addChildFor(id, child: childID)
+    //            }
+    //
+    //            for siblingID in human.siblings {
+    //                addSiblingFor(id, sibling: siblingID)
+    //            }
+    //        }
+    //
+    //    }
 }
