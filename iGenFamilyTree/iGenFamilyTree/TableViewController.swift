@@ -77,21 +77,16 @@ class TableViewController: UITableViewController {
         
         familyTreeGenerator.generateNewFamilyTree(with: answers)
         printCurrent(familyTree: familyTreeGenerator.familyTree)
-        print(familyTreeGenerator.familyTree)
-//        NotificationCenter.default.post(name: Notification.Name(rawValue: "iGenData"),
-//                                        object: self,
-//                                        userInfo: familyTreeGenerator.familyTree)
         
         self.performSegue(withIdentifier: segues.familytreeSegue.rawValue, sender: self)
         
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == segues.familytreeSegue.rawValue {
-            let c = segue.destination as! CustomCollectionViewController
-            c.familyTreeGenerator = familyTreeGenerator
-        }
-        
+//        if segue.identifier == segues.familytreeSegue.rawValue {
+            let ccData = segue.destination as! CustomCollectionViewController
+            ccData.familyTreeGenerator = familyTreeGenerator
+//        }
     }
     
     

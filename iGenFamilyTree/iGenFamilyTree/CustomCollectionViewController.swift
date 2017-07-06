@@ -39,9 +39,9 @@ class CustomCollectionViewController: UICollectionViewController {
         
     }
     
-    override func unwind(for unwindSegue: UIStoryboardSegue, towardsViewController subsequentVC: UIViewController) {
-        print("unwinf")
-    }
+//    override func unwind(for unwindSegue: UIStoryboardSegue, towardsViewController subsequentVC: UIViewController) {
+//        print("unwinf")
+//    }
     
     func configureCollectionView() {
         
