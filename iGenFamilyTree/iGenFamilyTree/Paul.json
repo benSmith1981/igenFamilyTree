@@ -5,7 +5,8 @@
             "dob": "1986",
             "race": "white",
             "gender": "male",
-            "partners": [],
+            "spouses": [],
+            "patientID": "id2",
             "parents": [ { "id" : "id2" }, { "id" : "id4"} ],
             "siblings": [{ "id" : "id3" }],
             "children": []
@@ -15,7 +16,8 @@
             "dob": "1955",
             "race": "white",
             "gender": "female",
-            "partners": [{ "id" : "id4" }],
+            "spouses": [{ "id" : "id4" }],
+            "patientID": "id2",
             "parents": [{ "id" : "id7" }, { "id" : "id8" }],
             "siblings": [{ "id" : "id5" }, { "id" : "id6" }],
             "children": [{ "id" : "id1" }, { "id" : "id3" }]
@@ -25,7 +27,8 @@
             "dob": "1984",
             "race": "white",
             "gender": "male",
-            "partners": [],
+            "spouses": [],
+            "patientID": "id2",
             "parents": [ { "id" : "id2" }, { "id" : "id4"} ],
             "siblings": [{ "id" : "id1" }],
             "children": []
@@ -35,7 +38,8 @@
             "dob": "1947",
             "race": "white",
             "gender": "male",
-            "partners": [{ "id" : "id2" }],
+            "spouses": [{ "id" : "id2" }],
+            "patientID": "id2",
             "parents": [],
             "siblings": [],
             "children": [{ "id" : "id1" }, { "id" : "id3"}]
@@ -45,7 +49,8 @@
             "dob": "1960",
             "race": "white",
             "gender": "male",
-            "partners": [],
+            "spouses": [],
+            "patientID": "id2",
             "parents": [{ "id" : "id7" }, { "id" : "id8"}],
             "siblings": [{ "id" : "id6" }, { "id" : "id2"}],
             "children": []
@@ -55,7 +60,8 @@
             "dob": "1958",
             "race": "white",
             "gender": "male",
-            "partners": [],
+            "spouses": [],
+            "patientID": "id2",
             "parents": [{ "id" : "id7" }, { "id" : "id8"}],
             "siblings": [{ "id" : "id5" }, { "id" : "id2"}],
             "children": []
@@ -65,8 +71,9 @@
             "dob": "1958",
             "race": "white",
             "gender": "male",
-            "partners": [{ "id" : "id8" }],
+            "spouses": [{ "id" : "id8" }],
             "parents": [],
+            "patientID": "id2",
             "siblings": [{ "id" : "id11" }],
             "children": [{ "id" : "id5" }, { "id" : "id2"}, { "id" : "id6"}]
         },
@@ -75,7 +82,8 @@
             "dob": "1958",
             "race": "white",
             "gender": "female",
-            "partners": [{ "id" : "id7" }],
+            "spouses": [{ "id" : "id7" }],
+            "patientID": "id2",
             "parents": [],
             "siblings": [{ "id" : "id9" }, { "id" : "id10"}],
             "children": [{ "id" : "id5" }, { "id" : "id2"}, { "id" : "id6"}]
@@ -85,7 +93,8 @@
             "dob": "1912",
             "race": "white",
             "gender": "female",
-            "partners": [],
+            "spouses": [],
+            "patientID": "id2",
             "parents": [],
             "siblings": [{ "id" : "id8" }, { "id" : "id10"}],
             "children": []
@@ -95,7 +104,8 @@
             "dob": "1913",
             "race": "white",
             "gender": "male",
-            "partners": [],
+            "spouses": [],
+            "patientID": "id2",
             "parents": [],
             "siblings": [{ "id" : "id9" }, { "id" : "id8"}],
             "children": []
@@ -105,7 +115,8 @@
             "dob": "1908",
             "race": "white",
             "gender": "male",
-            "partners": [],
+            "spouses": [],
+            "patientID": "id2",
             "parents": [],
             "siblings": [{ "id" : "id7" }],
             "children": []
