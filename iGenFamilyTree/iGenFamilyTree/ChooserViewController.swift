@@ -36,7 +36,7 @@ class ChooserViewController: UIViewController {
     }
 
     @IBAction func buttonPaul(_ sender: UIButton) {
-        familyJsonToLoad = "iGen"
+        familyJsonToLoad = "Paul"
         self.performSegue(withIdentifier: segues.familytreeSegue.rawValue, sender: self)
     }
     
