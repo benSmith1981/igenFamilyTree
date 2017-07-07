@@ -57,20 +57,10 @@ struct Answers {
     var sistersOfFather: Int = 0
 }
 
-//struct NumberOfMembers {
-//    var brothers: Int = 0
-//    var sisters: Int = 0
-//    var sons: Int = 0
-//    var daughters: Int = 0
-//    var brothersOfMother: Int = 0
-//    var sistersOfMother: Int = 0
-//    var brothersOfFather: Int = 0
-//    var sistersOfFather: Int = 0
-//}
+
 
 class TableViewController: UITableViewController, SetNumberOfFamilyMembers {
     var answers = Answers()
-//    var numberOfMembers = NumberOfMembers()
     var familyTreeGenerator = FamilyTreeGenerator.init(familyTree: [:])
     
     
@@ -121,7 +111,6 @@ class TableViewController: UITableViewController, SetNumberOfFamilyMembers {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == segues.familytreeSegue.rawValue {
             let ccData = segue.destination as! CustomCollectionViewController
             ccData.familyTreeGenerator = familyTreeGenerator
         }

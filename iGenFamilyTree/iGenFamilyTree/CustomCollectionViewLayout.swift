@@ -71,7 +71,7 @@ class CustomCollectionViewLayout: UICollectionViewLayout {
                 let xPos = Double(item) * CELL_WIDTH
                 let yPos = Double(section) * CELL_HEIGHT
                 
-                var cellAttributes = UICollectionViewLayoutAttributes(forCellWith: cellIndex)
+                let cellAttributes = UICollectionViewLayoutAttributes(forCellWith: cellIndex)
                 cellAttributes.frame = CGRect(x: xPos, y: yPos, width: CELL_WIDTH, height: CELL_HEIGHT)
                 
                 //TVN: can be deleted?
