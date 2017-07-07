@@ -169,20 +169,44 @@ class FamilyTreeGenerator {
         }
         
         func addChilderen() {
-            for id in patient.myChildrenIDs {
-                col += 1
+            
+            col = col + 1
+            var even = col
+            var uneven = col - 1
+            
+            for (index, id) in patient.myChildrenIDs.enumerated() {
                 
-                if familyTree[id]!.gender == jsonKeys.male.rawValue {
-                    model?.cell?[row][col] = cellState.brother(id: id)
+                if index % 2 == 0 {
+                    print("even")
+                    if familyTree[id]!.gender == jsonKeys.male.rawValue {
+                        model?.cell?[row][even] = cellState.brother(id: id)
+                    } else {
+                        model?.cell?[row][even] = cellState.sister(id: id)
+                    }
+                    even += 1
                 } else {
-                    model?.cell?[row][col] = cellState.sister(id: id)
+                    print("uneven")
+                    if familyTree[id]!.gender == jsonKeys.male.rawValue {
+                        model?.cell?[row][uneven] = cellState.brother(id: id)
+                    } else {
+                        model?.cell?[row][uneven] = cellState.sister(id: id)
+                    }
+                    uneven -= 1
                 }
                 
-                if id == patient.myChildrenIDs.last {
-                    model?.cell?[row - 1][col] = cellState.cornerLeftBottom
-                } else {
-                    model?.cell?[row - 1][col] = cellState.spouseConnector
-                }
+                //col += 1
+                
+//                if familyTree[id]!.gender == jsonKeys.male.rawValue {
+//                    model?.cell?[row][col] = cellState.brother(id: id)
+//                } else {
+//                    model?.cell?[row][col] = cellState.sister(id: id)
+//                }
+                
+//                if id == patient.myChildrenIDs.last {
+//                    model?.cell?[row - 1][col] = cellState.cornerLeftBottom
+//                } else {
+//                    model?.cell?[row - 1][col] = cellState.spouseConnector
+//                }
             }
         }
         

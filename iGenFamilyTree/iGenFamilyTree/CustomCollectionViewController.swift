@@ -18,6 +18,8 @@ class CustomCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
 //        iGenDataService.parseiGenData()
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(CustomCollectionViewController.notifyObservers),
@@ -28,8 +30,11 @@ class CustomCollectionViewController: UICollectionViewController {
         // self.clearsSelectionOnViewWillAppear = false
         // Do any additional setup after loading the view.
         
+        //collectionView?.minimumZoomScale = 0.25
+        //collectionView?.maximumZoomScale = 4.0
         
         configureCollectionView()
+        
         
         
     }
@@ -83,6 +88,7 @@ class CustomCollectionViewController: UICollectionViewController {
             cell.bgImg.image = cellContent.switchBG()
             cell.patientName.text = currentHuman?.name
             cell.patientAge.text = currentHuman?.dob
+            
         }
 
         return cell

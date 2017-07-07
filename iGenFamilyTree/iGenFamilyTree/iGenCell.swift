@@ -7,6 +7,7 @@
 //
 
 import UIKit
+@IBDesignable
 
 class iGenCell: UICollectionViewCell {
     
@@ -17,6 +18,17 @@ class iGenCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        
+            func setup() {
+                self.layer.borderWidth = 0.5
+                self.layer.borderColor = UIColor.lightGray.cgColor
+                //self.layer.cornerRadius = 0.0
+            }
+        setup()
+
+        
+        
         
         
     }
