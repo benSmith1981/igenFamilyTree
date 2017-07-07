@@ -51,7 +51,7 @@ class ChooserViewController: UIViewController {
     }
     
     @IBAction func buttonNieuwePatient(_ sender: UIButton) {
-        self.performSegue(withIdentifier: segues.createFamilyTreeSegue.rawValue, sender: self)
+//        self.performSegue(withIdentifier: segues.createFamilyTreeSegue.rawValue, sender: self)
 
         //go to achids view
     }

@@ -13,7 +13,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TableViewCell" rowHeight="60" id="KGk-i7-Jjw" customClass="TableViewCell" customModule="iGenFamilyTree" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CreatePatientTreeID" rowHeight="60" id="KGk-i7-Jjw" customClass="CreatePatientTree" customModule="iGenFamilyTree" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="366" height="60"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -52,8 +52,8 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="numberOfMembers" destination="QWh-Cg-Z8P" id="lpJ-Em-Sdd"/>
-                <outlet property="questionLabel" destination="gY1-Vy-vil" id="zb4-EE-IaF"/>
+                <outlet property="numberOfMembers" destination="QWh-Cg-Z8P" id="yYo-bh-nEs"/>
+                <outlet property="questionLabel" destination="gY1-Vy-vil" id="qJQ-h1-NO7"/>
             </connections>
             <point key="canvasLocation" x="-4" y="-94"/>
         </tableViewCell>
