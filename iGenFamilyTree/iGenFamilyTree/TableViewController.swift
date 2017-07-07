@@ -46,7 +46,20 @@ protocol SetNumberOfFamilyMembers {
     func sendNumber(number: Int, cellType: QuestionType)
 }
 
+struct Answers {
+    let brothers = 2
+    let sisters = 0
+    let sons = 1
+    let daughters = 1
+    let brothersOfMother = 3
+    let sistersOfMother = 1
+    let brothersOfFather = 0
+    let sistersOfFather = 1
+}
+
 class TableViewController: UITableViewController, SetNumberOfFamilyMembers {
+    let answers = Answers()
+    var familyTreeGenerator = FamilyTreeGenerator.init(familyTree: [:])
     
     var numberOfBrothers: Int = 0
     var numberOfSisters: Int = 0
@@ -85,7 +98,6 @@ class TableViewController: UITableViewController, SetNumberOfFamilyMembers {
         let nib = UINib(nibName: "TableViewCell", bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: "TableViewCell")
         
-        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
@@ -94,9 +106,24 @@ class TableViewController: UITableViewController, SetNumberOfFamilyMembers {
     }
     
     
-    @IBAction func generateTree(_ sender: Any) {
+    @IBAction func generateTree(_ sender: UIBarButtonItem) {
+        // create empty Humans
+        // create all relationships for every human
+        
+        familyTreeGenerator.generateNewFamilyTree(with: answers)
+        printCurrent(familyTree: familyTreeGenerator.familyTree)
+        
+        self.performSegue(withIdentifier: segues.familytreeSegue.rawValue, sender: self)
         
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == segues.familytreeSegue.rawValue {
+            let ccData = segue.destination as! CustomCollectionViewController
+            ccData.familyTreeGenerator = familyTreeGenerator
+//        }
+    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
