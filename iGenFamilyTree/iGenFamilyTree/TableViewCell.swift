@@ -28,8 +28,14 @@ class TableViewCell: UITableViewCell, UITextFieldDelegate{
     
     func textFieldDidEndEditing(_ textField: UITextField) {
 //        setNumberDelegate.sendNumber(number: Int(textField.text!)!)
-        setNumberDelegate.sendNumber(number: Int(textField.text!)!,
-                                     cellType: cellType!)
+        if (textField.text?.isEmpty)! == false{
+            setNumberDelegate.sendNumber(number: Int(textField.text!)!,cellType: cellType!)
+        }
+        else {
+            print("Error: Please fill in all questions!")
+        }
+//        setNumberDelegate.sendNumber(number: Int(textField.text!)!,
+//                                     cellType: cellType!)
 
         
     }
