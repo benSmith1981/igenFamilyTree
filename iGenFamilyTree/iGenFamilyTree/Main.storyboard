@@ -187,7 +187,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="9wc-9H-mnO">
-                        <barButtonItem key="rightBarButtonItem" title="CreateTree" id="RBt-Fv-asj"/>
+                        <barButtonItem key="rightBarButtonItem" title="CreateTree" id="RBt-Fv-asj">
+                            <connections>
+                                <action selector="generateTree:" destination="IxB-a4-Cxe" id="slX-Be-0io"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="hWx-t7-1N7" kind="show" identifier="familytreeSegue" id="TEJ-am-ns4"/>
