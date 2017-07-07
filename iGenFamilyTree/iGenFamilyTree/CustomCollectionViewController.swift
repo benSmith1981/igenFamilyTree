@@ -39,10 +39,6 @@ class CustomCollectionViewController: UICollectionViewController {
         
     }
     
-//    override func unwind(for unwindSegue: UIStoryboardSegue, towardsViewController subsequentVC: UIViewController) {
-//        print("unwinf")
-//    }
-    
     func configureCollectionView() {
         
         let defaultCell = UINib(nibName: "iGenCell", bundle:nil)
