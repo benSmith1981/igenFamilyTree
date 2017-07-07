@@ -11,8 +11,8 @@
 		681222871F0E6BBE00FA291C /* LaunchScreen.strings in Resources */ = {isa = PBXBuildFile; fileRef = 681222831F0E6BBE00FA291C /* LaunchScreen.strings */; };
 		681222881F0E6BBF00FA291C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 681222851F0E6BBE00FA291C /* Localizable.strings */; };
 		68AEA8CD1F0D4B34007E5E08 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68AEA8CC1F0D4B33007E5E08 /* Main.storyboard */; };
-		68AEA8D11F0D4B69007E5E08 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68AEA8CE1F0D4B69007E5E08 /* TableViewCell.swift */; };
-		68AEA8D21F0D4B69007E5E08 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68AEA8CF1F0D4B69007E5E08 /* TableViewCell.xib */; };
+		68AEA8D11F0D4B69007E5E08 /* CreatePatientTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68AEA8CE1F0D4B69007E5E08 /* CreatePatientTree.swift */; };
+		68AEA8D21F0D4B69007E5E08 /* CreatePatientTree.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68AEA8CF1F0D4B69007E5E08 /* CreatePatientTree.xib */; };
 		68AEA8D31F0D4B69007E5E08 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68AEA8D01F0D4B69007E5E08 /* TableViewController.swift */; };
 		68AEA8D51F0D4B73007E5E08 /* JSONserialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68AEA8D41F0D4B73007E5E08 /* JSONserialization.swift */; };
 		68F4CAC21F0699790036946B /* iGenDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F4CAC11F0699790036946B /* iGenDataService.swift */; };
@@ -66,8 +66,8 @@
 		681222841F0E6BBE00FA291C /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = LaunchScreen.strings; sourceTree = "<group>"; };
 		681222861F0E6BBE00FA291C /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = Localizable.strings; sourceTree = "<group>"; };
 		68AEA8CC1F0D4B33007E5E08 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		68AEA8CE1F0D4B69007E5E08 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
-		68AEA8CF1F0D4B69007E5E08 /* TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
+		68AEA8CE1F0D4B69007E5E08 /* CreatePatientTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePatientTree.swift; sourceTree = "<group>"; };
+		68AEA8CF1F0D4B69007E5E08 /* CreatePatientTree.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreatePatientTree.xib; sourceTree = "<group>"; };
 		68AEA8D01F0D4B69007E5E08 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		68AEA8D41F0D4B73007E5E08 /* JSONserialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONserialization.swift; sourceTree = "<group>"; };
 		68F4CAC11F0699790036946B /* iGenDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iGenDataService.swift; sourceTree = "<group>"; };
@@ -155,6 +155,16 @@
 			path = nl.lproj;
 			sourceTree = "<group>";
 		};
+		681222891F0F7B4100FA291C /* NewPatient */ = {
+			isa = PBXGroup;
+			children = (
+				68AEA8CE1F0D4B69007E5E08 /* CreatePatientTree.swift */,
+				68AEA8CF1F0D4B69007E5E08 /* CreatePatientTree.xib */,
+				68AEA8D01F0D4B69007E5E08 /* TableViewController.swift */,
+			);
+			name = NewPatient;
+			sourceTree = "<group>";
+		};
 		B51B62CA1F0A261100AB11CC /* DrawFamilyTree */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,9 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				68AEA8D41F0D4B73007E5E08 /* JSONserialization.swift */,
-				68AEA8CE1F0D4B69007E5E08 /* TableViewCell.swift */,
-				68AEA8CF1F0D4B69007E5E08 /* TableViewCell.xib */,
-				68AEA8D01F0D4B69007E5E08 /* TableViewController.swift */,
+				681222891F0F7B4100FA291C /* NewPatient */,
 				B51B62CA1F0A261100AB11CC /* DrawFamilyTree */,
 				E6644EAE1F052D4800C66427 /* CustomCollectionViewController.swift */,
 				E6644EAF1F052D4800C66427 /* CustomCollectionViewCell.swift */,
@@ -386,7 +394,7 @@
 				B5E0B64F1F0D4A28001A6CAE /* smith.json in Resources */,
 				681222811F0E6BB700FA291C /* Localizable.strings in Resources */,
 				68F4CAC41F0699840036946B /* iGen.json in Resources */,
-				68AEA8D21F0D4B69007E5E08 /* TableViewCell.xib in Resources */,
+				68AEA8D21F0D4B69007E5E08 /* CreatePatientTree.xib in Resources */,
 				B5EAC1891F01390800151D52 /* LaunchScreen.storyboard in Resources */,
 				B5EAC1861F01390800151D52 /* Assets.xcassets in Resources */,
 			);
@@ -477,7 +485,7 @@
 				B51B62CE1F0CCB1000AB11CC /* UIImageExtension.swift in Sources */,
 				B5EAC1841F01390800151D52 /* iGenFamilyTree.xcdatamodeld in Sources */,
 				CFCFA7C11F0B960E00BC05E5 /* Constants.swift in Sources */,
-				68AEA8D11F0D4B69007E5E08 /* TableViewCell.swift in Sources */,
+				68AEA8D11F0D4B69007E5E08 /* CreatePatientTree.swift in Sources */,
 				B51B62C91F0A258F00AB11CC /* FamilyTreeTests.swift in Sources */,
 				E6644EB41F052D4800C66427 /* CustomCollectionViewLayout.swift in Sources */,
 			);

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TableViewCell: UITableViewCell, UITextFieldDelegate{
+class CreatePatientTree: UITableViewCell, UITextFieldDelegate{
     
     var setNumberDelegate: SetNumberOfFamilyMembers!
     var cellType: QuestionType?
