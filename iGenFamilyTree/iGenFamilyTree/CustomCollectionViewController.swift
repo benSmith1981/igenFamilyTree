@@ -17,11 +17,15 @@ class CustomCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        iGenDataService.parseiGenData()
+        //        iGenDataService.parseiGenData()
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(CustomCollectionViewController.notifyObservers),
                                                name:  NSNotification.Name(rawValue: "iGenData" ),
                                                object: nil)
+        
+        // segue from TableViewController
+        // familyTreeGenerator will be nil if entered via iGenDataService
+        // extract patientID from the first Human for function MakeTreeFor
         
         if let firstKey = familyTreeGenerator?.familyTree.first?.key,
             let patientID = familyTreeGenerator?.familyTree[firstKey]?.patientID {
@@ -39,20 +43,19 @@ class CustomCollectionViewController: UICollectionViewController {
         
     }
     
-//    override func unwind(for unwindSegue: UIStoryboardSegue, towardsViewController subsequentVC: UIViewController) {
-//        print("unwinf")
-//    }
-    
     func configureCollectionView() {
         
         let defaultCell = UINib(nibName: "iGenCell", bundle:nil)
         self.collectionView?.register(defaultCell, forCellWithReuseIdentifier: "iGenIdentifier")
         
     }
+    
+    //  entered via iGenDataService
+    
     func notifyObservers(notification: NSNotification) {
         let familyDict: [ID: Human] = notification.userInfo as! [ID : Human]
         familyTreeGenerator = FamilyTreeGenerator.init(familyTree: familyDict)
-//        extract patientID from the first Human for function MakeTreeFor 
+        //        extract patientID from the first Human for function MakeTreeFor
         if let firstKey = familyTreeGenerator?.familyTree.first?.key,
             let patientID = familyTreeGenerator?.familyTree[firstKey]?.patientID {
             familyTreeGenerator?.makeTreeFor(patientID)
@@ -93,7 +96,7 @@ class CustomCollectionViewController: UICollectionViewController {
             cell.patientName.text = currentHuman?.name
             cell.patientAge.text = currentHuman?.dob
         }
-
+        
         return cell
     }
     

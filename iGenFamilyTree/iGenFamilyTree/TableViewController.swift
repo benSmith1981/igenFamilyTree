@@ -76,17 +76,15 @@ class TableViewController: UITableViewController {
         // create all relationships for every human
         
         familyTreeGenerator.generateNewFamilyTree(with: answers)
-        printCurrent(familyTree: familyTreeGenerator.familyTree)
+        familyTreeGenerator.printFamilyTree(familyTreeGenerator.familyTree)
         
         self.performSegue(withIdentifier: segues.familytreeSegue.rawValue, sender: self)
         
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == segues.familytreeSegue.rawValue {
-            let ccData = segue.destination as! CustomCollectionViewController
-            ccData.familyTreeGenerator = familyTreeGenerator
-//        }
+        let ccData = segue.destination as! CustomCollectionViewController
+        ccData.familyTreeGenerator = familyTreeGenerator
     }
     
     
