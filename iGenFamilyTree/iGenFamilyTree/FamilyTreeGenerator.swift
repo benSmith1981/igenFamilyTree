@@ -24,7 +24,7 @@ class FamilyTreeGenerator {
         print("maxLevel=", model?.maxLevel)
         print("")
     }
-
+    
     func traverseTreeFor(_ id: ID, _ level: Int) {
         if familyTree[id]!.processed == false {
             familyTree[id]!.processed = true
@@ -118,6 +118,8 @@ class FamilyTreeGenerator {
                 
                 if familyTree[id]!.gender == jsonKeys.male.rawValue {
                     model?.cell?[row][col] = cellState.brother(id: id)
+                    
+                    
                 } else {
                     model?.cell?[row][col] = cellState.sister(id: id)
                 }
@@ -174,6 +176,10 @@ class FamilyTreeGenerator {
             var even = col
             var uneven = col - 1
             
+            if patient.myChildrenIDs.count % 2 == 0 {
+                even = col + 1
+            }
+            
             for (index, id) in patient.myChildrenIDs.enumerated() {
                 
                 if index % 2 == 0 {
@@ -183,7 +189,15 @@ class FamilyTreeGenerator {
                     } else {
                         model?.cell?[row][even] = cellState.sister(id: id)
                     }
+                    
+                    if id == patient.myChildrenIDs.last || index == patient.myChildrenIDs.count - 2 {
+                        model?.cell?[row - 1][even] = cellState.cornerLeftBottom
+                    } else {
+                        model?.cell?[row - 1][even] = cellState.spouseConnector
+                    }
+                    
                     even += 1
+                    
                 } else {
                     print("uneven")
                     if familyTree[id]!.gender == jsonKeys.male.rawValue {
@@ -191,26 +205,23 @@ class FamilyTreeGenerator {
                     } else {
                         model?.cell?[row][uneven] = cellState.sister(id: id)
                     }
+                    
+                    if id == patient.myChildrenIDs.last || index == patient.myChildrenIDs.count - 2 {
+                        model?.cell?[row - 1][uneven] = cellState.cornerRightBottom
+                    } else {
+                        model?.cell?[row - 1][uneven] = cellState.spouseConnector
+                    }
+                    
                     uneven -= 1
+                    
                 }
                 
-                //col += 1
+
                 
-//                if familyTree[id]!.gender == jsonKeys.male.rawValue {
-//                    model?.cell?[row][col] = cellState.brother(id: id)
-//                } else {
-//                    model?.cell?[row][col] = cellState.sister(id: id)
-//                }
-                
-//                if id == patient.myChildrenIDs.last {
-//                    model?.cell?[row - 1][col] = cellState.cornerLeftBottom
-//                } else {
-//                    model?.cell?[row - 1][col] = cellState.spouseConnector
-//                }
             }
         }
         
-        func childerenParentConnectors() {
+        func patientParentConnectors() {
             if patient.myParentsIDs.count > 0 {
                 model?.cell?[row][col] = cellState.spouseConnector
                 
@@ -229,6 +240,7 @@ class FamilyTreeGenerator {
                 if familyTree[id]!.gender == jsonKeys.male.rawValue {
                     if patient.fatherSiblingsIDs.count > 0 {
                         model?.cell?[row][col + 1] = cellState.malePatient(id: id)
+                        
                     } else {
                         model?.cell?[row][col + 1] = cellState.father(id: id)
                     }
@@ -247,7 +259,14 @@ class FamilyTreeGenerator {
         
         func spouseConnector() {
             for id in patient.mySpousesIDs {
-                model?.cell?[row][col] = cellState.spouseConnector
+                
+                if patient.myChildrenIDs.count > 0 {
+                    model?.cell?[row][col] = cellState.spouseConnector
+                } else {
+                    model?.cell?[row][col] = cellState.straightHorizontal
+                }
+                
+                
                 col -= 1
                 
                 if familyTree[id]!.gender == jsonKeys.male.rawValue {
@@ -261,35 +280,43 @@ class FamilyTreeGenerator {
         
         func drawPatient() {
             if let patientID = patient.id {
+                
+                if familyTree[patientID]?.gender == jsonKeys.male.rawValue {
                     
-                    if familyTree[patientID]?.gender == jsonKeys.male.rawValue {
-                        
-                        if patient.mySpousesIDs.count > 0 {
-                            model?.cell?[row][col] = cellState.malePatient(id: patientID)
-                        } else {
-                            model?.cell?[row][col] = cellState.brother(id: patientID)
-                        }
+                    if patient.mySpousesIDs.count > 0 {
+                        model?.cell?[row][col] = cellState.malePatient(id: patientID)
+                    } else {
+                        model?.cell?[row][col] = cellState.brother(id: patientID)
                     }
+                }
+                
+                if familyTree[patientID]?.gender != jsonKeys.male.rawValue {
                     
-                    if familyTree[patientID]?.gender != jsonKeys.male.rawValue {
-                        
-                        if patient.mySpousesIDs.count > 0 {
-                            model?.cell?[row][col] = cellState.femalePatient(id: patientID)
-                        } else {
-                            model?.cell?[row][col] = cellState.sister(id: patientID)
-                        }
+                    if patient.mySpousesIDs.count > 0 {
+                        model?.cell?[row][col] = cellState.femalePatient(id: patientID)
+                    } else {
+                        model?.cell?[row][col] = cellState.sister(id: patientID)
                     }
+                }
             }
         }
         
         func childerenPatientConnector() {
+            
+            guard patient.myChildrenIDs.count > 0 else {
+                print("no childeren found for Patient")
+                return
+            }
+            
             if patient.myChildrenIDs.count == 1 {
                 model?.cell?[row - 1][patient.col - 1] = cellState.straightVertical
+            } else if patient.myChildrenIDs.count % 2 == 0 {
+                model?.cell?[row - 1][patient.col - 1] = cellState.twoChilderenConnector
             } else {
-                if patient.myChildrenIDs.count > 0 {
-                    model?.cell?[row - 1][patient.col - 1] = cellState.patientParentConnector
-                }
+                model?.cell?[row - 1][patient.col - 1] = cellState.threeChilderenConnector
             }
+            
+            
         }
         
         if let patientID = patient.id {
@@ -308,7 +335,7 @@ class FamilyTreeGenerator {
             
             addParents()
             
-            childerenParentConnectors()
+            patientParentConnectors()
             
             setDrawingPoints(rowX: -2, colY: 1)
             

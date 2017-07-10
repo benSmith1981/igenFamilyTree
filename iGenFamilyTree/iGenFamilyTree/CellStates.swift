@@ -14,6 +14,7 @@ enum cellState {
     case sister(id: String)
     case malePatient(id: String)
     case femalePatient(id: String)
+    case fatherWithSiblings(id: String)
     case motherWithSiblings(id: String)
     case maleSpouse(id: String)
     case femaleSpouse(id: String)
@@ -23,6 +24,8 @@ enum cellState {
     case mother(id: String)
     case spouseConnector
     case patientParentConnector
+    case twoChilderenConnector
+    case threeChilderenConnector
     case cornerLeftBottom
     case cornerLeftTop
     case cornerRightBottom
@@ -31,53 +34,64 @@ enum cellState {
     case straightVertical
     case emptyCell
     
-    
+    func showGender() -> UIImage {
+        switch self {
+        case .brother, .uncle, .malePatient, .maleSpouse, .fatherWithSiblings, .father:
+            return #imageLiteral(resourceName: "male")
+        case .sister, .femaleSpouse, .femalePatient, .aunt, .motherWithSiblings, .mother:
+            return #imageLiteral(resourceName: "female")
+        default:
+            return UIImage()
+        }
+    }
     
     func switchBG() -> UIImage {
         
         switch self {
             
-        case .brother:
-            return #imageLiteral(resourceName: "paths-son-1-connector")
-        case .uncle:
-            return #imageLiteral(resourceName: "paths-son-1-connector")
-        case .sister:
-            return #imageLiteral(resourceName: "paths-TEST-female-daughter")
-        case .aunt:
-            return #imageLiteral(resourceName: "paths-TEST-female-daughter")
+        case .brother, .uncle, .sister, .aunt:
+            return #imageLiteral(resourceName: "paths-1-connect-up")
         
-        case .malePatient:
-            return #imageLiteral(resourceName: "paths-male-corner-2-connectors")
-        case .femalePatient:
-            return #imageLiteral(resourceName: "paths-female-corner-2-connectors").imageRotatedByDegrees(deg: -90)
-        case .motherWithSiblings:
-            return #imageLiteral(resourceName: "paths-female-corner-2-connectors")
-        case .maleSpouse:
-            return #imageLiteral(resourceName: "paths-male-1-connector").imageRotatedByDegrees(deg: -90)
-        case .femaleSpouse:
-            return #imageLiteral(resourceName: "paths-female-1-connector").imageRotatedByDegrees(deg: -90)
-        case .father:
-            return #imageLiteral(resourceName: "paths-male-1-connector").imageRotatedByDegrees(deg: 90)
-        case .mother:
-            return #imageLiteral(resourceName: "paths-female-1-connector").imageRotatedByDegrees(deg: -90)
+        case .malePatient, .femalePatient:
+            return #imageLiteral(resourceName: "paths-2-connect")
             
+        case .motherWithSiblings:
+            return #imageLiteral(resourceName: "paths-2-connect").imageRotatedByDegrees(deg: 90)
+        case .fatherWithSiblings:
+            return #imageLiteral(resourceName: "paths-2-connect")
+        
+        
+        case .maleSpouse, .femaleSpouse, .mother:
+            return #imageLiteral(resourceName: "paths-1-connect-down").imageRotatedByDegrees(deg: -90)
+        case .father:
+            return #imageLiteral(resourceName: "paths-1-connect-down").imageRotatedByDegrees(deg: 90)
+
         case .spouseConnector:
             return #imageLiteral(resourceName: "paths-T-3-connectors")
         case .patientParentConnector:
-            return #imageLiteral(resourceName: "paths-T-3-connectors").imageRotatedByDegrees(deg: -90)
-        
+            return #imageLiteral(resourceName: "paths-T-right")
+        case .twoChilderenConnector:
+            return #imageLiteral(resourceName: "paths-T-up")
+        case .threeChilderenConnector:
+            return #imageLiteral(resourceName: "paths-cross-4-connectors")
+            
+            //corner cells
         case .cornerLeftBottom:
-            return #imageLiteral(resourceName: "paths-corner").imageRotatedByDegrees(deg: 90)
+            return #imageLiteral(resourceName: "paths-corner-leftdown")
         case .cornerLeftTop:
-            return #imageLiteral(resourceName: "paths-corner").imageRotatedByDegrees(deg: 180)
+            return #imageLiteral(resourceName: "paths-corner-leftup")
         case .cornerRightBottom:
-            return #imageLiteral(resourceName: "paths-corner")
+            return #imageLiteral(resourceName: "paths-corner-rightdown")
         case .cornerRightTop:
-            return #imageLiteral(resourceName: "paths-corner").imageRotatedByDegrees(deg: -90)
+            return #imageLiteral(resourceName: "paths-corner-rightup")
+            
+            //straight cells
         case .straightHorizontal:
             return #imageLiteral(resourceName: "paths-straight")
         case .straightVertical:
-            return #imageLiteral(resourceName: "paths-straight").imageRotatedByDegrees(deg: 90)
+            return #imageLiteral(resourceName: "paths-straight-ver")
+        
+            //empty cell
         case .emptyCell:
             return UIImage()
         }
@@ -99,6 +113,8 @@ enum cellState {
             return id
         case .motherWithSiblings(let id):
             return id
+        case .fatherWithSiblings(let id):
+            return id
         case .aunt(let id):
             return id
         case .uncle(let id):
@@ -115,5 +131,7 @@ enum cellState {
             return ""
         }
     }
+    
+    
     
 }

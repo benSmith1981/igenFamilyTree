@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "paths-cross.png",
+      "filename" : "paths-corner-rightup.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "paths-cross@2x.png",
+      "filename" : "paths-corner-rightup@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "paths-cross@3x.png",
+      "filename" : "paths-corner-rightup@3x.png",
       "scale" : "3x"
     }
   ],

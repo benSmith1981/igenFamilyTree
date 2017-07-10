@@ -13,6 +13,7 @@ class iGenCell: UICollectionViewCell {
     
     @IBOutlet weak var bgImg: UIImageView!
     @IBOutlet weak var patientAge: UILabel!
+    @IBOutlet weak var genderImg: UIImageView!
     @IBOutlet weak var patientName: UILabel!
     
     override func awakeFromNib() {
@@ -21,19 +22,13 @@ class iGenCell: UICollectionViewCell {
         
         
             func setup() {
-                self.layer.borderWidth = 0.5
-                self.layer.borderColor = UIColor.lightGray.cgColor
+                //self.layer.borderWidth = 0.5
+                //self.layer.borderColor = UIColor.lightGray.cgColor
                 //self.layer.cornerRadius = 0.0
             }
         setup()
-
-        
-        
-        
         
     }
     
-    
-
     
 }
