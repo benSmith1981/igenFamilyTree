@@ -98,10 +98,16 @@ class FamilyTreeGenerator {
         
         var row = patient.row
         var col = patient.col
+        var placementCounter: Int = 0
         
         func setDrawingPoints(rowX: Int, colY: Int) {
             row = patient.row + rowX
             col = patient.col + colY
+        }
+        
+        func setDrawingPointsRelative(rowX: Int, colY: Int){
+            row = row + rowX
+            col = col + colY
         }
         
         func setDrawingPointY(colY: Int) {
@@ -112,7 +118,7 @@ class FamilyTreeGenerator {
             row = patient.row + rowX
         }
         
-        func addSiblings() {
+        /*func addSiblings() {
             for id in patient.mySiblingsIDs {
                 col += 1
                 
@@ -131,7 +137,60 @@ class FamilyTreeGenerator {
                 }
             }
         }
+        */
         
+        
+        // DETERMINE CENTER POINT, AND THEN MAKE SPLIT FOR EVEN/UNEVEN!
+        // WHICH SIDE IS EVEN AND WHICH SIDE IS UNEVEN?
+        func addSiblings() {
+            
+            
+            col = col + 1
+            
+            var even = col
+            var uneven = col - 1
+            
+           if patient.mySiblingsIDs.count % 2 != 0 {
+                uneven = col - 2
+            }
+            
+            for (index, id) in patient.mySiblingsIDs.enumerated() {
+                
+                if index % 2 == 0 {
+                    print("even")
+                    if familyTree[id]!.gender == jsonKeys.male.rawValue {
+                        model?.cell?[row][even] = cellState.brother(id: id)
+                    } else {
+                        model?.cell?[row][even] = cellState.sister(id: id)
+                    }
+                    
+                     if id == patient.mySiblingsIDs.last || index == patient.mySiblingsIDs.count - 2 {
+                        model?.cell?[row - 1][even] = cellState.cornerLeftBottom
+                    } else {
+                        model?.cell?[row - 1][even] = cellState.spouseConnector
+                    }
+                    
+                    even += 1
+                    
+                } else {
+                    print("uneven")
+                    if familyTree[id]!.gender == jsonKeys.male.rawValue {
+                        model?.cell?[row][uneven] = cellState.brother(id: id)
+                    } else {
+                        model?.cell?[row][uneven] = cellState.sister(id: id)
+                    }
+        
+                        model?.cell?[row - 1][uneven] = cellState.spouseConnector
+                    
+                    uneven -= 1
+                    
+                }
+                
+            }
+        }
+        
+        // ADD CLAUSES FOR THE EVEN AND UNEVEN COUNTING OF SIBLINGS
+        // REVIEW COLUMN PLACEMENTS
         func addFatherSiblings() {
             for id in patient.fatherSiblingsIDs {
                 col += 1
@@ -142,7 +201,8 @@ class FamilyTreeGenerator {
                     model?.cell?[row][col] = cellState.sister(id: id)
                 }
                 
-                model?.cell?[row - 1][patient.col + 1] = cellState.cornerRightBottom
+                model?.cell?[row - 1][col - 1] = cellState.cornerRightBottom
+                //model?.cell?[row - 1][patient.col + 1] = cellState.cornerRightBottom
                 
                 if id == patient.fatherSiblingsIDs.last {
                     model?.cell?[row - 1][col] = cellState.cornerLeftBottom
@@ -216,8 +276,22 @@ class FamilyTreeGenerator {
                     
                 }
                 
-
                 
+                
+            }
+        }
+        
+        func placementPatientParentConnector() {
+        
+            if patient.mySiblingsIDs.count == 0 {
+                placementCounter = 1
+            }
+        
+            for (index, id) in patient.mySiblingsIDs.enumerated() {
+                
+                if index % 2 == 0 {
+                    placementCounter += 1
+                }
             }
         }
         
@@ -225,10 +299,12 @@ class FamilyTreeGenerator {
             if patient.myParentsIDs.count > 0 {
                 model?.cell?[row][col] = cellState.spouseConnector
                 
-                if patient.mySiblingsIDs.count > 0 {
-                    model?.cell?[row + 1][col] = cellState.patientParentConnector
+                if patient.mySiblingsIDs.count % 2 != 0 && patient.mySiblingsIDs.count > 0 {
+                    model?.cell?[row + 1][col] = cellState.twoChilderenConnector
+                } else if patient.mySiblingsIDs.count % 2 == 0 && patient.mySiblingsIDs.count > 0 {
+                    model?.cell?[row + 1][col] = cellState.threeChilderenConnector
                 } else {
-                    model?.cell?[row + 1][col] = cellState.straightVertical
+                    model?.cell?[row + 1][col] = cellState.cornerLeftTop
                 }
             }
         }
@@ -278,6 +354,14 @@ class FamilyTreeGenerator {
             }
         }
         
+        func drawRightBottomCorner(){
+            model?.cell?[row][col] = cellState.cornerRightBottom
+        }
+        
+        func drawLeftBottomCorner(){
+            model?.cell?[row][col] = cellState.cornerLeftBottom
+        }
+        
         func drawPatient() {
             if let patientID = patient.id {
                 
@@ -321,35 +405,43 @@ class FamilyTreeGenerator {
         
         if let patientID = patient.id {
             
-            drawPatient()
+            drawPatient() //1
             
-            setDrawingPointY(colY: -1)
+            setDrawingPointY(colY: -1) //2
             
-            spouseConnector()
+            spouseConnector() //3
             
-            setDrawingPoints(rowX: 0, colY: 0)
+            setDrawingPoints(rowX: -1, colY: 0) //4 Go to cell above patient
             
-            addSiblings()
+            drawRightBottomCorner() // 4.1 Draw corner RightToBottom (/)
             
-            setDrawingPoints(rowX: -2, colY: 0)
+            placementPatientParentConnector()
             
-            addParents()
+            setDrawingPoints(rowX: 0, colY: placementCounter) //4 Go to patient cell
             
-            patientParentConnectors()
+            addSiblings() //5
             
-            setDrawingPoints(rowX: -2, colY: 1)
+            setDrawingPoints(rowX: -2, colY: placementCounter) //6
             
-            addFatherSiblings()
+            addParents() //7
             
-            setDrawingPoints(rowX: -2, colY: -1)
+            patientParentConnectors() //8
             
-            addMotherSiblings()
+            setDrawingPointsRelative(rowX: 0, colY: 1)
             
-            setDrawingPoints(rowX: 2, colY: -2)
+            //setDrawingPointX(rowX: -2) //9
             
-            addChilderen()
+            addFatherSiblings() //10
             
-            childerenPatientConnector()
+            //setDrawingPoints(rowX: -2, colY: -1) //11
+            
+            //addMotherSiblings() //12
+            
+            //setDrawingPoints(rowX: 2, colY: -2) //13
+            
+            //addChilderen() //14
+            
+            //childerenPatientConnector() //15
         }
         
     }

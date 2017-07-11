@@ -8,7 +8,7 @@
             "patientID": "id2",
             "spouses": [{ "id" : "id3" }],
             "parents": [{ "id" : "id5" }, { "id" : "id6" }],
-            "siblings": [],
+            "siblings": [{ "id" : "id7" },{ "id" : "id8" },{ "id" : "id9" }],
             "children": []
         },
         "id5":{
@@ -44,5 +44,39 @@
             "siblings": [],
             "children": []
         },
+        "id7":{
+            "name": "Aziz",
+            "dob": "1958",
+            "race": "brown",
+            "gender": "male",
+            "patientID": "id2",
+            "spouses": [],
+            "parents": [{ "id" : "id5" }, { "id" : "id6" }],
+            "siblings": [{ "id" : "id2" },{ "id" : "id8" },{ "id" : "id9" }],
+            "children": []
+        },
+        "id8":{
+            "name": "Aziz",
+            "dob": "1958",
+            "race": "brown",
+            "gender": "female",
+            "patientID": "id2",
+            "spouses": [],
+            "parents": [{ "id" : "id5" }, { "id" : "id6" }],
+            "siblings": [{ "id" : "id7" },{ "id" : "id2" },{ "id" : "id9" }],
+            "children": []
+        },
+        "id9":{
+            "name": "Aziz",
+            "dob": "1958",
+            "race": "brown",
+            "gender": "male",
+            "patientID": "id2",
+            "spouses": [],
+            "parents": [{ "id" : "id5" }, { "id" : "id6" }],
+            "siblings": [{ "id" : "id7" },{ "id" : "id8" },{ "id" : "id2" }],
+            "children": []
+        },
+        
     }
 }

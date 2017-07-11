@@ -8,7 +8,7 @@
             "spouses": [],
             "patientID": "id2",
             "parents": [ { "id" : "id2" }, { "id" : "id4"} ],
-            "siblings": [{ "id" : "id3" }],
+            "siblings": [{ "id" : "id3" }, { "id" : "id12" }, { "id" : "id13" }],
             "children": []
         },
         "id2":{
@@ -19,8 +19,8 @@
             "spouses": [{ "id" : "id4" }],
             "patientID": "id2",
             "parents": [{ "id" : "id7" }, { "id" : "id8" }],
-            "siblings": [{ "id" : "id5" }, { "id" : "id6" }],
-            "children": [{ "id" : "id1" }, { "id" : "id3" }]
+            "siblings": [{ "id" : "id5" }],
+            "children": [{ "id" : "id1" }, { "id" : "id3" }, { "id" : "id13" }, { "id" : "id12" }]
         },
         "id3":{
             "name": "Michiel",
@@ -30,7 +30,7 @@
             "spouses": [],
             "patientID": "id2",
             "parents": [ { "id" : "id2" }, { "id" : "id4"} ],
-            "siblings": [{ "id" : "id1" }],
+            "siblings": [{ "id" : "id1" }, { "id" : "id12" }, { "id" : "id13" }],
             "children": []
         },
         "id4":{
@@ -42,7 +42,7 @@
             "patientID": "id2",
             "parents": [],
             "siblings": [],
-            "children": [{ "id" : "id1" }, { "id" : "id3"}]
+            "children": [{ "id" : "id1" }, { "id" : "id3"}, { "id" : "id13" }, { "id" : "id12" }]
         },
         "id5":{
             "name": "Wim",
@@ -52,18 +52,7 @@
             "spouses": [],
             "patientID": "id2",
             "parents": [{ "id" : "id7" }, { "id" : "id8"}],
-            "siblings": [{ "id" : "id6" }, { "id" : "id2"}],
-            "children": []
-        },
-        "id6":{
-            "name": "Paul Sr.",
-            "dob": "1958",
-            "race": "white",
-            "gender": "male",
-            "spouses": [],
-            "patientID": "id2",
-            "parents": [{ "id" : "id7" }, { "id" : "id8"}],
-            "siblings": [{ "id" : "id5" }, { "id" : "id2"}],
+            "siblings": [{ "id" : "id2"}],
             "children": []
         },
         "id7":{
@@ -75,7 +64,7 @@
             "parents": [],
             "patientID": "id2",
             "siblings": [{ "id" : "id11" }],
-            "children": [{ "id" : "id5" }, { "id" : "id2"}, { "id" : "id6"}]
+            "children": [{ "id" : "id5" }, { "id" : "id2"}]
         },
         "id8":{
             "name": "Mimi",
@@ -86,7 +75,7 @@
             "patientID": "id2",
             "parents": [],
             "siblings": [{ "id" : "id9" }, { "id" : "id10"}],
-            "children": [{ "id" : "id5" }, { "id" : "id2"}, { "id" : "id6"}]
+            "children": [{ "id" : "id5" }, { "id" : "id2"}]
         },
         "id9":{
             "name": "Zus Mimi",
@@ -119,6 +108,28 @@
             "patientID": "id2",
             "parents": [],
             "siblings": [{ "id" : "id7" }],
+            "children": []
+        },
+        "id12":{
+            "name": "Paul Bro",
+            "dob": "1990",
+            "race": "white",
+            "gender": "male",
+            "spouses": [],
+            "patientID": "id2",
+            "parents": [ { "id" : "id2" }, { "id" : "id4"} ],
+            "siblings": [{ "id" : "id1" }, { "id" : "id3" }, { "id" : "id13" }],
+            "children": []
+        },
+        "id13":{
+            "name": "Michiel Bro",
+            "dob": "1991",
+            "race": "white",
+            "gender": "male",
+            "spouses": [],
+            "patientID": "id2",
+            "parents": [ { "id" : "id2" }, { "id" : "id4"} ],
+            "siblings": [{ "id" : "id1" }, { "id" : "id3" }, { "id" : "id12" }],
             "children": []
         },
     }
