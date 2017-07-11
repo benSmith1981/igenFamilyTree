@@ -19,48 +19,9 @@
 //        fillFamilyTreeFor()
 //
 
-import Foundation
+//import Foundation
 
-func printCurrent(familyTree: [ID: Human]) {
-    for id in familyTree.keys {
-        print("name:", familyTree[id]!.name)
-        for spouseID in familyTree[id]!.spouses {
-            print("spouse:", familyTree[spouseID]!.name)
-        }
-        for parentID in familyTree[id]!.parents {
-            print("parent:", familyTree[parentID]!.name)
-        }
-        for childID in familyTree[id]!.children {
-            print("child:", familyTree[childID]!.name)
-        }
-        for siblingID in familyTree[id]!.siblings {
-            print("sibling:", familyTree[siblingID]!.name)
-        }
-        print("")
-    }
-}
 
-func printResults(for patient: Patient) {
-    for id in patient.myParentsIDs {
-        print("myParentsIDs", id)
-    }
-    for id in patient.fatherSiblingsIDs {
-        print("fatherSiblingsIDs", id)
-    }
-    for id in patient.motherSiblingsIDs {
-        print("motherSiblingsIDs", id)
-    }
-    for id in patient.mySpousesIDs {
-        print("mySpousesIDs", id)
-    }
-    for id in patient.mySiblingsIDs {
-        print("mySiblingsIDs", id)
-    }
-    for id in patient.myChildrenIDs {
-        print("myChildrenIDs", id)
-    }
-    print("")
-    
     
     //        for i in patient.row - 2 ... patient.row + 2 {
     //            for j in 0 ... 19 {
@@ -68,8 +29,6 @@ func printResults(for patient: Patient) {
     //            }
     //            print("")
     //        }
-}
-
 
 //    func addSpouseFor(_ id: ID, spouse: ID) {
 //        familyTreeGen.familyTree[id]!.spouses.append(spouse)
