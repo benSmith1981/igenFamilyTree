@@ -106,7 +106,7 @@ class TableViewController: UITableViewController, SetNumberOfFamilyMembers {
         // create all relationships for every human
         
         familyTreeGenerator.generateNewFamilyTree(with: answers)
-        printCurrent(familyTree: familyTreeGenerator.familyTree)
+//        printCurrent(familyTree: familyTreeGenerator.familyTree)
         
         self.performSegue(withIdentifier: segues.familytreeSegue.rawValue, sender: self)
         
