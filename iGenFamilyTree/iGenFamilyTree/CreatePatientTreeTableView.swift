@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Eureka
 
 enum QuestionType: Int {
     case brother = 0
@@ -42,26 +43,55 @@ enum QuestionType: Int {
     }
 }
 
-struct Answers {
-    let brothers = 2
-    let sisters = 0
-    let sons = 1
-    let daughters = 1
-    let brothersOfMother = 3
-    let sistersOfMother = 1
-    let brothersOfFather = 0
-    let sistersOfFather = 1
+protocol SetNumberOfFamilyMembers {
+    func sendNumber(number: Int, cellType: QuestionType)
 }
 
-class TableViewController: UITableViewController {
-    
-    let answers = Answers()
+struct Answers {
+    var brothers: Int = 0
+    var sisters: Int = 0
+    var sons: Int = 0
+    var daughters: Int = 0
+    var brothersOfMother: Int = 0
+    var sistersOfMother: Int = 0
+    var brothersOfFather: Int = 0
+    var sistersOfFather: Int = 0
+}
+
+
+
+class TableViewController: UITableViewController, SetNumberOfFamilyMembers {
+    var answers = Answers()
     var familyTreeGenerator = FamilyTreeGenerator.init(familyTree: [:])
+    
+    
+    
+    func sendNumber(number: Int, cellType: QuestionType){
+        switch cellType {
+        case .brother:
+            answers.brothers = number
+        case .sister:
+            answers.sisters = number
+        case .sons:
+            answers.sons = number
+        case .daughters:
+            answers.daughters = number
+        case .brotherMother:
+            answers.brothersOfMother = number
+        case .sisterMother:
+            answers.sistersOfMother = number
+        case .brotherFather:
+            answers.brothersOfFather = number
+        case .sisterFather:
+            answers.sistersOfFather = number
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let nib = UINib(nibName: "TableViewCell", bundle: nil)
-        self.tableView.register(nib, forCellReuseIdentifier: "TableViewCell")
+        //
+        let nib = UINib(nibName: "CreatePatientTree", bundle: nil)
+        self.tableView.register(nib, forCellReuseIdentifier: tableCellIDs.CreatePatientTreeID.rawValue)
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -76,16 +106,17 @@ class TableViewController: UITableViewController {
         // create all relationships for every human
         
         familyTreeGenerator.generateNewFamilyTree(with: answers)
-        familyTreeGenerator.printFamilyTree(familyTreeGenerator.familyTree)
+        printCurrent(familyTree: familyTreeGenerator.familyTree)
         
         self.performSegue(withIdentifier: segues.familytreeSegue.rawValue, sender: self)
         
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let ccData = segue.destination as! CustomCollectionViewController
-        ccData.familyTreeGenerator = familyTreeGenerator
-    }
+            let ccData = segue.destination as! CustomCollectionViewController
+            ccData.familyTreeGenerator = familyTreeGenerator
+        }
+//    }
     
     
     override func didReceiveMemoryWarning() {
@@ -111,56 +142,72 @@ class TableViewController: UITableViewController {
         switch indexPath.row {
             
         case QuestionType.brother.rawValue:
-            let cellBrothers = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
+            let cellBrothers = tableView.dequeueReusableCell(withIdentifier: tableCellIDs.CreatePatientTreeID.rawValue, for: indexPath) as! CreatePatientTree
             cellBrothers.questionLabel.text = QuestionType.brother.selectQuestion()
             cellBrothers.awakeFromNib()
-            
+            cellBrothers.cellType = .brother
+            cellBrothers.setNumberDelegate = self
             return cellBrothers
             
         case QuestionType.sister.rawValue:
-            let cellSisters = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
+            let cellSisters = tableView.dequeueReusableCell(withIdentifier: tableCellIDs.CreatePatientTreeID.rawValue, for: indexPath) as! CreatePatientTree
             cellSisters.questionLabel.text = QuestionType.sister.selectQuestion()
+            cellSisters.cellType = .sister
+            cellSisters.setNumberDelegate = self
             
             return cellSisters
             
         case QuestionType.sons.rawValue:
-            let cellSons = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
+            let cellSons = tableView.dequeueReusableCell(withIdentifier: tableCellIDs.CreatePatientTreeID.rawValue, for: indexPath) as! CreatePatientTree
             cellSons.questionLabel.text = QuestionType.sons.selectQuestion()
+            cellSons.cellType = .sons
+            cellSons.setNumberDelegate = self
             
             return cellSons
             
         case QuestionType.daughters.rawValue:
-            let cellDaughters = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
+            let cellDaughters = tableView.dequeueReusableCell(withIdentifier: tableCellIDs.CreatePatientTreeID.rawValue, for: indexPath) as! CreatePatientTree
             cellDaughters.questionLabel.text = QuestionType.daughters.selectQuestion()
+            cellDaughters.cellType = .daughters
+            cellDaughters.setNumberDelegate = self
             
             return cellDaughters
             
         case QuestionType.brotherMother.rawValue:
-            let cellBrotherMother = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
+            let cellBrotherMother = tableView.dequeueReusableCell(withIdentifier: tableCellIDs.CreatePatientTreeID.rawValue, for: indexPath) as! CreatePatientTree
             cellBrotherMother.questionLabel.text = QuestionType.brotherMother.selectQuestion()
+            cellBrotherMother.cellType = .brotherMother
+            cellBrotherMother.setNumberDelegate = self
             
             return cellBrotherMother
             
         case QuestionType.sisterMother.rawValue:
-            let cellSisterMother = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
+            let cellSisterMother = tableView.dequeueReusableCell(withIdentifier: tableCellIDs.CreatePatientTreeID.rawValue, for: indexPath) as! CreatePatientTree
             cellSisterMother.questionLabel.text = QuestionType.sisterMother.selectQuestion()
+            cellSisterMother.cellType = .sisterMother
+            cellSisterMother.setNumberDelegate = self
             
             return cellSisterMother
             
         case QuestionType.brotherFather.rawValue:
-            let cellBrotherFather = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
+            let cellBrotherFather = tableView.dequeueReusableCell(withIdentifier: tableCellIDs.CreatePatientTreeID.rawValue, for: indexPath) as! CreatePatientTree
             cellBrotherFather.questionLabel.text = QuestionType.brotherFather.selectQuestion()
+            cellBrotherFather.cellType = .brotherFather
+            cellBrotherFather.setNumberDelegate = self
             
             return cellBrotherFather
             
         case QuestionType.sisterFather.rawValue:
-            let cellSisterFather = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
+            let cellSisterFather = tableView.dequeueReusableCell(withIdentifier: tableCellIDs.CreatePatientTreeID.rawValue, for: indexPath) as! CreatePatientTree
             cellSisterFather.questionLabel.text = QuestionType.sisterFather.selectQuestion()
+            cellSisterFather.cellType = .sisterFather
+            cellSisterFather.setNumberDelegate = self
             
             return cellSisterFather
             
         default:
-            let cellBrothers = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
+            let cellBrothers = tableView.dequeueReusableCell(withIdentifier: tableCellIDs.CreatePatientTreeID.rawValue, for: indexPath) as! CreatePatientTree
+            cellBrothers.setNumberDelegate = self
             return cellBrothers
         }
     }

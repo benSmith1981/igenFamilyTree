@@ -8,7 +8,7 @@
 
 import Foundation
 
-let gridSize = 20
+let gridSize = 30
 
 enum jsonKeys: String {
     case male
@@ -19,3 +19,8 @@ enum segues: String {
     case familytreeSegue
     case createFamilyTreeSegue
 }
+
+enum tableCellIDs: String{
+    case CreatePatientTreeID
+}
+

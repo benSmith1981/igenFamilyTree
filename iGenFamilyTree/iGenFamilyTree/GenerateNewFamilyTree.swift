@@ -8,6 +8,25 @@
 
 import Foundation
 
+//Select gender for inputfield to create blank tree
+enum genderType: String {
+    case maleGender
+    case femaleGender
+    case unknown
+    
+    func selectGender() -> String {
+        
+        switch self {
+        case .maleGender:
+            return "male"
+        case .femaleGender:
+            return "female"
+        case .unknown:
+            return "unknown"
+        }
+    }
+}
+
 extension FamilyTreeGenerator {
     
     // generate a new family tree from the answers of the filled in form
