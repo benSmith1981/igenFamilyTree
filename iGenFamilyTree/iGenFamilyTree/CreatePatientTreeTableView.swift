@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Eureka
 
 enum QuestionType: Int {
     case brother = 0
@@ -88,6 +89,7 @@ class TableViewController: UITableViewController, SetNumberOfFamilyMembers {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //
         let nib = UINib(nibName: "CreatePatientTree", bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: tableCellIDs.CreatePatientTreeID.rawValue)
         

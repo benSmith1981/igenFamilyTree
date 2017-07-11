@@ -8,12 +8,26 @@
 
 import Foundation
 
-extension FamilyTreeGenerator {
-
-//class FamilyTreeTests {
-//    var patient: Patient = Patient(id: "")
-//    var familyTree: [ID: Human] = [:]
+//Select gender for inputfield to create blank tree
+enum genderType: String {
+    case maleGender
+    case femaleGender
+    case unknown
     
+    func selectGender() -> String {
+        
+        switch self {
+        case .maleGender:
+            return "male"
+        case .femaleGender:
+            return "female"
+        case .unknown:
+            return "unknown"
+        }
+    }
+}
+
+extension FamilyTreeGenerator {
     
     func generateNewFamilyTree(with numberOf: Answers) {
         var newUUID: String
@@ -22,7 +36,7 @@ extension FamilyTreeGenerator {
         // create empty Humans
         
         patient.id = NSUUID().uuidString
-        familyTree[patient.id!] = Human(name: "Patient", id: patient.id!, patientID: patient.id!, gender: "unknown")
+        familyTree[patient.id!] = Human(name: "Patient", id: patient.id!, patientID: patient.id!, gender: genderType.maleGender.selectGender())
         newUUID = NSUUID().uuidString
         patient.myParentsIDs.append(newUUID)
         familyTree[newUUID] = Human(name: "Father", id: newUUID, patientID: patient.id!, gender: "male")

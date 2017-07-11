@@ -18,3 +18,12 @@
 
 //Button label
 "CreateTree" = "Generate Tree";
+
+//Associated form translations
+"fillinform" = "Please fill in the form below completely";
+"enternumber" = "Enter number here";
+"whatgender" = "What gender are you?";
+"pickgender" = "Pick a gender";
+"male" = "Male";
+"female" = "Female";
+"genderspouse" = "What gender is your spouse?";
