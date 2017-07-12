@@ -6,7 +6,8 @@
             "race": "white",
             "gender": "male",
             "spouses": [],
-            "patientID": "id1",
+            "id": "id1",
+            "patientID": "id2",
             "parents": [ { "id" : "id2" }, { "id" : "id4"} ],
             "siblings": [{ "id" : "id3" }, { "id" : "id12" }, { "id" : "id13" }],
             "children": []
@@ -17,7 +18,8 @@
             "race": "white",
             "gender": "female",
             "spouses": [{ "id" : "id4" }],
-            "patientID": "id1",
+            "id": "id2",
+            "patientID": "id2",
             "parents": [{ "id" : "id7" }, { "id" : "id8" }],
             "siblings": [{ "id" : "id5" }, { "id" : "id6" }],
             "children": [{ "id" : "id1" }, { "id" : "id3" }, { "id" : "id13" }, { "id" : "id12" }]
@@ -28,7 +30,8 @@
             "race": "white",
             "gender": "male",
             "spouses": [],
-            "patientID": "id1",
+            "id": "id3",
+            "patientID": "id2",
             "parents": [ { "id" : "id2" }, { "id" : "id4"} ],
             "siblings": [{ "id" : "id1" }, { "id" : "id12" }, { "id" : "id13" }],
             "children": []
@@ -39,7 +42,8 @@
             "race": "white",
             "gender": "male",
             "spouses": [{ "id" : "id2" }],
-            "patientID": "id1",
+            "id": "id4",
+            "patientID": "id2",
             "parents": [],
             "siblings": [],
             "children": [{ "id" : "id1" }, { "id" : "id3"}, { "id" : "id13" }, { "id" : "id12" }]
@@ -50,7 +54,8 @@
             "race": "white",
             "gender": "male",
             "spouses": [],
-            "patientID": "id1",
+            "id": "id5",
+            "patientID": "id2",
             "parents": [{ "id" : "id7" }, { "id" : "id8"}],
             "siblings": [{ "id" : "id6" }, { "id" : "id2"}],
             "children": []
@@ -60,8 +65,9 @@
             "dob": "1958",
             "race": "white",
             "gender": "male",
+            "id": "id6",
             "spouses": [],
-            "patientID": "id1",
+            "patientID": "id2",
             "parents": [{ "id" : "id7" }, { "id" : "id8"}],
             "siblings": [{ "id" : "id5" }, { "id" : "id2"}],
             "children": []
@@ -72,8 +78,9 @@
             "race": "white",
             "gender": "male",
             "spouses": [{ "id" : "id8" }],
+            "id": "id7",
             "parents": [],
-            "patientID": "id1",
+            "patientID": "id2",
             "siblings": [{ "id" : "id11" }],
             "children": [{ "id" : "id5" }, { "id" : "id2"}, { "id" : "id6"}]
         },
@@ -83,7 +90,8 @@
             "race": "white",
             "gender": "female",
             "spouses": [{ "id" : "id7" }],
-            "patientID": "id1",
+            "id": "id8",
+            "patientID": "id2",
             "parents": [],
             "siblings": [{ "id" : "id9" }, { "id" : "id10"}],
             "children": [{ "id" : "id5" }, { "id" : "id2"}, { "id" : "id6"}]
@@ -94,7 +102,8 @@
             "race": "white",
             "gender": "female",
             "spouses": [],
-            "patientID": "id1",
+            "id": "id9",
+            "patientID": "id2",
             "parents": [],
             "siblings": [{ "id" : "id8" }, { "id" : "id10"}],
             "children": []
@@ -105,7 +114,8 @@
             "race": "white",
             "gender": "male",
             "spouses": [],
-            "patientID": "id1",
+            "id": "id10",
+            "patientID": "id2",
             "parents": [],
             "siblings": [{ "id" : "id9" }, { "id" : "id8"}],
             "children": []
@@ -116,7 +126,8 @@
             "race": "white",
             "gender": "male",
             "spouses": [],
-            "patientID": "id1",
+            "id": "id11",
+            "patientID": "id2",
             "parents": [],
             "siblings": [{ "id" : "id7" }],
             "children": []
@@ -127,7 +138,8 @@
             "race": "white",
             "gender": "male",
             "spouses": [],
-            "patientID": "id1",
+            "id": "id12",
+            "patientID": "id2",
             "parents": [ { "id" : "id2" }, { "id" : "id4"} ],
             "siblings": [{ "id" : "id1" }, { "id" : "id3" }, { "id" : "id13" }],
             "children": []
@@ -138,7 +150,8 @@
             "race": "white",
             "gender": "male",
             "spouses": [],
-            "patientID": "id1",
+            "id": "id13",
+            "patientID": "id2",
             "parents": [ { "id" : "id2" }, { "id" : "id4"} ],
             "siblings": [{ "id" : "id1" }, { "id" : "id3" }, { "id" : "id12" }],
             "children": []

@@ -8,23 +8,27 @@
 
 import UIKit
 
-//let reuseIdentifier = "customCell"
-let reuseIdentifier = "iGenIdentifier"
-
 class CustomCollectionViewController: UICollectionViewController {
     
     var familyTreeGenerator: FamilyTreeGenerator?
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-//        iGenDataService.parseiGenData()
+        //        iGenDataService.parseiGenData()
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(CustomCollectionViewController.notifyObservers),
-                                               name:  NSNotification.Name(rawValue: "iGenData" ),
+                                               name:  NSNotification.Name(rawValue: NotificationIDs.iGenData.rawValue ),
                                                object: nil)
+        
+        // segue from TableViewController
+        // familyTreeGenerator will be nil if entered via iGenDataService
+        // extract patientID from the first Human for function MakeTreeFor
+        
+        if let firstKey = familyTreeGenerator?.familyTree.first?.key,
+            let patientID = familyTreeGenerator?.familyTree[firstKey]?.patientID {
+            familyTreeGenerator?.makeTreeFor(patientID)
+            familyTreeGenerator?.makeModelFromTree()
+        }
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -42,13 +46,16 @@ class CustomCollectionViewController: UICollectionViewController {
     func configureCollectionView() {
         
         let defaultCell = UINib(nibName: "iGenCell", bundle:nil)
-        self.collectionView?.register(defaultCell, forCellWithReuseIdentifier: "iGenIdentifier")
+        self.collectionView?.register(defaultCell, forCellWithReuseIdentifier: CustomCellIdentifiers.iGenCellID.rawValue)
         
     }
+    
+    //  entered via iGenDataService
+    
     func notifyObservers(notification: NSNotification) {
         let familyDict: [ID: Human] = notification.userInfo as! [ID : Human]
         familyTreeGenerator = FamilyTreeGenerator.init(familyTree: familyDict)
-//        extract patientID from the first Human for function MakeTreeFor 
+        //        extract patientID from the first Human for function MakeTreeFor
         if let firstKey = familyTreeGenerator?.familyTree.first?.key,
             let patientID = familyTreeGenerator?.familyTree[firstKey]?.patientID {
             familyTreeGenerator?.makeTreeFor(patientID)
@@ -70,16 +77,16 @@ class CustomCollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDataSource
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 20
+        return Constants.gridSize
     }
     
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return Constants.gridSize
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! iGenCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCellIdentifiers.iGenCellID.rawValue, for: indexPath) as! iGenCell
         
         // Configure the cell
         if let cellContent = familyTreeGenerator?.model?.cell?[indexPath.section][indexPath.item] {
@@ -91,7 +98,7 @@ class CustomCollectionViewController: UICollectionViewController {
             cell.patientAge.text = currentHuman?.dob
             
         }
-
+        
         return cell
     }
     

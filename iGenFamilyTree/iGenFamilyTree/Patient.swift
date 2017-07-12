@@ -14,8 +14,8 @@ import Foundation
 
 struct Patient {
     var id: ID?
-    var row = 5
-    var col = 10
+    var row: Int = Constants.gridSize / 2
+    var col: Int = Constants.gridSize / 2
     var mySpousesIDs: [ID] = []
     var myParentsIDs: [ID] = []
     var myChildrenIDs: [ID] = []

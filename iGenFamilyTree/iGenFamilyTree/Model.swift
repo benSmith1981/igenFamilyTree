@@ -19,6 +19,6 @@ struct Model {
     var cell: [[cellState]]?
     
     init(){
-        self.cell = Array(repeating: Array(repeating: cellState.emptyCell, count: gridSize), count: gridSize)
+        self.cell = Array(repeating: Array(repeating: cellState.emptyCell, count: Constants.gridSize), count: Constants.gridSize)
     }
 }
