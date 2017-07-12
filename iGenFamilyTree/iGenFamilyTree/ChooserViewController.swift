@@ -24,7 +24,7 @@ class ChooserViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == segues.familytreeSegue.rawValue {
+        if segue.identifier == Segues.familytreeSegue.rawValue {
             iGenDataService.parseiGenData(jsonName:familyJsonToLoad!)
         }
 
@@ -32,26 +32,26 @@ class ChooserViewController: UIViewController {
     
     @IBAction func buttonBen(_ sender: UIButton) {
         familyJsonToLoad = "smith"
-        self.performSegue(withIdentifier: segues.familytreeSegue.rawValue, sender: self)
+        self.performSegue(withIdentifier: Segues.familytreeSegue.rawValue, sender: self)
     }
 
     @IBAction func buttonPaul(_ sender: UIButton) {
         familyJsonToLoad = "Paul"
-        self.performSegue(withIdentifier: segues.familytreeSegue.rawValue, sender: self)
+        self.performSegue(withIdentifier: Segues.familytreeSegue.rawValue, sender: self)
     }
     
     @IBAction func buttonAchid(_ sender: UIButton) {
         familyJsonToLoad = "iGen"
-        self.performSegue(withIdentifier: segues.familytreeSegue.rawValue, sender: self)
+        self.performSegue(withIdentifier: Segues.familytreeSegue.rawValue, sender: self)
     }
     
     @IBAction func buttonTon(_ sender: UIButton) {
         familyJsonToLoad = "iGen"
-        self.performSegue(withIdentifier: segues.familytreeSegue.rawValue, sender: self)
+        self.performSegue(withIdentifier: Segues.familytreeSegue.rawValue, sender: self)
     }
     
     @IBAction func buttonNieuwePatient(_ sender: UIButton) {
-        self.performSegue(withIdentifier: segues.createFamilyTreeSegue.rawValue, sender: self)
+        self.performSegue(withIdentifier: Segues.createFamilyTreeSegue.rawValue, sender: self)
 
         //go to achids view
     }

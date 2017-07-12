@@ -60,8 +60,8 @@ class TableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let nib = UINib(nibName: "TableViewCell", bundle: nil)
-        self.tableView.register(nib, forCellReuseIdentifier: "TableViewCell")
+        let nib = UINib(nibName: Identifiers.TableViewCell.rawValue, bundle: nil)
+        self.tableView.register(nib, forCellReuseIdentifier: Identifiers.TableViewCell.rawValue)
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -78,7 +78,7 @@ class TableViewController: UITableViewController {
         familyTreeGenerator.generateNewFamilyTree(with: answers)
         familyTreeGenerator.printFamilyTree(familyTreeGenerator.familyTree)
         
-        self.performSegue(withIdentifier: segues.familytreeSegue.rawValue, sender: self)
+        self.performSegue(withIdentifier: Segues.familytreeSegue.rawValue, sender: self)
         
     }
     
@@ -111,56 +111,56 @@ class TableViewController: UITableViewController {
         switch indexPath.row {
             
         case QuestionType.brother.rawValue:
-            let cellBrothers = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
+            let cellBrothers = tableView.dequeueReusableCell(withIdentifier: Identifiers.TableViewCell.rawValue, for: indexPath) as! TableViewCell
             cellBrothers.questionLabel.text = QuestionType.brother.selectQuestion()
             cellBrothers.awakeFromNib()
             
             return cellBrothers
             
         case QuestionType.sister.rawValue:
-            let cellSisters = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
+            let cellSisters = tableView.dequeueReusableCell(withIdentifier: Identifiers.TableViewCell.rawValue, for: indexPath) as! TableViewCell
             cellSisters.questionLabel.text = QuestionType.sister.selectQuestion()
             
             return cellSisters
             
         case QuestionType.sons.rawValue:
-            let cellSons = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
+            let cellSons = tableView.dequeueReusableCell(withIdentifier: Identifiers.TableViewCell.rawValue, for: indexPath) as! TableViewCell
             cellSons.questionLabel.text = QuestionType.sons.selectQuestion()
             
             return cellSons
             
         case QuestionType.daughters.rawValue:
-            let cellDaughters = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
+            let cellDaughters = tableView.dequeueReusableCell(withIdentifier: Identifiers.TableViewCell.rawValue, for: indexPath) as! TableViewCell
             cellDaughters.questionLabel.text = QuestionType.daughters.selectQuestion()
             
             return cellDaughters
             
         case QuestionType.brotherMother.rawValue:
-            let cellBrotherMother = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
+            let cellBrotherMother = tableView.dequeueReusableCell(withIdentifier: Identifiers.TableViewCell.rawValue, for: indexPath) as! TableViewCell
             cellBrotherMother.questionLabel.text = QuestionType.brotherMother.selectQuestion()
             
             return cellBrotherMother
             
         case QuestionType.sisterMother.rawValue:
-            let cellSisterMother = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
+            let cellSisterMother = tableView.dequeueReusableCell(withIdentifier: Identifiers.TableViewCell.rawValue, for: indexPath) as! TableViewCell
             cellSisterMother.questionLabel.text = QuestionType.sisterMother.selectQuestion()
             
             return cellSisterMother
             
         case QuestionType.brotherFather.rawValue:
-            let cellBrotherFather = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
+            let cellBrotherFather = tableView.dequeueReusableCell(withIdentifier: Identifiers.TableViewCell.rawValue, for: indexPath) as! TableViewCell
             cellBrotherFather.questionLabel.text = QuestionType.brotherFather.selectQuestion()
             
             return cellBrotherFather
             
         case QuestionType.sisterFather.rawValue:
-            let cellSisterFather = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
+            let cellSisterFather = tableView.dequeueReusableCell(withIdentifier: Identifiers.TableViewCell.rawValue, for: indexPath) as! TableViewCell
             cellSisterFather.questionLabel.text = QuestionType.sisterFather.selectQuestion()
             
             return cellSisterFather
             
         default:
-            let cellBrothers = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
+            let cellBrothers = tableView.dequeueReusableCell(withIdentifier: Identifiers.TableViewCell.rawValue, for: indexPath) as! TableViewCell
             return cellBrothers
         }
     }

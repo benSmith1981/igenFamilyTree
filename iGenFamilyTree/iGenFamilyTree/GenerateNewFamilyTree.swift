@@ -47,14 +47,14 @@ extension FamilyTreeGenerator {
     private func createEmptyFather() {
         let newUUID = NSUUID().uuidString
         patient.myParentsIDs.append(newUUID)
-        familyTree[newUUID] = Human(name: "Father", id: newUUID, patientID: patient.id!, gender: "male")
+        familyTree[newUUID] = Human(name: "Father", id: newUUID, patientID: patient.id!, gender: JsonKeys.male.rawValue)
     }
     
     // generate a unique ID, create the mother and add her as a parent of the patient
     private func createEmptyMother() {
         let newUUID = NSUUID().uuidString
         patient.myParentsIDs.append(newUUID)
-        familyTree[newUUID] = Human(name: "Mother", id: newUUID, patientID: patient.id!, gender: "female")
+        familyTree[newUUID] = Human(name: "Mother", id: newUUID, patientID: patient.id!, gender: JsonKeys.female.rawValue)
     }
     
     // generate a unique ID, create the spouse and add him/her as a spouse of the patient
@@ -70,7 +70,7 @@ extension FamilyTreeGenerator {
         while i <= number {
             let newUUID = NSUUID().uuidString
             patient.mySiblingsIDs.append(newUUID)
-            familyTree[newUUID] = Human(name: "Brother \(i)", id: newUUID, patientID: patient.id!, gender: "male")
+            familyTree[newUUID] = Human(name: "Brother \(i)", id: newUUID, patientID: patient.id!, gender: JsonKeys.male.rawValue)
             i += 1
         }
     }
@@ -81,7 +81,7 @@ extension FamilyTreeGenerator {
         while i <= number {
             let newUUID = NSUUID().uuidString
             patient.mySiblingsIDs.append(newUUID)
-            familyTree[newUUID] = Human(name: "Sister \(i)", id: newUUID, patientID: patient.id!, gender: "female")
+            familyTree[newUUID] = Human(name: "Sister \(i)", id: newUUID, patientID: patient.id!, gender: JsonKeys.female.rawValue)
             i += 1
         }
     }
@@ -92,7 +92,7 @@ extension FamilyTreeGenerator {
         while i <= number {
             let newUUID = NSUUID().uuidString
             patient.myChildrenIDs.append(newUUID)
-            familyTree[newUUID] = Human(name: "Son \(i)", id: newUUID, patientID: patient.id!, gender: "male")
+            familyTree[newUUID] = Human(name: "Son \(i)", id: newUUID, patientID: patient.id!, gender: JsonKeys.male.rawValue)
             i += 1
         }
     }
@@ -103,7 +103,7 @@ extension FamilyTreeGenerator {
         while i <= number {
             let newUUID = NSUUID().uuidString
             patient.myChildrenIDs.append(newUUID)
-            familyTree[newUUID] = Human(name: "Daughter \(i)", id: newUUID, patientID: patient.id!, gender: "female")
+            familyTree[newUUID] = Human(name: "Daughter \(i)", id: newUUID, patientID: patient.id!, gender: JsonKeys.female.rawValue)
             i += 1
         }
     }
@@ -114,7 +114,7 @@ extension FamilyTreeGenerator {
         while i <= number {
             let newUUID = NSUUID().uuidString
             patient.motherSiblingsIDs.append(newUUID)
-            familyTree[newUUID] = Human(name: "brotherOfMother \(i)", id: newUUID, patientID: patient.id!, gender: "male")
+            familyTree[newUUID] = Human(name: "brotherOfMother \(i)", id: newUUID, patientID: patient.id!, gender: JsonKeys.male.rawValue)
             i += 1
         }
     }
@@ -125,7 +125,7 @@ extension FamilyTreeGenerator {
         while i <= number {
             let newUUID = NSUUID().uuidString
             patient.motherSiblingsIDs.append(newUUID)
-            familyTree[newUUID] = Human(name: "sisterOfMother \(i)", id: newUUID, patientID: patient.id!, gender: "female")
+            familyTree[newUUID] = Human(name: "sisterOfMother \(i)", id: newUUID, patientID: patient.id!, gender: JsonKeys.female.rawValue)
             i += 1
         }
     }
@@ -136,7 +136,7 @@ extension FamilyTreeGenerator {
         while i <= number {
             let newUUID = NSUUID().uuidString
             patient.fatherSiblingsIDs.append(newUUID)
-            familyTree[newUUID] = Human(name: "brotherOfFather \(i)", id: newUUID, patientID: patient.id!, gender: "male")
+            familyTree[newUUID] = Human(name: "brotherOfFather \(i)", id: newUUID, patientID: patient.id!, gender: JsonKeys.male.rawValue)
             i += 1
         }
     }
@@ -147,7 +147,7 @@ extension FamilyTreeGenerator {
         while i <= number {
             let newUUID = NSUUID().uuidString
             patient.fatherSiblingsIDs.append(newUUID)
-            familyTree[newUUID] = Human(name: "sisterOfFather \(i)", id: newUUID, patientID: patient.id!, gender: "female")
+            familyTree[newUUID] = Human(name: "sisterOfFather \(i)", id: newUUID, patientID: patient.id!, gender: JsonKeys.female.rawValue)
             i += 1
         }
     }
@@ -195,7 +195,7 @@ extension FamilyTreeGenerator {
             }
         }
         familyTree[id]?.children.append(patient.id!) // add patient as child
-        if familyTree[id]?.gender == "male" {
+        if familyTree[id]?.gender == JsonKeys.male.rawValue {
             familyTree[id]?.siblings = patient.fatherSiblingsIDs // add siblings of my father
         } else {
             familyTree[id]?.siblings = patient.motherSiblingsIDs // add siblings of my mother
@@ -205,7 +205,7 @@ extension FamilyTreeGenerator {
     // process a child of the patient
     private func processPatientChild(_ id: ID) {
         familyTree[id]?.parents.append(patient.id!) // add patient as parent
-        if familyTree[id]?.gender == "male" {
+        if familyTree[id]?.gender == JsonKeys.male.rawValue {
             familyTree[id]?.siblings = patient.fatherSiblingsIDs // add siblings of my father
         } else {
             familyTree[id]?.siblings = patient.motherSiblingsIDs // add siblings of my mother
@@ -231,7 +231,7 @@ extension FamilyTreeGenerator {
             }
         }
         for arrayID in patient.myParentsIDs {
-            if familyTree[arrayID]?.gender == "male" {
+            if familyTree[arrayID]?.gender == JsonKeys.male.rawValue {
                 familyTree[id]?.siblings.append(arrayID) // add my father as sibling
             }
         }
