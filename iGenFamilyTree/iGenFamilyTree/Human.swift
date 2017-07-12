@@ -34,36 +34,41 @@ class Human {
     
     convenience init(id: ID, dictionary: NSDictionary) {
         
-        self.init(name: (dictionary["name"] as? String)!,
-                  id: (dictionary["id"] as? String)!,
-                  patientID: (dictionary["patientID"] as? String)!,
-                  gender: (dictionary["gender"] as? String)!)
-        self.dob = dictionary["dob"] as? String
-        self.race = dictionary["race"] as? String
-        let parentsParsed = dictionary["parents"] as! NSArray
+        self.init(name: (dictionary[JsonKeys.name] as? String)!,
+                  id: (dictionary[JsonKeys.id] as? String)!,
+                  patientID: (dictionary[JsonKeys.patientID] as? String)!,
+                  gender: (dictionary[JsonKeys.gender] as? String)!)
+        self.dob = dictionary[JsonKeys.dob] as? String
+        self.race = dictionary[JsonKeys.race] as? String
+        
+        let parentsParsed = dictionary[JsonKeys.parents] as! NSArray
         for parent in parentsParsed {
-            if let parent = parent as? NSDictionary, let parentID = parent["id"] as? ID {
+            if let parent = parent as? NSDictionary,
+                let parentID = parent[JsonKeys.id] as? ID {
                 self.parents.append(parentID)
             }
         }
         
-        let siblingsParsed = dictionary["siblings"] as! NSArray
+        let siblingsParsed = dictionary[JsonKeys.siblings] as! NSArray
         for sibling in siblingsParsed {
-            if let sibling = sibling as? NSDictionary, let siblingID = sibling["id"] as? ID {
+            if let sibling = sibling as? NSDictionary,
+                let siblingID = sibling[JsonKeys.id] as? ID {
                 siblings.append(siblingID)
             }
         }
         
-        let childrenParsed = dictionary["children"] as! NSArray
+        let childrenParsed = dictionary[JsonKeys.children] as! NSArray
         for child in childrenParsed {
-            if let child = child as? NSDictionary, let childID = child["id"] as? ID {
+            if let child = child as? NSDictionary,
+                let childID = child[JsonKeys.id] as? ID {
                 children.append(childID)
             }
         }
         
-        let spousesParsed = dictionary["spouses"] as! NSArray
+        let spousesParsed = dictionary[JsonKeys.spouses] as! NSArray
         for spouse in spousesParsed {
-            if let spouse = spouse as? NSDictionary, let spouseID = spouse["id"] as? ID {
+            if let spouse = spouse as? NSDictionary,
+                let spouseID = spouse[JsonKeys.id] as? ID {
                 spouses.append(spouseID)
             }
         }

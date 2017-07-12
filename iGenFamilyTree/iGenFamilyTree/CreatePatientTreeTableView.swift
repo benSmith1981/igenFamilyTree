@@ -89,9 +89,8 @@ class TableViewController: UITableViewController, SetNumberOfFamilyMembers {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //
-        let nib = UINib(nibName: "CreatePatientTree", bundle: nil)
-        self.tableView.register(nib, forCellReuseIdentifier: tableCellIDs.CreatePatientTreeID.rawValue)
+        let nib = UINib(nibName: Identifiers.CreatePatientTree.rawValue, bundle: nil)
+        self.tableView.register(nib, forCellReuseIdentifier: Identifiers.CreatePatientTree.rawValue)
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -106,17 +105,16 @@ class TableViewController: UITableViewController, SetNumberOfFamilyMembers {
         // create all relationships for every human
         
         familyTreeGenerator.generateNewFamilyTree(with: answers)
-//        printCurrent(familyTree: familyTreeGenerator.familyTree)
+        familyTreeGenerator.printFamilyTree(familyTreeGenerator.familyTree)
         
-        self.performSegue(withIdentifier: segues.familytreeSegue.rawValue, sender: self)
+        self.performSegue(withIdentifier: Segues.familytreeSegue.rawValue, sender: self)
         
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            let ccData = segue.destination as! CustomCollectionViewController
-            ccData.familyTreeGenerator = familyTreeGenerator
-        }
-//    }
+        let ccData = segue.destination as! CustomCollectionViewController
+        ccData.familyTreeGenerator = familyTreeGenerator
+    }
     
     
     override func didReceiveMemoryWarning() {
@@ -142,7 +140,7 @@ class TableViewController: UITableViewController, SetNumberOfFamilyMembers {
         switch indexPath.row {
             
         case QuestionType.brother.rawValue:
-            let cellBrothers = tableView.dequeueReusableCell(withIdentifier: tableCellIDs.CreatePatientTreeID.rawValue, for: indexPath) as! CreatePatientTree
+            let cellBrothers = tableView.dequeueReusableCell(withIdentifier: Identifiers.CreatePatientTree.rawValue, for: indexPath) as! CreatePatientTree
             cellBrothers.questionLabel.text = QuestionType.brother.selectQuestion()
             cellBrothers.awakeFromNib()
             cellBrothers.cellType = .brother
@@ -150,7 +148,7 @@ class TableViewController: UITableViewController, SetNumberOfFamilyMembers {
             return cellBrothers
             
         case QuestionType.sister.rawValue:
-            let cellSisters = tableView.dequeueReusableCell(withIdentifier: tableCellIDs.CreatePatientTreeID.rawValue, for: indexPath) as! CreatePatientTree
+            let cellSisters = tableView.dequeueReusableCell(withIdentifier: Identifiers.CreatePatientTree.rawValue, for: indexPath) as! CreatePatientTree
             cellSisters.questionLabel.text = QuestionType.sister.selectQuestion()
             cellSisters.cellType = .sister
             cellSisters.setNumberDelegate = self
@@ -158,7 +156,7 @@ class TableViewController: UITableViewController, SetNumberOfFamilyMembers {
             return cellSisters
             
         case QuestionType.sons.rawValue:
-            let cellSons = tableView.dequeueReusableCell(withIdentifier: tableCellIDs.CreatePatientTreeID.rawValue, for: indexPath) as! CreatePatientTree
+            let cellSons = tableView.dequeueReusableCell(withIdentifier: Identifiers.CreatePatientTree.rawValue, for: indexPath) as! CreatePatientTree
             cellSons.questionLabel.text = QuestionType.sons.selectQuestion()
             cellSons.cellType = .sons
             cellSons.setNumberDelegate = self
@@ -166,7 +164,7 @@ class TableViewController: UITableViewController, SetNumberOfFamilyMembers {
             return cellSons
             
         case QuestionType.daughters.rawValue:
-            let cellDaughters = tableView.dequeueReusableCell(withIdentifier: tableCellIDs.CreatePatientTreeID.rawValue, for: indexPath) as! CreatePatientTree
+            let cellDaughters = tableView.dequeueReusableCell(withIdentifier: Identifiers.CreatePatientTree.rawValue, for: indexPath) as! CreatePatientTree
             cellDaughters.questionLabel.text = QuestionType.daughters.selectQuestion()
             cellDaughters.cellType = .daughters
             cellDaughters.setNumberDelegate = self
@@ -174,7 +172,7 @@ class TableViewController: UITableViewController, SetNumberOfFamilyMembers {
             return cellDaughters
             
         case QuestionType.brotherMother.rawValue:
-            let cellBrotherMother = tableView.dequeueReusableCell(withIdentifier: tableCellIDs.CreatePatientTreeID.rawValue, for: indexPath) as! CreatePatientTree
+            let cellBrotherMother = tableView.dequeueReusableCell(withIdentifier: Identifiers.CreatePatientTree.rawValue, for: indexPath) as! CreatePatientTree
             cellBrotherMother.questionLabel.text = QuestionType.brotherMother.selectQuestion()
             cellBrotherMother.cellType = .brotherMother
             cellBrotherMother.setNumberDelegate = self
@@ -182,7 +180,7 @@ class TableViewController: UITableViewController, SetNumberOfFamilyMembers {
             return cellBrotherMother
             
         case QuestionType.sisterMother.rawValue:
-            let cellSisterMother = tableView.dequeueReusableCell(withIdentifier: tableCellIDs.CreatePatientTreeID.rawValue, for: indexPath) as! CreatePatientTree
+            let cellSisterMother = tableView.dequeueReusableCell(withIdentifier: Identifiers.CreatePatientTree.rawValue, for: indexPath) as! CreatePatientTree
             cellSisterMother.questionLabel.text = QuestionType.sisterMother.selectQuestion()
             cellSisterMother.cellType = .sisterMother
             cellSisterMother.setNumberDelegate = self
@@ -190,7 +188,7 @@ class TableViewController: UITableViewController, SetNumberOfFamilyMembers {
             return cellSisterMother
             
         case QuestionType.brotherFather.rawValue:
-            let cellBrotherFather = tableView.dequeueReusableCell(withIdentifier: tableCellIDs.CreatePatientTreeID.rawValue, for: indexPath) as! CreatePatientTree
+            let cellBrotherFather = tableView.dequeueReusableCell(withIdentifier: Identifiers.CreatePatientTree.rawValue, for: indexPath) as! CreatePatientTree
             cellBrotherFather.questionLabel.text = QuestionType.brotherFather.selectQuestion()
             cellBrotherFather.cellType = .brotherFather
             cellBrotherFather.setNumberDelegate = self
@@ -198,7 +196,7 @@ class TableViewController: UITableViewController, SetNumberOfFamilyMembers {
             return cellBrotherFather
             
         case QuestionType.sisterFather.rawValue:
-            let cellSisterFather = tableView.dequeueReusableCell(withIdentifier: tableCellIDs.CreatePatientTreeID.rawValue, for: indexPath) as! CreatePatientTree
+            let cellSisterFather = tableView.dequeueReusableCell(withIdentifier: Identifiers.CreatePatientTree.rawValue, for: indexPath) as! CreatePatientTree
             cellSisterFather.questionLabel.text = QuestionType.sisterFather.selectQuestion()
             cellSisterFather.cellType = .sisterFather
             cellSisterFather.setNumberDelegate = self
@@ -206,7 +204,7 @@ class TableViewController: UITableViewController, SetNumberOfFamilyMembers {
             return cellSisterFather
             
         default:
-            let cellBrothers = tableView.dequeueReusableCell(withIdentifier: tableCellIDs.CreatePatientTreeID.rawValue, for: indexPath) as! CreatePatientTree
+            let cellBrothers = tableView.dequeueReusableCell(withIdentifier: Identifiers.CreatePatientTree.rawValue, for: indexPath) as! CreatePatientTree
             cellBrothers.setNumberDelegate = self
             return cellBrothers
         }

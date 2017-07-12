@@ -9,7 +9,7 @@
 import UIKit
 
 //let reuseIdentifier = "customCell"
-let reuseIdentifier = "iGenIdentifier"
+let reuseIdentifier = Identifiers.iGenCell.rawValue
 
 class CustomCollectionViewController: UICollectionViewController {
     
@@ -20,7 +20,7 @@ class CustomCollectionViewController: UICollectionViewController {
         //        iGenDataService.parseiGenData()
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(CustomCollectionViewController.notifyObservers),
-                                               name:  NSNotification.Name(rawValue: "iGenData" ),
+                                               name:  NSNotification.Name(rawValue: Identifiers.iGenData.rawValue ),
                                                object: nil)
         
         // segue from TableViewController
@@ -45,8 +45,8 @@ class CustomCollectionViewController: UICollectionViewController {
     
     func configureCollectionView() {
         
-        let defaultCell = UINib(nibName: "iGenCell", bundle:nil)
-        self.collectionView?.register(defaultCell, forCellWithReuseIdentifier: "iGenIdentifier")
+        let defaultCell = UINib(nibName: Identifiers.iGenCell.rawValue, bundle:nil)
+        self.collectionView?.register(defaultCell, forCellWithReuseIdentifier: Identifiers.iGenCell.rawValue)
         
     }
     
@@ -77,12 +77,12 @@ class CustomCollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDataSource
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return gridSize
+        return Constants.gridSize
     }
     
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return gridSize
+        return Constants.gridSize
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

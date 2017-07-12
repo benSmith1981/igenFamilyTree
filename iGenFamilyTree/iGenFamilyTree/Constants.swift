@@ -8,19 +8,33 @@
 
 import Foundation
 
-let gridSize = 30
-
-enum jsonKeys: String {
-    case male
+struct Constants {
+    static let gridSize = 20
 }
 
+enum JsonKeys: String {
+    case male
+    case female
+    case name
+    case id
+    case patientID
+    case gender
+    case dob
+    case race
+    case processed
+    case spouses
+    case parents
+    case children
+    case siblings
+}
 
-enum segues: String {
+enum Segues: String {
     case familytreeSegue
     case createFamilyTreeSegue
 }
 
-enum tableCellIDs: String{
-    case CreatePatientTreeID
+enum Identifiers: String {
+    case CreatePatientTree
+    case iGenCell
+    case iGenData
 }
-
