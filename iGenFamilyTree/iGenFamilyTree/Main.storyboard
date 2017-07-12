@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2tC-LR-z4U">
-    <device id="retina5_5" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2tC-LR-z4U">
+    <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,7 +15,7 @@
             <objects>
                 <collectionViewController automaticallyAdjustsScrollViewInsets="NO" id="hWx-t7-1N7" customClass="CustomCollectionViewController" customModule="iGenFamilyTree" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="3" maximumZoomScale="3" dataMode="prototypes" id="dRO-ju-tAH">
-                        <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                        <rect key="frame" x="0.0" y="64" width="768" height="960"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <inset key="scrollIndicatorInsets" minX="0.0" minY="20" maxX="0.0" maxY="0.0"/>
@@ -56,7 +56,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JXE-vt-Zcj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3112" y="1503"/>
+            <point key="canvasLocation" x="3099" y="1783"/>
         </scene>
         <!--iGen Family Tree chooser-->
         <scene sceneID="qey-8s-dXm">
@@ -67,20 +67,20 @@
                         <viewControllerLayoutGuide type="bottom" id="blF-yp-qD4"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="zyv-B9-dhq">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lVb-bJ-pag">
-                                <rect key="frame" x="28" y="72" width="358" height="656"/>
+                                <rect key="frame" x="28" y="72" width="712" height="944"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="230" verticalCompressionResistancePriority="740" text="Kies een patiënt" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uns-7c-jaG">
-                                        <rect key="frame" x="0.0" y="0.0" width="358" height="266"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="712" height="554"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pzv-TX-aVA">
-                                        <rect key="frame" x="0.0" y="266" width="358" height="58"/>
+                                        <rect key="frame" x="0.0" y="554" width="712" height="58"/>
                                         <inset key="contentEdgeInsets" minX="0.0" minY="20" maxX="0.0" maxY="20"/>
                                         <state key="normal" title="Ben"/>
                                         <connections>
@@ -88,7 +88,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2vl-OR-U1U">
-                                        <rect key="frame" x="0.0" y="324" width="358" height="58"/>
+                                        <rect key="frame" x="0.0" y="612" width="712" height="58"/>
                                         <inset key="contentEdgeInsets" minX="0.0" minY="20" maxX="0.0" maxY="20"/>
                                         <state key="normal" title="Paul"/>
                                         <connections>
@@ -96,7 +96,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ao3-s8-Nky">
-                                        <rect key="frame" x="0.0" y="382" width="358" height="58"/>
+                                        <rect key="frame" x="0.0" y="670" width="712" height="58"/>
                                         <inset key="contentEdgeInsets" minX="0.0" minY="20" maxX="0.0" maxY="20"/>
                                         <state key="normal" title="Achid"/>
                                         <connections>
@@ -104,7 +104,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="evR-mC-RBm">
-                                        <rect key="frame" x="0.0" y="440" width="358" height="58"/>
+                                        <rect key="frame" x="0.0" y="728" width="712" height="58"/>
                                         <inset key="contentEdgeInsets" minX="0.0" minY="20" maxX="0.0" maxY="20"/>
                                         <state key="normal" title="Ton"/>
                                         <connections>
@@ -112,12 +112,12 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="240" verticalCompressionResistancePriority="740" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pa1-Jj-lLL">
-                                        <rect key="frame" x="0.0" y="498" width="358" height="158"/>
+                                        <rect key="frame" x="0.0" y="786" width="712" height="158"/>
                                         <inset key="contentEdgeInsets" minX="0.0" minY="40" maxX="0.0" maxY="100"/>
                                         <state key="normal" title="Nieuwe patiënt"/>
                                         <connections>
                                             <action selector="buttonNieuwePatient:" destination="t7Q-Y0-Rfq" eventType="touchUpInside" id="Pti-5f-XaP"/>
-                                            <segue destination="IxB-a4-Cxe" kind="show" identifier="createFamilyTreeSegue" id="aGj-ts-Mg7"/>
+                                            <segue destination="IxB-a4-Cxe" kind="show" identifier="createFamilyTreeSegue" id="lqr-hk-Icb"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -161,22 +161,22 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vow-OX-rbt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="951" y="1102"/>
+            <point key="canvasLocation" x="668" y="1101"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="dyE-zP-qV2">
             <objects>
                 <tableViewController id="IxB-a4-Cxe" customClass="TableViewController" customModule="iGenFamilyTree" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="40" sectionFooterHeight="28" id="kDh-xs-pZL">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="JnY-4n-Sf4">
-                                <rect key="frame" x="0.0" y="40" width="414" height="60"/>
+                                <rect key="frame" x="0.0" y="40" width="768" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JnY-4n-Sf4" id="ehB-SY-80J">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="59.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="768" height="59"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -194,15 +194,15 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="hWx-t7-1N7" kind="show" identifier="familytreeSegue" id="TEJ-am-ns4"/>
+                        <segue destination="hWx-t7-1N7" kind="show" identifier="familytreeSegue" id="2St-NQ-2mG"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cEo-r7-b6W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1783" y="1920"/>
+            <point key="canvasLocation" x="1783" y="2478"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="TEJ-am-ns4"/>
+        <segue reference="2St-NQ-2mG"/>
     </inferredMetricsTieBreakers>
 </document>
