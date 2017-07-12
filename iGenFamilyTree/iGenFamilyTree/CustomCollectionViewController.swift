@@ -8,9 +8,6 @@
 
 import UIKit
 
-//let reuseIdentifier = "customCell"
-let reuseIdentifier = Identifiers.iGenCell.rawValue
-
 class CustomCollectionViewController: UICollectionViewController {
     
     var familyTreeGenerator: FamilyTreeGenerator?
@@ -20,7 +17,7 @@ class CustomCollectionViewController: UICollectionViewController {
         //        iGenDataService.parseiGenData()
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(CustomCollectionViewController.notifyObservers),
-                                               name:  NSNotification.Name(rawValue: Identifiers.iGenData.rawValue ),
+                                               name:  NSNotification.Name(rawValue: NotificationIDs.iGenData.rawValue ),
                                                object: nil)
         
         // segue from TableViewController
@@ -45,8 +42,8 @@ class CustomCollectionViewController: UICollectionViewController {
     
     func configureCollectionView() {
         
-        let defaultCell = UINib(nibName: Identifiers.iGenCell.rawValue, bundle:nil)
-        self.collectionView?.register(defaultCell, forCellWithReuseIdentifier: Identifiers.iGenCell.rawValue)
+        let defaultCell = UINib(nibName: "iGenCell", bundle:nil)
+        self.collectionView?.register(defaultCell, forCellWithReuseIdentifier: CustomCellIdentifiers.iGenCellID.rawValue)
         
     }
     
@@ -86,7 +83,7 @@ class CustomCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! iGenCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCellIdentifiers.iGenCellID.rawValue, for: indexPath) as! iGenCell
         
         // Configure the cell
         if let cellContent = familyTreeGenerator?.model?.cell?[indexPath.section][indexPath.item] {

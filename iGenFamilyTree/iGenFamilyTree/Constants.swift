@@ -33,8 +33,16 @@ enum Segues: String {
     case createFamilyTreeSegue
 }
 
-enum Identifiers: String {
+enum CustomCellIdentifiers: String {
+    case CreatePatientTreeID
+    case iGenCellID
+}
+
+enum CustomCellNames: String {
     case CreatePatientTree
     case iGenCell
+}
+
+enum NotificationIDs: String {
     case iGenData
 }

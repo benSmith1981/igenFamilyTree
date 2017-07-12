@@ -28,7 +28,7 @@ class iGenDataService {
                             temp[key as! String] = humanobject
                         }
                         print(temp)
-                        NotificationCenter.default.post(name: Notification.Name(rawValue: Identifiers.iGenData.rawValue),
+                        NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationIDs.iGenData.rawValue),
                                                         object: self,
                                                         userInfo: temp)
                     }
