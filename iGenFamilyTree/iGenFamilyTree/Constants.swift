@@ -34,7 +34,7 @@ enum Segues: String {
 }
 
 enum Identifiers: String {
-    case TableViewCell
+    case CreatePatientTree
     case iGenCell
     case iGenData
 }
