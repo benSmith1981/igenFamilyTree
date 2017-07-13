@@ -526,7 +526,7 @@ class FamilyTreeGenerator {
             
             setDrawingPoints(rowX: -4, colY: placementCounter + 1) //11 set to middle of sibblings on grandparent row
             
-            fatherGrandparentConnectors() // draw grandparent connectors
+//          fatherGrandparentConnectors() // draw grandparent connectors
             
             setDrawingPoints(rowX: 0, colY: 0) // reset to patient position
             
@@ -542,7 +542,7 @@ class FamilyTreeGenerator {
             
             setDrawingPointsRelative(rowX: -2, colY: 0)
             
-//            motherGrandparentConnectors()
+//          motherGrandparentConnectors()
             
             setDrawingPoints(rowX: 2, colY: -2) //13
             
@@ -554,11 +554,6 @@ class FamilyTreeGenerator {
     }
     
 }
-
-//            func testkleur() {
-//                model?.cell?[row - 2][col] = cellState.threeChilderenConnector
-//            }
-//            testkleur()
 
 
 
