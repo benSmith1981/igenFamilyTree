@@ -56,6 +56,10 @@ struct Answers {
     var sistersOfMother: Int = 0
     var brothersOfFather: Int = 0
     var sistersOfFather: Int = 0
+    var grandfatherOfFather: Int = 0
+    var grandmotherOfFather: Int = 0
+    var grandfatherOfMother: Int = 0
+    var grandmotherOfMother: Int = 0
 }
 
 

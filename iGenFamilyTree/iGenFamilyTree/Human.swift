@@ -22,6 +22,10 @@ class Human {
     var processed: Bool = false
     var spouses: [ID] = []
     var parents: [ID] = []
+    
+    //******************************
+    var grandparents: [ID] = []
+    
     var children: [ID] = []
     var siblings: [ID] = []
     
@@ -40,6 +44,16 @@ class Human {
                   gender: (dictionary[JsonKeys.gender.rawValue] as? String)!)
         self.dob = dictionary[JsonKeys.dob.rawValue] as? String
         self.race = dictionary[JsonKeys.race.rawValue] as? String
+        
+        
+        //******************************
+        let grandparentsParsed = dictionary[JsonKeys.grandparents.rawValue] as! NSArray
+        for grandparent in grandparentsParsed {
+            if let grandparent = grandparent as? NSDictionary,
+                let grandparentID = grandparent[JsonKeys.id.rawValue] as? ID {
+                self.grandparents.append(grandparentID)
+            }
+        }
         
         let parentsParsed = dictionary[JsonKeys.parents.rawValue] as! NSArray
         for parent in parentsParsed {

@@ -41,6 +41,18 @@ class FamilyTreeGenerator {
                 }
             }
             
+            //******************************
+            func createGrandparentArray() {
+                for grandparentID in familyTree[id]!.grandparents {
+                    print("grandparent of", familyTree[id]!.name, "is", familyTree[grandparentID]!.name, "on level", level - 1)
+                    if id == patient.id {
+                        patient.myGrandparentsIDs.append(grandparentID)
+                    }
+                    traverseTreeFor(grandparentID, level - 1)
+                }
+            }
+            
+            
             func createParentArray() {
                 for parentID in familyTree[id]!.parents {
                     print("parent of", familyTree[id]!.name, "is", familyTree[parentID]!.name, "on level", level - 1)

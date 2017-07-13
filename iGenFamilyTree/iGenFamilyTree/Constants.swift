@@ -24,6 +24,7 @@ enum JsonKeys: String {
     case processed
     case spouses
     case parents
+    case grandparents
     case children
     case siblings
 }

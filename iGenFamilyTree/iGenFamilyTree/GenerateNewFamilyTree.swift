@@ -43,6 +43,10 @@ extension FamilyTreeGenerator {
         createEmptyFather()
         createEmptyMother()
         
+        //****************************
+        createEmptyGrandfather()
+        createEmptyGrandmother()
+        
         if numberOf.sons + numberOf.daughters > 0  { // add a spouse only if patient has children
             createEmptySpouse()
         }
@@ -67,6 +71,20 @@ extension FamilyTreeGenerator {
         let newUUID = NSUUID().uuidString
         patient.myParentsIDs.append(newUUID)
         familyTree[newUUID] = Human(name: "Father", id: newUUID, patientID: patient.id!, gender: JsonKeys.male.rawValue)
+    }
+    
+    //**************************** GRANDFATHER
+    private func createEmptyGrandfather() {
+        let newUUID = NSUUID().uuidString
+        patient.myGrandparentsIDs.append(newUUID)
+        familyTree[newUUID] = Human(name: "Grandfather", id: newUUID, patientID: patient.id!, gender: JsonKeys.male.rawValue)
+    }
+    
+    //**************************** GRANDMOTHER
+    private func createEmptyGrandmother() {
+        let newUUID = NSUUID().uuidString
+        patient.myGrandparentsIDs.append(newUUID)
+        familyTree[newUUID] = Human(name: "Grandmother", id: newUUID, patientID: patient.id!, gender: JsonKeys.female.rawValue)
     }
     
     // generate a unique ID, create the mother and add her as a parent of the patient
@@ -188,6 +206,8 @@ extension FamilyTreeGenerator {
                 processFatherSibling(id)
             } else if patient.motherSiblingsIDs.contains(id) {
                 processMotherSibling(id)
+            } else if patient.myGrandparentsIDs.contains(id) {
+                processPatientGrandparent(id)
             }
         }
     }
@@ -198,6 +218,7 @@ extension FamilyTreeGenerator {
         familyTree[id]?.parents = patient.myParentsIDs
         familyTree[id]?.children = patient.myChildrenIDs
         familyTree[id]?.siblings = patient.mySiblingsIDs
+        familyTree[id]?.grandparents = patient.myGrandparentsIDs
     }
     
     // process the spouse of the patient
@@ -219,6 +240,31 @@ extension FamilyTreeGenerator {
         } else {
             familyTree[id]?.siblings = patient.motherSiblingsIDs // add siblings of my mother
         }
+    }
+    
+    // process a grandparent of the patient
+    private func processPatientGrandparent(_ id: ID) {
+        
+        
+        for arrayID in patient.myGrandparentsIDs {
+            if id != arrayID {
+                familyTree[id]?.spouses.append(arrayID) // add other parent as spouse
+            }
+        }
+
+        // add parents as child
+        // add parent siblings as child
+        
+        /*
+        familyTree[id]?.grandparents.append(patient.id!) // add patient as grandchild
+        
+        if familyTree[id]?.gender == JsonKeys.male.rawValue {
+            familyTree[id]?.siblings = patient.fatherSiblingsIDs // add siblings of my father
+        } else {
+            familyTree[id]?.siblings = patient.motherSiblingsIDs // add siblings of my mother
+        }
+        */
+        
     }
     
     // process a child of the patient

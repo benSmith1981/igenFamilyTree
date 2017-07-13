@@ -18,6 +18,10 @@ struct Patient {
     var col: Int = Constants.gridSize / 2
     var mySpousesIDs: [ID] = []
     var myParentsIDs: [ID] = []
+    
+    //******************************
+    var myGrandparentsIDs: [ID] = []
+    
     var myChildrenIDs: [ID] = []
     var mySiblingsIDs: [ID] = []
     var fatherSiblingsIDs: [ID] = []
