@@ -20,6 +20,7 @@ class Human {
     var dob : String?
     var race : String?
     var processed: Bool = false
+    var showDiseaseInfo: Bool = false
     var spouses: [ID] = []
     var parents: [ID] = []
     var children: [ID] = []
@@ -32,20 +33,22 @@ class Human {
         self.gender = gender
     }
     
-    convenience init(id: ID, dictionary: NSDictionary) {
+    convenience init(dictionary: NSDictionary) {
         
         self.init(name: (dictionary[JsonKeys.name.rawValue] as? String)!,
                   id: (dictionary[JsonKeys.id.rawValue] as? String)!,
                   patientID: (dictionary[JsonKeys.patientID.rawValue] as? String)!,
                   gender: (dictionary[JsonKeys.gender.rawValue] as? String)!)
+        
         self.dob = dictionary[JsonKeys.dob.rawValue] as? String
         self.race = dictionary[JsonKeys.race.rawValue] as? String
+        self.showDiseaseInfo = dictionary[JsonKeys.showDiseaseInfo.rawValue] as! Bool
         
         let parentsParsed = dictionary[JsonKeys.parents.rawValue] as! NSArray
         for parent in parentsParsed {
             if let parent = parent as? NSDictionary,
                 let parentID = parent[JsonKeys.id.rawValue] as? ID {
-                self.parents.append(parentID)
+                parents.append(parentID)
             }
         }
         
@@ -80,7 +83,7 @@ class Human {
         var models:[Human] = []
         for item in array
         {
-            models.append(Human(id: "", dictionary: item as! NSDictionary))
+            models.append(Human(dictionary: item as! NSDictionary))
         }
         return models
     }
