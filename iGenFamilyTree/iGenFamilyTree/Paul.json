@@ -81,7 +81,7 @@
             "id": "id7",
             "parents": [],
             "patientID": "id2",
-            "siblings": [{ "id" : "id11" }],
+            "siblings": [{ "id" : "id11" }, { "id" : "id14" }, { "id" : "id15" }, { "id" : "id16" }, { "id" : "id17" }],
             "children": [{ "id" : "id5" }, { "id" : "id2"}, { "id" : "id6"}]
         },
         "id8":{
@@ -129,7 +129,7 @@
             "id": "id11",
             "patientID": "id2",
             "parents": [],
-            "siblings": [{ "id" : "id7" }],
+            "siblings": [{ "id" : "id7" }, { "id" : "id14" }, { "id" : "id15" }, { "id" : "id16" }, { "id" : "id17" }],
             "children": []
         },
         "id12":{
@@ -155,6 +155,54 @@
             "parents": [ { "id" : "id2" }, { "id" : "id4"} ],
             "siblings": [{ "id" : "id1" }, { "id" : "id3" }, { "id" : "id12" }],
             "children": []
+        },
+        "id14":{
+            "name": "Tankie",
+            "dob": "1958",
+            "race": "white",
+            "gender": "male",
+            "spouses": [{ "id" : "id8" }],
+            "id": "id7",
+            "parents": [],
+            "patientID": "id2",
+            "siblings": [{ "id" : "id11" }, { "id" : "id7" }, { "id" : "id15" }, { "id" : "id16" }, { "id" : "id17" }],
+            "children": [{ "id" : "id5" }, { "id" : "id2"}, { "id" : "id6"}]
+        },
+        "id15":{
+            "name": "Henkie",
+            "dob": "1958",
+            "race": "white",
+            "gender": "male",
+            "spouses": [{ "id" : "id8" }],
+            "id": "id7",
+            "parents": [],
+            "patientID": "id2",
+            "siblings": [{ "id" : "id11" }, { "id" : "id14" }, { "id" : "id17" }, { "id" : "id16" }, { "id" : "id17" }],
+            "children": [{ "id" : "id5" }, { "id" : "id2"}, { "id" : "id6"}]
+        },
+        "id16":{
+            "name": "Hannah",
+            "dob": "1958",
+            "race": "white",
+            "gender": "female",
+            "spouses": [{ "id" : "id8" }],
+            "id": "id7",
+            "parents": [],
+            "patientID": "id2",
+            "siblings": [{ "id" : "id11" }, { "id" : "id14" }, { "id" : "id15" }, { "id" : "id7" }, { "id" : "id17" }],
+            "children": [{ "id" : "id5" }, { "id" : "id2"}, { "id" : "id6"}]
+        },
+        "id17":{
+            "name": "Harriette",
+            "dob": "1958",
+            "race": "white",
+            "gender": "female",
+            "spouses": [{ "id" : "id8" }],
+            "id": "id7",
+            "parents": [],
+            "patientID": "id2",
+            "siblings": [{ "id" : "id11" }, { "id" : "id14" }, { "id" : "id15" }, { "id" : "id16" }, { "id" : "id7" }],
+            "children": [{ "id" : "id5" }, { "id" : "id2"}, { "id" : "id6"}]
         },
     }
 }
