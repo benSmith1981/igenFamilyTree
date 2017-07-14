@@ -10,7 +10,7 @@
             "showDiseaseInfo": true,
             "spouses": [],
             "parents": [ { "id" : "id2" }, { "id" : "id3"} ],
-            "siblings": [{ "id" : "id4" }],
+            "siblings": [],
             "children": []
         },
         "id2":{
@@ -24,7 +24,7 @@
             "spouses": [{ "id" : "id3" }],
             "parents": [{ "id" : "id5" }, { "id" : "id6" }],
             "siblings": [],
-            "children": [{ "id" : "id1" }, { "id" : "id4" }]
+            "children": [{ "id" : "id1" }]
         },
         "id5":{
             "name": "Grandad",
@@ -63,7 +63,7 @@
             "spouses": [ { "id" : "id2" }],
             "parents": [],
             "siblings": [],
-            "children": [{ "id" : "id1" }, { "id" : "id4" }]
+            "children": [{ "id" : "id1" }]
         },
         "id4":{
             "name": "Ben",

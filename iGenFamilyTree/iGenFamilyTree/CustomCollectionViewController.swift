@@ -40,8 +40,11 @@ class CustomCollectionViewController: UICollectionViewController {
         // self.clearsSelectionOnViewWillAppear = false
         // Do any additional setup after loading the view.
         
+        //collectionView?.minimumZoomScale = 0.25
+        //collectionView?.maximumZoomScale = 4.0
         
         configureCollectionView()
+        
         
         
     }
@@ -107,8 +110,10 @@ class CustomCollectionViewController: UICollectionViewController {
             let currentHuman = familyTreeGenerator?.familyTree[cellContent.getID()]
             print(currentHuman?.name)
             cell.bgImg.image = cellContent.switchBG()
+            cell.genderImg.image = cellContent.showGender()
             cell.patientName.text = currentHuman?.name
             cell.patientAge.text = currentHuman?.dob
+            
         }
         
         return cell

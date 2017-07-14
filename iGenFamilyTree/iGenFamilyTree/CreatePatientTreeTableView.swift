@@ -58,8 +58,6 @@ struct Answers {
     var sistersOfFather: Int = 0
 }
 
-
-
 class TableViewController: UITableViewController, SetNumberOfFamilyMembers {
     var answers = Answers()
     var familyTreeGenerator = FamilyTreeGenerator.init(familyTree: [:])
@@ -99,6 +97,12 @@ class TableViewController: UITableViewController, SetNumberOfFamilyMembers {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        answers = Answers()
+
+        familyTreeGenerator =  FamilyTreeGenerator.init(familyTree: [:])
+    }
     
     @IBAction func generateTree(_ sender: UIBarButtonItem) {
         // create empty Humans
