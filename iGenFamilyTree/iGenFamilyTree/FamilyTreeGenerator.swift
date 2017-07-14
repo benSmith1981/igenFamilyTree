@@ -173,6 +173,7 @@ class FamilyTreeGenerator {
             var uneven = col - 1
             
             if patient.fatherSiblingsIDs.count % 2 != 0 {
+                model?.cell?[row - 1][uneven] = cellState.straightHorizontal
                 uneven = col - 2
             }
             
@@ -220,6 +221,7 @@ class FamilyTreeGenerator {
             var uneven = col
             
             if patient.motherSiblingsIDs.count % 2 != 0 {
+                model?.cell?[row - 1][uneven] = cellState.straightHorizontal
                 uneven = col + 1
             }
             
