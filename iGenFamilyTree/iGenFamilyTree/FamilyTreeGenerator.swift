@@ -3,11 +3,16 @@ import Foundation
 class FamilyTreeGenerator {
     var patient: Patient = Patient(id: "")
     var familyTree: [ID: Human] = [:]
+    var diseases: [ID: Disease] = [:]
     var model: Model?
     
     init(familyTree: [ID: Human]) {
         self.familyTree = familyTree
         self.model = Model.init()
+    }
+    
+    init(diseases: [ID: Disease]) {
+        self.diseases = diseases
     }
     
     //  functions for populating the Patient structure by calling function traverseTreeFor,
@@ -24,7 +29,7 @@ class FamilyTreeGenerator {
         print("maxLevel=", model?.maxLevel)
         print("")
     }
-
+    
     func traverseTreeFor(_ id: ID, _ level: Int) {
         if familyTree[id]!.processed == false {
             familyTree[id]!.processed = true
@@ -237,24 +242,24 @@ class FamilyTreeGenerator {
         
         func drawPatient() {
             if let patientID = patient.id {
+                
+                if familyTree[patientID]?.gender == JsonKeys.male.rawValue {
                     
-                    if familyTree[patientID]?.gender == JsonKeys.male.rawValue {
-                        
-                        if patient.mySpousesIDs.count > 0 {
-                            model?.cell?[row][col] = cellState.malePatient(id: patientID)
-                        } else {
-                            model?.cell?[row][col] = cellState.brother(id: patientID)
-                        }
+                    if patient.mySpousesIDs.count > 0 {
+                        model?.cell?[row][col] = cellState.malePatient(id: patientID)
+                    } else {
+                        model?.cell?[row][col] = cellState.brother(id: patientID)
                     }
+                }
+                
+                if familyTree[patientID]?.gender != JsonKeys.male.rawValue {
                     
-                    if familyTree[patientID]?.gender != JsonKeys.male.rawValue {
-                        
-                        if patient.mySpousesIDs.count > 0 {
-                            model?.cell?[row][col] = cellState.femalePatient(id: patientID)
-                        } else {
-                            model?.cell?[row][col] = cellState.sister(id: patientID)
-                        }
+                    if patient.mySpousesIDs.count > 0 {
+                        model?.cell?[row][col] = cellState.femalePatient(id: patientID)
+                    } else {
+                        model?.cell?[row][col] = cellState.sister(id: patientID)
                     }
+                }
             }
         }
         
