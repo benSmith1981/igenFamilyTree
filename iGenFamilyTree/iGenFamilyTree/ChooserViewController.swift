@@ -48,6 +48,7 @@ class ChooserViewController: UIViewController {
     @IBAction func buttonTon(_ sender: UIButton) {
         familyJsonToLoad = "Ton"
         self.performSegue(withIdentifier: Segues.familytreeSegue.rawValue, sender: self)
+//        iGenDataService.parseiGenDiseaseData(jsonName: "disease1")
     }
     
     @IBAction func buttonNieuwePatient(_ sender: UIButton) {

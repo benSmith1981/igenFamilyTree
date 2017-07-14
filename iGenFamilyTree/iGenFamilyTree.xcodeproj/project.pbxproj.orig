@@ -7,10 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		681222811F0E6BB700FA291C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6812227F1F0E6BB700FA291C /* Localizable.strings */; };
+		681222871F0E6BBE00FA291C /* LaunchScreen.strings in Resources */ = {isa = PBXBuildFile; fileRef = 681222831F0E6BBE00FA291C /* LaunchScreen.strings */; };
+		681222881F0E6BBF00FA291C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 681222851F0E6BBE00FA291C /* Localizable.strings */; };
 		68AEA8CD1F0D4B34007E5E08 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68AEA8CC1F0D4B33007E5E08 /* Main.storyboard */; };
-		68AEA8D11F0D4B69007E5E08 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68AEA8CE1F0D4B69007E5E08 /* TableViewCell.swift */; };
-		68AEA8D21F0D4B69007E5E08 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68AEA8CF1F0D4B69007E5E08 /* TableViewCell.xib */; };
-		68AEA8D31F0D4B69007E5E08 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68AEA8D01F0D4B69007E5E08 /* TableViewController.swift */; };
+		68AEA8D11F0D4B69007E5E08 /* CreatePatientTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68AEA8CE1F0D4B69007E5E08 /* CreatePatientTree.swift */; };
+		68AEA8D21F0D4B69007E5E08 /* CreatePatientTree.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68AEA8CF1F0D4B69007E5E08 /* CreatePatientTree.xib */; };
+		68AEA8D31F0D4B69007E5E08 /* CreatePatientTreeTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68AEA8D01F0D4B69007E5E08 /* CreatePatientTreeTableView.swift */; };
 		68AEA8D51F0D4B73007E5E08 /* JSONserialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68AEA8D41F0D4B73007E5E08 /* JSONserialization.swift */; };
 		68F4CAC21F0699790036946B /* iGenDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F4CAC11F0699790036946B /* iGenDataService.swift */; };
 		68F4CAC41F0699840036946B /* iGen.json in Resources */ = {isa = PBXBuildFile; fileRef = 68F4CAC31F0699840036946B /* iGen.json */; };
@@ -32,8 +35,16 @@
 		CFCFA7C11F0B960E00BC05E5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCFA7C01F0B960E00BC05E5 /* Constants.swift */; };
 		CFCFA7C31F0D163700BC05E5 /* Paul.json in Resources */ = {isa = PBXBuildFile; fileRef = CFCFA7C21F0D163700BC05E5 /* Paul.json */; };
 		CFCFA7C51F0D24DF00BC05E5 /* CellStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCFA7C41F0D24DF00BC05E5 /* CellStates.swift */; };
+<<<<<<< HEAD
+		CFCFA7C71F13BA8C00BC05E5 /* Ton.json in Resources */ = {isa = PBXBuildFile; fileRef = CFCFA7C61F13BA8C00BC05E5 /* Ton.json */; };
+		CFCFA7C91F151FD900BC05E5 /* testfile.json in Resources */ = {isa = PBXBuildFile; fileRef = CFCFA7C81F151FD900BC05E5 /* testfile.json */; };
+=======
+		E611F2EC1F178F3B00C6C57E /* loadDiseases.swift in Sources */ = {isa = PBXBuildFile; fileRef = E611F2EB1F178F3B00C6C57E /* loadDiseases.swift */; };
+>>>>>>> develop
 		E626B3181F0D028B00125D85 /* ChooserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E626B3171F0D028B00125D85 /* ChooserViewController.swift */; };
 		E626B31A1F0E291100125D85 /* GenerateNewFamilyTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = E626B3191F0E291100125D85 /* GenerateNewFamilyTree.swift */; };
+		E6401D0F1F1636B500AB002E /* Disease.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6401D0E1F1636B500AB002E /* Disease.swift */; };
+		E6401D111F1672EC00AB002E /* disease1.json in Resources */ = {isa = PBXBuildFile; fileRef = E6401D101F1672EC00AB002E /* disease1.json */; };
 		E6644EAD1F052CA600C66427 /* FamilyTreeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6644EAC1F052CA600C66427 /* FamilyTreeGenerator.swift */; };
 		E6644EB21F052D4800C66427 /* CustomCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6644EAE1F052D4800C66427 /* CustomCollectionViewController.swift */; };
 		E6644EB31F052D4800C66427 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6644EAF1F052D4800C66427 /* CustomCollectionViewCell.swift */; };
@@ -60,10 +71,13 @@
 /* Begin PBXFileReference section */
 		05146668421A3773640975C1 /* Pods_iGenFamilyTree.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iGenFamilyTree.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A3A17B3E3CD842580CECBAA /* Pods-iGenFamilyTree.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iGenFamilyTree.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iGenFamilyTree/Pods-iGenFamilyTree.debug.xcconfig"; sourceTree = "<group>"; };
+		681222801F0E6BB700FA291C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localizable.strings; sourceTree = "<group>"; };
+		681222841F0E6BBE00FA291C /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = LaunchScreen.strings; sourceTree = "<group>"; };
+		681222861F0E6BBE00FA291C /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = Localizable.strings; sourceTree = "<group>"; };
 		68AEA8CC1F0D4B33007E5E08 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		68AEA8CE1F0D4B69007E5E08 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
-		68AEA8CF1F0D4B69007E5E08 /* TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
-		68AEA8D01F0D4B69007E5E08 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		68AEA8CE1F0D4B69007E5E08 /* CreatePatientTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePatientTree.swift; sourceTree = "<group>"; };
+		68AEA8CF1F0D4B69007E5E08 /* CreatePatientTree.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreatePatientTree.xib; sourceTree = "<group>"; };
+		68AEA8D01F0D4B69007E5E08 /* CreatePatientTreeTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePatientTreeTableView.swift; sourceTree = "<group>"; };
 		68AEA8D41F0D4B73007E5E08 /* JSONserialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONserialization.swift; sourceTree = "<group>"; };
 		68F4CAC11F0699790036946B /* iGenDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iGenDataService.swift; sourceTree = "<group>"; };
 		68F4CAC31F0699840036946B /* iGen.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = iGen.json; sourceTree = "<group>"; };
@@ -91,8 +105,16 @@
 		CFCFA7C01F0B960E00BC05E5 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		CFCFA7C21F0D163700BC05E5 /* Paul.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Paul.json; sourceTree = "<group>"; };
 		CFCFA7C41F0D24DF00BC05E5 /* CellStates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellStates.swift; sourceTree = "<group>"; };
+<<<<<<< HEAD
+		CFCFA7C61F13BA8C00BC05E5 /* Ton.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Ton.json; sourceTree = "<group>"; };
+		CFCFA7C81F151FD900BC05E5 /* testfile.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = testfile.json; sourceTree = "<group>"; };
+=======
+		E611F2EB1F178F3B00C6C57E /* loadDiseases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = loadDiseases.swift; sourceTree = "<group>"; };
+>>>>>>> develop
 		E626B3171F0D028B00125D85 /* ChooserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooserViewController.swift; sourceTree = "<group>"; };
 		E626B3191F0E291100125D85 /* GenerateNewFamilyTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateNewFamilyTree.swift; sourceTree = "<group>"; };
+		E6401D0E1F1636B500AB002E /* Disease.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Disease.swift; sourceTree = "<group>"; };
+		E6401D101F1672EC00AB002E /* disease1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = disease1.json; sourceTree = "<group>"; };
 		E6644EAC1F052CA600C66427 /* FamilyTreeGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FamilyTreeGenerator.swift; sourceTree = "<group>"; };
 		E6644EAE1F052D4800C66427 /* CustomCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewController.swift; sourceTree = "<group>"; };
 		E6644EAF1F052D4800C66427 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -125,18 +147,53 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6812227D1F0E6B9000FA291C /* localizedStrings */ = {
+			isa = PBXGroup;
+			children = (
+				681222821F0E6BBE00FA291C /* nl.lproj */,
+				6812227E1F0E6BB700FA291C /* en.lproj */,
+			);
+			name = localizedStrings;
+			sourceTree = "<group>";
+		};
+		6812227E1F0E6BB700FA291C /* en.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				6812227F1F0E6BB700FA291C /* Localizable.strings */,
+			);
+			path = en.lproj;
+			sourceTree = "<group>";
+		};
+		681222821F0E6BBE00FA291C /* nl.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				681222831F0E6BBE00FA291C /* LaunchScreen.strings */,
+				681222851F0E6BBE00FA291C /* Localizable.strings */,
+			);
+			path = nl.lproj;
+			sourceTree = "<group>";
+		};
+		681222891F0F7B4100FA291C /* NewPatient */ = {
+			isa = PBXGroup;
+			children = (
+				68AEA8CE1F0D4B69007E5E08 /* CreatePatientTree.swift */,
+				68AEA8CF1F0D4B69007E5E08 /* CreatePatientTree.xib */,
+				68AEA8D01F0D4B69007E5E08 /* CreatePatientTreeTableView.swift */,
+			);
+			name = NewPatient;
+			sourceTree = "<group>";
+		};
 		B51B62CA1F0A261100AB11CC /* DrawFamilyTree */ = {
 			isa = PBXGroup;
 			children = (
 				E6644EAC1F052CA600C66427 /* FamilyTreeGenerator.swift */,
-<<<<<<< HEAD
 				E626B3191F0E291100125D85 /* GenerateNewFamilyTree.swift */,
-=======
-				CFCFA7C41F0D24DF00BC05E5 /* CellStates.swift */,
->>>>>>> develop
+				E611F2EB1F178F3B00C6C57E /* loadDiseases.swift */,
 				B51B62C21F0A23D400AB11CC /* Human.swift */,
+				E6401D0E1F1636B500AB002E /* Disease.swift */,
 				B51B62C41F0A244400AB11CC /* Patient.swift */,
 				B51B62C61F0A246500AB11CC /* Model.swift */,
+				CFCFA7C41F0D24DF00BC05E5 /* CellStates.swift */,
 				B51B62C81F0A258F00AB11CC /* FamilyTreeTests.swift */,
 			);
 			name = DrawFamilyTree;
@@ -168,18 +225,17 @@
 			isa = PBXGroup;
 			children = (
 				68AEA8D41F0D4B73007E5E08 /* JSONserialization.swift */,
-				68AEA8CE1F0D4B69007E5E08 /* TableViewCell.swift */,
-				68AEA8CF1F0D4B69007E5E08 /* TableViewCell.xib */,
-				68AEA8D01F0D4B69007E5E08 /* TableViewController.swift */,
+				681222891F0F7B4100FA291C /* NewPatient */,
 				B51B62CA1F0A261100AB11CC /* DrawFamilyTree */,
 				E6644EAE1F052D4800C66427 /* CustomCollectionViewController.swift */,
 				E6644EAF1F052D4800C66427 /* CustomCollectionViewCell.swift */,
+				E6644EB01F052D4800C66427 /* CustomCollectionViewLayout.swift */,
 				CFCFA7BA1F0A9FA800BC05E5 /* iGenCell.swift */,
 				CFCFA7BB1F0A9FA800BC05E5 /* iGenCell.xib */,
-				E6644EB01F052D4800C66427 /* CustomCollectionViewLayout.swift */,
 				E626B3171F0D028B00125D85 /* ChooserViewController.swift */,
 				B5EAC17B1F01390800151D52 /* AppDelegate.swift */,
 				68AEA8CC1F0D4B33007E5E08 /* Main.storyboard */,
+				6812227D1F0E6B9000FA291C /* localizedStrings */,
 				CF703FF71F02516200FEB1C5 /* dataObjects */,
 				B5EAC1851F01390800151D52 /* Assets.xcassets */,
 				B5EAC1871F01390800151D52 /* LaunchScreen.storyboard */,
@@ -222,8 +278,11 @@
 			children = (
 				B5E0B64E1F0D4A28001A6CAE /* smith.json */,
 				68F4CAC31F0699840036946B /* iGen.json */,
+				CFCFA7C61F13BA8C00BC05E5 /* Ton.json */,
 				CFCFA7C21F0D163700BC05E5 /* Paul.json */,
+				CFCFA7C81F151FD900BC05E5 /* testfile.json */,
 				68F4CAC11F0699790036946B /* iGenDataService.swift */,
+				E6401D101F1672EC00AB002E /* disease1.json */,
 			);
 			name = dataObjects;
 			sourceTree = "<group>";
@@ -332,6 +391,7 @@
 			knownRegions = (
 				en,
 				Base,
+				nl,
 			);
 			mainGroup = B5EAC16F1F01390800151D52;
 			productRefGroup = B5EAC1791F01390800151D52 /* Products */;
@@ -350,12 +410,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFCFA7C71F13BA8C00BC05E5 /* Ton.json in Resources */,
+				CFCFA7C91F151FD900BC05E5 /* testfile.json in Resources */,
 				68AEA8CD1F0D4B34007E5E08 /* Main.storyboard in Resources */,
 				CFCFA7BD1F0A9FA800BC05E5 /* iGenCell.xib in Resources */,
+				681222881F0E6BBF00FA291C /* Localizable.strings in Resources */,
 				CFCFA7C31F0D163700BC05E5 /* Paul.json in Resources */,
+				E6401D111F1672EC00AB002E /* disease1.json in Resources */,
+				681222871F0E6BBE00FA291C /* LaunchScreen.strings in Resources */,
 				B5E0B64F1F0D4A28001A6CAE /* smith.json in Resources */,
+				681222811F0E6BB700FA291C /* Localizable.strings in Resources */,
 				68F4CAC41F0699840036946B /* iGen.json in Resources */,
-				68AEA8D21F0D4B69007E5E08 /* TableViewCell.xib in Resources */,
+				68AEA8D21F0D4B69007E5E08 /* CreatePatientTree.xib in Resources */,
 				B5EAC1891F01390800151D52 /* LaunchScreen.storyboard in Resources */,
 				B5EAC1861F01390800151D52 /* Assets.xcassets in Resources */,
 			);
@@ -430,6 +496,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6401D0F1F1636B500AB002E /* Disease.swift in Sources */,
 				E626B3181F0D028B00125D85 /* ChooserViewController.swift in Sources */,
 				CFCFA7BC1F0A9FA800BC05E5 /* iGenCell.swift in Sources */,
 				E6644EB31F052D4800C66427 /* CustomCollectionViewCell.swift in Sources */,
@@ -438,16 +505,17 @@
 				68AEA8D51F0D4B73007E5E08 /* JSONserialization.swift in Sources */,
 				E6644EB21F052D4800C66427 /* CustomCollectionViewController.swift in Sources */,
 				B51B62C31F0A23D400AB11CC /* Human.swift in Sources */,
-				68AEA8D31F0D4B69007E5E08 /* TableViewController.swift in Sources */,
+				68AEA8D31F0D4B69007E5E08 /* CreatePatientTreeTableView.swift in Sources */,
 				B51B62C71F0A246500AB11CC /* Model.swift in Sources */,
 				B5EAC17C1F01390800151D52 /* AppDelegate.swift in Sources */,
 				CFCFA7C51F0D24DF00BC05E5 /* CellStates.swift in Sources */,
 				68F4CAC21F0699790036946B /* iGenDataService.swift in Sources */,
 				E626B31A1F0E291100125D85 /* GenerateNewFamilyTree.swift in Sources */,
 				B51B62CE1F0CCB1000AB11CC /* UIImageExtension.swift in Sources */,
+				E611F2EC1F178F3B00C6C57E /* loadDiseases.swift in Sources */,
 				B5EAC1841F01390800151D52 /* iGenFamilyTree.xcdatamodeld in Sources */,
 				CFCFA7C11F0B960E00BC05E5 /* Constants.swift in Sources */,
-				68AEA8D11F0D4B69007E5E08 /* TableViewCell.swift in Sources */,
+				68AEA8D11F0D4B69007E5E08 /* CreatePatientTree.swift in Sources */,
 				B51B62C91F0A258F00AB11CC /* FamilyTreeTests.swift in Sources */,
 				E6644EB41F052D4800C66427 /* CustomCollectionViewLayout.swift in Sources */,
 			);
@@ -485,6 +553,30 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		6812227F1F0E6BB700FA291C /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				681222801F0E6BB700FA291C /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		681222831F0E6BBE00FA291C /* LaunchScreen.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				681222841F0E6BBE00FA291C /* nl */,
+			);
+			name = LaunchScreen.strings;
+			sourceTree = "<group>";
+		};
+		681222851F0E6BBE00FA291C /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				681222861F0E6BBE00FA291C /* nl */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		B5EAC1871F01390800151D52 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -605,7 +697,7 @@
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -622,7 +714,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

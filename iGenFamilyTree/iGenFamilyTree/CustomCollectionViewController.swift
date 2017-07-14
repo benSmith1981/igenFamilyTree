@@ -20,6 +20,12 @@ class CustomCollectionViewController: UICollectionViewController {
                                                name:  NSNotification.Name(rawValue: NotificationIDs.iGenData.rawValue ),
                                                object: nil)
         
+        //        iGenDataService.parseiGenDiseaseData()
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(CustomCollectionViewController.notifyObserverDisease),
+                                               name:  NSNotification.Name(rawValue: NotificationIDs.iGenDiseaseData.rawValue ),
+                                               object: nil)
+
         // segue from TableViewController
         // familyTreeGenerator will be nil if entered via iGenDataService
         // extract patientID from the first Human for function MakeTreeFor
@@ -55,7 +61,11 @@ class CustomCollectionViewController: UICollectionViewController {
     func notifyObservers(notification: NSNotification) {
         let familyDict: [ID: Human] = notification.userInfo as! [ID : Human]
         familyTreeGenerator = FamilyTreeGenerator.init(familyTree: familyDict)
-        //        extract patientID from the first Human for function MakeTreeFor
+        
+        // load the diseases
+        familyTreeGenerator?.loadDiseases()
+        
+        // extract patientID from the first Human for function MakeTreeFor
         if let firstKey = familyTreeGenerator?.familyTree.first?.key,
             let patientID = familyTreeGenerator?.familyTree[firstKey]?.patientID {
             familyTreeGenerator?.makeTreeFor(patientID)
@@ -63,10 +73,18 @@ class CustomCollectionViewController: UICollectionViewController {
         } else {
             fatalError("Family tree not complete")
         }
-        
         self.collectionView?.reloadData()
-        
-        print("notify observer \(familyDict)")
+        print("notify observer humans\(familyDict)")
+    }
+    
+    func notifyObserverDisease(notification: NSNotification) {
+        let diseaseDict = notification.userInfo as! [ID : Disease]
+        // there is always exactly 1 disease notified
+        let diseaseKey = diseaseDict.first?.key
+        let diseaseValue = diseaseDict.first?.value
+        familyTreeGenerator?.diseases[diseaseKey!] = diseaseValue
+        self.collectionView?.reloadData()
+        print("notify observer disease \(diseaseDict)")
     }
     
     override func didReceiveMemoryWarning() {
@@ -79,7 +97,6 @@ class CustomCollectionViewController: UICollectionViewController {
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return Constants.gridSize
     }
-    
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return Constants.gridSize

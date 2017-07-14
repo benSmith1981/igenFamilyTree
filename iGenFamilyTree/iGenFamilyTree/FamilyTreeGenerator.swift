@@ -3,11 +3,16 @@ import Foundation
 class FamilyTreeGenerator {
     var patient: Patient = Patient(id: "")
     var familyTree: [ID: Human] = [:]
+    var diseases: [ID: Disease] = [:]
     var model: Model?
     
     init(familyTree: [ID: Human]) {
         self.familyTree = familyTree
         self.model = Model.init()
+    }
+    
+    init(diseases: [ID: Disease]) {
+        self.diseases = diseases
     }
     
     //  functions for populating the Patient structure by calling function traverseTreeFor,
