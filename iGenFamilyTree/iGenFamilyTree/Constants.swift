@@ -22,11 +22,19 @@ enum JsonKeys: String {
     case dob
     case race
     case processed
+    case showDiseaseInfo
     case spouses
     case parents
     case grandparents
     case children
     case siblings
+    case humanID
+    case diseaseList
+    case canEditList
+    case editInfoID
+    case editInfoTimestamp
+    case editInfoField
+    case deleted
 }
 
 enum Segues: String {
@@ -46,4 +54,5 @@ enum CustomCellNames: String {
 
 enum NotificationIDs: String {
     case iGenData
+    case iGenDiseaseData
 }

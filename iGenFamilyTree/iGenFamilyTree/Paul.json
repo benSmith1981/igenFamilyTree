@@ -8,6 +8,7 @@
             "spouses": [],
             "patientID": "id2",
             "id": "id1",
+            "showDiseaseInfo": true,
             "parents": [ { "id" : "id2" }, { "id" : "id4"} ],
             "siblings": [{ "id" : "id3" }],
             "children": []
@@ -20,6 +21,7 @@
             "spouses": [{ "id" : "id4" }],
             "patientID": "id2",
             "id": "id2",
+            "showDiseaseInfo": true,
             "parents": [{ "id" : "id7" }, { "id" : "id8" }],
             "siblings": [{ "id" : "id5" }, { "id" : "id6" }],
             "children": [{ "id" : "id1" }, { "id" : "id3" }]
@@ -32,6 +34,7 @@
             "spouses": [],
             "patientID": "id2",
             "id": "id3",
+            "showDiseaseInfo": false,
             "parents": [ { "id" : "id2" }, { "id" : "id4"} ],
             "siblings": [{ "id" : "id1" }],
             "children": []
@@ -44,6 +47,7 @@
             "spouses": [{ "id" : "id2" }],
             "patientID": "id2",
             "id": "id4",
+            "showDiseaseInfo": true,
             "parents": [],
             "siblings": [],
             "children": [{ "id" : "id1" }, { "id" : "id3"}]
@@ -56,6 +60,7 @@
             "spouses": [],
             "patientID": "id2",
             "id": "id5",
+            "showDiseaseInfo": false,
             "parents": [{ "id" : "id7" }, { "id" : "id8"}],
             "siblings": [{ "id" : "id6" }, { "id" : "id2"}],
             "children": []
@@ -68,6 +73,7 @@
             "spouses": [],
             "patientID": "id2",
             "id": "id6",
+            "showDiseaseInfo": false,
             "parents": [{ "id" : "id7" }, { "id" : "id8"}],
             "siblings": [{ "id" : "id5" }, { "id" : "id2"}],
             "children": []
@@ -77,10 +83,11 @@
             "dob": "1958",
             "race": "white",
             "gender": "male",
+            "showDiseaseInfo": false,
             "spouses": [{ "id" : "id8" }],
-            "parents": [],
             "patientID": "id2",
             "id": "id7",
+            "parents": [],
             "siblings": [{ "id" : "id11" }],
             "children": [{ "id" : "id5" }, { "id" : "id2"}, { "id" : "id6"}]
         },
@@ -92,6 +99,7 @@
             "spouses": [{ "id" : "id7" }],
             "patientID": "id2",
             "id": "id8",
+            "showDiseaseInfo": false,
             "parents": [],
             "siblings": [{ "id" : "id9" }, { "id" : "id10"}],
             "children": [{ "id" : "id5" }, { "id" : "id2"}, { "id" : "id6"}]
@@ -103,6 +111,7 @@
             "gender": "female",
             "spouses": [],
             "patientID": "id2",
+            "showDiseaseInfo": false,
             "id": "id9",
             "parents": [],
             "siblings": [{ "id" : "id8" }, { "id" : "id10"}],
@@ -116,6 +125,7 @@
             "spouses": [],
             "patientID": "id2",
             "id": "id10",
+            "showDiseaseInfo": false,
             "parents": [],
             "siblings": [{ "id" : "id9" }, { "id" : "id8"}],
             "children": []
@@ -128,6 +138,7 @@
             "spouses": [],
             "patientID": "id2",
             "id": "id11",
+            "showDiseaseInfo": false,
             "parents": [],
             "siblings": [{ "id" : "id7" }],
             "children": []
