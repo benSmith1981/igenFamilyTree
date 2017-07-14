@@ -172,7 +172,7 @@ class FamilyTreeGenerator {
         // SPACING , CONNECTORS & PLACEMENT COUNTER NEED TO BE SORTED OUT
         func addFatherSiblings() {
             
-            col = col + 1
+            //col = col + 1
             
             var even = col
             var uneven = col - 1
