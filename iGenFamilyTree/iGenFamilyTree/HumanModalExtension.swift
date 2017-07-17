@@ -34,82 +34,34 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
             imageCell.separatorInset.left = view.frame.width
             
             return imageCell
-            
-            /*
-            if let urlString = detailMovieObject?.poster {
-                let url = URL(string: urlString)
-                cell.fullImage.kf.setImage(with: url)
-            }
-            
-            if let ratings = self.detailMovieObject?.imdbRating {
-                cell.votes.text = "\(ratings)"
-            }
-            
-            if let urlString = detailMovieObject?.poster {
-                let url = URL(string: urlString)
-                cell.profileMovie.kf.setImage(with: url)
-            }
-            
-            //cell.isUserInteractionEnabled = false
-            cell.imdbIco.image = #imageLiteral(resourceName: "imdb-2-icon")
-            */
+
             
             
         case detailRows.nameRow.rawValue:
             
-            let imageCell = tableView.dequeueReusableCell(withIdentifier: "detailImageCellID", for: indexPath) as! DetailmageSliderCell
+            let nameCell = tableView.dequeueReusableCell(withIdentifier: "infoCellID", for: indexPath) as! InfoCell
             
-            imageCell.awakeFromNib()
-            //imageCell.siteDetail = siteDetailObject
-            imageCell.separatorInset.left = view.frame.width
+            nameCell.textLabel?.text = "Name"
             
-            return imageCell
-            /*
-            let cell = tableView.dequeueReusableCell(withIdentifier: "plotCellID", for: indexPath) as! PlotCell
-            cell.moviePlot.text = self.detailMovieObject?.plot
-            */
-            
+            return nameCell
             
             
         case detailRows.dobRow.rawValue:
             
-            let imageCell = tableView.dequeueReusableCell(withIdentifier: "detailImageCellID", for: indexPath) as! DetailmageSliderCell
+            let dateOfBirthCell = tableView.dequeueReusableCell(withIdentifier: "infoCellID", for: indexPath) as! InfoCell
             
-            imageCell.awakeFromNib()
-            //imageCell.siteDetail = siteDetailObject
-            imageCell.separatorInset.left = view.frame.width
+            dateOfBirthCell.textLabel?.text = "Date of Birth"
             
-            return imageCell
-            
-            /*
-            let cell = tableView.dequeueReusableCell(withIdentifier: "imdbCellID", for: indexPath) as! imdbCell
-            
-            if let votes = self.detailMovieObject?.imdbVotes {
-                cell.imdbVotes.text = "IMDb Votes: \(votes)"
-            }
-            */
-            
+            return dateOfBirthCell
             
             
         default:
             
-            
-            
             let infoCell = tableView.dequeueReusableCell(withIdentifier: "infoCellID", for: indexPath) as! InfoCell
             
-            infoCell.textLabel?.text = "Poep"
-            
-            //imageCell.awakeFromNib()
-            //imageCell.siteDetail = siteDetailObject
-            //imageCell.separatorInset.left = view.frame.width
+            infoCell.textLabel?.text = "Default cell"
             
             return infoCell
-            
-            /*
-            let cell = tableView.dequeueReusableCell(withIdentifier: "defaultCell", for: indexPath) as! DefaultDetailCell
-            //cell.moviePlot.text = ""
-            // cell.contentView.backgroundColor = UIColor(red: 245/256, green: 245/256, blue: 245/256, alpha: 0.66)
-            */
             
             
         }

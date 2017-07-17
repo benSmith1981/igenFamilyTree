@@ -124,19 +124,12 @@ class CustomCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-     //didTapImageView(<#T##tap: UITapGestureRecognizer##UITapGestureRecognizer#>)
+        let humanDetails = storyboard!.instantiateViewController(withIdentifier: "HumanModDetailID") as! HumanModalViewController
+        present(humanDetails, animated: true, completion: nil)
         
     }
     
-    func didTapImageView(_ tap: UITapGestureRecognizer) {
-        //selectedImage = tap.view as? UIImageView
-        
-        //let index = tap.view!.tag
-        //let selectedHerb = herbs[index]
-        
-        //present details view controller
-        let humanDetails = storyboard!.instantiateViewController(withIdentifier: "HumanModDetailID") as! HumanModalViewController
-        present(humanDetails, animated: true, completion: nil)
-    }
+    
+
     
 }

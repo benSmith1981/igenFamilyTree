@@ -53,7 +53,7 @@ class HumanModalViewController: UIViewController {
         
         modalTableView.layer.shadowColor = UIColor.black.cgColor
         modalTableView.layer.shadowOpacity = 0.15
-        modalTableView.layer.masksToBounds = false
+        modalTableView.layer.masksToBounds = true
         //modalTableView.layer.shadowOffset = CGSize(width: 0, height: 0)
         //modalTableView.layer.shouldRasterize = true
         
@@ -67,27 +67,22 @@ class HumanModalViewController: UIViewController {
         
         //ONLY NEEDED FOR ... ?
         //self.modalTableView.delegate = self
-        //ONLY NEEDED FOR COREDATA?
         //self.modalTableView.dataSource = self
         
+    }
+    @IBAction func didTapImageView(_ tap: UITapGestureRecognizer) {
+        //selectedImage = tap.view as? UIImageView
         
+        //let index = tap.view!.tag
+        //let selectedHerb = herbs[index]
         
-        
-        /*
-        let plotCell = UINib(nibName: "PlotCell", bundle: nil)
-        let imdbCell = UINib(nibName: "imdbCell", bundle:nil)
-        let defaultCell = UINib(nibName: "DefaultDetailCell", bundle:nil)
-        */
-        
-        /*
-        self.myTableView.register(imdbCell, forCellReuseIdentifier: "imdbCellID")
-        self.myTableView.register(plotCell, forCellReuseIdentifier: "plotCellID")
-        self.myTableView.register(defaultCell, forCellReuseIdentifier: "defaultCell")
-        */
-        
-        
+        //present details view controller
+        self.dismiss(animated: true, completion: nil)
     }
 
+    @IBAction func dismissView(_ sender: Any) {
+                self.dismiss(animated: true, completion: nil)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

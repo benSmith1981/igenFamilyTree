@@ -45,10 +45,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rFZ-rL-XFu">
-                                <rect key="frame" x="0.0" y="68" width="320" height="500"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yRv-2u-Nyi">
                                 <rect key="frame" x="36" y="104" width="248" height="424"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -57,16 +53,23 @@
                                     <outlet property="delegate" destination="GMi-IF-SsZ" id="aG0-cp-Sim"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hVp-Sf-ATZ">
+                                <rect key="frame" x="247" y="20" width="57" height="34"/>
+                                <state key="normal" title="CLOSE">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="dismissView:" destination="GMi-IF-SsZ" eventType="touchUpInside" id="VmQ-c3-R2d"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="rFZ-rL-XFu" firstAttribute="leading" secondItem="Yld-KI-i5a" secondAttribute="leading" id="3VX-7F-qDp"/>
+                            <constraint firstItem="hVp-Sf-ATZ" firstAttribute="trailing" secondItem="Yld-KI-i5a" secondAttribute="trailingMargin" id="CJb-gg-Kp1"/>
                             <constraint firstItem="yRv-2u-Nyi" firstAttribute="trailing" secondItem="Yld-KI-i5a" secondAttribute="trailingMargin" constant="-20" id="EKh-2c-cHw"/>
                             <constraint firstItem="yRv-2u-Nyi" firstAttribute="leading" secondItem="Yld-KI-i5a" secondAttribute="leadingMargin" constant="20" id="Y7E-tq-G4p"/>
                             <constraint firstItem="yRv-2u-Nyi" firstAttribute="top" secondItem="Q88-We-Oer" secondAttribute="bottom" constant="84" id="bme-Q8-yy2"/>
                             <constraint firstItem="OB4-SR-s14" firstAttribute="top" secondItem="yRv-2u-Nyi" secondAttribute="bottom" constant="40" id="g9H-mF-mzV"/>
-                            <constraint firstItem="rFZ-rL-XFu" firstAttribute="top" secondItem="Q88-We-Oer" secondAttribute="bottom" constant="48" id="i7w-by-8sp"/>
-                            <constraint firstAttribute="trailing" secondItem="rFZ-rL-XFu" secondAttribute="trailing" id="k3D-yi-0Zc"/>
-                            <constraint firstItem="OB4-SR-s14" firstAttribute="top" secondItem="rFZ-rL-XFu" secondAttribute="bottom" id="puQ-1v-Cdw"/>
+                            <constraint firstItem="hVp-Sf-ATZ" firstAttribute="top" secondItem="Q88-We-Oer" secondAttribute="bottom" id="pZ0-uP-z1L"/>
                         </constraints>
                     </view>
                     <connections>
@@ -74,6 +77,12 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rmf-WT-VA4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Ha9-MP-gG4">
+                    <connections>
+                        <action selector="didTapImageView:" destination="GMi-IF-SsZ" id="Ky4-XB-3HI"/>
+                        <outlet property="delegate" destination="GMi-IF-SsZ" id="K5n-cy-bkJ"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3952.5" y="1547.5352112676057"/>
         </scene>
