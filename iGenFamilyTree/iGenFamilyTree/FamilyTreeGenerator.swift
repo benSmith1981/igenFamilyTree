@@ -351,7 +351,7 @@ class FamilyTreeGenerator {
         func placementConnectorFatherGrandparents() {
             
             if patient.fatherSiblingsIDs.count == 0 {
-                placementCounter = 1
+                placementCounter = placementCounter + 1
             }
             
             for (index, id) in patient.fatherSiblingsIDs.enumerated() {
@@ -423,6 +423,7 @@ class FamilyTreeGenerator {
                 
                 if familyTree[id]!.gender == JsonKeys.male.rawValue {
                         model?.cell?[row][col + 1] = cellState.malePatient(id: id)
+                        model?.cell?[row - 1][col + 1] = cellState.cornerRightBottom
                     }
                 
                 if familyTree[id]!.gender != JsonKeys.male.rawValue {
