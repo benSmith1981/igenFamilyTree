@@ -173,7 +173,7 @@ class FamilyTreeGenerator {
         // SPACING , CONNECTORS & PLACEMENT COUNTER NEED TO BE SORTED OUT
         func addFatherSiblings() {
             
-            //col = col + 1
+            col = col + 1
             
             var even = col
             var uneven = col - 1
@@ -379,8 +379,13 @@ class FamilyTreeGenerator {
         }
         
         func motherGrandparentConnectors() {
-            if patient.myParentsIDs.count > 0 {   // >>>>>>>>>>>>>>>>>> NO GRAND PARENTS COUNTER YET FOR THIS COUNTER --
+            if patient.motherParentsIDs.count > 0 {
                 model?.cell?[row][col] = cellState.spouseConnector
+                
+                for id in patient.motherParentsIDs {
+                    model?.cell?[row][col + 1] = cellState.father(id: id)
+                    model?.cell?[row][col - 1] = cellState.mother(id: id)
+                }
                 
                 if patient.motherSiblingsIDs.count % 2 != 0 && patient.motherSiblingsIDs.count > 0 {
                     model?.cell?[row + 1][col] = cellState.twoChilderenConnector
@@ -393,8 +398,13 @@ class FamilyTreeGenerator {
         }
         
         func fatherGrandparentConnectors() {
-            if patient.myParentsIDs.count > 0 {   // >>>>>>>>>>>>>>>>>> NO GRAND PARENTS COUNTER YET FOR THIS COUNTER --
+            if patient.fatherParentsIDs.count > 0 {
                 model?.cell?[row][col] = cellState.spouseConnector
+                
+                for id in patient.fatherParentsIDs {
+                    model?.cell?[row][col + 1] = cellState.father(id: id)
+                    model?.cell?[row][col - 1] = cellState.mother(id: id)
+                }
                 
                 if patient.fatherSiblingsIDs.count % 2 != 0 && patient.fatherSiblingsIDs.count > 0 {
                     model?.cell?[row + 1][col] = cellState.twoChilderenConnector
@@ -533,7 +543,7 @@ class FamilyTreeGenerator {
             
             setDrawingPoints(rowX: -4, colY: placementCounter + 1) //11 set to middle of sibblings on grandparent row
             
-//          fatherGrandparentConnectors() // draw grandparent connectors
+            fatherGrandparentConnectors() // draw grandparent connectors
             
             setDrawingPoints(rowX: 0, colY: 0) // reset to patient position
             
@@ -549,7 +559,7 @@ class FamilyTreeGenerator {
             
             setDrawingPointsRelative(rowX: -2, colY: 0)
             
-//          motherGrandparentConnectors()
+            motherGrandparentConnectors()
             
             setDrawingPoints(rowX: 2, colY: -2) //13
             
