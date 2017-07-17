@@ -172,7 +172,7 @@ class FamilyTreeGenerator {
         // SPACING , CONNECTORS & PLACEMENT COUNTER NEED TO BE SORTED OUT
         func addFatherSiblings() {
             
-            //col = col + 1
+            col = col + 1
             
             var even = col
             var uneven = col - 1
@@ -528,6 +528,8 @@ class FamilyTreeGenerator {
             placementConnectorFatherGrandparents() // determine middle of father sibblings
             
             setDrawingPointsRelative(rowX: 0, colY: placementCounter) // set to middle of sibblings
+            
+//            model?.cell?[row - 2][col] = cellState.threeChilderenConnector
             
             addFatherSiblings() //10 draw sibblings
             

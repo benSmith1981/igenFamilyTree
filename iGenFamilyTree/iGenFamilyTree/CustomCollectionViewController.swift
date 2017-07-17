@@ -122,5 +122,7 @@ class CustomCollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDelegate
     
     
-    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "humanmodalview", sender: self)
+    }
 }

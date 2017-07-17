@@ -56,15 +56,15 @@ enum cellState {
             return #imageLiteral(resourceName: "paths-2-connect")
             
         case .motherWithSiblings:
-            return #imageLiteral(resourceName: "paths-2-connect").imageRotatedByDegrees(deg: 90)
+            return #imageLiteral(resourceName: "paths-2-mirror-connect")
         case .fatherWithSiblings:
             return #imageLiteral(resourceName: "paths-2-connect")
         
         
         case .maleSpouse, .femaleSpouse, .mother:
-            return #imageLiteral(resourceName: "paths-1-connect-down").imageRotatedByDegrees(deg: -90)
+            return #imageLiteral(resourceName: "paths-1-left-connect")
         case .father:
-            return #imageLiteral(resourceName: "paths-1-connect-down").imageRotatedByDegrees(deg: 90)
+            return #imageLiteral(resourceName: "paths-1-right-connect")
 
         case .spouseConnector:
             return #imageLiteral(resourceName: "paths-T-3-connectors")
