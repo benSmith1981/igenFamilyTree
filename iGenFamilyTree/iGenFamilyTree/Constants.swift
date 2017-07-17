@@ -25,6 +25,7 @@ enum JsonKeys: String {
     case showDiseaseInfo
     case spouses
     case parents
+    case grandparents
     case children
     case siblings
     case humanID

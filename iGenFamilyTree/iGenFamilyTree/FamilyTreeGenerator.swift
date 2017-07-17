@@ -11,26 +11,21 @@ class FamilyTreeGenerator {
         self.model = Model.init()
     }
     
-    init(diseases: [ID: Disease]) {
-        self.diseases = diseases
-    }
-    
     //  functions for populating the Patient structure by calling function traverseTreeFor,
     //  which is then again called recursively for every human
     //  it also calculates the minimum and maximum levels traversed
-    //  for processing siblings we need to test for siblings of the Patient or siblings of the father or mother of the Patient
     
-    func makeTreeFor(_ id: ID) {
+    public func makeTreeFor(_ id: ID) {
         self.patient = Patient.init(id: id)
-        let level = 1
+        let level = 2
         print("Family tree for", familyTree[id]!.name, "is on level", level)
         traverseTreeFor(id, level)
-        print("minLevel=", model?.minLevel)
-        print("maxLevel=", model?.maxLevel)
+        print("minLevel=", model!.minLevel)
+        print("maxLevel=", model!.maxLevel)
         print("")
     }
     
-    func traverseTreeFor(_ id: ID, _ level: Int) {
+    private func traverseTreeFor(_ id: ID, _ level: Int) {
         if familyTree[id]!.processed == false {
             familyTree[id]!.processed = true
             model?.maxLevel = max((model?.maxLevel)!, level)
@@ -40,7 +35,7 @@ class FamilyTreeGenerator {
                 for spouseID in familyTree[id]!.spouses {
                     print("spouse of", familyTree[id]!.name, "is", familyTree[spouseID]!.name, "on level", level)
                     if id == patient.id {
-                        patient.mySpousesIDs.append(spouseID)
+                        patient.mySpousesIDs.append(spouseID) // this is a spouse of the Patient
                     }
                     traverseTreeFor(spouseID, level)
                 }
@@ -50,7 +45,13 @@ class FamilyTreeGenerator {
                 for parentID in familyTree[id]!.parents {
                     print("parent of", familyTree[id]!.name, "is", familyTree[parentID]!.name, "on level", level - 1)
                     if id == patient.id {
-                        patient.myParentsIDs.append(parentID)
+                        patient.myParentsIDs.append(parentID) // this is a parent of the Patient
+                    } else if (familyTree[patient.id!]?.parents.contains(id))!{
+                        if familyTree[id]!.gender == JsonKeys.male.rawValue {
+                            patient.fatherParentsIDs.append(parentID) // this is a parent of the father of the Patient
+                        } else {
+                            patient.motherParentsIDs.append(parentID) // this is a parent of the mother of the Patient
+                        }
                     }
                     traverseTreeFor(parentID, level - 1)
                 }
@@ -60,7 +61,7 @@ class FamilyTreeGenerator {
                 for childID in familyTree[id]!.children {
                     print("child of", familyTree[id]!.name, "is", familyTree[childID]!.name, "on level", level + 1)
                     if id == patient.id {
-                        patient.myChildrenIDs.append(childID)
+                        patient.myChildrenIDs.append(childID) // this is a child of the Patient
                     }
                     traverseTreeFor(childID, level + 1)
                 }
@@ -71,12 +72,12 @@ class FamilyTreeGenerator {
                 for siblingID in familyTree[id]!.siblings {
                     print("sibling of", familyTree[id]!.name, "is", familyTree[siblingID]!.name, "on level", level)
                     if id == patient.id {
-                        patient.mySiblingsIDs.append(siblingID)
+                        patient.mySiblingsIDs.append(siblingID) // this is a sibling of the Patient
                     } else if (familyTree[patient.id!]?.parents.contains(id))!{
                         if familyTree[id]!.gender == JsonKeys.male.rawValue {
-                            patient.fatherSiblingsIDs.append(siblingID)
+                            patient.fatherSiblingsIDs.append(siblingID) // this is a sibling of the father of the Patient
                         } else {
-                            patient.motherSiblingsIDs.append(siblingID)
+                            patient.motherSiblingsIDs.append(siblingID) // this is a sibling of the mother of the Patient
                         }
                     }
                     traverseTreeFor(siblingID, level)
@@ -84,13 +85,13 @@ class FamilyTreeGenerator {
             }
             
             createSpouseArray()
-            
+        
             createParentArray()
             
             createChildArray()
             
             createSiblingArrays()
-            
+
         }
     }
     
@@ -172,7 +173,7 @@ class FamilyTreeGenerator {
         // SPACING , CONNECTORS & PLACEMENT COUNTER NEED TO BE SORTED OUT
         func addFatherSiblings() {
             
-            //col = col + 1
+            col = col + 1
             
             var even = col
             var uneven = col - 1
@@ -378,8 +379,13 @@ class FamilyTreeGenerator {
         }
         
         func motherGrandparentConnectors() {
-            if patient.myParentsIDs.count > 0 {   // >>>>>>>>>>>>>>>>>> NO GRAND PARENTS COUNTER YET FOR THIS COUNTER --
+            if patient.motherParentsIDs.count > 0 {
                 model?.cell?[row][col] = cellState.spouseConnector
+                
+                for id in patient.motherParentsIDs {
+                    model?.cell?[row][col + 1] = cellState.father(id: id)
+                    model?.cell?[row][col - 1] = cellState.mother(id: id)
+                }
                 
                 if patient.motherSiblingsIDs.count % 2 != 0 && patient.motherSiblingsIDs.count > 0 {
                     model?.cell?[row + 1][col] = cellState.twoChilderenConnector
@@ -392,8 +398,13 @@ class FamilyTreeGenerator {
         }
         
         func fatherGrandparentConnectors() {
-            if patient.myParentsIDs.count > 0 {   // >>>>>>>>>>>>>>>>>> NO GRAND PARENTS COUNTER YET FOR THIS COUNTER --
+            if patient.fatherParentsIDs.count > 0 {
                 model?.cell?[row][col] = cellState.spouseConnector
+                
+                for id in patient.fatherParentsIDs {
+                    model?.cell?[row][col + 1] = cellState.father(id: id)
+                    model?.cell?[row][col - 1] = cellState.mother(id: id)
+                }
                 
                 if patient.fatherSiblingsIDs.count % 2 != 0 && patient.fatherSiblingsIDs.count > 0 {
                     model?.cell?[row + 1][col] = cellState.twoChilderenConnector
@@ -406,7 +417,6 @@ class FamilyTreeGenerator {
         }
         
         func addParents(){
-            
             for id in patient.myParentsIDs {
                 
                 if familyTree[id]!.gender == JsonKeys.male.rawValue {
@@ -533,7 +543,7 @@ class FamilyTreeGenerator {
             
             setDrawingPoints(rowX: -4, colY: placementCounter + 1) //11 set to middle of sibblings on grandparent row
             
-//          fatherGrandparentConnectors() // draw grandparent connectors
+            fatherGrandparentConnectors() // draw grandparent connectors
             
             setDrawingPoints(rowX: 0, colY: 0) // reset to patient position
             
@@ -549,7 +559,7 @@ class FamilyTreeGenerator {
             
             setDrawingPointsRelative(rowX: -2, colY: 0)
             
-//          motherGrandparentConnectors()
+            motherGrandparentConnectors()
             
             setDrawingPoints(rowX: 2, colY: -2) //13
             
