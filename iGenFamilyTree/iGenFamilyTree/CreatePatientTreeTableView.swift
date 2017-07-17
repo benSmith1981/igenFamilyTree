@@ -56,10 +56,6 @@ struct Answers {
     var sistersOfMother: Int = 0
     var brothersOfFather: Int = 0
     var sistersOfFather: Int = 0
-    var grandfatherOfFather: Int = 0
-    var grandmotherOfFather: Int = 0
-    var grandfatherOfMother: Int = 0
-    var grandmotherOfMother: Int = 0
 }
 
 
@@ -106,11 +102,8 @@ class TableViewController: UITableViewController, SetNumberOfFamilyMembers {
     
     @IBAction func generateTree(_ sender: UIBarButtonItem) {
         // create empty Humans
-        // create all relationships for every human
-        
+        // create all relationships for every human        
         familyTreeGenerator.generateNewFamilyTree(with: answers)
-        familyTreeGenerator.printFamilyTree(familyTreeGenerator.familyTree)
-        
         self.performSegue(withIdentifier: Segues.familytreeSegue.rawValue, sender: self)
         
     }
