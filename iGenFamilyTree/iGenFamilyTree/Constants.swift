@@ -9,7 +9,7 @@
 import Foundation
 
 struct Constants {
-    static let gridSize = 20
+    static let gridSize = 30
 }
 
 enum JsonKeys: String {

@@ -10,7 +10,7 @@
             "id": "id1",
             "showDiseaseInfo": true,
             "parents": [ { "id" : "id2" }, { "id" : "id4"} ],
-            "siblings": [{ "id" : "id3" }],
+            "siblings": [{ "id" : "id3" }, { "id" : "id12" }, { "id" : "id13" }],
             "children": []
         },
         "id2":{
@@ -24,7 +24,7 @@
             "showDiseaseInfo": true,
             "parents": [{ "id" : "id7" }, { "id" : "id8" }],
             "siblings": [{ "id" : "id5" }, { "id" : "id6" }],
-            "children": [{ "id" : "id1" }, { "id" : "id3" }]
+            "children": [{ "id" : "id1" }, { "id" : "id3" }, { "id" : "id13" }, { "id" : "id12" }]
         },
         "id3":{
             "name": "Michiel",
@@ -36,7 +36,7 @@
             "id": "id3",
             "showDiseaseInfo": false,
             "parents": [ { "id" : "id2" }, { "id" : "id4"} ],
-            "siblings": [{ "id" : "id1" }],
+            "siblings": [{ "id" : "id1" }, { "id" : "id12" }, { "id" : "id13" }],
             "children": []
         },
         "id4":{
@@ -50,7 +50,7 @@
             "showDiseaseInfo": true,
             "parents": [],
             "siblings": [],
-            "children": [{ "id" : "id1" }, { "id" : "id3"}]
+            "children": [{ "id" : "id1" }, { "id" : "id3"}, { "id" : "id13" }, { "id" : "id12" }]
         },
         "id5":{
             "name": "Wim",
@@ -85,10 +85,10 @@
             "gender": "male",
             "showDiseaseInfo": false,
             "spouses": [{ "id" : "id8" }],
-            "patientID": "id2",
             "id": "id7",
             "parents": [],
-            "siblings": [{ "id" : "id11" }],
+            "patientID": "id2",
+            "siblings": [{ "id" : "id11" }, { "id" : "id14" }, { "id" : "id15" }, { "id" : "id16" }, { "id" : "id17" }],
             "children": [{ "id" : "id5" }, { "id" : "id2"}, { "id" : "id6"}]
         },
         "id8":{
@@ -140,8 +140,86 @@
             "id": "id11",
             "showDiseaseInfo": false,
             "parents": [],
-            "siblings": [{ "id" : "id7" }],
+            "siblings": [{ "id" : "id7" }, { "id" : "id14" }, { "id" : "id15" }, { "id" : "id16" }, { "id" : "id17" }],
             "children": []
+        },
+        "id12":{
+            "name": "Paul Bro",
+            "dob": "1990",
+            "race": "white",
+            "gender": "male",
+            "spouses": [],
+            "id": "id12",
+            "showDiseaseInfo": false,
+            "patientID": "id2",
+            "parents": [ { "id" : "id2" }, { "id" : "id4"} ],
+            "siblings": [{ "id" : "id1" }, { "id" : "id3" }, { "id" : "id13" }],
+            "children": []
+        },
+        "id13":{
+            "name": "Michiel Bro",
+            "dob": "1991",
+            "race": "white",
+            "gender": "male",
+            "spouses": [],
+            "id": "id13",
+            "showDiseaseInfo": false,
+            "patientID": "id2",
+            "parents": [ { "id" : "id2" }, { "id" : "id4"} ],
+            "siblings": [{ "id" : "id1" }, { "id" : "id3" }, { "id" : "id12" }],
+            "children": []
+        },
+        "id14":{
+            "name": "Tankie",
+            "dob": "1958",
+            "race": "white",
+            "gender": "male",
+            "spouses": [{ "id" : "id8" }],
+            "id": "id7",
+            "parents": [],
+            "showDiseaseInfo": false,
+            "patientID": "id2",
+            "siblings": [{ "id" : "id11" }, { "id" : "id7" }, { "id" : "id15" }, { "id" : "id16" }, { "id" : "id17" }],
+            "children": [{ "id" : "id5" }, { "id" : "id2"}, { "id" : "id6"}]
+        },
+        "id15":{
+            "name": "Henkie",
+            "dob": "1958",
+            "race": "white",
+            "gender": "male",
+            "spouses": [{ "id" : "id8" }],
+            "id": "id7",
+            "parents": [],
+            "showDiseaseInfo": false,
+            "patientID": "id2",
+            "siblings": [{ "id" : "id11" }, { "id" : "id14" }, { "id" : "id17" }, { "id" : "id16" }, { "id" : "id17" }],
+            "children": [{ "id" : "id5" }, { "id" : "id2"}, { "id" : "id6"}]
+        },
+        "id16":{
+            "name": "Hannah",
+            "dob": "1958",
+            "race": "white",
+            "gender": "female",
+            "spouses": [{ "id" : "id8" }],
+            "id": "id7",
+            "parents": [],
+            "showDiseaseInfo": false,
+            "patientID": "id2",
+            "siblings": [{ "id" : "id11" }, { "id" : "id14" }, { "id" : "id15" }, { "id" : "id7" }, { "id" : "id17" }],
+            "children": [{ "id" : "id5" }, { "id" : "id2"}, { "id" : "id6"}]
+        },
+        "id17":{
+            "name": "Harriette",
+            "dob": "1958",
+            "race": "white",
+            "gender": "female",
+            "spouses": [{ "id" : "id8" }],
+            "id": "id7",
+            "parents": [],
+            "showDiseaseInfo": false,
+            "patientID": "id2",
+            "siblings": [{ "id" : "id11" }, { "id" : "id14" }, { "id" : "id15" }, { "id" : "id16" }, { "id" : "id7" }],
+            "children": [{ "id" : "id5" }, { "id" : "id2"}, { "id" : "id6"}]
         },
     }
 }

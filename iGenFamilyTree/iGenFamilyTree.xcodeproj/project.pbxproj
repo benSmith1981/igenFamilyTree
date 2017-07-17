@@ -36,6 +36,8 @@
 		CFCFA7C31F0D163700BC05E5 /* Paul.json in Resources */ = {isa = PBXBuildFile; fileRef = CFCFA7C21F0D163700BC05E5 /* Paul.json */; };
 		CFCFA7C51F0D24DF00BC05E5 /* CellStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCFA7C41F0D24DF00BC05E5 /* CellStates.swift */; };
 		E611F2EC1F178F3B00C6C57E /* loadDiseases.swift in Sources */ = {isa = PBXBuildFile; fileRef = E611F2EB1F178F3B00C6C57E /* loadDiseases.swift */; };
+        CFCFA7C71F13BA8C00BC05E5 /* Ton.json in Resources */ = {isa = PBXBuildFile; fileRef = CFCFA7C61F13BA8C00BC05E5 /* Ton.json */; };
+		CFCFA7C91F151FD900BC05E5 /* testfile.json in Resources */ = {isa = PBXBuildFile; fileRef = CFCFA7C81F151FD900BC05E5 /* testfile.json */; };
 		E626B3181F0D028B00125D85 /* ChooserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E626B3171F0D028B00125D85 /* ChooserViewController.swift */; };
 		E626B31A1F0E291100125D85 /* GenerateNewFamilyTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = E626B3191F0E291100125D85 /* GenerateNewFamilyTree.swift */; };
 		E6401D0F1F1636B500AB002E /* Disease.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6401D0E1F1636B500AB002E /* Disease.swift */; };
@@ -101,6 +103,8 @@
 		CFCFA7C21F0D163700BC05E5 /* Paul.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Paul.json; sourceTree = "<group>"; };
 		CFCFA7C41F0D24DF00BC05E5 /* CellStates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellStates.swift; sourceTree = "<group>"; };
 		E611F2EB1F178F3B00C6C57E /* loadDiseases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = loadDiseases.swift; sourceTree = "<group>"; };
+        CFCFA7C61F13BA8C00BC05E5 /* Ton.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Ton.json; sourceTree = "<group>"; };
+		CFCFA7C81F151FD900BC05E5 /* testfile.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = testfile.json; sourceTree = "<group>"; };
 		E626B3171F0D028B00125D85 /* ChooserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooserViewController.swift; sourceTree = "<group>"; };
 		E626B3191F0E291100125D85 /* GenerateNewFamilyTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateNewFamilyTree.swift; sourceTree = "<group>"; };
 		E6401D0E1F1636B500AB002E /* Disease.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Disease.swift; sourceTree = "<group>"; };
@@ -268,7 +272,9 @@
 			children = (
 				B5E0B64E1F0D4A28001A6CAE /* smith.json */,
 				68F4CAC31F0699840036946B /* iGen.json */,
+				CFCFA7C61F13BA8C00BC05E5 /* Ton.json */,
 				CFCFA7C21F0D163700BC05E5 /* Paul.json */,
+				CFCFA7C81F151FD900BC05E5 /* testfile.json */,
 				68F4CAC11F0699790036946B /* iGenDataService.swift */,
 				E6401D101F1672EC00AB002E /* disease1.json */,
 			);
@@ -398,6 +404,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFCFA7C71F13BA8C00BC05E5 /* Ton.json in Resources */,
+				CFCFA7C91F151FD900BC05E5 /* testfile.json in Resources */,
 				68AEA8CD1F0D4B34007E5E08 /* Main.storyboard in Resources */,
 				CFCFA7BD1F0A9FA800BC05E5 /* iGenCell.xib in Resources */,
 				681222881F0E6BBF00FA291C /* Localizable.strings in Resources */,
