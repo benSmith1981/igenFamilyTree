@@ -37,12 +37,11 @@ extension FamilyTreeGenerator {
         printFamilyTree(familyTree)
     }
     
-    // first create an array of every empty Human in this family
+    // first create an array of every empty Human in this family and also fill the Patient object
     private func createEmptyHumans(with numberOf: Answers) {
         createEmptyPatient()
         createEmptyFather()
         createEmptyMother()
-        
         if numberOf.sons + numberOf.daughters > 0  { // add a spouse only if patient has children
             createEmptySpouse()
         }
@@ -54,6 +53,9 @@ extension FamilyTreeGenerator {
         createEmptySistersOfMother(numberOf.sistersOfMother)
         createEmptyBrothersOfFather(numberOf.brothersOfFather)
         createEmptySistersOfFather(numberOf.sistersOfFather)
+        createEmptyParentsOfFather()
+        createEmptyParentsOfMother()
+        
     }
     
     // generate a unique ID and create the patient
@@ -68,7 +70,6 @@ extension FamilyTreeGenerator {
         patient.myParentsIDs.append(newUUID)
         familyTree[newUUID] = Human(name: "Father", id: newUUID, patientID: patient.id!, gender: JsonKeys.male.rawValue)
     }
-    
     // generate a unique ID, create the mother and add her as a parent of the patient
     private func createEmptyMother() {
         let newUUID = NSUUID().uuidString
@@ -171,7 +172,27 @@ extension FamilyTreeGenerator {
         }
     }
     
-    // for every Human in this family, now create all the relationships
+    // for the parents of the father of the patient, generate a unique ID, create them and add them as parents of the father to the patient
+    private func createEmptyParentsOfFather() {
+        var newUUID = NSUUID().uuidString
+        patient.fatherParentsIDs.append(newUUID)
+        familyTree[newUUID] = Human(name: "fatherOfFather", id: newUUID, patientID: patient.id!, gender: JsonKeys.male.rawValue)
+        newUUID = NSUUID().uuidString
+        patient.fatherParentsIDs.append(newUUID)
+        familyTree[newUUID] = Human(name: "motherOfFather", id: newUUID, patientID: patient.id!, gender: JsonKeys.female.rawValue)
+    }
+    
+    // for the parents of the mother of the patient, generate a unique ID, create them and add them as parents of the mother to the patient
+    private func createEmptyParentsOfMother() {
+        var newUUID = NSUUID().uuidString
+        patient.motherParentsIDs.append(newUUID)
+        familyTree[newUUID] = Human(name: "fatherOfMother", id: newUUID, patientID: patient.id!, gender: JsonKeys.male.rawValue)
+        newUUID = NSUUID().uuidString
+        patient.motherParentsIDs.append(newUUID)
+        familyTree[newUUID] = Human(name: "motherOfMother", id: newUUID, patientID: patient.id!, gender: JsonKeys.female.rawValue)
+    }
+    
+    // for every Human in this family, now create all the relationships from the Patient object
     private func createRelationships() {
         for id in familyTree.keys {
             if id == patient.id! { 
@@ -188,6 +209,10 @@ extension FamilyTreeGenerator {
                 processFatherSibling(id)
             } else if patient.motherSiblingsIDs.contains(id) {
                 processMotherSibling(id)
+            } else if patient.fatherParentsIDs.contains(id) {
+                processFatherParent(id)
+            } else if patient.motherParentsIDs.contains(id) {
+                processMotherParent(id)
             }
         }
     }
@@ -216,18 +241,21 @@ extension FamilyTreeGenerator {
         familyTree[id]?.children.append(patient.id!) // add patient as child
         if familyTree[id]?.gender == JsonKeys.male.rawValue {
             familyTree[id]?.siblings = patient.fatherSiblingsIDs // add siblings of my father
+            familyTree[id]?.parents = patient.fatherParentsIDs // add parents of my father
         } else {
             familyTree[id]?.siblings = patient.motherSiblingsIDs // add siblings of my mother
+            familyTree[id]?.parents = patient.motherParentsIDs // add parents of my mother
         }
     }
     
     // process a child of the patient
     private func processPatientChild(_ id: ID) {
+        familyTree[id]?.parents = patient.mySpousesIDs // add spouse as parent
         familyTree[id]?.parents.append(patient.id!) // add patient as parent
-        if familyTree[id]?.gender == JsonKeys.male.rawValue {
-            familyTree[id]?.siblings = patient.fatherSiblingsIDs // add siblings of my father
-        } else {
-            familyTree[id]?.siblings = patient.motherSiblingsIDs // add siblings of my mother
+        for arrayID in patient.myChildrenIDs {
+            if id != arrayID {
+                familyTree[id]?.siblings.append(arrayID) // add other children as sibling
+            }
         }
     }
     
@@ -244,6 +272,7 @@ extension FamilyTreeGenerator {
     
     // process a sibling of the father of the patient
     private func processFatherSibling(_ id: ID) {
+        familyTree[id]?.parents = patient.fatherParentsIDs // add parents of my father as parents of a sibling of my father
         for arrayID in patient.fatherSiblingsIDs {
             if id != arrayID {
                 familyTree[id]?.siblings.append(arrayID) // add other siblings as sibling
@@ -258,14 +287,45 @@ extension FamilyTreeGenerator {
     
     // process a sibling of the mother of the patient
     private func processMotherSibling(_ id: ID) {
+        familyTree[id]?.parents = patient.motherParentsIDs // add parents of my mother as parents of a sibling of my mother
         for arrayID in patient.motherSiblingsIDs {
             if id != arrayID {
                 familyTree[id]?.siblings.append(arrayID) // add other siblings as sibling
             }
         }
         for arrayID in patient.myParentsIDs {
-            if familyTree[arrayID]?.gender == "female" {
+            if familyTree[arrayID]?.gender == JsonKeys.female.rawValue {
                 familyTree[id]?.siblings.append(arrayID) // add my mother as sibling
+            }
+        }
+    }
+    
+    // process a parent of the father of the patient
+    private func processFatherParent(_ id: ID) {
+        familyTree[id]?.children = patient.fatherSiblingsIDs // add siblings of my father as children
+        for arrayID in patient.myParentsIDs {
+            if familyTree[arrayID]?.gender == JsonKeys.male.rawValue {
+                familyTree[id]?.children.append(arrayID) //add father of the patient as child
+            }
+        }
+        for arrayID in patient.fatherParentsIDs {
+            if id != arrayID {
+                familyTree[id]?.spouses.append(arrayID) //add other parent of the father of the patient as spouse
+            }
+        }
+    }
+    
+    // process a parent of the mother of the patient
+    private func processMotherParent(_ id: ID) {
+        familyTree[id]?.children = patient.motherSiblingsIDs // add siblings of my mother as children
+        for arrayID in patient.myParentsIDs {
+            if familyTree[arrayID]?.gender == JsonKeys.female.rawValue {
+                familyTree[id]?.children.append(arrayID) //add mother of the patient as child
+            }
+        }
+        for arrayID in patient.motherParentsIDs {
+            if id != arrayID {
+                familyTree[id]?.spouses.append(arrayID) //add other parent of the mother of the patient as spouse
             }
         }
     }
@@ -290,8 +350,18 @@ extension FamilyTreeGenerator {
     }
     
     func printPatient(_ patient: Patient) {
+        print("Patient", patient.id!)
+        for id in patient.mySpousesIDs {
+            print("mySpousesIDs", id)
+        }
         for id in patient.myParentsIDs {
             print("myParentsIDs", id)
+        }
+        for id in patient.myChildrenIDs {
+            print("myChildrenIDs", id)
+        }
+        for id in patient.mySiblingsIDs {
+            print("mySiblingsIDs", id)
         }
         for id in patient.fatherSiblingsIDs {
             print("fatherSiblingsIDs", id)
@@ -299,14 +369,11 @@ extension FamilyTreeGenerator {
         for id in patient.motherSiblingsIDs {
             print("motherSiblingsIDs", id)
         }
-        for id in patient.mySpousesIDs {
-            print("mySpousesIDs", id)
+        for id in patient.fatherParentsIDs {
+            print("fatherParentsIDs", id)
         }
-        for id in patient.mySiblingsIDs {
-            print("mySiblingsIDs", id)
-        }
-        for id in patient.myChildrenIDs {
-            print("myChildrenIDs", id)
+        for id in patient.motherParentsIDs {
+            print("motherParentsIDs", id)
         }
         print("")
     }

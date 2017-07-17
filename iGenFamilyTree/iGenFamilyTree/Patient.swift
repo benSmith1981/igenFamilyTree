@@ -22,6 +22,8 @@ struct Patient {
     var mySiblingsIDs: [ID] = []
     var fatherSiblingsIDs: [ID] = []
     var motherSiblingsIDs: [ID] = []
+    var fatherParentsIDs: [ID] = []
+    var motherParentsIDs: [ID] = []
     
     init(id: ID) {
         self.id = id

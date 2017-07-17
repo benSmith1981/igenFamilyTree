@@ -106,11 +106,8 @@ class TableViewController: UITableViewController, SetNumberOfFamilyMembers {
     
     @IBAction func generateTree(_ sender: UIBarButtonItem) {
         // create empty Humans
-        // create all relationships for every human
-        
+        // create all relationships for every human        
         familyTreeGenerator.generateNewFamilyTree(with: answers)
-        familyTreeGenerator.printFamilyTree(familyTreeGenerator.familyTree)
-        
         self.performSegue(withIdentifier: Segues.familytreeSegue.rawValue, sender: self)
         
     }
