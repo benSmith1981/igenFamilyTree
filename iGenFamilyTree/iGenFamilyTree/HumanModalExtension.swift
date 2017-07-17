@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-extension HumanModalViewController: UITableViewDelegate {
+extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -93,13 +93,17 @@ extension HumanModalViewController: UITableViewDelegate {
             
         default:
             
-            let imageCell = tableView.dequeueReusableCell(withIdentifier: "detailImageCellID", for: indexPath) as! DetailmageSliderCell
             
-            imageCell.awakeFromNib()
+            
+            let infoCell = tableView.dequeueReusableCell(withIdentifier: "infoCellID", for: indexPath) as! InfoCell
+            
+            infoCell.textLabel?.text = "Poep"
+            
+            //imageCell.awakeFromNib()
             //imageCell.siteDetail = siteDetailObject
-            imageCell.separatorInset.left = view.frame.width
+            //imageCell.separatorInset.left = view.frame.width
             
-            return imageCell
+            return infoCell
             
             /*
             let cell = tableView.dequeueReusableCell(withIdentifier: "defaultCell", for: indexPath) as! DefaultDetailCell

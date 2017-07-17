@@ -14,7 +14,7 @@
         <scene sceneID="Y0N-g9-AQb">
             <objects>
                 <collectionViewController automaticallyAdjustsScrollViewInsets="NO" id="hWx-t7-1N7" customClass="CustomCollectionViewController" customModule="iGenFamilyTree" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" minimumZoomScale="3" maximumZoomScale="3" dataMode="prototypes" id="dRO-ju-tAH">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="3" maximumZoomScale="3" dataMode="prototypes" id="dRO-ju-tAH">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -28,9 +28,6 @@
                     </collectionView>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="iGen Family Tree" id="kqZ-Ux-cJd" userLabel="iGen Family Tree "/>
-                    <connections>
-                        <segue destination="GMi-IF-SsZ" kind="presentation" identifier="humanmodalview" id="cQe-hD-CBs"/>
-                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JXE-vt-Zcj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -39,8 +36,7 @@
         <!--Human Modal View Controller-->
         <scene sceneID="lWO-Bw-SFk">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rmf-WT-VA4" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController modalPresentationStyle="overCurrentContext" id="GMi-IF-SsZ" customClass="HumanModalViewController" customModule="iGenFamilyTree" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HumanModDetailID" modalPresentationStyle="overCurrentContext" id="GMi-IF-SsZ" customClass="HumanModalViewController" customModule="iGenFamilyTree" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Q88-We-Oer"/>
                         <viewControllerLayoutGuide type="bottom" id="OB4-SR-s14"/>
@@ -49,24 +45,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yRv-2u-Nyi">
-                                <rect key="frame" x="40" y="84" width="240" height="464"/>
+                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rFZ-rL-XFu">
+                                <rect key="frame" x="0.0" y="68" width="320" height="500"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yRv-2u-Nyi">
+                                <rect key="frame" x="36" y="104" width="248" height="424"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="QEf-if-WE7"/>
-                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="GMi-IF-SsZ" id="LGd-rJ-Xd7"/>
+                                    <outlet property="delegate" destination="GMi-IF-SsZ" id="aG0-cp-Sim"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="yRv-2u-Nyi" firstAttribute="top" secondItem="Q88-We-Oer" secondAttribute="bottom" constant="64" id="OSe-U8-HD3"/>
-                            <constraint firstItem="OB4-SR-s14" firstAttribute="top" secondItem="yRv-2u-Nyi" secondAttribute="bottom" constant="20" id="XkY-zQ-4Z1"/>
-                            <constraint firstItem="yRv-2u-Nyi" firstAttribute="centerX" secondItem="Yld-KI-i5a" secondAttribute="centerX" id="j9C-em-OEd"/>
+                            <constraint firstItem="rFZ-rL-XFu" firstAttribute="leading" secondItem="Yld-KI-i5a" secondAttribute="leading" id="3VX-7F-qDp"/>
+                            <constraint firstItem="yRv-2u-Nyi" firstAttribute="trailing" secondItem="Yld-KI-i5a" secondAttribute="trailingMargin" constant="-20" id="EKh-2c-cHw"/>
+                            <constraint firstItem="yRv-2u-Nyi" firstAttribute="leading" secondItem="Yld-KI-i5a" secondAttribute="leadingMargin" constant="20" id="Y7E-tq-G4p"/>
+                            <constraint firstItem="yRv-2u-Nyi" firstAttribute="top" secondItem="Q88-We-Oer" secondAttribute="bottom" constant="84" id="bme-Q8-yy2"/>
+                            <constraint firstItem="OB4-SR-s14" firstAttribute="top" secondItem="yRv-2u-Nyi" secondAttribute="bottom" constant="40" id="g9H-mF-mzV"/>
+                            <constraint firstItem="rFZ-rL-XFu" firstAttribute="top" secondItem="Q88-We-Oer" secondAttribute="bottom" constant="48" id="i7w-by-8sp"/>
+                            <constraint firstAttribute="trailing" secondItem="rFZ-rL-XFu" secondAttribute="trailing" id="k3D-yi-0Zc"/>
+                            <constraint firstItem="OB4-SR-s14" firstAttribute="top" secondItem="rFZ-rL-XFu" secondAttribute="bottom" id="puQ-1v-Cdw"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="modalTableView" destination="yRv-2u-Nyi" id="qOn-8b-euS"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rmf-WT-VA4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3952.5" y="1547.5352112676057"/>
         </scene>
