@@ -62,9 +62,9 @@ enum cellState {
         
         
         case .maleSpouse, .femaleSpouse, .mother:
-            return #imageLiteral(resourceName: "paths-1-left-connect")
-        case .father:
             return #imageLiteral(resourceName: "paths-1-right-connect")
+        case .father:
+            return #imageLiteral(resourceName: "paths-1-left-connect")
 
         case .spouseConnector:
             return #imageLiteral(resourceName: "paths-T-3-connectors")
