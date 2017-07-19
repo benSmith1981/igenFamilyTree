@@ -128,12 +128,16 @@ class CustomCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let humanDetailsVC = storyboard!.instantiateViewController(withIdentifier: "HumanModDetailID") as! HumanModalViewController
-        humanDetailsVC.humanDetails = familyTreeGenerator
-        humanDetailsVC.indexPathForPerson = indexPath
-        humanDetailsVC.transitioningDelegate = self
-//        humanDetailsVC.modalPresentationStyle = .overCurrentContext
-        present(humanDetailsVC, animated: true, completion: nil)
+        if let cellContent = familyTreeGenerator?.model?.cell?[indexPath.section][indexPath.item],
+            let currentHuman = familyTreeGenerator?.familyTree[cellContent.getID()] {
+            
+            let humanDetailsVC = storyboard!.instantiateViewController(withIdentifier: "HumanModDetailID") as! HumanModalViewController
+            humanDetailsVC.humanDetails = familyTreeGenerator
+            humanDetailsVC.indexPathForPerson = indexPath
+            humanDetailsVC.transitioningDelegate = self
+            //        humanDetailsVC.modalPresentationStyle = .overCurrentContext
+            present(humanDetailsVC, animated: true, completion: nil)
+        }
         
     }
     

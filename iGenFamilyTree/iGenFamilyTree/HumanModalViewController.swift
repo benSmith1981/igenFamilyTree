@@ -59,6 +59,8 @@ class HumanModalViewController: UIViewController, closeDetails,UIViewControllerT
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        modalTableView.frame = CGRect(x: modalTableView.frame.origin.x, y: modalTableView.frame.origin.y, width: modalTableView.frame.size.width, height: modalTableView.contentSize.height)
+        
         if let item = indexPathForPerson?.item,
             let section = indexPathForPerson?.section,
             let cellContent = humanDetails?.model?.cell?[section][item],
@@ -100,6 +102,15 @@ class HumanModalViewController: UIViewController, closeDetails,UIViewControllerT
         let inviteCell = UINib(nibName: "InviteCell", bundle: nil)
         self.modalTableView.register(inviteCell, forCellReuseIdentifier: "inviteCellID")
   
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+    }
+    
+    override func viewDidLayoutSubviews() {
+        modalTableView.frame = CGRect(x: modalTableView.frame.origin.x, y: modalTableView.frame.origin.y, width: modalTableView.frame.size.width, height: modalTableView.contentSize.height)
+        modalTableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {

@@ -62,7 +62,7 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
             
             let firstDiseaseCell = tableView.dequeueReusableCell(withIdentifier: "infoCellID", for: indexPath) as! InfoCell
             
-            firstDiseaseCell.titleInfo.text = "Disease 1"
+            firstDiseaseCell.titleInfo.text = "Disease(s):"
             if let diseaseOne = currentDiseases?.diseaseList[0] {
                 firstDiseaseCell.titleValue.text = "\(String(describing: diseaseOne))"
             }
@@ -89,7 +89,7 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
             
             let secondDiseaseCell = tableView.dequeueReusableCell(withIdentifier: "infoCellID", for: indexPath) as! InfoCell
             
-            secondDiseaseCell.titleInfo.text = "Disease 2"
+            secondDiseaseCell.titleInfo.text = ""
             if let secondDisease = currentDiseases?.diseaseList[1] {
                 secondDiseaseCell.titleValue.text = String(describing: secondDisease)
             }
@@ -107,7 +107,7 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
             
             let thirdDiseaseCell = tableView.dequeueReusableCell(withIdentifier: "infoCellID", for: indexPath) as! InfoCell
             
-            thirdDiseaseCell.titleInfo.text = "Disease 3"
+            thirdDiseaseCell.titleInfo.text = ""
             if let thirdDisease = currentDiseases?.diseaseList[2] {
                 thirdDiseaseCell.titleValue.text = String(describing: thirdDisease)
             }
@@ -162,7 +162,7 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
             
             let nameCell = tableView.dequeueReusableCell(withIdentifier: "infoCellID", for: indexPath) as! InfoCell
             
-            nameCell.titleInfo.text = "Name"
+            nameCell.titleInfo.text = "Name:"
             
 //            if let section = indexPathForPerson?.section,
 //                let item = indexPathForPerson?.item,
@@ -179,7 +179,7 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
             
             let dateOfBirthCell = tableView.dequeueReusableCell(withIdentifier: "infoCellID", for: indexPath) as! InfoCell
             
-            dateOfBirthCell.titleInfo.text = "Date of Birth"
+            dateOfBirthCell.titleInfo.text = "Date of Birth:"
             
 //            if let section = indexPathForPerson?.section,
 //                let item = indexPathForPerson?.item,

@@ -45,12 +45,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yRv-2u-Nyi">
-                                <rect key="frame" x="36" y="114" width="248" height="340"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yRv-2u-Nyi">
+                                <rect key="frame" x="36" y="140" width="248" height="348"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="248" id="FAL-PF-O9K"/>
-                                    <constraint firstAttribute="height" constant="340" id="JfB-iT-7Lp"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="dataSource" destination="GMi-IF-SsZ" id="LGd-rJ-Xd7"/>
@@ -60,7 +59,7 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="yRv-2u-Nyi" firstAttribute="centerX" secondItem="Yld-KI-i5a" secondAttribute="centerX" id="WVE-wq-pzE"/>
-                            <constraint firstItem="yRv-2u-Nyi" firstAttribute="centerY" secondItem="Yld-KI-i5a" secondAttribute="centerY" id="djO-Fy-1sG"/>
+                            <constraint firstItem="OB4-SR-s14" firstAttribute="top" secondItem="yRv-2u-Nyi" secondAttribute="bottom" constant="400" id="sVC-Ce-R0q"/>
                         </constraints>
                     </view>
                     <connections>
