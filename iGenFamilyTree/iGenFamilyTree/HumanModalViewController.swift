@@ -49,6 +49,7 @@ class HumanModalViewController: UIViewController, closeDetails,UIViewControllerT
     // Objects to pass through:
     var humanDetails: FamilyTreeGenerator?
     var indexPathForPerson: IndexPath?
+    
     @IBOutlet var containerView: UIView!
 
     @IBOutlet weak var modalTableView: UITableView!

@@ -307,7 +307,6 @@
 			isa = PBXGroup;
 			children = (
 				E6644EAE1F052D4800C66427 /* CustomCollectionViewController.swift */,
-				CFCFA8601F1E3A8E00BC05E5 /* PopAnimator.swift */,
 				E6644EB01F052D4800C66427 /* CustomCollectionViewLayout.swift */,
 				CFCFA7BA1F0A9FA800BC05E5 /* iGenCell.swift */,
 				CFCFA7BB1F0A9FA800BC05E5 /* iGenCell.xib */,
@@ -318,15 +317,16 @@
 		CFCFA8411F190C5300BC05E5 /* HumanTableView */ = {
 			isa = PBXGroup;
 			children = (
+				CFCFA8601F1E3A8E00BC05E5 /* PopAnimator.swift */,
 				CFCFA7CA1F18FA9900BC05E5 /* HumanModalViewController.swift */,
 				CFCFA8561F1CBD6600BC05E5 /* HumanModalExtension.swift */,
+				CFCFA8521F190CFC00BC05E5 /* ImageSlider */,
 				CFCFA85C1F1E0B2400BC05E5 /* HeaderCell.swift */,
 				CFCFA85D1F1E0B2400BC05E5 /* HeaderCell.xib */,
 				CFCFA8421F190C8300BC05E5 /* InfoCell.swift */,
 				CFCFA8431F190C8300BC05E5 /* InfoCell.xib */,
 				CFCFA8581F1E007000BC05E5 /* InviteCell.swift */,
 				CFCFA8591F1E007000BC05E5 /* InviteCell.xib */,
-				CFCFA8521F190CFC00BC05E5 /* ImageSlider */,
 			);
 			name = HumanTableView;
 			sourceTree = "<group>";

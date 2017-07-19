@@ -36,15 +36,21 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
             
             return headerCell
             
-//        case detailRows.imageSliderRow.rawValue:
-//            
-//            let imageCell = tableView.dequeueReusableCell(withIdentifier: "detailImageCellID", for: indexPath) as! DetailmageSliderCell
-//            
-//            imageCell.awakeFromNib()
-//            //imageCell.siteDetail = siteDetailObject
-//            imageCell.separatorInset.left = view.frame.width
-//            
-//            return imageCell
+        case detailRows.imageSliderRow.rawValue:
+            
+            let imageCell = tableView.dequeueReusableCell(withIdentifier: "detailImageCellID", for: indexPath) as! DetailmageSliderCell
+            
+            imageCell.awakeFromNib()
+            imageCell.separatorInset.left = view.frame.width
+            
+            if let section = indexPathForPerson?.section,
+                let item = indexPathForPerson?.item,
+                let cellContent = humanDetails?.model?.cell?[section][item] {
+                let currentHuman = humanDetails?.familyTree[cellContent.getID()]
+                imageCell.humanGender = currentHuman?.gender
+            }
+            
+            return imageCell
 
         case detailRows.nameRow.rawValue:
             
@@ -58,15 +64,6 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
                     let currentHuman = humanDetails?.familyTree[cellContent.getID()]
                     nameCell.titleValue.text = currentHuman?.name
             }
-            
-            /*
-            if let cellContent = familyTreeGenerator?.model?.cell?[indexPath.section][indexPath.item] {
-                let currentHuman = familyTreeGenerator?.familyTree[cellContent.getID()]
-                print(currentHuman?.name)
-                cell.bgImg.image = cellContent.switchBG()
-                cell.genderImg.image = cellContent.showGender()
-                cell.patientName.text = currentHuman?.name
-                */
             
             return nameCell
             

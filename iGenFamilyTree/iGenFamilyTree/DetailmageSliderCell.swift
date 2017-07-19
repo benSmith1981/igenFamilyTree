@@ -17,13 +17,20 @@ class DetailmageSliderCell: UITableViewCell,
     
     //var festival:Festival?
     
+    
+    var humanGender: String?
+    
+    var imageArray = [UIImage(named: "slider-icons-male"),UIImage(named: "slider-icons-female")]
+    
+    
+    
     /// TODO: GET INT SETTINGS PARAMETERS
     let itemsPerRow: CGFloat = 1
     let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 20.0, right: 10.0)
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // setup collection view
+        
         configureCollectionView()
 
     }

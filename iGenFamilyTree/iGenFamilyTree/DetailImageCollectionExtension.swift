@@ -9,7 +9,6 @@
 
 import UIKit
 import Foundation
-import Kingfisher
 
 extension  DetailmageSliderCell {
     
@@ -18,36 +17,24 @@ extension  DetailmageSliderCell {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return imageArray.count
     }
 
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCellID",for: indexPath) as! ImageSliderCollectionViewCell
         
-        enum cellState {
-            case male
-            case female
+        if humanGender == JsonKeys.female.rawValue {
             
-            func showGenderIcon() -> UIImage {
-                switch self {
-                case .male:
-                    return #imageLiteral(resourceName: "slider-icons-male")
-                case .female:
-                    return #imageLiteral(resourceName: "slider-icons-female")
-                default:
-                    return UIImage()
-                }
-            }
-        }
+            self.collectionView.scrollToItem(at:IndexPath(item: 1, section: 0), at: .centeredHorizontally, animated: false)
+        }   
         
-        //let media = [#imageLiteral(resourceName: "slider-icons-male"), #imageLiteral(resourceName: "slider-icons-female")]
+        
+        
+        
+        cell.imageVIew.image = imageArray[indexPath.row]
+        
 
-        //let media = festival?.media?[indexPath.row]
-        //let url = URL(string: (media?.url)!)
- 
-        //cell.imageVIew.kf.setImage(with: url)
-        
         cell.layer.shadowColor = UIColor.black.cgColor
         cell.layer.shadowOpacity = 0.15
         cell.layer.shadowOffset = CGSize(width: 0, height: 1)
