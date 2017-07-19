@@ -37,9 +37,9 @@ enum cellState {
     func showGender() -> UIImage {
         switch self {
         case .brother, .uncle, .malePatient, .maleSpouse, .fatherWithSiblings, .father:
-            return #imageLiteral(resourceName: "male")
+            return #imageLiteral(resourceName: "male-cutout")
         case .sister, .femaleSpouse, .femalePatient, .aunt, .motherWithSiblings, .mother:
-            return #imageLiteral(resourceName: "female")
+            return #imageLiteral(resourceName: "female-cutout")
         default:
             return UIImage()
         }

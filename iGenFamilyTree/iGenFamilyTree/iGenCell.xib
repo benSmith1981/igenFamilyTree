@@ -18,13 +18,58 @@
                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dnk-26-FFz" userLabel="Bg Image">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q1N-36-ASh" userLabel="Bg Image">
                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hNs-J1-Kfj" userLabel="Disease Image 1 color">
+                        <rect key="frame" x="18" y="10" width="14" height="30"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dnk-26-FFz" userLabel="Disease Image 2 colors top">
+                        <rect key="frame" x="18" y="10" width="14" height="15"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qZs-35-Cpd" userLabel="Disease Image 2 colors bottom">
+                        <rect key="frame" x="18" y="25" width="14" height="15"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JdH-dm-Xnt" userLabel="Disease Image 3 colors top">
+                        <rect key="frame" x="18" y="10" width="14" height="10"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EZv-sC-BQb" userLabel="Disease Image 3 colors middle">
+                        <rect key="frame" x="18" y="20" width="14" height="10"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jwy-oU-6p6" userLabel="Disease Image 3 colors bottom">
+                        <rect key="frame" x="18" y="30" width="14" height="10"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PTn-cI-Avg" userLabel="Gender Image">
                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O1t-mB-hWe" userLabel="Disease 1">
+                        <rect key="frame" x="36" y="10" width="12" height="8"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="7"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ssE-Yi-W6G" userLabel="Disease 2">
+                        <rect key="frame" x="36" y="20" width="12" height="8"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="7"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QfY-zS-lDc" userLabel="Disease 3">
+                        <rect key="frame" x="36" y="30" width="12" height="8"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="7"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bHI-gV-RwV">
                         <rect key="frame" x="0.0" y="46" width="50" height="4"/>
                         <constraints>
@@ -59,7 +104,16 @@
                 <constraint firstAttribute="trailing" secondItem="PTn-cI-Avg" secondAttribute="trailing" id="wzv-ai-DQu"/>
             </constraints>
             <connections>
-                <outlet property="bgImg" destination="dnk-26-FFz" id="OCo-tE-SRx"/>
+                <outlet property="bgImg" destination="Q1N-36-ASh" id="kCM-Q3-BaT"/>
+                <outlet property="diseaseImg1Color" destination="hNs-J1-Kfj" id="aw4-kU-zpY"/>
+                <outlet property="diseaseImg2ColorsBottom" destination="qZs-35-Cpd" id="Pzy-MT-Zxu"/>
+                <outlet property="diseaseImg2ColorsTop" destination="dnk-26-FFz" id="f4X-jd-Wck"/>
+                <outlet property="diseaseImg3ColorsBottom" destination="jwy-oU-6p6" id="PiB-s8-XBc"/>
+                <outlet property="diseaseImg3ColorsMiddle" destination="EZv-sC-BQb" id="21W-lH-sg6"/>
+                <outlet property="diseaseImg3ColorsTop" destination="JdH-dm-Xnt" id="6FG-V9-78P"/>
+                <outlet property="diseaseLabel1" destination="O1t-mB-hWe" id="Sor-SM-etC"/>
+                <outlet property="diseaseLabel2" destination="ssE-Yi-W6G" id="ES3-2R-y9c"/>
+                <outlet property="diseaseLabel3" destination="QfY-zS-lDc" id="Abm-54-QmT"/>
                 <outlet property="genderImg" destination="PTn-cI-Avg" id="5kY-HE-3KH"/>
                 <outlet property="patientAge" destination="bHI-gV-RwV" id="V2T-T9-xg6"/>
                 <outlet property="patientName" destination="o3E-qh-LYM" id="XJw-EM-v0y"/>

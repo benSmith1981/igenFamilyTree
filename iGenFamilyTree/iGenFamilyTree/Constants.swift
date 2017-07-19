@@ -56,3 +56,5 @@ enum NotificationIDs: String {
     case iGenData
     case iGenDiseaseData
 }
+
+//enum Colors:
