@@ -15,8 +15,6 @@ class DetailmageSliderCell: UITableViewCell,
 
     @IBOutlet var collectionView: UICollectionView!
     
-    var testdata = ["he","llo"]
-    
     //var festival:Festival?
     
     /// TODO: GET INT SETTINGS PARAMETERS

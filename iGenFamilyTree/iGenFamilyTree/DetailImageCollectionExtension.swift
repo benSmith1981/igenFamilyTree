@@ -49,9 +49,9 @@ extension  DetailmageSliderCell {
         //cell.imageVIew.kf.setImage(with: url)
         
         cell.layer.shadowColor = UIColor.black.cgColor
-        cell.layer.shadowOpacity = 0.30
-        cell.layer.shadowOffset = CGSize(width: 4, height: 8)
-        cell.layer.shadowRadius = 5
+        cell.layer.shadowOpacity = 0.15
+        cell.layer.shadowOffset = CGSize(width: 0, height: 1)
+        cell.layer.shadowRadius = 2
         cell.layer.shadowPath = UIBezierPath(rect: cell.bounds).cgPath
         cell.layer.shouldRasterize = true
         cell.layer.masksToBounds = false

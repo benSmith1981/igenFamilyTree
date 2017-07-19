@@ -11,6 +11,7 @@ import UIKit
 class CustomCollectionViewController: UICollectionViewController {
     
     var familyTreeGenerator: FamilyTreeGenerator?
+    let transition = PopAnimator()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +26,7 @@ class CustomCollectionViewController: UICollectionViewController {
                                                selector: #selector(CustomCollectionViewController.notifyObserverDisease),
                                                name:  NSNotification.Name(rawValue: NotificationIDs.iGenDiseaseData.rawValue ),
                                                object: nil)
-
+        
         // segue from TableViewController
         // familyTreeGenerator will be nil if entered via iGenDataService
         // extract patientID from the first Human for function MakeTreeFor
@@ -124,12 +125,31 @@ class CustomCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let humanDetails = storyboard!.instantiateViewController(withIdentifier: "HumanModDetailID") as! HumanModalViewController
-        present(humanDetails, animated: true, completion: nil)
+        let humanDetailsVC = storyboard!.instantiateViewController(withIdentifier: "HumanModDetailID") as! HumanModalViewController
+        humanDetailsVC.humanDetails = familyTreeGenerator
+        humanDetailsVC.indexPathForPerson = indexPath
+        humanDetailsVC.transitioningDelegate = self
+//        humanDetailsVC.modalPresentationStyle = .overCurrentContext
+        present(humanDetailsVC, animated: true, completion: nil)
         
     }
     
-    
+}
 
+
+extension CustomCollectionViewController: UIViewControllerTransitioningDelegate {
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+//        transition.originFrame = presenting.view.frame
+
+        transition.presenting = true
+        return transition
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.presenting = false
+        return transition
+    }
+    
     
 }

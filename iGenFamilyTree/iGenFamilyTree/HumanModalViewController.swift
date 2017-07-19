@@ -10,36 +10,47 @@ import UIKit
 import CoreData
 
 enum detailRows: Int {
-    case imageSliderRow = 0
-    case nameRow = 1
-    case dobRow = 2
-    case disease1Row = 3
-    case disease2Row = 4
-    case disease3Row = 5
+    case headerRow = 0
+    case imageSliderRow = 1
+    case nameRow = 2
+    case dobRow = 3
+    case disease1Row = 4
+    case disease2Row = 5
+    case disease3Row = 6
+    case inviteRow = 7
     
     func positionAsInteger() -> Int {
         switch self {
-        case .imageSliderRow:
+        case .headerRow:
             return 0
-        case .nameRow:
+        case .imageSliderRow:
             return 1
-        case .dobRow:
+        case .nameRow:
             return 2
-        case .disease1Row:
+        case .dobRow:
             return 3
-        case .disease2Row:
+        case .disease1Row:
             return 4
-        case .disease3Row:
+        case .disease2Row:
             return 5
+        case .disease3Row:
+            return 6
+        case .inviteRow:
+            return 7
         }
     }
 }
 
-class HumanModalViewController: UIViewController {
+protocol closeDetails {
+    func closeView()
+}
+class HumanModalViewController: UIViewController, closeDetails,UIViewControllerTransitioningDelegate  {
 
     // Objects to pass through:
-    
-    
+    var humanDetails: FamilyTreeGenerator?
+    var indexPathForPerson: IndexPath?
+    @IBOutlet var containerView: UIView!
+
     @IBOutlet weak var modalTableView: UITableView!
     
     override func viewDidLoad() {
@@ -47,16 +58,20 @@ class HumanModalViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         modalTableView.rowHeight = UITableViewAutomaticDimension
-        modalTableView.estimatedRowHeight = 150
+        modalTableView.estimatedRowHeight = 40
+        
         modalTableView.layer.cornerRadius = 10
         modalTableView.layer.shadowRadius = 5
-        
-        modalTableView.layer.shadowColor = UIColor.black.cgColor
-        modalTableView.layer.shadowOpacity = 0.15
         modalTableView.layer.masksToBounds = true
+        
+        //Need to make two layers for cell and shadow to enable both rounded corners AND shadows
+        //modalTableView.layer.shadowColor = UIColor.black.cgColor
+        //modalTableView.layer.shadowOpacity = 0.15
         //modalTableView.layer.shadowOffset = CGSize(width: 0, height: 0)
         //modalTableView.layer.shouldRasterize = true
         
+        let headerCell = UINib(nibName: "HeaderCell", bundle: nil)
+        self.modalTableView.register(headerCell, forCellReuseIdentifier: "headerCellID")
         
         let imageCell = UINib(nibName: "DetailmageSliderCell", bundle: nil)
         self.modalTableView.register(imageCell, forCellReuseIdentifier: "detailImageCellID")
@@ -64,28 +79,20 @@ class HumanModalViewController: UIViewController {
         let infoCell = UINib(nibName: "InfoCell", bundle: nil)
         self.modalTableView.register(infoCell, forCellReuseIdentifier: "infoCellID")
         
-        
-        //ONLY NEEDED FOR ... ?
-        //self.modalTableView.delegate = self
-        //self.modalTableView.dataSource = self
-        
+        let inviteCell = UINib(nibName: "InviteCell", bundle: nil)
+        self.modalTableView.register(inviteCell, forCellReuseIdentifier: "inviteCellID")
+  
     }
-    @IBAction func didTapImageView(_ tap: UITapGestureRecognizer) {
-        //selectedImage = tap.view as? UIImageView
-        
-        //let index = tap.view!.tag
-        //let selectedHerb = herbs[index]
-        
-        //present details view controller
-        self.dismiss(animated: true, completion: nil)
-    }
-
-    @IBAction func dismissView(_ sender: Any) {
-                self.dismiss(animated: true, completion: nil)
-    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    func closeView()
+    {
+//        self.dismiss(animated: true, completion: nil)
+        presentingViewController?.dismiss(animated: true, completion: nil)
+
+    }
 }
