@@ -90,9 +90,12 @@ class CustomCollectionViewController: UICollectionViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        print("didReceiveMemoryWarning")
         // Dispose of any resources that can be recreated.
     }
-    
+    override func viewDidDisappear(_ animated: Bool) {
+        print("viewDidDisappear")
+    }
     // MARK: UICollectionViewDataSource
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -134,6 +137,12 @@ class CustomCollectionViewController: UICollectionViewController {
         
     }
     
+    
+    
+    deinit {
+        print("deinit")
+    }
+    
 }
 
 
@@ -146,10 +155,10 @@ extension CustomCollectionViewController: UIViewControllerTransitioningDelegate 
         return transition
     }
     
-    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        transition.presenting = false
-        return transition
-    }
+//    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+//        transition.presenting = false
+//        return transition
+//    }
     
     
 }

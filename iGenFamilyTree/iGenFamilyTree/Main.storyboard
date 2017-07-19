@@ -36,7 +36,7 @@
         <!--Human Modal View Controller-->
         <scene sceneID="lWO-Bw-SFk">
             <objects>
-                <viewController storyboardIdentifier="HumanModDetailID" id="GMi-IF-SsZ" customClass="HumanModalViewController" customModule="iGenFamilyTree" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HumanModDetailID" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="GMi-IF-SsZ" customClass="HumanModalViewController" customModule="iGenFamilyTree" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Q88-We-Oer"/>
                         <viewControllerLayoutGuide type="bottom" id="OB4-SR-s14"/>
@@ -58,7 +58,6 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="yRv-2u-Nyi" firstAttribute="centerY" secondItem="Yld-KI-i5a" secondAttribute="centerY" id="3sN-e5-VsG"/>
                             <constraint firstItem="yRv-2u-Nyi" firstAttribute="centerX" secondItem="Yld-KI-i5a" secondAttribute="centerX" id="WVE-wq-pzE"/>
@@ -77,7 +76,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3952.5" y="1547.5352112676057"/>
+            <point key="canvasLocation" x="3881" y="1782"/>
         </scene>
         <!--iGen Family Tree chooser-->
         <scene sceneID="qey-8s-dXm">

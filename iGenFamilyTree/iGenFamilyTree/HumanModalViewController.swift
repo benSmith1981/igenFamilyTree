@@ -64,6 +64,8 @@ class HumanModalViewController: UIViewController, closeDetails,UIViewControllerT
         modalTableView.layer.shadowRadius = 5
         modalTableView.layer.masksToBounds = true
         
+//        view.backgroundColor = UIColor.clear.withAlphaComponent(0.5)
+        
         //Need to make two layers for cell and shadow to enable both rounded corners AND shadows
         //modalTableView.layer.shadowColor = UIColor.black.cgColor
         //modalTableView.layer.shadowOpacity = 0.15
@@ -91,8 +93,10 @@ class HumanModalViewController: UIViewController, closeDetails,UIViewControllerT
     
     func closeView()
     {
+        self.presentingViewController?.dismiss(animated: true, completion: nil)
+        
 //        self.dismiss(animated: true, completion: nil)
-        presentingViewController?.dismiss(animated: true, completion: nil)
+//        presentingViewController?.dismiss(animated: true, completion: nil)
 
     }
 }

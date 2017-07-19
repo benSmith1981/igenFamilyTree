@@ -528,10 +528,6 @@ class FamilyTreeGenerator {
             
             patientParentConnectors() //8 draw patient parent connectors
             
-            
-            
-            
-            
             placementConnectorFatherGrandparents() // determine middle of father sibblings
             
             setDrawingPoints(rowX: -2, colY: placementCounter + 1) // set to middle of sibblings

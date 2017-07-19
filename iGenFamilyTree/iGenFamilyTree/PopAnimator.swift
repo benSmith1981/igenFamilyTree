@@ -11,9 +11,9 @@ import UIKit
 class PopAnimator: NSObject, UIViewControllerAnimatedTransitioning {
 
     
-    let duration = 1.0
+    let duration = 0.6
     var presenting = true
-    var originFrame = CGRect.zero
+    var originFrame = CGRect(x: 20, y: 20, width: 0, height: 0)
     var dismissCompletion: (()->Void)?
 
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
@@ -74,7 +74,7 @@ class PopAnimator: NSObject, UIViewControllerAnimatedTransitioning {
             containerView.bringSubview(toFront: humanView)
             
             UIView.animate(withDuration: duration, delay:0.0,
-                           usingSpringWithDamping: 0.4, initialSpringVelocity: 0.0,
+                           usingSpringWithDamping: 0.6, initialSpringVelocity: 0.0,
                            animations: {
                             humanView.transform = self.presenting ?
                                 CGAffineTransform.identity : scaleTransform
