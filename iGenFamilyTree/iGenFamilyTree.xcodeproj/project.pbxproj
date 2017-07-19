@@ -29,6 +29,10 @@
 		B5EAC1891F01390800151D52 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5EAC1871F01390800151D52 /* LaunchScreen.storyboard */; };
 		B5EAC1941F01390900151D52 /* iGenFamilyTreeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EAC1931F01390900151D52 /* iGenFamilyTreeTests.swift */; };
 		B5EAC19F1F01390900151D52 /* iGenFamilyTreeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EAC19E1F01390900151D52 /* iGenFamilyTreeUITests.swift */; };
+		CF957EA91F1F8E9B0054B1AC /* disease_id1.json in Resources */ = {isa = PBXBuildFile; fileRef = CF957EA51F1F8E9B0054B1AC /* disease_id1.json */; };
+		CF957EAA1F1F8E9B0054B1AC /* disease_id2.json in Resources */ = {isa = PBXBuildFile; fileRef = CF957EA61F1F8E9B0054B1AC /* disease_id2.json */; };
+		CF957EAB1F1F8E9B0054B1AC /* disease_id3.json in Resources */ = {isa = PBXBuildFile; fileRef = CF957EA71F1F8E9B0054B1AC /* disease_id3.json */; };
+		CF957EAC1F1F8E9B0054B1AC /* disease_id4.json in Resources */ = {isa = PBXBuildFile; fileRef = CF957EA81F1F8E9B0054B1AC /* disease_id4.json */; };
 		CFCFA7BC1F0A9FA800BC05E5 /* iGenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCFA7BA1F0A9FA800BC05E5 /* iGenCell.swift */; };
 		CFCFA7BD1F0A9FA800BC05E5 /* iGenCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFCFA7BB1F0A9FA800BC05E5 /* iGenCell.xib */; };
 		CFCFA7C11F0B960E00BC05E5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCFA7C01F0B960E00BC05E5 /* Constants.swift */; };
@@ -55,7 +59,6 @@
 		E626B3181F0D028B00125D85 /* ChooserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E626B3171F0D028B00125D85 /* ChooserViewController.swift */; };
 		E626B31A1F0E291100125D85 /* GenerateNewFamilyTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = E626B3191F0E291100125D85 /* GenerateNewFamilyTree.swift */; };
 		E6401D0F1F1636B500AB002E /* Disease.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6401D0E1F1636B500AB002E /* Disease.swift */; };
-		E6401D111F1672EC00AB002E /* disease1.json in Resources */ = {isa = PBXBuildFile; fileRef = E6401D101F1672EC00AB002E /* disease1.json */; };
 		E6644EAD1F052CA600C66427 /* FamilyTreeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6644EAC1F052CA600C66427 /* FamilyTreeGenerator.swift */; };
 		E6644EB21F052D4800C66427 /* CustomCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6644EAE1F052D4800C66427 /* CustomCollectionViewController.swift */; };
 		E6644EB41F052D4800C66427 /* CustomCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6644EB01F052D4800C66427 /* CustomCollectionViewLayout.swift */; };
@@ -109,6 +112,10 @@
 		B5EAC19A1F01390900151D52 /* iGenFamilyTreeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iGenFamilyTreeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5EAC19E1F01390900151D52 /* iGenFamilyTreeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iGenFamilyTreeUITests.swift; sourceTree = "<group>"; };
 		B5EAC1A01F01390900151D52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CF957EA51F1F8E9B0054B1AC /* disease_id1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = disease_id1.json; sourceTree = "<group>"; };
+		CF957EA61F1F8E9B0054B1AC /* disease_id2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = disease_id2.json; sourceTree = "<group>"; };
+		CF957EA71F1F8E9B0054B1AC /* disease_id3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = disease_id3.json; sourceTree = "<group>"; };
+		CF957EA81F1F8E9B0054B1AC /* disease_id4.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = disease_id4.json; sourceTree = "<group>"; };
 		CFCFA7BA1F0A9FA800BC05E5 /* iGenCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iGenCell.swift; sourceTree = "<group>"; };
 		CFCFA7BB1F0A9FA800BC05E5 /* iGenCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = iGenCell.xib; sourceTree = "<group>"; };
 		CFCFA7C01F0B960E00BC05E5 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -135,7 +142,6 @@
 		E626B3171F0D028B00125D85 /* ChooserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooserViewController.swift; sourceTree = "<group>"; };
 		E626B3191F0E291100125D85 /* GenerateNewFamilyTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateNewFamilyTree.swift; sourceTree = "<group>"; };
 		E6401D0E1F1636B500AB002E /* Disease.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Disease.swift; sourceTree = "<group>"; };
-		E6401D101F1672EC00AB002E /* disease1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = disease1.json; sourceTree = "<group>"; };
 		E6644EAC1F052CA600C66427 /* FamilyTreeGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FamilyTreeGenerator.swift; sourceTree = "<group>"; };
 		E6644EAE1F052D4800C66427 /* CustomCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewController.swift; sourceTree = "<group>"; };
 		E6644EB01F052D4800C66427 /* CustomCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewLayout.swift; sourceTree = "<group>"; };
@@ -292,13 +298,16 @@
 		CF703FF71F02516200FEB1C5 /* dataObjects */ = {
 			isa = PBXGroup;
 			children = (
+				CF957EA51F1F8E9B0054B1AC /* disease_id1.json */,
+				CF957EA61F1F8E9B0054B1AC /* disease_id2.json */,
+				CF957EA71F1F8E9B0054B1AC /* disease_id3.json */,
+				CF957EA81F1F8E9B0054B1AC /* disease_id4.json */,
 				B5E0B64E1F0D4A28001A6CAE /* smith.json */,
 				68F4CAC31F0699840036946B /* iGen.json */,
 				CFCFA7C61F13BA8C00BC05E5 /* Ton.json */,
 				CFCFA7C21F0D163700BC05E5 /* Paul.json */,
 				CFCFA7C81F151FD900BC05E5 /* testfile.json */,
 				68F4CAC11F0699790036946B /* iGenDataService.swift */,
-				E6401D101F1672EC00AB002E /* disease1.json */,
 			);
 			name = dataObjects;
 			sourceTree = "<group>";
@@ -479,21 +488,24 @@
 				CFCFA85B1F1E007000BC05E5 /* InviteCell.xib in Resources */,
 				CFCFA7C71F13BA8C00BC05E5 /* Ton.json in Resources */,
 				CFCFA8451F190C8300BC05E5 /* InfoCell.xib in Resources */,
+				CF957EAC1F1F8E9B0054B1AC /* disease_id4.json in Resources */,
 				CFCFA7C91F151FD900BC05E5 /* testfile.json in Resources */,
 				68AEA8CD1F0D4B34007E5E08 /* Main.storyboard in Resources */,
 				CFCFA7BD1F0A9FA800BC05E5 /* iGenCell.xib in Resources */,
 				CFCFA8511F190CF200BC05E5 /* ImageSliderCollectionViewCell.xib in Resources */,
 				681222881F0E6BBF00FA291C /* Localizable.strings in Resources */,
 				CFCFA7C31F0D163700BC05E5 /* Paul.json in Resources */,
-				E6401D111F1672EC00AB002E /* disease1.json in Resources */,
 				681222871F0E6BBE00FA291C /* LaunchScreen.strings in Resources */,
+				CF957EAB1F1F8E9B0054B1AC /* disease_id3.json in Resources */,
 				CFCFA84D1F190CE800BC05E5 /* DetailmageSliderCell.xib in Resources */,
 				B5E0B64F1F0D4A28001A6CAE /* smith.json in Resources */,
 				681222811F0E6BB700FA291C /* Localizable.strings in Resources */,
 				68F4CAC41F0699840036946B /* iGen.json in Resources */,
 				68AEA8D21F0D4B69007E5E08 /* CreatePatientTree.xib in Resources */,
 				B5EAC1891F01390800151D52 /* LaunchScreen.storyboard in Resources */,
+				CF957EA91F1F8E9B0054B1AC /* disease_id1.json in Resources */,
 				B5EAC1861F01390800151D52 /* Assets.xcassets in Resources */,
+				CF957EAA1F1F8E9B0054B1AC /* disease_id2.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

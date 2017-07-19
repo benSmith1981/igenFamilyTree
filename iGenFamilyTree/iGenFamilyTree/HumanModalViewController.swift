@@ -49,7 +49,9 @@ class HumanModalViewController: UIViewController, closeDetails,UIViewControllerT
     // Objects to pass through:
     var humanDetails: FamilyTreeGenerator?
     var indexPathForPerson: IndexPath?
-    
+    var currentHuman: Human?
+    var currentDiseases: Disease?
+
     @IBOutlet var containerView: UIView!
 
     @IBOutlet weak var modalTableView: UITableView!
@@ -57,6 +59,19 @@ class HumanModalViewController: UIViewController, closeDetails,UIViewControllerT
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if let item = indexPathForPerson?.item,
+            let section = indexPathForPerson?.section,
+            let cellContent = humanDetails?.model?.cell?[section][item],
+            let currentHuman = humanDetails?.familyTree[cellContent.getID()]{
+                self.currentHuman = currentHuman
+        }
+        
+        if let item = indexPathForPerson?.item,
+            let section = indexPathForPerson?.section,
+            let cellContent = humanDetails?.model?.cell?[section][item],
+            let currentDiseases = humanDetails?.diseases[cellContent.getID()]{
+                self.currentDiseases = currentDiseases
+        }
         // Do any additional setup after loading the view.
         modalTableView.rowHeight = UITableViewAutomaticDimension
         modalTableView.estimatedRowHeight = 40
