@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct Constants {
     static let gridSize = 30
@@ -57,4 +58,17 @@ enum NotificationIDs: String {
     case iGenDiseaseData
 }
 
-//enum Colors:
+extension UIColor {
+    class func diseaseColor(_ num: Int) -> UIColor {
+        switch num {
+        case 1:
+            return UIColor(red:0.32, green:0.71, blue:0.62, alpha:1.0)
+        case 2:
+            return UIColor(red:1.00, green:0.87, blue:0.58, alpha:1.0)
+        case 3:
+            return UIColor(red:0.77, green:0.89, blue:0.89, alpha:1.0)
+        default:
+            return UIColor.black
+        }
+    }
+}
