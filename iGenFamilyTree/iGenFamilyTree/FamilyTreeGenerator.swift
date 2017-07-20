@@ -505,50 +505,43 @@ class FamilyTreeGenerator {
         
         if let patientID = patient.id {
             
-            drawPatient()                         //1 Draw patient
+            drawPatient()                        
             
-            setDrawingPointY(colY: -1)            //2 Go one to the left
+            setDrawingPointY(colY: -1)
             
-            spouseConnector()                     //3 Draw patient-spouse connection
+            spouseConnector()
             
-            setDrawingPoints(rowX: -1, colY: 0)   //4 Go to cell above patient
+            setDrawingPoints(rowX: -1, colY: 0)
             
-            drawRightBottomCorner()               // 4.1 Draw corner RightToBottom (/)
+            drawRightBottomCorner()
             
-            placementPatientParentConnector() // Determine the middle of patient and siblings (1sib = +1, 3sib = +2..)
+            placementPatientParentConnector()
             
-            setDrawingPoints(rowX: 0, colY: placementCounter) //4 Go to patient row and middle cell
+            setDrawingPoints(rowX: 0, colY: placementCounter)
             
-            addSiblings() //5 add siblings: uneven in middle, even one right of middle.
-                          //If #sib uneven: uneven one left of middle.
+            addSiblings()
             
-            setDrawingPoints(rowX: -2, colY: placementCounter) //6 Go to parent row and middle of patient siblings
+            setDrawingPoints(rowX: -2, colY: placementCounter)
             
-            addParents() //7 draw parents with above connectors
+            addParents()
             
-            patientParentConnectors() //8 draw patient parent connectors
+            patientParentConnectors()
             
-            placementConnectorFatherGrandparents() // determine middle of father sibblings
+            placementConnectorFatherGrandparents()
             
-            setDrawingPoints(rowX: -2, colY: placementCounter + 1) // set to middle of sibblings
+            setDrawingPoints(rowX: -2, colY: placementCounter + 1)
             
-            addFatherSiblings() //10 draw sibblings
+            addFatherSiblings()
             
-            setDrawingPoints(rowX: -4, colY: placementCounter + 1) //11 set to middle of sibblings on grandparent row
+            setDrawingPoints(rowX: -4, colY: placementCounter + 1)
             
-            fatherGrandparentConnectors() // draw grandparent connectors
+            fatherGrandparentConnectors()
             
+            setDrawingPoints(rowX: 0, colY: 0)
             
+            placementPatientParentConnector()
             
-            
-            
-            
-            
-            setDrawingPoints(rowX: 0, colY: 0) // reset to patient position
-            
-            placementPatientParentConnector() //determine middle of patient sibblings
-            
-            setDrawingPointsRelative(rowX: -2, colY: placementCounter - 1) // got to patient mother position...
+            setDrawingPointsRelative(rowX: -2, colY: placementCounter - 1)
             
             placementConnectorMotherGrandparents()
             

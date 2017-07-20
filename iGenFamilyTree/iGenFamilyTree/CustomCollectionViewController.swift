@@ -7,11 +7,16 @@
 //
 
 import UIKit
+import DeviceKit
 
 class CustomCollectionViewController: UICollectionViewController {
     
     var familyTreeGenerator: FamilyTreeGenerator?
     let transition = PopAnimator()
+    var onceOnly = false
+    let device = Device()
+    var xPos = CGFloat(Double((Constants.gridSize / 2)) * (Constants.squareCellSize))
+    var yPos = CGFloat(Double((Constants.gridSize / 2)) * (Constants.squareCellSize))
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,9 +46,6 @@ class CustomCollectionViewController: UICollectionViewController {
         // self.clearsSelectionOnViewWillAppear = false
         // Do any additional setup after loading the view.
         
-        //collectionView?.minimumZoomScale = 0.25
-        //collectionView?.maximumZoomScale = 4.0
-        
         configureCollectionView()
         
         
@@ -54,6 +56,13 @@ class CustomCollectionViewController: UICollectionViewController {
         
         let defaultCell = UINib(nibName: "iGenCell", bundle:nil)
         self.collectionView?.register(defaultCell, forCellWithReuseIdentifier: CustomCellIdentifiers.iGenCellID.rawValue)
+        
+    }
+    
+    func centerFamilyTree(xOffset: CGFloat, yOffset: CGFloat) {
+        
+        self.collectionView?.contentOffset.x = xPos - (CGFloat(Constants.squareCellSize) * xOffset)
+        self.collectionView?.contentOffset.y = yPos - (CGFloat(Constants.squareCellSize) * yOffset)
         
     }
     
@@ -141,7 +150,29 @@ class CustomCollectionViewController: UICollectionViewController {
         
     }
     
-    
+    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
+        if !onceOnly {
+            
+                print(device)
+            
+            switch device {
+            case .iPhone6Plus, .iPhone6sPlus, .iPhone7Plus:
+                centerFamilyTree(xOffset: 3.75, yOffset: 6.25)
+
+            case .iPhone6, .iPhone6s, .iPhone7:
+                centerFamilyTree(xOffset: 3.25, yOffset: 5.5)
+
+            case .iPhone5, .iPhone5s, .iPhoneSE:
+                centerFamilyTree(xOffset: 2.75, yOffset: 4.50)
+                
+            default:
+                centerFamilyTree(xOffset: 2, yOffset: 3)
+            }
+            
+            onceOnly = true
+        }
+    }
     
     deinit {
         print("deinit")
@@ -153,16 +184,10 @@ class CustomCollectionViewController: UICollectionViewController {
 extension CustomCollectionViewController: UIViewControllerTransitioningDelegate {
     
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-//        transition.originFrame = presenting.view.frame
-
+        
         transition.presenting = true
         return transition
     }
-    
-//    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-//        transition.presenting = false
-//        return transition
-//    }
-    
+
     
 }
