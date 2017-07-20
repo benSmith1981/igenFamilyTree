@@ -26,10 +26,4 @@ class InviteCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-//    func configureButton() {
-//        inviteButtonBg.layer.masksToBounds = true
-//        inviteButtonBg.layer.cornerRadius = 22
-//        
-//    }
-    
 }

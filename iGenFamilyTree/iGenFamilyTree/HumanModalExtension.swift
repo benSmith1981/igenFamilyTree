@@ -15,19 +15,19 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 3
+        return DetailViewSections.numberOfSections
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        if section == 0 {
-            return 4
-        } else if section == 1 {
+        if section == DetailViewSections.staticSections {
+            return DetailViewSections.numberOfStaticSections
+        } else if section == DetailViewSections.dynamicSection {
             return numberOfDiseasesToShow()
-        } else if section == 2{
-            return 1
+        } else if section == DetailViewSections.verifyWithFamilySection{
+            return DetailViewSections.numberOfVerifyFamilySections
         } else {
-            return 0
+            return DetailViewSections.noSection
         }
     }
 
@@ -36,7 +36,7 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
             let diseaseList = self.currentDiseases?.diseaseList{
             return diseaseList.count
         } else {
-            return 0
+            return DetailViewSections.noDisease
         }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -44,11 +44,11 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
         //enums for each case (e.g. 0, 1, 2, ...)
         switch indexPath.section {
         
-        case 0:
-            return loadSection1(indexPath: indexPath, tableView: tableView)
-        case 1:
-            return loadSection2(indexPath: indexPath, tableView: tableView)
-        case 2:
+        case DetailViewSections.staticSections:
+            return loadStaticSection(indexPath: indexPath, tableView: tableView)
+        case DetailViewSections.dynamicSection:
+            return loadDynamicSection(indexPath: indexPath, tableView: tableView)
+        case DetailViewSections.verifyWithFamilySection:
             let inviteCell = tableView.dequeueReusableCell(withIdentifier: "inviteCellID", for: indexPath) as! InviteCell
             return inviteCell
         default :
@@ -56,9 +56,9 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
     }
-    func loadSection2(indexPath: IndexPath, tableView: UITableView) -> UITableViewCell{
+    func loadDynamicSection(indexPath: IndexPath, tableView: UITableView) -> UITableViewCell{
         switch indexPath.row {
-        case 0:
+        case DetailViewSections.firstDiseaseRow:
             
             let firstDiseaseCell = tableView.dequeueReusableCell(withIdentifier: "infoCellID", for: indexPath) as! InfoCell
             
@@ -66,26 +66,10 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
             if let diseaseOne = currentDiseases?.diseaseList[0] {
                 firstDiseaseCell.titleValue.text = "\(String(describing: diseaseOne))"
             }
-
-//            if let section = indexPathForPerson?.section,
-//                let item = indexPathForPerson?.item,
-//                let cellContent = humanDetails?.model?.cell?[section][item],
-//                let currentHuman = humanDetails?.familyTree[cellContent.getID()],
-//                let currentDiseases = humanDetails?.diseases[cellContent.getID()]{
-//                
-//                if currentHuman.showDiseaseInfo {
-//                    
-//                }
-//                
-//                if let _ = self.humanDetails?.diseases {
-//                }
-//
-//                
-//            }
             
             return firstDiseaseCell
             
-        case 1:
+        case DetailViewSections.secondDiseaseRow:
             
             let secondDiseaseCell = tableView.dequeueReusableCell(withIdentifier: "infoCellID", for: indexPath) as! InfoCell
             
@@ -93,17 +77,10 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
             if let secondDisease = currentDiseases?.diseaseList[1] {
                 secondDiseaseCell.titleValue.text = String(describing: secondDisease)
             }
-//            if let section = indexPathForPerson?.section,
-//                let item = indexPathForPerson?.item,
-//                let cellContent = humanDetails?.model?.cell?[section][item],
-//                let currentDiseases = humanDetails?.diseases[cellContent.getID()]{
-//
-//                
-//            }
             
             return secondDiseaseCell
             
-        case 2:
+        case DetailViewSections.thirdDiseaseRow:
             
             let thirdDiseaseCell = tableView.dequeueReusableCell(withIdentifier: "infoCellID", for: indexPath) as! InfoCell
             
@@ -111,13 +88,6 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
             if let thirdDisease = currentDiseases?.diseaseList[2] {
                 thirdDiseaseCell.titleValue.text = String(describing: thirdDisease)
             }
-//            if let section = indexPathForPerson?.section,
-//                let item = indexPathForPerson?.item,
-//                let cellContent = humanDetails?.model?.cell?[section][item] ,
-//                let currentDiseases = humanDetails?.diseases[cellContent.getID()]{
-//
-//                
-//            }
             
             return thirdDiseaseCell
             
@@ -127,11 +97,10 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
             
             return inviteCell
             
-            
         }
     }
 
-    func loadSection1(indexPath: IndexPath, tableView: UITableView)  -> UITableViewCell{
+    func loadStaticSection(indexPath: IndexPath, tableView: UITableView)  -> UITableViewCell{
         switch indexPath.row {
         case detailRows.headerRow.rawValue:
             
@@ -147,49 +116,25 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
             
             imageCell.awakeFromNib()
             imageCell.separatorInset.left = view.frame.width
-//            
-//            if let section = indexPathForPerson?.section,
-//                let item = indexPathForPerson?.item,
-//                let cellContent = humanDetails?.model?.cell?[section][item] {
-//                let currentHuman = humanDetails?.familyTree[cellContent.getID()]
-//                imageCell.humanGender = currentHuman?.gender
-//            }
             imageCell.humanGender = self.currentHuman?.gender
             
             return imageCell
             
         case detailRows.nameRow.rawValue:
-            
             let nameCell = tableView.dequeueReusableCell(withIdentifier: "infoCellID", for: indexPath) as! InfoCell
-            
             nameCell.titleInfo.text = "Name:"
-            
-//            if let section = indexPathForPerson?.section,
-//                let item = indexPathForPerson?.item,
-//                let cellContent = humanDetails?.model?.cell?[section][item] {
-//                let currentHuman = humanDetails?.familyTree[cellContent.getID()]
-//                nameCell.titleValue.text = currentHuman?.name
-//            }
             nameCell.titleValue.text = self.currentHuman?.name
 
             return nameCell
             
-            
         case detailRows.dobRow.rawValue:
-            
             let dateOfBirthCell = tableView.dequeueReusableCell(withIdentifier: "infoCellID", for: indexPath) as! InfoCell
-            
+
             dateOfBirthCell.titleInfo.text = "Date of Birth:"
-            
-//            if let section = indexPathForPerson?.section,
-//                let item = indexPathForPerson?.item,
-//                let cellContent = humanDetails?.model?.cell?[section][item] {
-//                let currentHuman = humanDetails?.familyTree[cellContent.getID()]
-//                dateOfBirthCell.titleValue.text = currentHuman?.dob
-//            }
             dateOfBirthCell.titleValue.text = self.currentHuman?.dob
 
             return dateOfBirthCell
+            
         default:
             return UITableViewCell()
         }

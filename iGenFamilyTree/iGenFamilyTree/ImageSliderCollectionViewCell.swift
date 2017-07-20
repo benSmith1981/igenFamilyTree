@@ -21,15 +21,6 @@ class ImageSliderCollectionViewCell: UICollectionViewCell {
     
     func configureImages() {
         // setup custom imageview
-//        imageVIew.layer.masksToBounds = true
-//        imageVIew.layer.cornerRadius = 2
-//        contentView.layer.cornerRadius = 2
-//        
-//        
-//        imageVIew.layer.shadowColor = UIColor.black.cgColor
-//        //imageVIew.layer.shadowOffset = CGSize(width: 0, height: 0)
-//        imageVIew.layer.shadowOpacity = 0.2
-//        imageVIew.layer.shadowRadius = 2
         
     }
 }

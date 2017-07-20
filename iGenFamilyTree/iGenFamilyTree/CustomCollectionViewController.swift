@@ -59,6 +59,19 @@ class CustomCollectionViewController: UICollectionViewController {
         
     }
     
+    /*
+     
+    - This function centers the patient cell in the middle of the screen. This happens in two steps:
+        * Scroll to the patient cell and place it in the top left corner of the screen (xPos, yPos)
+        * Offset the cell to the center of the screen (this differs per device) (xOffset, yOffset)
+
+     @ xPos: Get x position of the patient cell
+     @ yPos: Get y position of the patient cell
+     @ xOffset: Get x offset for the specific device currently used
+     @ yOffset: Get y offset for the specific device currently used
+     
+     */
+    
     func centerFamilyTree(xOffset: CGFloat, yOffset: CGFloat) {
         
         self.collectionView?.contentOffset.x = xPos - (CGFloat(Constants.squareCellSize) * xOffset)
