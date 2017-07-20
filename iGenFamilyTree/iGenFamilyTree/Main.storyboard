@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2tC-LR-z4U">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--iGen Family Tree-->
+        <scene sceneID="Y0N-g9-AQb">
+            <objects>
+                <collectionViewController automaticallyAdjustsScrollViewInsets="NO" id="hWx-t7-1N7" customClass="CustomCollectionViewController" customModule="iGenFamilyTree" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="3" maximumZoomScale="3" dataMode="prototypes" id="dRO-ju-tAH">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <inset key="scrollIndicatorInsets" minX="0.0" minY="20" maxX="0.0" maxY="0.0"/>
+                        <collectionViewLayout key="collectionViewLayout" id="uMq-1X-3r9" customClass="CustomCollectionViewLayout" customModule="iGenFamilyTree" customModuleProvider="target"/>
+                        <cells/>
+                        <connections>
+                            <outlet property="dataSource" destination="hWx-t7-1N7" id="5s1-GP-TGI"/>
+                            <outlet property="delegate" destination="hWx-t7-1N7" id="X3s-uz-0Ex"/>
+                        </connections>
+                    </collectionView>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <navigationItem key="navigationItem" title="iGen Family Tree" id="kqZ-Ux-cJd" userLabel="iGen Family Tree "/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JXE-vt-Zcj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3099" y="1783"/>
+        </scene>
+        <!--Human Modal View Controller-->
+        <scene sceneID="lWO-Bw-SFk">
+            <objects>
+                <viewController storyboardIdentifier="HumanModDetailID" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="GMi-IF-SsZ" customClass="HumanModalViewController" customModule="iGenFamilyTree" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Q88-We-Oer"/>
+                        <viewControllerLayoutGuide type="bottom" id="OB4-SR-s14"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Yld-KI-i5a">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yRv-2u-Nyi">
+                                <rect key="frame" x="36" y="140" width="248" height="348"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="248" id="FAL-PF-O9K"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="GMi-IF-SsZ" id="LGd-rJ-Xd7"/>
+                                    <outlet property="delegate" destination="GMi-IF-SsZ" id="aG0-cp-Sim"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="yRv-2u-Nyi" firstAttribute="centerX" secondItem="Yld-KI-i5a" secondAttribute="centerX" id="WVE-wq-pzE"/>
+                            <constraint firstItem="OB4-SR-s14" firstAttribute="top" secondItem="yRv-2u-Nyi" secondAttribute="bottom" constant="400" id="sVC-Ce-R0q"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="containerView" destination="Yld-KI-i5a" id="3Yc-WM-ZaU"/>
+                        <outlet property="modalTableView" destination="yRv-2u-Nyi" id="qOn-8b-euS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rmf-WT-VA4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Ha9-MP-gG4">
+                    <connections>
+                        <action selector="didTapImageView:" destination="GMi-IF-SsZ" id="Ky4-XB-3HI"/>
+                        <outlet property="delegate" destination="GMi-IF-SsZ" id="K5n-cy-bkJ"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="3881" y="1782"/>
+        </scene>
+        <!--iGen Family Tree chooser-->
+        <scene sceneID="qey-8s-dXm">
+            <objects>
+                <viewController id="t7Q-Y0-Rfq" customClass="ChooserViewController" customModule="iGenFamilyTree" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4fd-HE-K5K"/>
+                        <viewControllerLayoutGuide type="bottom" id="blF-yp-qD4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zyv-B9-dhq">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lVb-bJ-pag">
+                                <rect key="frame" x="24" y="72" width="272" height="488"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="230" verticalCompressionResistancePriority="740" text="Kies een patiënt" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uns-7c-jaG">
+                                        <rect key="frame" x="0.0" y="0.0" width="272" height="98"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pzv-TX-aVA">
+                                        <rect key="frame" x="0.0" y="98" width="272" height="58"/>
+                                        <inset key="contentEdgeInsets" minX="0.0" minY="20" maxX="0.0" maxY="20"/>
+                                        <state key="normal" title="Ben"/>
+                                        <connections>
+                                            <action selector="buttonBen:" destination="t7Q-Y0-Rfq" eventType="touchUpInside" id="jym-jh-oRc"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2vl-OR-U1U">
+                                        <rect key="frame" x="0.0" y="156" width="272" height="58"/>
+                                        <inset key="contentEdgeInsets" minX="0.0" minY="20" maxX="0.0" maxY="20"/>
+                                        <state key="normal" title="Paul"/>
+                                        <connections>
+                                            <action selector="buttonPaul:" destination="t7Q-Y0-Rfq" eventType="touchUpInside" id="mMX-xi-p7m"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ao3-s8-Nky">
+                                        <rect key="frame" x="0.0" y="214" width="272" height="58"/>
+                                        <inset key="contentEdgeInsets" minX="0.0" minY="20" maxX="0.0" maxY="20"/>
+                                        <state key="normal" title="Achid"/>
+                                        <connections>
+                                            <action selector="buttonAchid:" destination="t7Q-Y0-Rfq" eventType="touchUpInside" id="16T-En-xfZ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="evR-mC-RBm">
+                                        <rect key="frame" x="0.0" y="272" width="272" height="58"/>
+                                        <inset key="contentEdgeInsets" minX="0.0" minY="20" maxX="0.0" maxY="20"/>
+                                        <state key="normal" title="Ton"/>
+                                        <connections>
+                                            <action selector="buttonTon:" destination="t7Q-Y0-Rfq" eventType="touchUpInside" id="OGr-Qn-iXn"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="240" verticalCompressionResistancePriority="740" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pa1-Jj-lLL">
+                                        <rect key="frame" x="0.0" y="330" width="272" height="158"/>
+                                        <inset key="contentEdgeInsets" minX="0.0" minY="40" maxX="0.0" maxY="100"/>
+                                        <state key="normal" title="Nieuwe patiënt"/>
+                                        <connections>
+                                            <action selector="buttonNieuwePatient:" destination="t7Q-Y0-Rfq" eventType="touchUpInside" id="Pti-5f-XaP"/>
+                                            <segue destination="IxB-a4-Cxe" kind="show" identifier="createFamilyTreeSegue" id="lqr-hk-Icb"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="lVb-bJ-pag" secondAttribute="trailing" constant="8" id="17y-gx-dBp"/>
+                            <constraint firstItem="lVb-bJ-pag" firstAttribute="top" secondItem="4fd-HE-K5K" secondAttribute="bottom" constant="8" id="J8Q-rW-Vpr"/>
+                            <constraint firstItem="lVb-bJ-pag" firstAttribute="leading" secondItem="zyv-B9-dhq" secondAttribute="leadingMargin" constant="8" id="MpF-ZQ-tW5"/>
+                            <constraint firstItem="blF-yp-qD4" firstAttribute="top" secondItem="lVb-bJ-pag" secondAttribute="bottom" constant="8" id="lhI-FW-Vxv"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="iGen Family Tree chooser" id="xkp-hy-BVy"/>
+                    <connections>
+                        <segue destination="hWx-t7-1N7" kind="show" identifier="familytreeSegue" id="4wb-NM-puH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yb3-4J-uBU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1783" y="1101"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Q5v-UT-k5Z">
+            <objects>
+                <navigationController id="2tC-LR-z4U" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7ar-EM-ml1">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="JtS-OW-vCD">
+                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="t7Q-Y0-Rfq" kind="relationship" relationship="rootViewController" id="Gjs-WP-dFz"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vow-OX-rbt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="668" y="1101"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="dyE-zP-qV2">
+            <objects>
+                <tableViewController id="IxB-a4-Cxe" customClass="TableViewController" customModule="iGenFamilyTree" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="40" sectionFooterHeight="28" id="kDh-xs-pZL">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="JnY-4n-Sf4">
+                                <rect key="frame" x="0.0" y="40" width="320" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JnY-4n-Sf4" id="ehB-SY-80J">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="59.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="IxB-a4-Cxe" id="7uF-Eg-Xvz"/>
+                            <outlet property="delegate" destination="IxB-a4-Cxe" id="zOb-NI-PXG"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="9wc-9H-mnO">
+                        <barButtonItem key="rightBarButtonItem" title="CreateTree" id="RBt-Fv-asj">
+                            <connections>
+                                <action selector="generateTree:" destination="IxB-a4-Cxe" id="slX-Be-0io"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="hWx-t7-1N7" kind="show" identifier="familytreeSegue" id="2St-NQ-2mG"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cEo-r7-b6W" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1783" y="2478"/>
+        </scene>
+    </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="4wb-NM-puH"/>
+    </inferredMetricsTieBreakers>
+</document>
