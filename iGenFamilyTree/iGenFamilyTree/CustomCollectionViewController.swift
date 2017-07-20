@@ -154,8 +154,6 @@ class CustomCollectionViewController: UICollectionViewController {
         
         if !onceOnly {
             
-                print(device)
-            
             switch device {
             case .iPhone6Plus, .iPhone6sPlus, .iPhone7Plus:
                 centerFamilyTree(xOffset: 3.75, yOffset: 6.25)
