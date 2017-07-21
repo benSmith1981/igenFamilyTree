@@ -351,7 +351,7 @@ class FamilyTreeGenerator {
         func placementConnectorFatherGrandparents() {
             
             if patient.fatherSiblingsIDs.count == 0 {
-                placementCounter = 1
+                placementCounter = placementCounter + 1
             }
             
             for (index, id) in patient.fatherSiblingsIDs.enumerated() {
@@ -392,7 +392,8 @@ class FamilyTreeGenerator {
                 } else if patient.motherSiblingsIDs.count % 2 == 0 && patient.motherSiblingsIDs.count > 0 {
                     model?.cell?[row + 1][col] = cellState.threeChilderenConnector
                 } else {
-                    model?.cell?[row + 1][col] = cellState.cornerLeftTop
+                    model?.cell?[row + 1][col] = cellState.cornerRightTop
+                    model?.cell?[row + 1][col + 1] = cellState.cornerLeftBottom
                 }
             }
         }
@@ -412,6 +413,7 @@ class FamilyTreeGenerator {
                     model?.cell?[row + 1][col] = cellState.threeChilderenConnector
                 } else {
                     model?.cell?[row + 1][col] = cellState.cornerLeftTop
+                    model?.cell?[row + 1][col - 1] = cellState.cornerRightBottom
                 }
             }
         }
@@ -420,22 +422,14 @@ class FamilyTreeGenerator {
             for id in patient.myParentsIDs {
                 
                 if familyTree[id]!.gender == JsonKeys.male.rawValue {
-                    if patient.fatherSiblingsIDs.count > 0 {
                         model?.cell?[row][col + 1] = cellState.malePatient(id: id)
                         model?.cell?[row - 1][col + 1] = cellState.cornerRightBottom
-                    } else {
-                        model?.cell?[row][col + 1] = cellState.father(id: id)
                     }
-                }
                 
                 if familyTree[id]!.gender != JsonKeys.male.rawValue {
-                    if patient.motherSiblingsIDs.count > 0 {
                         model?.cell?[row][col - 1] = cellState.motherWithSiblings(id: id)
                         model?.cell?[row - 1][col - 1] = cellState.cornerLeftBottom
-                    } else {
-                        model?.cell?[row][col - 1] = cellState.mother(id: id)
                     }
-                }
                 
             }
         }
@@ -472,22 +466,21 @@ class FamilyTreeGenerator {
         func drawPatient() {
             if let patientID = patient.id {
                 
+                guard patient.myChildrenIDs.count != 0 else {
+                    model?.cell?[row][col] = cellState.brother(id: patientID)
+                return
+                }
+                
                 if familyTree[patientID]?.gender == JsonKeys.male.rawValue {
                     
-                    if patient.mySpousesIDs.count > 0 {
-                        model?.cell?[row][col] = cellState.malePatient(id: patientID)
-                    } else {
-                        model?.cell?[row][col] = cellState.brother(id: patientID)
-                    }
+                    model?.cell?[row][col] = cellState.malePatient(id: patientID)
+               
                 }
                 
                 if familyTree[patientID]?.gender != JsonKeys.male.rawValue {
                     
-                    if patient.mySpousesIDs.count > 0 {
-                        model?.cell?[row][col] = cellState.femalePatient(id: patientID)
-                    } else {
-                        model?.cell?[row][col] = cellState.sister(id: patientID)
-                    }
+                    model?.cell?[row][col] = cellState.femalePatient(id: patientID)
+        
                 }
             }
         }
@@ -512,44 +505,43 @@ class FamilyTreeGenerator {
         
         if let patientID = patient.id {
             
-            drawPatient() //1 Draw patient
+            drawPatient()                        
             
-            setDrawingPointY(colY: -1) //2 Go one to the left
+            setDrawingPointY(colY: -1)
             
-            spouseConnector() //3 Draw connections between patient and spouse
+            spouseConnector()
             
-            setDrawingPoints(rowX: -1, colY: 0) //4 Go to cell above patient
+            setDrawingPoints(rowX: -1, colY: 0)
             
-            drawRightBottomCorner() // 4.1 Draw corner RightToBottom (/)
+            drawRightBottomCorner()
             
-            placementPatientParentConnector() // Determine the middle of patient and siblings (1sib = +1, 3sib = +2..)
+            placementPatientParentConnector()
             
-            setDrawingPoints(rowX: 0, colY: placementCounter) //4 Go to patient row and middle cell
+            setDrawingPoints(rowX: 0, colY: placementCounter)
             
-            addSiblings() //5 add siblings: uneven in middle, even one right of middle.
-                          //If #sib uneven: uneven one left of middle.
+            addSiblings()
             
-            setDrawingPoints(rowX: -2, colY: placementCounter) //6 Go to parent row and middle of patient siblings
+            setDrawingPoints(rowX: -2, colY: placementCounter)
             
-            addParents() //7 draw parents with above connectors
+            addParents()
             
-            patientParentConnectors() //8 draw patient parent connectors
+            patientParentConnectors()
             
-            placementConnectorFatherGrandparents() // determine middle of father sibblings
+            placementConnectorFatherGrandparents()
             
-            setDrawingPointsRelative(rowX: 0, colY: placementCounter) // set to middle of sibblings
+            setDrawingPoints(rowX: -2, colY: placementCounter + 1)
             
-            addFatherSiblings() //10 draw sibblings
+            addFatherSiblings()
             
-            setDrawingPoints(rowX: -4, colY: placementCounter + 1) //11 set to middle of sibblings on grandparent row
+            setDrawingPoints(rowX: -4, colY: placementCounter + 1)
             
-            fatherGrandparentConnectors() // draw grandparent connectors
+            fatherGrandparentConnectors()
             
-            setDrawingPoints(rowX: 0, colY: 0) // reset to patient position
+            setDrawingPoints(rowX: 0, colY: 0)
             
-            placementPatientParentConnector() //determine middle of patient sibblings
+            placementPatientParentConnector()
             
-            setDrawingPointsRelative(rowX: -2, colY: placementCounter - 1) // got to patient mother position...
+            setDrawingPointsRelative(rowX: -2, colY: placementCounter - 1)
             
             placementConnectorMotherGrandparents()
             

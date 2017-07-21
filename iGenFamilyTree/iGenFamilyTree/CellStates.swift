@@ -22,6 +22,10 @@ enum cellState {
     case uncle(id: String)
     case father(id: String)
     case mother(id: String)
+    case fatherOfFather(id: String)
+    case motherOfFather(id: String)
+    case fatherOfMother(id: String)
+    case motherOfMother(id: String)
     case spouseConnector
     case patientParentConnector
     case twoChilderenConnector
@@ -36,9 +40,9 @@ enum cellState {
     
     func showGender() -> UIImage {
         switch self {
-        case .brother, .uncle, .malePatient, .maleSpouse, .fatherWithSiblings, .father:
+        case .brother, .uncle, .malePatient, .maleSpouse, .fatherWithSiblings, .father, .fatherOfFather, .fatherOfMother:
             return #imageLiteral(resourceName: "male-cutout")
-        case .sister, .femaleSpouse, .femalePatient, .aunt, .motherWithSiblings, .mother:
+        case .sister, .femaleSpouse, .femalePatient, .aunt, .motherWithSiblings, .mother, .motherOfFather, .motherOfMother:
             return #imageLiteral(resourceName: "female-cutout")
         default:
             return UIImage()
@@ -56,15 +60,15 @@ enum cellState {
             return #imageLiteral(resourceName: "paths-2-connect")
             
         case .motherWithSiblings:
-            return #imageLiteral(resourceName: "paths-2-connect").imageRotatedByDegrees(deg: 90)
+            return #imageLiteral(resourceName: "paths-2-mirror-connect")
         case .fatherWithSiblings:
             return #imageLiteral(resourceName: "paths-2-connect")
         
         
-        case .maleSpouse, .femaleSpouse, .mother:
-            return #imageLiteral(resourceName: "paths-1-connect-down").imageRotatedByDegrees(deg: -90)
-        case .father:
-            return #imageLiteral(resourceName: "paths-1-connect-down").imageRotatedByDegrees(deg: 90)
+        case .maleSpouse, .femaleSpouse, .mother, .motherOfFather, .motherOfMother:
+            return #imageLiteral(resourceName: "paths-1-right-connect")
+        case .father, .fatherOfMother, .fatherOfFather:
+            return #imageLiteral(resourceName: "paths-1-left-connect")
 
         case .spouseConnector:
             return #imageLiteral(resourceName: "paths-T-3-connectors")
@@ -126,6 +130,14 @@ enum cellState {
         case .femaleSpouse(let id):
             return id
         case .maleSpouse(let id):
+            return id
+        case .fatherOfFather(let id):
+            return id
+        case .fatherOfMother(let id):
+            return id
+        case .motherOfFather(let id):
+            return id
+        case .motherOfMother(let id):
             return id
         default:
             return ""
