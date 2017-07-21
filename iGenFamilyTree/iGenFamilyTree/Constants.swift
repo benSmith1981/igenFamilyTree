@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct Constants {
     static let gridSize = 30
@@ -75,3 +76,4 @@ enum NotificationIDs: String {
     case iGenData
     case iGenDiseaseData
 }
+
