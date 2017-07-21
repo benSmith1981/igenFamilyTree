@@ -13,9 +13,8 @@ extension FamilyTreeGenerator {
     func loadDiseases() {
         for human in familyTree.values {
             if human.showDiseaseInfo {
-                iGenDataService.parseiGenDiseaseData(jsonName: "disease_\(human.id)")
-//                iGenDataService.parseiGenDiseaseData(jsonName: human.id) // need also family id???
-           }
+                iGenDataService.parseiGenDiseaseData(jsonName: "disease_\(human.id)") // need humand id but also family id???
+            }
         }
     }
 }
