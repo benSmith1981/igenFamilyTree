@@ -15,9 +15,27 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="36"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="36"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="35.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mwS-rI-KQN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="36"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yXG-CZ-r3C">
+                                <rect key="frame" x="0.0" y="18" width="320" height="18"/>
+                                <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="18" id="hbc-TW-24D"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.92156862745098034" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="yXG-CZ-r3C" secondAttribute="trailing" id="GMN-QH-M5b"/>
+                            <constraint firstAttribute="bottom" secondItem="yXG-CZ-r3C" secondAttribute="bottom" id="MBi-3q-TAk"/>
+                            <constraint firstItem="yXG-CZ-r3C" firstAttribute="leading" secondItem="mwS-rI-KQN" secondAttribute="leading" id="lPC-Ga-Cqq"/>
+                        </constraints>
+                    </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Wx-w9-aVC">
                         <rect key="frame" x="282" y="3" width="30" height="29"/>
                         <fontDescription key="fontDescription" type="system" weight="black" pointSize="15"/>
@@ -36,16 +54,23 @@
                         </state>
                     </button>
                 </subviews>
-                <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
+                <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.92156862745098034" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
                     <constraint firstItem="I7V-RA-Gso" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="3" id="9ZI-UA-jiz"/>
+                    <constraint firstItem="mwS-rI-KQN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="9ae-S6-125"/>
+                    <constraint firstItem="mwS-rI-KQN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="PR8-wU-IAN"/>
+                    <constraint firstAttribute="trailing" secondItem="mwS-rI-KQN" secondAttribute="trailing" id="VJX-iT-u3B"/>
                     <constraint firstAttribute="trailing" secondItem="3Wx-w9-aVC" secondAttribute="trailing" constant="8" id="Z1V-3p-ip5"/>
+                    <constraint firstAttribute="bottom" secondItem="mwS-rI-KQN" secondAttribute="bottom" id="aoE-8s-TVS"/>
                     <constraint firstItem="3Wx-w9-aVC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="3" id="mL3-sP-Bm0"/>
                     <constraint firstAttribute="bottom" secondItem="3Wx-w9-aVC" secondAttribute="bottom" constant="3" id="rTT-go-bQu"/>
                     <constraint firstAttribute="bottom" secondItem="I7V-RA-Gso" secondAttribute="bottom" constant="3" id="ulG-xf-5dg"/>
                     <constraint firstItem="I7V-RA-Gso" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="vjY-ou-V15"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="headerBg" destination="mwS-rI-KQN" id="kMv-wc-enO"/>
+            </connections>
         </tableViewCell>
     </objects>
 </document>

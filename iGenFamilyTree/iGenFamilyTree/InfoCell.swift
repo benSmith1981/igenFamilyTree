@@ -12,6 +12,7 @@ class InfoCell: UITableViewCell {
     
     @IBOutlet var titleInfo: UILabel!
     @IBOutlet var titleValue: UILabel!
+    @IBOutlet weak var textfieldValue: UITextField!
     
     override func awakeFromNib() {
         super.awakeFromNib()

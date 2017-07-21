@@ -8,7 +8,8 @@
 
 import UIKit
 
-class InviteCell: UITableViewCell {
+class FooterCell: UITableViewCell {
+    
     
     @IBOutlet weak var inviteButtonBg: UIView!
 

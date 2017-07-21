@@ -16,12 +16,19 @@ class HeaderCell: UITableViewCell, UITableViewDelegate {
         delegate?.closeView()
     }
     
+    @IBOutlet weak var headerBg: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
         
         // Initialization code
         
-        //HeaderCell.layer.cornerRadius = 16
+        self.layer.cornerRadius = 10
+        
+        
+        headerBg.layer.cornerRadius = 10
+       headerBg.layer.masksToBounds = true
+ 
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

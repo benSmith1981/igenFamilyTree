@@ -45,11 +45,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view alpha="0.75" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MaU-Vb-tzm">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yRv-2u-Nyi">
-                                <rect key="frame" x="35" y="109" width="250" height="350"/>
+                                <rect key="frame" x="35" y="96.5" width="250" height="375"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="350" id="BNT-Y3-YGx"/>
+                                    <constraint firstAttribute="height" constant="375" id="BNT-Y3-YGx"/>
                                     <constraint firstAttribute="width" constant="250" id="KsP-HJ-JCx"/>
                                 </constraints>
                                 <connections>
@@ -59,7 +63,11 @@
                             </tableView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="yRv-2u-Nyi" firstAttribute="centerY" secondItem="Yld-KI-i5a" secondAttribute="centerY" id="amn-0R-UST"/>
+                            <constraint firstItem="MaU-Vb-tzm" firstAttribute="leading" secondItem="Yld-KI-i5a" secondAttribute="leading" id="5Cc-dC-esy"/>
+                            <constraint firstItem="OB4-SR-s14" firstAttribute="top" secondItem="MaU-Vb-tzm" secondAttribute="bottom" id="IgQ-Wj-rcj"/>
+                            <constraint firstItem="MaU-Vb-tzm" firstAttribute="top" secondItem="Yld-KI-i5a" secondAttribute="top" id="XKt-fK-J6U"/>
+                            <constraint firstItem="yRv-2u-Nyi" firstAttribute="centerY" secondItem="Yld-KI-i5a" secondAttribute="centerY" id="dTh-29-KQz"/>
+                            <constraint firstAttribute="trailing" secondItem="MaU-Vb-tzm" secondAttribute="trailing" id="jQw-Be-rsv"/>
                             <constraint firstItem="yRv-2u-Nyi" firstAttribute="centerX" secondItem="Yld-KI-i5a" secondAttribute="centerX" id="lAQ-rN-mIw"/>
                         </constraints>
                     </view>
@@ -76,7 +84,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3881" y="1782"/>
+            <point key="canvasLocation" x="3879.375" y="1780.9859154929577"/>
         </scene>
         <!--iGen Family Tree chooser-->
         <scene sceneID="qey-8s-dXm">
@@ -220,6 +228,23 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cEo-r7-b6W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1783" y="2478"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="6ib-sr-eA2">
+            <objects>
+                <viewController id="Imx-3P-WGR" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="79p-st-6Cz"/>
+                        <viewControllerLayoutGuide type="bottom" id="lRP-F0-HYw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8ij-xy-9dS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RWq-cd-wds" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

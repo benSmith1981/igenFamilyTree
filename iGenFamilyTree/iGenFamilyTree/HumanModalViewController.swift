@@ -51,12 +51,14 @@ class HumanModalViewController: UIViewController, closeDetails,UIViewControllerT
     var currentDiseases: Disease?
 
     @IBOutlet var containerView: UIView!
-
     @IBOutlet weak var modalTableView: UITableView!
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
 
+        self.hideKeyboardWhenTappedAround()
+        
         modalTableView.frame = CGRect(x: modalTableView.frame.origin.x, y: modalTableView.frame.origin.y, width: modalTableView.frame.size.width, height: modalTableView.contentSize.height)
         
         modalTableView.backgroundColor = UIColor.clear
@@ -99,12 +101,9 @@ class HumanModalViewController: UIViewController, closeDetails,UIViewControllerT
         let infoCell = UINib(nibName: "InfoCell", bundle: nil)
         self.modalTableView.register(infoCell, forCellReuseIdentifier: "infoCellID")
         
-        let inviteCell = UINib(nibName: "InviteCell", bundle: nil)
-        self.modalTableView.register(inviteCell, forCellReuseIdentifier: "inviteCellID")
-        
-        let emptyCell = UINib(nibName: "emptyTableViewCell", bundle: nil)
-        self.modalTableView.register(inviteCell, forCellReuseIdentifier: "emptyTableViewCellID")
-  
+        let footerCell = UINib(nibName: "FooterCell", bundle: nil)
+        self.modalTableView.register(footerCell, forCellReuseIdentifier: "footerCellID")
+
     }
     
     override func viewDidAppear(_ animated: Bool) {

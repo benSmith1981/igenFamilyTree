@@ -31,12 +31,12 @@
                                 <color key="textColor" red="0.30196078431372547" green="0.30196078431372547" blue="0.30196078431372547" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Values" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sdD-nr-TrQ">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Values" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ULY-Au-gNm">
                                 <rect key="frame" x="100" y="0.0" width="184" height="27.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                <color key="textColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                     </stackView>
                 </subviews>
@@ -49,8 +49,8 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="textfieldValue" destination="ULY-Au-gNm" id="z5N-jj-FFN"/>
                 <outlet property="titleInfo" destination="Xsg-ES-BtQ" id="ESm-lY-XPW"/>
-                <outlet property="titleValue" destination="sdD-nr-TrQ" id="8n5-3g-Nqk"/>
             </connections>
         </tableViewCell>
     </objects>
