@@ -1,7 +1,7 @@
 { 
   "id4":{
 	"humanID": "id4",
-	"diseaseList": [ { "id" : 17 } ],
+	"diseaseList": [ { "id" : 17 }, { "id" : 18 }, { "id" : 19 }, { "id" : 20 } ],
 	"canEditList": [ { "id" : "id4" }, { "id" : "id5"} ],
 	"editInfoID": "id4",
 	"editInfoTimestamp": 12.345,

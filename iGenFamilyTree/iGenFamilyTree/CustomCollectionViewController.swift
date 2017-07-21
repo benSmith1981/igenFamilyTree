@@ -111,50 +111,43 @@ class CustomCollectionViewController: UICollectionViewController {
             return cell
         }
         
+        // if this cell depicts a human, show it
+        // if this human has a disease object, show it
         cell.bgImg.image = cellContent.switchBG()
         if let currentHuman = familyTreeGenerator?.familyTree[cellContent.getID()] {
-            processHuman(currentHuman, cell: &cell)
+            processHuman(currentHuman, cell)
             cell.genderImg.image = cellContent.showGender()
             if let currentDisease = familyTreeGenerator?.diseases[cellContent.getID()] {
-                processDisease(currentDisease, cell: &cell)
+                processDisease(currentDisease, cell)
             }
         }
         return cell
     }
    
-    private func processHuman(_ currentHuman: Human, cell: inout iGenCell) {
+    private func processHuman(_ currentHuman: Human, _ cell: iGenCell) {
         print("currentHuman:", currentHuman.name)
         cell.patientName.text = currentHuman.name
         cell.patientAge.text = currentHuman.dob
-        cell.diseaseImg1Color.backgroundColor = UIColor.black
+        cell.diseaseImg1Color.backgroundColor = UIColor.Colors.noDisease
     }
     
-    private func processDisease(_ currentDisease: Disease, cell: inout iGenCell) {
+    // we can only show the first 3 diseases and we show them in different colors
+    private func processDisease(_ currentDisease: Disease, _ cell: iGenCell) {
         print("currentDisease:", currentDisease.diseaseList)
-        switch currentDisease.diseaseList.count {
-        case 1:
-            cell.diseaseImg1Color.backgroundColor = UIColor.diseaseColor(1)
-            cell.diseaseLabel1.backgroundColor = UIColor.diseaseColor(1)
-            cell.diseaseLabel1.text = String(currentDisease.diseaseList[0])
-        case 2:
-            cell.diseaseImg2ColorsTop.backgroundColor = UIColor.diseaseColor(1)
-            cell.diseaseImg2ColorsBottom.backgroundColor = UIColor.diseaseColor(2)
-            cell.diseaseLabel1.backgroundColor = UIColor.diseaseColor(1)
-            cell.diseaseLabel2.backgroundColor = UIColor.diseaseColor(2)
-            cell.diseaseLabel1.text = String(currentDisease.diseaseList[0])
-            cell.diseaseLabel2.text = String(currentDisease.diseaseList[1])
-        case 3:
-            cell.diseaseImg3ColorsTop.backgroundColor = UIColor.diseaseColor(1)
-            cell.diseaseImg3ColorsMiddle.backgroundColor = UIColor.diseaseColor(2)
-            cell.diseaseImg2ColorsBottom.backgroundColor = UIColor.diseaseColor(3)
-            cell.diseaseLabel1.backgroundColor = UIColor.diseaseColor(1)
-            cell.diseaseLabel2.backgroundColor = UIColor.diseaseColor(2)
-            cell.diseaseLabel3.backgroundColor = UIColor.diseaseColor(3)
-            cell.diseaseLabel1.text = String(currentDisease.diseaseList[0])
-            cell.diseaseLabel2.text = String(currentDisease.diseaseList[1])
-            cell.diseaseLabel3.text = String(currentDisease.diseaseList[2])
-        default:
-            break
+        let diseaseCount = min(currentDisease.diseaseList.count, 3)
+        for diseaseIndex in 0 ... diseaseCount - 1 {
+            cell.diseaseLabel[diseaseIndex].backgroundColor = UIColor.diseaseColor(diseaseIndex)
+            cell.diseaseLabel[diseaseIndex].text = String(currentDisease.diseaseList[diseaseIndex])
+            switch diseaseCount {
+            case 1:
+                cell.diseaseImg1Color.backgroundColor = UIColor.diseaseColor(diseaseIndex)
+            case 2:
+                cell.diseaseImg2Colors[diseaseIndex].backgroundColor = UIColor.diseaseColor(diseaseIndex)
+            case 3:
+                cell.diseaseImg3Colors[diseaseIndex].backgroundColor = UIColor.diseaseColor(diseaseIndex)
+            default:
+                break
+            }
         }
     }
     

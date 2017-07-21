@@ -13,16 +13,11 @@ class iGenCell: UICollectionViewCell {
     
     @IBOutlet weak var bgImg: UIImageView!
     
-    @IBOutlet weak var diseaseImg1Color: UIImageView!
-    @IBOutlet weak var diseaseImg2ColorsTop: UIImageView!
-    @IBOutlet weak var diseaseImg2ColorsBottom: UIImageView!
-    @IBOutlet weak var diseaseImg3ColorsTop: UIImageView!
-    @IBOutlet weak var diseaseImg3ColorsMiddle: UIImageView!
-    @IBOutlet weak var diseaseImg3ColorsBottom: UIImageView!
+    @IBOutlet weak var diseaseImg1Color: UIImageView!    
+    @IBOutlet var diseaseImg2Colors: [UIImageView]!
+    @IBOutlet var diseaseImg3Colors: [UIImageView]!
     
-    @IBOutlet weak var diseaseLabel1: UILabel!
-    @IBOutlet weak var diseaseLabel2: UILabel!
-    @IBOutlet weak var diseaseLabel3: UILabel!
+    @IBOutlet var diseaseLabel: [UILabel]!
     
     @IBOutlet weak var patientAge: UILabel!
     @IBOutlet weak var genderImg: UIImageView!

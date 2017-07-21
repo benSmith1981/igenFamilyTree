@@ -106,17 +106,17 @@
             <connections>
                 <outlet property="bgImg" destination="Q1N-36-ASh" id="kCM-Q3-BaT"/>
                 <outlet property="diseaseImg1Color" destination="hNs-J1-Kfj" id="aw4-kU-zpY"/>
-                <outlet property="diseaseImg2ColorsBottom" destination="qZs-35-Cpd" id="Pzy-MT-Zxu"/>
-                <outlet property="diseaseImg2ColorsTop" destination="dnk-26-FFz" id="f4X-jd-Wck"/>
-                <outlet property="diseaseImg3ColorsBottom" destination="jwy-oU-6p6" id="PiB-s8-XBc"/>
-                <outlet property="diseaseImg3ColorsMiddle" destination="EZv-sC-BQb" id="21W-lH-sg6"/>
-                <outlet property="diseaseImg3ColorsTop" destination="JdH-dm-Xnt" id="6FG-V9-78P"/>
-                <outlet property="diseaseLabel1" destination="O1t-mB-hWe" id="Sor-SM-etC"/>
-                <outlet property="diseaseLabel2" destination="ssE-Yi-W6G" id="ES3-2R-y9c"/>
-                <outlet property="diseaseLabel3" destination="QfY-zS-lDc" id="Abm-54-QmT"/>
                 <outlet property="genderImg" destination="PTn-cI-Avg" id="5kY-HE-3KH"/>
                 <outlet property="patientAge" destination="bHI-gV-RwV" id="V2T-T9-xg6"/>
                 <outlet property="patientName" destination="o3E-qh-LYM" id="XJw-EM-v0y"/>
+                <outletCollection property="diseaseLabel" destination="O1t-mB-hWe" collectionClass="NSMutableArray" id="jGM-xm-9wD"/>
+                <outletCollection property="diseaseLabel" destination="ssE-Yi-W6G" collectionClass="NSMutableArray" id="RSG-9g-ZYs"/>
+                <outletCollection property="diseaseLabel" destination="QfY-zS-lDc" collectionClass="NSMutableArray" id="ouf-Tl-8hl"/>
+                <outletCollection property="diseaseImg2Colors" destination="dnk-26-FFz" collectionClass="NSMutableArray" id="IWm-yE-HKM"/>
+                <outletCollection property="diseaseImg2Colors" destination="qZs-35-Cpd" collectionClass="NSMutableArray" id="nMS-Dw-bL0"/>
+                <outletCollection property="diseaseImg3Colors" destination="JdH-dm-Xnt" collectionClass="NSMutableArray" id="WGu-e7-I5A"/>
+                <outletCollection property="diseaseImg3Colors" destination="EZv-sC-BQb" collectionClass="NSMutableArray" id="URl-D6-FNq"/>
+                <outletCollection property="diseaseImg3Colors" destination="jwy-oU-6p6" collectionClass="NSMutableArray" id="ZmG-32-aDX"/>
             </connections>
             <point key="canvasLocation" x="-19" y="70"/>
         </collectionViewCell>
