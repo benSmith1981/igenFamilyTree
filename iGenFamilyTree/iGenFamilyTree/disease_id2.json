@@ -1,9 +1,9 @@
 { 
-  "1":{
-	"humanID": "1",
+  "id2":{
+	"humanID": "id2",
 	"diseaseList": [ { "id" : 7 }, { "id" : 15 } ],
-	"canEditList": [ { "id" : "2" }, { "id" : "3"}, { "id" : "4"} ],
-	"editInfoID": "1",
+	"canEditList": [ { "id" : "id1" }, { "id" : "id3"}, { "id" : "id4"} ],
+	"editInfoID": "id2",
 	"editInfoTimestamp": 12.345,
 	"editInfoField": "nr. 7",
 	"deleted": false

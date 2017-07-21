@@ -34,7 +34,7 @@
             "spouses": [],
             "patientID": "id2",
             "id": "id3",
-            "showDiseaseInfo": false,
+            "showDiseaseInfo": true,
             "parents": [ { "id" : "id2" }, { "id" : "id4"} ],
             "siblings": [{ "id" : "id1" }, { "id" : "id12" }, { "id" : "id13" }],
             "children": []
@@ -47,7 +47,7 @@
             "spouses": [{ "id" : "id2" }],
             "patientID": "id2",
             "id": "id4",
-            "showDiseaseInfo": true,
+            "showDiseaseInfo": false,
             "parents": [],
             "siblings": [],
             "children": [{ "id" : "id1" }, { "id" : "id3"}, { "id" : "id13" }, { "id" : "id12" }]

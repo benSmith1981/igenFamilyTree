@@ -7,10 +7,16 @@
 //
 
 import UIKit
+import DeviceKit
 
 class CustomCollectionViewController: UICollectionViewController {
     
     var familyTreeGenerator: FamilyTreeGenerator?
+    let transition = PopAnimator()
+    var onceOnly = false
+    let device = Device()
+    var xPos = CGFloat(Double((Constants.gridSize / 2)) * (Constants.squareCellSize))
+    var yPos = CGFloat(Double((Constants.gridSize / 2)) * (Constants.squareCellSize))
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +31,7 @@ class CustomCollectionViewController: UICollectionViewController {
                                                selector: #selector(CustomCollectionViewController.notifyObserverDisease),
                                                name:  NSNotification.Name(rawValue: NotificationIDs.iGenDiseaseData.rawValue ),
                                                object: nil)
-
+        
         // segue from TableViewController
         // familyTreeGenerator will be nil if entered via iGenDataService
         // extract patientID from the first Human for function MakeTreeFor
@@ -40,9 +46,6 @@ class CustomCollectionViewController: UICollectionViewController {
         // self.clearsSelectionOnViewWillAppear = false
         // Do any additional setup after loading the view.
         
-        //collectionView?.minimumZoomScale = 0.25
-        //collectionView?.maximumZoomScale = 4.0
-        
         configureCollectionView()
         
         
@@ -53,6 +56,26 @@ class CustomCollectionViewController: UICollectionViewController {
         
         let defaultCell = UINib(nibName: "iGenCell", bundle:nil)
         self.collectionView?.register(defaultCell, forCellWithReuseIdentifier: CustomCellIdentifiers.iGenCellID.rawValue)
+        
+    }
+    
+    /*
+     
+    - This function centers the patient cell in the middle of the screen. This happens in two steps:
+        * Scroll to the patient cell and place it in the top left corner of the screen (xPos, yPos)
+        * Offset the cell to the center of the screen (this differs per device) (xOffset, yOffset)
+
+     @ xPos: Get x position of the patient cell
+     @ yPos: Get y position of the patient cell
+     @ xOffset: Get x offset for the specific device currently used
+     @ yOffset: Get y offset for the specific device currently used
+     
+     */
+    
+    func centerFamilyTree(xOffset: CGFloat, yOffset: CGFloat) {
+        
+        self.collectionView?.contentOffset.x = xPos - (CGFloat(Constants.squareCellSize) * xOffset)
+        self.collectionView?.contentOffset.y = yPos - (CGFloat(Constants.squareCellSize) * yOffset)
         
     }
     
@@ -89,9 +112,12 @@ class CustomCollectionViewController: UICollectionViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        print("didReceiveMemoryWarning")
         // Dispose of any resources that can be recreated.
     }
-    
+    override func viewDidDisappear(_ animated: Bool) {
+        print("viewDidDisappear")
+    }
     // MARK: UICollectionViewDataSource
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -122,5 +148,57 @@ class CustomCollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDelegate
     
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if let cellContent = familyTreeGenerator?.model?.cell?[indexPath.section][indexPath.item],
+            let currentHuman = familyTreeGenerator?.familyTree[cellContent.getID()] {
+            
+            let humanDetailsVC = storyboard!.instantiateViewController(withIdentifier: "HumanModDetailID") as! HumanModalViewController
+            humanDetailsVC.humanDetails = familyTreeGenerator
+            humanDetailsVC.indexPathForPerson = indexPath
+            humanDetailsVC.transitioningDelegate = self
+            //        humanDetailsVC.modalPresentationStyle = .overCurrentContext
+            present(humanDetailsVC, animated: true, completion: nil)
+        }
+        
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
+        if !onceOnly {
+            
+            switch device {
+            case .iPhone6Plus, .iPhone6sPlus, .iPhone7Plus:
+                centerFamilyTree(xOffset: 3.75, yOffset: 6.25)
+
+            case .iPhone6, .iPhone6s, .iPhone7:
+                centerFamilyTree(xOffset: 3.25, yOffset: 5.5)
+
+            case .iPhone5, .iPhone5s, .iPhoneSE:
+                centerFamilyTree(xOffset: 2.75, yOffset: 4.50)
+                
+            default:
+                centerFamilyTree(xOffset: 2, yOffset: 3)
+            }
+            
+            onceOnly = true
+        }
+    }
+    
+    deinit {
+        print("deinit")
+    }
+    
+}
+
+
+extension CustomCollectionViewController: UIViewControllerTransitioningDelegate {
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
+        transition.presenting = true
+        return transition
+    }
+
     
 }
