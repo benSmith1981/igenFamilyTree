@@ -10,14 +10,13 @@ import UIKit
 
 class InviteCell: UITableViewCell {
     
-    
     @IBOutlet weak var inviteButtonBg: UIView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        inviteButtonBg.layer.cornerRadius = 10
         inviteButtonBg.layer.masksToBounds = true
-        inviteButtonBg.layer.cornerRadius = 16
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

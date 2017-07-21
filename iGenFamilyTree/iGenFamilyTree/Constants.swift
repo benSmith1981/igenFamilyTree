@@ -15,7 +15,7 @@ struct Constants {
 
 struct DetailViewSections {
     static let numberOfSections = 3
-    static let numberOfStaticSections = 4
+    static let numberOfStaticSections = 3
     static let numberOfVerifyFamilySections = 1
     
     static let noSection = 0

@@ -10,10 +10,10 @@ import UIKit
 import CoreData
 
 enum detailRows: Int {
-    case headerRow = 0
-    case imageSliderRow = 1
-    case nameRow = 2
-    case dobRow = 3
+    //case headerRow = 0
+    case imageSliderRow = 0
+    case nameRow = 1
+    case dobRow = 2
     case disease1Row = 4
     case disease2Row = 5
     case disease3Row = 6
@@ -21,22 +21,20 @@ enum detailRows: Int {
     
     func positionAsInteger() -> Int {
         switch self {
-        case .headerRow:
-            return 0
         case .imageSliderRow:
-            return 1
+            return 0
         case .nameRow:
-            return 2
+            return 1
         case .dobRow:
-            return 3
+            return 2
         case .disease1Row:
-            return 4
+            return 3
         case .disease2Row:
-            return 5
+            return 4
         case .disease3Row:
-            return 6
+            return 5
         case .inviteRow:
-            return 7
+            return 6
         }
     }
 }
@@ -60,6 +58,8 @@ class HumanModalViewController: UIViewController, closeDetails,UIViewControllerT
         super.viewDidLoad()
 
         modalTableView.frame = CGRect(x: modalTableView.frame.origin.x, y: modalTableView.frame.origin.y, width: modalTableView.frame.size.width, height: modalTableView.contentSize.height)
+        
+        modalTableView.backgroundColor = UIColor.clear
         
         if let item = indexPathForPerson?.item,
             let section = indexPathForPerson?.section,
@@ -101,6 +101,9 @@ class HumanModalViewController: UIViewController, closeDetails,UIViewControllerT
         
         let inviteCell = UINib(nibName: "InviteCell", bundle: nil)
         self.modalTableView.register(inviteCell, forCellReuseIdentifier: "inviteCellID")
+        
+        let emptyCell = UINib(nibName: "emptyTableViewCell", bundle: nil)
+        self.modalTableView.register(inviteCell, forCellReuseIdentifier: "emptyTableViewCellID")
   
     }
     
@@ -109,7 +112,7 @@ class HumanModalViewController: UIViewController, closeDetails,UIViewControllerT
     }
     
     override func viewDidLayoutSubviews() {
-        modalTableView.frame = CGRect(x: modalTableView.frame.origin.x, y: modalTableView.frame.origin.y, width: modalTableView.frame.size.width, height: modalTableView.contentSize.height)
+        
         modalTableView.reloadData()
     }
     
@@ -121,9 +124,6 @@ class HumanModalViewController: UIViewController, closeDetails,UIViewControllerT
     func closeView()
     {
         self.presentingViewController?.dismiss(animated: true, completion: nil)
-        
-//        self.dismiss(animated: true, completion: nil)
-//        presentingViewController?.dismiss(animated: true, completion: nil)
 
     }
 }
