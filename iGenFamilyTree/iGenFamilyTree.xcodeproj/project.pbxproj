@@ -270,6 +270,7 @@
 				B5EAC1821F01390800151D52 /* iGenFamilyTree.xcdatamodeld */,
 				CFCFA7C01F0B960E00BC05E5 /* Constants.swift */,
 				E6C6748C1F20E4E500AF966E /* UIColorExtension.swift */,
+				CF8DA1891F224448007EE7EC /* DismissKeyboardExtension.swift */,
 			);
 			path = iGenFamilyTree;
 			sourceTree = "<group>";
@@ -333,7 +334,6 @@
 			children = (
 				CFCFA8601F1E3A8E00BC05E5 /* PopAnimator.swift */,
 				CFCFA7CA1F18FA9900BC05E5 /* HumanModalViewController.swift */,
-				CF8DA1891F224448007EE7EC /* DismissKeyboardExtension.swift */,
 				CFCFA8561F1CBD6600BC05E5 /* HumanModalExtension.swift */,
 				CFCFA8521F190CFC00BC05E5 /* ImageSlider */,
 				CFCFA85C1F1E0B2400BC05E5 /* HeaderCell.swift */,

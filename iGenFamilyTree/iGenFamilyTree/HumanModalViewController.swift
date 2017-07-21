@@ -84,6 +84,23 @@ class HumanModalViewController: UIViewController, closeDetails,UIViewControllerT
         modalTableView.layer.shadowRadius = 5
         modalTableView.layer.masksToBounds = true
         
+        
+        /*
+         let containerView:UIView = UIView(frame:CGRect(x: 10, y: 100, width: 300, height: 400))
+         modalTableView = UITableView(frame: containerView.bounds, style: .plain)
+         containerView.backgroundColor = UIColor.clear
+         containerView.layer.shadowColor = UIColor.darkGray.cgColor
+         containerView.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
+         containerView.layer.shadowOpacity = 1.0
+         containerView.layer.shadowRadius = 2
+         
+         modalTableView.layer.cornerRadius = 10
+         modalTableView.layer.masksToBounds = true
+         self.view.addSubview(containerView)
+         containerView.addSubview(modalTableView)
+         */
+        
+        
 //        view.backgroundColor = UIColor.clear.withAlphaComponent(0.5)
         
         //Need to make two layers for cell and shadow to enable both rounded corners AND shadows
