@@ -61,10 +61,10 @@ class CustomCollectionViewController: UICollectionViewController {
     
     /*
      
-    - This function centers the patient cell in the middle of the screen. This happens in two steps:
-        * Scroll to the patient cell and place it in the top left corner of the screen (xPos, yPos)
-        * Offset the cell to the center of the screen (this differs per device) (xOffset, yOffset)
-
+     - This function centers the patient cell in the middle of the screen. This happens in two steps:
+     * Scroll to the patient cell and place it in the top left corner of the screen (xPos, yPos)
+     * Offset the cell to the center of the screen (this differs per device) (xOffset, yOffset)
+     
      @ xPos: Get x position of the patient cell
      @ yPos: Get y position of the patient cell
      @ xOffset: Get x offset for the specific device currently used
@@ -129,7 +129,7 @@ class CustomCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        var cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCellIdentifiers.iGenCellID.rawValue, for: indexPath) as! iGenCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCellIdentifiers.iGenCellID.rawValue, for: indexPath) as! iGenCell
         
         // Configure the cell
         guard let cellContent = familyTreeGenerator?.model?.cell?[indexPath.section][indexPath.item] else {
@@ -137,46 +137,18 @@ class CustomCollectionViewController: UICollectionViewController {
             return cell
         }
         
-        // if this cell depicts a human, show it
-        // if this human has a disease object, show it
+        // if this cell depicts a human, process it
+        // if this human has a disease object, process it
         cell.bgImg.image = cellContent.switchBG()
         if let currentHuman = familyTreeGenerator?.familyTree[cellContent.getID()] {
-            processHuman(currentHuman, cell)
+            cell.processHumanCellFor(currentHuman)
             cell.genderImg.image = cellContent.showGender()
             if let currentDisease = familyTreeGenerator?.diseases[cellContent.getID()] {
-                processDisease(currentDisease, cell)
+                cell.processDiseaseCellFor(currentDisease)
             }
         }
         return cell
     }
-   
-    private func processHuman(_ currentHuman: Human, _ cell: iGenCell) {
-        print("currentHuman:", currentHuman.name)
-        cell.patientName.text = currentHuman.name
-        cell.patientAge.text = currentHuman.dob
-        cell.diseaseImg1Color.backgroundColor = UIColor.Colors.noDisease
-    }
-    
-    // we can only show the first 3 diseases and we show them in different colors
-    private func processDisease(_ currentDisease: Disease, _ cell: iGenCell) {
-        print("currentDisease:", currentDisease.diseaseList)
-        let diseaseCount = min(currentDisease.diseaseList.count, 3)
-        for diseaseIndex in 0 ... diseaseCount - 1 {
-            cell.diseaseLabel[diseaseIndex].backgroundColor = UIColor.diseaseColor(diseaseIndex)
-            cell.diseaseLabel[diseaseIndex].text = String(currentDisease.diseaseList[diseaseIndex])
-            switch diseaseCount {
-            case 1:
-                cell.diseaseImg1Color.backgroundColor = UIColor.diseaseColor(diseaseIndex)
-            case 2:
-                cell.diseaseImg2Colors[diseaseIndex].backgroundColor = UIColor.diseaseColor(diseaseIndex)
-            case 3:
-                cell.diseaseImg3Colors[diseaseIndex].backgroundColor = UIColor.diseaseColor(diseaseIndex)
-            default:
-                break
-            }
-        }
-    }
-    
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
@@ -200,10 +172,10 @@ class CustomCollectionViewController: UICollectionViewController {
             switch device {
             case .iPhone6Plus, .iPhone6sPlus, .iPhone7Plus:
                 centerFamilyTree(xOffset: 3.75, yOffset: 6.25)
-
+                
             case .iPhone6, .iPhone6s, .iPhone7:
                 centerFamilyTree(xOffset: 3.25, yOffset: 5.5)
-
+                
             case .iPhone5, .iPhone5s, .iPhoneSE:
                 centerFamilyTree(xOffset: 2.75, yOffset: 4.50)
                 
@@ -229,6 +201,6 @@ extension CustomCollectionViewController: UIViewControllerTransitioningDelegate 
         transition.presenting = true
         return transition
     }
-
+    
     
 }
