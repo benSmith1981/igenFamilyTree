@@ -22,16 +22,11 @@ exports.savetree = function(req, res, err) {
         console.log("key " + key)
         console.log("Name " + currentHuman.name)
 
-        // var familyTree = new FamilySchema({  
-        //     name: currentHuman.name,
-        //     id: currentHuman.id,
-        //     patientID: currentHuman.patientID
-        // })
-        var familyTree = new FamilySchema( currentHuman )
+        var familyTree = new FamilySchema( req.body )
 
         familyTree.save(function (err, details) {
             if (err) {
-                res.json({ err })
+                res.json({ success:true, err })
                 return console.error(err);
             }
             else  {
@@ -41,7 +36,9 @@ exports.savetree = function(req, res, err) {
             }
         })
     });
+
     res.json({success:true})
+
 
 }
 
