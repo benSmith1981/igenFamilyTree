@@ -9,6 +9,9 @@
 import UIKit
 
 class ChooserViewController: UIViewController {
+    
+    @IBAction func unwindToVC1(segue:UIStoryboardSegue) { }
+
 
     var familyJsonToLoad: String?
     

@@ -12,8 +12,8 @@
 		681222881F0E6BBF00FA291C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 681222851F0E6BBE00FA291C /* Localizable.strings */; };
 		68AEA8D11F0D4B69007E5E08 /* CreatePatientTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68AEA8CE1F0D4B69007E5E08 /* CreatePatientTree.swift */; };
 		68AEA8D21F0D4B69007E5E08 /* CreatePatientTree.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68AEA8CF1F0D4B69007E5E08 /* CreatePatientTree.xib */; };
-		68AEA8D31F0D4B69007E5E08 /* CreatePatientTreeTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68AEA8D01F0D4B69007E5E08 /* CreatePatientTreeTableView.swift */; };
 		68AEA8D51F0D4B73007E5E08 /* JSONserialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68AEA8D41F0D4B73007E5E08 /* JSONserialization.swift */; };
+		68C309E11F25F82100E3072E /* CreatePatientTreeTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C309E01F25F82100E3072E /* CreatePatientTreeTableView.swift */; };
 		68F4CAC21F0699790036946B /* iGenDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F4CAC11F0699790036946B /* iGenDataService.swift */; };
 		68F4CAC41F0699840036946B /* iGen.json in Resources */ = {isa = PBXBuildFile; fileRef = 68F4CAC31F0699840036946B /* iGen.json */; };
 		6D74ABEB9AFFE4B981607D83 /* Pods_iGenFamilyTree.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05146668421A3773640975C1 /* Pods_iGenFamilyTree.framework */; };
@@ -88,8 +88,8 @@
 		681222861F0E6BBE00FA291C /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = Localizable.strings; sourceTree = "<group>"; };
 		68AEA8CE1F0D4B69007E5E08 /* CreatePatientTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePatientTree.swift; sourceTree = "<group>"; };
 		68AEA8CF1F0D4B69007E5E08 /* CreatePatientTree.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreatePatientTree.xib; sourceTree = "<group>"; };
-		68AEA8D01F0D4B69007E5E08 /* CreatePatientTreeTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePatientTreeTableView.swift; sourceTree = "<group>"; };
 		68AEA8D41F0D4B73007E5E08 /* JSONserialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONserialization.swift; sourceTree = "<group>"; };
+		68C309E01F25F82100E3072E /* CreatePatientTreeTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePatientTreeTableView.swift; sourceTree = "<group>"; };
 		68F4CAC11F0699790036946B /* iGenDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iGenDataService.swift; sourceTree = "<group>"; };
 		68F4CAC31F0699840036946B /* iGen.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = iGen.json; sourceTree = "<group>"; };
 		766023BC6D2C08F6E70170F2 /* Pods-iGenFamilyTree.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iGenFamilyTree.release.xcconfig"; path = "Pods/Target Support Files/Pods-iGenFamilyTree/Pods-iGenFamilyTree.release.xcconfig"; sourceTree = "<group>"; };
@@ -202,7 +202,7 @@
 			children = (
 				68AEA8CE1F0D4B69007E5E08 /* CreatePatientTree.swift */,
 				68AEA8CF1F0D4B69007E5E08 /* CreatePatientTree.xib */,
-				68AEA8D01F0D4B69007E5E08 /* CreatePatientTreeTableView.swift */,
+				68C309E01F25F82100E3072E /* CreatePatientTreeTableView.swift */,
 			);
 			name = NewPatient;
 			sourceTree = "<group>";
@@ -585,12 +585,12 @@
 				68AEA8D51F0D4B73007E5E08 /* JSONserialization.swift in Sources */,
 				E6644EB21F052D4800C66427 /* CustomCollectionViewController.swift in Sources */,
 				B51B62C31F0A23D400AB11CC /* Human.swift in Sources */,
-				68AEA8D31F0D4B69007E5E08 /* CreatePatientTreeTableView.swift in Sources */,
 				B51B62C71F0A246500AB11CC /* Model.swift in Sources */,
 				B5EAC17C1F01390800151D52 /* AppDelegate.swift in Sources */,
 				CFCFA7C51F0D24DF00BC05E5 /* CellStates.swift in Sources */,
 				68F4CAC21F0699790036946B /* iGenDataService.swift in Sources */,
 				CFCFA84A1F190CE800BC05E5 /* DetailmageSliderCell.swift in Sources */,
+                68C309E11F25F82100E3072E /* CreatePatientTreeTableView.swift in Sources */,
 				CFCFA84C1F190CE800BC05E5 /* DetailImageFlowExtension.swift in Sources */,
 				CFCFA8571F1CBD6600BC05E5 /* HumanModalExtension.swift in Sources */,
 				E626B31A1F0E291100125D85 /* GenerateNewFamilyTree.swift in Sources */,
