@@ -43,6 +43,7 @@ enum JsonKeys: String {
     case race
     case processed
     case showDiseaseInfo
+    case infoVerified
     case spouses
     case parents
     case grandparents

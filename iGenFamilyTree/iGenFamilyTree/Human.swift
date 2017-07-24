@@ -21,6 +21,9 @@ class Human {
     var race : String?
     var processed: Bool = false
     var showDiseaseInfo: Bool = false
+    var editInfoID: ID?
+    var editInfoTimestamp: TimeInterval?
+    var editInfoField: String?
     var spouses: [ID] = []
     var parents: [ID] = []
     var children: [ID] = []
