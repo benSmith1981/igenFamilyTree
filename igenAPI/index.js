@@ -17,11 +17,21 @@ var router = express.Router();
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json());
 
+
+// mongoose.connect(process.env.MONGODB_URI||  'mongodb://localhost/api/', function (error) {
+//     if (error) console.error(error);
+//     else console.log('mongo connected');
+// });
 // connect local or with heroku
-mongoose.connect(process.env.MONGODB_URI||  'mongodb://localhost/api/', function (error) {
+//{ user: "heroku_d1t7ds7m", account: "heroku_d1t7ds7m" }
+//mongodb://<dbuser>:<dbpassword>@ds051868.mlab.com:51868/heroku_d1t7ds7m
+var password  = "testpassword123!"
+var username = "heroku_d1t7ds7m"
+mongoose.connect(process.env.MONGODB_URI||  'mongodb://'+username+':'+password+'@ds051868.mlab.com:51868/heroku_d1t7ds7m', function (error) {
     if (error) console.error(error);
     else console.log('mongo connected');
 });
+
 
 // parameters sent with 
 router.post('/', function(req, res) {
