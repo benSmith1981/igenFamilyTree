@@ -8,15 +8,95 @@
 
 import UIKit
 import DeviceKit
+import Alamofire
+
 
 class CustomCollectionViewController: UICollectionViewController {
     
     var familyTreeGenerator: FamilyTreeGenerator?
+    var answers = Answers()
+    var alertView: UIAlertController?
+    var human = Human.self
     let transition = PopAnimator()
     var onceOnly = false
     let device = Device()
     var xPos = CGFloat(Double((Constants.gridSize / 2)) * (Constants.squareCellSize))
     var yPos = CGFloat(Double((Constants.gridSize / 2)) * (Constants.squareCellSize))
+    
+    @IBAction func goBackToOneButtonTapped(_ sender: Any) {
+        performSegue(withIdentifier: "unwindSegueToVC1", sender: self)
+    }
+    
+    
+    @IBAction func saveFamilyTree(_ sender: Any) {
+        print("Back Button pressed.")
+        let alertController = UIAlertController(title: "Familytree", message: "Do you want to save the familytree?", preferredStyle: .alert)
+        let currentTopVC: UIViewController? = self.currentTopViewController()
+        currentTopVC?.present(alertController, animated: true, completion: nil)
+        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
+            UIAlertAction in
+            print("Ok alertbutton was pressed")
+            if let itemsFromModel = self.familyTreeGenerator?.familyTree{
+                var allDictionaries: [String:Any] = [:]
+                var familyID = ""
+                var humanID = ""
+                print("itemsFromModel\(itemsFromModel)")
+                for (key, Human) in itemsFromModel{
+                    var parents: Dictionary<String, Any> = [:]
+                    var dictionary = [
+                        "name" : Human.name,
+                        "gender" : Human.gender,
+                        "dob" : Human.dob,
+                        "patientID" : Human.patientID,
+                        "id" : Human.id,
+                        "processed" : Human.processed,
+                        "showDiseaseInfo" : Human.showDiseaseInfo,
+                        "parents" : Human.parents,
+                        "children" : Human.children,
+                        "siblings" : Human.siblings,
+                        "spouse" : Human.spouses
+                        ] as [String : Any]
+                    
+                    
+                    allDictionaries[Human.id] = dictionary as [String:Any]
+                    familyID = Human.patientID
+                }
+                
+                print("")
+                print("")
+                
+                var familyDictionary: [String:Any] = [:]
+                familyDictionary[familyID] = allDictionaries
+                print("print familyDict \(familyDictionary)")
+                
+                Alamofire.request("http://localhost:3000/api/savetree/",
+                                  method: .post,
+                                  parameters: familyDictionary,
+                                  encoding: JSONEncoding.default) .responseJSON { (response) in
+                                    switch response.result {
+                                    case .success(let jsonData):
+                                        print("Success \(jsonData)")
+                                    case .failure(let error):
+                                        print("error \(error)")
+                                    }
+                }
+            }
+            self.returnToView()
+        }
+        
+        let cancelAction = UIAlertAction(title: "No", style: UIAlertActionStyle.cancel) {
+            UIAlertAction in
+            print("No alertbutton was pressed")
+            self.answers.reset()
+            self.returnToView()
+        }
+        alertController.addAction(okAction)
+        alertController.addAction(cancelAction)
+    }
+    
+    func returnToView() {
+        self.performSegue(withIdentifier: "returnViewController", sender: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +131,16 @@ class CustomCollectionViewController: UICollectionViewController {
         
         
     }
+    
+    func currentTopViewController() -> UIViewController {
+        var topVC: UIViewController? = UIApplication.shared.delegate?.window??.rootViewController
+        while ((topVC?.presentedViewController) != nil) {
+            topVC = topVC?.presentedViewController
+        }
+        return topVC!
+    }
+    
+
     
     func configureCollectionView() {
         
