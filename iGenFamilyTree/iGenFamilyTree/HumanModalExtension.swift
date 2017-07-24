@@ -45,9 +45,6 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
             return loadStaticSection(indexPath: indexPath, tableView: tableView)
         case DetailViewSections.dynamicSection:
             return loadDynamicSection(indexPath: indexPath, tableView: tableView)
-        //case DetailViewSections.verifyWithFamilySection:
-          //  let inviteCell = tableView.dequeueReusableCell(withIdentifier: "inviteCellID", for: indexPath) as! InviteCell
-            //return inviteCell
         default :
             return UITableViewCell()
         }
@@ -77,18 +74,7 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
             
             return secondDiseaseCell
             
-//        case DetailViewSections.thirdDiseaseRow:
-//            
-//            let thirdDiseaseCell = tableView.dequeueReusableCell(withIdentifier: "infoCellID", for: indexPath) as! InfoCell
-//            
-//            thirdDiseaseCell.titleInfo.text = ""
-//            if let thirdDisease = currentDiseases?.diseaseList[2] {
-//                thirdDiseaseCell.textfieldValue.text = String(describing: thirdDisease)
-//            }
-//            
-//            return thirdDiseaseCell
-//            
-        default:
+        case DetailViewSections.thirdDiseaseRow:
             
             let thirdDiseaseCell = tableView.dequeueReusableCell(withIdentifier: "infoCellID", for: indexPath) as! InfoCell
             
@@ -98,6 +84,10 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
             }
             
             return thirdDiseaseCell
+            
+        default:
+            
+            return UITableViewCell()
             
         }
     }
@@ -141,61 +131,6 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
     }
-    
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCellID") as! HeaderCell
-//        headerCell.delegate = self
-//        headerCell.backgroundColor = UIColor(red:0.96, green:0.96, blue:0.96, alpha:1.0)
-//        
-//        if section == 0 {
-//            return headerCell
-//        } else {
-//            return nil
-//        }
-    
-        /* switch (section) {
-        case 0:
-            return headerCell
-        //return sectionHeaderView
-        case 1:
-            return nil
-        //return sectionHeaderView
-        case 2:
-            return nil
-        //return sectionHeaderView
-        default:
-            return nil
-        }*/
-//    }
-//    
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        if section == 0 {
-//            return 36
-//        } else {
-//            return 0
-//        }
-//    }
-    
-    
-//    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-//        let footerCell = tableView.dequeueReusableCell(withIdentifier: "footerCellID") as! FooterCell
-//        
-//        if section == 2 {
-//            return footerCell
-//        } else {
-//            return nil
-//        }
-//    }
-    
-    //myTblView.tableFooterView = customView
-    
-    //func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-    //    if section == 2 {
-    //        return 36
-    //    } else {
-    //        return 0
-    //    }
-    //}
-    
+        
 }
 

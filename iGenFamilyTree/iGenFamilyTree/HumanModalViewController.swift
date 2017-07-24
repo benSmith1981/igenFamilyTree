@@ -108,8 +108,8 @@ class HumanModalViewController: UIViewController, /*closeDetails,*/UIViewControl
         modalTableView.layer.masksToBounds = true
         
         
-        let headerCell = UINib(nibName: "HeaderCell", bundle: nil)
-        self.modalTableView.register(headerCell, forCellReuseIdentifier: "headerCellID")
+//        let headerCell = UINib(nibName: "HeaderCell", bundle: nil)
+//        self.modalTableView.register(headerCell, forCellReuseIdentifier: "headerCellID")
         
         let imageCell = UINib(nibName: "DetailmageSliderCell", bundle: nil)
         self.modalTableView.register(imageCell, forCellReuseIdentifier: "detailImageCellID")
@@ -117,8 +117,8 @@ class HumanModalViewController: UIViewController, /*closeDetails,*/UIViewControl
         let infoCell = UINib(nibName: "InfoCell", bundle: nil)
         self.modalTableView.register(infoCell, forCellReuseIdentifier: "infoCellID")
         
-        let footerCell = UINib(nibName: "FooterCell", bundle: nil)
-        self.modalTableView.register(footerCell, forCellReuseIdentifier: "footerCellID")
+//        let footerCell = UINib(nibName: "FooterCell", bundle: nil)
+//        self.modalTableView.register(footerCell, forCellReuseIdentifier: "footerCellID")
 
     }
     
