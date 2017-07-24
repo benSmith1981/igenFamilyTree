@@ -22,7 +22,7 @@ exports.savetree = function(req, res, err) {
         console.log("key " + key)
         console.log("Name " + currentHuman.name)
 
-        var familyTree = new FamilySchema( req.body )
+        var familyTree = new FamilySchema( currentHuman )
 
         familyTree.save(function (err, details) {
             if (err) {

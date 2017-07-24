@@ -3,7 +3,7 @@
 var mongoose = require('mongoose');
 
 // Define our client schema
-var FamilySchema = new mongoose.Schema([{
+var FamilySchema = new mongoose.Schema({
 
     name: String,
     patientID: String, // "Family1", this is the id of the patient and for the family
@@ -23,7 +23,7 @@ var FamilySchema = new mongoose.Schema([{
     siblings: [ String ],
     children: [String ]
 
-}])
+})
 
 var DiseaseSchema = new mongoose.Schema({
 
