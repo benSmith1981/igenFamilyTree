@@ -81,6 +81,7 @@ class CustomCollectionViewController: UICollectionViewController {
                                     }
                 }
             }
+            self.returnToView()
         }
         
         let cancelAction = UIAlertAction(title: "No", style: UIAlertActionStyle.cancel) {

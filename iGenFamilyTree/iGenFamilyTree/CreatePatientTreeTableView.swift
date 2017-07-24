@@ -75,8 +75,6 @@ class CreatePatientTreeTableView: FormViewController, UITextFieldDelegate {
     var selectgender = selectGender()
     var familyTreeGenerator = FamilyTreeGenerator.init(familyTree: [:])
     
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -86,9 +84,11 @@ class CreatePatientTreeTableView: FormViewController, UITextFieldDelegate {
                 row.tag = "tagbrother"
                 row.title = NSLocalizedString("numberBrothers", comment: "")
                 row.placeholder = NSLocalizedString("enternumber", comment: "")
+                row.value = self.answers.brothers
                 }.onChange {
                     if $0.value != nil {
-                    self.answers.brothers = $0.value!}
+                        self.answers.brothers = $0.value!
+                    }
                     else {
                         print("Amount of brother is zero!")
                     }}
@@ -96,6 +96,7 @@ class CreatePatientTreeTableView: FormViewController, UITextFieldDelegate {
                 row.tag = "tagsister"
                 row.title = NSLocalizedString("numberSisters", comment: "")
                 row.placeholder = NSLocalizedString("enternumber", comment: "")
+                row.value = self.answers.sisters
                 }.onChange {
                     if $0.value != nil {
                         self.answers.sisters = $0.value!}
@@ -183,14 +184,26 @@ class CreatePatientTreeTableView: FormViewController, UITextFieldDelegate {
                 $0.value = "Female"    // initially selected
                 }.onChange {
                     if $0.value == "Female"{
-                        self.selectgender.genderFemale = JsonKeys.female.rawValue}
+                        self.selectgender.genderFemale = JsonKeys.female.rawValue
+                    }
                     else {
-                        self.selectgender.genderFemale = JsonKeys.male.rawValue}
+                        self.selectgender.genderFemale = JsonKeys.male.rawValue
+                    }
             }
             <<< ButtonRow() {
                 $0.title = NSLocalizedString("CreateTree", comment: "")
                 $0.onCellSelection(self.buttonTapped)
         }
+
+    }
+    
+    func setFamilyVariables(){
+        let valuesDictionary = form.values()
+        print(valuesDictionary)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        familyTreeGenerator.familyTree = [:]
     }
     
     func buttonTapped(cell: ButtonCellOf<String>, row: ButtonRow) {
