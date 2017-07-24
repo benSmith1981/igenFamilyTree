@@ -56,60 +56,150 @@ struct Answers {
     var sistersOfMother: Int = 0
     var brothersOfFather: Int = 0
     var sistersOfFather: Int = 0
+
+    
+    mutating func reset() {
+        self = Answers()
+    }
 }
 
-class TableViewController: UITableViewController, SetNumberOfFamilyMembers {
+struct selectGender {
+    var genderMale = String()
+    var genderFemale = String()
+}
+
+
+
+class CreatePatientTreeTableView: FormViewController, UITextFieldDelegate {
     var answers = Answers()
+    var selectgender = selectGender()
     var familyTreeGenerator = FamilyTreeGenerator.init(familyTree: [:])
     
-    
-    
-    func sendNumber(number: Int, cellType: QuestionType){
-        switch cellType {
-        case .brother:
-            answers.brothers = number
-        case .sister:
-            answers.sisters = number
-        case .sons:
-            answers.sons = number
-        case .daughters:
-            answers.daughters = number
-        case .brotherMother:
-            answers.brothersOfMother = number
-        case .sisterMother:
-            answers.sistersOfMother = number
-        case .brotherFather:
-            answers.brothersOfFather = number
-        case .sisterFather:
-            answers.sistersOfFather = number
-        }
-    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let nib = UINib(nibName: CustomCellNames.CreatePatientTree.rawValue, bundle: nil)
-        self.tableView.register(nib, forCellReuseIdentifier: CustomCellIdentifiers.CreatePatientTreeID.rawValue)
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        
-        answers = Answers()
 
-        familyTreeGenerator =  FamilyTreeGenerator.init(familyTree: [:])
+        form +++ Section(NSLocalizedString("fillinform", comment: ""))
+            <<< IntRow(){ row in
+                row.tag = "tagbrother"
+                row.title = NSLocalizedString("numberBrothers", comment: "")
+                row.placeholder = NSLocalizedString("enternumber", comment: "")
+                }.onChange {
+                    if $0.value != nil {
+                    self.answers.brothers = $0.value!}
+                    else {
+                        print("Amount of brother is zero!")
+                    }}
+            <<< IntRow(){ row in
+                row.tag = "tagsister"
+                row.title = NSLocalizedString("numberSisters", comment: "")
+                row.placeholder = NSLocalizedString("enternumber", comment: "")
+                }.onChange {
+                    if $0.value != nil {
+                        self.answers.sisters = $0.value!}
+                    else {
+                        print("Amount of sisters is zero!")
+                    }}
+            <<< IntRow(){ row in
+                row.tag = "tagsons"
+                row.title = NSLocalizedString("numberSons", comment: "")
+                row.placeholder = NSLocalizedString("enternumber", comment: "")
+                }.onChange {
+                    if $0.value != nil {
+                        self.answers.sons = $0.value!}
+                    else {
+                        print("Amount of sons is zero!")
+                    }}
+            <<< IntRow(){ row in
+                row.tag = "tagdaughters"
+                row.title = NSLocalizedString("numberDaughters", comment: "")
+                row.placeholder = NSLocalizedString("enternumber", comment: "")
+                }.onChange {
+                    if $0.value != nil {
+                        self.answers.daughters = $0.value!}
+                    else {
+                        print("Amount of daughters is zero!")
+                    }}
+            <<< IntRow(){ row in
+                row.tag = "tagbrothermother"
+                row.title = NSLocalizedString("numberBrotherfromMother", comment: "")
+                row.placeholder = NSLocalizedString("enternumber", comment: "")
+                }.onChange {
+                    if $0.value != nil {
+                        self.answers.brothersOfMother = $0.value!}
+                    else {
+                        print("Amount of brothersOfMother is zero!")
+                    }}
+            <<< IntRow(){ row in
+                row.tag = "tagsistermother"
+                row.title = NSLocalizedString("numberSistersfromMother", comment: "")
+                row.placeholder = NSLocalizedString("enternumber", comment: "")
+                }.onChange {
+                    if $0.value != nil {
+                        self.answers.sistersOfMother = $0.value!}
+                    else {
+                        print("Amount of sistersOfMother is zero!")
+                    }}
+            <<< IntRow(){ row in
+                row.tag = "tagbrotherfather"
+                row.title = NSLocalizedString("numberBrothersfromFather", comment: "")
+                row.placeholder = NSLocalizedString("enternumber", comment: "")
+                }.onChange {
+                    if $0.value != nil {
+                        self.answers.brothersOfFather = $0.value!}
+                    else {
+                        print("Amount of brothersOfFather is zero!")
+                    }}
+            <<< IntRow(){ row in
+                row.tag = "tagsisterfather"
+                row.title = NSLocalizedString("numberSistersfromFather", comment: "")
+                row.placeholder = NSLocalizedString("enternumber", comment: "")
+                }.onChange {
+                    if $0.value != nil {
+                        self.answers.sistersOfFather = $0.value!}
+                    else {
+                        print("Amount of sistersOfFather is zero!")
+                    }}
+        form +++ Section("Please fill in your gender")
+            <<< ActionSheetRow<String>() {
+                $0.tag = "whatgendermale"
+                $0.title = NSLocalizedString("whatgender", comment: "")
+                $0.selectorTitle = NSLocalizedString("pickgender", comment: "")
+                $0.options = ["Male","Female"]
+                $0.value = "Male"    // initially selected
+                }.onChange {
+                    if $0.value == "Male"{
+                        self.selectgender.genderMale = JsonKeys.male.rawValue}
+                    else {
+                        self.selectgender.genderMale = JsonKeys.female.rawValue}
+            }
+            <<< ActionSheetRow<String>() {
+                $0.tag = "whatgenderfemale"
+                $0.title = NSLocalizedString("genderspouse", comment: "")
+                $0.selectorTitle = NSLocalizedString("pickgender", comment: "")
+                $0.options = ["Male","Female"]
+                $0.value = "Female"    // initially selected
+                }.onChange {
+                    if $0.value == "Female"{
+                        self.selectgender.genderFemale = JsonKeys.female.rawValue}
+                    else {
+                        self.selectgender.genderFemale = JsonKeys.male.rawValue}
+            }
+            <<< ButtonRow() {
+                $0.title = NSLocalizedString("CreateTree", comment: "")
+                $0.onCellSelection(self.buttonTapped)
+        }
     }
     
-    @IBAction func generateTree(_ sender: UIBarButtonItem) {
-        // create empty Humans
-        // create all relationships for every human        
+    func buttonTapped(cell: ButtonCellOf<String>, row: ButtonRow) {
         familyTreeGenerator.generateNewFamilyTree(with: answers)
-        self.performSegue(withIdentifier: Segues.familytreeSegue.rawValue, sender: self)
+        familyTreeGenerator.printFamilyTree(familyTreeGenerator.familyTree)
         
+        
+        self.performSegue(withIdentifier: Segues.familytreeSegue.rawValue, sender: self)
+        print("Generate tree segue button tapped!")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -118,143 +208,6 @@ class TableViewController: UITableViewController, SetNumberOfFamilyMembers {
     }
     
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    // MARK: - Table view data source
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 8
-    }
-    
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        switch indexPath.row {
-            
-        case QuestionType.brother.rawValue:
-            let cellBrothers = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.CreatePatientTreeID.rawValue, for: indexPath) as! CreatePatientTree
-            cellBrothers.questionLabel.text = QuestionType.brother.selectQuestion()
-            cellBrothers.awakeFromNib()
-            cellBrothers.cellType = .brother
-            cellBrothers.setNumberDelegate = self
-            return cellBrothers
-            
-        case QuestionType.sister.rawValue:
-            let cellSisters = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.CreatePatientTreeID.rawValue, for: indexPath) as! CreatePatientTree
-            cellSisters.questionLabel.text = QuestionType.sister.selectQuestion()
-            cellSisters.cellType = .sister
-            cellSisters.setNumberDelegate = self
-            
-            return cellSisters
-            
-        case QuestionType.sons.rawValue:
-            let cellSons = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.CreatePatientTreeID.rawValue, for: indexPath) as! CreatePatientTree
-            cellSons.questionLabel.text = QuestionType.sons.selectQuestion()
-            cellSons.cellType = .sons
-            cellSons.setNumberDelegate = self
-            
-            return cellSons
-            
-        case QuestionType.daughters.rawValue:
-            let cellDaughters = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.CreatePatientTreeID.rawValue, for: indexPath) as! CreatePatientTree
-            cellDaughters.questionLabel.text = QuestionType.daughters.selectQuestion()
-            cellDaughters.cellType = .daughters
-            cellDaughters.setNumberDelegate = self
-            
-            return cellDaughters
-            
-        case QuestionType.brotherMother.rawValue:
-            let cellBrotherMother = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.CreatePatientTreeID.rawValue, for: indexPath) as! CreatePatientTree
-            cellBrotherMother.questionLabel.text = QuestionType.brotherMother.selectQuestion()
-            cellBrotherMother.cellType = .brotherMother
-            cellBrotherMother.setNumberDelegate = self
-            
-            return cellBrotherMother
-            
-        case QuestionType.sisterMother.rawValue:
-            let cellSisterMother = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.CreatePatientTreeID.rawValue, for: indexPath) as! CreatePatientTree
-            cellSisterMother.questionLabel.text = QuestionType.sisterMother.selectQuestion()
-            cellSisterMother.cellType = .sisterMother
-            cellSisterMother.setNumberDelegate = self
-            
-            return cellSisterMother
-            
-        case QuestionType.brotherFather.rawValue:
-            let cellBrotherFather = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.CreatePatientTreeID.rawValue, for: indexPath) as! CreatePatientTree
-            cellBrotherFather.questionLabel.text = QuestionType.brotherFather.selectQuestion()
-            cellBrotherFather.cellType = .brotherFather
-            cellBrotherFather.setNumberDelegate = self
-            
-            return cellBrotherFather
-            
-        case QuestionType.sisterFather.rawValue:
-            let cellSisterFather = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.CreatePatientTreeID.rawValue, for: indexPath) as! CreatePatientTree
-            cellSisterFather.questionLabel.text = QuestionType.sisterFather.selectQuestion()
-            cellSisterFather.cellType = .sisterFather
-            cellSisterFather.setNumberDelegate = self
-            
-            return cellSisterFather
-            
-        default:
-            let cellBrothers = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.CreatePatientTreeID.rawValue, for: indexPath) as! CreatePatientTree
-            cellBrothers.setNumberDelegate = self
-            return cellBrothers
-        }
-    }
-    
-    
-    /*
-     // Override to support conditional editing of the table view.
-     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
-    
-    /*
-     // Override to support editing the table view.
-     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-     if editingStyle == .delete {
-     // Delete the row from the data source
-     tableView.deleteRows(at: [indexPath], with: .fade)
-     } else if editingStyle == .insert {
-     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-     }
-     }
-     */
-    
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-     
-     }
-     */
-    
-    /*
-     // Override to support conditional rearranging of the table view.
-     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the item to be re-orderable.
-     return true
-     }
-     */
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
+
     
 }
