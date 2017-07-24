@@ -39,10 +39,11 @@ enum detailRows: Int {
     }
 }
 
-protocol closeDetails {
-    func closeView()
-}
-class HumanModalViewController: UIViewController, closeDetails,UIViewControllerTransitioningDelegate  {
+//protocol closeDetails {
+//    func closeView()
+//}
+
+class HumanModalViewController: UIViewController, /*closeDetails,*/UIViewControllerTransitioningDelegate  {
 
     // Objects to pass through:
     var humanDetails: FamilyTreeGenerator?
@@ -50,8 +51,14 @@ class HumanModalViewController: UIViewController, closeDetails,UIViewControllerT
     var currentHuman: Human?
     var currentDiseases: Disease?
 
+    @IBAction func dismissPopover(_ sender: Any) {
+        /*elegate?.*/closeView()
+    }
+    
     @IBOutlet var containerView: UIView!
     @IBOutlet weak var modalTableView: UITableView!
+    @IBOutlet weak var footerBG: UIView!
+    @IBOutlet weak var headerBG: UIView!
     
     override func viewDidLoad() {
         
@@ -60,8 +67,25 @@ class HumanModalViewController: UIViewController, closeDetails,UIViewControllerT
         self.hideKeyboardWhenTappedAround()
         
         modalTableView.frame = CGRect(x: modalTableView.frame.origin.x, y: modalTableView.frame.origin.y, width: modalTableView.frame.size.width, height: modalTableView.contentSize.height)
+        modalTableView.allowsSelection = false
         
-        modalTableView.backgroundColor = UIColor.clear
+        let rectShapeTop = CAShapeLayer()
+        rectShapeTop.bounds = self.headerBG.frame
+        rectShapeTop.position = self.headerBG.center
+        rectShapeTop.path = UIBezierPath(roundedRect: self.headerBG.bounds, byRoundingCorners: [.topLeft, .topRight ], cornerRadii: CGSize(width: 10, height: 10)).cgPath
+        
+        let rectShapeBottom = CAShapeLayer()
+        rectShapeBottom.bounds = self.footerBG.frame
+        rectShapeBottom.position = self.footerBG.center
+        rectShapeBottom.path = UIBezierPath(roundedRect: self.footerBG.bounds, byRoundingCorners: [.bottomLeft, .bottomRight ], cornerRadii: CGSize(width: 10, height: 10)).cgPath
+        
+        self.headerBG.layer.mask = rectShapeTop
+        self.footerBG.layer.mask = rectShapeBottom
+        
+        //headerBG.layer.cornerRadius = 10
+        //self.headerBG.layer.backgroundColor = UIColor.green.cgColor
+        //Here I'm masking the textView's layer with rectShape layer
+        //modalTableView.backgroundColor = UIColor.clear
         
         if let item = indexPathForPerson?.item,
             let section = indexPathForPerson?.section,
@@ -76,38 +100,13 @@ class HumanModalViewController: UIViewController, closeDetails,UIViewControllerT
             let currentDiseases = humanDetails?.diseases[cellContent.getID()]{
                 self.currentDiseases = currentDiseases
         }
+        
         // Do any additional setup after loading the view.
         modalTableView.rowHeight = UITableViewAutomaticDimension
-        modalTableView.estimatedRowHeight = 40
-        
-        modalTableView.layer.cornerRadius = 10
+        modalTableView.estimatedRowHeight = 36
         modalTableView.layer.shadowRadius = 5
         modalTableView.layer.masksToBounds = true
         
-        
-        /*
-         let containerView:UIView = UIView(frame:CGRect(x: 10, y: 100, width: 300, height: 400))
-         modalTableView = UITableView(frame: containerView.bounds, style: .plain)
-         containerView.backgroundColor = UIColor.clear
-         containerView.layer.shadowColor = UIColor.darkGray.cgColor
-         containerView.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
-         containerView.layer.shadowOpacity = 1.0
-         containerView.layer.shadowRadius = 2
-         
-         modalTableView.layer.cornerRadius = 10
-         modalTableView.layer.masksToBounds = true
-         self.view.addSubview(containerView)
-         containerView.addSubview(modalTableView)
-         */
-        
-        
-//        view.backgroundColor = UIColor.clear.withAlphaComponent(0.5)
-        
-        //Need to make two layers for cell and shadow to enable both rounded corners AND shadows
-        //modalTableView.layer.shadowColor = UIColor.black.cgColor
-        //modalTableView.layer.shadowOpacity = 0.15
-        //modalTableView.layer.shadowOffset = CGSize(width: 0, height: 0)
-        //modalTableView.layer.shouldRasterize = true
         
         let headerCell = UINib(nibName: "HeaderCell", bundle: nil)
         self.modalTableView.register(headerCell, forCellReuseIdentifier: "headerCellID")
