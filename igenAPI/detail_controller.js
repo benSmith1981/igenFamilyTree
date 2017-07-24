@@ -36,13 +36,12 @@ exports.savetree = function(req, res, err) {
             }
             else  {
                 console.log("Details saved "+ details)
+
                 // savedHumans.push({ "Saved" : details })
             }
         })
     });
-
-    // res.json({savedHumans})
-
+    res.json({success:true})
 
 }
 
