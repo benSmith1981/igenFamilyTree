@@ -15,20 +15,20 @@ struct Constants {
 }
 
 struct DetailViewSections {
-    static let numberOfSections = 3
-    static let numberOfStaticSections = 4
-    static let numberOfVerifyFamilySections = 1
+    static let numberOfSections = 2
+    static let numberOfStaticSections = 3
     
     static let noSection = 0
     static let noDisease = 0
     
     static let staticSections = 0
     static let dynamicSection = 1
+    
     static let firstDiseaseRow = 0
     static let secondDiseaseRow = 1
     static let thirdDiseaseRow = 2
     
-    static let verifyWithFamilySection = 2
+
     
 }
 
