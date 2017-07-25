@@ -19,8 +19,24 @@ extension  DetailmageSliderCell {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return imageArray.count
     }
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        var visibleRect = CGRect()
+        
+        visibleRect.origin = collectionView.contentOffset
+        visibleRect.size = collectionView.bounds.size
+        
+        let visiblePoint = CGPoint(x: visibleRect.midX, y: visibleRect.midY)
+        
+        var visibleIndexPath: IndexPath = collectionView.indexPathForItem(at: visiblePoint)!
+        if visibleIndexPath.row == 0 {
+            print("man")
+            delegate?.getHumanUpdates(value: JsonKeys.male.rawValue, cellType: .imageSliderRow)
+        } else {
+            print("woman")
+            delegate?.getHumanUpdates(value: JsonKeys.female.rawValue, cellType: .imageSliderRow)
 
-
+        }
+    }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCellID",for: indexPath) as! ImageSliderCollectionViewCell
         

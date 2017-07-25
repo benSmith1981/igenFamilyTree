@@ -57,6 +57,8 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
             let firstDiseaseCell = tableView.dequeueReusableCell(withIdentifier: "infoCellID", for: indexPath) as! InfoCell
             
             firstDiseaseCell.titleInfo.text = "Disease(s):"
+            firstDiseaseCell.cellType = .disease1Row
+            firstDiseaseCell.delegate = self
             if let diseaseOne = currentDiseases?.diseaseList[0] {
                 firstDiseaseCell.textfieldValue.text = "\(String(describing: diseaseOne))"
             }
@@ -68,6 +70,8 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
             let secondDiseaseCell = tableView.dequeueReusableCell(withIdentifier: "infoCellID", for: indexPath) as! InfoCell
             
             secondDiseaseCell.titleInfo.text = ""
+            secondDiseaseCell.cellType = .disease2Row
+            secondDiseaseCell.delegate = self
             if let secondDisease = currentDiseases?.diseaseList[1] {
                 secondDiseaseCell.textfieldValue.text = String(describing: secondDisease)
             }
@@ -77,8 +81,9 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
         case DetailViewSections.thirdDiseaseRow:
             
             let thirdDiseaseCell = tableView.dequeueReusableCell(withIdentifier: "infoCellID", for: indexPath) as! InfoCell
-            
             thirdDiseaseCell.titleInfo.text = ""
+            thirdDiseaseCell.cellType = .disease3Row
+            thirdDiseaseCell.delegate = self
             if let thirdDisease = currentDiseases?.diseaseList[2] {
                 thirdDiseaseCell.textfieldValue.text = String(describing: thirdDisease)
             }
@@ -98,7 +103,7 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
         case detailRows.imageSliderRow.rawValue:
             
             let imageCell = tableView.dequeueReusableCell(withIdentifier: "detailImageCellID", for: indexPath) as! DetailmageSliderCell
-            
+            imageCell.delegate = self
             imageCell.awakeFromNib()
             imageCell.separatorInset.left = view.frame.width
             imageCell.humanGender = self.currentHuman?.gender
@@ -109,7 +114,8 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
             let nameCell = tableView.dequeueReusableCell(withIdentifier: "infoCellID", for: indexPath) as! InfoCell
             nameCell.titleInfo.text = "Name:"
             nameCell.textfieldValue.text = self.currentHuman?.name
-            
+            nameCell.cellType = .nameRow
+            nameCell.delegate = self
             if self.currentHuman?.gender == JsonKeys.male.rawValue {
                 nameCell.textfieldValue.placeholder = "e.g. John Doe"
             } else {
@@ -124,7 +130,8 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
             dateOfBirthCell.titleInfo.text = "Date of Birth:"
             dateOfBirthCell.textfieldValue.text = self.currentHuman?.dob
             dateOfBirthCell.textfieldValue.placeholder = "YYYY"
-
+            dateOfBirthCell.cellType = .dobRow
+            dateOfBirthCell.delegate = self
             return dateOfBirthCell
             
         default:

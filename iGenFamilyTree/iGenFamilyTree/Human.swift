@@ -12,7 +12,7 @@ typealias ID = String
 //  Human is a very generic structure of all relationships a human can have in this family
 //  the processed boolean variable is used in function traverseTreeFor to prevent endless looping
 
-class Human {
+struct Human {
     var name: String
     var id: ID
     var patientID: ID
@@ -33,7 +33,7 @@ class Human {
         self.gender = gender
     }
     
-    convenience init(dictionary: NSDictionary) {
+    init(dictionary: NSDictionary) {
         
         self.init(name: (dictionary[JsonKeys.name.rawValue] as? String)!,
                   id: (dictionary[JsonKeys.id.rawValue] as? String)!,

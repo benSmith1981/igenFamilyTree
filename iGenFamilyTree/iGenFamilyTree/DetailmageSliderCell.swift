@@ -14,9 +14,10 @@ class DetailmageSliderCell: UITableViewCell,
                             UICollectionViewDelegateFlowLayout {
 
     @IBOutlet var collectionView: UICollectionView!
-    
+    weak var delegate: updateParametersDelegate?
     var humanGender: String?
-    
+    var cellType: detailRows?
+
     var imageArray = [UIImage(named: "slider-icons-male"),UIImage(named: "slider-icons-female")]
     
     let itemsPerRow: CGFloat = 1
@@ -28,10 +29,13 @@ class DetailmageSliderCell: UITableViewCell,
         configureCollectionView()
 
     }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        print("scroll")
+    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
 

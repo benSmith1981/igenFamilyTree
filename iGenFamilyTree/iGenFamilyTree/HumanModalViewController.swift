@@ -8,6 +8,9 @@
 
 import UIKit
 import CoreData
+import Alamofire
+/// A dictionary of parameters to apply to a `URLRequest`.
+public typealias Parameters = [String: Any]
 
 enum detailRows: Int {
     //case headerRow = 0
@@ -39,27 +42,60 @@ enum detailRows: Int {
     }
 }
 
-//protocol closeDetails {
-//    func closeView()
-//}
+protocol updateParametersDelegate: class {
+    func getHumanUpdates(value: Any, cellType: detailRows)
+}
 
-class HumanModalViewController: UIViewController, /*closeDetails,*/UIViewControllerTransitioningDelegate  {
+class HumanModalViewController: UIViewController, UIViewControllerTransitioningDelegate, updateParametersDelegate  {
 
     // Objects to pass through:
     var humanDetails: FamilyTreeGenerator?
     var indexPathForPerson: IndexPath?
     var currentHuman: Human?
+    var editingHuman: Human?
     var currentDiseases: Disease?
 
-    @IBAction func dismissPopover(_ sender: Any) {
-        /*elegate?.*/closeView()
-    }
+
+    
     
     @IBOutlet var containerView: UIView!
     @IBOutlet weak var modalTableView: UITableView!
     @IBOutlet weak var footerBG: UIView!
     @IBOutlet weak var headerBG: UIView!
     
+    @IBAction func dismissPopover(_ sender: Any) {
+        closeView()
+    }
+    
+    @IBAction func saveEditHuman(_ sender: Any) {
+        
+        let humanUpdate: Parameters = [
+            "name": self.editingHuman?.name,
+            "dob": self.editingHuman?.dob, //"1981",
+            "gender": self.editingHuman?.gender //"male"
+            //***************fill in rest of parameters
+        ]
+        if let humanID = self.currentHuman?.id {
+            Alamofire.request("https://fierce-gorge-29081.herokuapp.com/api/edithuman?id=\(humanID)",
+                method: .post,
+                parameters: humanUpdate,
+                encoding: JSONEncoding.default).responseJSON { (response) in
+                    switch response.result {
+                    case .success(let jsonData):
+                        print("success \(jsonData)")
+                        
+                    case .failure(let error):
+                        print("error \(error)")
+                    }
+            }
+        }
+
+        
+        //post to endpoint on alamofire
+        
+        //close pop-up
+        closeView()
+    }
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -82,16 +118,13 @@ class HumanModalViewController: UIViewController, /*closeDetails,*/UIViewControl
         self.headerBG.layer.mask = rectShapeTop
         self.footerBG.layer.mask = rectShapeBottom
         
-        //headerBG.layer.cornerRadius = 10
-        //self.headerBG.layer.backgroundColor = UIColor.green.cgColor
-        //Here I'm masking the textView's layer with rectShape layer
-        //modalTableView.backgroundColor = UIColor.clear
-        
         if let item = indexPathForPerson?.item,
             let section = indexPathForPerson?.section,
             let cellContent = humanDetails?.model?.cell?[section][item],
             let currentHuman = humanDetails?.familyTree[cellContent.getID()]{
                 self.currentHuman = currentHuman
+                //copy the editing human...
+                self.editingHuman = self.currentHuman
         }
         
         if let item = indexPathForPerson?.item,
@@ -107,18 +140,11 @@ class HumanModalViewController: UIViewController, /*closeDetails,*/UIViewControl
         modalTableView.layer.shadowRadius = 5
         modalTableView.layer.masksToBounds = true
         
-        
-//        let headerCell = UINib(nibName: "HeaderCell", bundle: nil)
-//        self.modalTableView.register(headerCell, forCellReuseIdentifier: "headerCellID")
-        
         let imageCell = UINib(nibName: "DetailmageSliderCell", bundle: nil)
         self.modalTableView.register(imageCell, forCellReuseIdentifier: "detailImageCellID")
         
         let infoCell = UINib(nibName: "InfoCell", bundle: nil)
         self.modalTableView.register(infoCell, forCellReuseIdentifier: "infoCellID")
-        
-//        let footerCell = UINib(nibName: "FooterCell", bundle: nil)
-//        self.modalTableView.register(footerCell, forCellReuseIdentifier: "footerCellID")
 
     }
     
@@ -140,5 +166,18 @@ class HumanModalViewController: UIViewController, /*closeDetails,*/UIViewControl
     {
         self.presentingViewController?.dismiss(animated: true, completion: nil)
 
+    }
+    
+    func getHumanUpdates(value: Any, cellType: detailRows){
+        switch cellType {
+        case .nameRow:
+            self.editingHuman?.name = value as! String
+        case .imageSliderRow :
+            self.editingHuman?.gender = value as! String
+        case .dobRow:
+            self.editingHuman?.dob = value as? String
+        default:
+            break
+        }
     }
 }

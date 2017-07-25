@@ -8,15 +8,15 @@
 
 import UIKit
 
-class InfoCell: UITableViewCell {
+class InfoCell: UITableViewCell, UITextFieldDelegate {
     
     @IBOutlet var titleInfo: UILabel!
     @IBOutlet weak var textfieldValue: UITextField!
     
+    weak var delegate: updateParametersDelegate?
     
-    
-    
-    
+    var editingHuman: Human?
+    var cellType: detailRows?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,6 +28,15 @@ class InfoCell: UITableViewCell {
         textfieldValue.setLeftPaddingPoints(10)
     }
 
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
+        delegate?.getHumanUpdates(value: textField.text ?? "" , cellType: cellType!)
+
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+//        delegate?.getHumanUpdates(value: textField.text ?? "" , cellType: cellType!)
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
@@ -36,22 +45,3 @@ class InfoCell: UITableViewCell {
     }
     
 }
-
-/*
-class TextField: UITextField {
-    
-    let padding = UIEdgeInsets(top: 5, left: 25, bottom: 5, right: 5);
-    
-    override func textRect(forBounds bounds: CGRect) -> CGRect {
-        return UIEdgeInsetsInsetRect(bounds, padding)
-    }
-    
-    override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
-        return UIEdgeInsetsInsetRect(bounds, padding)
-    }
-    
-    override func editingRect(forBounds bounds: CGRect) -> CGRect {
-        return UIEdgeInsetsInsetRect(bounds, padding)
-    }
-}
- */
