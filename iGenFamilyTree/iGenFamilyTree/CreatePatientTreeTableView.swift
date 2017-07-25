@@ -107,6 +107,7 @@ class CreatePatientTreeTableView: FormViewController, UITextFieldDelegate {
                 row.tag = "tagsons"
                 row.title = NSLocalizedString("numberSons", comment: "")
                 row.placeholder = NSLocalizedString("enternumber", comment: "")
+                row.value = self.answers.sons
                 }.onChange {
                     if $0.value != nil {
                         self.answers.sons = $0.value!}
@@ -117,6 +118,7 @@ class CreatePatientTreeTableView: FormViewController, UITextFieldDelegate {
                 row.tag = "tagdaughters"
                 row.title = NSLocalizedString("numberDaughters", comment: "")
                 row.placeholder = NSLocalizedString("enternumber", comment: "")
+                row.value = self.answers.daughters
                 }.onChange {
                     if $0.value != nil {
                         self.answers.daughters = $0.value!}
@@ -127,6 +129,7 @@ class CreatePatientTreeTableView: FormViewController, UITextFieldDelegate {
                 row.tag = "tagbrothermother"
                 row.title = NSLocalizedString("numberBrotherfromMother", comment: "")
                 row.placeholder = NSLocalizedString("enternumber", comment: "")
+                row.value = self.answers.brothersOfMother
                 }.onChange {
                     if $0.value != nil {
                         self.answers.brothersOfMother = $0.value!}
@@ -137,6 +140,7 @@ class CreatePatientTreeTableView: FormViewController, UITextFieldDelegate {
                 row.tag = "tagsistermother"
                 row.title = NSLocalizedString("numberSistersfromMother", comment: "")
                 row.placeholder = NSLocalizedString("enternumber", comment: "")
+                row.value = self.answers.sistersOfMother
                 }.onChange {
                     if $0.value != nil {
                         self.answers.sistersOfMother = $0.value!}
@@ -147,6 +151,7 @@ class CreatePatientTreeTableView: FormViewController, UITextFieldDelegate {
                 row.tag = "tagbrotherfather"
                 row.title = NSLocalizedString("numberBrothersfromFather", comment: "")
                 row.placeholder = NSLocalizedString("enternumber", comment: "")
+                row.value = self.answers.brothersOfFather
                 }.onChange {
                     if $0.value != nil {
                         self.answers.brothersOfFather = $0.value!}
@@ -157,6 +162,7 @@ class CreatePatientTreeTableView: FormViewController, UITextFieldDelegate {
                 row.tag = "tagsisterfather"
                 row.title = NSLocalizedString("numberSistersfromFather", comment: "")
                 row.placeholder = NSLocalizedString("enternumber", comment: "")
+                row.value = self.answers.sistersOfFather
                 }.onChange {
                     if $0.value != nil {
                         self.answers.sistersOfFather = $0.value!}
@@ -202,14 +208,16 @@ class CreatePatientTreeTableView: FormViewController, UITextFieldDelegate {
         print(valuesDictionary)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
+        print(answers)
         familyTreeGenerator.familyTree = [:]
+
     }
     
     func buttonTapped(cell: ButtonCellOf<String>, row: ButtonRow) {
         familyTreeGenerator.generateNewFamilyTree(with: answers)
-        familyTreeGenerator.printFamilyTree(familyTreeGenerator.familyTree)
-        
+//        familyTreeGenerator.printFamilyTree(familyTreeGenerator.familyTree)
+
         
         self.performSegue(withIdentifier: Segues.familytreeSegue.rawValue, sender: self)
         print("Generate tree segue button tapped!")

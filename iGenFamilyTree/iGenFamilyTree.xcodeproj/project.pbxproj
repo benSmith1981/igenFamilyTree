@@ -28,6 +28,8 @@
 		B5EAC1891F01390800151D52 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5EAC1871F01390800151D52 /* LaunchScreen.storyboard */; };
 		B5EAC1941F01390900151D52 /* iGenFamilyTreeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EAC1931F01390900151D52 /* iGenFamilyTreeTests.swift */; };
 		B5EAC19F1F01390900151D52 /* iGenFamilyTreeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EAC19E1F01390900151D52 /* iGenFamilyTreeUITests.swift */; };
+		CF217ED31F26276F0066352A /* TextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF217ED21F26276F0066352A /* TextFieldExtension.swift */; };
+		CF8DA18A1F224448007EE7EC /* DismissKeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8DA1891F224448007EE7EC /* DismissKeyboardExtension.swift */; };
 		CF957EA91F1F8E9B0054B1AC /* disease_id1.json in Resources */ = {isa = PBXBuildFile; fileRef = CF957EA51F1F8E9B0054B1AC /* disease_id1.json */; };
 		CF957EAA1F1F8E9B0054B1AC /* disease_id2.json in Resources */ = {isa = PBXBuildFile; fileRef = CF957EA61F1F8E9B0054B1AC /* disease_id2.json */; };
 		CF957EAB1F1F8E9B0054B1AC /* disease_id3.json in Resources */ = {isa = PBXBuildFile; fileRef = CF957EA71F1F8E9B0054B1AC /* disease_id3.json */; };
@@ -50,10 +52,6 @@
 		CFCFA8501F190CF200BC05E5 /* ImageSliderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCFA84E1F190CF200BC05E5 /* ImageSliderCollectionViewCell.swift */; };
 		CFCFA8511F190CF200BC05E5 /* ImageSliderCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFCFA84F1F190CF200BC05E5 /* ImageSliderCollectionViewCell.xib */; };
 		CFCFA8571F1CBD6600BC05E5 /* HumanModalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCFA8561F1CBD6600BC05E5 /* HumanModalExtension.swift */; };
-		CFCFA85A1F1E007000BC05E5 /* InviteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCFA8581F1E007000BC05E5 /* InviteCell.swift */; };
-		CFCFA85B1F1E007000BC05E5 /* InviteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFCFA8591F1E007000BC05E5 /* InviteCell.xib */; };
-		CFCFA85E1F1E0B2400BC05E5 /* HeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCFA85C1F1E0B2400BC05E5 /* HeaderCell.swift */; };
-		CFCFA85F1F1E0B2400BC05E5 /* HeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFCFA85D1F1E0B2400BC05E5 /* HeaderCell.xib */; };
 		CFCFA8611F1E3A8E00BC05E5 /* PopAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCFA8601F1E3A8E00BC05E5 /* PopAnimator.swift */; };
 		E611F2EC1F178F3B00C6C57E /* loadDiseases.swift in Sources */ = {isa = PBXBuildFile; fileRef = E611F2EB1F178F3B00C6C57E /* loadDiseases.swift */; };
 		E626B3181F0D028B00125D85 /* ChooserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E626B3171F0D028B00125D85 /* ChooserViewController.swift */; };
@@ -112,6 +110,8 @@
 		B5EAC19A1F01390900151D52 /* iGenFamilyTreeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iGenFamilyTreeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5EAC19E1F01390900151D52 /* iGenFamilyTreeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iGenFamilyTreeUITests.swift; sourceTree = "<group>"; };
 		B5EAC1A01F01390900151D52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CF217ED21F26276F0066352A /* TextFieldExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldExtension.swift; sourceTree = "<group>"; };
+		CF8DA1891F224448007EE7EC /* DismissKeyboardExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissKeyboardExtension.swift; sourceTree = "<group>"; };
 		CF957EA51F1F8E9B0054B1AC /* disease_id1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = disease_id1.json; sourceTree = "<group>"; };
 		CF957EA61F1F8E9B0054B1AC /* disease_id2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = disease_id2.json; sourceTree = "<group>"; };
 		CF957EA71F1F8E9B0054B1AC /* disease_id3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = disease_id3.json; sourceTree = "<group>"; };
@@ -134,10 +134,6 @@
 		CFCFA84E1F190CF200BC05E5 /* ImageSliderCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSliderCollectionViewCell.swift; sourceTree = "<group>"; };
 		CFCFA84F1F190CF200BC05E5 /* ImageSliderCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageSliderCollectionViewCell.xib; sourceTree = "<group>"; };
 		CFCFA8561F1CBD6600BC05E5 /* HumanModalExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HumanModalExtension.swift; sourceTree = "<group>"; };
-		CFCFA8581F1E007000BC05E5 /* InviteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteCell.swift; sourceTree = "<group>"; };
-		CFCFA8591F1E007000BC05E5 /* InviteCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InviteCell.xib; sourceTree = "<group>"; };
-		CFCFA85C1F1E0B2400BC05E5 /* HeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderCell.swift; sourceTree = "<group>"; };
-		CFCFA85D1F1E0B2400BC05E5 /* HeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderCell.xib; sourceTree = "<group>"; };
 		CFCFA8601F1E3A8E00BC05E5 /* PopAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopAnimator.swift; sourceTree = "<group>"; };
 		E611F2EB1F178F3B00C6C57E /* loadDiseases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = loadDiseases.swift; sourceTree = "<group>"; };
 		E626B3171F0D028B00125D85 /* ChooserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooserViewController.swift; sourceTree = "<group>"; };
@@ -268,6 +264,8 @@
 				B5EAC1821F01390800151D52 /* iGenFamilyTree.xcdatamodeld */,
 				CFCFA7C01F0B960E00BC05E5 /* Constants.swift */,
 				E6C6748C1F20E4E500AF966E /* UIColorExtension.swift */,
+				CF217ED21F26276F0066352A /* TextFieldExtension.swift */,
+				CF8DA1891F224448007EE7EC /* DismissKeyboardExtension.swift */,
 			);
 			path = iGenFamilyTree;
 			sourceTree = "<group>";
@@ -333,12 +331,8 @@
 				CFCFA7CA1F18FA9900BC05E5 /* HumanModalViewController.swift */,
 				CFCFA8561F1CBD6600BC05E5 /* HumanModalExtension.swift */,
 				CFCFA8521F190CFC00BC05E5 /* ImageSlider */,
-				CFCFA85C1F1E0B2400BC05E5 /* HeaderCell.swift */,
-				CFCFA85D1F1E0B2400BC05E5 /* HeaderCell.xib */,
 				CFCFA8421F190C8300BC05E5 /* InfoCell.swift */,
 				CFCFA8431F190C8300BC05E5 /* InfoCell.xib */,
-				CFCFA8581F1E007000BC05E5 /* InviteCell.swift */,
-				CFCFA8591F1E007000BC05E5 /* InviteCell.xib */,
 			);
 			name = HumanTableView;
 			sourceTree = "<group>";
@@ -487,8 +481,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFCFA85F1F1E0B2400BC05E5 /* HeaderCell.xib in Resources */,
-				CFCFA85B1F1E007000BC05E5 /* InviteCell.xib in Resources */,
 				CFCFA7C71F13BA8C00BC05E5 /* Ton.json in Resources */,
 				CFCFA8451F190C8300BC05E5 /* InfoCell.xib in Resources */,
 				CF957EAC1F1F8E9B0054B1AC /* disease_id4.json in Resources */,
@@ -584,8 +576,10 @@
 				E6401D0F1F1636B500AB002E /* Disease.swift in Sources */,
 				E626B3181F0D028B00125D85 /* ChooserViewController.swift in Sources */,
 				CFCFA7BC1F0A9FA800BC05E5 /* iGenCell.swift in Sources */,
+				CF8DA18A1F224448007EE7EC /* DismissKeyboardExtension.swift in Sources */,
 				E6C6748D1F20E4E500AF966E /* UIColorExtension.swift in Sources */,
 				E6644EAD1F052CA600C66427 /* FamilyTreeGenerator.swift in Sources */,
+				CF217ED31F26276F0066352A /* TextFieldExtension.swift in Sources */,
 				CFCFA8611F1E3A8E00BC05E5 /* PopAnimator.swift in Sources */,
 				B51B62C51F0A244400AB11CC /* Patient.swift in Sources */,
 				68AEA8D51F0D4B73007E5E08 /* JSONserialization.swift in Sources */,
@@ -596,8 +590,7 @@
 				CFCFA7C51F0D24DF00BC05E5 /* CellStates.swift in Sources */,
 				68F4CAC21F0699790036946B /* iGenDataService.swift in Sources */,
 				CFCFA84A1F190CE800BC05E5 /* DetailmageSliderCell.swift in Sources */,
-				CFCFA85A1F1E007000BC05E5 /* InviteCell.swift in Sources */,
-				68C309E11F25F82100E3072E /* CreatePatientTreeTableView.swift in Sources */,
+                68C309E11F25F82100E3072E /* CreatePatientTreeTableView.swift in Sources */,
 				CFCFA84C1F190CE800BC05E5 /* DetailImageFlowExtension.swift in Sources */,
 				CFCFA8571F1CBD6600BC05E5 /* HumanModalExtension.swift in Sources */,
 				E626B31A1F0E291100125D85 /* GenerateNewFamilyTree.swift in Sources */,
@@ -609,7 +602,6 @@
 				68AEA8D11F0D4B69007E5E08 /* CreatePatientTree.swift in Sources */,
 				B51B62C91F0A258F00AB11CC /* FamilyTreeTests.swift in Sources */,
 				E6644EB41F052D4800C66427 /* CustomCollectionViewLayout.swift in Sources */,
-				CFCFA85E1F1E0B2400BC05E5 /* HeaderCell.swift in Sources */,
 				CFCFA7CB1F18FA9900BC05E5 /* HumanModalViewController.swift in Sources */,
 				CFCFA8441F190C8300BC05E5 /* InfoCell.swift in Sources */,
 			);

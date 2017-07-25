@@ -87,7 +87,6 @@ class CustomCollectionViewController: UICollectionViewController {
         let cancelAction = UIAlertAction(title: "No", style: UIAlertActionStyle.cancel) {
             UIAlertAction in
             print("No alertbutton was pressed")
-            self.answers.reset()
             self.returnToView()
         }
         alertController.addAction(okAction)
