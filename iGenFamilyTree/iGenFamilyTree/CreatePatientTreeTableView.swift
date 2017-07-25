@@ -210,15 +210,12 @@ class CreatePatientTreeTableView: FormViewController, UITextFieldDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         print(answers)
-        familyTreeGenerator.familyTree = [:]
-
+        familyTreeGenerator = FamilyTreeGenerator.init(familyTree: [:])
     }
     
     func buttonTapped(cell: ButtonCellOf<String>, row: ButtonRow) {
         familyTreeGenerator.generateNewFamilyTree(with: answers)
 //        familyTreeGenerator.printFamilyTree(familyTreeGenerator.familyTree)
-
-        
         self.performSegue(withIdentifier: Segues.familytreeSegue.rawValue, sender: self)
         print("Generate tree segue button tapped!")
     }
