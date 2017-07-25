@@ -32,7 +32,9 @@ mongoose.connect(uri , function (error) {
     else console.log('mongo connected');
 });
 
-
+router.put('/', function(req, res) {
+  //Guesss you can check for parameters here
+});
 // parameters sent with 
 router.post('/', function(req, res) {
   //Guesss you can check for parameters here
