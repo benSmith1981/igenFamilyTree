@@ -209,7 +209,6 @@ class CreatePatientTreeTableView: FormViewController, UITextFieldDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        print(answers)
         familyTreeGenerator = FamilyTreeGenerator.init(familyTree: [:])
     }
     
