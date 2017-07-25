@@ -8,6 +8,15 @@ module.exports = function(routes) {
 	routes.route('/edithuman/:id?')
 	  .put(detailController.edithuman)
 
+	routes.route('/adddiseases/:id?')
+	  .put(detailController.adddiseases)
+
+	routes.route('/deletediseases/:id?')
+	  .get(detailController.deletediseases)
+
+	routes.route('/getdiseases/:id?')
+	  .get(detailController.getdiseases)
+
 	// routes.route('/savetree/:treeid?/:treedata?')
 	routes.route('/savetree/')
 	  .post(detailController.savetree)

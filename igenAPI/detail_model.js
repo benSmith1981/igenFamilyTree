@@ -21,23 +21,12 @@ var FamilySchema = new mongoose.Schema({
     spouses: [String],
     parents: [ String ], //[ { "id" : "id2" }, { "id" : "id3"} ],
     siblings: [ String ],
-    children: [String ],
-    editInfoID: Number,  //"1"
-    editInfoTimestamp: Number, //12.345,
+    children: [ String ],
+    editInfoID: String,  //"1"
+    editInfoTimestamp: String, //12.345,
     editInfoField: String //"nr. 7",
 
 })
 
-var DiseaseSchema = new mongoose.Schema({
-
-    humanID: String, //"1",
-    diseaseList: [String, String], //[ { "id" : 7 }, { "id" : 15 } ],
-    canEditList: [String, String], //[ { "id" : "2" }, { "id" : "3"}, { "id" : "4"} ],
-    editInfoID: Number,  //"1"
-    editInfoTimestamp: Number, //12.345,
-    editInfoField: String, //"nr. 7",
-    deleted: Boolean
-
-})
 // Export the Mongoose model
 module.exports = mongoose.model('FamilyDetails', FamilySchema);

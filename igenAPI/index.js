@@ -17,7 +17,6 @@ var router = express.Router();
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json());
 
-
 // mongoose.connect(process.env.MONGODB_URI||  'mongodb://localhost/api/', function (error) {
 //     if (error) console.error(error);
 //     else console.log('mongo connected');
@@ -25,8 +24,8 @@ app.use(bodyParser.json());
 // connect local or with heroku
 //{ user: "heroku_d1t7ds7m", account: "heroku_d1t7ds7m" }
 //mongodb://<dbuser>:<dbpassword>@ds051868.mlab.com:51868/heroku_d1t7ds7m
-// var uri = 'mongodb://localhost/api/'
-var uri = 'mongodb://heroku_d1t7ds7m:2u2rc279bb098tf4nk1eunkjbm@ds051868.mlab.com:51868/heroku_d1t7ds7m'
+ var uri = 'mongodb://localhost/api/'
+//var uri = 'mongodb://heroku_d1t7ds7m:2u2rc279bb098tf4nk1eunkjbm@ds051868.mlab.com:51868/heroku_d1t7ds7m'
 mongoose.connect(uri , function (error) {
     if (error) console.error(error);
     else console.log('mongo connected');

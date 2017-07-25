@@ -54,7 +54,7 @@ class CustomCollectionViewController: UICollectionViewController {
                         "parents" : Human.parents,
                         "children" : Human.children,
                         "siblings" : Human.siblings,
-                        "spouse" : Human.spouses
+                        "spouses" : ["id1"]
                         ] as [String : Any]
                     
                     
@@ -69,7 +69,7 @@ class CustomCollectionViewController: UICollectionViewController {
                 familyDictionary[familyID] = allDictionaries
                 print("print familyDict \(familyDictionary)")
                 
-                Alamofire.request("https://fierce-gorge-29081.herokuapp.com/api/savetree/",
+                Alamofire.request("http://localhost:3000/api/savetree/",
                                   method: .post,
                                   parameters: familyDictionary,
                                   encoding: JSONEncoding.default) .responseJSON { (response) in
