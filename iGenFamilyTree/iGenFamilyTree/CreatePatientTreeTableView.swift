@@ -200,7 +200,6 @@ class CreatePatientTreeTableView: FormViewController, UITextFieldDelegate {
                 $0.title = NSLocalizedString("CreateTree", comment: "")
                 $0.onCellSelection(self.buttonTapped)
         }
-
     }
     
     func setFamilyVariables(){
@@ -223,8 +222,4 @@ class CreatePatientTreeTableView: FormViewController, UITextFieldDelegate {
         let ccData = segue.destination as! CustomCollectionViewController
         ccData.familyTreeGenerator = familyTreeGenerator
     }
-    
-    
-
-    
 }

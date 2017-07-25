@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2tC-LR-z4U">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2tC-LR-z4U">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -53,6 +53,7 @@
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Wzt-k5-5Am">
                                 <rect key="frame" x="233" y="7" width="71" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Save"/>
                                 <connections>
                                     <action selector="saveFamilyTree:" destination="hWx-t7-1N7" eventType="touchUpInside" id="vWi-Dz-pay"/>
@@ -298,44 +299,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vow-OX-rbt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="668" y="1101"/>
-        </scene>
-        <!--Table View Controller-->
-        <scene sceneID="dyE-zP-qV2">
-            <objects>
-                <tableViewController id="IxB-a4-Cxe" customClass="TableViewController" customModule="iGenFamilyTree" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="40" sectionFooterHeight="28" id="kDh-xs-pZL">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="JnY-4n-Sf4">
-                                <rect key="frame" x="0.0" y="40" width="320" height="60"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JnY-4n-Sf4" id="ehB-SY-80J">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="59.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="IxB-a4-Cxe" id="7uF-Eg-Xvz"/>
-                            <outlet property="delegate" destination="IxB-a4-Cxe" id="zOb-NI-PXG"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="9wc-9H-mnO">
-                        <barButtonItem key="rightBarButtonItem" title="CreateTree" id="RBt-Fv-asj">
-                            <connections>
-                                <action selector="generateTree:" destination="IxB-a4-Cxe" id="slX-Be-0io"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <segue destination="hWx-t7-1N7" kind="show" identifier="familytreeSegue" id="2St-NQ-2mG"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cEo-r7-b6W" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1783" y="2478"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="6ib-sr-eA2">

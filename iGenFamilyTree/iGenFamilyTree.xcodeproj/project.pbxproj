@@ -10,10 +10,10 @@
 		681222811F0E6BB700FA291C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6812227F1F0E6BB700FA291C /* Localizable.strings */; };
 		681222871F0E6BBE00FA291C /* LaunchScreen.strings in Resources */ = {isa = PBXBuildFile; fileRef = 681222831F0E6BBE00FA291C /* LaunchScreen.strings */; };
 		681222881F0E6BBF00FA291C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 681222851F0E6BBE00FA291C /* Localizable.strings */; };
-		68AEA8D11F0D4B69007E5E08 /* CreatePatientTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68AEA8CE1F0D4B69007E5E08 /* CreatePatientTree.swift */; };
-		68AEA8D21F0D4B69007E5E08 /* CreatePatientTree.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68AEA8CF1F0D4B69007E5E08 /* CreatePatientTree.xib */; };
 		68AEA8D51F0D4B73007E5E08 /* JSONserialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68AEA8D41F0D4B73007E5E08 /* JSONserialization.swift */; };
 		68C309E11F25F82100E3072E /* CreatePatientTreeTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C309E01F25F82100E3072E /* CreatePatientTreeTableView.swift */; };
+		68DD96EB1F275C1900E96084 /* CreatePatientTreeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DD96E91F275C1900E96084 /* CreatePatientTreeCell.swift */; };
+		68DD96EC1F275C1900E96084 /* CreatePatientTreeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68DD96EA1F275C1900E96084 /* CreatePatientTreeCell.xib */; };
 		68F4CAC21F0699790036946B /* iGenDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F4CAC11F0699790036946B /* iGenDataService.swift */; };
 		68F4CAC41F0699840036946B /* iGen.json in Resources */ = {isa = PBXBuildFile; fileRef = 68F4CAC31F0699840036946B /* iGen.json */; };
 		6D74ABEB9AFFE4B981607D83 /* Pods_iGenFamilyTree.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05146668421A3773640975C1 /* Pods_iGenFamilyTree.framework */; };
@@ -86,10 +86,10 @@
 		681222801F0E6BB700FA291C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localizable.strings; sourceTree = "<group>"; };
 		681222841F0E6BBE00FA291C /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = LaunchScreen.strings; sourceTree = "<group>"; };
 		681222861F0E6BBE00FA291C /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = Localizable.strings; sourceTree = "<group>"; };
-		68AEA8CE1F0D4B69007E5E08 /* CreatePatientTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePatientTree.swift; sourceTree = "<group>"; };
-		68AEA8CF1F0D4B69007E5E08 /* CreatePatientTree.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreatePatientTree.xib; sourceTree = "<group>"; };
 		68AEA8D41F0D4B73007E5E08 /* JSONserialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONserialization.swift; sourceTree = "<group>"; };
 		68C309E01F25F82100E3072E /* CreatePatientTreeTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePatientTreeTableView.swift; sourceTree = "<group>"; };
+		68DD96E91F275C1900E96084 /* CreatePatientTreeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePatientTreeCell.swift; sourceTree = "<group>"; };
+		68DD96EA1F275C1900E96084 /* CreatePatientTreeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreatePatientTreeCell.xib; sourceTree = "<group>"; };
 		68F4CAC11F0699790036946B /* iGenDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iGenDataService.swift; sourceTree = "<group>"; };
 		68F4CAC31F0699840036946B /* iGen.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = iGen.json; sourceTree = "<group>"; };
 		766023BC6D2C08F6E70170F2 /* Pods-iGenFamilyTree.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iGenFamilyTree.release.xcconfig"; path = "Pods/Target Support Files/Pods-iGenFamilyTree/Pods-iGenFamilyTree.release.xcconfig"; sourceTree = "<group>"; };
@@ -200,8 +200,8 @@
 		681222891F0F7B4100FA291C /* NewPatient */ = {
 			isa = PBXGroup;
 			children = (
-				68AEA8CE1F0D4B69007E5E08 /* CreatePatientTree.swift */,
-				68AEA8CF1F0D4B69007E5E08 /* CreatePatientTree.xib */,
+				68DD96E91F275C1900E96084 /* CreatePatientTreeCell.swift */,
+				68DD96EA1F275C1900E96084 /* CreatePatientTreeCell.xib */,
 				68C309E01F25F82100E3072E /* CreatePatientTreeTableView.swift */,
 			);
 			name = NewPatient;
@@ -487,6 +487,7 @@
 				CF957EB01F20E3910054B1AC /* Main.storyboard in Resources */,
 				CFCFA7C91F151FD900BC05E5 /* testfile.json in Resources */,
 				CFCFA7BD1F0A9FA800BC05E5 /* iGenCell.xib in Resources */,
+				68DD96EC1F275C1900E96084 /* CreatePatientTreeCell.xib in Resources */,
 				CFCFA8511F190CF200BC05E5 /* ImageSliderCollectionViewCell.xib in Resources */,
 				681222881F0E6BBF00FA291C /* Localizable.strings in Resources */,
 				CFCFA7C31F0D163700BC05E5 /* Paul.json in Resources */,
@@ -496,7 +497,6 @@
 				B5E0B64F1F0D4A28001A6CAE /* smith.json in Resources */,
 				681222811F0E6BB700FA291C /* Localizable.strings in Resources */,
 				68F4CAC41F0699840036946B /* iGen.json in Resources */,
-				68AEA8D21F0D4B69007E5E08 /* CreatePatientTree.xib in Resources */,
 				B5EAC1891F01390800151D52 /* LaunchScreen.storyboard in Resources */,
 				CF957EA91F1F8E9B0054B1AC /* disease_id1.json in Resources */,
 				B5EAC1861F01390800151D52 /* Assets.xcassets in Resources */,
@@ -590,16 +590,16 @@
 				CFCFA7C51F0D24DF00BC05E5 /* CellStates.swift in Sources */,
 				68F4CAC21F0699790036946B /* iGenDataService.swift in Sources */,
 				CFCFA84A1F190CE800BC05E5 /* DetailmageSliderCell.swift in Sources */,
-                68C309E11F25F82100E3072E /* CreatePatientTreeTableView.swift in Sources */,
+				68C309E11F25F82100E3072E /* CreatePatientTreeTableView.swift in Sources */,
 				CFCFA84C1F190CE800BC05E5 /* DetailImageFlowExtension.swift in Sources */,
 				CFCFA8571F1CBD6600BC05E5 /* HumanModalExtension.swift in Sources */,
 				E626B31A1F0E291100125D85 /* GenerateNewFamilyTree.swift in Sources */,
 				CFCFA84B1F190CE800BC05E5 /* DetailImageCollectionExtension.swift in Sources */,
 				E611F2EC1F178F3B00C6C57E /* loadDiseases.swift in Sources */,
 				CFCFA8501F190CF200BC05E5 /* ImageSliderCollectionViewCell.swift in Sources */,
+				68DD96EB1F275C1900E96084 /* CreatePatientTreeCell.swift in Sources */,
 				B5EAC1841F01390800151D52 /* iGenFamilyTree.xcdatamodeld in Sources */,
 				CFCFA7C11F0B960E00BC05E5 /* Constants.swift in Sources */,
-				68AEA8D11F0D4B69007E5E08 /* CreatePatientTree.swift in Sources */,
 				B51B62C91F0A258F00AB11CC /* FamilyTreeTests.swift in Sources */,
 				E6644EB41F052D4800C66427 /* CustomCollectionViewLayout.swift in Sources */,
 				CFCFA7CB1F18FA9900BC05E5 /* HumanModalViewController.swift in Sources */,
