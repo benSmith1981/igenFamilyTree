@@ -11,4 +11,8 @@ module.exports = function(routes) {
 	// routes.route('/savetree/:treeid?/:treedata?')
 	routes.route('/savetree/')
 	  .post(detailController.savetree)
+
+	  	// routes.route('/savetree/:treeid?/:treedata?')
+	routes.route('/deletetree/:patientID?')
+	  .get(detailController.deletetree)
 }

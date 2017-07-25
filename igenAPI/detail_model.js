@@ -14,14 +14,17 @@ var FamilySchema = new mongoose.Schema({
     adopted : Boolean,
     heightCM : Number,//1.83,
     weightKG : Number,//80 ,
-    ethnicity : String, //"Caucasion",
-    showDiseaseInfoToFamily : Boolean,
+    race : String, //"Caucasion",
+    showDiseaseInfo : Boolean,
     smoker : Boolean,
     workout : Boolean,
-    partners: [String],
-    parents: [ String ], //[ "id2", "id3" ],
+    spouses: [String],
+    parents: [ String ], //[ { "id" : "id2" }, { "id" : "id3"} ],
     siblings: [ String ],
-    children: [String ]
+    children: [String ],
+    editInfoID: Number,  //"1"
+    editInfoTimestamp: Number, //12.345,
+    editInfoField: String //"nr. 7",
 
 })
 

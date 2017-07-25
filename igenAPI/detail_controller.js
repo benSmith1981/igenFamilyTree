@@ -5,41 +5,62 @@ date = new Date()
 CollectionDriver = function(db) {
   this.db = db;
 };
+
+exports.deletetree = function(req, res, err) {
+
+    var familyKey =  req.query.patientID
+    console.log("familyKey " + familyKey)
+    FamilySchema.remove({ patientID: familyKey}, function(err, callback){
+        if (err) {
+            res.json(err)
+        }
+        else {
+            res.json(callback)
+        }
+    })
+
+}
+
 //req.body
 //req.query
 //req.params
 // Create endpoint  to get tree json 
 exports.savetree = function(req, res, err) {
-      // res.json(req.body)
-    //     res.json(req.query)
-        // res.json(req.params)
+    // res.json(req.body)
+    // res.json(req.query)
+    // res.json(req.params)
     var familyKey =  Object.keys(req.body)[0]
     console.log("familyKey " + familyKey)
     var allHumans = req.body[familyKey]
     var savedHumans = []
-    Object.keys(allHumans).forEach(key => {
-        let currentHuman = allHumans[key];
-        console.log("key " + key)
-        console.log("Name " + currentHuman.name)
 
-        var familyTree = new FamilySchema( currentHuman )
+    FamilySchema.find({patientID: familyKey}, function(err, doc){//function (err, callback) {
+        if (!doc.length){
+            Object.keys(allHumans).forEach(key => {
+                let currentHuman = allHumans[key];
+                console.log("key " + key)
+                console.log("Name " + currentHuman.name)
 
-        familyTree.save(function (err, details) {
-            if (err) {
-                res.json({ success:true, err })
-                return console.error(err);
-            }
-            else  {
-                console.log("Details saved "+ details)
+                var familyTree = new FamilySchema( currentHuman )
 
-                // savedHumans.push({ "Saved" : details })
-            }
-        })
-    });
+                //dont' save if we find an id already stored
+                
+                familyTree.save(function (err, details) {
+                    if (err) {
+                        res.json({ success:true, err })
+                        return console.error(err);
+                    }
+                    else  {
+                        console.log("Details saved "+ details)
+                        // savedHumans.push({ "Saved" : details })
+                    }
+                })
+            })
+        }
+    })
+
 
     res.json({success:true})
-
-
 }
 
 exports.addOneHuman = function(req, res, err) {
