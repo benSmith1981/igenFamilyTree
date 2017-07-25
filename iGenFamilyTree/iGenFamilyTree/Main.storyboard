@@ -122,11 +122,25 @@
                                                     <action selector="saveEditHuman:" destination="GMi-IF-SsZ" eventType="touchUpInside" id="DQj-ht-CbT"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R4Y-qw-dyu">
+                                                <rect key="frame" x="110" y="3" width="30" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="30" id="Eeh-5a-UFt"/>
+                                                    <constraint firstAttribute="height" constant="30" id="jPB-Ej-rbo"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <state key="normal" title="+"/>
+                                                <connections>
+                                                    <action selector="addDiseaseRow:" destination="GMi-IF-SsZ" eventType="touchUpInside" id="RwV-vW-s4Z"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.92156862745098034" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="36" id="7ju-Rz-EeL"/>
+                                            <constraint firstItem="R4Y-qw-dyu" firstAttribute="centerY" secondItem="SGz-NU-q1H" secondAttribute="centerY" id="9g2-1x-jCB"/>
                                             <constraint firstItem="lxg-4J-F4h" firstAttribute="centerY" secondItem="SGz-NU-q1H" secondAttribute="centerY" id="PDV-1S-Z7m"/>
+                                            <constraint firstItem="R4Y-qw-dyu" firstAttribute="centerX" secondItem="SGz-NU-q1H" secondAttribute="centerX" id="StQ-oQ-MMc"/>
                                             <constraint firstAttribute="trailing" secondItem="lxg-4J-F4h" secondAttribute="trailing" constant="10" id="TCf-Hc-Na7"/>
                                             <constraint firstItem="NSM-zm-iwY" firstAttribute="centerY" secondItem="SGz-NU-q1H" secondAttribute="centerY" id="mXO-4M-wRm"/>
                                             <constraint firstItem="NSM-zm-iwY" firstAttribute="leading" secondItem="SGz-NU-q1H" secondAttribute="leading" constant="10" id="o9A-qR-M19"/>
@@ -361,8 +375,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="closeButton" width="50" height="50"/>
-        <image name="saveButton" width="50" height="50"/>
+        <image name="closeButton" width="30" height="30"/>
+        <image name="saveButton" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="OcU-f5-gET"/>

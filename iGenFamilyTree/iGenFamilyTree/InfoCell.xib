@@ -59,6 +59,7 @@
                 <outlet property="textfieldValue" destination="ULY-Au-gNm" id="z5N-jj-FFN"/>
                 <outlet property="titleInfo" destination="Xsg-ES-BtQ" id="ESm-lY-XPW"/>
             </connections>
+            <point key="canvasLocation" x="33" y="98.5"/>
         </tableViewCell>
     </objects>
 </document>

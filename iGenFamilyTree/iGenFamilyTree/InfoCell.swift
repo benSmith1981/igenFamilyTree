@@ -10,10 +10,12 @@ import UIKit
 
 class InfoCell: UITableViewCell, UITextFieldDelegate {
     
+
     @IBOutlet var titleInfo: UILabel!
     @IBOutlet weak var textfieldValue: UITextField!
     
     weak var delegate: updateParametersDelegate?
+    
     
     var editingHuman: Human?
     var cellType: detailRows?

@@ -44,6 +44,7 @@ enum detailRows: Int {
 
 protocol updateParametersDelegate: class {
     func getHumanUpdates(value: Any, cellType: detailRows)
+    
 }
 
 class HumanModalViewController: UIViewController, UIViewControllerTransitioningDelegate, updateParametersDelegate  {
@@ -56,6 +57,15 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
     var currentDiseases: Disease?
 
 
+    @IBAction func addDiseaseRow(_ sender: Any) {
+        if let currentDiseases = currentDiseases {
+            currentDiseases.diseaseList.append(0)
+            //numberOfDiseasesToShow()
+            self.modalTableView.reloadData()
+            //tableView(modalTableView, numberOfRowsInSection: currentDiseases.diseaseList.count)
+        }
+    }
+   
     
     
     @IBOutlet var containerView: UIView!
