@@ -71,7 +71,7 @@ class CustomCollectionViewController: UICollectionViewController {
                 familyDictionary[familyID] = allDictionaries
                 print("print familyDict \(familyDictionary)")
                 
-                Alamofire.request("https://fierce-gorge-29081.herokuapp.com/api/savetree/",
+                Alamofire.request("\(Constants.herokuAPI)savetree/",
                                   method: .post,
                                   parameters: familyDictionary,
                                   encoding: JSONEncoding.default) .responseJSON { (response) in

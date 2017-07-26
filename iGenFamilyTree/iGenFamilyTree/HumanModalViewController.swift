@@ -93,7 +93,7 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
             "editInfoField" : self.editingHuman?.editInfoField!
         ]
         if let humanID = self.currentHuman?.id {
-            Alamofire.request("https://fierce-gorge-29081.herokuapp.com/api/edithuman?id=\(humanID)",
+            Alamofire.request("\(Constants.herokuAPI)edithuman?id=\(humanID)",
                 method: .put,
                 parameters: humanUpdate,
                 encoding: JSONEncoding.default).responseJSON { (response) in

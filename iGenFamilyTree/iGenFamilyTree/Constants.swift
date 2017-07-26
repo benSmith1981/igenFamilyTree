@@ -12,6 +12,7 @@ import UIKit
 struct Constants {
     static let gridSize = 30
     static let squareCellSize = 50.0
+    static let herokuAPI = "https://fierce-gorge-29081.herokuapp.com/api/"
 }
 
 struct DetailViewSections {
