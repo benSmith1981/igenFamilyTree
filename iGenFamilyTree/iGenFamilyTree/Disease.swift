@@ -53,10 +53,10 @@ class Disease {
         return models
     }
     
-    func logChangesForFields(_ fields: String) {
-        self.editInfoID = self.id   // this should be the ID of human that is logged in!
-        self.editInfoTimestamp = String(describing: Date())
-        self.editInfoField = fields
+    func logChangesBy(_ human: ID, _ fields: String) {
+        editInfoID = human
+        editInfoTimestamp = String(describing: Date())
+        editInfoField = fields
     }
 
 }

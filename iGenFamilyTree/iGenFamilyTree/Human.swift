@@ -12,7 +12,7 @@ typealias ID = String
 //  Human is a very generic structure of all relationships a human can have in this family
 //  the processed boolean variable is used in function traverseTreeFor to prevent endless looping
 
-struct Human {
+class Human {
     var name: String
     var id: ID
     var patientID: ID
@@ -36,7 +36,7 @@ struct Human {
         self.gender = gender
     }
     
-    init(dictionary: NSDictionary) {
+    convenience init(dictionary: NSDictionary) {
         
         self.init(name: (dictionary[JsonKeys.name.rawValue] as? String)!,
                   id: (dictionary[JsonKeys.id.rawValue] as? String)!,
@@ -75,10 +75,9 @@ struct Human {
         return models
     }
     
-    func logChangesForFields(_ fields: String) {
-        self.editInfoID = self.patientID   // this should be the ID of human that is logged in!
-        self.editInfoTimestamp = String(describing: Date())
-        self.editInfoField = fields
+    func logChangesBy(_ human: ID, _ fields: String) {
+        editInfoID = human
+        editInfoTimestamp = String(describing: Date())
+        editInfoField = fields
     }
-    
 }
