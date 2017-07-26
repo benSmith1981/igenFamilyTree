@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2tC-LR-z4U">
-    <device id="retina4_0" orientation="portrait">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -10,33 +10,12 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Create Patient Tree Table View-->
-        <scene sceneID="aqH-Df-53J">
-            <objects>
-                <viewController id="x98-KY-AcE" customClass="CreatePatientTreeTableView" customModule="iGenFamilyTree" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="JKw-wj-9lv"/>
-                        <viewControllerLayoutGuide type="bottom" id="QiE-qM-AwB"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="TDb-g5-eRo">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <connections>
-                        <segue destination="hWx-t7-1N7" kind="show" identifier="familytreeSegue" id="32C-Cw-TWC"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="J4d-h8-AgL" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1909" y="2336"/>
-        </scene>
         <!--iGen Family Tree-->
         <scene sceneID="Y0N-g9-AQb">
             <objects>
                 <collectionViewController automaticallyAdjustsScrollViewInsets="NO" id="hWx-t7-1N7" customClass="CustomCollectionViewController" customModule="iGenFamilyTree" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" minimumZoomScale="3" maximumZoomScale="3" dataMode="prototypes" id="dRO-ju-tAH">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="3" maximumZoomScale="3" dataMode="prototypes" id="dRO-ju-tAH">
+                        <rect key="frame" x="0.0" y="64" width="375" height="559"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <inset key="scrollIndicatorInsets" minX="0.0" minY="20" maxX="0.0" maxY="0.0"/>
@@ -82,15 +61,15 @@
                         <viewControllerLayoutGuide type="bottom" id="OB4-SR-s14"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Yld-KI-i5a">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view alpha="0.75" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MaU-Vb-tzm">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Rgc-X4-fpQ">
-                                <rect key="frame" x="35" y="123" width="250" height="322"/>
+                                <rect key="frame" x="62.5" y="172.5" width="250" height="322"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SGz-NU-q1H">
                                         <rect key="frame" x="0.0" y="0.0" width="250" height="36"/>
@@ -109,7 +88,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NSM-zm-iwY">
-                                                <rect key="frame" x="10" y="6.5" width="40" height="24"/>
+                                                <rect key="frame" x="10" y="6" width="40" height="24"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="4od-vQ-HIa"/>
                                                 </constraints>
@@ -204,20 +183,20 @@
                         <viewControllerLayoutGuide type="bottom" id="blF-yp-qD4"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="zyv-B9-dhq">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lVb-bJ-pag">
-                                <rect key="frame" x="24" y="72" width="272" height="488"/>
+                                <rect key="frame" x="24" y="72" width="327" height="543"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="230" verticalCompressionResistancePriority="740" text="Kies een patiënt" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uns-7c-jaG">
-                                        <rect key="frame" x="0.0" y="0.0" width="272" height="98"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="327" height="153"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pzv-TX-aVA">
-                                        <rect key="frame" x="0.0" y="98" width="272" height="58"/>
+                                        <rect key="frame" x="0.0" y="153" width="327" height="58"/>
                                         <inset key="contentEdgeInsets" minX="0.0" minY="20" maxX="0.0" maxY="20"/>
                                         <state key="normal" title="Ben"/>
                                         <connections>
@@ -225,7 +204,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2vl-OR-U1U">
-                                        <rect key="frame" x="0.0" y="156" width="272" height="58"/>
+                                        <rect key="frame" x="0.0" y="211" width="327" height="58"/>
                                         <inset key="contentEdgeInsets" minX="0.0" minY="20" maxX="0.0" maxY="20"/>
                                         <state key="normal" title="Paul"/>
                                         <connections>
@@ -233,7 +212,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ao3-s8-Nky">
-                                        <rect key="frame" x="0.0" y="214" width="272" height="58"/>
+                                        <rect key="frame" x="0.0" y="269" width="327" height="58"/>
                                         <inset key="contentEdgeInsets" minX="0.0" minY="20" maxX="0.0" maxY="20"/>
                                         <state key="normal" title="Achid"/>
                                         <connections>
@@ -241,7 +220,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="evR-mC-RBm">
-                                        <rect key="frame" x="0.0" y="272" width="272" height="58"/>
+                                        <rect key="frame" x="0.0" y="327" width="327" height="58"/>
                                         <inset key="contentEdgeInsets" minX="0.0" minY="20" maxX="0.0" maxY="20"/>
                                         <state key="normal" title="Ton"/>
                                         <connections>
@@ -249,12 +228,12 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="240" verticalCompressionResistancePriority="740" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pa1-Jj-lLL">
-                                        <rect key="frame" x="0.0" y="330" width="272" height="158"/>
+                                        <rect key="frame" x="0.0" y="385" width="327" height="158"/>
                                         <inset key="contentEdgeInsets" minX="0.0" minY="40" maxX="0.0" maxY="100"/>
                                         <state key="normal" title="Nieuwe patiënt"/>
                                         <connections>
                                             <action selector="buttonNieuwePatient:" destination="t7Q-Y0-Rfq" eventType="touchUpInside" id="Pti-5f-XaP"/>
-                                            <segue destination="x98-KY-AcE" kind="show" identifier="createFamilyTreeSegue" id="viz-iY-CWh"/>
+                                            <segue destination="Ffa-fH-21V" kind="show" identifier="createFamilyTreeSegue" id="4Bp-di-bj9"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -300,26 +279,50 @@
             </objects>
             <point key="canvasLocation" x="668" y="1101"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="6ib-sr-eA2">
+        <!--Generate Table View Controller-->
+        <scene sceneID="Zzz-qh-K0H">
             <objects>
-                <viewController id="Imx-3P-WGR" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="79p-st-6Cz"/>
-                        <viewControllerLayoutGuide type="bottom" id="lRP-F0-HYw"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8ij-xy-9dS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                <tableViewController id="Ffa-fH-21V" customClass="GenerateTableViewController" customModule="iGenFamilyTree" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="R8a-h8-Hxv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="RWq-cd-wds" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please fill in all the fields" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="b76-Oj-gLL">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.92933040857315063" green="0.92946392297744751" blue="0.92930108308792114" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                            <color key="textColor" red="0.47446602582931519" green="0.47453784942626953" blue="0.47445029020309448" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="931-fN-joY">
+                                <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="931-fN-joY" id="kgP-kr-yt7">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Ffa-fH-21V" id="l7a-YX-r22"/>
+                            <outlet property="delegate" destination="Ffa-fH-21V" id="bBU-4P-qva"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="hWx-t7-1N7" kind="show" identifier="familytreeSegue" id="l58-fX-J0j"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ScY-89-3pR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1895.625" y="2039.7887323943662"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="OcU-f5-gET"/>
-        <segue reference="4wb-NM-puH"/>
+        <segue reference="l58-fX-J0j"/>
     </inferredMetricsTieBreakers>
 </document>
