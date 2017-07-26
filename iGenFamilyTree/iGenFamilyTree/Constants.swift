@@ -49,7 +49,6 @@ enum JsonKeys: String {
     case grandparents
     case children
     case siblings
-    case humanID
     case diseaseList
     case canEditList
     case editInfoID
