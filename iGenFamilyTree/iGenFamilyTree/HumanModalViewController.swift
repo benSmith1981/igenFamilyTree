@@ -86,8 +86,19 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
             "name": self.editingHuman?.name,
             "dob": self.editingHuman?.dob, //"1981",
             "gender": self.editingHuman?.gender //"male"
+            
             //***************fill in rest of parameters
         ]
+        
+        
+        if let item = indexPathForPerson?.item,
+            let section = indexPathForPerson?.section,
+            let cellContent = humanDetails?.model?.cell?[section][item]{
+            currentHuman = editingHuman
+            humanDetails?.familyTree[cellContent.getID()] = currentHuman
+            
+        }
+        
         if let humanID = self.currentHuman?.id {
             Alamofire.request("https://fierce-gorge-29081.herokuapp.com/api/edithuman?id=\(humanID)",
                 method: .post,
@@ -102,9 +113,11 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
                     }
             }
         }
-
+        
         //post to endpoint on alamofire
         //close pop-up
+        
+        
         
         closeView()
     }
@@ -180,7 +193,7 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
     func closeView()
     {
         self.presentingViewController?.dismiss(animated: true, completion: nil)
-
+        
     }
     
     func getHumanUpdates(value: Any, cellType: detailRows){
@@ -203,6 +216,11 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
         if let currentDiseases = currentDiseases {
             currentDiseases.diseaseList.append(0)
             self.modalTableView.reloadData()
+            
+            //modalTableView.reloadRows(at: [IndexPath(2,1)], with: .fade)
+            //modalTableView.reloadRows(at: [IndexPath.init(row: currentDiseases.diseaseList.count,
+               //                                           section: DetailViewSections.dynamicSection)],
+                 //                     with: .fade)
         }
     }
     

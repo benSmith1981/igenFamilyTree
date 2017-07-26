@@ -89,7 +89,7 @@
                                 <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Rgc-X4-fpQ">
-                                <rect key="frame" x="35" y="73" width="250" height="422"/>
+                                <rect key="frame" x="35" y="110.5" width="250" height="347"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SGz-NU-q1H">
                                         <rect key="frame" x="0.0" y="0.0" width="250" height="36"/>
@@ -141,10 +141,10 @@
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yRv-2u-Nyi">
-                                        <rect key="frame" x="0.0" y="36" width="250" height="350"/>
+                                        <rect key="frame" x="0.0" y="36" width="250" height="275"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="350" id="BNT-Y3-YGx"/>
+                                            <constraint firstAttribute="height" constant="275" id="BNT-Y3-YGx"/>
                                             <constraint firstAttribute="width" constant="250" id="KsP-HJ-JCx"/>
                                         </constraints>
                                         <connections>
@@ -153,7 +153,7 @@
                                         </connections>
                                     </tableView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NsF-yI-bpg">
-                                        <rect key="frame" x="0.0" y="386" width="250" height="36"/>
+                                        <rect key="frame" x="0.0" y="311" width="250" height="36"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VERIFY WITH FAMILY MEMBER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vox-Vq-kbh">
                                                 <rect key="frame" x="0.0" y="12" width="250" height="12"/>
