@@ -8,12 +8,31 @@
 
 import UIKit
 
-class InfoCell: UITableViewCell {
+class InfoCell: UITableViewCell, UITextFieldDelegate {
+    
+    
+    weak var delegate: updateParametersDelegate?
+    var editingHuman: Human?
+    var cellType: detailRows?
+    var indexPath: IndexPath?
+
     
     @IBOutlet var titleInfo: UILabel!
     @IBOutlet weak var textfieldValue: UITextField!
     
-    
+    @IBOutlet weak var removeRowBut: UIButton!
+    @IBOutlet weak var addRowBut: UIButton!
+    @IBAction func removeRowButton(_ sender: Any) {
+        if let indexPath = indexPath {
+            delegate?.removeDisease(indexPath: indexPath)
+        }
+    }
+   
+    @IBAction func addRowButton(_ sender: Any) {
+
+        delegate?.addDisease()
+        
+    }
     
     
     
@@ -27,7 +46,7 @@ class InfoCell: UITableViewCell {
         textfieldValue.layer.borderColor = UIColor.red.cgColor
         textfieldValue.setLeftPaddingPoints(10)
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
@@ -36,22 +55,3 @@ class InfoCell: UITableViewCell {
     }
     
 }
-
-/*
-class TextField: UITextField {
-    
-    let padding = UIEdgeInsets(top: 5, left: 25, bottom: 5, right: 5);
-    
-    override func textRect(forBounds bounds: CGRect) -> CGRect {
-        return UIEdgeInsetsInsetRect(bounds, padding)
-    }
-    
-    override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
-        return UIEdgeInsetsInsetRect(bounds, padding)
-    }
-    
-    override func editingRect(forBounds bounds: CGRect) -> CGRect {
-        return UIEdgeInsetsInsetRect(bounds, padding)
-    }
-}
- */
