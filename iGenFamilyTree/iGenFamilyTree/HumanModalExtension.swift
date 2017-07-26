@@ -53,31 +53,34 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
     func loadStaticSection(indexPath: IndexPath, tableView: UITableView)  -> UITableViewCell{
         switch indexPath.row {
             
-        case detailRows.imageSliderRow.rawValue:
+        case detailRows.genderRow.rawValue:
             
             let imageCell = tableView.dequeueReusableCell(withIdentifier: "detailImageCellID", for: indexPath) as! DetailmageSliderCell
             imageCell.delegate = self
             imageCell.awakeFromNib()
             imageCell.separatorInset.left = view.frame.width
             imageCell.humanGender = self.currentHuman?.gender
-            
+            imageCell.cellType = .genderRow
             
             return imageCell
             
         case detailRows.nameRow.rawValue:
             let nameCell = tableView.dequeueReusableCell(withIdentifier: "infoCellID", for: indexPath) as! InfoCell
             
-            nameCell.addRowBut.isHidden = true
-            nameCell.removeRowBut.isHidden = true
+            nameCell.addRowBut.alpha = 0.0
+            nameCell.removeRowBut.alpha = 0.0
+            nameCell.addRowBut.isUserInteractionEnabled = false
+            nameCell.removeRowBut.isUserInteractionEnabled = false
             
-            nameCell.titleInfo.text = "Name:"
+            nameCell.titleInfo.text = NSLocalizedString("name", comment: "")
             nameCell.textfieldValue.text = self.currentHuman?.name
             nameCell.cellType = .nameRow
             nameCell.delegate = self
-            if self.currentHuman?.gender == JsonKeys.male.rawValue {
-                nameCell.textfieldValue.placeholder = "e.g. John Doe"
+            if self.editingHuman?.gender == JsonKeys.male.rawValue {
+                nameCell.textfieldValue.placeholder = NSLocalizedString("placeholderNameMale", comment: "")
+                
             } else {
-                nameCell.textfieldValue.placeholder = "e.g. Jane Doe"
+                nameCell.textfieldValue.placeholder = NSLocalizedString("placeholderNameFemale", comment: "")
             }
             
             return nameCell
@@ -85,12 +88,15 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
         case detailRows.dobRow.rawValue:
             let dateOfBirthCell = tableView.dequeueReusableCell(withIdentifier: "infoCellID", for: indexPath) as! InfoCell
             
-            dateOfBirthCell.addRowBut.isHidden = true
-            dateOfBirthCell.removeRowBut.isHidden = true
+            dateOfBirthCell.addRowBut.alpha = 0.0
+            dateOfBirthCell.removeRowBut.alpha = 0.0
+            dateOfBirthCell.addRowBut.isUserInteractionEnabled = false
+            dateOfBirthCell.removeRowBut.isUserInteractionEnabled = false
             
-            dateOfBirthCell.titleInfo.text = "Date of Birth:"
+            dateOfBirthCell.titleInfo.text = NSLocalizedString("dateOfBirth", comment: "")
             dateOfBirthCell.textfieldValue.text = self.currentHuman?.dob
-            dateOfBirthCell.textfieldValue.placeholder = "YYYY"
+            dateOfBirthCell.textfieldValue.placeholder = NSLocalizedString("placeholderDateOfBirth", comment: "")
+                
             dateOfBirthCell.cellType = .dobRow
             dateOfBirthCell.delegate = self
             return dateOfBirthCell
@@ -106,7 +112,7 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
             
             let firstDiseaseCell = tableView.dequeueReusableCell(withIdentifier: "infoCellID", for: indexPath) as! InfoCell
             firstDiseaseCell.indexPath = indexPath
-            firstDiseaseCell.titleInfo.text = "Disease(s):"
+            firstDiseaseCell.titleInfo.text = NSLocalizedString("diseases", comment: "")
             firstDiseaseCell.cellType = .disease1Row
             firstDiseaseCell.delegate = self
             if let diseaseOne = currentDiseases?.diseaseList[0] {
@@ -120,7 +126,7 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
             let secondDiseaseCell = tableView.dequeueReusableCell(withIdentifier: "infoCellID", for: indexPath) as! InfoCell
             secondDiseaseCell.indexPath = indexPath
 
-            secondDiseaseCell.titleInfo.text = "Disease(s):"
+            secondDiseaseCell.titleInfo.text = NSLocalizedString("diseases", comment: "")
             secondDiseaseCell.cellType = .disease2Row
             secondDiseaseCell.delegate = self
             if let secondDisease = currentDiseases?.diseaseList[1] {
@@ -134,7 +140,7 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
             let thirdDiseaseCell = tableView.dequeueReusableCell(withIdentifier: "infoCellID", for: indexPath) as! InfoCell
             thirdDiseaseCell.indexPath = indexPath
 
-            thirdDiseaseCell.titleInfo.text = "Disease(s):"
+            thirdDiseaseCell.titleInfo.text = NSLocalizedString("diseases", comment: "")
             thirdDiseaseCell.cellType = .disease3Row
             thirdDiseaseCell.delegate = self
             if let thirdDisease = currentDiseases?.diseaseList[2] {
@@ -148,7 +154,7 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
             let fourthDiseaseCell = tableView.dequeueReusableCell(withIdentifier: "infoCellID", for: indexPath) as! InfoCell
             fourthDiseaseCell.indexPath = indexPath
 
-            fourthDiseaseCell.titleInfo.text = "Disease(s):"
+            fourthDiseaseCell.titleInfo.text = NSLocalizedString("diseases", comment: "")
             fourthDiseaseCell.cellType = .disease4Row
             fourthDiseaseCell.delegate = self
             if let fourthDisease = currentDiseases?.diseaseList[3] {
@@ -162,7 +168,7 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
             let fifthDiseaseCell = tableView.dequeueReusableCell(withIdentifier: "infoCellID", for: indexPath) as! InfoCell
             fifthDiseaseCell.indexPath = indexPath
 
-            fifthDiseaseCell.titleInfo.text = "Disease(s):"
+            fifthDiseaseCell.titleInfo.text = NSLocalizedString("diseases", comment: "")
             fifthDiseaseCell.cellType = .disease4Row
             fifthDiseaseCell.delegate = self
             if let fifthDisease = currentDiseases?.diseaseList[4] {

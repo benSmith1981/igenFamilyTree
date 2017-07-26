@@ -14,19 +14,19 @@ public typealias Parameters = [String: Any]
 
 enum detailRows: Int {
     //case headerRow = 0
-    case imageSliderRow = 0
-    case nameRow = 1
-    case dobRow = 2
-    case disease1Row = 4
-    case disease2Row = 5
-    case disease3Row = 6
-    case disease4Row = 7
-    case disease5Row = 8
-    case disease6Row = 9
+    case genderRow = 0
+    case nameRow
+    case dobRow
+    case disease1Row
+    case disease2Row
+    case disease3Row
+    case disease4Row
+    case disease5Row
+    case disease6Row
     
     func positionAsInteger() -> Int {
         switch self {
-        case .imageSliderRow:
+        case .genderRow:
             return 0
         case .nameRow:
             return 1
@@ -63,20 +63,18 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
     var editingHuman: Human?
     var currentDiseases: Disease?
 
-
+    @IBOutlet weak var modelViewTitle: UILabel!
+    @IBOutlet var containerView: UIView!
+    @IBOutlet weak var modalTableView: UITableView!
+    @IBOutlet weak var footerBG: UIView!
+    @IBOutlet weak var headerBG: UIView!
+    
     @IBAction func addDiseaseRow(_ sender: Any) {
         if let currentDiseases = currentDiseases {
             currentDiseases.diseaseList.append(0)
             self.modalTableView.reloadData()
         }
     }
-   
-    
-    
-    @IBOutlet var containerView: UIView!
-    @IBOutlet weak var modalTableView: UITableView!
-    @IBOutlet weak var footerBG: UIView!
-    @IBOutlet weak var headerBG: UIView!
     
     @IBAction func dismissPopover(_ sender: Any) {
         closeView()
@@ -105,17 +103,19 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
             }
         }
 
-        
         //post to endpoint on alamofire
-        
         //close pop-up
+        
         closeView()
     }
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
 
         self.hideKeyboardWhenTappedAround()
+        
+        self.modelViewTitle.text = NSLocalizedString("modalViewTitle", comment: "")
         
         modalTableView.frame = CGRect(x: modalTableView.frame.origin.x, y: modalTableView.frame.origin.y, width: modalTableView.frame.size.width, height: modalTableView.contentSize.height)
         modalTableView.allowsSelection = false
@@ -187,8 +187,11 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
         switch cellType {
         case .nameRow:
             self.editingHuman?.name = value as! String
-        case .imageSliderRow :
+        case .genderRow :
             self.editingHuman?.gender = value as! String
+            modalTableView.reloadRows(at: [IndexPath.init(row: detailRows.nameRow.rawValue,
+                                                          section: DetailViewSections.staticSections)],
+                                                            with: .fade)
         case .dobRow:
             self.editingHuman?.dob = value as? String
         default:

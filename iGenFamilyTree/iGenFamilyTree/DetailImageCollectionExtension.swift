@@ -30,11 +30,12 @@ extension  DetailmageSliderCell {
         var visibleIndexPath: IndexPath = collectionView.indexPathForItem(at: visiblePoint)!
         if visibleIndexPath.row == 0 {
             print("man")
-            delegate?.getHumanUpdates(value: JsonKeys.male.rawValue, cellType: .imageSliderRow)
+            delegate?.getHumanUpdates(value: JsonKeys.male.rawValue, cellType: .genderRow)
+            //delegate?.getHumanUpdates(value: JsonKeys.male.rawValue, cellType: .nameRow)
         } else {
             print("woman")
-            delegate?.getHumanUpdates(value: JsonKeys.female.rawValue, cellType: .imageSliderRow)
-
+            delegate?.getHumanUpdates(value: JsonKeys.female.rawValue, cellType: .genderRow)
+            //delegate?.getHumanUpdates(value: JsonKeys.female.rawValue, cellType: .nameRow)
         }
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
