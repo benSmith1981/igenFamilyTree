@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -20,19 +19,30 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OpE-DV-VVr">
-                        <rect key="frame" x="18" y="2" width="284" height="25"/>
+                        <rect key="frame" x="10" y="2" width="306" height="25"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Language" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xsg-ES-BtQ">
-                                <rect key="frame" x="0.0" y="0.0" width="100" height="25"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Diseases(s):" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xsg-ES-BtQ">
+                                <rect key="frame" x="0.0" y="0.0" width="85" height="25"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="t4d-QT-Ob2"/>
+                                    <constraint firstAttribute="width" constant="85" id="t4d-QT-Ob2"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="11"/>
                                 <color key="textColor" red="0.30196078431372547" green="0.30196078431372547" blue="0.30196078431372547" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zia-O8-lCN">
+                                <rect key="frame" x="85" y="0.0" width="20" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="9xJ-sX-V5s"/>
+                                    <constraint firstAttribute="height" constant="25" id="AWH-Gx-PCx"/>
+                                </constraints>
+                                <state key="normal" title="+"/>
+                                <connections>
+                                    <action selector="addRowButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Tbj-v1-zH1"/>
+                                </connections>
+                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Values" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ULY-Au-gNm">
-                                <rect key="frame" x="100" y="0.0" width="184" height="25"/>
+                                <rect key="frame" x="105" y="0.0" width="181" height="25"/>
                                 <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="textColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.23529411764705882" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -41,6 +51,17 @@
                                     <outlet property="delegate" destination="KGk-i7-Jjw" id="NHK-kn-r9Y"/>
                                 </connections>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LuE-Gr-6GW">
+                                <rect key="frame" x="286" y="0.0" width="20" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="RRV-j1-ZzG"/>
+                                    <constraint firstAttribute="height" constant="25" id="YeQ-uM-j1y"/>
+                                </constraints>
+                                <state key="normal" title="-"/>
+                                <connections>
+                                    <action selector="removeRowButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Zk6-EG-Fid"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="height" constant="25" id="TS1-R9-HWc"/>
@@ -49,13 +70,15 @@
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 <constraints>
-                    <constraint firstItem="OpE-DV-VVr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="FKR-Ww-esH"/>
+                    <constraint firstAttribute="trailing" secondItem="OpE-DV-VVr" secondAttribute="trailing" constant="4" id="GbO-jb-ume"/>
                     <constraint firstItem="OpE-DV-VVr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="2" id="RiC-IX-LfG"/>
                     <constraint firstAttribute="bottom" secondItem="OpE-DV-VVr" secondAttribute="bottom" constant="2" id="eFA-Jy-Eai"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="OpE-DV-VVr" secondAttribute="trailing" constant="10" id="mmG-EX-ei2"/>
+                    <constraint firstItem="OpE-DV-VVr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="lGf-dx-3He"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="addRowBut" destination="Zia-O8-lCN" id="Gae-8I-ZmZ"/>
+                <outlet property="removeRowBut" destination="LuE-Gr-6GW" id="QKv-Ru-JHn"/>
                 <outlet property="textfieldValue" destination="ULY-Au-gNm" id="z5N-jj-FFN"/>
                 <outlet property="titleInfo" destination="Xsg-ES-BtQ" id="ESm-lY-XPW"/>
             </connections>

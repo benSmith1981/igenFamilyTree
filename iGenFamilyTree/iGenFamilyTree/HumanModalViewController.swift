@@ -20,7 +20,9 @@ enum detailRows: Int {
     case disease1Row = 4
     case disease2Row = 5
     case disease3Row = 6
-    case inviteRow = 7
+    case disease4Row = 7
+    case disease5Row = 8
+    case disease6Row = 9
     
     func positionAsInteger() -> Int {
         switch self {
@@ -36,15 +38,20 @@ enum detailRows: Int {
             return 4
         case .disease3Row:
             return 5
-        case .inviteRow:
+        case .disease4Row:
             return 6
+        case .disease5Row:
+            return 7
+        case .disease6Row:
+            return 8
         }
     }
 }
 
 protocol updateParametersDelegate: class {
     func getHumanUpdates(value: Any, cellType: detailRows)
-    
+    func addDisease()
+    func removeDisease(indexPath:IndexPath)
 }
 
 class HumanModalViewController: UIViewController, UIViewControllerTransitioningDelegate, updateParametersDelegate  {
@@ -60,9 +67,7 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
     @IBAction func addDiseaseRow(_ sender: Any) {
         if let currentDiseases = currentDiseases {
             currentDiseases.diseaseList.append(0)
-            //numberOfDiseasesToShow()
             self.modalTableView.reloadData()
-            //tableView(modalTableView, numberOfRowsInSection: currentDiseases.diseaseList.count)
         }
     }
    
@@ -189,5 +194,20 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
         default:
             break
         }
+    }
+    
+    func addDisease() {
+        if let currentDiseases = currentDiseases {
+            currentDiseases.diseaseList.append(0)
+            self.modalTableView.reloadData()
+        }
+    }
+    
+    func removeDisease(indexPath:IndexPath) {
+        self.modalTableView.beginUpdates()
+        self.currentDiseases?.diseaseList.remove(at: indexPath.row)
+
+        self.modalTableView.deleteRows(at: [indexPath], with: .fade)
+        self.modalTableView.endUpdates()
     }
 }
