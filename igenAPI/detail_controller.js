@@ -166,8 +166,7 @@ exports.edithuman = function(req, res, err) {
     })
 }
 
-
-// Create endpoint  to get tree json 
+//Create endpoint  to get tree json 
 exports.gettree = function(req, res, err) {
     console.log("req.query.patientID "+req.query.patientID)
 
