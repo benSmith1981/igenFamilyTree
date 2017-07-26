@@ -9,6 +9,7 @@
 import UIKit
 import Eureka
 
+/*
 public class CustomCell: Cell<Bool>, CellType{
     @IBOutlet weak var switchControl: UISwitch!
     @IBOutlet weak var label: UILabel!
@@ -37,3 +38,4 @@ public final class CustomRow: Row<Bool, CustomCell>, RowType {
         cellProvider = CellProvider<CustomCell>(nibName: "CustomCell")
     }
 }
+*/

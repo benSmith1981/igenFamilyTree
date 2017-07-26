@@ -79,7 +79,15 @@ class CreatePatientTreeTableView: FormViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
 
+
         form +++ Section(NSLocalizedString("fillinform", comment: ""))
+ /*       TextRow.defaultCellSetup = { cell, row in
+            
+            cell.backgroundColor = UIColor.yellowColor()
+            cell.textField.textColor = UIColor.redColor()
+            cell.detailTextLabel!.textColor = UIColor.brownColor()
+        }
+ */
             <<< IntRow(){ row in
                 row.tag = "tagbrother"
                 row.title = NSLocalizedString("numberBrothers", comment: "")
