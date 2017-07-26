@@ -27,6 +27,8 @@ struct DetailViewSections {
     static let firstDiseaseRow = 0
     static let secondDiseaseRow = 1
     static let thirdDiseaseRow = 2
+    static let fourthDiseaseRow = 3
+    static let fifthDiseaseRow = 4
     
 
     
