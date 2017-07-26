@@ -188,30 +188,32 @@ exports.register = function(req, res, err) {
 
 // Create endpoint  to get tree json 
 exports.login = function(req, res, err) {
-    console.log("req.query.username"+ req.query.username)
-    console.log("req.query.password "+ req.query.password)
+    console.log("req.body.username"+ req.body.username)
+    console.log("req.body.password "+ req.body.password)
 
     //callback is an array
-    LoginSchema.findOne({username: req.query.username, password: req.query.password}, 
+    LoginSchema.findOne({username: req.body.username, password: req.body.password}, 
         function (err, callback) {
-            var userID = callback.id
-            console.log("callback.id "+ callback.id)
+            if (!callback) {
+                return res.json({success: false, message: "Login Details Incorrect"})
+            }
             if (err) {
                 res.json({ err })
                 return console.error(err);
             } else {
-            //callback is an array
-            console.log("callback.familyTreeID"+ callback.familyTreeID)
+                var userID = callback.id
+                console.log("callback.id "+ callback.id)
+                //callback is an array
+                console.log("callback.familyTreeID"+ callback.familyTreeID)
 
-            FamilySchema.find({patientID: callback.familyTreeID}, function (err, callback) {
-                if (err) {
-                    res.json({ err })
-                    return console.error(err);
-                } else {
-                    res.json({userID: userID, familyTree: callback})
-                }
-            })
-            // res.json(callback)
+                FamilySchema.find({patientID: callback.familyTreeID}, function (err, callback) {
+                    if (err) {
+                        res.json({ err })
+                        return console.error(err);
+                    } else {
+                        res.json({userID: userID, familyTree: callback})
+                    }
+                })
         }
     })
 

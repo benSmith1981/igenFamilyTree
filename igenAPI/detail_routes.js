@@ -4,8 +4,8 @@ module.exports = function(routes) {
 // LOGIN
 	routes.route('/register/')
 	  .post(detailController.register)
-	routes.route('/login/:username?:password?')
-	  .get(detailController.login)
+	routes.route('/login/')
+	  .post(detailController.login)
 
 //SAVING AND EDITING TREE
 	routes.route('/gettree/:patientID?')
