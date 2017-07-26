@@ -89,49 +89,62 @@
                                 <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Rgc-X4-fpQ">
-                                <rect key="frame" x="35" y="123" width="250" height="322"/>
+                                <rect key="frame" x="35" y="73" width="250" height="422"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SGz-NU-q1H">
                                         <rect key="frame" x="0.0" y="0.0" width="250" height="36"/>
                                         <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PERSON DETAILS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Na6-uw-Y3b">
+                                                <rect key="frame" x="80.5" y="12.5" width="89.5" height="12"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
+                                                <color key="textColor" red="0.39215686274509803" green="0.39215686274509803" blue="0.39215686274509803" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lxg-4J-F4h">
-                                                <rect key="frame" x="220" y="3" width="20" height="30"/>
+                                                <rect key="frame" x="210" y="3" width="30" height="30"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="20" id="RFa-1N-Fvu"/>
+                                                    <constraint firstAttribute="width" constant="30" id="RFa-1N-Fvu"/>
+                                                    <constraint firstAttribute="height" constant="30" id="iMi-sd-3V3"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="15"/>
-                                                <state key="normal" title="X">
+                                                <state key="normal" image="closeButton">
                                                     <color key="titleColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="dismissPopover:" destination="GMi-IF-SsZ" eventType="touchUpInside" id="cQ3-uN-ddH"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NSM-zm-iwY">
-                                                <rect key="frame" x="10" y="6.5" width="40" height="24"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NSM-zm-iwY">
+                                                <rect key="frame" x="10" y="3.5" width="30" height="30"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="40" id="4od-vQ-HIa"/>
+                                                    <constraint firstAttribute="width" constant="30" id="4od-vQ-HIa"/>
+                                                    <constraint firstAttribute="height" constant="30" id="65y-yR-U3C"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
-                                                <state key="normal" title="SAVE">
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <state key="normal" image="saveButton">
                                                     <color key="titleColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="saveEditHuman:" destination="GMi-IF-SsZ" eventType="touchUpInside" id="DQj-ht-CbT"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.92156862745098034" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
+                                            <constraint firstItem="Na6-uw-Y3b" firstAttribute="centerY" secondItem="SGz-NU-q1H" secondAttribute="centerY" id="3Nx-HS-bIw"/>
                                             <constraint firstAttribute="height" constant="36" id="7ju-Rz-EeL"/>
                                             <constraint firstItem="lxg-4J-F4h" firstAttribute="centerY" secondItem="SGz-NU-q1H" secondAttribute="centerY" id="PDV-1S-Z7m"/>
                                             <constraint firstAttribute="trailing" secondItem="lxg-4J-F4h" secondAttribute="trailing" constant="10" id="TCf-Hc-Na7"/>
+                                            <constraint firstItem="Na6-uw-Y3b" firstAttribute="centerX" secondItem="SGz-NU-q1H" secondAttribute="centerX" id="er1-Gk-YsG"/>
                                             <constraint firstItem="NSM-zm-iwY" firstAttribute="centerY" secondItem="SGz-NU-q1H" secondAttribute="centerY" id="mXO-4M-wRm"/>
                                             <constraint firstItem="NSM-zm-iwY" firstAttribute="leading" secondItem="SGz-NU-q1H" secondAttribute="leading" constant="10" id="o9A-qR-M19"/>
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yRv-2u-Nyi">
-                                        <rect key="frame" x="0.0" y="36" width="250" height="250"/>
+                                        <rect key="frame" x="0.0" y="36" width="250" height="350"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="250" id="BNT-Y3-YGx"/>
+                                            <constraint firstAttribute="height" constant="350" id="BNT-Y3-YGx"/>
                                             <constraint firstAttribute="width" constant="250" id="KsP-HJ-JCx"/>
                                         </constraints>
                                         <connections>
@@ -140,7 +153,7 @@
                                         </connections>
                                     </tableView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NsF-yI-bpg">
-                                        <rect key="frame" x="0.0" y="286" width="250" height="36"/>
+                                        <rect key="frame" x="0.0" y="386" width="250" height="36"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VERIFY WITH FAMILY MEMBER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vox-Vq-kbh">
                                                 <rect key="frame" x="0.0" y="12" width="250" height="12"/>
@@ -182,12 +195,12 @@
                         <outlet property="footerBG" destination="NsF-yI-bpg" id="ggX-3G-GfS"/>
                         <outlet property="headerBG" destination="SGz-NU-q1H" id="Afc-0b-cAq"/>
                         <outlet property="modalTableView" destination="yRv-2u-Nyi" id="qOn-8b-euS"/>
+                        <outlet property="modelViewTitle" destination="Na6-uw-Y3b" id="tal-FL-gHb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rmf-WT-VA4" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="Ha9-MP-gG4">
                     <connections>
-                        <action selector="didTapImageView:" destination="GMi-IF-SsZ" id="Ky4-XB-3HI"/>
                         <outlet property="delegate" destination="GMi-IF-SsZ" id="K5n-cy-bkJ"/>
                     </connections>
                 </tapGestureRecognizer>
@@ -355,6 +368,10 @@
             </objects>
         </scene>
     </scenes>
+    <resources>
+        <image name="closeButton" width="30" height="30"/>
+        <image name="saveButton" width="30" height="30"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="OcU-f5-gET"/>
         <segue reference="4wb-NM-puH"/>

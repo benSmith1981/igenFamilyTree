@@ -16,6 +16,15 @@
 "numberBrothersfromFather" = "Hoeveel broers heeft je vader (jouw ooms)?";
 "numberSistersfromFather" = "Hoeveel zussen heeft je vader (jouw tantes)?";
 
+//Modal view labels
+"modalViewTitle" = "PERSOONSGEGEVENS";
+"name" = "Naam:";
+"dateOfBirth" = "Geboortedatum:";
+"diseases" = "Ziekte(s):";
+"placeholderNameMale" = "bijv. Jan Janssen";
+"placeholderNameFemale" = "bijv. Julia Janssen";
+"placeholderDateOfBirth" = "JJJJ";
+
 //Create button tableviewcontroller
 "CreateTree" = "Genereer stamboom";
 
