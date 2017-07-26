@@ -54,7 +54,7 @@ class CustomCollectionViewController: UICollectionViewController {
                         "parents" : Human.parents,
                         "children" : Human.children,
                         "siblings" : Human.siblings,
-                        "spouse" : Human.spouses
+                        "spouses" : ["id1"]
                         ] as [String : Any]
                     
                     
