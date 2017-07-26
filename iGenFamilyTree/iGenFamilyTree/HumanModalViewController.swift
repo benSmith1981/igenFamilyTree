@@ -82,15 +82,19 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
     
     @IBAction func saveEditHuman(_ sender: Any) {
         
+        self.currentHuman?.logChangesBy((currentHuman?.patientID)!, "name, dob, gender")
+
         let humanUpdate: Parameters = [
             "name": self.editingHuman?.name,
-            "dob": self.editingHuman?.dob, //"1981",
-            "gender": self.editingHuman?.gender //"male"
-            //***************fill in rest of parameters
+            "dob": self.editingHuman?.dob,
+            "gender": self.editingHuman?.gender,
+            "editInfoID" : self.editingHuman?.editInfoID!,
+            "editInfoTimestamp" : self.editingHuman?.editInfoTimestamp!,
+            "editInfoField" : self.editingHuman?.editInfoField!
         ]
         if let humanID = self.currentHuman?.id {
-            Alamofire.request("https://fierce-gorge-29081.herokuapp.com/api/edithuman?id=\(humanID)",
-                method: .post,
+            Alamofire.request("\(Constants.herokuAPI)edithuman?id=\(humanID)",
+                method: .put,
                 parameters: humanUpdate,
                 encoding: JSONEncoding.default).responseJSON { (response) in
                     switch response.result {

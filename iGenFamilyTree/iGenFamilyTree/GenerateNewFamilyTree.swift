@@ -62,6 +62,7 @@ extension FamilyTreeGenerator {
     private func createEmptyPatient() {
         patient.id = NSUUID().uuidString
         familyTree[patient.id!] = Human(name: "Patient", id: patient.id!, patientID: patient.id!, gender: "unknown")
+        familyTree[patient.id!]!.logChangesBy(patient.id!, "new record")
     }
     
     // generate a unique ID, create the father and add him as a parent of the patient
@@ -69,12 +70,14 @@ extension FamilyTreeGenerator {
         let newUUID = NSUUID().uuidString
         patient.myParentsIDs.append(newUUID)
         familyTree[newUUID] = Human(name: "Father", id: newUUID, patientID: patient.id!, gender: JsonKeys.male.rawValue)
+        familyTree[newUUID]!.logChangesBy(patient.id!, "new record")
     }
     // generate a unique ID, create the mother and add her as a parent of the patient
     private func createEmptyMother() {
         let newUUID = NSUUID().uuidString
         patient.myParentsIDs.append(newUUID)
         familyTree[newUUID] = Human(name: "Mother", id: newUUID, patientID: patient.id!, gender: JsonKeys.female.rawValue)
+        familyTree[newUUID]!.logChangesBy(patient.id!, "new record")
     }
     
     // generate a unique ID, create the spouse and add him/her as a spouse of the patient
@@ -82,6 +85,7 @@ extension FamilyTreeGenerator {
         let newUUID = NSUUID().uuidString
         patient.mySpousesIDs.append(newUUID)
         familyTree[newUUID] = Human(name: "Spouse", id: newUUID, patientID: patient.id!, gender: "unknown")
+        familyTree[newUUID]!.logChangesBy(patient.id!, "new record")
     }
     
     // for every brother, generate a unique ID, create the brother and add him as a sibling to the patient
@@ -91,6 +95,7 @@ extension FamilyTreeGenerator {
             let newUUID = NSUUID().uuidString
             patient.mySiblingsIDs.append(newUUID)
             familyTree[newUUID] = Human(name: "Brother \(i)", id: newUUID, patientID: patient.id!, gender: JsonKeys.male.rawValue)
+            familyTree[newUUID]!.logChangesBy(patient.id!, "new record")
             i += 1
         }
     }
@@ -102,6 +107,7 @@ extension FamilyTreeGenerator {
             let newUUID = NSUUID().uuidString
             patient.mySiblingsIDs.append(newUUID)
             familyTree[newUUID] = Human(name: "Sister \(i)", id: newUUID, patientID: patient.id!, gender: JsonKeys.female.rawValue)
+            familyTree[newUUID]!.logChangesBy(patient.id!, "new record")
             i += 1
         }
     }
@@ -113,6 +119,7 @@ extension FamilyTreeGenerator {
             let newUUID = NSUUID().uuidString
             patient.myChildrenIDs.append(newUUID)
             familyTree[newUUID] = Human(name: "Son \(i)", id: newUUID, patientID: patient.id!, gender: JsonKeys.male.rawValue)
+            familyTree[newUUID]!.logChangesBy(patient.id!, "new record")
             i += 1
         }
     }
@@ -124,6 +131,7 @@ extension FamilyTreeGenerator {
             let newUUID = NSUUID().uuidString
             patient.myChildrenIDs.append(newUUID)
             familyTree[newUUID] = Human(name: "Daughter \(i)", id: newUUID, patientID: patient.id!, gender: JsonKeys.female.rawValue)
+            familyTree[newUUID]!.logChangesBy(patient.id!, "new record")
             i += 1
         }
     }
@@ -135,6 +143,7 @@ extension FamilyTreeGenerator {
             let newUUID = NSUUID().uuidString
             patient.motherSiblingsIDs.append(newUUID)
             familyTree[newUUID] = Human(name: "brotherOfMother \(i)", id: newUUID, patientID: patient.id!, gender: JsonKeys.male.rawValue)
+            familyTree[newUUID]!.logChangesBy(patient.id!, "new record")
             i += 1
         }
     }
@@ -146,6 +155,7 @@ extension FamilyTreeGenerator {
             let newUUID = NSUUID().uuidString
             patient.motherSiblingsIDs.append(newUUID)
             familyTree[newUUID] = Human(name: "sisterOfMother \(i)", id: newUUID, patientID: patient.id!, gender: JsonKeys.female.rawValue)
+            familyTree[newUUID]!.logChangesBy(patient.id!, "new record")
             i += 1
         }
     }
@@ -157,6 +167,7 @@ extension FamilyTreeGenerator {
             let newUUID = NSUUID().uuidString
             patient.fatherSiblingsIDs.append(newUUID)
             familyTree[newUUID] = Human(name: "brotherOfFather \(i)", id: newUUID, patientID: patient.id!, gender: JsonKeys.male.rawValue)
+            familyTree[newUUID]!.logChangesBy(patient.id!, "new record")
             i += 1
         }
     }
@@ -168,6 +179,7 @@ extension FamilyTreeGenerator {
             let newUUID = NSUUID().uuidString
             patient.fatherSiblingsIDs.append(newUUID)
             familyTree[newUUID] = Human(name: "sisterOfFather \(i)", id: newUUID, patientID: patient.id!, gender: JsonKeys.female.rawValue)
+            familyTree[newUUID]!.logChangesBy(patient.id!, "new record")
             i += 1
         }
     }
@@ -177,9 +189,11 @@ extension FamilyTreeGenerator {
         var newUUID = NSUUID().uuidString
         patient.fatherParentsIDs.append(newUUID)
         familyTree[newUUID] = Human(name: "fatherOfFather", id: newUUID, patientID: patient.id!, gender: JsonKeys.male.rawValue)
+        familyTree[newUUID]!.logChangesBy(patient.id!, "new record")
         newUUID = NSUUID().uuidString
         patient.fatherParentsIDs.append(newUUID)
         familyTree[newUUID] = Human(name: "motherOfFather", id: newUUID, patientID: patient.id!, gender: JsonKeys.female.rawValue)
+        familyTree[newUUID]!.logChangesBy(patient.id!, "new record")
     }
     
     // for the parents of the mother of the patient, generate a unique ID, create them and add them as parents of the mother to the patient
@@ -187,9 +201,11 @@ extension FamilyTreeGenerator {
         var newUUID = NSUUID().uuidString
         patient.motherParentsIDs.append(newUUID)
         familyTree[newUUID] = Human(name: "fatherOfMother", id: newUUID, patientID: patient.id!, gender: JsonKeys.male.rawValue)
+        familyTree[newUUID]!.logChangesBy(patient.id!, "new record")
         newUUID = NSUUID().uuidString
         patient.motherParentsIDs.append(newUUID)
         familyTree[newUUID] = Human(name: "motherOfMother", id: newUUID, patientID: patient.id!, gender: JsonKeys.female.rawValue)
+        familyTree[newUUID]!.logChangesBy(patient.id!, "new record")
     }
     
     // for every Human in this family, now create all the relationships from the Patient object

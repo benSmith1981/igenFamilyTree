@@ -111,8 +111,8 @@
             "gender": "female",
             "spouses": [],
             "patientID": "id2",
-            "showDiseaseInfo": false,
             "id": "id9",
+            "showDiseaseInfo": false,
             "parents": [],
             "siblings": [{ "id" : "id8" }, { "id" : "id10"}],
             "children": []

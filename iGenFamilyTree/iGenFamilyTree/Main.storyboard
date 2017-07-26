@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2tC-LR-z4U">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2tC-LR-z4U">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -29,13 +29,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J4d-h8-AgL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1909" y="2336"/>
+            <point key="canvasLocation" x="2297" y="1910"/>
         </scene>
         <!--iGen Family Tree-->
         <scene sceneID="Y0N-g9-AQb">
             <objects>
                 <collectionViewController automaticallyAdjustsScrollViewInsets="NO" id="hWx-t7-1N7" customClass="CustomCollectionViewController" customModule="iGenFamilyTree" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" minimumZoomScale="3" maximumZoomScale="3" dataMode="prototypes" id="dRO-ju-tAH">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="3" maximumZoomScale="3" dataMode="prototypes" id="dRO-ju-tAH">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -228,14 +228,31 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pzv-TX-aVA">
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ewg-f3-78Y">
                                         <rect key="frame" x="0.0" y="98" width="272" height="58"/>
-                                        <inset key="contentEdgeInsets" minX="0.0" minY="20" maxX="0.0" maxY="20"/>
-                                        <state key="normal" title="Ben"/>
-                                        <connections>
-                                            <action selector="buttonBen:" destination="t7Q-Y0-Rfq" eventType="touchUpInside" id="jym-jh-oRc"/>
-                                        </connections>
-                                    </button>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="PatientID:  " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ylc-Yi-EPX">
+                                                <rect key="frame" x="0.0" y="0.0" width="62" height="58"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="zaR-0f-eT1">
+                                                <rect key="frame" x="62" y="0.0" width="173" height="58"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pzv-TX-aVA">
+                                                <rect key="frame" x="235" y="0.0" width="37" height="58"/>
+                                                <inset key="contentEdgeInsets" minX="8" minY="20" maxX="8" maxY="20"/>
+                                                <state key="normal" title="OK"/>
+                                                <connections>
+                                                    <action selector="buttonOK:" destination="t7Q-Y0-Rfq" eventType="touchUpInside" id="CZz-63-MWP"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2vl-OR-U1U">
                                         <rect key="frame" x="0.0" y="156" width="272" height="58"/>
                                         <inset key="contentEdgeInsets" minX="0.0" minY="20" maxX="0.0" maxY="20"/>
@@ -282,6 +299,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="iGen Family Tree chooser" id="xkp-hy-BVy"/>
                     <connections>
+                        <outlet property="choosePatientID" destination="zaR-0f-eT1" id="MPO-7H-sDW"/>
                         <segue destination="hWx-t7-1N7" kind="show" identifier="familytreeSegue" id="4wb-NM-puH"/>
                     </connections>
                 </viewController>
@@ -310,7 +328,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vow-OX-rbt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="668" y="1101"/>
+            <point key="canvasLocation" x="859" y="1101"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="dyE-zP-qV2">
@@ -325,7 +343,7 @@
                                 <rect key="frame" x="0.0" y="40" width="320" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JnY-4n-Sf4" id="ehB-SY-80J">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="59.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -373,7 +391,7 @@
         <image name="saveButton" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="OcU-f5-gET"/>
         <segue reference="4wb-NM-puH"/>
+        <segue reference="OcU-f5-gET"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -70,6 +70,13 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pkg-8m-CDp" userLabel="InfoVerified">
+                        <rect key="frame" x="2" y="10" width="12" height="8"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="7"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bHI-gV-RwV">
                         <rect key="frame" x="0.0" y="46" width="50" height="4"/>
                         <constraints>
@@ -107,6 +114,7 @@
                 <outlet property="bgImg" destination="Q1N-36-ASh" id="kCM-Q3-BaT"/>
                 <outlet property="diseaseImg1Color" destination="hNs-J1-Kfj" id="aw4-kU-zpY"/>
                 <outlet property="genderImg" destination="PTn-cI-Avg" id="5kY-HE-3KH"/>
+                <outlet property="infoVerified" destination="pkg-8m-CDp" id="FmI-Mt-nvj"/>
                 <outlet property="patientAge" destination="bHI-gV-RwV" id="V2T-T9-xg6"/>
                 <outlet property="patientName" destination="o3E-qh-LYM" id="XJw-EM-v0y"/>
                 <outletCollection property="diseaseLabel" destination="O1t-mB-hWe" collectionClass="NSMutableArray" id="jGM-xm-9wD"/>
