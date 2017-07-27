@@ -68,6 +68,7 @@ enum Segues: String {
 enum CustomCellIdentifiers: String {
     case CreatePatientTreeID
     case iGenCellID
+    case GenerateCellID
 }
 
 enum CustomCellNames: String {
