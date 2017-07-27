@@ -267,6 +267,7 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
             editingDiseases.diseaseList.append("")
             self.modalTableView.reloadData()
             
+    //***** INSERT ANIMATION FOR ADDING A ROW
             //modalTableView.reloadRows(at: [IndexPath(2,1)], with: .fade)
             //modalTableView.reloadRows(at: [IndexPath.init(row: currentDiseases.diseaseList.count,
             //                                          section: DetailViewSections.dynamicSection)],
@@ -278,7 +279,6 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
     func removeDisease(indexPath:IndexPath) {
         self.modalTableView.beginUpdates()
         self.editingDiseases?.diseaseList.remove(at: indexPath.row)
-        
         self.modalTableView.deleteRows(at: [indexPath], with: .fade)
         self.modalTableView.endUpdates()
     }
