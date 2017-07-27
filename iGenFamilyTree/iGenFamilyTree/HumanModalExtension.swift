@@ -49,14 +49,72 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
     }
+
+    func loadStaticSection(indexPath: IndexPath, tableView: UITableView)  -> UITableViewCell{
+        switch indexPath.row {
+            
+        case detailRows.genderRow.rawValue:
+            
+            let imageCell = tableView.dequeueReusableCell(withIdentifier: "detailImageCellID", for: indexPath) as! DetailmageSliderCell
+            imageCell.delegate = self
+            imageCell.awakeFromNib()
+            imageCell.separatorInset.left = view.frame.width
+            imageCell.humanGender = self.currentHuman?.gender
+            imageCell.cellType = .genderRow
+            
+            return imageCell
+            
+        case detailRows.nameRow.rawValue:
+            let nameCell = tableView.dequeueReusableCell(withIdentifier: "infoCellID", for: indexPath) as! InfoCell
+            
+            nameCell.addRowBut.alpha = 0.0
+            nameCell.removeRowBut.alpha = 0.0
+            nameCell.addRowBut.isUserInteractionEnabled = false
+            nameCell.removeRowBut.isUserInteractionEnabled = false
+            
+            nameCell.titleInfo.text = NSLocalizedString("name", comment: "")
+            nameCell.textfieldValue.text = self.currentHuman?.name
+            nameCell.cellType = .nameRow
+            nameCell.delegate = self
+            if self.editingHuman?.gender == JsonKeys.male.rawValue {
+                nameCell.textfieldValue.placeholder = NSLocalizedString("placeholderNameMale", comment: "")
+                
+            } else {
+                nameCell.textfieldValue.placeholder = NSLocalizedString("placeholderNameFemale", comment: "")
+            }
+            
+            return nameCell
+            
+        case detailRows.dobRow.rawValue:
+            let dateOfBirthCell = tableView.dequeueReusableCell(withIdentifier: "infoCellID", for: indexPath) as! InfoCell
+            
+            dateOfBirthCell.addRowBut.alpha = 0.0
+            dateOfBirthCell.removeRowBut.alpha = 0.0
+            dateOfBirthCell.addRowBut.isUserInteractionEnabled = false
+            dateOfBirthCell.removeRowBut.isUserInteractionEnabled = false
+            
+            dateOfBirthCell.titleInfo.text = NSLocalizedString("dateOfBirth", comment: "")
+            dateOfBirthCell.textfieldValue.text = self.currentHuman?.dob
+            dateOfBirthCell.textfieldValue.placeholder = NSLocalizedString("placeholderDateOfBirth", comment: "")
+                
+            dateOfBirthCell.cellType = .dobRow
+            dateOfBirthCell.delegate = self
+            return dateOfBirthCell
+            
+        default:
+            return UITableViewCell()
+        }
+    }
     
     func loadDynamicSection(indexPath: IndexPath, tableView: UITableView) -> UITableViewCell{
         switch indexPath.row {
         case DetailViewSections.firstDiseaseRow:
             
             let firstDiseaseCell = tableView.dequeueReusableCell(withIdentifier: "infoCellID", for: indexPath) as! InfoCell
-            
-            firstDiseaseCell.titleInfo.text = "Disease(s):"
+            firstDiseaseCell.indexPath = indexPath
+            firstDiseaseCell.titleInfo.text = NSLocalizedString("diseases", comment: "")
+            firstDiseaseCell.cellType = .disease1Row
+            firstDiseaseCell.delegate = self
             if let diseaseOne = currentDiseases?.diseaseList[0] {
                 firstDiseaseCell.textfieldValue.text = "\(String(describing: diseaseOne))"
             }
@@ -66,8 +124,11 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
         case DetailViewSections.secondDiseaseRow:
             
             let secondDiseaseCell = tableView.dequeueReusableCell(withIdentifier: "infoCellID", for: indexPath) as! InfoCell
-            
-            secondDiseaseCell.titleInfo.text = ""
+            secondDiseaseCell.indexPath = indexPath
+
+            secondDiseaseCell.titleInfo.text = NSLocalizedString("diseases", comment: "")
+            secondDiseaseCell.cellType = .disease2Row
+            secondDiseaseCell.delegate = self
             if let secondDisease = currentDiseases?.diseaseList[1] {
                 secondDiseaseCell.textfieldValue.text = String(describing: secondDisease)
             }
@@ -77,58 +138,49 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
         case DetailViewSections.thirdDiseaseRow:
             
             let thirdDiseaseCell = tableView.dequeueReusableCell(withIdentifier: "infoCellID", for: indexPath) as! InfoCell
-            
-            thirdDiseaseCell.titleInfo.text = ""
+            thirdDiseaseCell.indexPath = indexPath
+
+            thirdDiseaseCell.titleInfo.text = NSLocalizedString("diseases", comment: "")
+            thirdDiseaseCell.cellType = .disease3Row
+            thirdDiseaseCell.delegate = self
             if let thirdDisease = currentDiseases?.diseaseList[2] {
                 thirdDiseaseCell.textfieldValue.text = String(describing: thirdDisease)
             }
             
             return thirdDiseaseCell
             
-        default:
+        case DetailViewSections.fourthDiseaseRow:
             
-            return UITableViewCell()
-            
-        }
-    }
+            let fourthDiseaseCell = tableView.dequeueReusableCell(withIdentifier: "infoCellID", for: indexPath) as! InfoCell
+            fourthDiseaseCell.indexPath = indexPath
 
-    func loadStaticSection(indexPath: IndexPath, tableView: UITableView)  -> UITableViewCell{
-        switch indexPath.row {
-            
-        case detailRows.imageSliderRow.rawValue:
-            
-            let imageCell = tableView.dequeueReusableCell(withIdentifier: "detailImageCellID", for: indexPath) as! DetailmageSliderCell
-            
-            imageCell.awakeFromNib()
-            imageCell.separatorInset.left = view.frame.width
-            imageCell.humanGender = self.currentHuman?.gender
-            
-            return imageCell
-            
-        case detailRows.nameRow.rawValue:
-            let nameCell = tableView.dequeueReusableCell(withIdentifier: "infoCellID", for: indexPath) as! InfoCell
-            nameCell.titleInfo.text = "Name:"
-            nameCell.textfieldValue.text = self.currentHuman?.name
-            
-            if self.currentHuman?.gender == JsonKeys.male.rawValue {
-                nameCell.textfieldValue.placeholder = "e.g. John Doe"
-            } else {
-                nameCell.textfieldValue.placeholder = "e.g. Jane Doe"
+            fourthDiseaseCell.titleInfo.text = NSLocalizedString("diseases", comment: "")
+            fourthDiseaseCell.cellType = .disease4Row
+            fourthDiseaseCell.delegate = self
+            if let fourthDisease = currentDiseases?.diseaseList[3] {
+                fourthDiseaseCell.textfieldValue.text = String(describing: fourthDisease)
             }
-
-            return nameCell
             
-        case detailRows.dobRow.rawValue:
-            let dateOfBirthCell = tableView.dequeueReusableCell(withIdentifier: "infoCellID", for: indexPath) as! InfoCell
+            return fourthDiseaseCell
+            
+        case DetailViewSections.fifthDiseaseRow:
+            
+            let fifthDiseaseCell = tableView.dequeueReusableCell(withIdentifier: "infoCellID", for: indexPath) as! InfoCell
+            fifthDiseaseCell.indexPath = indexPath
 
-            dateOfBirthCell.titleInfo.text = "Date of Birth:"
-            dateOfBirthCell.textfieldValue.text = self.currentHuman?.dob
-            dateOfBirthCell.textfieldValue.placeholder = "YYYY"
-
-            return dateOfBirthCell
+            fifthDiseaseCell.titleInfo.text = NSLocalizedString("diseases", comment: "")
+            fifthDiseaseCell.cellType = .disease4Row
+            fifthDiseaseCell.delegate = self
+            if let fifthDisease = currentDiseases?.diseaseList[4] {
+                fifthDiseaseCell.textfieldValue.text = String(describing: fifthDisease)
+            }
+            
+            return fifthDiseaseCell
             
         default:
+            
             return UITableViewCell()
+            
         }
     }
     

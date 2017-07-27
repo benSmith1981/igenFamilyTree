@@ -15,6 +15,14 @@
 "numberBrothersfromFather" = "How many brothers does your father have?";
 "numberSistersfromFather" = "How many sisters does your father have?";
 
+//Modal view labels
+"modalViewTitle" = "PERSONAL DETAILS";
+"name" = "Name:";
+"dateOfBirth" = "Date of Birth:";
+"diseases" = "Disease(s)";
+"placeholderNameMale" = "e.g. John Doe";
+"placeholderNameFemale" = "e.g. Jane Doe";
+"placeholderDateOfBirth" = "YYYY";
 
 //Button label
 "CreateTree" = "Generate Tree";

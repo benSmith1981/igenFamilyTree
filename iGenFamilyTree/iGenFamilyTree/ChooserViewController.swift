@@ -10,6 +10,7 @@ import UIKit
 
 class ChooserViewController: UIViewController {
     
+    @IBOutlet weak var choosePatientID: UITextField!
     @IBAction func unwindToVC1(segue:UIStoryboardSegue) { }
 
 
@@ -33,8 +34,9 @@ class ChooserViewController: UIViewController {
 
     }
     
-    @IBAction func buttonBen(_ sender: UIButton) {
-        familyJsonToLoad = "smith"
+    @IBAction func buttonOK(_ sender: UIButton) {
+        familyJsonToLoad = choosePatientID.text
+        print(familyJsonToLoad)
         self.performSegue(withIdentifier: Segues.familytreeSegue.rawValue, sender: self)
     }
 

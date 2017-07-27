@@ -1,6 +1,6 @@
 { 
   "id4":{
-	"humanID": "id4",
+	"id": "id4",
 	"diseaseList": [ { "id" : 17 } ],
 	"canEditList": [ { "id" : "id4" }, { "id" : "id5"} ],
 	"editInfoID": "id4",

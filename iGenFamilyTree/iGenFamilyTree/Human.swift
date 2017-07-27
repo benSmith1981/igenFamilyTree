@@ -21,6 +21,9 @@ class Human {
     var race : String?
     var processed: Bool = false
     var showDiseaseInfo: Bool = false
+    var editInfoID: ID?
+    var editInfoTimestamp: String?
+    var editInfoField: String?
     var spouses: [ID] = []
     var parents: [ID] = []
     var children: [ID] = []
@@ -42,41 +45,25 @@ class Human {
         
         self.dob = dictionary[JsonKeys.dob.rawValue] as? String
         self.race = dictionary[JsonKeys.race.rawValue] as? String
+        self.processed = false
         self.showDiseaseInfo = dictionary[JsonKeys.showDiseaseInfo.rawValue] as! Bool
+        self.editInfoID = dictionary[JsonKeys.editInfoID.rawValue] as? ID
+        self.editInfoTimestamp = dictionary[JsonKeys.editInfoTimestamp.rawValue] as? String
+        self.editInfoField = dictionary[JsonKeys.editInfoField.rawValue] as? String
         
         let parentsParsed = dictionary[JsonKeys.parents.rawValue] as! NSArray
-        for parent in parentsParsed {
-            if let parent = parent as? NSDictionary,
-                let parentID = parent[JsonKeys.id.rawValue] as? ID {
-                parents.append(parentID)
-            }
-        }
+        parents = parentsParsed as! [ID]
         
         let siblingsParsed = dictionary[JsonKeys.siblings.rawValue] as! NSArray
-        for sibling in siblingsParsed {
-            if let sibling = sibling as? NSDictionary,
-                let siblingID = sibling[JsonKeys.id.rawValue] as? ID {
-                siblings.append(siblingID)
-            }
-        }
+        siblings = siblingsParsed as! [ID]
         
         let childrenParsed = dictionary[JsonKeys.children.rawValue] as! NSArray
-        for child in childrenParsed {
-            if let child = child as? NSDictionary,
-                let childID = child[JsonKeys.id.rawValue] as? ID {
-                children.append(childID)
-            }
-        }
+        children = childrenParsed as! [ID]
         
         let spousesParsed = dictionary[JsonKeys.spouses.rawValue] as! NSArray
-        for spouse in spousesParsed {
-            if let spouse = spouse as? NSDictionary,
-                let spouseID = spouse[JsonKeys.id.rawValue] as? ID {
-                spouses.append(spouseID)
-            }
-        }
-        
+        spouses = spousesParsed as! [ID]
     }
+    
     
     func modelsFromDictionaryArray(array:NSArray) -> [Human]
     {
@@ -88,4 +75,9 @@ class Human {
         return models
     }
     
+    func logChangesBy(_ human: ID, _ fields: String) {
+        editInfoID = human
+        editInfoTimestamp = String(describing: Date())
+        editInfoField = fields
+    }
 }

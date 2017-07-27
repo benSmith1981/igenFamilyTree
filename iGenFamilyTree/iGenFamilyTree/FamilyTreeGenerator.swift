@@ -1,3 +1,11 @@
+//
+//  FamilyTreeGenerator.swift
+//  iGenFamilyTree
+//
+//  Created by Ton on 2017-07-06.
+//  Copyright © 2017 ben. All rights reserved.
+//
+
 import Foundation
 
 class FamilyTreeGenerator {

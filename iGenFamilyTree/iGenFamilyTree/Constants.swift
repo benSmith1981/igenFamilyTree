@@ -12,6 +12,7 @@ import UIKit
 struct Constants {
     static let gridSize = 30
     static let squareCellSize = 50.0
+    static let herokuAPI = "https://fierce-gorge-29081.herokuapp.com/api/"
 }
 
 struct DetailViewSections {
@@ -27,6 +28,8 @@ struct DetailViewSections {
     static let firstDiseaseRow = 0
     static let secondDiseaseRow = 1
     static let thirdDiseaseRow = 2
+    static let fourthDiseaseRow = 3
+    static let fifthDiseaseRow = 4
     
 
     
@@ -43,12 +46,12 @@ enum JsonKeys: String {
     case race
     case processed
     case showDiseaseInfo
+    case infoVerified
     case spouses
     case parents
     case grandparents
     case children
     case siblings
-    case humanID
     case diseaseList
     case canEditList
     case editInfoID
