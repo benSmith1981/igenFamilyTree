@@ -55,14 +55,14 @@ protocol updateParametersDelegate: class {
 }
 
 class HumanModalViewController: UIViewController, UIViewControllerTransitioningDelegate, updateParametersDelegate  {
-
+    
     // Objects to pass through:
     var humanDetails: FamilyTreeGenerator?
     var indexPathForPerson: IndexPath?
     var currentHuman: Human?
     var editingHuman: Human?
     var currentDiseases: Disease?
-
+    
     @IBOutlet weak var modelViewTitle: UILabel!
     @IBOutlet var containerView: UIView!
     @IBOutlet weak var modalTableView: UITableView!
@@ -81,42 +81,15 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
     }
     
     @IBAction func saveEditHuman(_ sender: Any) {
-        
-        self.currentHuman?.logChangesBy((currentHuman?.patientID)!, "name, dob, gender")
-
-        let humanUpdate: Parameters = [
-            "name": self.editingHuman?.name,
-            "dob": self.editingHuman?.dob,
-            "gender": self.editingHuman?.gender,
-            "editInfoID" : self.editingHuman?.editInfoID!,
-            "editInfoTimestamp" : self.editingHuman?.editInfoTimestamp!,
-            "editInfoField" : self.editingHuman?.editInfoField!
-        ]
-        if let humanID = self.currentHuman?.id {
-            Alamofire.request("\(Constants.herokuAPI)edithuman?id=\(humanID)",
-                method: .put,
-                parameters: humanUpdate,
-                encoding: JSONEncoding.default).responseJSON { (response) in
-                    switch response.result {
-                    case .success(let jsonData):
-                        print("success \(jsonData)")
-                        
-                    case .failure(let error):
-                        print("error \(error)")
-                    }
-            }
-        }
-
-        //post to endpoint on alamofire
-        //close pop-up
-        
+        self.currentHuman = editingHuman
+        iGenDataService.saveHuman(currentHuman!)
         closeView()
     }
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
-
+        
         self.hideKeyboardWhenTappedAround()
         
         self.modelViewTitle.text = NSLocalizedString("modalViewTitle", comment: "")
@@ -141,16 +114,16 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
             let section = indexPathForPerson?.section,
             let cellContent = humanDetails?.model?.cell?[section][item],
             let currentHuman = humanDetails?.familyTree[cellContent.getID()]{
-                self.currentHuman = currentHuman
-                //copy the editing human...
-                self.editingHuman = self.currentHuman
+            self.currentHuman = currentHuman
+            //copy the editing human...
+            self.editingHuman = self.currentHuman
         }
         
         if let item = indexPathForPerson?.item,
             let section = indexPathForPerson?.section,
             let cellContent = humanDetails?.model?.cell?[section][item],
             let currentDiseases = humanDetails?.diseases[cellContent.getID()]{
-                self.currentDiseases = currentDiseases
+            self.currentDiseases = currentDiseases
         }
         
         // Do any additional setup after loading the view.
@@ -164,7 +137,7 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
         
         let infoCell = UINib(nibName: "InfoCell", bundle: nil)
         self.modalTableView.register(infoCell, forCellReuseIdentifier: "infoCellID")
-
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -184,7 +157,7 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
     func closeView()
     {
         self.presentingViewController?.dismiss(animated: true, completion: nil)
-
+        
     }
     
     func getHumanUpdates(value: Any, cellType: detailRows){
@@ -195,7 +168,7 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
             self.editingHuman?.gender = value as! String
             modalTableView.reloadRows(at: [IndexPath.init(row: detailRows.nameRow.rawValue,
                                                           section: DetailViewSections.staticSections)],
-                                                            with: .fade)
+                                      with: .fade)
         case .dobRow:
             self.editingHuman?.dob = value as? String
         default:
@@ -213,7 +186,7 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
     func removeDisease(indexPath:IndexPath) {
         self.modalTableView.beginUpdates()
         self.currentDiseases?.diseaseList.remove(at: indexPath.row)
-
+        
         self.modalTableView.deleteRows(at: [indexPath], with: .fade)
         self.modalTableView.endUpdates()
     }
