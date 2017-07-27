@@ -58,6 +58,7 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
 
     // Objects to pass through:
     var humanDetails: FamilyTreeGenerator?
+    weak var delegate: reloadAfterEdit?
     var indexPathForPerson: IndexPath?
     var currentHuman: Human?
     var editingHuman: Human?
@@ -101,13 +102,15 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
         
         if let humanID = self.currentHuman?.id {
             Alamofire.request("https://fierce-gorge-29081.herokuapp.com/api/edithuman?id=\(humanID)",
-                method: .post,
+                method: .put,
                 parameters: humanUpdate,
                 encoding: JSONEncoding.default).responseJSON { (response) in
                     switch response.result {
                     case .success(let jsonData):
                         print("success \(jsonData)")
                         
+                        self.closeView()
+
                     case .failure(let error):
                         print("error \(error)")
                     }
@@ -119,7 +122,6 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
         
         
         
-        closeView()
     }
     
     override func viewDidLoad() {
@@ -192,6 +194,7 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
     
     func closeView()
     {
+        delegate?.reloadCell()
         self.presentingViewController?.dismiss(animated: true, completion: nil)
         
     }
