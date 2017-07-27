@@ -12,7 +12,7 @@ import Foundation
 
 class Disease {
     var id: ID
-    var diseaseList: [Int] = []
+    var diseaseList: [String] = []
     var canEditList: [ID] = []
     var editInfoID: ID?
     var editInfoTimestamp: String?
@@ -36,7 +36,7 @@ class Disease {
         self.deleted = dictionary[JsonKeys.deleted.rawValue] as! Bool
     
         let diseaseListParsed = dictionary[JsonKeys.diseaseList.rawValue] as! NSArray
-        diseaseList = diseaseListParsed as! [Int]
+        diseaseList = diseaseListParsed as! [String]
         
         let canEditListParsed = dictionary[JsonKeys.canEditList.rawValue] as! NSArray
         canEditList = canEditListParsed as! [ID]

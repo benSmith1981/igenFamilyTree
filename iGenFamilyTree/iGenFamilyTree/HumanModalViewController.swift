@@ -58,10 +58,12 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
     
     // Objects to pass through:
     var humanDetails: FamilyTreeGenerator?
+    weak var delegate: reloadAfterEdit?
     var indexPathForPerson: IndexPath?
     var currentHuman: Human?
     var editingHuman: Human?
     var currentDiseases: Disease?
+    var editingDiseases: Disease?
     
     @IBOutlet weak var modelViewTitle: UILabel!
     @IBOutlet var containerView: UIView!
@@ -71,7 +73,7 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
     
     @IBAction func addDiseaseRow(_ sender: Any) {
         if let currentDiseases = currentDiseases {
-            currentDiseases.diseaseList.append(0)
+            currentDiseases.diseaseList.append("")
             self.modalTableView.reloadData()
         }
     }
@@ -122,9 +124,16 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
         
         if let item = indexPathForPerson?.item,
             let section = indexPathForPerson?.section,
-            let cellContent = humanDetails?.model?.cell?[section][item],
-            let currentDiseases = humanDetails?.diseases[cellContent.getID()]{
-            self.currentDiseases = currentDiseases
+            let cellContent = humanDetails?.model?.cell?[section][item] {
+            
+            if let currentDiseases = humanDetails?.diseases[cellContent.getID()]{
+                self.currentDiseases = currentDiseases
+                self.editingDiseases = self.currentDiseases
+            } else {
+                self.editingDiseases = Disease.init(id: cellContent.getID(), editInfoID: "", editInfoTimestamp: "", editInfoField: "")
+                self.editingDiseases?.diseaseList.append("")
+            }
+            
         }
         
         // Do any additional setup after loading the view.
@@ -157,6 +166,7 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
     
     func closeView()
     {
+        delegate?.reloadCell()
         self.presentingViewController?.dismiss(animated: true, completion: nil)
         
     }
@@ -172,22 +182,40 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
                                       with: .fade)
         case .dobRow:
             self.editingHuman?.dob = value as? String
+        case .disease1Row:
+            self.editingDiseases?.diseaseList[0] = value as! String
+        case .disease2Row:
+            self.editingDiseases?.diseaseList[1] = value as! String
+        case .disease3Row:
+            self.editingDiseases?.diseaseList[2] = value as! String
+        case .disease4Row:
+            self.editingDiseases?.diseaseList[3] = value as! String
+        case .disease5Row:
+            self.editingDiseases?.diseaseList[4] = value as! String
         default:
             break
         }
     }
     
+    
+    
     func addDisease() {
-        if let currentDiseases = currentDiseases {
-            currentDiseases.diseaseList.append(0)
+        if let editingDiseases = editingDiseases {
+            editingDiseases.diseaseList.append("")
             self.modalTableView.reloadData()
+            
+    //***** INSERT ANIMATION FOR ADDING A ROW
+            //modalTableView.reloadRows(at: [IndexPath(2,1)], with: .fade)
+            //modalTableView.reloadRows(at: [IndexPath.init(row: currentDiseases.diseaseList.count,
+            //                                          section: DetailViewSections.dynamicSection)],
+            //                                          with: .fade)
         }
     }
     
+    //***** FIX INITIATION OF FIRST DISEASE AND COUNT OF DISEASELIST (OUT OF RANGE)
     func removeDisease(indexPath:IndexPath) {
         self.modalTableView.beginUpdates()
-        self.currentDiseases?.diseaseList.remove(at: indexPath.row)
-        
+        self.editingDiseases?.diseaseList.remove(at: indexPath.row)
         self.modalTableView.deleteRows(at: [indexPath], with: .fade)
         self.modalTableView.endUpdates()
     }

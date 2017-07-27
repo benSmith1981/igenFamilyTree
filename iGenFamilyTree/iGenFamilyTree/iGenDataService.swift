@@ -12,7 +12,7 @@ import Alamofire
 class iGenDataService {
     
     public static func parseiGenData(jsonName: String){
-        //        if let pathURL = Bundle.main.url(forResource: jsonName, withExtension: "json"){
+        //let pathURL = Bundle.main.url(forResource: jsonName, withExtension: "json")
         let pathURL = "\(Constants.herokuAPI)gettree?patientID=\(jsonName)"
         Alamofire.request(pathURL).validate().responseJSON { (response) in
             switch response.result {
