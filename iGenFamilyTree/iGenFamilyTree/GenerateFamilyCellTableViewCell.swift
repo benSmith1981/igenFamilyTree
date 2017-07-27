@@ -12,15 +12,15 @@ class GenerateFamilyCellTableViewCell: UITableViewCell {
     var delegate: SetNumberOfFamilyMembers?
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.contentView.autoresizingMask = UIViewAutoresizing.flexibleWidth
+//        self.contentView.autoresizingMask = UIViewAutoresizing.flexibleWidth
 
         //UIViewAutoresizing.flexibleHeight
         let rectShapeBottom = CAShapeLayer()
         //        rectShapeBottom.bounds = self.OutletGenerateTree.frame
         rectShapeBottom.bounds = self.frame.insetBy(dx: 10.0, dy: 10.0)
         rectShapeBottom.position = self.center
-        rectShapeBottom.path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: [.bottomLeft, .bottomRight, .topLeft, .topRight ], cornerRadii: CGSize(width: 10, height: 10)).cgPath
-        self.layoutMargins = UIEdgeInsetsMake(0, 10, 0, 10)
+        rectShapeBottom.path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: [.allCorners ], cornerRadii: CGSize(width: 10, height: 10)).cgPath
+//        self.layoutMargins = UIEdgeInsetsMake(0, 10, 0, 10)
         self.layer.mask = rectShapeBottom
         self.layoutSubviews()
 

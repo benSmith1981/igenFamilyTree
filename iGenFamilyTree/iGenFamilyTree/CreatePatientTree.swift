@@ -26,6 +26,11 @@ class CreatePatientTree: UITableViewCell, UITextFieldDelegate{
         // Configure the view for the selected state
     }
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        print("text changed \(textField.text ?? "")")
+        return true
+    }
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
         if (textField.text?.isEmpty)! == false{
             setNumberDelegate.sendNumber(number: Int(textField.text!)!,cellType: cellType!)

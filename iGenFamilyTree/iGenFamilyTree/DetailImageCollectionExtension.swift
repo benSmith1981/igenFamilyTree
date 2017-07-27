@@ -30,11 +30,11 @@ extension  DetailmageSliderCell {
         var visibleIndexPath: IndexPath = collectionView.indexPathForItem(at: visiblePoint)!
         if visibleIndexPath.row == 0 {
             print("man")
-            delegate?.getHumanUpdates(value: JsonKeys.male.rawValue, cellType: .genderRow)
+            delegate?.getHumanUpdates(value: JsonKeys.male.rawValue, cellType: .genderRow, indexPath: indexPath)
             //delegate?.getHumanUpdates(value: JsonKeys.male.rawValue, cellType: .nameRow)
         } else {
             print("woman")
-            delegate?.getHumanUpdates(value: JsonKeys.female.rawValue, cellType: .genderRow)
+            delegate?.getHumanUpdates(value: JsonKeys.female.rawValue, cellType: .genderRow, indexPath: indexPath)
             //delegate?.getHumanUpdates(value: JsonKeys.female.rawValue, cellType: .nameRow)
         }
     }
@@ -48,9 +48,8 @@ extension  DetailmageSliderCell {
         
         
         
-        
         cell.imageVIew.image = imageArray[indexPath.row]
-        
+    
 
         cell.layer.shadowColor = UIColor.black.cgColor
         cell.layer.shadowOpacity = 0.15

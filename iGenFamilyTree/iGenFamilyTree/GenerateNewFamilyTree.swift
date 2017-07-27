@@ -18,9 +18,9 @@ enum genderType: String {
         
         switch self {
         case .maleGender:
-            return "male"
+            return JsonKeys.male.rawValue
         case .femaleGender:
-            return "female"
+            return JsonKeys.female.rawValue
         case .unknown:
             return "unknown"
         }
@@ -39,11 +39,11 @@ extension FamilyTreeGenerator {
     
     // first create an array of every empty Human in this family and also fill the Patient object
     private func createEmptyHumans(with numberOf: Answers) {
-        createEmptyPatient()
+        createEmptyPatient(numberOf)
         createEmptyFather()
         createEmptyMother()
         if numberOf.sons + numberOf.daughters > 0  { // add a spouse only if patient has children
-            createEmptySpouse()
+            createEmptySpouse(numberOf)
         }
         createEmptyBrothers(numberOf.brothers)
         createEmptySisters(numberOf.sisters)
@@ -55,13 +55,12 @@ extension FamilyTreeGenerator {
         createEmptySistersOfFather(numberOf.sistersOfFather)
         createEmptyParentsOfFather()
         createEmptyParentsOfMother()
-        
     }
     
     // generate a unique ID and create the patient
-    private func createEmptyPatient() {
+    private func createEmptyPatient(_ answers: Answers) {
         patient.id = NSUUID().uuidString
-        familyTree[patient.id!] = Human(name: "Patient", id: patient.id!, patientID: patient.id!, gender: "unknown")
+        familyTree[patient.id!] = Human(name: "Patient", id: patient.id!, patientID: patient.id!, gender: answers.patientGender.rawValue)
         familyTree[patient.id!]!.logChangesBy(patient.id!, "new record")
     }
     
@@ -81,10 +80,10 @@ extension FamilyTreeGenerator {
     }
     
     // generate a unique ID, create the spouse and add him/her as a spouse of the patient
-    private func createEmptySpouse() {
+    private func createEmptySpouse(_ answers: Answers) {
         let newUUID = NSUUID().uuidString
         patient.mySpousesIDs.append(newUUID)
-        familyTree[newUUID] = Human(name: "Spouse", id: newUUID, patientID: patient.id!, gender: "unknown")
+        familyTree[newUUID] = Human(name: "Spouse", id: newUUID, patientID: patient.id!, gender: answers.partnerGender.rawValue)
         familyTree[newUUID]!.logChangesBy(patient.id!, "new record")
     }
     

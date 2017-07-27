@@ -49,9 +49,12 @@ enum detailRows: Int {
 }
 
 protocol updateParametersDelegate: class {
-    func getHumanUpdates(value: Any, cellType: detailRows)
-    func addDisease()
-    func removeDisease(indexPath:IndexPath)
+    func getHumanUpdates(value: Any, cellType: detailRows, indexPath:IndexPath)
+
+}
+extension updateParametersDelegate {
+    func addDisease() {}
+    func removeDisease(indexPath:IndexPath) {}
 }
 
 class HumanModalViewController: UIViewController, UIViewControllerTransitioningDelegate, updateParametersDelegate  {
@@ -119,7 +122,9 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
 
         self.hideKeyboardWhenTappedAround()
         
-        self.modelViewTitle.text = NSLocalizedString("modalViewTitle", comment: "")
+//        self.modelViewTitle.text =
+        
+            print(NSLocalizedString("modalViewTitle", comment: ""))
         
         modalTableView.frame = CGRect(x: modalTableView.frame.origin.x, y: modalTableView.frame.origin.y, width: modalTableView.frame.size.width, height: modalTableView.contentSize.height)
         modalTableView.allowsSelection = false
@@ -160,10 +165,10 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
         modalTableView.layer.masksToBounds = true
         
         let imageCell = UINib(nibName: "DetailmageSliderCell", bundle: nil)
-        self.modalTableView.register(imageCell, forCellReuseIdentifier: "detailImageCellID")
+        self.modalTableView.register(imageCell, forCellReuseIdentifier: CustomCellIdentifiers.detailImageCellID.rawValue)
         
         let infoCell = UINib(nibName: "InfoCell", bundle: nil)
-        self.modalTableView.register(infoCell, forCellReuseIdentifier: "infoCellID")
+        self.modalTableView.register(infoCell, forCellReuseIdentifier: CustomCellIdentifiers.infoCellID.rawValue)
 
     }
     
@@ -187,7 +192,7 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
 
     }
     
-    func getHumanUpdates(value: Any, cellType: detailRows){
+    func getHumanUpdates(value: Any, cellType: detailRows, indexPath: IndexPath){
         switch cellType {
         case .nameRow:
             self.editingHuman?.name = value as! String

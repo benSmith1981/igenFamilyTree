@@ -4,7 +4,7 @@
 //
 //  Created by Ivo  Nederlof on 27-02-17.
 //  Copyright © 2017 Ben Smith. All rights reserved.
-//
+
 
 import UIKit
 
@@ -17,6 +17,7 @@ class DetailmageSliderCell: UITableViewCell,
     weak var delegate: updateParametersDelegate?
     var humanGender: String?
     var cellType: detailRows?
+    var indexPath: IndexPath = IndexPath.init()
 
     var imageArray = [UIImage(named: "slider-icons-male"),UIImage(named: "slider-icons-female")]
     

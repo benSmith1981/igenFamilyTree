@@ -10,13 +10,15 @@ import UIKit
 
 enum QuestionType: Int {
     case brother = 0
-    case sister = 1
-    case sons = 2
-    case daughters = 3
-    case brotherMother = 4
-    case sisterMother = 5
-    case brotherFather = 6
-    case sisterFather = 7
+    case sister
+    case sons
+    case daughters
+    case brotherMother
+    case sisterMother
+    case brotherFather
+    case sisterFather
+    case gender
+    case genderPartner
     
     func selectQuestion() -> String {
         
@@ -37,6 +39,10 @@ enum QuestionType: Int {
             return NSLocalizedString("numberBrothersfromFather", comment: "")
         case .sisterFather:
             return NSLocalizedString("numberSistersfromFather", comment: "")
+        case .gender:
+            return NSLocalizedString("chooseGender", comment: "")
+        case .genderPartner:
+            return NSLocalizedString("chooseGenderSpouse", comment: "")
         }
     }
 }
@@ -55,17 +61,50 @@ struct Answers {
     var sistersOfMother: Int = 0
     var brothersOfFather: Int = 0
     var sistersOfFather: Int = 0
+    var patientGender: genderType = .unknown
+    var partnerGender: genderType = .unknown
+
+
 }
 
 
-class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembers {
+class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembers, updateParametersDelegate {
+
     var answers = Answers()
-    //    var numberOfMembers = NumberOfMembers()
     var familyTreeGenerator = FamilyTreeGenerator.init(familyTree: [:])
     
     func generateTree(){
         familyTreeGenerator.generateNewFamilyTree(with: answers)
         self.performSegue(withIdentifier: Segues.familytreeSegue.rawValue, sender: self)
+    }
+    
+    func getHumanUpdates(value: Any, cellType: detailRows, indexPath: IndexPath) {
+        
+        if cellType == .genderRow {
+            
+            print("gender from form")
+            let gender = value as! String
+            switch gender {
+            case  JsonKeys.male.rawValue:
+                if indexPath.section == 0 {
+                    answers.patientGender = .maleGender
+                } else {
+                    answers.partnerGender = .maleGender
+                }
+                print("male from slider cell FORM")
+            case  JsonKeys.female.rawValue:
+                if indexPath.section == 0 {
+                    answers.patientGender = .femaleGender
+                } else {
+                    answers.partnerGender = .femaleGender
+                }
+                print("male from slider cell FORM")
+            default:
+                answers.patientGender = .unknown
+                print("uunknonwn gender")
+            }
+
+        }
     }
     
     
@@ -87,6 +126,8 @@ class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembe
             answers.brothersOfFather = number
         case .sisterFather:
             answers.sistersOfFather = number
+        default:
+            break
         }
     }
     
@@ -97,6 +138,17 @@ class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembe
         self.tableView.register(nib, forCellReuseIdentifier: CustomCellIdentifiers.CreatePatientTreeID.rawValue)
         let generate = UINib(nibName: "GenerateFamilyCellTableViewCell", bundle: nil)
         self.tableView.register(generate, forCellReuseIdentifier: CustomCellIdentifiers.GenerateCellID.rawValue)
+//        let gender = UINib(nibName: "CreatePatientTreeGender", bundle: nil)
+//        self.tableView.register(gender, forCellReuseIdentifier: CustomCellIdentifiers.CreatePatientGender.rawValue)
+        let genderCell = UINib(nibName: "DetailmageSliderCell", bundle: nil)
+        self.tableView.register(genderCell, forCellReuseIdentifier: CustomCellIdentifiers.detailImageCellID.rawValue)
+        let titleForGenderCells = UINib(nibName: "CreatePatientTreeGender", bundle: nil)
+        self.tableView.register(titleForGenderCells, forCellReuseIdentifier: CustomCellIdentifiers.CreatePatientGender.rawValue)
+
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 44
+        
+        
 /*
         let rectShapeBottom = CAShapeLayer()
 //        rectShapeBottom.bounds = self.OutletGenerateTree.frame
@@ -130,20 +182,61 @@ class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembe
     }
     
     // MARK: - Table view data source
-    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch indexPath.section {
+        case 0 , 1:
+            return UITableViewAutomaticDimension
+        default:
+            return 44
+        }
+    }
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 3
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 8
+        switch section {
+        case 0:
+            return 1
+        case 1:
+            return 1
+        case 2:
+            return 8
+        default:
+            return 0
+        }
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        switch indexPath.section {
+            case 0:
+                let genderPatient = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.detailImageCellID.rawValue, for: indexPath) as! DetailmageSliderCell
+                genderPatient.delegate = self
+                genderPatient.indexPath = indexPath
+    //                    genderPatient.questionLabel.text = QuestionType.gender.selectQuestion()
+                //            genderPatient.cellType = .gender
+                return genderPatient
+            case 1:
+                let genderPatientPartner = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.detailImageCellID.rawValue, for: indexPath) as! DetailmageSliderCell
+                genderPatientPartner.delegate = self
+                genderPatientPartner.indexPath = indexPath
+                //                    genderPatient.questionLabel.text = QuestionType.gender.selectQuestion()
+                //            genderPatient.cellType = .gender
+                
+                return genderPatientPartner
+            case 2:
+                return loadQuestionRows(indexPath: indexPath)
+            default:
+                return UITableViewCell()
+        }
+    }
+
+    
+    func loadQuestionRows(indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
             
         case QuestionType.brother.rawValue:
@@ -216,19 +309,64 @@ class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembe
         }
     }
     
-    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let generate = tableView.dequeueReusableCell(withIdentifier: "GenerateCellID") as! GenerateFamilyCellTableViewCell
-        generate.delegate = self
-        return generate
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        switch section {
+        case 0:
+            let questionGender = tableView.dequeueReusableCell(withIdentifier: "CreatePatientGender") as! CreatePatientTreeGender
+            questionGender.questionLabel.text = QuestionType.gender.selectQuestion()
+            return questionGender
+            
+        case 1:
+            let questionGenderPartner = tableView.dequeueReusableCell(withIdentifier: "CreatePatientGender") as! CreatePatientTreeGender
+            questionGenderPartner.questionLabel.text = QuestionType.genderPartner.selectQuestion()
+            return questionGenderPartner
+            
+        default:
+            return nil
+        }
     }
     
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        switch section {
+        case 0:
+            return 38
+        case 1:
+            return 38
+        default:
+            return 0
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        switch section {
+            
+        case 2:
+            let generate = tableView.dequeueReusableCell(withIdentifier: "GenerateCellID") as! GenerateFamilyCellTableViewCell
+            generate.center = CGPoint(x: view.bounds.midX, y: view.bounds.midY )
+            generate.delegate = self
+            
+            return generate
+            
+        default:
+            return nil
+        }
+    }
+    
+    
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 44
+        switch section{
+        case 2:
+            return 44
+            
+        default:
+            return 0
+        }
     }
     
     
     override func viewDidAppear(_ animated: Bool) {
         familyTreeGenerator = FamilyTreeGenerator.init(familyTree: [:])
+        
     }
 
     

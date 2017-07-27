@@ -38,7 +38,6 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        //enums for each case (e.g. 0, 1, 2, ...)
         switch indexPath.section {
         
         case DetailViewSections.staticSections:
@@ -55,7 +54,7 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
             
         case detailRows.genderRow.rawValue:
             
-            let imageCell = tableView.dequeueReusableCell(withIdentifier: "detailImageCellID", for: indexPath) as! DetailmageSliderCell
+            let imageCell = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.detailImageCellID.rawValue, for: indexPath) as! DetailmageSliderCell
             imageCell.delegate = self
             imageCell.awakeFromNib()
             imageCell.separatorInset.left = view.frame.width
@@ -65,7 +64,7 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
             return imageCell
             
         case detailRows.nameRow.rawValue:
-            let nameCell = tableView.dequeueReusableCell(withIdentifier: "infoCellID", for: indexPath) as! InfoCell
+            let nameCell = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.infoCellID.rawValue, for: indexPath) as! InfoCell
             
             nameCell.addRowBut.alpha = 0.0
             nameCell.removeRowBut.alpha = 0.0
@@ -86,7 +85,7 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
             return nameCell
             
         case detailRows.dobRow.rawValue:
-            let dateOfBirthCell = tableView.dequeueReusableCell(withIdentifier: "infoCellID", for: indexPath) as! InfoCell
+            let dateOfBirthCell = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.infoCellID.rawValue, for: indexPath) as! InfoCell
             
             dateOfBirthCell.addRowBut.alpha = 0.0
             dateOfBirthCell.removeRowBut.alpha = 0.0
@@ -110,7 +109,7 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
         switch indexPath.row {
         case DetailViewSections.firstDiseaseRow:
             
-            let firstDiseaseCell = tableView.dequeueReusableCell(withIdentifier: "infoCellID", for: indexPath) as! InfoCell
+            let firstDiseaseCell = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.infoCellID.rawValue, for: indexPath) as! InfoCell
             firstDiseaseCell.indexPath = indexPath
             firstDiseaseCell.titleInfo.text = NSLocalizedString("diseases", comment: "")
             firstDiseaseCell.cellType = .disease1Row
@@ -123,7 +122,7 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
             
         case DetailViewSections.secondDiseaseRow:
             
-            let secondDiseaseCell = tableView.dequeueReusableCell(withIdentifier: "infoCellID", for: indexPath) as! InfoCell
+            let secondDiseaseCell = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.infoCellID.rawValue, for: indexPath) as! InfoCell
             secondDiseaseCell.indexPath = indexPath
 
             secondDiseaseCell.titleInfo.text = NSLocalizedString("diseases", comment: "")
@@ -137,7 +136,7 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
             
         case DetailViewSections.thirdDiseaseRow:
             
-            let thirdDiseaseCell = tableView.dequeueReusableCell(withIdentifier: "infoCellID", for: indexPath) as! InfoCell
+            let thirdDiseaseCell = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.infoCellID.rawValue, for: indexPath) as! InfoCell
             thirdDiseaseCell.indexPath = indexPath
 
             thirdDiseaseCell.titleInfo.text = NSLocalizedString("diseases", comment: "")
@@ -151,7 +150,7 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
             
         case DetailViewSections.fourthDiseaseRow:
             
-            let fourthDiseaseCell = tableView.dequeueReusableCell(withIdentifier: "infoCellID", for: indexPath) as! InfoCell
+            let fourthDiseaseCell = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.infoCellID.rawValue, for: indexPath) as! InfoCell
             fourthDiseaseCell.indexPath = indexPath
 
             fourthDiseaseCell.titleInfo.text = NSLocalizedString("diseases", comment: "")
@@ -165,7 +164,7 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
             
         case DetailViewSections.fifthDiseaseRow:
             
-            let fifthDiseaseCell = tableView.dequeueReusableCell(withIdentifier: "infoCellID", for: indexPath) as! InfoCell
+            let fifthDiseaseCell = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.infoCellID.rawValue, for: indexPath) as! InfoCell
             fifthDiseaseCell.indexPath = indexPath
 
             fifthDiseaseCell.titleInfo.text = NSLocalizedString("diseases", comment: "")
