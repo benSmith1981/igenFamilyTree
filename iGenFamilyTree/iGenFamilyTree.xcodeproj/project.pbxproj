@@ -10,6 +10,8 @@
 		681222811F0E6BB700FA291C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6812227F1F0E6BB700FA291C /* Localizable.strings */; };
 		681222871F0E6BBE00FA291C /* LaunchScreen.strings in Resources */ = {isa = PBXBuildFile; fileRef = 681222831F0E6BBE00FA291C /* LaunchScreen.strings */; };
 		681222881F0E6BBF00FA291C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 681222851F0E6BBE00FA291C /* Localizable.strings */; };
+		6841C3331F29D37B0085E712 /* CreateTreeForm.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6841C3321F29D37B0085E712 /* CreateTreeForm.storyboard */; };
+		6841C3351F29D3B80085E712 /* FamilyTree.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6841C3341F29D3B80085E712 /* FamilyTree.storyboard */; };
 		6877CF101F28A45C00E677FA /* CreatePatientTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6877CF0E1F28A45C00E677FA /* CreatePatientTree.swift */; };
 		6877CF111F28A45C00E677FA /* CreatePatientTree.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6877CF0F1F28A45C00E677FA /* CreatePatientTree.xib */; };
 		6877CF1A1F28F21F00E677FA /* GenerateFamilyCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6877CF181F28F21F00E677FA /* GenerateFamilyCellTableViewCell.swift */; };
@@ -88,6 +90,8 @@
 		681222801F0E6BB700FA291C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localizable.strings; sourceTree = "<group>"; };
 		681222841F0E6BBE00FA291C /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = LaunchScreen.strings; sourceTree = "<group>"; };
 		681222861F0E6BBE00FA291C /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = Localizable.strings; sourceTree = "<group>"; };
+		6841C3321F29D37B0085E712 /* CreateTreeForm.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CreateTreeForm.storyboard; sourceTree = "<group>"; };
+		6841C3341F29D3B80085E712 /* FamilyTree.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FamilyTree.storyboard; sourceTree = "<group>"; };
 		6877CF0E1F28A45C00E677FA /* CreatePatientTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePatientTree.swift; sourceTree = "<group>"; };
 		6877CF0F1F28A45C00E677FA /* CreatePatientTree.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreatePatientTree.xib; sourceTree = "<group>"; };
 		6877CF181F28F21F00E677FA /* GenerateFamilyCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateFamilyCellTableViewCell.swift; sourceTree = "<group>"; };
@@ -260,6 +264,8 @@
 				CFCFA8401F190C3C00BC05E5 /* CollectionView */,
 				CFCFA8411F190C5300BC05E5 /* HumanTableView */,
 				CF957EAF1F20E3910054B1AC /* Main.storyboard */,
+				6841C3341F29D3B80085E712 /* FamilyTree.storyboard */,
+				6841C3321F29D37B0085E712 /* CreateTreeForm.storyboard */,
 				E626B3171F0D028B00125D85 /* ChooserViewController.swift */,
 				B5EAC17B1F01390800151D52 /* AppDelegate.swift */,
 				6812227D1F0E6B9000FA291C /* localizedStrings */,
@@ -505,8 +511,10 @@
 				681222811F0E6BB700FA291C /* Localizable.strings in Resources */,
 				68F4CAC41F0699840036946B /* iGen.json in Resources */,
 				B5EAC1891F01390800151D52 /* LaunchScreen.storyboard in Resources */,
+				6841C3331F29D37B0085E712 /* CreateTreeForm.storyboard in Resources */,
 				CF957EA91F1F8E9B0054B1AC /* disease_id1.json in Resources */,
 				B5EAC1861F01390800151D52 /* Assets.xcassets in Resources */,
+				6841C3351F29D3B80085E712 /* FamilyTree.storyboard in Resources */,
 				CF957EAA1F1F8E9B0054B1AC /* disease_id2.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
