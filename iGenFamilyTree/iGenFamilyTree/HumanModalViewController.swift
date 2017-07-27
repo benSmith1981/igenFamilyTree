@@ -83,62 +83,9 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
     }
     
     @IBAction func saveEditHuman(_ sender: Any) {
-        
-        self.currentHuman?.logChangesBy((currentHuman?.patientID)!, "name, dob, gender")
-        
-        let humanUpdate: Parameters = [
-            "name": self.editingHuman?.name,
-            "dob": self.editingHuman?.dob,
-            "gender": self.editingHuman?.gender,
-            "editInfoID" : self.editingHuman?.editInfoID!,
-            "editInfoTimestamp" : self.editingHuman?.editInfoTimestamp!,
-            "editInfoField" : self.editingHuman?.editInfoField!
-        ]
-        
-        
-        if let item = indexPathForPerson?.item,
-            let section = indexPathForPerson?.section,
-            let cellContent = humanDetails?.model?.cell?[section][item]{
-            currentHuman = editingHuman
-            humanDetails?.familyTree[cellContent.getID()] = currentHuman
-            
-            if (editingDiseases?.diseaseList.count)! > 0 && editingDiseases?.diseaseList[0] != "" {
-                currentDiseases = editingDiseases
-                humanDetails?.diseases[cellContent.getID()] = currentDiseases
-            } else if currentDiseases != nil {
-                // delete disease in db
-                humanDetails?.diseases[cellContent.getID()] = nil
-                currentDiseases = nil
-            } else {
-                // in case no diseases are present before aswell as after editing
-                //humanDetails?.diseases[cellContent.getID()] = nil
-                editingDiseases = nil
-            }
-        
-        }
-        
-        if let humanID = self.currentHuman?.id {
-            Alamofire.request("\(Constants.herokuAPI)edithuman?id=\(humanID)",
-                method: .put,
-                parameters: humanUpdate,
-                encoding: JSONEncoding.default).responseJSON { (response) in
-                    switch response.result {
-                    case .success(let jsonData):
-                        print("success \(jsonData)")
-                        
-                        self.closeView()
-                        
-                    case .failure(let error):
-                        print("error \(error)")
-                    }
-            }
-        }
-        
-        //post to endpoint on alamofire
-        //close pop-up
-        
-        
-        
+        self.currentHuman = editingHuman
+        iGenDataService.saveHuman(currentHuman!)
+        closeView()
     }
     
     override func viewDidLoad() {
