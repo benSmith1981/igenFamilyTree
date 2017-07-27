@@ -55,7 +55,7 @@ protocol updateParametersDelegate: class {
 }
 
 class HumanModalViewController: UIViewController, UIViewControllerTransitioningDelegate, updateParametersDelegate  {
-
+    
     // Objects to pass through:
     var humanDetails: FamilyTreeGenerator?
     weak var delegate: reloadAfterEdit?
@@ -63,7 +63,8 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
     var currentHuman: Human?
     var editingHuman: Human?
     var currentDiseases: Disease?
-
+    var editingDiseases: Disease?
+    
     @IBOutlet weak var modelViewTitle: UILabel!
     @IBOutlet var containerView: UIView!
     @IBOutlet weak var modalTableView: UITableView!
@@ -72,7 +73,7 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
     
     @IBAction func addDiseaseRow(_ sender: Any) {
         if let currentDiseases = currentDiseases {
-            currentDiseases.diseaseList.append(0)
+            currentDiseases.diseaseList.append("")
             self.modalTableView.reloadData()
         }
     }
@@ -84,7 +85,7 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
     @IBAction func saveEditHuman(_ sender: Any) {
         
         self.currentHuman?.logChangesBy((currentHuman?.patientID)!, "name, dob, gender")
-
+        
         let humanUpdate: Parameters = [
             "name": self.editingHuman?.name,
             "dob": self.editingHuman?.dob,
@@ -101,6 +102,30 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
             currentHuman = editingHuman
             humanDetails?.familyTree[cellContent.getID()] = currentHuman
             
+            if (editingDiseases?.diseaseList.count)! > 0 && editingDiseases?.diseaseList[0] != "" {
+                currentDiseases = editingDiseases
+                humanDetails?.diseases[cellContent.getID()] = currentDiseases
+            } else if currentDiseases != nil {
+                // delete disease in db
+                humanDetails?.diseases[cellContent.getID()] = nil
+                currentDiseases = nil
+            } else {
+                // in case no diseases are present before aswell as after editing
+                //humanDetails?.diseases[cellContent.getID()] = nil
+                editingDiseases = nil
+            }
+            
+            //            if editingDiseases?.diseaseList.count != 0 {
+            //                if editingDiseases?.diseaseList[0] == "" {
+            //                    if currentDiseases?.diseaseList[0] != "" {
+            //                        humanDetails?.diseases[cellContent.getID()] = nil
+            //                        currentDiseases = nil
+            //                    }
+            //                } else {
+            //                    currentDiseases = editingDiseases
+            //                    humanDetails?.diseases[cellContent.getID()] = currentDiseases
+            //                }
+            //            }
         }
         
         if let humanID = self.currentHuman?.id {
@@ -113,7 +138,7 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
                         print("success \(jsonData)")
                         
                         self.closeView()
-
+                        
                     case .failure(let error):
                         print("error \(error)")
                     }
@@ -130,7 +155,7 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
     override func viewDidLoad() {
         
         super.viewDidLoad()
-
+        
         self.hideKeyboardWhenTappedAround()
         
         self.modelViewTitle.text = NSLocalizedString("modalViewTitle", comment: "")
@@ -155,16 +180,23 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
             let section = indexPathForPerson?.section,
             let cellContent = humanDetails?.model?.cell?[section][item],
             let currentHuman = humanDetails?.familyTree[cellContent.getID()]{
-                self.currentHuman = currentHuman
-                //copy the editing human...
-                self.editingHuman = self.currentHuman
+            self.currentHuman = currentHuman
+            //copy the editing human...
+            self.editingHuman = self.currentHuman
         }
         
         if let item = indexPathForPerson?.item,
             let section = indexPathForPerson?.section,
-            let cellContent = humanDetails?.model?.cell?[section][item],
-            let currentDiseases = humanDetails?.diseases[cellContent.getID()]{
+            let cellContent = humanDetails?.model?.cell?[section][item] {
+            
+            if let currentDiseases = humanDetails?.diseases[cellContent.getID()]{
                 self.currentDiseases = currentDiseases
+                self.editingDiseases = self.currentDiseases
+            } else {
+                self.editingDiseases = Disease.init(id: cellContent.getID(), editInfoID: "", editInfoTimestamp: "", editInfoField: "")
+                self.editingDiseases?.diseaseList.append("")
+            }
+            
         }
         
         // Do any additional setup after loading the view.
@@ -178,7 +210,7 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
         
         let infoCell = UINib(nibName: "InfoCell", bundle: nil)
         self.modalTableView.register(infoCell, forCellReuseIdentifier: "infoCellID")
-
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -210,30 +242,43 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
             self.editingHuman?.gender = value as! String
             modalTableView.reloadRows(at: [IndexPath.init(row: detailRows.nameRow.rawValue,
                                                           section: DetailViewSections.staticSections)],
-                                                            with: .fade)
+                                      with: .fade)
         case .dobRow:
             self.editingHuman?.dob = value as? String
+        case .disease1Row:
+            self.editingDiseases?.diseaseList[0] = value as! String
+        case .disease2Row:
+            self.editingDiseases?.diseaseList[1] = value as! String
+        case .disease3Row:
+            self.editingDiseases?.diseaseList[2] = value as! String
+        case .disease4Row:
+            self.editingDiseases?.diseaseList[3] = value as! String
+        case .disease5Row:
+            self.editingDiseases?.diseaseList[4] = value as! String
         default:
             break
         }
     }
     
+    
+    
     func addDisease() {
-        if let currentDiseases = currentDiseases {
-            currentDiseases.diseaseList.append(0)
+        if let editingDiseases = editingDiseases {
+            editingDiseases.diseaseList.append("")
             self.modalTableView.reloadData()
             
             //modalTableView.reloadRows(at: [IndexPath(2,1)], with: .fade)
             //modalTableView.reloadRows(at: [IndexPath.init(row: currentDiseases.diseaseList.count,
-               //                                           section: DetailViewSections.dynamicSection)],
-                 //                     with: .fade)
+            //                                          section: DetailViewSections.dynamicSection)],
+            //                                          with: .fade)
         }
     }
     
+    //***** FIX INITIATION OF FIRST DISEASE AND COUNT OF DISEASELIST (OUT OF RANGE)
     func removeDisease(indexPath:IndexPath) {
         self.modalTableView.beginUpdates()
-        self.currentDiseases?.diseaseList.remove(at: indexPath.row)
-
+        self.editingDiseases?.diseaseList.remove(at: indexPath.row)
+        
         self.modalTableView.deleteRows(at: [indexPath], with: .fade)
         self.modalTableView.endUpdates()
     }
