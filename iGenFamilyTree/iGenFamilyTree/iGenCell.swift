@@ -18,6 +18,7 @@ class iGenCell: UICollectionViewCell {
     @IBOutlet var diseaseImg3Colors: [UIImageView]!
     
     @IBOutlet var diseaseLabel: [UILabel]!
+    @IBOutlet weak var infoVerified: UILabel!
     
     @IBOutlet weak var patientAge: UILabel!
     @IBOutlet weak var genderImg: UIImageView!
@@ -35,6 +36,8 @@ class iGenCell: UICollectionViewCell {
             self.diseaseLabel[i].text = ""
             self.diseaseImg3Colors[i].backgroundColor = UIColor.clear
         }
+        self.infoVerified.backgroundColor = UIColor.clear
+        self.infoVerified.text = ""
         self.patientName.text = ""
         self.patientAge.text = ""
     }
@@ -63,6 +66,10 @@ class iGenCell: UICollectionViewCell {
         self.patientName.text = currentHuman.name
         self.patientAge.text = currentHuman.dob
         self.diseaseImg1Color.backgroundColor = UIColor.Colors.noDisease
+        if currentHuman.id == currentHuman.editInfoID {
+            self.infoVerified.backgroundColor = UIColor.Colors.infoVerifiedColor
+            self.infoVerified.text = "✔️"
+        }
     }
     
     // process a Human with Diseases

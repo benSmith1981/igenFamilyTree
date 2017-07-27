@@ -8,19 +8,19 @@
 
 import Foundation
 
-//  Disease is an object linked to a Human (by the humanID) to be able to store information about the diseaseList seperately
+//  Disease is an object linked to a Human (by the id) to be able to store information about the diseaseList seperately
 
 class Disease {
-    var humanID: ID
+    var id: ID
     var diseaseList: [Int] = []
     var canEditList: [ID] = []
     var editInfoID: ID?
-    var editInfoTimestamp: TimeInterval?
+    var editInfoTimestamp: String?
     var editInfoField: String?
     var deleted: Bool = false
     
-    init(humanID: ID, editInfoID: ID, editInfoTimestamp: TimeInterval, editInfoField: String) {
-        self.humanID = humanID
+    init(id: ID, editInfoID: ID, editInfoTimestamp: String, editInfoField: String) {
+        self.id = id
         self.editInfoID = editInfoID
         self.editInfoTimestamp = editInfoTimestamp
         self.editInfoField = editInfoField
@@ -28,28 +28,18 @@ class Disease {
     
     convenience init(dictionary: NSDictionary) {
         
-        self.init(humanID: (dictionary[JsonKeys.humanID.rawValue] as? ID)!,
+        self.init(id: (dictionary[JsonKeys.id.rawValue] as? ID)!,
                   editInfoID: (dictionary[JsonKeys.editInfoID.rawValue] as? ID)!,
-                  editInfoTimestamp: (dictionary[JsonKeys.editInfoTimestamp.rawValue] as? TimeInterval)!,
+                  editInfoTimestamp: (dictionary[JsonKeys.editInfoTimestamp.rawValue] as? String)!,
                     editInfoField: (dictionary[JsonKeys.editInfoField.rawValue] as? String)!)
 
         self.deleted = dictionary[JsonKeys.deleted.rawValue] as! Bool
-        
+    
         let diseaseListParsed = dictionary[JsonKeys.diseaseList.rawValue] as! NSArray
-        for disease in diseaseListParsed {
-            if let disease = disease as? NSDictionary,
-                let number = disease[JsonKeys.id.rawValue] as? Int {
-                diseaseList.append(number)
-            }
-        }
+        diseaseList = diseaseListParsed as! [Int]
         
         let canEditListParsed = dictionary[JsonKeys.canEditList.rawValue] as! NSArray
-        for canEdit in canEditListParsed {
-            if let canEdit = canEdit as? NSDictionary,
-                let id = canEdit[JsonKeys.id.rawValue] as? ID {
-                canEditList.append(id)
-            }
-        }
+        canEditList = canEditListParsed as! [ID]
         
     }
     
@@ -63,4 +53,10 @@ class Disease {
         return models
     }
     
+    func logChangesBy(_ human: ID, _ fields: String) {
+        editInfoID = human
+        editInfoTimestamp = String(describing: Date())
+        editInfoField = fields
+    }
+
 }

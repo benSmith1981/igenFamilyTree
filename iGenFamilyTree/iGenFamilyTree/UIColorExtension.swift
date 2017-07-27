@@ -13,6 +13,7 @@ extension UIColor {
     
     struct Colors {
         static let noDisease = UIColor.darkGray
+        static let infoVerifiedColor = UIColor(red:0.32, green:0.71, blue:0.62, alpha:1.0)
     }
     
     class func diseaseColor(_ num: Int) -> UIColor {
