@@ -114,18 +114,7 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
                 //humanDetails?.diseases[cellContent.getID()] = nil
                 editingDiseases = nil
             }
-            
-            //            if editingDiseases?.diseaseList.count != 0 {
-            //                if editingDiseases?.diseaseList[0] == "" {
-            //                    if currentDiseases?.diseaseList[0] != "" {
-            //                        humanDetails?.diseases[cellContent.getID()] = nil
-            //                        currentDiseases = nil
-            //                    }
-            //                } else {
-            //                    currentDiseases = editingDiseases
-            //                    humanDetails?.diseases[cellContent.getID()] = currentDiseases
-            //                }
-            //            }
+        
         }
         
         if let humanID = self.currentHuman?.id {
