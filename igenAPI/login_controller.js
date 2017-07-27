@@ -71,6 +71,7 @@ function generateCode(){
     var max = 99999;
     return num = Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
 exports.addpatientsid = function(req, res, err) {
     LoginSchema.update({id: req.body.username }, 
         {$set: {familyTreeID:req.body.patientID, id: req.body.patientID} }, 
