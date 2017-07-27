@@ -52,8 +52,8 @@ class iGenCell: UICollectionViewCell {
         
         
         func setup() {
-//            self.layer.borderWidth = 0.5
-//            self.layer.borderColor = UIColor.lightGray.cgColor
+            //            self.layer.borderWidth = 0.5
+            //            self.layer.borderColor = UIColor.lightGray.cgColor
             //self.layer.cornerRadius = 0.0
         }
         setup()
@@ -66,9 +66,25 @@ class iGenCell: UICollectionViewCell {
         self.patientName.text = currentHuman.name
         self.patientAge.text = currentHuman.dob
         self.diseaseImg1Color.backgroundColor = UIColor.Colors.noDisease
-        if currentHuman.id == currentHuman.editInfoID {
-            self.infoVerified.backgroundColor = UIColor.Colors.infoVerifiedColor
-            self.infoVerified.text = "✔️"
+        // pulsating animation for loginHumanID
+        if currentHuman.id == currentHuman.editInfoID {         // moet loginHumanID worden
+            self.bgImg.layer.cornerRadius = 25
+            self.bgImg.layer.borderColor = UIColor.red.cgColor
+            self.bgImg.layer.borderWidth = 5
+            
+            let pulseAnimation = CABasicAnimation(keyPath: "opacity")
+            pulseAnimation.duration = 1.5
+            pulseAnimation.fromValue = 0
+            pulseAnimation.toValue = 0.33
+            pulseAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+            pulseAnimation.autoreverses = true
+            pulseAnimation.repeatCount = .greatestFiniteMagnitude
+            self.bgImg.layer.add(pulseAnimation, forKey: nil)
+            
+            if currentHuman.id == currentHuman.editInfoID {
+                self.infoVerified.backgroundColor = UIColor.Colors.infoVerifiedColor
+                self.infoVerified.text = "✔️"
+            }
         }
     }
     

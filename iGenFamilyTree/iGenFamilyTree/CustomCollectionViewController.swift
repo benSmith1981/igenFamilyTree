@@ -36,53 +36,8 @@ class CustomCollectionViewController: UICollectionViewController {
         let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
             UIAlertAction in
             print("Ok alertbutton was pressed")
-            if let itemsFromModel = self.familyTreeGenerator?.familyTree{
-                var familyID = ""
-                var allDictionaries: [String:Any] = [:]
-                print("itemsFromModel\(itemsFromModel)")
-                for (key, human) in itemsFromModel{
-                    let dictionary = [
-                        "name" : human.name,
-                        "id" : human.id,
-                        "patientID" : human.patientID,
-                        "gender" : human.gender,
-                        "dob" : human.dob ?? "",
-                        "race" : human.race ?? "",
-                        "processed" : human.processed,
-                        "showDiseaseInfo" : human.showDiseaseInfo,
-                        "editInfoID" : human.editInfoID!,
-                        "editInfoTimestamp" : human.editInfoTimestamp!,
-                        "editInfoField" : human.editInfoField!,
-                        "spouses" : human.spouses,
-                        "parents" : human.parents,
-                        "children" : human.children,
-                        "siblings" : human.siblings
-                        ] as [String : Any]
-                    
-                    
-                    allDictionaries[key as ID] = dictionary as [String:Any]
-                    familyID = human.patientID
-                }
-                
-                print("")
-                print("")
-                
-                var familyDictionary: [String:Any] = [:]
-                familyDictionary[familyID] = allDictionaries
-                print("print familyDict \(familyDictionary)")
-                
-                Alamofire.request("\(Constants.herokuAPI)savetree/",
-                                  method: .post,
-                                  parameters: familyDictionary,
-                                  encoding: JSONEncoding.default) .responseJSON { (response) in
-                                    switch response.result {
-                                    case .success(let jsonData):
-                                        print("Success \(jsonData)")
-                                    case .failure(let error):
-                                        print("error \(error)")
-                                    }
-                }
-            }
+            // save the changed familyTree to the database
+            iGenDataService.saveFamilyTree((self.familyTreeGenerator?.familyTree)!)
             self.returnToView()
         }
         
