@@ -27,6 +27,8 @@ class iGenCell: UICollectionViewCell {
     override func prepareForReuse() {
         // initialize the cell
         self.bgImg.image = UIImage()
+        self.bgImg.layer.removeAllAnimations()
+        self.bgImg.layer.borderColor = UIColor.clear.cgColor
         self.genderImg.image = UIImage()
         self.diseaseImg1Color.backgroundColor = UIColor.clear
         self.diseaseImg2Colors[0].backgroundColor = UIColor.clear
@@ -49,15 +51,6 @@ class iGenCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
-        
-        func setup() {
-            //            self.layer.borderWidth = 0.5
-            //            self.layer.borderColor = UIColor.lightGray.cgColor
-            //self.layer.cornerRadius = 0.0
-        }
-        setup()
-        
     }
     
     //process a cell for a Human
@@ -80,11 +73,11 @@ class iGenCell: UICollectionViewCell {
             pulseAnimation.autoreverses = true
             pulseAnimation.repeatCount = .greatestFiniteMagnitude
             self.bgImg.layer.add(pulseAnimation, forKey: nil)
-            
-            if currentHuman.id == currentHuman.editInfoID {
-                self.infoVerified.backgroundColor = UIColor.Colors.infoVerifiedColor
-                self.infoVerified.text = "✔️"
-            }
+        }
+        
+        if currentHuman.id == currentHuman.editInfoID {
+            self.infoVerified.backgroundColor = UIColor.Colors.infoVerifiedColor
+            self.infoVerified.text = "✔️"
         }
     }
     
