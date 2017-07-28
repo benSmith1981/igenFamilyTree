@@ -1,36 +1,42 @@
-var detailController = require('./detail_controller') 
+var treeController = require('./tree_controller'), 
+loginController = require('./login_controller'),
+diseaseController = require('./disease_controller') 
 
 module.exports = function(routes) {
 // LOGIN
+	routes.route('/verifymember/')
+	  .post(loginController.verifymember)
 	routes.route('/register/')
-	  .post(detailController.register)
+	  .post(loginController.register)
 	routes.route('/login/')
-	  .post(detailController.login)
+	  .post(loginController.login)
+	routes.route('/addpatientsid/')
+	  .put(loginController.addPatientsid)
 
 //SAVING AND EDITING TREE
 	routes.route('/gettree/:patientID?')
-	  .get(detailController.gettree)
+	  .get(treeController.gettree)
 
 	routes.route('/edithuman/:id?')
-	  .put(detailController.edithuman)
+	  .put(treeController.edithuman)
 
 	// routes.route('/savetree/:treeid?/:treedata?')
 	routes.route('/savetree/')
-	  .post(detailController.savetree)
+	  .post(treeController.savetree)
 
 	  	// routes.route('/savetree/:treeid?/:treedata?')
 	routes.route('/deletetree/:patientID?')
-	  .get(detailController.deletetree)
+	  .get(treeController.deletetree)
 
 //DISEASES
 	routes.route('/adddiseases/:id?')
-	  .put(detailController.adddiseases)
+	  .put(diseaseController.adddiseases)
 
 	routes.route('/deletediseases/:id?')
-	  .get(detailController.deletediseases)
+	  .get(diseaseController.deletediseases)
 
 	routes.route('/getdiseases/:id?')
-	  .get(detailController.getdiseases)
+	  .get(diseaseController.getdiseases)
 
 
 }

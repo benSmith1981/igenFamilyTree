@@ -22,6 +22,7 @@ class InfoCell: UITableViewCell, UITextFieldDelegate {
     
     @IBOutlet weak var removeRowBut: UIButton!
     @IBOutlet weak var addRowBut: UIButton!
+    
     @IBAction func removeRowButton(_ sender: Any) {
         if let indexPath = indexPath {
             delegate?.removeDisease(indexPath: indexPath)
@@ -29,13 +30,8 @@ class InfoCell: UITableViewCell, UITextFieldDelegate {
     }
    
     @IBAction func addRowButton(_ sender: Any) {
-
         delegate?.addDisease()
-        
     }
-    
-    
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -45,6 +41,15 @@ class InfoCell: UITableViewCell, UITextFieldDelegate {
         textfieldValue.borderStyle = .none
         textfieldValue.layer.borderColor = UIColor.red.cgColor
         textfieldValue.setLeftPaddingPoints(10)
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
+        delegate?.getHumanUpdates(value: textField.text ?? "" , cellType: cellType!)
+        
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        //        delegate?.getHumanUpdates(value: textField.text ?? "" , cellType: cellType!)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

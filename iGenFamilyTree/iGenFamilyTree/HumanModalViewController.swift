@@ -58,14 +58,16 @@ extension updateParametersDelegate {
 }
 
 class HumanModalViewController: UIViewController, UIViewControllerTransitioningDelegate, updateParametersDelegate  {
-
+    
     // Objects to pass through:
     var humanDetails: FamilyTreeGenerator?
+    weak var delegate: reloadAfterEdit?
     var indexPathForPerson: IndexPath?
     var currentHuman: Human?
     var editingHuman: Human?
     var currentDiseases: Disease?
-
+    var editingDiseases: Disease?
+    
     @IBOutlet weak var modelViewTitle: UILabel!
     @IBOutlet var containerView: UIView!
     @IBOutlet weak var modalTableView: UITableView!
@@ -74,7 +76,7 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
     
     @IBAction func addDiseaseRow(_ sender: Any) {
         if let currentDiseases = currentDiseases {
-            currentDiseases.diseaseList.append(0)
+            currentDiseases.diseaseList.append("")
             self.modalTableView.reloadData()
         }
     }
@@ -84,45 +86,19 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
     }
     
     @IBAction func saveEditHuman(_ sender: Any) {
-        
-        self.currentHuman?.logChangesBy((currentHuman?.patientID)!, "name, dob, gender")
-
-        let humanUpdate: Parameters = [
-            "name": self.editingHuman?.name,
-            "dob": self.editingHuman?.dob,
-            "gender": self.editingHuman?.gender,
-            "editInfoID" : self.editingHuman?.editInfoID!,
-            "editInfoTimestamp" : self.editingHuman?.editInfoTimestamp!,
-            "editInfoField" : self.editingHuman?.editInfoField!
-        ]
-        if let humanID = self.currentHuman?.id {
-            Alamofire.request("\(Constants.herokuAPI)edithuman?id=\(humanID)",
-                method: .put,
-                parameters: humanUpdate,
-                encoding: JSONEncoding.default).responseJSON { (response) in
-                    switch response.result {
-                    case .success(let jsonData):
-                        print("success \(jsonData)")
-                        
-                    case .failure(let error):
-                        print("error \(error)")
-                    }
-            }
-        }
-
-        //post to endpoint on alamofire
-        //close pop-up
-        
+        self.currentHuman = editingHuman
+        iGenDataService.saveHuman(currentHuman!)
         closeView()
     }
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
-
+        
         self.hideKeyboardWhenTappedAround()
         
-//        self.modelViewTitle.text =
+        //what is this?
+//        self.modelViewTitle.text = NSLocalizedString("modalViewTitle", comment: "")
         
             print(NSLocalizedString("modalViewTitle", comment: ""))
         
@@ -146,16 +122,23 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
             let section = indexPathForPerson?.section,
             let cellContent = humanDetails?.model?.cell?[section][item],
             let currentHuman = humanDetails?.familyTree[cellContent.getID()]{
-                self.currentHuman = currentHuman
-                //copy the editing human...
-                self.editingHuman = self.currentHuman
+            self.currentHuman = currentHuman
+            //copy the editing human...
+            self.editingHuman = self.currentHuman
         }
         
         if let item = indexPathForPerson?.item,
             let section = indexPathForPerson?.section,
-            let cellContent = humanDetails?.model?.cell?[section][item],
-            let currentDiseases = humanDetails?.diseases[cellContent.getID()]{
+            let cellContent = humanDetails?.model?.cell?[section][item] {
+            
+            if let currentDiseases = humanDetails?.diseases[cellContent.getID()]{
                 self.currentDiseases = currentDiseases
+                self.editingDiseases = self.currentDiseases
+            } else {
+                self.editingDiseases = Disease.init(id: cellContent.getID(), editInfoID: "", editInfoTimestamp: "", editInfoField: "")
+                self.editingDiseases?.diseaseList.append("")
+            }
+            
         }
         
         // Do any additional setup after loading the view.
@@ -188,8 +171,9 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
     
     func closeView()
     {
+        delegate?.reloadCell()
         self.presentingViewController?.dismiss(animated: true, completion: nil)
-
+        
     }
     
     func getHumanUpdates(value: Any, cellType: detailRows, indexPath: IndexPath){
@@ -200,25 +184,43 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
             self.editingHuman?.gender = value as! String
             modalTableView.reloadRows(at: [IndexPath.init(row: detailRows.nameRow.rawValue,
                                                           section: DetailViewSections.staticSections)],
-                                                            with: .fade)
+                                      with: .fade)
         case .dobRow:
             self.editingHuman?.dob = value as? String
+        case .disease1Row:
+            self.editingDiseases?.diseaseList[0] = value as! String
+        case .disease2Row:
+            self.editingDiseases?.diseaseList[1] = value as! String
+        case .disease3Row:
+            self.editingDiseases?.diseaseList[2] = value as! String
+        case .disease4Row:
+            self.editingDiseases?.diseaseList[3] = value as! String
+        case .disease5Row:
+            self.editingDiseases?.diseaseList[4] = value as! String
         default:
             break
         }
     }
     
+    
+    
     func addDisease() {
-        if let currentDiseases = currentDiseases {
-            currentDiseases.diseaseList.append(0)
+        if let editingDiseases = editingDiseases {
+            editingDiseases.diseaseList.append("")
             self.modalTableView.reloadData()
+            
+    //***** INSERT ANIMATION FOR ADDING A ROW
+            //modalTableView.reloadRows(at: [IndexPath(2,1)], with: .fade)
+            //modalTableView.reloadRows(at: [IndexPath.init(row: currentDiseases.diseaseList.count,
+            //                                          section: DetailViewSections.dynamicSection)],
+            //                                          with: .fade)
         }
     }
     
+    //***** FIX INITIATION OF FIRST DISEASE AND COUNT OF DISEASELIST (OUT OF RANGE)
     func removeDisease(indexPath:IndexPath) {
         self.modalTableView.beginUpdates()
-        self.currentDiseases?.diseaseList.remove(at: indexPath.row)
-
+        self.editingDiseases?.diseaseList.remove(at: indexPath.row)
         self.modalTableView.deleteRows(at: [indexPath], with: .fade)
         self.modalTableView.endUpdates()
     }

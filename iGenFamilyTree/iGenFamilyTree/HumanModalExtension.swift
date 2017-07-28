@@ -28,8 +28,8 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func numberOfDiseasesToShow() -> Int{
-        if let showDisease = self.currentHuman?.showDiseaseInfo,
-            let diseaseList = self.currentDiseases?.diseaseList{
+        if let showDisease = self.editingHuman?.showDiseaseInfo,
+            let diseaseList = self.editingDiseases?.diseaseList{
             return diseaseList.count
         } else {
             return DetailViewSections.noDisease
@@ -58,7 +58,7 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
             imageCell.delegate = self
             imageCell.awakeFromNib()
             imageCell.separatorInset.left = view.frame.width
-            imageCell.humanGender = self.currentHuman?.gender
+            imageCell.humanGender = self.editingHuman?.gender
             imageCell.cellType = .genderRow
             
             return imageCell
@@ -72,7 +72,7 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
             nameCell.removeRowBut.isUserInteractionEnabled = false
             
             nameCell.titleInfo.text = NSLocalizedString("name", comment: "")
-            nameCell.textfieldValue.text = self.currentHuman?.name
+            nameCell.textfieldValue.text = self.editingHuman?.name
             nameCell.cellType = .nameRow
             nameCell.delegate = self
             if self.editingHuman?.gender == JsonKeys.male.rawValue {
@@ -93,7 +93,7 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
             dateOfBirthCell.removeRowBut.isUserInteractionEnabled = false
             
             dateOfBirthCell.titleInfo.text = NSLocalizedString("dateOfBirth", comment: "")
-            dateOfBirthCell.textfieldValue.text = self.currentHuman?.dob
+            dateOfBirthCell.textfieldValue.text = self.editingHuman?.dob
             dateOfBirthCell.textfieldValue.placeholder = NSLocalizedString("placeholderDateOfBirth", comment: "")
                 
             dateOfBirthCell.cellType = .dobRow
@@ -114,8 +114,10 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
             firstDiseaseCell.titleInfo.text = NSLocalizedString("diseases", comment: "")
             firstDiseaseCell.cellType = .disease1Row
             firstDiseaseCell.delegate = self
-            if let diseaseOne = currentDiseases?.diseaseList[0] {
+            if let diseaseOne = editingDiseases?.diseaseList[0] {
                 firstDiseaseCell.textfieldValue.text = "\(String(describing: diseaseOne))"
+            } else {
+                firstDiseaseCell.textfieldValue.text = ""
             }
             
             return firstDiseaseCell
@@ -128,7 +130,7 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
             secondDiseaseCell.titleInfo.text = NSLocalizedString("diseases", comment: "")
             secondDiseaseCell.cellType = .disease2Row
             secondDiseaseCell.delegate = self
-            if let secondDisease = currentDiseases?.diseaseList[1] {
+            if let secondDisease = editingDiseases?.diseaseList[1] {
                 secondDiseaseCell.textfieldValue.text = String(describing: secondDisease)
             }
             
@@ -142,7 +144,7 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
             thirdDiseaseCell.titleInfo.text = NSLocalizedString("diseases", comment: "")
             thirdDiseaseCell.cellType = .disease3Row
             thirdDiseaseCell.delegate = self
-            if let thirdDisease = currentDiseases?.diseaseList[2] {
+            if let thirdDisease = editingDiseases?.diseaseList[2] {
                 thirdDiseaseCell.textfieldValue.text = String(describing: thirdDisease)
             }
             
@@ -156,7 +158,7 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
             fourthDiseaseCell.titleInfo.text = NSLocalizedString("diseases", comment: "")
             fourthDiseaseCell.cellType = .disease4Row
             fourthDiseaseCell.delegate = self
-            if let fourthDisease = currentDiseases?.diseaseList[3] {
+            if let fourthDisease = editingDiseases?.diseaseList[3] {
                 fourthDiseaseCell.textfieldValue.text = String(describing: fourthDisease)
             }
             
@@ -170,7 +172,7 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
             fifthDiseaseCell.titleInfo.text = NSLocalizedString("diseases", comment: "")
             fifthDiseaseCell.cellType = .disease4Row
             fifthDiseaseCell.delegate = self
-            if let fifthDisease = currentDiseases?.diseaseList[4] {
+            if let fifthDisease = editingDiseases?.diseaseList[4] {
                 fifthDiseaseCell.textfieldValue.text = String(describing: fifthDisease)
             }
             

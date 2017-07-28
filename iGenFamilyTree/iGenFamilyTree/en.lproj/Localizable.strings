@@ -21,7 +21,7 @@
 "modalViewTitle" = "PERSONAL DETAILS";
 "name" = "Name:";
 "dateOfBirth" = "Date of Birth:";
-"diseases" = "Disease(s)";
+"diseases" = "Disease(s):";
 "placeholderNameMale" = "e.g. John Doe";
 "placeholderNameFemale" = "e.g. Jane Doe";
 "placeholderDateOfBirth" = "YYYY";
