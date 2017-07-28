@@ -24,6 +24,11 @@ class FamilyTreeGenerator {
     //  it also calculates the minimum and maximum levels traversed
     
     public func makeTreeFor(_ id: ID) {
+        
+        for key in familyTree.keys {
+            familyTree[key]?.processed = false
+        }
+                
         self.patient = Patient.init(id: id)
         let level = 2
         print("Family tree for", familyTree[id]!.name, "is on level", level)
@@ -473,11 +478,12 @@ class FamilyTreeGenerator {
         
         func drawPatient() {
             if let patientID = patient.id {
-                
-                guard patient.myChildrenIDs.count != 0 else {
-                    model?.cell?[row][col] = cellState.brother(id: patientID)
-                return
-                }
+
+                //** Not sure what the use of this guard statement is? Check if this can be remove...
+//                guard patient.myChildrenIDs.count != 0 else {
+//                    model?.cell?[row][col] = cellState.brother(id: patientID)
+//                return
+//                }
                 
                 if familyTree[patientID]?.gender == JsonKeys.male.rawValue {
                     

@@ -20,7 +20,7 @@ class Human {
     var dob : String?
     var race : String?
     var processed: Bool = false
-    var showDiseaseInfo: Bool = false
+    var showDiseaseInfo: Bool = true
     var editInfoID: ID?
     var editInfoTimestamp: String?
     var editInfoField: String?
