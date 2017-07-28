@@ -83,8 +83,31 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
     }
     
     @IBAction func saveEditHuman(_ sender: Any) {
-        self.currentHuman = editingHuman
-        iGenDataService.saveHuman(currentHuman!)
+        //self.currentHuman = editingHuman
+        if let item = indexPathForPerson?.item,
+            let section = indexPathForPerson?.section,
+            let cellContent = humanDetails?.model?.cell?[section][item]{
+            currentHuman = editingHuman
+            humanDetails?.familyTree[cellContent.getID()] = currentHuman
+            iGenDataService.saveHuman(currentHuman!)
+            if (editingDiseases?.diseaseList.count)! > 0 && editingDiseases?.diseaseList[0] != "" {
+                currentDiseases = editingDiseases
+                humanDetails?.diseases[cellContent.getID()] = currentDiseases
+                iGenDataService.saveDisease(currentDiseases!)
+            } else if currentDiseases != nil {
+                // delete disease in db
+                // ***** MAKE DELETE CURRENT DISEASE FUNCTION
+                humanDetails?.diseases[cellContent.getID()] = nil
+                currentDiseases = nil
+            } else {
+                // in case no diseases are present before aswell as after editing
+                //humanDetails?.diseases[cellContent.getID()] = nil
+                editingDiseases = nil
+            }
+            
+        }
+        
+        
         closeView()
     }
     
