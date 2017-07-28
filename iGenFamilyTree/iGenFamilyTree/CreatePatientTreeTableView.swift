@@ -61,8 +61,8 @@ struct Answers {
     var sistersOfMother: Int = 0
     var brothersOfFather: Int = 0
     var sistersOfFather: Int = 0
-    var patientGender: genderType = .unknown
-    var partnerGender: genderType = .unknown
+    var patientGender: genderType = .male
+    var partnerGender: genderType = .female
 
 
 }
@@ -87,18 +87,18 @@ class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembe
             switch gender {
             case  JsonKeys.male.rawValue:
                 if indexPath.section == 0 {
-                    answers.patientGender = .maleGender
-                } else {
-                    answers.partnerGender = .maleGender
+                    answers.patientGender = .male
+                } else if indexPath.section == 1 {
+                    answers.partnerGender = .male
                 }
                 print("male from slider cell FORM")
             case  JsonKeys.female.rawValue:
                 if indexPath.section == 0 {
-                    answers.patientGender = .femaleGender
-                } else {
-                    answers.partnerGender = .femaleGender
+                    answers.patientGender = .female
+                } else if indexPath.section == 1{
+                    answers.partnerGender = .female
                 }
-                print("male from slider cell FORM")
+                print("female from slider cell FORM")
             default:
                 answers.patientGender = .unknown
                 print("uunknonwn gender")
@@ -146,27 +146,14 @@ class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembe
         self.tableView.register(titleForGenderCells, forCellReuseIdentifier: CustomCellIdentifiers.CreatePatientGender.rawValue)
 
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 44
-        
-        
-/*
-        let rectShapeBottom = CAShapeLayer()
-//        rectShapeBottom.bounds = self.OutletGenerateTree.frame
-        rectShapeBottom.bounds = OutletGenerateTree.frame.insetBy(dx: 10.0, dy: 10.0)
-        rectShapeBottom.position = self.OutletGenerateTree.center
-        rectShapeBottom.path = UIBezierPath(roundedRect: self.OutletGenerateTree.bounds, byRoundingCorners: [.bottomLeft, .bottomRight, .topLeft, .topRight ], cornerRadii: CGSize(width: 10, height: 10)).cgPath
-        self.OutletGenerateTree.layoutMargins = UIEdgeInsetsMake(0, 10, 0, 10)
-        self.OutletGenerateTree.layer.mask = rectShapeBottom
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-    }
-*/
+        tableView.estimatedRowHeight = 60
+    
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+//        self.tableView.reloadData()
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //        if segue.identifier == segues.familytreeSegue.rawValue {
@@ -217,12 +204,18 @@ class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembe
                 let genderPatient = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.detailImageCellID.rawValue, for: indexPath) as! DetailmageSliderCell
                 genderPatient.delegate = self
                 genderPatient.indexPath = indexPath
-    //                    genderPatient.questionLabel.text = QuestionType.gender.selectQuestion()
-                //            genderPatient.cellType = .gender
+                genderPatient.humanGender = answers.patientGender.rawValue
+//                genderPatient.setNeedsDisplay()
+//                genderPatient.setNeedsLayout()
+//                genderPatient.questionLabel.text = QuestionType.gender.selectQuestion()
+//                genderPatient.cellType = .gender
                 return genderPatient
             case 1:
                 let genderPatientPartner = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.detailImageCellID.rawValue, for: indexPath) as! DetailmageSliderCell
                 genderPatientPartner.delegate = self
+                genderPatientPartner.humanGender = answers.partnerGender.rawValue
+//                genderPatientPartner.setNeedsDisplay()
+//                genderPatientPartner.setNeedsLayout()
                 genderPatientPartner.indexPath = indexPath
                 //                    genderPatient.questionLabel.text = QuestionType.gender.selectQuestion()
                 //            genderPatient.cellType = .gender
@@ -243,6 +236,7 @@ class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembe
             let cellBrothers = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.CreatePatientTreeID.rawValue, for: indexPath) as! CreatePatientTree
             cellBrothers.questionLabel.text = QuestionType.brother.selectQuestion()
             cellBrothers.awakeFromNib()
+            cellBrothers.layoutSubviews()
             cellBrothers.cellType = .brother
             cellBrothers.setNumberDelegate = self
             return cellBrothers
@@ -251,6 +245,7 @@ class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembe
             let cellSisters = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.CreatePatientTreeID.rawValue, for: indexPath) as! CreatePatientTree
             cellSisters.questionLabel.text = QuestionType.sister.selectQuestion()
             cellSisters.cellType = .sister
+            cellSisters.layoutSubviews()
             cellSisters.setNumberDelegate = self
             return cellSisters
             
@@ -258,6 +253,7 @@ class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembe
             let cellSons = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.CreatePatientTreeID.rawValue, for: indexPath) as! CreatePatientTree
             cellSons.questionLabel.text = QuestionType.sons.selectQuestion()
             cellSons.cellType = .sons
+            cellSons.layoutSubviews()
             cellSons.setNumberDelegate = self
             
             return cellSons
@@ -266,6 +262,7 @@ class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembe
             let cellDaughters = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.CreatePatientTreeID.rawValue, for: indexPath) as! CreatePatientTree
             cellDaughters.questionLabel.text = QuestionType.daughters.selectQuestion()
             cellDaughters.cellType = .daughters
+            cellDaughters.layoutSubviews()
             cellDaughters.setNumberDelegate = self
             
             return cellDaughters
@@ -274,6 +271,7 @@ class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembe
             let cellBrotherMother = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.CreatePatientTreeID.rawValue, for: indexPath) as! CreatePatientTree
             cellBrotherMother.questionLabel.text = QuestionType.brotherMother.selectQuestion()
             cellBrotherMother.cellType = .brotherMother
+            cellBrotherMother.layoutSubviews()
             cellBrotherMother.setNumberDelegate = self
             
             return cellBrotherMother
@@ -282,6 +280,7 @@ class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembe
             let cellSisterMother = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.CreatePatientTreeID.rawValue, for: indexPath) as! CreatePatientTree
             cellSisterMother.questionLabel.text = QuestionType.sisterMother.selectQuestion()
             cellSisterMother.cellType = .sisterMother
+            cellSisterMother.layoutSubviews()
             cellSisterMother.setNumberDelegate = self
             
             return cellSisterMother
@@ -290,6 +289,7 @@ class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembe
             let cellBrotherFather = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.CreatePatientTreeID.rawValue, for: indexPath) as! CreatePatientTree
             cellBrotherFather.questionLabel.text = QuestionType.brotherFather.selectQuestion()
             cellBrotherFather.cellType = .brotherFather
+            cellBrotherFather.layoutSubviews()
             cellBrotherFather.setNumberDelegate = self
             
             return cellBrotherFather
@@ -298,6 +298,7 @@ class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembe
             let cellSisterFather = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.CreatePatientTreeID.rawValue, for: indexPath) as! CreatePatientTree
             cellSisterFather.questionLabel.text = QuestionType.sisterFather.selectQuestion()
             cellSisterFather.cellType = .sisterFather
+            cellSisterFather.layoutSubviews()
             cellSisterFather.setNumberDelegate = self
             
             return cellSisterFather
@@ -305,6 +306,7 @@ class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembe
         default:
             let cellBrothers = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.CreatePatientTreeID.rawValue, for: indexPath) as! CreatePatientTree
             cellBrothers.setNumberDelegate = self
+            cellBrothers.layoutSubviews()
             return cellBrothers
         }
     }

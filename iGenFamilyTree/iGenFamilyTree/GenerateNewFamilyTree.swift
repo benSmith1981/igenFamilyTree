@@ -10,16 +10,16 @@ import Foundation
 
 //Select gender for inputfield to create blank tree
 enum genderType: String {
-    case maleGender
-    case femaleGender
+    case male
+    case female
     case unknown
     
     func selectGender() -> String {
         
         switch self {
-        case .maleGender:
+        case .male:
             return JsonKeys.male.rawValue
-        case .femaleGender:
+        case .female:
             return JsonKeys.female.rawValue
         case .unknown:
             return "unknown"

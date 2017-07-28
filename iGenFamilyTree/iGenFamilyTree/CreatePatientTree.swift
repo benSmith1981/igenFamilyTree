@@ -12,12 +12,28 @@ class CreatePatientTree: UITableViewCell, UITextFieldDelegate{
     
     var setNumberDelegate: SetNumberOfFamilyMembers!
     var cellType: QuestionType?
+    
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var numberOfMembers: UITextField!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        configureCell()
+        
         // Initialization code
+    }
+    
+    override func layoutSubviews() {
+        configureCell()
+    }
+    
+    func configureCell(){
+        if (numberOfMembers.text?.isEmpty)! == false{
+            setNumberDelegate.sendNumber(number: Int(numberOfMembers.text!)!,cellType: cellType!)
+        }
+        else {
+            print("Error: Please fill in all questions!")
+        }
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
