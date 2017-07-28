@@ -41,11 +41,14 @@ class InfoCell: UITableViewCell, UITextFieldDelegate {
         textfieldValue.borderStyle = .none
         textfieldValue.layer.borderColor = UIColor.red.cgColor
         textfieldValue.setLeftPaddingPoints(10)
+
     }
     
+    
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
-        delegate?.getHumanUpdates(value: textField.text ?? "" , cellType: cellType!)
-        
+        if let indexPath = indexPath , let cellType = cellType{
+                    delegate?.getHumanUpdates(value: textField.text ?? "" , cellType: cellType, indexPath: indexPath)
+        }
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -56,7 +59,5 @@ class InfoCell: UITableViewCell, UITextFieldDelegate {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
-        
     }
-    
 }
