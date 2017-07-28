@@ -24,9 +24,10 @@
 "name" = "Naam:";
 "dateOfBirth" = "Geboortedatum:";
 "diseases" = "Ziekte(s):";
-"placeholderNameMale" = "bijv. Jan Janssen";
-"placeholderNameFemale" = "bijv. Julia Janssen";
+"placeholderNameMale" = "Jan Janssen";
+"placeholderNameFemale" = "Julia Janssen";
 "placeholderDateOfBirth" = "JJJJ";
+"placeholderDisease" = "Naam afwijking";
 
 //Create button tableviewcontroller
 "CreateTree" = "Genereer stamboom";

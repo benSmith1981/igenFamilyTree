@@ -13,7 +13,6 @@ import Alamofire
 public typealias Parameters = [String: Any]
 
 enum detailRows: Int {
-    //case headerRow = 0
     case genderRow = 0
     case nameRow
     case dobRow
@@ -50,7 +49,8 @@ enum detailRows: Int {
 
 protocol updateParametersDelegate: class {
     func getHumanUpdates(value: Any, cellType: detailRows, indexPath:IndexPath)
-
+    func addDisease()
+    func removeDisease(indexPath:IndexPath)
 }
 extension updateParametersDelegate {
     func addDisease() {}
@@ -86,8 +86,9 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
     }
     
     @IBAction func saveEditHuman(_ sender: Any) {
-        self.currentHuman = editingHuman
-        iGenDataService.saveHuman(currentHuman!)
+        
+        // ***** MAKE DELETE CURRENT DISEASE FUNCTION
+        saveChangedHumanAndDiseases()
         closeView()
     }
     
@@ -96,11 +97,6 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
         super.viewDidLoad()
         
         self.hideKeyboardWhenTappedAround()
-        
-        //what is this?
-//        self.modelViewTitle.text = NSLocalizedString("modalViewTitle", comment: "")
-        
-            print(NSLocalizedString("modalViewTitle", comment: ""))
         
         modalTableView.frame = CGRect(x: modalTableView.frame.origin.x, y: modalTableView.frame.origin.y, width: modalTableView.frame.size.width, height: modalTableView.contentSize.height)
         modalTableView.allowsSelection = false
@@ -117,7 +113,7 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
         
         self.headerBG.layer.mask = rectShapeTop
         self.footerBG.layer.mask = rectShapeBottom
-        
+    
         if let item = indexPathForPerson?.item,
             let section = indexPathForPerson?.section,
             let cellContent = humanDetails?.model?.cell?[section][item],
@@ -171,9 +167,9 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
     
     func closeView()
     {
-        delegate?.reloadCell()
-        self.presentingViewController?.dismiss(animated: true, completion: nil)
         
+        self.presentingViewController?.dismiss(animated: true, completion: nil)
+        delegate?.reloadCell()
     }
     
     func getHumanUpdates(value: Any, cellType: detailRows, indexPath: IndexPath){
@@ -206,22 +202,42 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
     
     func addDisease() {
         if let editingDiseases = editingDiseases {
+            
             editingDiseases.diseaseList.append("")
             self.modalTableView.reloadData()
-            
-    //***** INSERT ANIMATION FOR ADDING A ROW
-            //modalTableView.reloadRows(at: [IndexPath(2,1)], with: .fade)
-            //modalTableView.reloadRows(at: [IndexPath.init(row: currentDiseases.diseaseList.count,
-            //                                          section: DetailViewSections.dynamicSection)],
-            //                                          with: .fade)
         }
     }
     
-    //***** FIX INITIATION OF FIRST DISEASE AND COUNT OF DISEASELIST (OUT OF RANGE)
     func removeDisease(indexPath:IndexPath) {
+        
         self.modalTableView.beginUpdates()
         self.editingDiseases?.diseaseList.remove(at: indexPath.row)
         self.modalTableView.deleteRows(at: [indexPath], with: .fade)
+        self.modalTableView.reloadData()
         self.modalTableView.endUpdates()
+    }
+    
+    func saveChangedHumanAndDiseases(){
+        if let item = indexPathForPerson?.item,
+            let section = indexPathForPerson?.section,
+            let cellContent = humanDetails?.model?.cell?[section][item]{
+            
+            currentHuman = editingHuman
+            humanDetails?.familyTree[cellContent.getID()] = currentHuman
+            iGenDataService.saveHuman(currentHuman!)
+            
+            if (editingDiseases?.diseaseList.count)! > 0 && editingDiseases?.diseaseList[0] != "" {
+                //save diseases if they got changed
+                currentDiseases = editingDiseases
+                humanDetails?.diseases[cellContent.getID()] = currentDiseases
+                iGenDataService.saveDisease(currentDiseases!)
+            } else if currentDiseases != nil {
+                humanDetails?.diseases[cellContent.getID()] = nil
+                currentDiseases = nil
+            } else {
+                editingDiseases = nil
+            }
+            
+        }
     }
 }
