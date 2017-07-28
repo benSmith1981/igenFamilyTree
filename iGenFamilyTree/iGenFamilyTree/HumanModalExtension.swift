@@ -111,6 +111,8 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
         case DetailViewSections.firstDiseaseRow:
             
             let firstDiseaseCell = tableView.dequeueReusableCell(withIdentifier: "infoCellID", for: indexPath) as! InfoCell
+            firstDiseaseCell.addRowBut.alpha = 1.0
+            firstDiseaseCell.removeRowBut.alpha = 1.0
             firstDiseaseCell.indexPath = indexPath
             firstDiseaseCell.titleInfo.text = NSLocalizedString("diseases", comment: "")
             firstDiseaseCell.textfieldValue.placeholder = NSLocalizedString("placeholderDisease", comment: "")
@@ -128,6 +130,9 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
         case DetailViewSections.secondDiseaseRow:
             
             let secondDiseaseCell = tableView.dequeueReusableCell(withIdentifier: "infoCellID", for: indexPath) as! InfoCell
+            
+            secondDiseaseCell.addRowBut.alpha = 1.0
+            secondDiseaseCell.removeRowBut.alpha = 1.0
             secondDiseaseCell.indexPath = indexPath
 
             secondDiseaseCell.titleInfo.text = NSLocalizedString("diseases", comment: "")
@@ -143,6 +148,9 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
         case DetailViewSections.thirdDiseaseRow:
             
             let thirdDiseaseCell = tableView.dequeueReusableCell(withIdentifier: "infoCellID", for: indexPath) as! InfoCell
+            
+            thirdDiseaseCell.addRowBut.alpha = 1.0
+            thirdDiseaseCell.removeRowBut.alpha = 1.0
             thirdDiseaseCell.indexPath = indexPath
 
             thirdDiseaseCell.titleInfo.text = NSLocalizedString("diseases", comment: "")
@@ -158,6 +166,9 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
         case DetailViewSections.fourthDiseaseRow:
             
             let fourthDiseaseCell = tableView.dequeueReusableCell(withIdentifier: "infoCellID", for: indexPath) as! InfoCell
+            
+            fourthDiseaseCell.addRowBut.alpha = 1.0
+            fourthDiseaseCell.removeRowBut.alpha = 1.0
             fourthDiseaseCell.indexPath = indexPath
 
             fourthDiseaseCell.titleInfo.text = NSLocalizedString("diseases", comment: "")
@@ -173,6 +184,9 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
         case DetailViewSections.fifthDiseaseRow:
             
             let fifthDiseaseCell = tableView.dequeueReusableCell(withIdentifier: "infoCellID", for: indexPath) as! InfoCell
+            
+            fifthDiseaseCell.addRowBut.alpha = 1.0
+            fifthDiseaseCell.removeRowBut.alpha = 1.0
             fifthDiseaseCell.indexPath = indexPath
 
             fifthDiseaseCell.titleInfo.text = NSLocalizedString("diseases", comment: "")

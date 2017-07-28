@@ -155,6 +155,7 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
             } else {
                 self.editingDiseases = Disease.init(id: cellContent.getID(), editInfoID: "", editInfoTimestamp: "", editInfoField: "")
                 self.editingDiseases?.diseaseList.append("")
+ //               self.modalTableView.reloadData()
             }
             
         }
@@ -235,11 +236,12 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
         }
     }
     
-    //***** FIX INITIATION OF FIRST DISEASE AND COUNT OF DISEASELIST (OUT OF RANGE)
     func removeDisease(indexPath:IndexPath) {
+        
         self.modalTableView.beginUpdates()
         self.editingDiseases?.diseaseList.remove(at: indexPath.row)
         self.modalTableView.deleteRows(at: [indexPath], with: .fade)
+        self.modalTableView.reloadData()
         self.modalTableView.endUpdates()
     }
 }
