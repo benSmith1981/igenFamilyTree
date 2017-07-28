@@ -38,7 +38,7 @@ class GenerateFamilyCellTableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.contentView.autoresizingMask = UIViewAutoresizing.flexibleWidth
+//        self.contentView.autoresizingMask = UIViewAutoresizing.flexibleWidth
 
     }
     

@@ -28,8 +28,8 @@ class CreatePatientTree: UITableViewCell, UITextFieldDelegate{
     }
     
     func configureCell(){
-        if (numberOfMembers.text?.isEmpty)! == false{
-            setNumberDelegate.sendNumber(number: Int(numberOfMembers.text!)!,cellType: cellType!)
+        if let text = numberOfMembers.text, let textNumber = Int(text),  let cellType = cellType {
+            setNumberDelegate.sendNumber(number: textNumber, cellType: cellType)
         }
         else {
             print("Error: Please fill in all questions!")
@@ -47,9 +47,12 @@ class CreatePatientTree: UITableViewCell, UITextFieldDelegate{
         return true
     }
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        numberOfMembers.text = ""
+    }
     func textFieldDidEndEditing(_ textField: UITextField) {
-        if (textField.text?.isEmpty)! == false{
-            setNumberDelegate.sendNumber(number: Int(textField.text!)!,cellType: cellType!)
+        if let text = numberOfMembers.text, let textNumber = Int(text),  let cellType = cellType {
+            setNumberDelegate.sendNumber(number: textNumber,cellType: cellType)
         }
         else {
             print("Error: Please fill in all questions!")

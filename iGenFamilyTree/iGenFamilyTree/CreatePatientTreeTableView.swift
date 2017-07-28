@@ -234,78 +234,100 @@ class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembe
             
         case QuestionType.brother.rawValue:
             let cellBrothers = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.CreatePatientTreeID.rawValue, for: indexPath) as! CreatePatientTree
+            cellBrothers.setNumberDelegate = self
             cellBrothers.questionLabel.text = QuestionType.brother.selectQuestion()
             cellBrothers.awakeFromNib()
             cellBrothers.layoutSubviews()
             cellBrothers.cellType = .brother
-            cellBrothers.setNumberDelegate = self
+            cellBrothers.numberOfMembers.text = String(answers.brothers)
             return cellBrothers
             
         case QuestionType.sister.rawValue:
             let cellSisters = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.CreatePatientTreeID.rawValue, for: indexPath) as! CreatePatientTree
+            cellSisters.setNumberDelegate = self
             cellSisters.questionLabel.text = QuestionType.sister.selectQuestion()
             cellSisters.cellType = .sister
             cellSisters.layoutSubviews()
-            cellSisters.setNumberDelegate = self
+            cellSisters.numberOfMembers.text = String(answers.sisters)
+
             return cellSisters
             
         case QuestionType.sons.rawValue:
             let cellSons = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.CreatePatientTreeID.rawValue, for: indexPath) as! CreatePatientTree
+            cellSons.setNumberDelegate = self
+
             cellSons.questionLabel.text = QuestionType.sons.selectQuestion()
+            cellSons.numberOfMembers.text = String(answers.sons)
             cellSons.cellType = .sons
             cellSons.layoutSubviews()
-            cellSons.setNumberDelegate = self
             
             return cellSons
             
         case QuestionType.daughters.rawValue:
             let cellDaughters = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.CreatePatientTreeID.rawValue, for: indexPath) as! CreatePatientTree
+            cellDaughters.setNumberDelegate = self
+
             cellDaughters.questionLabel.text = QuestionType.daughters.selectQuestion()
             cellDaughters.cellType = .daughters
             cellDaughters.layoutSubviews()
-            cellDaughters.setNumberDelegate = self
+            cellDaughters.numberOfMembers.text = String(answers.daughters)
+
             
             return cellDaughters
             
         case QuestionType.brotherMother.rawValue:
             let cellBrotherMother = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.CreatePatientTreeID.rawValue, for: indexPath) as! CreatePatientTree
+            cellBrotherMother.setNumberDelegate = self
+
             cellBrotherMother.questionLabel.text = QuestionType.brotherMother.selectQuestion()
             cellBrotherMother.cellType = .brotherMother
             cellBrotherMother.layoutSubviews()
-            cellBrotherMother.setNumberDelegate = self
+            cellBrotherMother.numberOfMembers.text = String(answers.brothersOfMother)
+
             
             return cellBrotherMother
             
         case QuestionType.sisterMother.rawValue:
             let cellSisterMother = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.CreatePatientTreeID.rawValue, for: indexPath) as! CreatePatientTree
+            cellSisterMother.setNumberDelegate = self
+
             cellSisterMother.questionLabel.text = QuestionType.sisterMother.selectQuestion()
             cellSisterMother.cellType = .sisterMother
             cellSisterMother.layoutSubviews()
-            cellSisterMother.setNumberDelegate = self
+            cellSisterMother.numberOfMembers.text = String(answers.sistersOfMother)
+
             
             return cellSisterMother
             
         case QuestionType.brotherFather.rawValue:
             let cellBrotherFather = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.CreatePatientTreeID.rawValue, for: indexPath) as! CreatePatientTree
+            cellBrotherFather.setNumberDelegate = self
+
             cellBrotherFather.questionLabel.text = QuestionType.brotherFather.selectQuestion()
             cellBrotherFather.cellType = .brotherFather
             cellBrotherFather.layoutSubviews()
-            cellBrotherFather.setNumberDelegate = self
+            cellBrotherFather.numberOfMembers.text = String(answers.brothersOfFather)
+
             
             return cellBrotherFather
             
         case QuestionType.sisterFather.rawValue:
             let cellSisterFather = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.CreatePatientTreeID.rawValue, for: indexPath) as! CreatePatientTree
+            cellSisterFather.setNumberDelegate = self
+
             cellSisterFather.questionLabel.text = QuestionType.sisterFather.selectQuestion()
             cellSisterFather.cellType = .sisterFather
             cellSisterFather.layoutSubviews()
-            cellSisterFather.setNumberDelegate = self
+            cellSisterFather.numberOfMembers.text = String(answers.sistersOfFather)
+
             
             return cellSisterFather
             
         default:
             let cellBrothers = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.CreatePatientTreeID.rawValue, for: indexPath) as! CreatePatientTree
             cellBrothers.setNumberDelegate = self
+            cellBrothers.numberOfMembers.text = String(answers.brothers)
+
             cellBrothers.layoutSubviews()
             return cellBrothers
         }
@@ -345,8 +367,13 @@ class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembe
         case 2:
             let generate = tableView.dequeueReusableCell(withIdentifier: "GenerateCellID") as! GenerateFamilyCellTableViewCell
             generate.center = CGPoint(x: view.bounds.midX, y: view.bounds.midY )
+            let screenwidth = self.view.frame.size.width
+            var frame = generate.frame
+            frame.size.width = screenwidth
+            generate.frame = frame
             generate.delegate = self
-            
+            generate.layoutSubviews()
+            generate.setNeedsLayout()
             return generate
             
         default:
