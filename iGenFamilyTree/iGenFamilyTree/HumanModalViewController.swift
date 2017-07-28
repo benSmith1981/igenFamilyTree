@@ -189,9 +189,9 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
     
     func closeView()
     {
-        delegate?.reloadCell()
-        self.presentingViewController?.dismiss(animated: true, completion: nil)
         
+        self.presentingViewController?.dismiss(animated: true, completion: nil)
+        delegate?.reloadCell()
     }
     
     func getHumanUpdates(value: Any, cellType: detailRows){
