@@ -4,7 +4,7 @@
 //
 //  Created by Ivo  Nederlof on 27-02-17.
 //  Copyright © 2017 Ben Smith. All rights reserved.
-//
+
 
 import UIKit
 
@@ -17,6 +17,7 @@ class DetailmageSliderCell: UITableViewCell,
     weak var delegate: updateParametersDelegate?
     var humanGender: String?
     var cellType: detailRows?
+    var indexPath: IndexPath = IndexPath.init()
 
     var imageArray = [UIImage(named: "slider-icons-male"),UIImage(named: "slider-icons-female")]
     
@@ -25,11 +26,13 @@ class DetailmageSliderCell: UITableViewCell,
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         configureCollectionView()
-
     }
     
+    override func layoutSubviews() {
+//        configureCollectionView()
+
+    }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         print("scroll")
     }
@@ -47,6 +50,23 @@ class DetailmageSliderCell: UITableViewCell,
         collectionView.delegate = self
         collectionView.dataSource = self
         
+//        var visibleRect = CGRect()
+//        
+//        visibleRect.origin = collectionView.contentOffset
+//        visibleRect.size = collectionView.bounds.size
+//        
+//        let visiblePoint = CGPoint(x: visibleRect.midX, y: visibleRect.midY)
+//        
+//        var visibleIndexPath: IndexPath = collectionView.indexPathForItem(at: visiblePoint)!
+//        if visibleIndexPath.row == 0 {
+//            print("man")
+//            delegate?.getHumanUpdates(value: JsonKeys.male.rawValue, cellType: .genderRow, indexPath: indexPath)
+//            //delegate?.getHumanUpdates(value: JsonKeys.male.rawValue, cellType: .nameRow)
+//        } else {
+//            print("woman")
+//            delegate?.getHumanUpdates(value: JsonKeys.female.rawValue, cellType: .genderRow, indexPath: indexPath)
+//            //delegate?.getHumanUpdates(value: JsonKeys.female.rawValue, cellType: .nameRow)
+//        }
     }
 
 }

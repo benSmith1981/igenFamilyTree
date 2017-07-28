@@ -12,6 +12,8 @@
 		681222881F0E6BBF00FA291C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 681222851F0E6BBE00FA291C /* Localizable.strings */; };
 		6841C3331F29D37B0085E712 /* CreateTreeForm.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6841C3321F29D37B0085E712 /* CreateTreeForm.storyboard */; };
 		6841C3351F29D3B80085E712 /* FamilyTree.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6841C3341F29D3B80085E712 /* FamilyTree.storyboard */; };
+		6841C3381F29DE3F0085E712 /* CreatePatientTreeGender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6841C3361F29DE3F0085E712 /* CreatePatientTreeGender.swift */; };
+		6841C3391F29DE3F0085E712 /* CreatePatientTreeGender.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6841C3371F29DE3F0085E712 /* CreatePatientTreeGender.xib */; };
 		6877CF101F28A45C00E677FA /* CreatePatientTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6877CF0E1F28A45C00E677FA /* CreatePatientTree.swift */; };
 		6877CF111F28A45C00E677FA /* CreatePatientTree.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6877CF0F1F28A45C00E677FA /* CreatePatientTree.xib */; };
 		6877CF1A1F28F21F00E677FA /* GenerateFamilyCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6877CF181F28F21F00E677FA /* GenerateFamilyCellTableViewCell.swift */; };
@@ -92,6 +94,8 @@
 		681222861F0E6BBE00FA291C /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = Localizable.strings; sourceTree = "<group>"; };
 		6841C3321F29D37B0085E712 /* CreateTreeForm.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CreateTreeForm.storyboard; sourceTree = "<group>"; };
 		6841C3341F29D3B80085E712 /* FamilyTree.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FamilyTree.storyboard; sourceTree = "<group>"; };
+		6841C3361F29DE3F0085E712 /* CreatePatientTreeGender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePatientTreeGender.swift; sourceTree = "<group>"; };
+		6841C3371F29DE3F0085E712 /* CreatePatientTreeGender.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreatePatientTreeGender.xib; sourceTree = "<group>"; };
 		6877CF0E1F28A45C00E677FA /* CreatePatientTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePatientTree.swift; sourceTree = "<group>"; };
 		6877CF0F1F28A45C00E677FA /* CreatePatientTree.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreatePatientTree.xib; sourceTree = "<group>"; };
 		6877CF181F28F21F00E677FA /* GenerateFamilyCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateFamilyCellTableViewCell.swift; sourceTree = "<group>"; };
@@ -208,9 +212,11 @@
 		681222891F0F7B4100FA291C /* NewPatient */ = {
 			isa = PBXGroup;
 			children = (
+				68C309E01F25F82100E3072E /* CreatePatientTreeTableView.swift */,
 				6877CF0E1F28A45C00E677FA /* CreatePatientTree.swift */,
 				6877CF0F1F28A45C00E677FA /* CreatePatientTree.xib */,
-				68C309E01F25F82100E3072E /* CreatePatientTreeTableView.swift */,
+				6841C3361F29DE3F0085E712 /* CreatePatientTreeGender.swift */,
+				6841C3371F29DE3F0085E712 /* CreatePatientTreeGender.xib */,
 				6877CF181F28F21F00E677FA /* GenerateFamilyCellTableViewCell.swift */,
 				6877CF191F28F21F00E677FA /* GenerateFamilyCellTableViewCell.xib */,
 			);
@@ -503,6 +509,7 @@
 				CFCFA8511F190CF200BC05E5 /* ImageSliderCollectionViewCell.xib in Resources */,
 				681222881F0E6BBF00FA291C /* Localizable.strings in Resources */,
 				CFCFA7C31F0D163700BC05E5 /* Paul.json in Resources */,
+				6841C3391F29DE3F0085E712 /* CreatePatientTreeGender.xib in Resources */,
 				681222871F0E6BBE00FA291C /* LaunchScreen.strings in Resources */,
 				CF957EAB1F1F8E9B0054B1AC /* disease_id3.json in Resources */,
 				6877CF111F28A45C00E677FA /* CreatePatientTree.xib in Resources */,
@@ -611,6 +618,7 @@
 				CFCFA84C1F190CE800BC05E5 /* DetailImageFlowExtension.swift in Sources */,
 				CFCFA8571F1CBD6600BC05E5 /* HumanModalExtension.swift in Sources */,
 				E626B31A1F0E291100125D85 /* GenerateNewFamilyTree.swift in Sources */,
+				6841C3381F29DE3F0085E712 /* CreatePatientTreeGender.swift in Sources */,
 				CFCFA84B1F190CE800BC05E5 /* DetailImageCollectionExtension.swift in Sources */,
 				E611F2EC1F178F3B00C6C57E /* loadDiseases.swift in Sources */,
 				CFCFA8501F190CF200BC05E5 /* ImageSliderCollectionViewCell.swift in Sources */,

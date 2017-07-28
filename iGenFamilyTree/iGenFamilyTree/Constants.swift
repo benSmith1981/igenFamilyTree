@@ -69,6 +69,9 @@ enum CustomCellIdentifiers: String {
     case CreatePatientTreeID
     case iGenCellID
     case GenerateCellID
+    case CreatePatientGender
+    case detailImageCellID
+    case infoCellID
 }
 
 enum CustomCellNames: String {

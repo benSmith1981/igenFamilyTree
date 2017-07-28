@@ -111,24 +111,32 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
         case DetailViewSections.firstDiseaseRow:
             
             let firstDiseaseCell = tableView.dequeueReusableCell(withIdentifier: "infoCellID", for: indexPath) as! InfoCell
+            firstDiseaseCell.addRowBut.alpha = 1.0
+            firstDiseaseCell.removeRowBut.alpha = 1.0
             firstDiseaseCell.indexPath = indexPath
             firstDiseaseCell.titleInfo.text = NSLocalizedString("diseases", comment: "")
+            firstDiseaseCell.textfieldValue.placeholder = NSLocalizedString("placeholderDisease", comment: "")
             firstDiseaseCell.cellType = .disease1Row
             firstDiseaseCell.delegate = self
             if let diseaseOne = editingDiseases?.diseaseList[0] {
                 firstDiseaseCell.textfieldValue.text = "\(String(describing: diseaseOne))"
-            } else {
+            } /*else {
                 firstDiseaseCell.textfieldValue.text = ""
-            }
+                firstDiseaseCell.textfieldValue.placeholder = NSLocalizedString("placeholderDisease", comment: "")
+            }*/
             
             return firstDiseaseCell
             
         case DetailViewSections.secondDiseaseRow:
             
             let secondDiseaseCell = tableView.dequeueReusableCell(withIdentifier: "infoCellID", for: indexPath) as! InfoCell
+            
+            secondDiseaseCell.addRowBut.alpha = 1.0
+            secondDiseaseCell.removeRowBut.alpha = 1.0
             secondDiseaseCell.indexPath = indexPath
 
             secondDiseaseCell.titleInfo.text = NSLocalizedString("diseases", comment: "")
+            secondDiseaseCell.textfieldValue.placeholder = NSLocalizedString("placeholderDisease", comment: "")
             secondDiseaseCell.cellType = .disease2Row
             secondDiseaseCell.delegate = self
             if let secondDisease = editingDiseases?.diseaseList[1] {
@@ -140,9 +148,13 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
         case DetailViewSections.thirdDiseaseRow:
             
             let thirdDiseaseCell = tableView.dequeueReusableCell(withIdentifier: "infoCellID", for: indexPath) as! InfoCell
+            
+            thirdDiseaseCell.addRowBut.alpha = 1.0
+            thirdDiseaseCell.removeRowBut.alpha = 1.0
             thirdDiseaseCell.indexPath = indexPath
 
             thirdDiseaseCell.titleInfo.text = NSLocalizedString("diseases", comment: "")
+            thirdDiseaseCell.textfieldValue.placeholder = NSLocalizedString("placeholderDisease", comment: "")
             thirdDiseaseCell.cellType = .disease3Row
             thirdDiseaseCell.delegate = self
             if let thirdDisease = editingDiseases?.diseaseList[2] {
@@ -154,9 +166,13 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
         case DetailViewSections.fourthDiseaseRow:
             
             let fourthDiseaseCell = tableView.dequeueReusableCell(withIdentifier: "infoCellID", for: indexPath) as! InfoCell
+            
+            fourthDiseaseCell.addRowBut.alpha = 1.0
+            fourthDiseaseCell.removeRowBut.alpha = 1.0
             fourthDiseaseCell.indexPath = indexPath
 
             fourthDiseaseCell.titleInfo.text = NSLocalizedString("diseases", comment: "")
+            fourthDiseaseCell.textfieldValue.placeholder = NSLocalizedString("placeholderDisease", comment: "")
             fourthDiseaseCell.cellType = .disease4Row
             fourthDiseaseCell.delegate = self
             if let fourthDisease = editingDiseases?.diseaseList[3] {
@@ -168,9 +184,13 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
         case DetailViewSections.fifthDiseaseRow:
             
             let fifthDiseaseCell = tableView.dequeueReusableCell(withIdentifier: "infoCellID", for: indexPath) as! InfoCell
+            
+            fifthDiseaseCell.addRowBut.alpha = 1.0
+            fifthDiseaseCell.removeRowBut.alpha = 1.0
             fifthDiseaseCell.indexPath = indexPath
 
             fifthDiseaseCell.titleInfo.text = NSLocalizedString("diseases", comment: "")
+            fifthDiseaseCell.textfieldValue.placeholder = NSLocalizedString("placeholderDisease", comment: "")
             fifthDiseaseCell.cellType = .disease4Row
             fifthDiseaseCell.delegate = self
             if let fifthDisease = editingDiseases?.diseaseList[4] {
