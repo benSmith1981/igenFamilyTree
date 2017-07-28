@@ -11,6 +11,60 @@ import Alamofire
 
 class iGenDataService {
     
+    // login - get a loginID and familytree (a number of Human objects) by patientID
+    public static func login(username: String, password: String) {
+        let login: Parameters = [
+            "username": username,
+            "password": password
+        ]
+        print("login \(username)")
+        Alamofire.request("\(Constants.herokuAPI)login",
+            method: .post,
+            parameters: login,
+            encoding: JSONEncoding.default).responseJSON { (response) in
+                switch response.result {
+                case .success:
+                    print("login successful")
+                    var humans: [ID : Human] = [:]
+                    if let jsonResponse = response.result.value as? NSDictionary {
+                        let loginID = jsonResponse["userid"] as! String
+                        let defaults = UserDefaults.standard
+                        defaults.set(loginID, forKey: "loginID")
+                        let jsonHumans = jsonResponse["familyTree"] as! NSArray
+                        for humanDict in jsonHumans {
+                            let humanObject = Human.init(dictionary: humanDict as! NSDictionary)
+                            humans[humanObject.id] = humanObject
+                        }
+                        print(humans)
+                        NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationIDs.iGenData.rawValue),
+                                                        object: self,
+                                                        userInfo: humans)
+                    }
+                case .failure(let error):
+                    print(error)
+                }
+        }
+    }
+//    public static func register(username: String, password: String) {
+//        let register: Parameters = [
+//            "username": username,
+//            "password": password
+//        ]
+//        print("register \(username)")
+//        Alamofire.request("\(Constants.herokuAPI)register",
+//            method: .post,
+//            parameters: register,
+//            encoding: JSONEncoding.default).responseJSON { (response) in
+//                switch response.result {
+//                case .success(let jsonData):
+//                    print("success \(jsonData)")
+//                    
+//                case .failure(let error):
+//                    print("error \(error)")
+//                }
+//        }
+//    }
+    
     // get a familytree (a number of Human objects) by patientID
     public static func parseiGenData(jsonName: String){
         //let pathURL = Bundle.main.url(forResource: jsonName, withExtension: "json")
@@ -35,7 +89,6 @@ class iGenDataService {
             }
         }
     }
-    
     // get a Disease object by id
     // it is possible and acceptable that Disease data is not available for a Human.id
     public static func parseiGenDiseaseData(jsonName: String){
@@ -108,8 +161,8 @@ class iGenDataService {
     }
     
     // put a Human object by id
-    public static func saveHuman(_ human: Human) {
-        human.logChangesBy(human.id, "name, dob, gender")
+    public static func saveHuman(_ human: Human, loginID: ID) {
+        human.logChangesBy(loginID, "name, dob, gender")
         let humanUpdate: Parameters = [
             "name": human.name,
             "dob": human.dob ?? "",
@@ -118,7 +171,7 @@ class iGenDataService {
             "editInfoTimestamp" : human.editInfoTimestamp!,
             "editInfoField" : human.editInfoField!
         ]
-        print("saveHuman \(human)")
+        print("saveHuman \(humanUpdate)")
         Alamofire.request("\(Constants.herokuAPI)edithuman?id=\(human.id)",
             method: .put,
             parameters: humanUpdate,
@@ -134,8 +187,8 @@ class iGenDataService {
     }
     
     // put a Disease object by id
-    public static func saveDisease(_ disease: Disease) {
-        disease.logChangesBy(disease.id, "DiseaseList")
+    public static func saveDisease(_ disease: Disease, loginID: ID) {
+        disease.logChangesBy(loginID, "diseaseList")
         let diseaseUpdate: Parameters = [
             "diseaseList": disease.diseaseList,
             "canEditList": disease.canEditList,
@@ -144,7 +197,7 @@ class iGenDataService {
             "editInfoField" : disease.editInfoField!,
             "deleted": disease.deleted
         ]
-        print("saveDisease \(disease)")
+        print("saveDisease \(diseaseUpdate)")
         Alamofire.request("\(Constants.herokuAPI)adddiseases?id=\(disease.id)",
             method: .put,
             parameters: diseaseUpdate,
@@ -192,4 +245,26 @@ class iGenDataService {
                 }
         }
     }
+    // register
+    public static func register(username: String, password: String) {
+        let register: Parameters = [
+            "username": username,
+            "password": password
+         ]
+        print("register \(username)")
+        Alamofire.request("\(Constants.herokuAPI)register",
+            method: .post,
+            parameters: register,
+            encoding: JSONEncoding.default).responseJSON { (response) in
+                switch response.result {
+                case .success(let jsonData):
+                    print("success \(jsonData)")
+                    
+                case .failure(let error):
+                    print("error \(error)")
+                }
+        }
+    }
+
+    
 }

@@ -54,13 +54,13 @@ class iGenCell: UICollectionViewCell {
     }
     
     //process a cell for a Human
-    func processHumanCellFor(_ currentHuman: Human) {
+    func processHumanCellFor(_ currentHuman: Human, loginID: ID) {
         print("currentHuman:", currentHuman.name)
         self.patientName.text = currentHuman.name
         self.patientAge.text = currentHuman.dob
         self.diseaseImg1Color.backgroundColor = UIColor.Colors.noDisease
         // pulsating animation for loginHumanID
-        if currentHuman.id == currentHuman.editInfoID {         // moet loginHumanID worden
+        if currentHuman.id == loginID {
             self.bgImg.layer.cornerRadius = 25
             self.bgImg.layer.borderColor = UIColor.red.cgColor
             self.bgImg.layer.borderWidth = 5

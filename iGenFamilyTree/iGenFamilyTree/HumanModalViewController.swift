@@ -84,7 +84,7 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
     
     @IBAction func saveEditHuman(_ sender: Any) {
         self.currentHuman = editingHuman
-        iGenDataService.saveHuman(currentHuman!)
+        iGenDataService.saveHuman(currentHuman!, loginID: (humanDetails?.loginID)!)
         closeView()
     }
     
