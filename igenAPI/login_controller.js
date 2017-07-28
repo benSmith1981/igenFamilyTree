@@ -1,4 +1,5 @@
 const LoginSchema = require('./login_model')
+const FamilySchema = require('./tree_model')
 'use strict';
 const nodemailer = require('nodemailer');
 
@@ -7,6 +8,7 @@ exports.verifymember = function(req, res, err) {
     var familyTreeID = req.body.patientID
     var userID = req.body.userID
     var passwordCode = generateCode()
+    var sendersEmail = req.body.sendersEmail
     var name = req.body.name
     var patientname = req.body.patientname
 
@@ -28,8 +30,8 @@ exports.verifymember = function(req, res, err) {
 
     // setup email data with unicode symbols
     let mailOptions = {
-        from: "👻 <"+email+">", // sender address
-        to: "<"+groupTestEmails+">", // list of receivers
+        from: "👻 <"+sendersEmail+">", // sender address
+        to: "<"+email+">", // list of receivers
         subject: 'Family requesting your help!', // Subject line
         text: '%s', emailTextDutch,
         html: '<b>'+emailTextDutch+'</b>'  // html body
@@ -49,7 +51,7 @@ exports.verifymember = function(req, res, err) {
         familyTreeID: familyTreeID,
         id: userID
     })
-    LoginSchema.find({username: req.body.username}, function(err, doc){ //function (err, callback) {
+    LoginSchema.find({username: req.body.email}, function(err, doc){ //function (err, callback) {
         if (!doc.length){
             login.save(function (err, details) {
                 if (err) {
@@ -73,10 +75,14 @@ function generateCode(){
 }
 
 exports.addpatientsid = function(req, res, err) {
-    LoginSchema.update({id: req.body.username }, 
+    LoginSchema.updateOne({id: req.body.username }, 
         {$set: {familyTreeID:req.body.patientID, id: req.body.patientID} }, 
         {upsert: true}, 
         function(err, callback){
+            console.log("callback.id " + callback.id)
+                        console.log("req.body.patientID" + req.body.patientID)
+                        console.log("eq.body.username" + req.body.username)
+
             if (err) return res.send(500, { error: err });
             return res.json(callback);
 
@@ -87,47 +93,12 @@ exports.addpatientsid = function(req, res, err) {
 exports.register = function(req, res, err) {
     console.log("req.query.username"+ req.body.username)
     console.log("req.query.password "+ req.body.password)
-    console.log("req.query.id"+ req.body.id)
-    console.log("req.query.patientID "+ req.body.familyTreeID)
 
     var login = new LoginSchema({  
         username: req.body.username,
         password: req.body.password,
-        familyTreeID: req.body.familyTreeID,
-        id: req.body.id
-    })
-    //callback is an array
-    LoginSchema.find({username: req.body.username}, function(err, doc){ //function (err, callback) {
-        if (!doc.length){
-            login.save(function (err, details) {
-                if (err) {
-                    res.json({ err })
-                    return console.error(err);
-                }
-                else  {
-                    res.json({ details })
-                }
-            })
-        } else {
-            res.json({success: false, message:"Username used"})
-        }
-    })
-
-
-}
-
-// Create endpoint  to get tree json 
-exports.register = function(req, res, err) {
-    console.log("req.query.username"+ req.body.username)
-    console.log("req.query.password "+ req.body.password)
-    console.log("req.query.id"+ req.body.id)
-    console.log("req.query.patientID "+ req.body.familyTreeID)
-
-    var login = new LoginSchema({  
-        username: req.body.username,
-        password: req.body.password,
-        familyTreeID: req.body.familyTreeID,
-        id: req.body.id
+        familyTreeID: "",
+        id: ""
     })
     //callback is an array
     LoginSchema.find({username: req.body.username}, function(err, doc){ //function (err, callback) {
