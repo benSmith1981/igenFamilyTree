@@ -117,7 +117,8 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
         
         self.hideKeyboardWhenTappedAround()
         
-        self.modelViewTitle.text = NSLocalizedString("modalViewTitle", comment: "")
+        //what is this?
+//        self.modelViewTitle.text = NSLocalizedString("modalViewTitle", comment: "")
         
         modalTableView.frame = CGRect(x: modalTableView.frame.origin.x, y: modalTableView.frame.origin.y, width: modalTableView.frame.size.width, height: modalTableView.contentSize.height)
         modalTableView.allowsSelection = false
