@@ -5,13 +5,11 @@ exports.deletediseases = function(req, res, err) {
 
     DiseaseSchema.remove({ id: req.query.id}, function(err, callback){
         if (err) {
-                console.log("err "+ err)
-
+            console.log("err "+ err)
             res.json(err)
         }
         else {
-                            console.log("callback "+ callback)
-
+            console.log("callback "+ callback)
             res.json(callback)
         }
     })
@@ -20,9 +18,6 @@ exports.deletediseases = function(req, res, err) {
 
 exports.adddiseases = function(req, res, err) {
     console.log("req.query.id "+ req.query.id)
-
-
-
     DiseaseSchema.findOne({id: req.query.id}, function (err, human) {
         if (human == null){
             console.log("human "+ human)

@@ -1,4 +1,3 @@
-
 const FamilySchema = require('./tree_model'),
 date = new Date()
 
