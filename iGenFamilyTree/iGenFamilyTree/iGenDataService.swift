@@ -133,6 +133,7 @@ class iGenDataService {
     public static func saveDisease(_ disease: Disease) {
         disease.logChangesBy(disease.id, "DiseaseList")
         let diseaseUpdate: Parameters = [
+            "id":disease.id,
             "diseaseList": disease.diseaseList,
             "canEditList": disease.canEditList,
             "editInfoID" : disease.editInfoID!,
