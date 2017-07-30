@@ -8,11 +8,20 @@
 
 import UIKit
 
+struct Login{
+    var username: String?
+    var password: String?
+    var familyTreeID: String? //patient id
+    var id: String?
+}
+
 class ChooserViewController: UIViewController {
     
     @IBOutlet weak var choosePatientID: UITextField!
     @IBAction func unwindToVC1(segue:UIStoryboardSegue) { }
 
+    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var passwordTextfield: UITextField!
 
     var familyJsonToLoad: String?
     
@@ -27,6 +36,12 @@ class ChooserViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func LoginObserverDisease(notification: NSNotification) {
+        let diseaseDict = notification.userInfo as! [ID : Disease]
+        // there is always exactly 1 disease notified
+        print("notify observer disease \(diseaseDict)")
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Segues.familytreeSegue.rawValue {
             iGenDataService.parseiGenData(jsonName:familyJsonToLoad!)
@@ -34,31 +49,18 @@ class ChooserViewController: UIViewController {
 
     }
     
-    @IBAction func buttonOK(_ sender: UIButton) {
-        familyJsonToLoad = choosePatientID.text
-        print(familyJsonToLoad)
-        self.performSegue(withIdentifier: Segues.familytreeSegue.rawValue, sender: self)
-    }
-
-    @IBAction func buttonPaul(_ sender: UIButton) {
+    @IBAction func Login(_ sender: UIButton) {
         familyJsonToLoad = "687FAB70-F4A8-4E32-A257-6BB98624B8E1"
         self.performSegue(withIdentifier: Segues.familytreeSegue.rawValue, sender: self)
     }
     
-    @IBAction func buttonAchid(_ sender: UIButton) {
+    @IBAction func Register(_ sender: UIButton) {
         familyJsonToLoad = "iGen"
         self.performSegue(withIdentifier: Segues.familytreeSegue.rawValue, sender: self)
     }
     
-    @IBAction func buttonTon(_ sender: UIButton) {
-        familyJsonToLoad = "Ton"
-        self.performSegue(withIdentifier: Segues.familytreeSegue.rawValue, sender: self)
-//        iGenDataService.parseiGenDiseaseData(jsonName: "disease1")
-    }
     
     @IBAction func buttonNieuwePatient(_ sender: UIButton) {
-//        self.performSegue(withIdentifier: segues.createFamilyTreeSegue.rawValue, sender: self)
-
         //go to achids view
     }
     

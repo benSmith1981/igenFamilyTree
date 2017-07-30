@@ -155,4 +155,81 @@ class iGenDataService {
                 }
         }
     }
+    
+    //Only to update the patient who just registered a new tree so their ID equals the Patiend ID (or the family tree id)
+    public static func updateThePatientID(withLogin login: Login) {
+        let loginDetails: Parameters = [
+            "username":login.username,
+            "patientID": login.familyTreeID
+        ]
+        if login.username?.isValidEmail(){
+            print("loginDetails \(login)")
+            Alamofire.request("\(Constants.herokuAPI)addpatientsid/",
+                method: .put,
+                parameters: loginDetails,
+                encoding: JSONEncoding.default).responseJSON { (response) in
+                    switch response.result {
+                    case .success(let jsonData):
+                        print("success \(jsonData)")
+                        
+                    case .failure(let error):
+                        print("error \(error)")
+                    }
+            }
+        } else {
+            print("Need a valid EMAIL")
+            
+        }
+    }
+    
+    public static func login(_ login: Login) {
+        let loginDetails: Parameters = [
+            "username":login.username,
+            "password": login.password
+        ]
+        if login.username?.isValidEmail(){
+        print("loginDetails \(login)")
+            Alamofire.request("\(Constants.herokuAPI)login/",
+                method: .post,
+                parameters: loginDetails,
+                encoding: JSONEncoding.default).responseJSON { (response) in
+                    switch response.result {
+                    case .success(let jsonData):
+                        print("success \(jsonData)")
+                        
+                    case .failure(let error):
+                        print("error \(error)")
+                    }
+            }
+        } else {
+            print("Need a valid EMAIL")
+        
+        }
+    }
+
+    public static func register(_ login: Login) {
+        let loginDetails: Parameters = [
+            "username":login.username,
+            "password": login.password
+        ]
+        if login.username?.isValidEmail(){
+            print("loginDetails \(login)")
+            Alamofire.request("\(Constants.herokuAPI)login/",
+                method: .post,
+                parameters: loginDetails,
+                encoding: JSONEncoding.default).responseJSON { (response) in
+                    switch response.result {
+                    case .success(let jsonData):
+                        print("success \(jsonData)")
+                        
+                    case .failure(let error):
+                        print("error \(error)")
+                    }
+            }
+        } else {
+            print("Need an EMAIL")
+
+        }
+
+    }
 }

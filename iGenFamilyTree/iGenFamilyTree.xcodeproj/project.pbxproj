@@ -27,6 +27,8 @@
 		B51B62C51F0A244400AB11CC /* Patient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51B62C41F0A244400AB11CC /* Patient.swift */; };
 		B51B62C71F0A246500AB11CC /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51B62C61F0A246500AB11CC /* Model.swift */; };
 		B51B62C91F0A258F00AB11CC /* FamilyTreeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51B62C81F0A258F00AB11CC /* FamilyTreeTests.swift */; };
+		B51F648B1F2E899A003D1490 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F648A1F2E899A003D1490 /* StringExtension.swift */; };
+		B51F648D1F2E8DB4003D1490 /* VerifyMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F648C1F2E8DB4003D1490 /* VerifyMember.swift */; };
 		B5E0B64F1F0D4A28001A6CAE /* smith.json in Resources */ = {isa = PBXBuildFile; fileRef = B5E0B64E1F0D4A28001A6CAE /* smith.json */; };
 		B5EAC17C1F01390800151D52 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EAC17B1F01390800151D52 /* AppDelegate.swift */; };
 		B5EAC1841F01390800151D52 /* iGenFamilyTree.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B5EAC1821F01390800151D52 /* iGenFamilyTree.xcdatamodeld */; };
@@ -109,6 +111,8 @@
 		B51B62C41F0A244400AB11CC /* Patient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Patient.swift; sourceTree = "<group>"; };
 		B51B62C61F0A246500AB11CC /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		B51B62C81F0A258F00AB11CC /* FamilyTreeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FamilyTreeTests.swift; sourceTree = "<group>"; };
+		B51F648A1F2E899A003D1490 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		B51F648C1F2E8DB4003D1490 /* VerifyMember.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyMember.swift; sourceTree = "<group>"; };
 		B5E0B64E1F0D4A28001A6CAE /* smith.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = smith.json; sourceTree = "<group>"; };
 		B5EAC1781F01390800151D52 /* iGenFamilyTree.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iGenFamilyTree.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5EAC17B1F01390800151D52 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -282,6 +286,7 @@
 				B5EAC1821F01390800151D52 /* iGenFamilyTree.xcdatamodeld */,
 				CFCFA7C01F0B960E00BC05E5 /* Constants.swift */,
 				E6C6748C1F20E4E500AF966E /* UIColorExtension.swift */,
+				B51F648A1F2E899A003D1490 /* StringExtension.swift */,
 				CF217ED21F26276F0066352A /* TextFieldExtension.swift */,
 				CF8DA1891F224448007EE7EC /* DismissKeyboardExtension.swift */,
 			);
@@ -345,6 +350,7 @@
 		CFCFA8411F190C5300BC05E5 /* HumanTableView */ = {
 			isa = PBXGroup;
 			children = (
+				B51F648C1F2E8DB4003D1490 /* VerifyMember.swift */,
 				CFCFA8601F1E3A8E00BC05E5 /* PopAnimator.swift */,
 				CFCFA7CA1F18FA9900BC05E5 /* HumanModalViewController.swift */,
 				CFCFA8561F1CBD6600BC05E5 /* HumanModalExtension.swift */,
@@ -603,6 +609,7 @@
 				6877CF101F28A45C00E677FA /* CreatePatientTree.swift in Sources */,
 				E6644EAD1F052CA600C66427 /* FamilyTreeGenerator.swift in Sources */,
 				CF217ED31F26276F0066352A /* TextFieldExtension.swift in Sources */,
+				B51F648B1F2E899A003D1490 /* StringExtension.swift in Sources */,
 				CFCFA8611F1E3A8E00BC05E5 /* PopAnimator.swift in Sources */,
 				B51B62C51F0A244400AB11CC /* Patient.swift in Sources */,
 				68AEA8D51F0D4B73007E5E08 /* JSONserialization.swift in Sources */,
@@ -616,6 +623,7 @@
 				CFCFA84A1F190CE800BC05E5 /* DetailmageSliderCell.swift in Sources */,
 				68C309E11F25F82100E3072E /* CreatePatientTreeTableView.swift in Sources */,
 				CFCFA84C1F190CE800BC05E5 /* DetailImageFlowExtension.swift in Sources */,
+				B51F648D1F2E8DB4003D1490 /* VerifyMember.swift in Sources */,
 				CFCFA8571F1CBD6600BC05E5 /* HumanModalExtension.swift in Sources */,
 				E626B31A1F0E291100125D85 /* GenerateNewFamilyTree.swift in Sources */,
 				6841C3381F29DE3F0085E712 /* CreatePatientTreeGender.swift in Sources */,
