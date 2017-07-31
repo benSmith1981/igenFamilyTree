@@ -8,11 +8,10 @@
 
 import Foundation
 struct VerifyMember{
-    var email: String?
-    var patientID: String? //family id
-    var userID: String?
-    var patientName: String?
-    var name: String?
-    var sendersEmail: String?
-    
+    var email: String
+    var patientID: String //family id
+    var userID: String
+    var patientName: String
+    var name: String
+    var sendersEmail: String
 }

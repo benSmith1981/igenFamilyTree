@@ -9,6 +9,15 @@
 import Foundation
 import Alamofire
 
+struct ServerResponse {
+    var response: Bool
+    var message: String
+    var familyTree: NSArray
+    var loginDetails: NSDictionary
+    var userID: String
+    var patientID: String
+
+}
 class iGenDataService {
     
     public static func parseiGenData(jsonName: String){
@@ -157,12 +166,42 @@ class iGenDataService {
     }
     
     //Only to update the patient who just registered a new tree so their ID equals the Patiend ID (or the family tree id)
+    public static func verifyMember(with details: VerifyMember) {
+        let verifyDetails: Parameters = [
+            "email" : details.email,
+            "patientID" : details.patientID,
+            "userID" : details.userID,
+            "patientName" : details.patientName,
+            "name" : details.name,
+            "sendersEmail" : details.sendersEmail
+        ]
+        if details.email.isValidEmail() && details.sendersEmail.isValidEmail(){
+            print("verifymember \(verifyDetails)")
+            Alamofire.request("\(Constants.herokuAPI)verifymember/",
+                method: .post,
+                parameters: verifyDetails,
+                encoding: JSONEncoding.default).responseJSON { (response) in
+                    switch response.result {
+                    case .success(let jsonData):
+                        print("success \(jsonData)")
+                        
+                    case .failure(let error):
+                        print("error \(error)")
+                    }
+            }
+        } else {
+            print("Need a valid EMAILs")
+            
+        }
+    }
+    
+    //Only to update the patient who just registered a new tree so their ID equals the Patiend ID (or the family tree id)
     public static func updateThePatientID(withLogin login: Login) {
         let loginDetails: Parameters = [
             "username":login.username,
             "patientID": login.familyTreeID
         ]
-        if login.username?.isValidEmail(){
+        if login.username.isValidEmail(){
             print("loginDetails \(login)")
             Alamofire.request("\(Constants.herokuAPI)addpatientsid/",
                 method: .put,
@@ -183,21 +222,50 @@ class iGenDataService {
     }
     
     public static func login(_ login: Login) {
-        let loginDetails: Parameters = [
+        let loginDetailsParams: Parameters = [
             "username":login.username,
             "password": login.password
         ]
-        if login.username?.isValidEmail(){
+        if login.username.isValidEmail(){
         print("loginDetails \(login)")
             Alamofire.request("\(Constants.herokuAPI)login/",
                 method: .post,
-                parameters: loginDetails,
+                parameters: loginDetailsParams,
                 encoding: JSONEncoding.default).responseJSON { (response) in
                     switch response.result {
                     case .success(let jsonData):
+                        if let jsonDict = response.result.value as? NSDictionary,
+                            let success = jsonDict["success"] as? Bool,
+                            let message = jsonDict["message"] as? String,
+                            let familyTree = jsonDict["familyTree"] as? NSArray,
+                            let userID = jsonDict["userID"] as? String,
+                            let patientID = jsonDict["patientID"] as? String{
+                            
+                                let res = ServerResponse.init(response: success,
+                                                              message: message,
+                                                              familyTree: familyTree,
+                                                              loginDetails: [:],
+                                                              userID: userID,
+                                                              patientID: patientID)
+                                let responseLogin = ["response": res]
+                                NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationIDs.loginNotificationID.rawValue),
+                                                                object: self,
+                                                                userInfo: responseLogin)
+                                print("success \(jsonDict)")
+                        }
+                        
                         print("success \(jsonData)")
                         
                     case .failure(let error):
+                        if let jsonDict = response.result.value as? NSDictionary {
+                            let message = jsonDict["message"]
+                            let responseLogin = ["message": "\(error) \(message)"]
+                            NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationIDs.loginNotificationID.rawValue),
+                                                            object: self,
+                                                            userInfo: responseLogin)
+                            print("success \(jsonDict)")
+                        }
+                        
                         print("error \(error)")
                     }
             }
@@ -212,7 +280,7 @@ class iGenDataService {
             "username":login.username,
             "password": login.password
         ]
-        if login.username?.isValidEmail(){
+        if login.username.isValidEmail(){
             print("loginDetails \(login)")
             Alamofire.request("\(Constants.herokuAPI)login/",
                 method: .post,
@@ -220,10 +288,42 @@ class iGenDataService {
                 encoding: JSONEncoding.default).responseJSON { (response) in
                     switch response.result {
                     case .success(let jsonData):
-                        print("success \(jsonData)")
+                        if let jsonDict = response.result.value as? NSDictionary,
+                            let success = jsonDict["success"] as? Bool,
+                            let message = jsonDict["message"] as? String,
+                            let loginDetails = jsonDict["details"] as? NSDictionary{
+                            
+                            
+                                var res = ServerResponse.init(response: success,
+                                                              message: message,
+                                                              familyTree: [],
+                                                              loginDetails: loginDetails,
+                                                              userID: "",
+                                                              patientID: "")
+                                var responseLogin = ["response": res]
+                                NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationIDs.registerNotificationID.rawValue),
+                                                                object: self,
+                                                                userInfo: responseLogin)
+//                            print("success \(jsonData)")
+                        }
                         
                     case .failure(let error):
-                        print("error \(error)")
+                        if let jsonDict = response.result.value as? NSDictionary,
+                            let success = jsonDict["success"] as? Bool,
+                            let message = jsonDict["message"] as? String{
+                            var res = ServerResponse.init(response: success,
+                                                          message: "\(error) \(message)",
+                                                        familyTree: [],
+                                                        loginDetails: [:],
+                                                        userID: "",
+                                                        patientID: "")
+                                var responseLogin = ["response": res]
+
+                                NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationIDs.registerNotificationID.rawValue),
+                                                                object: self,
+                                                                userInfo: responseLogin)
+//                            print("success \(jsonData)")
+                        }
                     }
             }
         } else {

@@ -83,8 +83,8 @@ exports.addpatientsid = function(req, res, err) {
                         console.log("req.body.patientID" + req.body.patientID)
                         console.log("eq.body.username" + req.body.username)
 
-            if (err) return res.send(500, { error: err });
-            return res.json(callback);
+            if (err) return res.send(500, { success: false, message: err });
+            return res.json({success: true, message:"Updated"});
 
     })
 }
@@ -105,11 +105,11 @@ exports.register = function(req, res, err) {
         if (!doc.length){
             login.save(function (err, details) {
                 if (err) {
-                    res.json({ err })
+                    res.json({ success: false, message: err })
                     return console.error(err);
                 }
                 else  {
-                    res.json({ details })
+                    res.json({ details: details , success: true, message:"Registered" })
                 }
             })
         } else {
@@ -136,16 +136,18 @@ exports.login = function(req, res, err) {
                 return console.error(err);
             } else {
                 var userID = callback.id
+                var patientID = callback.familyTreeID
+
                 console.log("callback.id "+ callback.id)
                 //callback is an array
                 console.log("callback.familyTreeID"+ callback.familyTreeID)
 
                 FamilySchema.find({patientID: callback.familyTreeID}, function (err, callback) {
                     if (err) {
-                        res.json({ err })
+                        res.json({success: false, message:"Username used: "+err})
                         return console.error(err);
                     } else {
-                        res.json({userID: userID, familyTree: callback})
+                        res.json({userID: userID, patientID: patientID, familyTree: callback, success: true, message:"Logging in"})
                     }
                 })
         }
