@@ -108,12 +108,14 @@ class CustomCollectionViewController: UICollectionViewController, reloadAfterEdi
             // segue from TableViewController
             // familyTreeGenerator will be nil if entered via iGenDataService
             // extract patientID from the first Human for function MakeTreeFor
+            // save the new familyTree to the database
             
             if let firstKey = familyTreeGenerator?.familyTree.first?.key,
                 let patientID = familyTreeGenerator?.familyTree[firstKey]?.patientID {
                 familyTreeGenerator?.makeTreeFor(patientID)
                 familyTreeGenerator?.makeModelFromTree()
                 familyTreeGenerator?.loginID = patientID
+                iGenDataService.saveFamilyTree((self.familyTreeGenerator?.familyTree)!)
             }
             
             // Uncomment the following line to preserve selection between presentations
