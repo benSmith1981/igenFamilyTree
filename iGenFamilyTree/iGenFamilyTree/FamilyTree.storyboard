@@ -77,7 +77,7 @@
                                 <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ll4-IS-f2U">
-                                <rect key="frame" x="62.5" y="160" width="250" height="347"/>
+                                <rect key="frame" x="62.5" y="80" width="250" height="563"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E7W-zI-xyt">
                                         <rect key="frame" x="0.0" y="0.0" width="250" height="36"/>
@@ -129,10 +129,9 @@
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ryw-RK-Cg9">
-                                        <rect key="frame" x="0.0" y="36" width="250" height="275"/>
+                                        <rect key="frame" x="0.0" y="36" width="250" height="491"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="275" id="DCE-lJ-B6g"/>
                                             <constraint firstAttribute="width" constant="250" id="njy-68-c5R"/>
                                         </constraints>
                                         <connections>
@@ -141,7 +140,7 @@
                                         </connections>
                                     </tableView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yvo-Bv-jo9">
-                                        <rect key="frame" x="0.0" y="311" width="250" height="36"/>
+                                        <rect key="frame" x="0.0" y="527" width="250" height="36"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VERIFY WITH FAMILY MEMBER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RD9-Dm-hf0">
                                                 <rect key="frame" x="0.0" y="12" width="250" height="12"/>
@@ -166,15 +165,18 @@
                                     <constraint firstItem="yvo-Bv-jo9" firstAttribute="top" secondItem="ryw-RK-Cg9" secondAttribute="bottom" id="9z4-OI-xwH"/>
                                     <constraint firstItem="yvo-Bv-jo9" firstAttribute="leading" secondItem="ll4-IS-f2U" secondAttribute="leading" id="BmV-XG-gbU"/>
                                     <constraint firstAttribute="trailing" secondItem="yvo-Bv-jo9" secondAttribute="trailing" id="HCq-QZ-EKf"/>
+                                    <constraint firstItem="yvo-Bv-jo9" firstAttribute="top" secondItem="ryw-RK-Cg9" secondAttribute="bottom" id="acc-O4-NR6"/>
+                                    <constraint firstItem="ryw-RK-Cg9" firstAttribute="top" secondItem="E7W-zI-xyt" secondAttribute="bottom" id="iAz-Gb-XM8"/>
                                 </constraints>
                             </stackView>
                         </subviews>
                         <constraints>
                             <constraint firstItem="fuY-mo-7Ke" firstAttribute="leading" secondItem="UNQ-Te-xDv" secondAttribute="leading" id="1yI-de-Kna"/>
-                            <constraint firstItem="ll4-IS-f2U" firstAttribute="centerY" secondItem="UNQ-Te-xDv" secondAttribute="centerY" id="3cS-71-HM5"/>
                             <constraint firstAttribute="trailing" secondItem="fuY-mo-7Ke" secondAttribute="trailing" id="97g-8j-MVe"/>
                             <constraint firstItem="ll4-IS-f2U" firstAttribute="centerX" secondItem="UNQ-Te-xDv" secondAttribute="centerX" id="AgB-N0-B14"/>
+                            <constraint firstItem="CBj-kS-Di5" firstAttribute="top" secondItem="ll4-IS-f2U" secondAttribute="bottom" constant="24" id="dx8-4x-05S"/>
                             <constraint firstItem="CBj-kS-Di5" firstAttribute="top" secondItem="fuY-mo-7Ke" secondAttribute="bottom" id="e7o-9B-NJX"/>
+                            <constraint firstItem="ll4-IS-f2U" firstAttribute="top" secondItem="8Jm-bp-xtF" secondAttribute="bottom" constant="60" id="gx7-Iu-2qa"/>
                             <constraint firstItem="fuY-mo-7Ke" firstAttribute="top" secondItem="UNQ-Te-xDv" secondAttribute="top" id="uV4-NM-q7C"/>
                         </constraints>
                     </view>
@@ -193,7 +195,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3664" y="1101"/>
+            <point key="canvasLocation" x="3663.1999999999998" y="1100.5997001499252"/>
         </scene>
     </scenes>
     <resources>
