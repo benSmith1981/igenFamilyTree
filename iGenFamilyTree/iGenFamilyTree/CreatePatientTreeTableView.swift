@@ -10,13 +10,15 @@ import UIKit
 
 enum QuestionType: Int {
     case brother = 0
-    case sister = 1
-    case sons = 2
-    case daughters = 3
-    case brotherMother = 4
-    case sisterMother = 5
-    case brotherFather = 6
-    case sisterFather = 7
+    case sister
+    case sons
+    case daughters
+    case brotherMother
+    case sisterMother
+    case brotherFather
+    case sisterFather
+    case gender
+    case genderPartner
     
     func selectQuestion() -> String {
         
@@ -37,6 +39,10 @@ enum QuestionType: Int {
             return NSLocalizedString("numberBrothersfromFather", comment: "")
         case .sisterFather:
             return NSLocalizedString("numberSistersfromFather", comment: "")
+        case .gender:
+            return NSLocalizedString("chooseGender", comment: "")
+        case .genderPartner:
+            return NSLocalizedString("chooseGenderSpouse", comment: "")
         }
     }
 }
@@ -55,17 +61,50 @@ struct Answers {
     var sistersOfMother: Int = 0
     var brothersOfFather: Int = 0
     var sistersOfFather: Int = 0
+    var patientGender: genderType = .male
+    var partnerGender: genderType = .female
+
+
 }
 
 
-class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembers {
+class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembers, updateParametersDelegate {
+
     var answers = Answers()
-    //    var numberOfMembers = NumberOfMembers()
     var familyTreeGenerator = FamilyTreeGenerator.init(familyTree: [:])
     
     func generateTree(){
         familyTreeGenerator.generateNewFamilyTree(with: answers)
         self.performSegue(withIdentifier: Segues.familytreeSegue.rawValue, sender: self)
+    }
+    
+    func getHumanUpdates(value: Any, cellType: detailRows, indexPath: IndexPath) {
+        
+        if cellType == .genderRow {
+            
+            print("gender from form")
+            let gender = value as! String
+            switch gender {
+            case  JsonKeys.male.rawValue:
+                if indexPath.section == 0 {
+                    answers.patientGender = .male
+                } else if indexPath.section == 1 {
+                    answers.partnerGender = .male
+                }
+                print("male from slider cell FORM")
+            case  JsonKeys.female.rawValue:
+                if indexPath.section == 0 {
+                    answers.patientGender = .female
+                } else if indexPath.section == 1{
+                    answers.partnerGender = .female
+                }
+                print("female from slider cell FORM")
+            default:
+                answers.patientGender = .unknown
+                print("uunknonwn gender")
+            }
+
+        }
     }
     
     
@@ -87,6 +126,8 @@ class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembe
             answers.brothersOfFather = number
         case .sisterFather:
             answers.sistersOfFather = number
+        default:
+            break
         }
     }
     
@@ -97,24 +138,22 @@ class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembe
         self.tableView.register(nib, forCellReuseIdentifier: CustomCellIdentifiers.CreatePatientTreeID.rawValue)
         let generate = UINib(nibName: "GenerateFamilyCellTableViewCell", bundle: nil)
         self.tableView.register(generate, forCellReuseIdentifier: CustomCellIdentifiers.GenerateCellID.rawValue)
-/*
-        let rectShapeBottom = CAShapeLayer()
-//        rectShapeBottom.bounds = self.OutletGenerateTree.frame
-        rectShapeBottom.bounds = OutletGenerateTree.frame.insetBy(dx: 10.0, dy: 10.0)
-        rectShapeBottom.position = self.OutletGenerateTree.center
-        rectShapeBottom.path = UIBezierPath(roundedRect: self.OutletGenerateTree.bounds, byRoundingCorners: [.bottomLeft, .bottomRight, .topLeft, .topRight ], cornerRadii: CGSize(width: 10, height: 10)).cgPath
-        self.OutletGenerateTree.layoutMargins = UIEdgeInsetsMake(0, 10, 0, 10)
-        self.OutletGenerateTree.layer.mask = rectShapeBottom
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-    }
-*/
+//        let gender = UINib(nibName: "CreatePatientTreeGender", bundle: nil)
+//        self.tableView.register(gender, forCellReuseIdentifier: CustomCellIdentifiers.CreatePatientGender.rawValue)
+        let genderCell = UINib(nibName: "DetailmageSliderCell", bundle: nil)
+        self.tableView.register(genderCell, forCellReuseIdentifier: CustomCellIdentifiers.detailImageCellID.rawValue)
+        let titleForGenderCells = UINib(nibName: "CreatePatientTreeGender", bundle: nil)
+        self.tableView.register(titleForGenderCells, forCellReuseIdentifier: CustomCellIdentifiers.CreatePatientGender.rawValue)
+
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 60
+    
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+//        self.tableView.reloadData()
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //        if segue.identifier == segues.familytreeSegue.rawValue {
@@ -130,105 +169,233 @@ class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembe
     }
     
     // MARK: - Table view data source
-    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch indexPath.section {
+        case 0 , 1:
+            return UITableViewAutomaticDimension
+        default:
+            return 44
+        }
+    }
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 3
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 8
+        switch section {
+        case 0:
+            return 1
+        case 1:
+            return 1
+        case 2:
+            return 8
+        default:
+            return 0
+        }
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        switch indexPath.section {
+            case 0:
+                let genderPatient = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.detailImageCellID.rawValue, for: indexPath) as! DetailmageSliderCell
+                genderPatient.delegate = self
+                genderPatient.indexPath = indexPath
+                genderPatient.humanGender = answers.patientGender.rawValue
+//                genderPatient.setNeedsDisplay()
+//                genderPatient.setNeedsLayout()
+//                genderPatient.questionLabel.text = QuestionType.gender.selectQuestion()
+//                genderPatient.cellType = .gender
+                return genderPatient
+            case 1:
+                let genderPatientPartner = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.detailImageCellID.rawValue, for: indexPath) as! DetailmageSliderCell
+                genderPatientPartner.delegate = self
+                genderPatientPartner.humanGender = answers.partnerGender.rawValue
+//                genderPatientPartner.setNeedsDisplay()
+//                genderPatientPartner.setNeedsLayout()
+                genderPatientPartner.indexPath = indexPath
+                //                    genderPatient.questionLabel.text = QuestionType.gender.selectQuestion()
+                //            genderPatient.cellType = .gender
+                
+                return genderPatientPartner
+            case 2:
+                return loadQuestionRows(indexPath: indexPath)
+            default:
+                return UITableViewCell()
+        }
+    }
+
+    
+    func loadQuestionRows(indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
             
         case QuestionType.brother.rawValue:
             let cellBrothers = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.CreatePatientTreeID.rawValue, for: indexPath) as! CreatePatientTree
+            cellBrothers.setNumberDelegate = self
             cellBrothers.questionLabel.text = QuestionType.brother.selectQuestion()
             cellBrothers.awakeFromNib()
+            cellBrothers.layoutSubviews()
             cellBrothers.cellType = .brother
-            cellBrothers.setNumberDelegate = self
+            cellBrothers.numberOfMembers.text = String(answers.brothers)
             return cellBrothers
             
         case QuestionType.sister.rawValue:
             let cellSisters = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.CreatePatientTreeID.rawValue, for: indexPath) as! CreatePatientTree
+            cellSisters.setNumberDelegate = self
             cellSisters.questionLabel.text = QuestionType.sister.selectQuestion()
             cellSisters.cellType = .sister
-            cellSisters.setNumberDelegate = self
+            cellSisters.layoutSubviews()
+            cellSisters.numberOfMembers.text = String(answers.sisters)
+
             return cellSisters
             
         case QuestionType.sons.rawValue:
             let cellSons = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.CreatePatientTreeID.rawValue, for: indexPath) as! CreatePatientTree
-            cellSons.questionLabel.text = QuestionType.sons.selectQuestion()
-            cellSons.cellType = .sons
             cellSons.setNumberDelegate = self
+
+            cellSons.questionLabel.text = QuestionType.sons.selectQuestion()
+            cellSons.numberOfMembers.text = String(answers.sons)
+            cellSons.cellType = .sons
+            cellSons.layoutSubviews()
             
             return cellSons
             
         case QuestionType.daughters.rawValue:
             let cellDaughters = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.CreatePatientTreeID.rawValue, for: indexPath) as! CreatePatientTree
+            cellDaughters.setNumberDelegate = self
+
             cellDaughters.questionLabel.text = QuestionType.daughters.selectQuestion()
             cellDaughters.cellType = .daughters
-            cellDaughters.setNumberDelegate = self
+            cellDaughters.layoutSubviews()
+            cellDaughters.numberOfMembers.text = String(answers.daughters)
+
             
             return cellDaughters
             
         case QuestionType.brotherMother.rawValue:
             let cellBrotherMother = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.CreatePatientTreeID.rawValue, for: indexPath) as! CreatePatientTree
+            cellBrotherMother.setNumberDelegate = self
+
             cellBrotherMother.questionLabel.text = QuestionType.brotherMother.selectQuestion()
             cellBrotherMother.cellType = .brotherMother
-            cellBrotherMother.setNumberDelegate = self
+            cellBrotherMother.layoutSubviews()
+            cellBrotherMother.numberOfMembers.text = String(answers.brothersOfMother)
+
             
             return cellBrotherMother
             
         case QuestionType.sisterMother.rawValue:
             let cellSisterMother = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.CreatePatientTreeID.rawValue, for: indexPath) as! CreatePatientTree
+            cellSisterMother.setNumberDelegate = self
+
             cellSisterMother.questionLabel.text = QuestionType.sisterMother.selectQuestion()
             cellSisterMother.cellType = .sisterMother
-            cellSisterMother.setNumberDelegate = self
+            cellSisterMother.layoutSubviews()
+            cellSisterMother.numberOfMembers.text = String(answers.sistersOfMother)
+
             
             return cellSisterMother
             
         case QuestionType.brotherFather.rawValue:
             let cellBrotherFather = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.CreatePatientTreeID.rawValue, for: indexPath) as! CreatePatientTree
+            cellBrotherFather.setNumberDelegate = self
+
             cellBrotherFather.questionLabel.text = QuestionType.brotherFather.selectQuestion()
             cellBrotherFather.cellType = .brotherFather
-            cellBrotherFather.setNumberDelegate = self
+            cellBrotherFather.layoutSubviews()
+            cellBrotherFather.numberOfMembers.text = String(answers.brothersOfFather)
+
             
             return cellBrotherFather
             
         case QuestionType.sisterFather.rawValue:
             let cellSisterFather = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.CreatePatientTreeID.rawValue, for: indexPath) as! CreatePatientTree
+            cellSisterFather.setNumberDelegate = self
+
             cellSisterFather.questionLabel.text = QuestionType.sisterFather.selectQuestion()
             cellSisterFather.cellType = .sisterFather
-            cellSisterFather.setNumberDelegate = self
+            cellSisterFather.layoutSubviews()
+            cellSisterFather.numberOfMembers.text = String(answers.sistersOfFather)
+
             
             return cellSisterFather
             
         default:
             let cellBrothers = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.CreatePatientTreeID.rawValue, for: indexPath) as! CreatePatientTree
             cellBrothers.setNumberDelegate = self
+            cellBrothers.numberOfMembers.text = String(answers.brothers)
+
+            cellBrothers.layoutSubviews()
             return cellBrothers
         }
     }
     
-    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let generate = tableView.dequeueReusableCell(withIdentifier: "GenerateCellID") as! GenerateFamilyCellTableViewCell
-        generate.delegate = self
-        return generate
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        switch section {
+        case 0:
+            let questionGender = tableView.dequeueReusableCell(withIdentifier: "CreatePatientGender") as! CreatePatientTreeGender
+            questionGender.questionLabel.text = QuestionType.gender.selectQuestion()
+            return questionGender
+            
+        case 1:
+            let questionGenderPartner = tableView.dequeueReusableCell(withIdentifier: "CreatePatientGender") as! CreatePatientTreeGender
+            questionGenderPartner.questionLabel.text = QuestionType.genderPartner.selectQuestion()
+            return questionGenderPartner
+            
+        default:
+            return nil
+        }
     }
     
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        switch section {
+        case 0:
+            return 38
+        case 1:
+            return 38
+        default:
+            return 0
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        switch section {
+            
+        case 2:
+            let generate = tableView.dequeueReusableCell(withIdentifier: "GenerateCellID") as! GenerateFamilyCellTableViewCell
+            generate.center = CGPoint(x: view.bounds.midX, y: view.bounds.midY )
+            let screenwidth = self.view.frame.size.width
+            var frame = generate.frame
+            frame.size.width = screenwidth
+            generate.frame = frame
+            generate.delegate = self
+            generate.layoutSubviews()
+            generate.setNeedsLayout()
+            return generate
+            
+        default:
+            return nil
+        }
+    }
+    
+    
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 44
+        switch section{
+        case 2:
+            return 44
+            
+        default:
+            return 0
+        }
     }
     
     
     override func viewDidAppear(_ animated: Bool) {
         familyTreeGenerator = FamilyTreeGenerator.init(familyTree: [:])
+        
     }
 
     

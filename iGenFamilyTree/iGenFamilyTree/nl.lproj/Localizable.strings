@@ -15,6 +15,9 @@
 "numberSistersfromMother" = "Hoeveel zussen heeft je moeder (jouw tantes)?";
 "numberBrothersfromFather" = "Hoeveel broers heeft je vader (jouw ooms)?";
 "numberSistersfromFather" = "Hoeveel zussen heeft je vader (jouw tantes)?";
+"chooseGender" = "Welk geslacht bent u?";
+"chooseGenderSpouse" = "Welk geslacht is uw partner?";
+
 
 //Modal view labels
 "modalViewTitle" = "PERSOONSGEGEVENS";
