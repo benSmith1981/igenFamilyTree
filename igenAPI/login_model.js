@@ -5,7 +5,7 @@ var mongoose = require('mongoose');
 var LoginSchema = new mongoose.Schema({
 	username: String,
 	password: String,
-	familyTreeID: String,
+	patientID: String,
 	id: String
 })
 
