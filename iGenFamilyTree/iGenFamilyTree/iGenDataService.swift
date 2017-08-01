@@ -163,17 +163,41 @@ class iGenDataService {
     // post a verify request after invitation by a Patient
     public static func verifyMember(with details: VerifyMember) {
         let verifyDetails: Parameters = [
-            "email" : details.email,
+            "patientName" : details.patientName,
+            "patientEmail" : details.patientEmail,
+            "verifyName" : details.verifyName,
+            "verifyEmail" : details.verifyEmail,
             "patientID" : details.patientID,
             "userID" : details.userID,
-            "patientName" : details.patientName,
-            "name" : details.name,
-            "sendersEmail" : details.sendersEmail
+            "code" : details.code,
+            "emailText" : details.emailText
         ]
-        print("verifymember \(verifyDetails)")
-        guard details.email.isValidEmail() && details.sendersEmail.isValidEmail() else {
-            print("Need two valid EMAIL addresses")
-            return
+        
+        
+        if details.verifyEmail.isValidEmail() && details.patientEmail.isValidEmail(){
+            print("verifymember \(verifyDetails)")
+            Alamofire.request("\(Constants.herokuAPI)verifymember/",
+                method: .post,
+                parameters: verifyDetails,
+                encoding: JSONEncoding.default).responseJSON { (response) in
+                    switch response.result {
+                    case .success(let jsonData):
+                        if let responseDict = jsonData as? NSDictionary{
+                            NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationIDs.verifyNotificationID.rawValue),
+                                                            object: self,
+                                                            userInfo: responseDict as! [String : Any])
+                            print("success \(responseDict)")
+                        }
+                    case .failure(let error):
+                        print("error \(error)")
+                    }
+            }
+        } else {
+            let responseDict:[String : Any] = ["success": false, "message": "Enter a valid Email(s)" ]
+            NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationIDs.verifyNotificationID.rawValue),
+                                            object: self,
+                                            userInfo: responseDict as! [String : Any])
+            
         }
         Alamofire.request("\(Constants.herokuAPI)verifymember/",
             method: .post,

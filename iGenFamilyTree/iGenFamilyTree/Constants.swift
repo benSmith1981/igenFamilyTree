@@ -72,6 +72,8 @@ enum CustomCellIdentifiers: String {
     case CreatePatientGender
     case detailImageCellID
     case infoCellID
+    case descriptionTableViewCellID
+
 }
 
 enum CustomCellNames: String {
@@ -83,6 +85,7 @@ enum NotificationIDs: String {
     case iGenData
     case loginNotificationID
     case registerNotificationID
+    case verifyNotificationID
     case iGenDiseaseData
 }
 

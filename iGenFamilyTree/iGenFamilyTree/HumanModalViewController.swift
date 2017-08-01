@@ -22,6 +22,11 @@ enum detailRows: Int {
     case disease4Row
     case disease5Row
     case disease6Row
+    case patientName
+    case patientEmail
+    case verifyName
+    case verifyEmail
+    case emailText
     
     func positionAsInteger() -> Int {
         switch self {
@@ -43,6 +48,8 @@ enum detailRows: Int {
             return 7
         case .disease6Row:
             return 8
+        default:
+            return 0
         }
     }
 }
@@ -87,10 +94,6 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
     @IBOutlet weak var headerBG: UIView!
     @IBOutlet weak var dimBackground: UIView!
     
-    @IBAction func verifyMember(_ sender: Any) {
-        self.performSegue(withIdentifier: "modifySegue", sender: self)
-    }
-    
     func pickerViewEndEditing() {
         self.view.endEditing(true)
         pickerDim.alpha = 0.0
@@ -116,6 +119,14 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
         closeView()
     }
     
+    @IBAction func VerifyHuman(_ sender: Any) {
+
+        let verifyStoryboard: UIStoryboard = UIStoryboard(name: "VerifyMemberStoryboard", bundle: nil)
+        let verifyVC = verifyStoryboard.instantiateViewController(withIdentifier: "VerifyHumanID") as! VerifyMemberVC
+        verifyVC.currentHuman = currentHuman
+        self.present(verifyVC, animated:true, completion:nil)
+
+    }
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -275,7 +286,7 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
             } else if currentDiseases != nil {
                 //delete disease
                 humanDetails?.diseases[cellContent.getID()] = nil
-                iGenDataService.deleteDisease(id: (currentDiseases?.id)!)
+//                iGenDataService.deleteDisease(id: (currentDiseases?.id)!)
                 currentDiseases = nil
             } else {
                 editingDiseases = nil

@@ -40,3 +40,11 @@
 "male" = "Man";
 "female" = "Vrouw";
 "genderspouse" = "Welk geslacht is uw partner?";
+
+//Verify fields
+"verifyTitle" = "VERIFISEER LID";
+"patientEmail" = "Uw e-mail";
+"patientName" = "Uw naam";
+"verifyEmail" = "Verificatie e-mail";
+"verifyName" = "Verificatie naam";
+"emailText" = "Dear %@ , \r\nYour family member has created an iGen family tree and asked you to verify your information that they have added about your health history. You don't have to share this information with anyone, other than the family doctor, but it will help to diagnose and treat your family better.\r\n\r\n1) Download the iGen app \r\n2) Login with this %@ , and this code: %@ \r\n3) Find your information in the tree and confirm it\r\n\r\nWe hope you love the app and it helps you improve you and your families health\r\nYours %@";
