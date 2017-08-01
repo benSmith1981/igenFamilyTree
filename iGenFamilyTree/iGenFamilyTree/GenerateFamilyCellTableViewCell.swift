@@ -9,22 +9,22 @@
 import UIKit
 
 class GenerateFamilyCellTableViewCell: UITableViewCell {
+    
+    
+    @IBOutlet weak var buttonOutlet: UIView!
+    
+    
     var delegate: SetNumberOfFamilyMembers?
     override func awakeFromNib() {
         super.awakeFromNib()
-//        self.contentView.autoresizingMask = UIViewAutoresizing.flexibleWidth
 
-        //UIViewAutoresizing.flexibleHeight
-        let rectShapeBottom = CAShapeLayer()
-        //        rectShapeBottom.bounds = self.OutletGenerateTree.frame
-        rectShapeBottom.bounds = self.frame.insetBy(dx: 10.0, dy: 10.0)
-        rectShapeBottom.position = self.center
-        rectShapeBottom.path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: [.allCorners ], cornerRadii: CGSize(width: 10, height: 10)).cgPath
-//        self.layoutMargins = UIEdgeInsetsMake(0, 10, 0, 10)
-        self.layer.mask = rectShapeBottom
+//        let rectShapeBottom = CAShapeLayer()
+        //rectShapeBottom.bounds = self.frame.insetBy(dx: 10.0, dy: 10.0)
+        //rectShapeBottom.position = buttonOutlet.center
+//        rectShapeBottom.path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: [.bottomLeft, .bottomRight ], cornerRadii: CGSize(width: 10, height: 10)).cgPath
+//        self.layer.mask = rectShapeBottom
+        
         self.layoutSubviews()
-
-        // Initialization code
     }
 
     @IBAction func generateTree(_ sender: Any) {
@@ -33,12 +33,10 @@ class GenerateFamilyCellTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-//        self.contentView.autoresizingMask = UIViewAutoresizing.flexibleWidth
 
     }
     

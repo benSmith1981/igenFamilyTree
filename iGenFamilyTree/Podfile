@@ -4,8 +4,6 @@ use_frameworks!
 
 target 'iGenFamilyTree' do
     pod 'Alamofire', '~> 4.4'
-    pod 'Eureka', '~> 3.0'
     pod 'AGi18n', '~> 0.0'
     pod 'DeviceKit', '~> 1.0'
-    
 end
