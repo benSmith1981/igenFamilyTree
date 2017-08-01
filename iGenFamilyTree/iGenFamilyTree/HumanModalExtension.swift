@@ -11,6 +11,11 @@ import UIKit
 
 extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
     
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+//        diseaseArray.hidden = false
+        return false
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return DetailViewSections.numberOfSections
@@ -203,10 +208,33 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
             return fifthDiseaseCell
             
         default:
-            
             return UITableViewCell()
             
         }
+    }
+    
+//    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+////        if section == 1 {
+////            let diseasePicker = UIPickerView.init()
+////
+////                //tableView.dequeueReusableCell(withIdentifier: "diseasePickerID") as! PickerTableCellTableViewCell
+////            //            diseasePicker.delegate = self
+////            return diseasePicker
+////        } else {
+////            return UIView()
+////        }
+//    }
+//    
+//    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+//        if section == 1 {
+//            let diseasePicker = tableView.dequeueReusableCell(withIdentifier: "diseasePickerID") as! PickerTableCellTableViewCell
+//            return diseasePicker.frame.size.height
+//        } else {
+//            return 0
+//        }
+//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
     }
     
         

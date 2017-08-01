@@ -1,4 +1,4 @@
-//
+    //
 //  HumanModalViewController.swift
 //  iGenFamilyTree
 //
@@ -51,8 +51,12 @@ protocol updateParametersDelegate: class {
     func getHumanUpdates(value: Any, cellType: detailRows, indexPath:IndexPath)
     func addDisease()
     func removeDisease(indexPath:IndexPath)
+    func showPicker()
+    func hidePicker()
 }
 extension updateParametersDelegate {
+    func showPicker() {}
+    func hidePicker(){}
     func addDisease() {}
     func removeDisease(indexPath:IndexPath) {}
 }
@@ -67,6 +71,10 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
     var editingHuman: Human?
     var currentDiseases: Disease?
     var editingDiseases: Disease?
+    var diseaseArray = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
+    
+    @IBOutlet weak var pickerDisease: UIView!
+
     
     @IBOutlet weak var modelViewTitle: UILabel!
     @IBOutlet var containerView: UIView!
@@ -74,6 +82,12 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
     @IBOutlet weak var footerBG: UIView!
     @IBOutlet weak var headerBG: UIView!
     
+    @IBOutlet weak var pickerheightconstraint: NSLayoutConstraint!
+    @IBAction func verifyMember(_ sender: Any) {
+//        self.modalTableView.selectRow(at: IndexPath.init(row: 0, section: 0), animated: true, scrollPosition: UITableViewScrollPosition.none)
+        self.performSegue(withIdentifier: "modifySegue", sender: self)
+
+    }
     @IBAction func addDiseaseRow(_ sender: Any) {
         if let currentDiseases = currentDiseases {
             currentDiseases.diseaseList.append("")
@@ -81,6 +95,11 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
         }
     }
     
+    
+    
+    @IBAction func dismissPIcker(_ sender: UITapGestureRecognizer) {
+        self.hidePicker()
+    }
     @IBAction func dismissPopover(_ sender: Any) {
         closeView()
     }
@@ -95,6 +114,8 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
     override func viewDidLoad() {
         
         super.viewDidLoad()
+//        pickerDisease.dataSource = self
+//        pickerDisease.delegate = self
         
         self.hideKeyboardWhenTappedAround()
         
@@ -149,6 +170,11 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
         let infoCell = UINib(nibName: "InfoCell", bundle: nil)
         self.modalTableView.register(infoCell, forCellReuseIdentifier: CustomCellIdentifiers.infoCellID.rawValue)
 
+        let pickerCell = UINib(nibName: "PickerTableCellTableViewCell", bundle: nil)
+        self.modalTableView.register(pickerCell, forCellReuseIdentifier: "diseasePickerID")
+        
+        
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -173,6 +199,9 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
     }
     
     func getHumanUpdates(value: Any, cellType: detailRows, indexPath: IndexPath){
+        //animate the picker
+        
+
         switch cellType {
         case .nameRow:
             self.editingHuman?.name = value as! String
@@ -198,8 +227,25 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
         }
     }
     
-    
-    
+    func showPicker(){
+        UIView.animate(withDuration: 1.5, animations: {
+            self.pickerDisease.alpha = 1.0
+            self.pickerheightconstraint.constant = 450
+            
+        }) { (success) in
+            //
+            print(self.pickerDisease.frame)
+        }
+    }
+    func hidePicker(){
+        UIView.animate(withDuration: 1.5, animations: {
+            self.pickerDisease.alpha = 0
+            self.pickerheightconstraint.constant = 0
+            
+        }) { (success) in
+            //
+        }
+    }
     func addDisease() {
         if let editingDiseases = editingDiseases {
             

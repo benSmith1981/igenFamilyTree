@@ -47,12 +47,16 @@ class InfoCell: UITableViewCell, UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
         if let indexPath = indexPath , let cellType = cellType{
-                    delegate?.getHumanUpdates(value: textField.text ?? "" , cellType: cellType, indexPath: indexPath)
+            delegate?.getHumanUpdates(value: textField.text ?? "" , cellType: cellType, indexPath: indexPath)
+//            delegate?.hidePicker()
         }
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         //        delegate?.getHumanUpdates(value: textField.text ?? "" , cellType: cellType!)
+        
+            delegate?.showPicker()
+        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
