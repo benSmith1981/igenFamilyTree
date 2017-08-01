@@ -11,6 +11,10 @@ import UIKit
 
 extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
     
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        return false
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return DetailViewSections.numberOfSections
@@ -38,7 +42,6 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        //enums for each case (e.g. 0, 1, 2, ...)
         switch indexPath.section {
         
         case DetailViewSections.staticSections:
@@ -109,6 +112,7 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    //***** TO DO: FIX THAT YOU CAN ADD ANY DISEASE, NOT ONLY BOTTOM ONE
     func loadDynamicSection(indexPath: IndexPath, tableView: UITableView) -> UITableViewCell{
         switch indexPath.row {
         case DetailViewSections.firstDiseaseRow:
@@ -123,11 +127,16 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
             firstDiseaseCell.delegate = self
             if let diseaseOne = editingDiseases?.diseaseList[0] {
                 firstDiseaseCell.textfieldValue.text = "\(String(describing: diseaseOne))"
-            } /*else {
-                firstDiseaseCell.textfieldValue.text = ""
-                firstDiseaseCell.textfieldValue.placeholder = NSLocalizedString("placeholderDisease", comment: "")
-            }*/
+            }
             
+            pickerView.delegate = firstDiseaseCell.self
+            firstDiseaseCell.textfieldValue.inputView = pickerView
+            pickerView.backgroundColor = UIColor.white
+            toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
+            toolBar.isUserInteractionEnabled = true
+            firstDiseaseCell.textfieldValue.inputAccessoryView = toolBar
+            
+
             return firstDiseaseCell
             
         case DetailViewSections.secondDiseaseRow:
@@ -145,6 +154,13 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
             if let secondDisease = editingDiseases?.diseaseList[1] {
                 secondDiseaseCell.textfieldValue.text = String(describing: secondDisease)
             }
+            
+            pickerView.delegate = secondDiseaseCell.self
+            secondDiseaseCell.textfieldValue.inputView = pickerView
+            toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
+            toolBar.isUserInteractionEnabled = true
+            secondDiseaseCell.textfieldValue.inputAccessoryView = toolBar
+            //pickerDim.alpha = 1.0
             
             return secondDiseaseCell
             
@@ -164,6 +180,12 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
                 thirdDiseaseCell.textfieldValue.text = String(describing: thirdDisease)
             }
             
+            pickerView.delegate = thirdDiseaseCell.self
+            thirdDiseaseCell.textfieldValue.inputView = pickerView
+            toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
+            toolBar.isUserInteractionEnabled = true
+            thirdDiseaseCell.textfieldValue.inputAccessoryView = toolBar
+            
             return thirdDiseaseCell
             
         case DetailViewSections.fourthDiseaseRow:
@@ -181,6 +203,12 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
             if let fourthDisease = editingDiseases?.diseaseList[3] {
                 fourthDiseaseCell.textfieldValue.text = String(describing: fourthDisease)
             }
+            
+            pickerView.delegate = fourthDiseaseCell.self
+            fourthDiseaseCell.textfieldValue.inputView = pickerView
+            toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
+            toolBar.isUserInteractionEnabled = true
+            fourthDiseaseCell.textfieldValue.inputAccessoryView = toolBar
             
             return fourthDiseaseCell
             
@@ -200,13 +228,23 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
                 fifthDiseaseCell.textfieldValue.text = String(describing: fifthDisease)
             }
             
+            pickerView.delegate = fifthDiseaseCell.self
+            fifthDiseaseCell.textfieldValue.inputView = pickerView
+            toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
+            toolBar.isUserInteractionEnabled = true
+            fifthDiseaseCell.textfieldValue.inputAccessoryView = toolBar
+            
+            
             return fifthDiseaseCell
             
         default:
-            
             return UITableViewCell()
             
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
     }
     
         

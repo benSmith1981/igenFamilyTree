@@ -1,4 +1,4 @@
-//
+    //
 //  HumanModalViewController.swift
 //  iGenFamilyTree
 //
@@ -58,13 +58,17 @@ protocol updateParametersDelegate: class {
     func getHumanUpdates(value: Any, cellType: detailRows, indexPath:IndexPath)
     func addDisease()
     func removeDisease(indexPath:IndexPath)
+    func showPicker()
+    func hidePicker()
 }
 extension updateParametersDelegate {
+    func showPicker() {}
+    func hidePicker(){}
     func addDisease() {}
     func removeDisease(indexPath:IndexPath) {}
 }
 
-class HumanModalViewController: UIViewController, UIViewControllerTransitioningDelegate, updateParametersDelegate  {
+class HumanModalViewController: UIViewController, UIViewControllerTransitioningDelegate, updateParametersDelegate, UIPickerViewDelegate {
     
     // Objects to pass through:
     var humanDetails: FamilyTreeGenerator?
@@ -74,12 +78,30 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
     var editingHuman: Human?
     var currentDiseases: Disease?
     var editingDiseases: Disease?
+    var pickerView = UIPickerView()
+    let toolBar = UIToolbar()
+    let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.plain, target: self, action: #selector(pickerViewEndEditing))
+    let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+    let cancelButton = UIBarButtonItem(title: "Reset", style: UIBarButtonItemStyle.plain, target: self, action: #selector(cancelPickerView))
     
+    //*****TO DO: SET PICKERDIM ALPHA TO 0.4 WHEN PICKER IS SUMMONED OR
+    //*****TO DO: PICKUP WHICH TEXTFIELD IS SELECTED, AND SAVE VALUE FOR THAT FIELD
+    @IBOutlet weak var pickerDim: UIView!
     @IBOutlet weak var modelViewTitle: UILabel!
     @IBOutlet var containerView: UIView!
     @IBOutlet weak var modalTableView: UITableView!
     @IBOutlet weak var footerBG: UIView!
     @IBOutlet weak var headerBG: UIView!
+    @IBOutlet weak var dimBackground: UIView!
+    
+    func pickerViewEndEditing() {
+        self.view.endEditing(true)
+        pickerDim.alpha = 0.0
+    }
+    
+    func cancelPickerView() {
+        pickerView.selectRow(0, inComponent: 0, animated: true)
+    }
     
     @IBAction func addDiseaseRow(_ sender: Any) {
         if let currentDiseases = currentDiseases {
@@ -110,6 +132,12 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
         super.viewDidLoad()
         
         self.hideKeyboardWhenTappedAround()
+        
+        toolBar.barStyle = UIBarStyle.default
+        toolBar.isTranslucent = true
+        toolBar.tintColor = UIColor.white
+        toolBar.sizeToFit()
+        toolBar.barTintColor = UIColor(red:0.85, green:0.36, blue:0.39, alpha:1.0)
         
         modalTableView.frame = CGRect(x: modalTableView.frame.origin.x, y: modalTableView.frame.origin.y, width: modalTableView.frame.size.width, height: modalTableView.contentSize.height)
         modalTableView.allowsSelection = false
@@ -162,6 +190,9 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
         let infoCell = UINib(nibName: "InfoCell", bundle: nil)
         self.modalTableView.register(infoCell, forCellReuseIdentifier: CustomCellIdentifiers.infoCellID.rawValue)
 
+        let pickerCell = UINib(nibName: "PickerTableCellTableViewCell", bundle: nil)
+        self.modalTableView.register(pickerCell, forCellReuseIdentifier: "diseasePickerID")
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -186,6 +217,9 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
     }
     
     func getHumanUpdates(value: Any, cellType: detailRows, indexPath: IndexPath){
+        //animate the picker
+        
+
         switch cellType {
         case .nameRow:
             self.editingHuman?.name = value as! String
@@ -211,13 +245,19 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
         }
     }
     
-    
-    
     func addDisease() {
         if let editingDiseases = editingDiseases {
             
-            editingDiseases.diseaseList.append("")
-            self.modalTableView.reloadData()
+            if editingDiseases.diseaseList.count < 5 {
+                editingDiseases.diseaseList.append("")
+                self.modalTableView.reloadData()
+            } else {
+                let alertController = UIAlertController(title: "Limit diseases reached", message:
+                    "Currently a person has a maximum of 5 genetic disorders at a time.", preferredStyle: UIAlertControllerStyle.alert)
+                alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+                
+                self.present(alertController, animated: true, completion: nil)
+            }
         }
     }
     
