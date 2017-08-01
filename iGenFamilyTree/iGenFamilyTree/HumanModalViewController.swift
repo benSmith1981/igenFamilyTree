@@ -90,6 +90,12 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
         closeView()
     }
     
+    @IBAction func VerifyHuman(_ sender: Any) {
+        let verifyVC = self.storyboard!.instantiateViewController(withIdentifier: "VerifyHumanID") as! VerifyMemberVC
+        verifyVC.currentHuman = currentHuman
+        self.present(verifyVC, animated:true, completion:nil)
+
+    }
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -231,7 +237,7 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
             } else if currentDiseases != nil {
                 //delete disease
                 humanDetails?.diseases[cellContent.getID()] = nil
-                iGenDataService.deleteDisease(id: (currentDiseases?.id)!)
+//                iGenDataService.deleteDisease(id: (currentDiseases?.id)!)
                 currentDiseases = nil
             } else {
                 editingDiseases = nil
