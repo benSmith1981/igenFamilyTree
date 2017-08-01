@@ -73,8 +73,9 @@ class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembe
 
     var answers = Answers()
     var familyTreeGenerator = FamilyTreeGenerator.init(familyTree: [:])
-    
-    func generateTree(){
+    var serverResponse: ServerResponse?
+
+    func generateTree() {
         familyTreeGenerator.generateNewFamilyTree(with: answers)
         self.performSegue(withIdentifier: Segues.familytreeSegue.rawValue, sender: self)
     }
@@ -178,9 +179,8 @@ class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembe
         //        if segue.identifier == segues.familytreeSegue.rawValue {
         let ccData = segue.destination as! CustomCollectionViewController
         ccData.familyTreeGenerator = familyTreeGenerator
-    }
-    //    }
-    
+        ccData.serverResponse = serverResponse
+    }    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

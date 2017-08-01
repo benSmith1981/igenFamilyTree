@@ -57,6 +57,7 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
             
             let imageCell = tableView.dequeueReusableCell(withIdentifier: "detailImageCellID", for: indexPath) as! DetailmageSliderCell
             imageCell.delegate = self
+            imageCell.indexPath = indexPath
             imageCell.awakeFromNib()
             imageCell.separatorInset.left = view.frame.width
             imageCell.humanGender = self.editingHuman?.gender
@@ -76,6 +77,7 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
             nameCell.textfieldValue.text = self.editingHuman?.name
             nameCell.cellType = .nameRow
             nameCell.delegate = self
+            nameCell.indexPath = indexPath
             if self.editingHuman?.gender == JsonKeys.male.rawValue {
                 nameCell.textfieldValue.placeholder = NSLocalizedString("placeholderNameMale", comment: "")
                 
@@ -96,7 +98,8 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
             dateOfBirthCell.titleInfo.text = NSLocalizedString("dateOfBirth", comment: "")
             dateOfBirthCell.textfieldValue.text = self.editingHuman?.dob
             dateOfBirthCell.textfieldValue.placeholder = NSLocalizedString("placeholderDateOfBirth", comment: "")
-                
+            
+            dateOfBirthCell.indexPath = indexPath
             dateOfBirthCell.cellType = .dobRow
             dateOfBirthCell.delegate = self
             return dateOfBirthCell
