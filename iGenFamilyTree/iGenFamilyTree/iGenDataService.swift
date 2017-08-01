@@ -12,108 +12,29 @@ import Alamofire
 struct ServerResponse {
     var response: Bool
     var message: String
-    var familyTree: NSArray
-    var loginDetails: NSDictionary
-    var userID: String
-    var patientID: String
-
+    var familyTree: [ID: Human]
+    var username: String
+    var userID: ID
+    var patientID: ID
 }
+
 class iGenDataService {
     
-    // login - get a loginID and familytree (a number of Human objects) by patientID
-    public static func login(username: String, password: String) {
-        let login: Parameters = [
-            "username": username,
-            "password": password
-        ]
-        print("login \(username)")
-        Alamofire.request("\(Constants.herokuAPI)login",
-            method: .post,
-            parameters: login,
-            encoding: JSONEncoding.default).responseJSON { (response) in
-                switch response.result {
-                case .success:
-                    print("login successful")
-                    var humans: [ID : Human] = [:]
-                    if let jsonResponse = response.result.value as? NSDictionary {
-                        let loginID = jsonResponse["userid"] as! String
-                        let defaults = UserDefaults.standard
-                        defaults.set(loginID, forKey: "loginID")
-                        let jsonHumans = jsonResponse["familyTree"] as! NSArray
-                        for humanDict in jsonHumans {
-                            let humanObject = Human.init(dictionary: humanDict as! NSDictionary)
-                            humans[humanObject.id] = humanObject
-                        }
-                        print(humans)
-                        NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationIDs.iGenData.rawValue),
-                                                        object: self,
-                                                        userInfo: humans)
-                    }
-                case .failure(let error):
-                    print(error)
-                }
-        }
-    }
-//    public static func register(username: String, password: String) {
-//        let register: Parameters = [
-//            "username": username,
-//            "password": password
-//        ]
-//        print("register \(username)")
-//        Alamofire.request("\(Constants.herokuAPI)register",
-//            method: .post,
-//            parameters: register,
-//            encoding: JSONEncoding.default).responseJSON { (response) in
-//                switch response.result {
-//                case .success(let jsonData):
-//                    print("success \(jsonData)")
-//                    
-//                case .failure(let error):
-//                    print("error \(error)")
-//                }
-//        }
-//    }
-    
-    // get a familytree (a number of Human objects) by patientID
-    public static func parseiGenData(jsonName: String){
-        //let pathURL = Bundle.main.url(forResource: jsonName, withExtension: "json")
-        let pathURL = "\(Constants.herokuAPI)gettree?patientID=\(jsonName)"
-        Alamofire.request(pathURL).validate().responseJSON { (response) in
-            switch response.result {
-            case .success:
-                print("Validation Successful")
-                var humans: [ID : Human] = [:]
-                if let jsonHumans = response.result.value as? NSArray {
-                    for humanDict in jsonHumans {
-                        let humanObject = Human.init(dictionary: humanDict as! NSDictionary)
-                        humans[humanObject.id] = humanObject
-                    }
-                    print(humans)
-                    NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationIDs.iGenData.rawValue),
-                                                    object: self,
-                                                    userInfo: humans)
-                }
-            case .failure(let error):
-                print(error)
-            }
-        }
-    }
     // get a Disease object by id
     // it is possible and acceptable that Disease data is not available for a Human.id
-    public static func parseiGenDiseaseData(jsonName: String){
+    public static func parseiGenDiseaseData(id: ID){
         //        if let pathURL = Bundle.main.url(forResource: jsonName, withExtension: "json"){
-        let pathURL = "\(Constants.herokuAPI)getdiseases?id=\(jsonName)"
+        let pathURL = "\(Constants.herokuAPI)getdiseases?id=\(id)"
         Alamofire.request(pathURL).validate().responseJSON { (response) in
             switch response.result {
             case .success:
-                print("Validation Successful")
                 if let jsonDict = response.result.value as? NSDictionary {
-                    let key = jsonDict.allKeys[0]
-                    let diseaseDict = jsonDict[key] as! NSDictionary
-                    let diseaseObject = Disease.init(dictionary: diseaseDict)
+//                    let key = jsonDict.allKeys[0]
+//                    let diseaseDict = jsonDict[key] as! NSDictionary
+                    let diseaseObject = Disease.init(dictionary: jsonDict)
                     var diseases: [ID : Disease] = [:]
-                    diseases[key as! ID] = diseaseObject
-                    print(diseases)
+                    diseases[id] = diseaseObject
+                    print("Get diseases", diseases)
                     NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationIDs.iGenDiseaseData.rawValue),
                                                     object: self,
                                                     userInfo: diseases)
@@ -121,6 +42,23 @@ class iGenDataService {
             case .failure(let error):
                 print(error)
             }
+        }
+    }
+    
+    // delete a Disease by id
+    public static func deleteDisease(id: ID) {
+        print("deleteDisease \(id)")
+        Alamofire.request("\(Constants.herokuAPI)deletediseases?id=\(id)",
+            method: .get,
+            //            parameters: diseaseUpdate,
+            encoding: JSONEncoding.default).responseJSON { (response) in
+                switch response.result {
+                case .success(let jsonData):
+                    print("success \(jsonData)")
+                    
+                case .failure(let error):
+                    print("error \(error)")
+                }
         }
     }
     
@@ -170,8 +108,8 @@ class iGenDataService {
     }
     
     // put a Human object by id
-    public static func saveHuman(_ human: Human, loginID: ID) {
-        human.logChangesBy(loginID, "name, dob, gender")
+    public static func saveHuman(_ human: Human, userID: ID) {
+        human.logChangesBy(userID, "name, dob, gender")
         let humanUpdate: Parameters = [
             "name": human.name,
             "dob": human.dob ?? "",
@@ -196,8 +134,8 @@ class iGenDataService {
     }
     
     // put a Disease object by id
-    public static func saveDisease(_ disease: Disease, loginID: ID) {
-        disease.logChangesBy(loginID, "diseaseList")
+    public static func saveDisease(_ disease: Disease, userID: ID) {
+        disease.logChangesBy(userID, "diseaseList")
         let diseaseUpdate: Parameters = [
             "id":disease.id,
             "diseaseList": disease.diseaseList,
@@ -222,7 +160,7 @@ class iGenDataService {
         }
     }
     
-    //Only to update the patient who just registered a new tree so their ID equals the Patiend ID (or the family tree id)
+    // post a verify request after invitation by a Patient
     public static func verifyMember(with details: VerifyMember) {
         let verifyDetails: Parameters = [
             "email" : details.email,
@@ -232,161 +170,178 @@ class iGenDataService {
             "name" : details.name,
             "sendersEmail" : details.sendersEmail
         ]
-        if details.email.isValidEmail() && details.sendersEmail.isValidEmail(){
-            print("verifymember \(verifyDetails)")
-            Alamofire.request("\(Constants.herokuAPI)verifymember/",
-                method: .post,
-                parameters: verifyDetails,
-                encoding: JSONEncoding.default).responseJSON { (response) in
-                    switch response.result {
-                    case .success(let jsonData):
-                        print("success \(jsonData)")
-                        
-                    case .failure(let error):
-                        print("error \(error)")
-                    }
-            }
-        } else {
-            print("Need a valid EMAILs")
-            
+        print("verifymember \(verifyDetails)")
+        guard details.email.isValidEmail() && details.sendersEmail.isValidEmail() else {
+            print("Need two valid EMAIL addresses")
+            return
+        }
+        Alamofire.request("\(Constants.herokuAPI)verifymember/",
+            method: .post,
+            parameters: verifyDetails,
+            encoding: JSONEncoding.default).responseJSON { (response) in
+                switch response.result {
+                case .success(let jsonData):
+                    print("success \(jsonData)")
+                    
+                case .failure(let error):
+                    print("error \(error)")
+                }
         }
     }
     
-    //Only to update the patient who just registered a new tree so their ID equals the Patiend ID (or the family tree id)
-    public static func updateThePatientID(withLogin login: Login) {
-        let loginDetails: Parameters = [
-            "username":login.username,
-            "patientID": login.familyTreeID
+    // update userID / patientID who just registered a new family tree
+    public static func updateUserID(withLogin update: Login) {
+        let updateDetails: Parameters = [
+            "username": update.username,
+            "patientID": update.PatientID
         ]
-        if login.username.isValidEmail(){
-            print("loginDetails \(login)")
-            Alamofire.request("\(Constants.herokuAPI)addpatientsid/",
-                method: .put,
-                parameters: loginDetails,
-                encoding: JSONEncoding.default).responseJSON { (response) in
-                    switch response.result {
-                    case .success(let jsonData):
-                        print("success \(jsonData)")
-                        
-                    case .failure(let error):
-                        print("error \(error)")
-                    }
-            }
-        } else {
-            print("Need a valid EMAIL")
-            
+        print("updateUserIDDetails \(login)")
+        guard update.username.isValidEmail() else {
+            print("Need a valid EMAIL address")
+            return
+        }
+        Alamofire.request("\(Constants.herokuAPI)addpatientsid/",
+            method: .put,
+            parameters: updateDetails,
+            encoding: JSONEncoding.default).responseJSON { (response) in
+                switch response.result {
+                case .success(let jsonData):
+                    print("success \(jsonData)")
+                    
+                case .failure(let error):
+                    print("error \(error)")
+                }
         }
     }
     
+    // login - get a userID and familytree (a number of Human objects) by patientID
     public static func login(_ login: Login) {
         let loginDetailsParams: Parameters = [
-            "username":login.username,
+            "username": login.username,
             "password": login.password
         ]
-        if login.username.isValidEmail(){
         print("loginDetails \(login)")
-            Alamofire.request("\(Constants.herokuAPI)login/",
-                method: .post,
-                parameters: loginDetailsParams,
-                encoding: JSONEncoding.default).responseJSON { (response) in
-                    switch response.result {
-                    case .success(let jsonData):
-                        if let jsonDict = response.result.value as? NSDictionary,
-                            let success = jsonDict["success"] as? Bool,
-                            let message = jsonDict["message"] as? String,
-                            let familyTree = jsonDict["familyTree"] as? NSArray,
-                            let userID = jsonDict["userID"] as? String,
-                            let patientID = jsonDict["patientID"] as? String{
-                            
+        guard login.username.isValidEmail() else {
+            print("Need a valid EMAIL address")
+            return
+        }
+        Alamofire.request("\(Constants.herokuAPI)login/",
+            method: .post,
+            parameters: loginDetailsParams,
+            encoding: JSONEncoding.default).responseJSON { (response) in
+                switch response.result {
+                case .success(let jsonData):
+                    if let jsonDict = response.result.value as? NSDictionary,
+                        let success = jsonDict["success"] as? Bool,
+                        let message = jsonDict["message"] as? String  {
+                        if success {
+                            if let familyTree = jsonDict["familyTree"] as? NSArray,
+                                let userID = jsonDict["userID"] as? ID,
+                                let patientID = jsonDict["patientID"] as? ID {
+                                
+                                // convert array into dictionary
+                                var humans: [ID: Human] = [:]
+                                for humanDict in familyTree {
+                                    let humanObject = Human.init(dictionary: humanDict as! NSDictionary)
+                                    humans[humanObject.id] = humanObject
+                                }
+                                print(humans)
+                                
                                 let res = ServerResponse.init(response: success,
                                                               message: message,
-                                                              familyTree: familyTree,
-                                                              loginDetails: [:],
+                                                              familyTree: humans,
+                                                              username: login.username,
                                                               userID: userID,
                                                               patientID: patientID)
+                                
                                 let responseLogin = ["response": res]
                                 NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationIDs.loginNotificationID.rawValue),
                                                                 object: self,
                                                                 userInfo: responseLogin)
                                 print("success \(jsonDict)")
-                        }
-                        
-                        print("success \(jsonData)")
-                        
-                    case .failure(let error):
-                        if let jsonDict = response.result.value as? NSDictionary {
-                            let message = jsonDict["message"]
-                            let responseLogin = ["message": "\(error) \(message)"]
+                            }
+                            
+                        } else {
+                            let responseLogin = ["message": "\(message)"]
                             NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationIDs.loginNotificationID.rawValue),
                                                             object: self,
                                                             userInfo: responseLogin)
-                            print("success \(jsonDict)")
+                            print("failure \(jsonDict)")
                         }
-                        
-                        print("error \(error)")
                     }
-            }
-        } else {
-            print("Need a valid EMAIL")
-        
+                    print("success \(jsonData)")
+                    
+                case .failure(let error):
+                    print("error \(error)")
+                }
         }
     }
-
-    public static func register(_ login: Login) {
-        let loginDetails: Parameters = [
-            "username":login.username,
-            "password": login.password
+    
+    // register - post login details (username and password)
+    public static func register(_ register: Login) {
+        let registerDetails: Parameters = [
+            "username": register.username,
+            "password": register.password
         ]
-        if login.username.isValidEmail(){
-            print("loginDetails \(login)")
-            Alamofire.request("\(Constants.herokuAPI)login/",
-                method: .post,
-                parameters: loginDetails,
-                encoding: JSONEncoding.default).responseJSON { (response) in
-                    switch response.result {
-                    case .success(let jsonData):
-                        if let jsonDict = response.result.value as? NSDictionary,
-                            let success = jsonDict["success"] as? Bool,
-                            let message = jsonDict["message"] as? String,
-                            let loginDetails = jsonDict["details"] as? NSDictionary{
+        print("registerDetails \(register)")
+        guard register.username.isValidEmail() else {
+            print("Need a valid EMAIL address")
+            return
+        }
+        Alamofire.request("\(Constants.herokuAPI)register/",
+            method: .post,
+            parameters: registerDetails,
+            encoding: JSONEncoding.default).responseJSON { (response) in
+                switch response.result {
+                case .success(let jsonData):
+                    if let jsonDict = response.result.value as? NSDictionary,
+                        let success = jsonDict["success"] as? Bool,
+                        let message = jsonDict["message"] as? String  {
+                        if success {
+                            let res = ServerResponse.init(response: success,
+                                                          message: message,
+                                                          familyTree: [:],
+                                                          username: register.username,
+                                                          userID: "",
+                                                          patientID: "")
                             
+                            let responseRegister = ["response": res]
+                            NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationIDs.registerNotificationID.rawValue),
+                                                            object: self,
+                                                            userInfo: responseRegister)
+                            print("success \(jsonDict)")
                             
-                                var res = ServerResponse.init(response: success,
-                                                              message: message,
-                                                              familyTree: [],
-                                                              loginDetails: loginDetails,
-                                                              userID: "",
-                                                              patientID: "")
-                                var responseLogin = ["response": res]
-                                NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationIDs.registerNotificationID.rawValue),
-                                                                object: self,
-                                                                userInfo: responseLogin)
-//                            print("success \(jsonData)")
-                        }
-                        
-                    case .failure(let error):
-                        if let jsonDict = response.result.value as? NSDictionary,
-                            let success = jsonDict["success"] as? Bool,
-                            let message = jsonDict["message"] as? String{
-                            var res = ServerResponse.init(response: success,
-                                                          message: "\(error) \(message)",
-                                                        familyTree: [],
-                                                        loginDetails: [:],
-                                                        userID: "",
-                                                        patientID: "")
-                                var responseLogin = ["response": res]
-
-                                NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationIDs.registerNotificationID.rawValue),
-                                                                object: self,
-                                                                userInfo: responseLogin)
-//                            print("success \(jsonData)")
+                        } else {
+                            let responseRegister = ["message": "\(message)"]
+                            NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationIDs.registerNotificationID.rawValue),
+                                                            object: self,
+                                                            userInfo: responseRegister)
+                            print("failure \(jsonDict)")
                         }
                     }
-            }
-        } else {
-            print("Need an EMAIL")
-
+                    print("success \(jsonData)")
+                    
+                case .failure(let error):
+                    print("error \(error)")
+                }
         }
-
     }
+    
+    // delete a familytree (a number of Human objects) by id
+    public static func deleteFamilyTree(patientID: ID) {
+        print("deleteFamilyTree \(patientID)")
+        Alamofire.request("\(Constants.herokuAPI)deletetree?id=\(patientID)",
+            method: .get,
+            //            parameters: diseaseUpdate,
+            encoding: JSONEncoding.default).responseJSON { (response) in
+                switch response.result {
+                case .success(let jsonData):
+                    print("success \(jsonData)")
+                    
+                case .failure(let error):
+                    print("error \(error)")
+                }
+        }
+    }
+    
 }

@@ -222,12 +222,12 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
             
             currentHuman = editingHuman
             humanDetails?.familyTree[cellContent.getID()] = currentHuman
-            iGenDataService.saveHuman(currentHuman!, loginID: (humanDetails?.loginID)!)
+            iGenDataService.saveHuman(currentHuman!, userID: (humanDetails?.userID)!)
             if (editingDiseases?.diseaseList.count)! > 0 && editingDiseases?.diseaseList[0] != "" {
                 //save disease if they got changed
                 currentDiseases = editingDiseases
                 humanDetails?.diseases[cellContent.getID()] = currentDiseases
-                iGenDataService.saveDisease(currentDiseases!, loginID: (humanDetails?.loginID)!)
+                iGenDataService.saveDisease(currentDiseases!, userID: (humanDetails?.userID)!)
             } else if currentDiseases != nil {
                 //delete disease
                 humanDetails?.diseases[cellContent.getID()] = nil

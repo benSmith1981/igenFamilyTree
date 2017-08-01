@@ -13,7 +13,8 @@ class FamilyTreeGenerator {
     var familyTree: [ID: Human] = [:]
     var diseases: [ID: Disease] = [:]
     var model: Model?
-    var loginID: ID = ""
+    var userID: ID = ""
+    var username: String = ""
     
     init(familyTree: [ID: Human]) {
         self.familyTree = familyTree
