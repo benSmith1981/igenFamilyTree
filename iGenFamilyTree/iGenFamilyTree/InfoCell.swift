@@ -74,11 +74,20 @@ class InfoCell: UITableViewCell, UITextFieldDelegate, UIPickerViewDelegate, UIPi
         let str = diseaseArray[row]
         return str
     }
-    
+
+    //***** TO DO: WHEN CANCEL, DONT PICKUP VALUE
+//    func getFieldValue () {
+//        textfieldValue.text = String(diseaseArray[row])
+//    }
+//    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        textfieldValue.text = String(diseaseArray[row])
-    }
         
+        textfieldValue.text = String(diseaseArray[row])
+    
+    }
+    
+    
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

@@ -12,7 +12,6 @@ import UIKit
 extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
     
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
-//        diseaseArray.hidden = false
         return false
     }
     
@@ -43,7 +42,6 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        //enums for each case (e.g. 0, 1, 2, ...)
         switch indexPath.section {
         
         case DetailViewSections.staticSections:
@@ -114,6 +112,7 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    //***** TO DO: FIX THAT YOU CAN ADD ANY DISEASE, NOT ONLY BOTTOM ONE
     func loadDynamicSection(indexPath: IndexPath, tableView: UITableView) -> UITableViewCell{
         switch indexPath.row {
         case DetailViewSections.firstDiseaseRow:
@@ -136,6 +135,7 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
             toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
             toolBar.isUserInteractionEnabled = true
             firstDiseaseCell.textfieldValue.inputAccessoryView = toolBar
+            
 
             return firstDiseaseCell
             
@@ -160,6 +160,7 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
             toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
             toolBar.isUserInteractionEnabled = true
             secondDiseaseCell.textfieldValue.inputAccessoryView = toolBar
+            //pickerDim.alpha = 1.0
             
             return secondDiseaseCell
             
@@ -242,26 +243,6 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-//    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-////        if section == 1 {
-////            let diseasePicker = UIPickerView.init()
-////
-////                //tableView.dequeueReusableCell(withIdentifier: "diseasePickerID") as! PickerTableCellTableViewCell
-////            //            diseasePicker.delegate = self
-////            return diseasePicker
-////        } else {
-////            return UIView()
-////        }
-//    }
-//    
-//    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-//        if section == 1 {
-//            let diseasePicker = tableView.dequeueReusableCell(withIdentifier: "diseasePickerID") as! PickerTableCellTableViewCell
-//            return diseasePicker.frame.size.height
-//        } else {
-//            return 0
-//        }
-//    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }

@@ -61,7 +61,7 @@ extension updateParametersDelegate {
     func removeDisease(indexPath:IndexPath) {}
 }
 
-class HumanModalViewController: UIViewController, UIViewControllerTransitioningDelegate, updateParametersDelegate  {
+class HumanModalViewController: UIViewController, UIViewControllerTransitioningDelegate, updateParametersDelegate, UIPickerViewDelegate {
     
     // Objects to pass through:
     var humanDetails: FamilyTreeGenerator?
@@ -75,15 +75,16 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
     let toolBar = UIToolbar()
     let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.plain, target: self, action: #selector(pickerViewEndEditing))
     let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
-    let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.plain, target: self, action: nil)
+    let cancelButton = UIBarButtonItem(title: "Reset", style: UIBarButtonItemStyle.plain, target: self, action: #selector(cancelPickerView))
     
-    @IBOutlet weak var pickerDisease: UIView!
+    //*****TO DO: SET PICKERDIM ALPHA TO 0.4 WHEN PICKER IS SUMMONED OR
+    //*****TO DO: PICKUP WHICH TEXTFIELD IS SELECTED, AND SAVE VALUE FOR THAT FIELD
+    @IBOutlet weak var pickerDim: UIView!
     @IBOutlet weak var modelViewTitle: UILabel!
     @IBOutlet var containerView: UIView!
     @IBOutlet weak var modalTableView: UITableView!
     @IBOutlet weak var footerBG: UIView!
     @IBOutlet weak var headerBG: UIView!
-    @IBOutlet weak var pickerTrailingToBottomContraint: NSLayoutConstraint!
     @IBOutlet weak var dimBackground: UIView!
     
     @IBAction func verifyMember(_ sender: Any) {
@@ -92,6 +93,11 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
     
     func pickerViewEndEditing() {
         self.view.endEditing(true)
+        pickerDim.alpha = 0.0
+    }
+    
+    func cancelPickerView() {
+        pickerView.selectRow(0, inComponent: 0, animated: true)
     }
     
     @IBAction func addDiseaseRow(_ sender: Any) {

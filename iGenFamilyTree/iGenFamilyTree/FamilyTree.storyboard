@@ -177,6 +177,11 @@
                                     <constraint firstItem="ryw-RK-Cg9" firstAttribute="top" secondItem="E7W-zI-xyt" secondAttribute="bottom" id="iAz-Gb-XM8"/>
                                 </constraints>
                             </stackView>
+                            <view alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="urO-hj-fjV">
+                                <rect key="frame" x="62" y="172" width="250" height="186"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.6933294217" green="1" blue="0.61163705800000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                         </subviews>
                         <constraints>
                             <constraint firstItem="fuY-mo-7Ke" firstAttribute="leading" secondItem="UNQ-Te-xDv" secondAttribute="leading" id="1yI-de-Kna"/>
@@ -196,6 +201,7 @@
                         <outlet property="headerBG" destination="E7W-zI-xyt" id="1jo-oy-BKI"/>
                         <outlet property="modalTableView" destination="ryw-RK-Cg9" id="EKd-nJ-BDz"/>
                         <outlet property="modelViewTitle" destination="beQ-Ha-v77" id="Iwi-4L-dmv"/>
+                        <outlet property="pickerDim" destination="urO-hj-fjV" id="Ux3-3D-X5D"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R06-p9-HwK" userLabel="First Responder" sceneMemberID="firstResponder"/>
