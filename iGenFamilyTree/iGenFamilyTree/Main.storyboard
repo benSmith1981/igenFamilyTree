@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2tC-LR-z4U">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2tC-LR-z4U">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--iGen Family Tree chooser-->
+        <!--iGEN Next Generation Family-->
         <scene sceneID="qey-8s-dXm">
             <objects>
                 <viewController storyboardIdentifier="UIViewController-t7Q-Y0-Rfq" id="t7Q-Y0-Rfq" customClass="ChooserViewController" customModule="iGenFamilyTree" customModuleProvider="target" sceneMemberID="viewController">
@@ -25,26 +25,26 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lVb-bJ-pag">
                                 <rect key="frame" x="24" y="72" width="327" height="587"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="230" verticalCompressionResistancePriority="740" text="Kies een patiënt" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uns-7c-jaG">
-                                        <rect key="frame" x="0.0" y="0.0" width="327" height="253"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="240" verticalCompressionResistancePriority="740" text="Please enter e-mail and password" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uns-7c-jaG">
+                                        <rect key="frame" x="0.0" y="0.0" width="327" height="411"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="b@gmail.com" borderStyle="roundedRect" placeholder="Username Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Brt-se-lMu">
-                                        <rect key="frame" x="0.0" y="253" width="327" height="30"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="e-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Brt-se-lMu">
+                                        <rect key="frame" x="0.0" y="411" width="327" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="123" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hDg-VL-qzd">
-                                        <rect key="frame" x="0.0" y="283" width="327" height="30"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hDg-VL-qzd">
+                                        <rect key="frame" x="0.0" y="441" width="327" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2vl-OR-U1U">
-                                        <rect key="frame" x="0.0" y="313" width="327" height="58"/>
+                                        <rect key="frame" x="0.0" y="471" width="327" height="58"/>
                                         <inset key="contentEdgeInsets" minX="0.0" minY="20" maxX="0.0" maxY="20"/>
                                         <state key="normal" title="Login"/>
                                         <connections>
@@ -52,20 +52,11 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pzv-TX-aVA">
-                                        <rect key="frame" x="0.0" y="371" width="327" height="58"/>
+                                        <rect key="frame" x="0.0" y="529" width="327" height="58"/>
                                         <inset key="contentEdgeInsets" minX="0.0" minY="20" maxX="0.0" maxY="20"/>
                                         <state key="normal" title="Register"/>
                                         <connections>
                                             <action selector="RegisterButton:" destination="t7Q-Y0-Rfq" eventType="touchUpInside" id="p2L-B8-Otg"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="240" verticalCompressionResistancePriority="740" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pa1-Jj-lLL">
-                                        <rect key="frame" x="0.0" y="429" width="327" height="158"/>
-                                        <inset key="contentEdgeInsets" minX="0.0" minY="40" maxX="0.0" maxY="100"/>
-                                        <state key="normal" title="Nieuwe patiënt"/>
-                                        <connections>
-                                            <action selector="buttonNieuwePatient:" destination="t7Q-Y0-Rfq" eventType="touchUpInside" id="Pti-5f-XaP"/>
-                                            <segue destination="Nr0-03-gCW" kind="show" identifier="createFamilyTreeSegue" id="4Bp-di-bj9"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -79,11 +70,12 @@
                             <constraint firstItem="blF-yp-qD4" firstAttribute="top" secondItem="lVb-bJ-pag" secondAttribute="bottom" constant="8" id="lhI-FW-Vxv"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="iGen Family Tree chooser" id="xkp-hy-BVy"/>
+                    <navigationItem key="navigationItem" title="iGEN Next Generation Family" id="xkp-hy-BVy"/>
                     <connections>
-                        <outlet property="passwordTextfield" destination="hDg-VL-qzd" id="k7k-2P-WMR"/>
+                        <outlet property="passwordTextField" destination="hDg-VL-qzd" id="Vfx-eH-a5C"/>
                         <outlet property="usernameTextField" destination="Brt-se-lMu" id="PAt-oX-CBr"/>
                         <segue destination="GxM-rS-iA1" kind="show" identifier="familytreeSegue" id="4wb-NM-puH"/>
+                        <segue destination="Nr0-03-gCW" kind="show" identifier="createFamilytreeSegue" id="lO0-dP-YZ6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yb3-4J-uBU" userLabel="First Responder" sceneMemberID="firstResponder"/>

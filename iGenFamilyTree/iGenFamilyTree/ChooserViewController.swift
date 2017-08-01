@@ -8,26 +8,26 @@
 
 import UIKit
 
-struct Login{
+struct Login {
     var username: String
     var password: String
-    var familyTreeID: String //patient id
-    var id: String
+    var PatientID: ID
+    var id: ID
 }
 
 class ChooserViewController: UIViewController {
     
-    @IBOutlet weak var choosePatientID: UITextField!
     @IBAction func unwindToVC1(segue:UIStoryboardSegue) { }
-
+    
     @IBOutlet weak var usernameTextField: UITextField!
-    @IBOutlet weak var passwordTextfield: UITextField!
-
-    var familyJsonToLoad: String?
+    @IBOutlet weak var passwordTextField: UITextField!
+    
+    var serverResponse: ServerResponse?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(ChooserViewController.LoginObserver),
                                                name:  NSNotification.Name(rawValue: NotificationIDs.loginNotificationID.rawValue ),
@@ -37,9 +37,8 @@ class ChooserViewController: UIViewController {
                                                selector: #selector(ChooserViewController.RegisterObserver),
                                                name:  NSNotification.Name(rawValue: NotificationIDs.registerNotificationID.rawValue ),
                                                object: nil)
-        // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -47,76 +46,115 @@ class ChooserViewController: UIViewController {
     
     func LoginObserver(notification: NSNotification) {
         let loginDict = notification.userInfo as! [String : Any]
-        print("notify observer disease \(loginDict)")
-        let responseServer = loginDict["response"] as! ServerResponse
-        let response = responseServer.response
-        let message = responseServer.message
-        
-        //get userID, family tree if success response is true
-        if response{
-            let userID = responseServer.userID
-            let familyTree = responseServer.familyTree
-            familyJsonToLoad = responseServer.patientID
-
+        print("notify observer Login \(loginDict)")
+        serverResponse = loginDict["response"] as? ServerResponse
+        if serverResponse != nil {
             self.performSegue(withIdentifier: Segues.familytreeSegue.rawValue, sender: self)
-
-        }else { //show a response message 
-            let alert = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertControllerStyle.alert)
+        } else {
+            let serverResponse = loginDict["message"]
+            let alert = UIAlertController(title: "Alert", message: serverResponse as? String, preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
+            passwordTextField.text = ""
         }
-
     }
     
     func RegisterObserver(notification: NSNotification) {
         let registerDict = notification.userInfo as! [String : Any]
-        print("Register \(registerDict)")
-        let responseServer = registerDict["response"] as! ServerResponse
-        let response = responseServer.response
-        let message = responseServer.message
-        //at this point the user does not have a familyID or an ID...
-        // YOU NEED TO: create the tree, then update their record using the updateThePatientID function in igen Service
-        let username = responseServer.loginDetails["username"]
-        let password = responseServer.loginDetails["password"]
-
+        print("notify observer Register \(registerDict)")
+        serverResponse = registerDict["response"] as? ServerResponse
+        if serverResponse != nil {
+            self.performSegue(withIdentifier: Segues.createFamilytreeSegue.rawValue, sender: self)
+        } else {
+            let serverResponse = registerDict["message"]
+            let alert = UIAlertController(title: "Alert", message: serverResponse as? String, preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Segues.familytreeSegue.rawValue {
-            iGenDataService.parseiGenData(jsonName:familyJsonToLoad!)
+            let destinationVC = segue.destination as! CustomCollectionViewController
+            destinationVC.serverResponse = serverResponse
+        } else if segue.identifier == Segues.createFamilytreeSegue.rawValue {
+            let destinationVC = segue.destination as! GenerateTableViewController
+            destinationVC.serverResponse = serverResponse
+            
         }
-
     }
     
     @IBAction func LoginButton(_ sender: UIButton) {
-        if let  username = usernameTextField.text,
-            let password = passwordTextfield.text{
-            var login = Login.init(username: username, password: password, familyTreeID: "", id: "")
-            iGenDataService.login(login)
+        guard validUsername(usernameTextField.text) else {
+            usernameNotValid()
+            return
         }
+        guard validPassword(passwordTextField.text) else {
+            passwordNotValid()
+            return
+        }
+        let login = Login.init(username: usernameTextField.text!, password: passwordTextField.text!, PatientID: "", id: "")
+        iGenDataService.login(login)
+        
     }
     
     @IBAction func RegisterButton(_ sender: UIButton) {
-        if let  username = usernameTextField.text,
-            let password = passwordTextfield.text{
-            var login = Login.init(username: username, password: password, familyTreeID: "", id: "")
-            iGenDataService.register(login)
+        guard validUsername(usernameTextField.text) else {
+            usernameNotValid()
+            return
+        }
+        guard validPassword(passwordTextField.text) else {
+            passwordNotValid()
+            return
+        }
+        let login = Login.init(username: usernameTextField.text!, password: passwordTextField.text!, PatientID: "", id: "")
+        iGenDataService.register(login)
+    }
+    
+    
+    func validUsername(_ username: String?) -> Bool {
+        if  username == nil {
+            return false
+        } else if username == "" {
+            return false
+        } else if username!.isValidEmail()  {
+            return true
+        } else {
+            return false
         }
     }
     
-    
-    @IBAction func buttonNieuwePatient(_ sender: UIButton) {
-        //go to achids view
+    func usernameNotValid() {
+        let alert = UIAlertController(title: "Alert", message: "Username not a valid e-mail address", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
+    
+    func validPassword(_ password: String?) -> Bool {
+        if  password == nil {
+            return false
+        } else if password == "" {
+            return false
+        } else {
+            return true
+        }
+    }
+    
+    func passwordNotValid() {
+        let alert = UIAlertController(title: "Alert", message: "Password not filled in", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

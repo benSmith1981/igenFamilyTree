@@ -62,7 +62,7 @@ enum JsonKeys: String {
 
 enum Segues: String {
     case familytreeSegue
-    case createFamilyTreeSegue
+    case createFamilytreeSegue
 }
 
 enum CustomCellIdentifiers: String {
