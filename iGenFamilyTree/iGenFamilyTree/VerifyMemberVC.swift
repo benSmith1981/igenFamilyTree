@@ -8,12 +8,23 @@
 
 import UIKit
 
+struct VerifyMember{
+    var email: String
+    var patientID: String //family id
+    var userID: String
+    var patientName: String
+    var name: String
+    var sendersEmail: String
+}
+
+
 enum verifyMemberRows: Int{
     case personToVerifyEmail = 0
     case patientsEmail
     case patientName
     case personToVerifyName
 }
+
 class VerifyMemberVC: UIViewController, UITableViewDelegate, UITableViewDataSource, updateParametersDelegate {
 
     var currentHuman: Human?
