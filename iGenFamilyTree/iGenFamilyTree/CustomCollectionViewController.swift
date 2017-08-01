@@ -108,11 +108,14 @@ class CustomCollectionViewController: UICollectionViewController, reloadAfterEdi
             // segue from TableViewController
             // familyTreeGenerator will be nil if entered via iGenDataService
             // extract patientID from the first Human for function MakeTreeFor
+            // save the new familyTree to the database
             
             if let firstKey = familyTreeGenerator?.familyTree.first?.key,
                 let patientID = familyTreeGenerator?.familyTree[firstKey]?.patientID {
                 familyTreeGenerator?.makeTreeFor(patientID)
                 familyTreeGenerator?.makeModelFromTree()
+                familyTreeGenerator?.loginID = patientID
+                iGenDataService.saveFamilyTree((self.familyTreeGenerator?.familyTree)!)
             }
             
             // Uncomment the following line to preserve selection between presentations
@@ -181,6 +184,10 @@ class CustomCollectionViewController: UICollectionViewController, reloadAfterEdi
             } else {
                 fatalError("Family tree not complete")
             }
+            
+            let defaults = UserDefaults.standard
+            familyTreeGenerator?.loginID = defaults.string(forKey: "loginID")!
+           
             self.collectionView?.reloadData()
             print("notify observer humans\(familyDict)")
         }
@@ -226,7 +233,7 @@ class CustomCollectionViewController: UICollectionViewController, reloadAfterEdi
             // if this human has a disease object, process it
             cell.bgImg.image = cellContent.switchBG()
             if let currentHuman = familyTreeGenerator?.familyTree[cellContent.getID()] {
-                cell.processHumanCellFor(currentHuman)
+                cell.processHumanCellFor(currentHuman, loginID: (familyTreeGenerator?.loginID)!)
                 cell.genderImg.image = cellContent.showGender()
                 if let currentDisease = familyTreeGenerator?.diseases[cellContent.getID()] {
                     cell.processDiseaseCellFor(currentDisease)

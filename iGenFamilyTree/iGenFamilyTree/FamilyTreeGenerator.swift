@@ -13,6 +13,7 @@ class FamilyTreeGenerator {
     var familyTree: [ID: Human] = [:]
     var diseases: [ID: Disease] = [:]
     var model: Model?
+    var loginID: ID = ""
     
     init(familyTree: [ID: Human]) {
         self.familyTree = familyTree
@@ -24,11 +25,9 @@ class FamilyTreeGenerator {
     //  it also calculates the minimum and maximum levels traversed
     
     public func makeTreeFor(_ id: ID) {
-        
         for key in familyTree.keys {
             familyTree[key]?.processed = false
         }
-                
         self.patient = Patient.init(id: id)
         let level = 2
         print("Family tree for", familyTree[id]!.name, "is on level", level)

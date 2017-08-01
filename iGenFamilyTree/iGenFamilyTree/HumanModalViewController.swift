@@ -86,8 +86,6 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
     }
     
     @IBAction func saveEditHuman(_ sender: Any) {
-        
-        // ***** MAKE DELETE CURRENT DISEASE FUNCTION
         saveChangedHumanAndDiseases()
         closeView()
     }
@@ -224,15 +222,16 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
             
             currentHuman = editingHuman
             humanDetails?.familyTree[cellContent.getID()] = currentHuman
-            iGenDataService.saveHuman(currentHuman!)
-            
+            iGenDataService.saveHuman(currentHuman!, loginID: (humanDetails?.loginID)!)
             if (editingDiseases?.diseaseList.count)! > 0 && editingDiseases?.diseaseList[0] != "" {
-                //save diseases if they got changed
+                //save disease if they got changed
                 currentDiseases = editingDiseases
                 humanDetails?.diseases[cellContent.getID()] = currentDiseases
-                iGenDataService.saveDisease(currentDiseases!)
+                iGenDataService.saveDisease(currentDiseases!, loginID: (humanDetails?.loginID)!)
             } else if currentDiseases != nil {
+                //delete disease
                 humanDetails?.diseases[cellContent.getID()] = nil
+                iGenDataService.deleteDisease(id: (currentDiseases?.id)!)
                 currentDiseases = nil
             } else {
                 editingDiseases = nil
