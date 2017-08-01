@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2tC-LR-z4U">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2tC-LR-z4U">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--iGen Family Tree chooser-->
+        <!--iGEN Next Generation Family-->
         <scene sceneID="qey-8s-dXm">
             <objects>
                 <viewController storyboardIdentifier="UIViewController-t7Q-Y0-Rfq" id="t7Q-Y0-Rfq" customClass="ChooserViewController" customModule="iGenFamilyTree" customModuleProvider="target" sceneMemberID="viewController">
@@ -23,53 +23,40 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lVb-bJ-pag">
-                                <rect key="frame" x="24" y="72" width="327" height="543"/>
+                                <rect key="frame" x="24" y="72" width="327" height="587"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="230" verticalCompressionResistancePriority="740" text="Kies een patiënt" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uns-7c-jaG">
-                                        <rect key="frame" x="0.0" y="0.0" width="327" height="153"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="240" verticalCompressionResistancePriority="740" text="Please enter e-mail and password" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uns-7c-jaG">
+                                        <rect key="frame" x="0.0" y="0.0" width="327" height="411"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pzv-TX-aVA">
-                                        <rect key="frame" x="0.0" y="153" width="327" height="58"/>
-                                        <inset key="contentEdgeInsets" minX="0.0" minY="20" maxX="0.0" maxY="20"/>
-                                        <state key="normal" title="Ben"/>
-                                        <connections>
-                                            <action selector="buttonBen:" destination="t7Q-Y0-Rfq" eventType="touchUpInside" id="jym-jh-oRc"/>
-                                        </connections>
-                                    </button>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="e-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Brt-se-lMu">
+                                        <rect key="frame" x="0.0" y="411" width="327" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hDg-VL-qzd">
+                                        <rect key="frame" x="0.0" y="441" width="327" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                    </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2vl-OR-U1U">
-                                        <rect key="frame" x="0.0" y="211" width="327" height="58"/>
+                                        <rect key="frame" x="0.0" y="471" width="327" height="58"/>
                                         <inset key="contentEdgeInsets" minX="0.0" minY="20" maxX="0.0" maxY="20"/>
-                                        <state key="normal" title="Paul"/>
+                                        <state key="normal" title="Login"/>
                                         <connections>
-                                            <action selector="buttonPaul:" destination="t7Q-Y0-Rfq" eventType="touchUpInside" id="mMX-xi-p7m"/>
+                                            <action selector="LoginButton:" destination="t7Q-Y0-Rfq" eventType="touchUpInside" id="IpP-kb-tUu"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ao3-s8-Nky">
-                                        <rect key="frame" x="0.0" y="269" width="327" height="58"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pzv-TX-aVA">
+                                        <rect key="frame" x="0.0" y="529" width="327" height="58"/>
                                         <inset key="contentEdgeInsets" minX="0.0" minY="20" maxX="0.0" maxY="20"/>
-                                        <state key="normal" title="Achid"/>
+                                        <state key="normal" title="Register"/>
                                         <connections>
-                                            <action selector="buttonAchid:" destination="t7Q-Y0-Rfq" eventType="touchUpInside" id="16T-En-xfZ"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="evR-mC-RBm">
-                                        <rect key="frame" x="0.0" y="327" width="327" height="58"/>
-                                        <inset key="contentEdgeInsets" minX="0.0" minY="20" maxX="0.0" maxY="20"/>
-                                        <state key="normal" title="Ton"/>
-                                        <connections>
-                                            <action selector="buttonTon:" destination="t7Q-Y0-Rfq" eventType="touchUpInside" id="OGr-Qn-iXn"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="240" verticalCompressionResistancePriority="740" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pa1-Jj-lLL">
-                                        <rect key="frame" x="0.0" y="385" width="327" height="158"/>
-                                        <inset key="contentEdgeInsets" minX="0.0" minY="40" maxX="0.0" maxY="100"/>
-                                        <state key="normal" title="Nieuwe patiënt"/>
-                                        <connections>
-                                            <action selector="buttonNieuwePatient:" destination="t7Q-Y0-Rfq" eventType="touchUpInside" id="Pti-5f-XaP"/>
-                                            <segue destination="Nr0-03-gCW" kind="show" identifier="createFamilyTreeSegue" id="4Bp-di-bj9"/>
+                                            <action selector="RegisterButton:" destination="t7Q-Y0-Rfq" eventType="touchUpInside" id="p2L-B8-Otg"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -83,9 +70,12 @@
                             <constraint firstItem="blF-yp-qD4" firstAttribute="top" secondItem="lVb-bJ-pag" secondAttribute="bottom" constant="8" id="lhI-FW-Vxv"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="iGen Family Tree chooser" id="xkp-hy-BVy"/>
+                    <navigationItem key="navigationItem" title="iGEN Next Generation Family" id="xkp-hy-BVy"/>
                     <connections>
+                        <outlet property="passwordTextField" destination="hDg-VL-qzd" id="Vfx-eH-a5C"/>
+                        <outlet property="usernameTextField" destination="Brt-se-lMu" id="PAt-oX-CBr"/>
                         <segue destination="GxM-rS-iA1" kind="show" identifier="familytreeSegue" id="4wb-NM-puH"/>
+                        <segue destination="Nr0-03-gCW" kind="show" identifier="createFamilytreeSegue" id="lO0-dP-YZ6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yb3-4J-uBU" userLabel="First Responder" sceneMemberID="firstResponder"/>

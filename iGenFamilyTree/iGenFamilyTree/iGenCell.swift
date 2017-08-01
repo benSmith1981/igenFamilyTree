@@ -38,6 +38,8 @@ class iGenCell: UICollectionViewCell {
     override func prepareForReuse() {
         // initialize the cell
         self.bgImg.image = UIImage()
+        self.bgImg.layer.removeAllAnimations()
+        self.bgImg.layer.borderColor = UIColor.clear.cgColor
         self.genderImg.image = UIImage()
         self.ring.layer.removeAllAnimations()
         self.ring.layer.borderWidth = 0
@@ -64,19 +66,10 @@ class iGenCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
-        
-        func setup() {
-            //            self.layer.borderWidth = 0.5
-            //            self.layer.borderColor = UIColor.lightGray.cgColor
-            //self.layer.cornerRadius = 0.0
-        }
-        setup()
-        
     }
     
     //process a cell for a Human
-    func processHumanCellFor(_ currentHuman: Human) {
+    func processHumanCellFor(_ currentHuman: Human, userID: ID) {
         print("currentHuman:", currentHuman.name)
         self.patientName.text = currentHuman.name
         self.patientAge.text = currentHuman.dob
