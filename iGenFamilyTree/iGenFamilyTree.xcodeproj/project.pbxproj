@@ -18,6 +18,7 @@
 		6877CF111F28A45C00E677FA /* CreatePatientTree.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6877CF0F1F28A45C00E677FA /* CreatePatientTree.xib */; };
 		6877CF1A1F28F21F00E677FA /* GenerateFamilyCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6877CF181F28F21F00E677FA /* GenerateFamilyCellTableViewCell.swift */; };
 		6877CF1B1F28F21F00E677FA /* GenerateFamilyCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6877CF191F28F21F00E677FA /* GenerateFamilyCellTableViewCell.xib */; };
+		687F3AAA1F2F64010087F79F /* NewPatientExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687F3AA91F2F64010087F79F /* NewPatientExtension.swift */; };
 		68AEA8D51F0D4B73007E5E08 /* JSONserialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68AEA8D41F0D4B73007E5E08 /* JSONserialization.swift */; };
 		68C309E11F25F82100E3072E /* CreatePatientTreeTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C309E01F25F82100E3072E /* CreatePatientTreeTableView.swift */; };
 		68F4CAC21F0699790036946B /* iGenDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F4CAC11F0699790036946B /* iGenDataService.swift */; };
@@ -100,6 +101,7 @@
 		6877CF0F1F28A45C00E677FA /* CreatePatientTree.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreatePatientTree.xib; sourceTree = "<group>"; };
 		6877CF181F28F21F00E677FA /* GenerateFamilyCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateFamilyCellTableViewCell.swift; sourceTree = "<group>"; };
 		6877CF191F28F21F00E677FA /* GenerateFamilyCellTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GenerateFamilyCellTableViewCell.xib; sourceTree = "<group>"; };
+		687F3AA91F2F64010087F79F /* NewPatientExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPatientExtension.swift; sourceTree = "<group>"; };
 		68AEA8D41F0D4B73007E5E08 /* JSONserialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONserialization.swift; sourceTree = "<group>"; };
 		68C309E01F25F82100E3072E /* CreatePatientTreeTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePatientTreeTableView.swift; sourceTree = "<group>"; };
 		68F4CAC11F0699790036946B /* iGenDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iGenDataService.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				68C309E01F25F82100E3072E /* CreatePatientTreeTableView.swift */,
+				687F3AA91F2F64010087F79F /* NewPatientExtension.swift */,
 				6877CF0E1F28A45C00E677FA /* CreatePatientTree.swift */,
 				6877CF0F1F28A45C00E677FA /* CreatePatientTree.xib */,
 				6841C3361F29DE3F0085E712 /* CreatePatientTreeGender.swift */,
@@ -555,7 +558,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		CEE2997810FD85A6E4A3997E /* [CP] Copy Pods Resources */ = {
@@ -605,6 +608,7 @@
 				CF217ED31F26276F0066352A /* TextFieldExtension.swift in Sources */,
 				CFCFA8611F1E3A8E00BC05E5 /* PopAnimator.swift in Sources */,
 				B51B62C51F0A244400AB11CC /* Patient.swift in Sources */,
+				687F3AAA1F2F64010087F79F /* NewPatientExtension.swift in Sources */,
 				68AEA8D51F0D4B73007E5E08 /* JSONserialization.swift in Sources */,
 				E6644EB21F052D4800C66427 /* CustomCollectionViewController.swift in Sources */,
 				B51B62C31F0A23D400AB11CC /* Human.swift in Sources */,

@@ -17,6 +17,7 @@ enum QuestionType: Int {
     case sisterMother
     case brotherFather
     case sisterFather
+    case generateButton
     case gender
     case genderPartner
     
@@ -43,6 +44,8 @@ enum QuestionType: Int {
             return NSLocalizedString("chooseGender", comment: "")
         case .genderPartner:
             return NSLocalizedString("chooseGenderSpouse", comment: "")
+        case .generateButton:
+            return ""
         }
     }
 }
@@ -63,12 +66,10 @@ struct Answers {
     var sistersOfFather: Int = 0
     var patientGender: genderType = .male
     var partnerGender: genderType = .female
-
-
 }
 
 
-class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembers, updateParametersDelegate {
+class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembers, updateParametersDelegate, UITextFieldDelegate {
 
     var answers = Answers()
     var familyTreeGenerator = FamilyTreeGenerator.init(familyTree: [:])
@@ -77,6 +78,7 @@ class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembe
         familyTreeGenerator.generateNewFamilyTree(with: answers)
         self.performSegue(withIdentifier: Segues.familytreeSegue.rawValue, sender: self)
     }
+    
     
     func getHumanUpdates(value: Any, cellType: detailRows, indexPath: IndexPath) {
         
@@ -138,16 +140,33 @@ class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembe
         self.tableView.register(nib, forCellReuseIdentifier: CustomCellIdentifiers.CreatePatientTreeID.rawValue)
         let generate = UINib(nibName: "GenerateFamilyCellTableViewCell", bundle: nil)
         self.tableView.register(generate, forCellReuseIdentifier: CustomCellIdentifiers.GenerateCellID.rawValue)
-//        let gender = UINib(nibName: "CreatePatientTreeGender", bundle: nil)
-//        self.tableView.register(gender, forCellReuseIdentifier: CustomCellIdentifiers.CreatePatientGender.rawValue)
         let genderCell = UINib(nibName: "DetailmageSliderCell", bundle: nil)
         self.tableView.register(genderCell, forCellReuseIdentifier: CustomCellIdentifiers.detailImageCellID.rawValue)
         let titleForGenderCells = UINib(nibName: "CreatePatientTreeGender", bundle: nil)
         self.tableView.register(titleForGenderCells, forCellReuseIdentifier: CustomCellIdentifiers.CreatePatientGender.rawValue)
 
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 60
+        tableView.estimatedRowHeight = 100
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(GenerateTableViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(GenerateTableViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+
+    }
     
+    func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0{
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }        
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y != 0{
+                self.view.frame.origin.y += keyboardSize.height
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -169,17 +188,18 @@ class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembe
     }
     
     // MARK: - Table view data source
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 3
+    }
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
-        case 0 , 1:
+        case 0, 1:
             return UITableViewAutomaticDimension
         default:
             return 44
         }
-    }
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 3
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -190,7 +210,7 @@ class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembe
         case 1:
             return 1
         case 2:
-            return 8
+            return 9
         default:
             return 0
         }
@@ -205,21 +225,15 @@ class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembe
                 genderPatient.delegate = self
                 genderPatient.indexPath = indexPath
                 genderPatient.humanGender = answers.patientGender.rawValue
-//                genderPatient.setNeedsDisplay()
-//                genderPatient.setNeedsLayout()
-//                genderPatient.questionLabel.text = QuestionType.gender.selectQuestion()
-//                genderPatient.cellType = .gender
+
                 return genderPatient
             case 1:
                 let genderPatientPartner = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.detailImageCellID.rawValue, for: indexPath) as! DetailmageSliderCell
                 genderPatientPartner.delegate = self
                 genderPatientPartner.humanGender = answers.partnerGender.rawValue
-//                genderPatientPartner.setNeedsDisplay()
-//                genderPatientPartner.setNeedsLayout()
+
                 genderPatientPartner.indexPath = indexPath
-                //                    genderPatient.questionLabel.text = QuestionType.gender.selectQuestion()
-                //            genderPatient.cellType = .gender
-                
+
                 return genderPatientPartner
             case 2:
                 return loadQuestionRows(indexPath: indexPath)
@@ -237,9 +251,11 @@ class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembe
             cellBrothers.setNumberDelegate = self
             cellBrothers.questionLabel.text = QuestionType.brother.selectQuestion()
             cellBrothers.awakeFromNib()
+            cellBrothers.numberOfMembers.tag = 1
             cellBrothers.layoutSubviews()
             cellBrothers.cellType = .brother
             cellBrothers.numberOfMembers.text = String(answers.brothers)
+
             return cellBrothers
             
         case QuestionType.sister.rawValue:
@@ -247,6 +263,7 @@ class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembe
             cellSisters.setNumberDelegate = self
             cellSisters.questionLabel.text = QuestionType.sister.selectQuestion()
             cellSisters.cellType = .sister
+            cellSisters.numberOfMembers.tag = 2
             cellSisters.layoutSubviews()
             cellSisters.numberOfMembers.text = String(answers.sisters)
 
@@ -255,9 +272,9 @@ class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembe
         case QuestionType.sons.rawValue:
             let cellSons = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.CreatePatientTreeID.rawValue, for: indexPath) as! CreatePatientTree
             cellSons.setNumberDelegate = self
-
             cellSons.questionLabel.text = QuestionType.sons.selectQuestion()
             cellSons.numberOfMembers.text = String(answers.sons)
+            cellSons.numberOfMembers.tag = 3
             cellSons.cellType = .sons
             cellSons.layoutSubviews()
             
@@ -266,9 +283,9 @@ class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembe
         case QuestionType.daughters.rawValue:
             let cellDaughters = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.CreatePatientTreeID.rawValue, for: indexPath) as! CreatePatientTree
             cellDaughters.setNumberDelegate = self
-
             cellDaughters.questionLabel.text = QuestionType.daughters.selectQuestion()
             cellDaughters.cellType = .daughters
+            cellDaughters.numberOfMembers.tag = 4
             cellDaughters.layoutSubviews()
             cellDaughters.numberOfMembers.text = String(answers.daughters)
 
@@ -278,9 +295,9 @@ class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembe
         case QuestionType.brotherMother.rawValue:
             let cellBrotherMother = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.CreatePatientTreeID.rawValue, for: indexPath) as! CreatePatientTree
             cellBrotherMother.setNumberDelegate = self
-
             cellBrotherMother.questionLabel.text = QuestionType.brotherMother.selectQuestion()
             cellBrotherMother.cellType = .brotherMother
+            cellBrotherMother.numberOfMembers.tag = 5
             cellBrotherMother.layoutSubviews()
             cellBrotherMother.numberOfMembers.text = String(answers.brothersOfMother)
 
@@ -290,9 +307,9 @@ class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembe
         case QuestionType.sisterMother.rawValue:
             let cellSisterMother = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.CreatePatientTreeID.rawValue, for: indexPath) as! CreatePatientTree
             cellSisterMother.setNumberDelegate = self
-
             cellSisterMother.questionLabel.text = QuestionType.sisterMother.selectQuestion()
             cellSisterMother.cellType = .sisterMother
+            cellSisterMother.numberOfMembers.tag = 6
             cellSisterMother.layoutSubviews()
             cellSisterMother.numberOfMembers.text = String(answers.sistersOfMother)
 
@@ -302,9 +319,9 @@ class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembe
         case QuestionType.brotherFather.rawValue:
             let cellBrotherFather = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.CreatePatientTreeID.rawValue, for: indexPath) as! CreatePatientTree
             cellBrotherFather.setNumberDelegate = self
-
             cellBrotherFather.questionLabel.text = QuestionType.brotherFather.selectQuestion()
             cellBrotherFather.cellType = .brotherFather
+            cellBrotherFather.numberOfMembers.tag = 7
             cellBrotherFather.layoutSubviews()
             cellBrotherFather.numberOfMembers.text = String(answers.brothersOfFather)
 
@@ -314,14 +331,23 @@ class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembe
         case QuestionType.sisterFather.rawValue:
             let cellSisterFather = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.CreatePatientTreeID.rawValue, for: indexPath) as! CreatePatientTree
             cellSisterFather.setNumberDelegate = self
-
             cellSisterFather.questionLabel.text = QuestionType.sisterFather.selectQuestion()
             cellSisterFather.cellType = .sisterFather
+            cellSisterFather.numberOfMembers.tag = 8
             cellSisterFather.layoutSubviews()
             cellSisterFather.numberOfMembers.text = String(answers.sistersOfFather)
 
             
             return cellSisterFather
+            
+        case QuestionType.generateButton.rawValue:
+            let generate = tableView.dequeueReusableCell(withIdentifier: "GenerateCellID") as! GenerateFamilyCellTableViewCell
+            generate.delegate = self
+            generate.layoutSubviews()
+            generate.setNeedsLayout()
+            
+            return generate
+
             
         default:
             let cellBrothers = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.CreatePatientTreeID.rawValue, for: indexPath) as! CreatePatientTree
@@ -361,42 +387,43 @@ class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembe
         }
     }
     
-    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        switch section {
-            
-        case 2:
-            let generate = tableView.dequeueReusableCell(withIdentifier: "GenerateCellID") as! GenerateFamilyCellTableViewCell
-            generate.center = CGPoint(x: view.bounds.midX, y: view.bounds.midY )
-            let screenwidth = self.view.frame.size.width
-            var frame = generate.frame
-            frame.size.width = screenwidth
-            generate.frame = frame
-            generate.delegate = self
-            generate.layoutSubviews()
-            generate.setNeedsLayout()
-            return generate
-            
-        default:
-            return nil
-        }
-    }
-    
-    
-    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        switch section{
-        case 2:
-            return 44
-            
-        default:
-            return 0
-        }
-    }
+//    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+//        switch section {
+//            
+//        case 2:
+//            let generate = tableView.dequeueReusableCell(withIdentifier: "GenerateCellID") as! GenerateFamilyCellTableViewCell
+//            
+//            let screenwidth = self.view.frame.size.width
+//            var frame = generate.frame
+//            frame.size.width = screenwidth
+//
+//            generate.delegate = self
+//            generate.layoutSubviews()
+//            generate.setNeedsLayout()
+//            return generate
+//            
+//        default:
+//            return nil
+//        }
+//    }
+//    
+//
+//    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+//        switch section{
+//        case 2:
+//            return 44
+//            
+//        default:
+//            return 0
+//        }
+//    }
     
     
     override func viewDidAppear(_ animated: Bool) {
         familyTreeGenerator = FamilyTreeGenerator.init(familyTree: [:])
         
     }
+
 
     
     /*

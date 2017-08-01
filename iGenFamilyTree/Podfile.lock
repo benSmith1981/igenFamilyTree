@@ -2,20 +2,17 @@ PODS:
   - AGi18n (0.0.2)
   - Alamofire (4.5.0)
   - DeviceKit (1.2.3)
-  - Eureka (3.0.0)
 
 DEPENDENCIES:
   - AGi18n (~> 0.0)
   - Alamofire (~> 4.4)
   - DeviceKit (~> 1.0)
-  - Eureka (~> 3.0)
 
 SPEC CHECKSUMS:
   AGi18n: 1ad8c0c1048b20541ce94ca161c0e5937f4677cc
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
   DeviceKit: f33cbc6e67d9bb416e42dedc647557c7c2f6d3d7
-  Eureka: f36fd440c3ebb7bfea0a4fbe6f16a05f1cb35906
 
-PODFILE CHECKSUM: c7e3699bc3bad7c608f1ae78d31a5b6014d1e5d8
+PODFILE CHECKSUM: a2d44306588bf5c1e671e8d9ecc40bdd0b0b3739
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.2.1

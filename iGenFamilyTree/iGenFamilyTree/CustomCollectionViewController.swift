@@ -42,7 +42,6 @@ class CustomCollectionViewController: UICollectionViewController, reloadAfterEdi
             print("Ok alertbutton was pressed")
             // save the changed familyTree to the database
             iGenDataService.saveFamilyTree((self.familyTreeGenerator?.familyTree)!)
-            self.returnToView()
         }
         
         let cancelAction = UIAlertAction(title: "No", style: UIAlertActionStyle.cancel) {
