@@ -71,26 +71,29 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
     var editingHuman: Human?
     var currentDiseases: Disease?
     var editingDiseases: Disease?
-    var diseaseArray = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
+    var pickerView = UIPickerView()
+    let toolBar = UIToolbar()
+    let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.plain, target: self, action: #selector(pickerViewEndEditing))
+    let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+    let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.plain, target: self, action: nil)
     
     @IBOutlet weak var pickerDisease: UIView!
-
-    
     @IBOutlet weak var modelViewTitle: UILabel!
     @IBOutlet var containerView: UIView!
     @IBOutlet weak var modalTableView: UITableView!
     @IBOutlet weak var footerBG: UIView!
     @IBOutlet weak var headerBG: UIView!
-    
     @IBOutlet weak var pickerTrailingToBottomContraint: NSLayoutConstraint!
-    //@IBOutlet weak var pickerheightconstraint: NSLayoutConstraint!
-    
+    @IBOutlet weak var dimBackground: UIView!
     
     @IBAction func verifyMember(_ sender: Any) {
-//        self.modalTableView.selectRow(at: IndexPath.init(row: 0, section: 0), animated: true, scrollPosition: UITableViewScrollPosition.none)
         self.performSegue(withIdentifier: "modifySegue", sender: self)
-
     }
+    
+    func pickerViewEndEditing() {
+        self.view.endEditing(true)
+    }
+    
     @IBAction func addDiseaseRow(_ sender: Any) {
         if let currentDiseases = currentDiseases {
             currentDiseases.diseaseList.append("")
@@ -98,11 +101,6 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
         }
     }
     
-    
-    
-//    @IBAction func dismissPIcker(_ sender: UITapGestureRecognizer) {
-//        self.hidePicker()
-//    }
     @IBAction func dismissPopover(_ sender: Any) {
         closeView()
     }
@@ -117,10 +115,14 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
     override func viewDidLoad() {
         
         super.viewDidLoad()
-//        pickerDisease.dataSource = self
-//        pickerDisease.delegate = self
         
         self.hideKeyboardWhenTappedAround()
+        
+        toolBar.barStyle = UIBarStyle.default
+        toolBar.isTranslucent = true
+        toolBar.tintColor = UIColor.white
+        toolBar.sizeToFit()
+        toolBar.barTintColor = UIColor(red:0.85, green:0.36, blue:0.39, alpha:1.0)
         
         modalTableView.frame = CGRect(x: modalTableView.frame.origin.x, y: modalTableView.frame.origin.y, width: modalTableView.frame.size.width, height: modalTableView.contentSize.height)
         modalTableView.allowsSelection = false
@@ -176,8 +178,6 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
         let pickerCell = UINib(nibName: "PickerTableCellTableViewCell", bundle: nil)
         self.modalTableView.register(pickerCell, forCellReuseIdentifier: "diseasePickerID")
         
-        
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -230,41 +230,19 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
         }
     }
     
-    func showPicker(){
-    
-        
-        self.pickerTrailingToBottomContraint.constant = 0
-        
-        UIView.animate(withDuration: 0.4,
-                       //options: UIViewAnimationOptions.curveEaseInOut,
-                       animations: {
-                        
-            self.pickerDisease.alpha = 1
-            self.view.layoutIfNeeded()
-            
-        }) { (success) in
-            //
-            print(self.pickerDisease.frame)
-        }
-    }
-    
-    func hidePicker(){
-        
-        self.pickerTrailingToBottomContraint.constant = -200
-        
-        UIView.animate(withDuration: 0.4, animations: {
-            self.pickerDisease.alpha = 0
-            self.view.layoutIfNeeded()
-            
-        }) { (success) in
-            //
-        }
-    }
     func addDisease() {
         if let editingDiseases = editingDiseases {
             
-            editingDiseases.diseaseList.append("")
-            self.modalTableView.reloadData()
+            if editingDiseases.diseaseList.count < 5 {
+                editingDiseases.diseaseList.append("")
+                self.modalTableView.reloadData()
+            } else {
+                let alertController = UIAlertController(title: "Limit diseases reached", message:
+                    "Currently a person has a maximum of 5 genetic disorders at a time.", preferredStyle: UIAlertControllerStyle.alert)
+                alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+                
+                self.present(alertController, animated: true, completion: nil)
+            }
         }
     }
     

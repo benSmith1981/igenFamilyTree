@@ -35,9 +35,6 @@
 		B5EAC1941F01390900151D52 /* iGenFamilyTreeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EAC1931F01390900151D52 /* iGenFamilyTreeTests.swift */; };
 		B5EAC19F1F01390900151D52 /* iGenFamilyTreeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EAC19E1F01390900151D52 /* iGenFamilyTreeUITests.swift */; };
 		CF217ED31F26276F0066352A /* TextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF217ED21F26276F0066352A /* TextFieldExtension.swift */; };
-		CF846E531F2F770400E334F5 /* HumanModelPickerViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF846E521F2F770400E334F5 /* HumanModelPickerViewExtension.swift */; };
-		CF846E5B1F307A6100E334F5 /* DummyNib.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF846E5A1F307A6100E334F5 /* DummyNib.xib */; };
-		CF846E5D1F307B2C00E334F5 /* DummyNibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF846E5C1F307B2B00E334F5 /* DummyNibView.swift */; };
 		CF8DA18A1F224448007EE7EC /* DismissKeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8DA1891F224448007EE7EC /* DismissKeyboardExtension.swift */; };
 		CF957EA91F1F8E9B0054B1AC /* disease_id1.json in Resources */ = {isa = PBXBuildFile; fileRef = CF957EA51F1F8E9B0054B1AC /* disease_id1.json */; };
 		CF957EAA1F1F8E9B0054B1AC /* disease_id2.json in Resources */ = {isa = PBXBuildFile; fileRef = CF957EA61F1F8E9B0054B1AC /* disease_id2.json */; };
@@ -125,9 +122,6 @@
 		B5EAC19E1F01390900151D52 /* iGenFamilyTreeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iGenFamilyTreeUITests.swift; sourceTree = "<group>"; };
 		B5EAC1A01F01390900151D52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF217ED21F26276F0066352A /* TextFieldExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldExtension.swift; sourceTree = "<group>"; };
-		CF846E521F2F770400E334F5 /* HumanModelPickerViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HumanModelPickerViewExtension.swift; sourceTree = "<group>"; };
-		CF846E5A1F307A6100E334F5 /* DummyNib.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DummyNib.xib; sourceTree = "<group>"; };
-		CF846E5C1F307B2B00E334F5 /* DummyNibView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyNibView.swift; sourceTree = "<group>"; };
 		CF8DA1891F224448007EE7EC /* DismissKeyboardExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissKeyboardExtension.swift; sourceTree = "<group>"; };
 		CF957EA51F1F8E9B0054B1AC /* disease_id1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = disease_id1.json; sourceTree = "<group>"; };
 		CF957EA61F1F8E9B0054B1AC /* disease_id2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = disease_id2.json; sourceTree = "<group>"; };
@@ -351,10 +345,7 @@
 				CFCFA8601F1E3A8E00BC05E5 /* PopAnimator.swift */,
 				CFCFA7CA1F18FA9900BC05E5 /* HumanModalViewController.swift */,
 				CFCFA8561F1CBD6600BC05E5 /* HumanModalExtension.swift */,
-				CF846E521F2F770400E334F5 /* HumanModelPickerViewExtension.swift */,
 				CFCFA8521F190CFC00BC05E5 /* ImageSlider */,
-				CF846E5C1F307B2B00E334F5 /* DummyNibView.swift */,
-				CF846E5A1F307A6100E334F5 /* DummyNib.xib */,
 				CFCFA8421F190C8300BC05E5 /* InfoCell.swift */,
 				CFCFA8431F190C8300BC05E5 /* InfoCell.xib */,
 			);
@@ -511,7 +502,6 @@
 				CF957EB01F20E3910054B1AC /* Main.storyboard in Resources */,
 				CFCFA7C91F151FD900BC05E5 /* testfile.json in Resources */,
 				CFCFA7BD1F0A9FA800BC05E5 /* iGenCell.xib in Resources */,
-				CF846E5B1F307A6100E334F5 /* DummyNib.xib in Resources */,
 				6877CF1B1F28F21F00E677FA /* GenerateFamilyCellTableViewCell.xib in Resources */,
 				CFCFA8511F190CF200BC05E5 /* ImageSliderCollectionViewCell.xib in Resources */,
 				681222881F0E6BBF00FA291C /* Localizable.strings in Resources */,
@@ -602,7 +592,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF846E531F2F770400E334F5 /* HumanModelPickerViewExtension.swift in Sources */,
 				E6401D0F1F1636B500AB002E /* Disease.swift in Sources */,
 				E626B3181F0D028B00125D85 /* ChooserViewController.swift in Sources */,
 				CFCFA7BC1F0A9FA800BC05E5 /* iGenCell.swift in Sources */,
@@ -631,7 +620,6 @@
 				CFCFA8501F190CF200BC05E5 /* ImageSliderCollectionViewCell.swift in Sources */,
 				B5EAC1841F01390800151D52 /* iGenFamilyTree.xcdatamodeld in Sources */,
 				CFCFA7C11F0B960E00BC05E5 /* Constants.swift in Sources */,
-				CF846E5D1F307B2C00E334F5 /* DummyNibView.swift in Sources */,
 				B51B62C91F0A258F00AB11CC /* FamilyTreeTests.swift in Sources */,
 				E6644EB41F052D4800C66427 /* CustomCollectionViewLayout.swift in Sources */,
 				CFCFA7CB1F18FA9900BC05E5 /* HumanModalViewController.swift in Sources */,
