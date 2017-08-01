@@ -225,14 +225,18 @@ class iGenDataService {
     //Only to update the patient who just registered a new tree so their ID equals the Patiend ID (or the family tree id)
     public static func verifyMember(with details: VerifyMember) {
         let verifyDetails: Parameters = [
-            "email" : details.email,
+            "patientName" : details.patientName,
+            "patientEmail" : details.patientEmail,
+            "verifyName" : details.verifyName,
+            "verifyEmail" : details.verifyEmail,
             "patientID" : details.patientID,
             "userID" : details.userID,
-            "patientName" : details.patientName,
-            "name" : details.name,
-            "sendersEmail" : details.sendersEmail
+            "code" : details.code,
+            "emailText" : details.emailText
         ]
-        if details.email.isValidEmail() && details.sendersEmail.isValidEmail(){
+        
+        
+        if details.verifyEmail.isValidEmail() && details.patientEmail.isValidEmail(){
             print("verifymember \(verifyDetails)")
             Alamofire.request("\(Constants.herokuAPI)verifymember/",
                 method: .post,
@@ -240,14 +244,21 @@ class iGenDataService {
                 encoding: JSONEncoding.default).responseJSON { (response) in
                     switch response.result {
                     case .success(let jsonData):
-                        print("success \(jsonData)")
-                        
+                        if let responseDict = jsonData as? NSDictionary{
+                            NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationIDs.verifyNotificationID.rawValue),
+                                                            object: self,
+                                                            userInfo: responseDict as! [String : Any])
+                            print("success \(responseDict)")
+                        }
                     case .failure(let error):
                         print("error \(error)")
                     }
             }
         } else {
-            print("Need a valid EMAILs")
+            let responseDict:[String : Any] = ["success": false, "message": "Enter a valid Email(s)" ]
+            NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationIDs.verifyNotificationID.rawValue),
+                                            object: self,
+                                            userInfo: responseDict as! [String : Any])
             
         }
     }

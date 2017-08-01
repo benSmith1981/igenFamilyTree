@@ -22,6 +22,11 @@ enum detailRows: Int {
     case disease4Row
     case disease5Row
     case disease6Row
+    case patientName
+    case patientEmail
+    case verifyName
+    case verifyEmail
+    case emailText
     
     func positionAsInteger() -> Int {
         switch self {
@@ -43,6 +48,8 @@ enum detailRows: Int {
             return 7
         case .disease6Row:
             return 8
+        default:
+            return 0
         }
     }
 }
@@ -91,7 +98,9 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
     }
     
     @IBAction func VerifyHuman(_ sender: Any) {
-        let verifyVC = self.storyboard!.instantiateViewController(withIdentifier: "VerifyHumanID") as! VerifyMemberVC
+
+        let verifyStoryboard: UIStoryboard = UIStoryboard(name: "VerifyMemberStoryboard", bundle: nil)
+        let verifyVC = verifyStoryboard.instantiateViewController(withIdentifier: "VerifyHumanID") as! VerifyMemberVC
         verifyVC.currentHuman = currentHuman
         self.present(verifyVC, animated:true, completion:nil)
 

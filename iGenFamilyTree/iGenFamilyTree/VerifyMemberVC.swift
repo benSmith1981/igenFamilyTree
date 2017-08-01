@@ -9,37 +9,85 @@
 import UIKit
 
 struct VerifyMember{
-    var email: String
+    var verifyEmail: String
     var patientID: String //family id
     var userID: String
     var patientName: String
-    var name: String
-    var sendersEmail: String
+    var verifyName: String
+    var patientEmail: String
+    var emailText: String
+    var code: Int
+
 }
 
 
 enum verifyMemberRows: Int{
-    case personToVerifyEmail = 0
-    case patientsEmail
+    case personToVerifyName = 0
+    case personToVerifyEmail
     case patientName
-    case personToVerifyName
+    case patientsEmail
+    case emailText
+
 }
 
-class VerifyMemberVC: UIViewController, UITableViewDelegate, UITableViewDataSource, updateParametersDelegate {
+class VerifyMemberVC: UIViewController, UITextViewDelegate, UITableViewDelegate, UITableViewDataSource, updateParametersDelegate {
 
     var currentHuman: Human?
-    var memberToVerify: VerifyMember?
+    var memberToVerify: VerifyMember!
     @IBOutlet weak var modalTableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
+        memberToVerify = VerifyMember.init(verifyEmail: "", //email of person to verify
+                                               patientID: currentHuman!.patientID,
+                                               userID: currentHuman!.id,
+                                               patientName: "", //name of the patient asking
+                                               verifyName: "", //name of person to verify
+                                               patientEmail: "",
+                                               emailText:"",
+                                               code: self.randomNumberWith(digits: 6)) //email of patient asking for
         let infoCell = UINib(nibName: "InfoCell", bundle: nil)
         self.modalTableView.register(infoCell, forCellReuseIdentifier: CustomCellIdentifiers.infoCellID.rawValue)
-
+        
+        let descriptionTableViewNib = UINib(nibName: "DescriptionTableViewCell", bundle:  nil)
+        self.modalTableView.register(descriptionTableViewNib, forCellReuseIdentifier: CustomCellIdentifiers.descriptionTableViewCellID.rawValue)
+        
+        // Do any additional setup after loading the view.
+        modalTableView.rowHeight = UITableViewAutomaticDimension
+        modalTableView.estimatedRowHeight = 36
+        modalTableView.layer.shadowRadius = 5
+        modalTableView.layer.masksToBounds = true
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(VerifyMemberVC.verifyObserver),
+                                               name:  NSNotification.Name(rawValue: NotificationIDs.verifyNotificationID.rawValue),
+                                               object: nil)
         // Do any additional setup after loading the view.
     }
 
-
+    func verifyObserver(notification: NSNotification) {
+        let verifyDict = notification.userInfo as! [String : Any]
+        if let success = verifyDict["success"] as? Bool, let message = verifyDict["message"] as? String {
+            if success {
+                showAlertMessage(message: message, success: success)
+            } else {
+                showAlertMessage(message: message, success: success)
+            }
+        }
+    }
+    
+    func showAlertMessage(message: String, success: Bool){
+        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action) in
+            if success{
+                self.presentingViewController?.dismiss(animated: true, completion: nil)
+            }
+        }))
+        self.present(alert, animated: true, completion: nil)
+    
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -50,30 +98,28 @@ class VerifyMemberVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     @IBAction func callVerfiyEndpoint(_ sender: Any) {
-        if let patientID = currentHuman?.patientID, let id = currentHuman?.id {
-            
-            //You need to set this struct with the values in the gethuman updates function
-            let memberToVerify = VerifyMember.init(email: "benjaminsmith1981@gmail.com", //email of person to verify
-                                                   patientID: patientID,
-                                                   userID: id,
-                                                   patientName: "Paul", //name of the patient asking
-                                                   name: "Ben", //name of person to verify
-                                                   sendersEmail: "pmgeurts@gmail.com") //email of patient asking for verification
-            iGenDataService.verifyMember(with: memberToVerify)
-            self.presentingViewController?.dismiss(animated: true, completion: nil)
-
-        }
-
+        //You need to set this struct with the values in the gethuman updates function verification
+        iGenDataService.verifyMember(with: self.memberToVerify)
     }
     
     func getHumanUpdates(value: Any, cellType: detailRows, indexPath: IndexPath){
         switch cellType {
-        case .nameRow:
-            self.memberToVerify?.name = value as! String
-            
+        case .verifyName:
+            self.memberToVerify?.verifyName = value as! String
+        case .verifyEmail:
+            self.memberToVerify?.verifyEmail = value as! String
+        case .patientName:
+            self.memberToVerify?.patientName = value as! String
+        case .patientEmail:
+            self.memberToVerify?.patientEmail = value as! String
+        case .emailText:
+            self.memberToVerify?.emailText = value as! String
         default:
             break
         }
+        //Reload the email text
+        self.modalTableView.reloadRows(at: [IndexPath.init(row: 4, section: 0)], with: .none)
+
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -82,48 +128,122 @@ class VerifyMemberVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 5
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == verifyMemberRows.emailText.rawValue {
+            return UITableViewAutomaticDimension
+        }
+        return 44
+    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
+        case verifyMemberRows.personToVerifyName.rawValue:
+            let personToVerifyNameCell = self.modalTableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.infoCellID.rawValue) as! InfoCell
+            
+            personToVerifyNameCell.addRowBut.alpha = 0.0
+            personToVerifyNameCell.removeRowBut.alpha = 0.0
+            personToVerifyNameCell.addRowBut.isUserInteractionEnabled = false
+            personToVerifyNameCell.removeRowBut.isUserInteractionEnabled = false
+            
+            personToVerifyNameCell.titleInfo.text = NSLocalizedString("verifyName", comment: "")
+            personToVerifyNameCell.textfieldValue.text = ""
+            
+            personToVerifyNameCell.cellType = .verifyName
+            personToVerifyNameCell.delegate = self
+            personToVerifyNameCell.indexPath = indexPath
+            return personToVerifyNameCell
         case verifyMemberRows.personToVerifyEmail.rawValue:
-            let personToVerifyEmail = self.modalTableView.dequeueReusableCell(withIdentifier: "infoCellID") as! InfoCell
-
-            personToVerifyEmail.titleInfo.text = NSLocalizedString("name", comment: "")
+            let personToVerifyEmail = self.modalTableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.infoCellID.rawValue) as! InfoCell
+            personToVerifyEmail.addRowBut.alpha = 0.0
+            personToVerifyEmail.removeRowBut.alpha = 0.0
+            personToVerifyEmail.addRowBut.isUserInteractionEnabled = false
+            personToVerifyEmail.removeRowBut.isUserInteractionEnabled = false
+            
+            personToVerifyEmail.titleInfo.text = NSLocalizedString("verifyEmail", comment: "")
             personToVerifyEmail.textfieldValue.text = ""
-            personToVerifyEmail.cellType = .nameRow
+            
+            personToVerifyEmail.cellType = .verifyEmail
             personToVerifyEmail.delegate = self
+            personToVerifyEmail.indexPath = indexPath
+            
             return personToVerifyEmail
         case verifyMemberRows.patientName.rawValue:
-            let patientNameCell = self.modalTableView.dequeueReusableCell(withIdentifier: "infoCellID") as! InfoCell
+            let patientName = self.modalTableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.infoCellID.rawValue) as! InfoCell
+            
+            patientName.addRowBut.alpha = 0.0
+            patientName.removeRowBut.alpha = 0.0
+            patientName.addRowBut.isUserInteractionEnabled = false
+            patientName.removeRowBut.isUserInteractionEnabled = false
+            
+            patientName.titleInfo.text = NSLocalizedString("patientName", comment: "")
+            patientName.textfieldValue.text = ""
+            
+            patientName.cellType = .patientName
+            patientName.delegate = self
+            patientName.indexPath = indexPath
 
-            patientNameCell.titleInfo.text = NSLocalizedString("name", comment: "")
-            patientNameCell.textfieldValue.text = ""
-            patientNameCell.cellType = .nameRow
-            patientNameCell.delegate = self
-            return patientNameCell
+            return patientName
+        case verifyMemberRows.patientsEmail.rawValue:
+            let patientEmail = self.modalTableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.infoCellID.rawValue) as! InfoCell
+            
+            patientEmail.addRowBut.alpha = 0.0
+            patientEmail.removeRowBut.alpha = 0.0
+            patientEmail.addRowBut.isUserInteractionEnabled = false
+            patientEmail.removeRowBut.isUserInteractionEnabled = false
+            
+            patientEmail.titleInfo.text = NSLocalizedString("patientEmail", comment: "")
+            patientEmail.textfieldValue.text = ""
+            
+            patientEmail.cellType = .patientEmail
+            patientEmail.delegate = self
+            patientEmail.indexPath = indexPath
 
-        case verifyMemberRows.personToVerifyEmail.rawValue:
-            let personToVerifyEmail = self.modalTableView.dequeueReusableCell(withIdentifier: "infoCellID") as! InfoCell
+            return patientEmail
+        case verifyMemberRows.emailText.rawValue:
+            let descriptionCell = self.modalTableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.descriptionTableViewCellID.rawValue) as! DescriptionTableViewCell
 
-            personToVerifyEmail.titleInfo.text = NSLocalizedString("name", comment: "")
-            personToVerifyEmail.textfieldValue.text = ""
-            personToVerifyEmail.cellType = .nameRow
-            personToVerifyEmail.delegate = self
-            return personToVerifyEmail
+            descriptionCell.DescriptionTextView.delegate = self
+            descriptionCell.cellType = .emailText
+            descriptionCell.delegate = self
+            descriptionCell.indexPath = indexPath
+            
+            //test encode html
+            let patientName  = memberToVerify?.patientName ?? ""
+            let verifyemail = memberToVerify?.verifyEmail ?? ""
+            let verifyname = memberToVerify?.verifyName ?? ""
+            let code = memberToVerify?.code ?? 0
 
-        case verifyMemberRows.personToVerifyName.rawValue:
-            let personToVerifyName = self.modalTableView.dequeueReusableCell(withIdentifier: "infoCellID") as! InfoCell
+            let localiseText = String(format: NSLocalizedString("emailText", comment: ""), verifyname, verifyemail, "XXXXXX", patientName)
 
-            personToVerifyName.titleInfo.text = NSLocalizedString("name", comment: "")
-            personToVerifyName.textfieldValue.text = ""
-            personToVerifyName.cellType = .nameRow
-            personToVerifyName.delegate = self
-            return personToVerifyName
-
+            let str = localiseText.replacingOccurrences(of: "<[^]>]+>", with: "", options: .regularExpression, range: nil)
+            self.memberToVerify?.emailText = String(format: NSLocalizedString("emailText", comment: ""), verifyname, verifyemail, "\(code)", patientName)
+            descriptionCell.DescriptionTextView.text = str
+            return descriptionCell
         default:
             return UITableViewCell()
         }
+    }
+    
+    func randomNumberWith(digits:Int) -> Int {
+        let min = Int(pow(Double(10), Double(digits-1))) - 1
+        let max = Int(pow(Double(10), Double(digits))) - 1
+        return Int(Range(uncheckedBounds: (lower: min, upper: max)))
+    }
+}
+
+extension Int {
+    init(_ range: Range<Int> ) {
+        let delta = range.lowerBound < 0 ? abs(range.lowerBound) : 0
+        let min = UInt32(range.lowerBound + delta)
+        let max = UInt32(range.upperBound   + delta)
+        self.init(Int(min + arc4random_uniform(max - min)) - delta)
+    }
+}
+
+extension UIViewController {
+    class func loadFromNib<T: UIViewController>() -> T {
+        return T(nibName: String(describing: self), bundle: nil)
     }
 }

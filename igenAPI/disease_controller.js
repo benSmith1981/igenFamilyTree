@@ -56,7 +56,7 @@ exports.getdiseases = function(req, res, err) {
     console.log("req.query.id "+ req.query.id)
 
     //callback is an array
-    DiseaseSchema.find({id: req.query.id}, function (err, callback) {
+    DiseaseSchema.findOne({id: req.query.id}, function (err, callback) {
         if (err) {
             res.json({ err })
             return console.error(err);

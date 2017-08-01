@@ -41,18 +41,25 @@ class InfoCell: UITableViewCell, UITextFieldDelegate {
         textfieldValue.borderStyle = .none
         textfieldValue.layer.borderColor = UIColor.red.cgColor
         textfieldValue.setLeftPaddingPoints(10)
+        textfieldValue.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
 
     }
-    
-    
+
+    func textFieldDidChange(_ textField: UITextField) {
+        if let indexPath = indexPath , let cellType = cellType{
+            delegate?.getHumanUpdates(value: textField.text ?? "" , cellType: cellType, indexPath: indexPath)
+        }
+    }
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
         if let indexPath = indexPath , let cellType = cellType{
-                    delegate?.getHumanUpdates(value: textField.text ?? "" , cellType: cellType, indexPath: indexPath)
+            delegate?.getHumanUpdates(value: textField.text ?? "" , cellType: cellType, indexPath: indexPath)
         }
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        //        delegate?.getHumanUpdates(value: textField.text ?? "" , cellType: cellType!)
+        if let indexPath = indexPath , let cellType = cellType{
+            delegate?.getHumanUpdates(value: textField.text ?? "" , cellType: cellType, indexPath: indexPath)
+        }
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
