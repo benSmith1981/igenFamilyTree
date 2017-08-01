@@ -5,7 +5,7 @@ const nodemailer = require('nodemailer');
 
 exports.verifymember = function(req, res, err) {
     var email = req.body.email //becomes user name
-    var familyTreeID = req.body.patientID
+    var patientID = req.body.patientID
     var userID = req.body.userID
     var passwordCode = generateCode()
     var sendersEmail = req.body.sendersEmail
@@ -48,7 +48,7 @@ exports.verifymember = function(req, res, err) {
     var login = new LoginSchema({  
         username: email,
         password: passwordCode,
-        familyTreeID: familyTreeID,
+        patientID: patientID,
         id: userID
     })
     LoginSchema.find({username: req.body.email}, function(err, doc){ //function (err, callback) {
@@ -75,8 +75,8 @@ function generateCode(){
 }
 
 exports.addpatientsid = function(req, res, err) {
-    LoginSchema.updateOne({id: req.body.username }, 
-        {$set: {familyTreeID:req.body.patientID, id: req.body.patientID} }, 
+    LoginSchema.updateOne({username: req.body.username }, 
+        {$set: {patientID:req.body.patientID, id: req.body.patientID} }, 
         {upsert: true}, 
         function(err, callback){
             console.log("callback.id " + callback.id)
@@ -97,7 +97,7 @@ exports.register = function(req, res, err) {
     var login = new LoginSchema({  
         username: req.body.username,
         password: req.body.password,
-        familyTreeID: "",
+        patientID: "",
         id: ""
     })
     //callback is an array
@@ -136,13 +136,17 @@ exports.login = function(req, res, err) {
                 return console.error(err);
             } else {
                 var userID = callback.id
+<<<<<<< HEAD
                 var patientID = callback.familyTreeID
+=======
+                var patientID = callback.patientID
+>>>>>>> develop
 
                 console.log("callback.id "+ callback.id)
                 //callback is an array
-                console.log("callback.familyTreeID"+ callback.familyTreeID)
+                console.log("callback.patientID"+ callback.patientID)
 
-                FamilySchema.find({patientID: callback.familyTreeID}, function (err, callback) {
+                FamilySchema.find({patientID: callback.patientID}, function (err, callback) {
                     if (err) {
                         res.json({success: false, message:"Username used: "+err})
                         return console.error(err);
