@@ -136,11 +136,7 @@ exports.login = function(req, res, err) {
                 return console.error(err);
             } else {
                 var userID = callback.id
-<<<<<<< HEAD
-                var patientID = callback.familyTreeID
-=======
                 var patientID = callback.patientID
->>>>>>> develop
 
                 console.log("callback.id "+ callback.id)
                 //callback is an array
