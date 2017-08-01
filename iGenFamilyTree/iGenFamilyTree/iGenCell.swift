@@ -40,6 +40,7 @@ class iGenCell: UICollectionViewCell {
         self.bgImg.image = UIImage()
         self.genderImg.image = UIImage()
         self.ring.layer.removeAllAnimations()
+        self.ring.layer.borderWidth = 0
         self.infoVerified.image = UIImage()
         //self.ring.layer.borderColor = UIColor.clear.cgColor
         self.diseaseImg1Color.backgroundColor = UIColor.clear

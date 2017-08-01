@@ -82,7 +82,10 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
     @IBOutlet weak var footerBG: UIView!
     @IBOutlet weak var headerBG: UIView!
     
-    @IBOutlet weak var pickerheightconstraint: NSLayoutConstraint!
+    @IBOutlet weak var pickerTrailingToBottomContraint: NSLayoutConstraint!
+    //@IBOutlet weak var pickerheightconstraint: NSLayoutConstraint!
+    
+    
     @IBAction func verifyMember(_ sender: Any) {
 //        self.modalTableView.selectRow(at: IndexPath.init(row: 0, section: 0), animated: true, scrollPosition: UITableViewScrollPosition.none)
         self.performSegue(withIdentifier: "modifySegue", sender: self)
@@ -97,9 +100,9 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
     
     
     
-    @IBAction func dismissPIcker(_ sender: UITapGestureRecognizer) {
-        self.hidePicker()
-    }
+//    @IBAction func dismissPIcker(_ sender: UITapGestureRecognizer) {
+//        self.hidePicker()
+//    }
     @IBAction func dismissPopover(_ sender: Any) {
         closeView()
     }
@@ -228,19 +231,30 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
     }
     
     func showPicker(){
-        UIView.animate(withDuration: 1.5, animations: {
-            self.pickerDisease.alpha = 1.0
-            self.pickerheightconstraint.constant = 450
+    
+        
+        self.pickerTrailingToBottomContraint.constant = 0
+        
+        UIView.animate(withDuration: 0.4,
+                       //options: UIViewAnimationOptions.curveEaseInOut,
+                       animations: {
+                        
+            self.pickerDisease.alpha = 1
+            self.view.layoutIfNeeded()
             
         }) { (success) in
             //
             print(self.pickerDisease.frame)
         }
     }
+    
     func hidePicker(){
-        UIView.animate(withDuration: 1.5, animations: {
+        
+        self.pickerTrailingToBottomContraint.constant = -200
+        
+        UIView.animate(withDuration: 0.4, animations: {
             self.pickerDisease.alpha = 0
-            self.pickerheightconstraint.constant = 0
+            self.view.layoutIfNeeded()
             
         }) { (success) in
             //
