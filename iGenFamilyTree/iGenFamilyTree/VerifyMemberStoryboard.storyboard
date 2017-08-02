@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Verify MemberVC-->
+        <scene sceneID="fnJ-hx-4fi">
+            <objects>
+                <viewController storyboardIdentifier="VerifyHumanID" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7Tg-qb-Hyd" customClass="VerifyMemberVC" customModule="iGenFamilyTree" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="FkZ-PQ-ntx"/>
+                        <viewControllerLayoutGuide type="bottom" id="fap-b7-dqL"/>
+                    </layoutGuides>
+                    <view key="view" alpha="0.75" contentMode="scaleToFill" id="350-WL-4dt">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="lJB-cn-1k7">
+                                <rect key="frame" x="12.5" y="65.5" width="350" height="536"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iya-QU-QrI">
+                                        <rect key="frame" x="0.0" y="0.0" width="350" height="36"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="verifyTitle" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ss6-TE-OkP">
+                                                <rect key="frame" x="149.5" y="12.5" width="52.5" height="12"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
+                                                <color key="textColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EkP-gM-fym">
+                                                <rect key="frame" x="310" y="3" width="30" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="30" id="T2C-aI-bxj"/>
+                                                    <constraint firstAttribute="height" constant="30" id="sci-nJ-9IW"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="15"/>
+                                                <state key="normal" image="closeButton">
+                                                    <color key="titleColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="dismissVerify:" destination="7Tg-qb-Hyd" eventType="touchUpInside" id="QBS-I7-p05"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9tt-t1-hpE">
+                                                <rect key="frame" x="10" y="3.5" width="30" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="30" id="2af-u7-F3d"/>
+                                                    <constraint firstAttribute="height" constant="30" id="dNS-qh-lt1"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <state key="normal" image="saveButton">
+                                                    <color key="titleColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="callVerfiyEndpoint:" destination="7Tg-qb-Hyd" eventType="touchUpInside" id="QqX-Ni-OZH"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="ss6-TE-OkP" firstAttribute="centerY" secondItem="Iya-QU-QrI" secondAttribute="centerY" id="CKX-3z-XA8"/>
+                                            <constraint firstItem="ss6-TE-OkP" firstAttribute="centerX" secondItem="Iya-QU-QrI" secondAttribute="centerX" id="S71-rP-QhO"/>
+                                            <constraint firstItem="9tt-t1-hpE" firstAttribute="leading" secondItem="Iya-QU-QrI" secondAttribute="leading" constant="10" id="ZR4-uT-d9r"/>
+                                            <constraint firstAttribute="trailing" secondItem="EkP-gM-fym" secondAttribute="trailing" constant="10" id="e0T-LA-Dsf"/>
+                                            <constraint firstAttribute="height" constant="36" id="fgf-F5-4gB"/>
+                                            <constraint firstItem="EkP-gM-fym" firstAttribute="centerY" secondItem="Iya-QU-QrI" secondAttribute="centerY" id="tZV-5M-lBz"/>
+                                            <constraint firstItem="9tt-t1-hpE" firstAttribute="centerY" secondItem="Iya-QU-QrI" secondAttribute="centerY" id="yc6-Ka-YJn"/>
+                                        </constraints>
+                                    </view>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3NW-f2-SXj">
+                                        <rect key="frame" x="0.0" y="36" width="350" height="500"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="350" id="gxu-Hh-HTB"/>
+                                            <constraint firstAttribute="height" constant="500" id="otT-1Z-lXB"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="dataSource" destination="7Tg-qb-Hyd" id="kgh-2A-lLp"/>
+                                            <outlet property="delegate" destination="7Tg-qb-Hyd" id="PVE-2V-ut6"/>
+                                        </connections>
+                                    </tableView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="lJB-cn-1k7" firstAttribute="centerY" secondItem="350-WL-4dt" secondAttribute="centerY" id="fh1-YC-snW"/>
+                            <constraint firstItem="lJB-cn-1k7" firstAttribute="centerX" secondItem="350-WL-4dt" secondAttribute="centerX" id="h25-X1-pTV"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="modalTableView" destination="3NW-f2-SXj" id="oId-7t-cIb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1RP-nV-lEn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4466" y="1101"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="closeButton" width="30" height="30"/>
+        <image name="saveButton" width="30" height="30"/>
+    </resources>
+</document>

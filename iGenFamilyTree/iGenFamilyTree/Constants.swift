@@ -17,7 +17,7 @@ struct Constants {
 
 struct DetailViewSections {
     static let numberOfSections = 2
-    static let numberOfStaticSections = 3
+    static let numberOfStaticRows = 3
     
     static let noSection = 0
     static let noDisease = 0
@@ -72,6 +72,8 @@ enum CustomCellIdentifiers: String {
     case CreatePatientGender
     case detailImageCellID
     case infoCellID
+    case descriptionTableViewCellID
+
 }
 
 enum CustomCellNames: String {
@@ -83,6 +85,7 @@ enum NotificationIDs: String {
     case iGenData
     case loginNotificationID
     case registerNotificationID
+    case verifyNotificationID
     case iGenDiseaseData
 }
 

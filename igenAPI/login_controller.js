@@ -4,13 +4,17 @@ const FamilySchema = require('./tree_model')
 const nodemailer = require('nodemailer');
 
 exports.verifymember = function(req, res, err) {
-    var email = req.body.email //becomes user name
+    var name = req.body.verifyName
+    var email = req.body.verifyEmail //becomes user name
+
+    var patientname = req.body.patientName
+    var sendersEmail = req.body.patientEmail 
+
     var patientID = req.body.patientID
     var userID = req.body.userID
-    var passwordCode = generateCode()
-    var sendersEmail = req.body.sendersEmail
-    var name = req.body.name
-    var patientname = req.body.patientname
+    var passwordCode = req.body.code
+
+    var emailText = req.body.emailText
 
     // create reusable transporter object using the default SMTP transport
     let transporter = nodemailer.createTransport({
@@ -33,16 +37,10 @@ exports.verifymember = function(req, res, err) {
         from: "👻 <"+sendersEmail+">", // sender address
         to: "<"+email+">", // list of receivers
         subject: 'Family requesting your help!', // Subject line
-        text: '%s', emailTextDutch,
-        html: '<b>'+emailTextDutch+'</b>'  // html body
+        text: '%s', emailText,
+        html: '<b>'+emailText+'</b>'  // html body
     };
-    // send mail with defined transport object
-    transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-            return res.send({response: false , message: error});
-        }
-        res.send({response: true, message:"Message "+ info.messageId +" sent: %s" + info.response});
-    });
+
 
     //create new user with these details, so they can login
     var login = new LoginSchema({  
@@ -51,19 +49,26 @@ exports.verifymember = function(req, res, err) {
         patientID: patientID,
         id: userID
     })
-    LoginSchema.find({username: req.body.email}, function(err, doc){ //function (err, callback) {
+    LoginSchema.find({username: email}, function(err, doc){ //function (err, callback) {
         if (!doc.length){
             login.save(function (err, details) {
                 if (err) {
-                    res.json({ err })
+                    res.json({ success: false, message: err })
                     return console.error(err);
                 }
                 else  {
-                    res.json({ details })
+                        // send mail with defined transport object
+                    transporter.sendMail(mailOptions, (error, info) => {
+                        if (error) {
+                            return res.send({success: false , message: error});
+                        }
+                        res.send({success: true, message:"Message "+ info.messageId +" sent: %s" + info.response});
+                    });
+                    res.json({ details: details, success: true, message:"Verification Email Sent" })
                 }
             })
         } else {
-            res.json({success: false, message:"Username used"})
+            res.json({success: false, message:"A user is already registered with this email"})
         }
     })
 }

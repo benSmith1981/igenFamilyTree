@@ -108,7 +108,7 @@ class iGenDataService {
     }
     
     // put a Human object by id
-    public static func saveHuman(_ human: Human, userID: ID) {
+    public static func saveHuman(_ human: inout Human, userID: ID) {
         human.logChangesBy(userID, "name, dob, gender")
         let humanUpdate: Parameters = [
             "name": human.name,
@@ -134,7 +134,7 @@ class iGenDataService {
     }
     
     // put a Disease object by id
-    public static func saveDisease(_ disease: Disease, userID: ID) {
+    public static func saveDisease(_ disease: inout Disease, userID: ID) {
         disease.logChangesBy(userID, "diseaseList")
         let diseaseUpdate: Parameters = [
             "id":disease.id,
@@ -163,29 +163,41 @@ class iGenDataService {
     // post a verify request after invitation by a Patient
     public static func verifyMember(with details: VerifyMember) {
         let verifyDetails: Parameters = [
-            "email" : details.email,
+            "patientName" : details.patientName,
+            "patientEmail" : details.patientEmail,
+            "verifyName" : details.verifyName,
+            "verifyEmail" : details.verifyEmail,
             "patientID" : details.patientID,
             "userID" : details.userID,
-            "patientName" : details.patientName,
-            "name" : details.name,
-            "sendersEmail" : details.sendersEmail
+            "code" : details.code,
+            "emailText" : details.emailText
         ]
-        print("verifymember \(verifyDetails)")
-        guard details.email.isValidEmail() && details.sendersEmail.isValidEmail() else {
-            print("Need two valid EMAIL addresses")
-            return
-        }
-        Alamofire.request("\(Constants.herokuAPI)verifymember/",
-            method: .post,
-            parameters: verifyDetails,
-            encoding: JSONEncoding.default).responseJSON { (response) in
-                switch response.result {
-                case .success(let jsonData):
-                    print("success \(jsonData)")
-                    
-                case .failure(let error):
-                    print("error \(error)")
-                }
+        
+        
+        if details.verifyEmail.isValidEmail() && details.patientEmail.isValidEmail(){
+            print("verifymember \(verifyDetails)")
+            Alamofire.request("\(Constants.herokuAPI)verifymember/",
+                method: .post,
+                parameters: verifyDetails,
+                encoding: JSONEncoding.default).responseJSON { (response) in
+                    switch response.result {
+                    case .success(let jsonData):
+                        if let responseDict = jsonData as? NSDictionary{
+                            NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationIDs.verifyNotificationID.rawValue),
+                                                            object: self,
+                                                            userInfo: responseDict as! [String : Any])
+                            print("success \(responseDict)")
+                        }
+                    case .failure(let error):
+                        print("error \(error)")
+                    }
+            }
+        } else {
+            let responseDict:[String : Any] = ["success": false, "message": "Enter a valid Email(s)" ]
+            NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationIDs.verifyNotificationID.rawValue),
+                                            object: self,
+                                            userInfo: responseDict as! [String : Any])
+            
         }
     }
     
