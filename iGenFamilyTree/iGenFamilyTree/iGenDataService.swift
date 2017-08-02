@@ -199,18 +199,6 @@ class iGenDataService {
                                             userInfo: responseDict as! [String : Any])
             
         }
-        Alamofire.request("\(Constants.herokuAPI)verifymember/",
-            method: .post,
-            parameters: verifyDetails,
-            encoding: JSONEncoding.default).responseJSON { (response) in
-                switch response.result {
-                case .success(let jsonData):
-                    print("success \(jsonData)")
-                    
-                case .failure(let error):
-                    print("error \(error)")
-                }
-        }
     }
     
     // update userID / patientID who just registered a new family tree

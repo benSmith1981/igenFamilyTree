@@ -480,7 +480,7 @@
 					B5EAC1771F01390800151D52 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = HZWL927386;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					B5EAC18E1F01390800151D52 = {
 						CreatedOnToolsVersion = 8.3.3;
@@ -833,8 +833,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bootcamp1705.IgenFamilyTree;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "603d168a-a80c-48ab-bd28-6575ee8420d6";
+				PROVISIONING_PROFILE_SPECIFIER = "IgenFamilyTree - Development";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -846,13 +846,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = HZWL927386;
 				INFOPLIST_FILE = iGenFamilyTree/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bootcamp1705.IgenFamilyTree;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "6251e59d-ad8e-4976-8e32-77586cb6c473";
+				PROVISIONING_PROFILE_SPECIFIER = "IgenFamilyTree - Distribution";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -200,7 +200,6 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
     }
     
     override func viewDidLayoutSubviews() {
-        
         modalTableView.reloadData()
     }
     
@@ -211,7 +210,6 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
     
     func closeView()
     {
-        
         self.presentingViewController?.dismiss(animated: true, completion: nil)
         delegate?.reloadCell()
     }
