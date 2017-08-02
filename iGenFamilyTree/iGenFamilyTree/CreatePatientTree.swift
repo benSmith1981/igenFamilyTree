@@ -29,7 +29,7 @@ class CreatePatientTree: UITableViewCell, UITextFieldDelegate, UIPickerViewDeleg
         numberOfMembers.returnKeyType = UIReturnKeyType.next
         pickerView.delegate = self
         numberOfMembers.inputView = pickerView
-        pickerView.backgroundColor = UIColor.white
+//        pickerView.backgroundColor = UIColor.white
         
         let toolBar = UIToolbar()
         toolBar.barStyle = UIBarStyle.default

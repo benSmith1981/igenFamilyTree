@@ -41,9 +41,10 @@ class InfoCell: UITableViewCell, UITextFieldDelegate, UIPickerViewDelegate, UIPi
         textfieldValue.layer.cornerRadius = 8
         textfieldValue.borderStyle = .none
         textfieldValue.layer.borderColor = UIColor.red.cgColor
-        textfieldValue.setLeftPaddingPoints(10)
+        textfieldValue.setLeftPaddingPoints(5)
+        textfieldValue.setRightPaddingPoints(5)
         textfieldValue.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
-        pickerView.backgroundColor = UIColor.white
+        //pickerView.backgroundColor = UIColor.white
 
     }
 

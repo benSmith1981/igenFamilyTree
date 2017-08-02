@@ -78,14 +78,13 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
     var editingHuman: Human?
     var currentDiseases: Disease?
     var editingDiseases: Disease?
-    var pickerView = UIPickerView()
+    var pickerView = [UIPickerView(),UIPickerView(),UIPickerView(),UIPickerView(),UIPickerView()]
     let toolBar = UIToolbar()
     let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.plain, target: self, action: #selector(pickerViewEndEditing))
     let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
     let cancelButton = UIBarButtonItem(title: "Reset", style: UIBarButtonItemStyle.plain, target: self, action: #selector(cancelPickerView))
     
     //*****TO DO: SET PICKERDIM ALPHA TO 0.4 WHEN PICKER IS SUMMONED OR
-    //*****TO DO: PICKUP WHICH TEXTFIELD IS SELECTED, AND SAVE VALUE FOR THAT FIELD
     @IBOutlet weak var pickerDim: UIView!
     @IBOutlet weak var modelViewTitle: UILabel!
     @IBOutlet var containerView: UIView!
@@ -100,12 +99,16 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
     }
     
     func cancelPickerView() {
-        pickerView.selectRow(0, inComponent: 0, animated: true)
+        pickerView[0].selectRow(0, inComponent: 0, animated: true)
+        pickerView[1].selectRow(0, inComponent: 0, animated: true)
+        pickerView[2].selectRow(0, inComponent: 0, animated: true)
+        pickerView[3].selectRow(0, inComponent: 0, animated: true)
+        pickerView[4].selectRow(0, inComponent: 0, animated: true)
     }
     
     @IBAction func addDiseaseRow(_ sender: Any) {
-        if let currentDiseases = currentDiseases {
-            currentDiseases.diseaseList.append("")
+        if var editingDiseases = editingDiseases {
+            editingDiseases.diseaseList.append("")
             self.modalTableView.reloadData()
         }
     }
@@ -171,6 +174,8 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
             if let currentDiseases = humanDetails?.diseases[cellContent.getID()]{
                 self.currentDiseases = currentDiseases
                 self.editingDiseases = self.currentDiseases
+//                editingDiseases = Disease.init(id: cellContent.getID(), editInfoID: "", editInfoTimestamp: "", editInfoField: "")
+//                editingDiseases?.diseaseList = currentDiseases.diseaseList
             } else {
                 self.editingDiseases = Disease.init(id: cellContent.getID(), editInfoID: "", editInfoTimestamp: "", editInfoField: "")
                 self.editingDiseases?.diseaseList.append("")
@@ -208,15 +213,13 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
         // Dispose of any resources that can be recreated.
     }
     
-    func closeView()
-    {
+    func closeView() {
+        
         self.presentingViewController?.dismiss(animated: true, completion: nil)
         delegate?.reloadCell()
     }
     
     func getHumanUpdates(value: Any, cellType: detailRows, indexPath: IndexPath){
-        //animate the picker
-        
 
         switch cellType {
         case .nameRow:
@@ -244,10 +247,10 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
     }
     
     func addDisease() {
-        if let editingDiseases = editingDiseases {
-            
-            if editingDiseases.diseaseList.count < 5 {
-                editingDiseases.diseaseList.append("")
+//        if var editingDiseases = editingDiseases {
+        
+            if (editingDiseases?.diseaseList.count)! < 5 {
+                editingDiseases?.diseaseList.append("")
                 self.modalTableView.reloadData()
             } else {
                 let alertController = UIAlertController(title: "Limit diseases reached", message:
@@ -256,7 +259,7 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
                 
                 self.present(alertController, animated: true, completion: nil)
             }
-        }
+//        }
     }
     
     func removeDisease(indexPath:IndexPath) {
@@ -273,14 +276,16 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
             let section = indexPathForPerson?.section,
             let cellContent = humanDetails?.model?.cell?[section][item]{
             
+            editingDiseases?.diseaseList = (editingDiseases?.diseaseList.filter { $0 != "" })!
+            
             currentHuman = editingHuman
             humanDetails?.familyTree[cellContent.getID()] = currentHuman
-            iGenDataService.saveHuman(currentHuman!, userID: (humanDetails?.userID)!)
+            iGenDataService.saveHuman(&currentHuman!, userID: (humanDetails?.userID)!)
             if (editingDiseases?.diseaseList.count)! > 0 && editingDiseases?.diseaseList[0] != "" {
                 //save disease if they got changed
                 currentDiseases = editingDiseases
                 humanDetails?.diseases[cellContent.getID()] = currentDiseases
-                iGenDataService.saveDisease(currentDiseases!, userID: (humanDetails?.userID)!)
+                iGenDataService.saveDisease(&currentDiseases!, userID: (humanDetails?.userID)!)
             } else if currentDiseases != nil {
                 //delete disease
                 humanDetails?.diseases[cellContent.getID()] = nil
