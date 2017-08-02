@@ -39,7 +39,7 @@ class ChooserViewController: UIViewController {
                                                object: nil)
         #if DEBUG
             self.usernameTextField.text = "axel@axel.nu"
-            self.passwordTextField.text = "ihatetypingpasswords"
+            self.passwordTextField.text = "loorap"
         #endif
     }
     
