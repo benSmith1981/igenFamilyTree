@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 struct Login {
     var username: String
@@ -28,6 +29,8 @@ class ChooserViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.hideKeyboardWhenTappedAround()
+        
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(ChooserViewController.LoginObserver),
                                                name:  NSNotification.Name(rawValue: NotificationIDs.loginNotificationID.rawValue ),
@@ -39,6 +42,10 @@ class ChooserViewController: UIViewController {
                                                object: nil)
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        SVProgressHUD.dismiss()
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -52,10 +59,7 @@ class ChooserViewController: UIViewController {
             self.performSegue(withIdentifier: Segues.familytreeSegue.rawValue, sender: self)
         } else {
             let serverResponse = loginDict["message"]
-            let alert = UIAlertController(title: "Alert", message: serverResponse as? String, preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-            passwordTextField.text = ""
+            alertMessage(serverResponse as! String)
         }
     }
     
@@ -67,9 +71,7 @@ class ChooserViewController: UIViewController {
             self.performSegue(withIdentifier: Segues.createFamilytreeSegue.rawValue, sender: self)
         } else {
             let serverResponse = registerDict["message"]
-            let alert = UIAlertController(title: "Alert", message: serverResponse as? String, preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            alertMessage(serverResponse as! String)
         }
     }
     
@@ -86,31 +88,32 @@ class ChooserViewController: UIViewController {
     
     @IBAction func LoginButton(_ sender: UIButton) {
         guard validUsername(usernameTextField.text) else {
-            usernameNotValid()
+            alertMessage("Username not a valid e-mail address")
             return
         }
         guard validPassword(passwordTextField.text) else {
-            passwordNotValid()
+            alertMessage("Password not filled in")
             return
         }
         let login = Login.init(username: usernameTextField.text!, password: passwordTextField.text!, PatientID: "", id: "")
+        SVProgressHUD.show()
         iGenDataService.login(login)
         
     }
     
     @IBAction func RegisterButton(_ sender: UIButton) {
         guard validUsername(usernameTextField.text) else {
-            usernameNotValid()
+            alertMessage("Username not a valid e-mail address")
             return
         }
         guard validPassword(passwordTextField.text) else {
-            passwordNotValid()
+            alertMessage("Password not filled in")
             return
         }
         let login = Login.init(username: usernameTextField.text!, password: passwordTextField.text!, PatientID: "", id: "")
+        SVProgressHUD.show()
         iGenDataService.register(login)
     }
-    
     
     func validUsername(_ username: String?) -> Bool {
         if  username == nil {
@@ -124,12 +127,6 @@ class ChooserViewController: UIViewController {
         }
     }
     
-    func usernameNotValid() {
-        let alert = UIAlertController(title: "Alert", message: "Username not a valid e-mail address", preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-    }
-    
     func validPassword(_ password: String?) -> Bool {
         if  password == nil {
             return false
@@ -140,12 +137,12 @@ class ChooserViewController: UIViewController {
         }
     }
     
-    func passwordNotValid() {
-        let alert = UIAlertController(title: "Alert", message: "Password not filled in", preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+    func alertMessage(_ message: String) {
+        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (_) in
+            self.passwordTextField.text = ""}))
         self.present(alert, animated: true, completion: nil)
     }
-    
     
     /*
      // MARK: - Navigation
