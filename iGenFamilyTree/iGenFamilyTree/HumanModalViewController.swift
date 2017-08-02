@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 import Alamofire
+import IQKeyboardManager
+
 /// A dictionary of parameters to apply to a `URLRequest`.
 public typealias Parameters = [String: Any]
 
@@ -93,6 +95,8 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        IQKeyboardManager.shared().disabledToolbarClasses.add(HumanModalViewController.self)
         
         self.hideKeyboardWhenTappedAround()
         

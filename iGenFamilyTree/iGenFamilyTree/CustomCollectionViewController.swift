@@ -9,6 +9,7 @@
 import UIKit
 import DeviceKit
 import Alamofire
+import IQKeyboardManager
 
 protocol reloadAfterEdit: class {
     func reloadCell()
@@ -66,6 +67,7 @@ class CustomCollectionViewController: UICollectionViewController, reloadAfterEdi
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        IQKeyboardManager.shared().disabledToolbarClasses.add(CustomCollectionViewController.self)
         //        iGenDataService.parseiGenDiseaseData()
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(CustomCollectionViewController.notifyObserverDisease),

@@ -26,7 +26,7 @@
                         <color key="textColor" red="0.37643486261367798" green="0.37649339437484741" blue="0.37642204761505127" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QWh-Cg-Z8P">
+                    <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QWh-Cg-Z8P">
                         <rect key="frame" x="267.5" y="12" width="72.5" height="35.5"/>
                         <color key="backgroundColor" red="0.93325155973434448" green="0.93338567018508911" blue="0.93322223424911499" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -35,9 +35,9 @@
                         </constraints>
                         <color key="textColor" red="0.37643486261367798" green="0.37649339437484741" blue="0.37642204761505127" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
                         <connections>
-                            <outlet property="delegate" destination="KGk-i7-Jjw" id="8Sc-21-a4j"/>
+                            <outlet property="delegate" destination="H2p-sc-9uM" id="ggV-0p-vjZ"/>
                         </connections>
                     </textField>
                 </subviews>

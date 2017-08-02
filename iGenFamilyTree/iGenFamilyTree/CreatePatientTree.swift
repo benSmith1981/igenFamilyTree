@@ -25,28 +25,29 @@ class CreatePatientTree: UITableViewCell, UITextFieldDelegate, UIPickerViewDeleg
         super.awakeFromNib()
         configureCell()
         numberOfMembers.delegate = self
-//        numberOfMembers.tag = 0
+        numberOfMembers.tag = 0
         numberOfMembers.returnKeyType = UIReturnKeyType.next
         pickerView.delegate = self
         numberOfMembers.inputView = pickerView
         pickerView.backgroundColor = UIColor.white
+
         
-        let toolBar = UIToolbar()
-        toolBar.barStyle = UIBarStyle.default
-        toolBar.isTranslucent = true
-        toolBar.tintColor = UIColor.white
-        toolBar.sizeToFit()
-        toolBar.barTintColor = UIColor(red:0.85, green:0.36, blue:0.39, alpha:1.0)
-        
-        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.plain, target: self, action: #selector(pickerViewEndEditing))
-        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
-        let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.plain, target: self, action: #selector(textFieldShouldReturn))
-        
-        toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
-        toolBar.isUserInteractionEnabled = true
-        
-        numberOfMembers.inputView = pickerView
-        numberOfMembers.inputAccessoryView = toolBar
+//        let toolBar = UIToolbar()
+//        toolBar.barStyle = UIBarStyle.default
+//        toolBar.isTranslucent = true
+//        toolBar.tintColor = UIColor.white
+//        toolBar.sizeToFit()
+//        toolBar.barTintColor = UIColor(red:0.85, green:0.36, blue:0.39, alpha:1.0)
+//        
+//        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.plain, target: self, action: #selector(pickerViewEndEditing))
+//        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+//        let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.plain, target: self, action: #selector(textFieldShouldReturn))
+//        
+//        toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
+//        toolBar.isUserInteractionEnabled = true
+//        
+//        numberOfMembers.inputView = pickerView
+//        numberOfMembers.inputAccessoryView = toolBar
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -70,16 +71,15 @@ class CreatePatientTree: UITableViewCell, UITextFieldDelegate, UIPickerViewDeleg
         numberOfMembers.resignFirstResponder()
     }
     
-    func textFieldShouldReturn(_ numberOfMembers: UITextField) -> Bool{
-        if let nextField = numberOfMembers.superview?.superview?.superview?.viewWithTag(numberOfMembers.tag + 1) as? UITextField {
-            nextField.becomeFirstResponder()}
-        else {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool{
+        if let nextField = numberOfMembers.superview?.viewWithTag(numberOfMembers.tag + 1) as? UITextField {
+            nextField.becomeFirstResponder()
+        } else {
             numberOfMembers.resignFirstResponder()
-            return true
+            return true;
         }
         return false
     }
-    
     
     override func layoutSubviews() {
         configureCell()

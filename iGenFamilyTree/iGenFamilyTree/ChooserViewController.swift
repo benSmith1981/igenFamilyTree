@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import IQKeyboardManager
 
 struct Login {
     var username: String
@@ -28,6 +29,7 @@ class ChooserViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        IQKeyboardManager.shared().disabledToolbarClasses.add(ChooserViewController.self)
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(ChooserViewController.LoginObserver),
                                                name:  NSNotification.Name(rawValue: NotificationIDs.loginNotificationID.rawValue ),
