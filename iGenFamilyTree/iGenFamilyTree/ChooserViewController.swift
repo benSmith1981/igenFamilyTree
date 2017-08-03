@@ -73,11 +73,13 @@ class ChooserViewController: UIViewController {
         let loginDict = notification.userInfo as! [String : Any]
         print("notify observer Login \(loginDict)")
         serverResponse = loginDict["response"] as? ServerResponse
-        if serverResponse != nil {
-            self.performSegue(withIdentifier: Segues.familytreeSegue.rawValue, sender: self)
-        } else {
+        if serverResponse == nil {
             let serverResponse = loginDict["message"]
             alertMessage(serverResponse as! String)
+        } else if serverResponse?.patientID == "" {
+            self.performSegue(withIdentifier: Segues.createFamilytreeSegue.rawValue, sender: self)
+       } else {
+            self.performSegue(withIdentifier: Segues.familytreeSegue.rawValue, sender: self)
         }
     }
     
@@ -86,12 +88,12 @@ class ChooserViewController: UIViewController {
         let registerDict = notification.userInfo as! [String : Any]
         print("notify observer Register \(registerDict)")
         serverResponse = registerDict["response"] as? ServerResponse
-        if serverResponse != nil {
-            self.performSegue(withIdentifier: Segues.createFamilytreeSegue.rawValue, sender: self)
-        } else {
+        if serverResponse == nil {
             let serverResponse = registerDict["message"]
             alertMessage(serverResponse as! String)
-        }
+        } else {
+            self.performSegue(withIdentifier: Segues.createFamilytreeSegue.rawValue, sender: self)
+       }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

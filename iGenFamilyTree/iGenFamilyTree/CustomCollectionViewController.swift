@@ -87,7 +87,7 @@ class CustomCollectionViewController: UICollectionViewController, reloadAfterEdi
                                                object: nil)
         
         // determine if entered via Login (already has userID and patientID) or via Register
-        if serverResponse?.message == "Registered" {
+        if serverResponse?.patientID == "" {
             registerFamilytree()
         } else {
             loginFamilytree()
@@ -215,6 +215,7 @@ class CustomCollectionViewController: UICollectionViewController, reloadAfterEdi
         // if this human has a disease object, process it
         cell.bgImg.image = cellContent.switchBG()
         if let currentHuman = familyTreeGenerator?.familyTree[cellContent.getID()] {
+//            print("cell=", indexPath.section, indexPath.item, cellContent, currentHuman.name, currentHuman.id)
             cell.processHumanCellFor(currentHuman, userID: (familyTreeGenerator?.userID)!)
             cell.genderImg.image = cellContent.showGender()
             if let currentDisease = familyTreeGenerator?.diseases[cellContent.getID()] {
