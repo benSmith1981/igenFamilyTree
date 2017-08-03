@@ -31,10 +31,10 @@
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Wzt-k5-5Am">
                                 <rect key="frame" x="288" y="7" width="71" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Save"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="Logoff"/>
                                 <connections>
-                                    <action selector="saveFamilyTree:" destination="hWx-t7-1N7" eventType="touchUpInside" id="vWi-Dz-pay"/>
+                                    <segue destination="JeC-zp-ZQM" kind="unwind" unwindAction="unwindToVC1WithSegue:" id="Gqp-QR-EkM"/>
                                 </connections>
                             </button>
                         </barButtonItem>
