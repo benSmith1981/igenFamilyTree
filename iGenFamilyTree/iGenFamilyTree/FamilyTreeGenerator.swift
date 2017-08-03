@@ -98,13 +98,13 @@ class FamilyTreeGenerator {
             }
             
             createSpouseArray()
-        
+            
             createParentArray()
             
             createChildArray()
             
             createSiblingArrays()
-
+            
         }
     }
     
@@ -396,8 +396,11 @@ class FamilyTreeGenerator {
                 model?.cell?[row][col] = cellState.spouseConnector
                 
                 for id in patient.motherParentsIDs {
-                    model?.cell?[row][col + 1] = cellState.father(id: id)
-                    model?.cell?[row][col - 1] = cellState.mother(id: id)
+                    if familyTree[id]!.gender == JsonKeys.male.rawValue {
+                        model?.cell?[row][col + 1] = cellState.fatherOfMother(id: id)
+                    } else {
+                        model?.cell?[row][col - 1] = cellState.motherOfMother(id: id)
+                    }
                 }
                 
                 if patient.motherSiblingsIDs.count % 2 != 0 && patient.motherSiblingsIDs.count > 0 {
@@ -416,8 +419,11 @@ class FamilyTreeGenerator {
                 model?.cell?[row][col] = cellState.spouseConnector
                 
                 for id in patient.fatherParentsIDs {
-                    model?.cell?[row][col + 1] = cellState.father(id: id)
-                    model?.cell?[row][col - 1] = cellState.mother(id: id)
+                    if familyTree[id]!.gender == JsonKeys.male.rawValue {
+                        model?.cell?[row][col + 1] = cellState.fatherOfFather(id: id)
+                    } else {
+                        model?.cell?[row][col - 1] = cellState.motherOfFather(id: id)
+                    }
                 }
                 
                 if patient.fatherSiblingsIDs.count % 2 != 0 && patient.fatherSiblingsIDs.count > 0 {
@@ -435,14 +441,14 @@ class FamilyTreeGenerator {
             for id in patient.myParentsIDs {
                 
                 if familyTree[id]!.gender == JsonKeys.male.rawValue {
-                        model?.cell?[row][col + 1] = cellState.malePatient(id: id)
-                        model?.cell?[row - 1][col + 1] = cellState.cornerRightBottom
-                    }
+                    model?.cell?[row][col + 1] = cellState.malePatient(id: id)
+                    model?.cell?[row - 1][col + 1] = cellState.cornerRightBottom
+                }
                 
                 if familyTree[id]!.gender != JsonKeys.male.rawValue {
-                        model?.cell?[row][col - 1] = cellState.motherWithSiblings(id: id)
-                        model?.cell?[row - 1][col - 1] = cellState.cornerLeftBottom
-                    }
+                    model?.cell?[row][col - 1] = cellState.motherWithSiblings(id: id)
+                    model?.cell?[row - 1][col - 1] = cellState.cornerLeftBottom
+                }
                 
             }
         }
@@ -478,23 +484,23 @@ class FamilyTreeGenerator {
         
         func drawPatient() {
             if let patientID = patient.id {
-
+                
                 //** Not sure what the use of this guard statement is? Check if this can be remove...
-//                guard patient.myChildrenIDs.count != 0 else {
-//                    model?.cell?[row][col] = cellState.brother(id: patientID)
-//                return
-//                }
+                //                guard patient.myChildrenIDs.count != 0 else {
+                //                    model?.cell?[row][col] = cellState.brother(id: patientID)
+                //                return
+                //                }
                 
                 if familyTree[patientID]?.gender == JsonKeys.male.rawValue {
                     
                     model?.cell?[row][col] = cellState.malePatient(id: patientID)
-               
+                    
                 }
                 
                 if familyTree[patientID]?.gender != JsonKeys.male.rawValue {
                     
                     model?.cell?[row][col] = cellState.femalePatient(id: patientID)
-        
+                    
                 }
             }
         }
@@ -519,7 +525,7 @@ class FamilyTreeGenerator {
         
         if let patientID = patient.id {
             
-            drawPatient()                        
+            drawPatient()
             
             setDrawingPointY(colY: -1)
             
