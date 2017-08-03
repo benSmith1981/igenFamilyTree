@@ -43,6 +43,9 @@
 		CF217ED31F26276F0066352A /* TextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF217ED21F26276F0066352A /* TextFieldExtension.swift */; };
 		CF859A751F320A3D0008DC41 /* StartScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF859A741F320A3D0008DC41 /* StartScreen.storyboard */; };
 		CF859A791F320AE80008DC41 /* StartScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF859A781F320AE80008DC41 /* StartScreen.swift */; };
+		CF859A991F330AE30008DC41 /* NavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF859A981F330AE30008DC41 /* NavController.swift */; };
+		CF859A9B1F3313480008DC41 /* GradientExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF859A9A1F3313480008DC41 /* GradientExtension.swift */; };
+		CF859A9F1F3315D10008DC41 /* NavBarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF859A9E1F3315D10008DC41 /* NavBarExtension.swift */; };
 		CF8DA18A1F224448007EE7EC /* DismissKeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8DA1891F224448007EE7EC /* DismissKeyboardExtension.swift */; };
 		CF957EA91F1F8E9B0054B1AC /* disease_id1.json in Resources */ = {isa = PBXBuildFile; fileRef = CF957EA51F1F8E9B0054B1AC /* disease_id1.json */; };
 		CF957EAA1F1F8E9B0054B1AC /* disease_id2.json in Resources */ = {isa = PBXBuildFile; fileRef = CF957EA61F1F8E9B0054B1AC /* disease_id2.json */; };
@@ -138,6 +141,9 @@
 		CF217ED21F26276F0066352A /* TextFieldExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldExtension.swift; sourceTree = "<group>"; };
 		CF859A741F320A3D0008DC41 /* StartScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StartScreen.storyboard; sourceTree = "<group>"; };
 		CF859A781F320AE80008DC41 /* StartScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StartScreen.swift; path = ../StartScreen.swift; sourceTree = "<group>"; };
+		CF859A981F330AE30008DC41 /* NavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NavController.swift; path = ../NavController.swift; sourceTree = "<group>"; };
+		CF859A9A1F3313480008DC41 /* GradientExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientExtension.swift; sourceTree = "<group>"; };
+		CF859A9E1F3315D10008DC41 /* NavBarExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavBarExtension.swift; sourceTree = "<group>"; };
 		CF8DA1891F224448007EE7EC /* DismissKeyboardExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissKeyboardExtension.swift; sourceTree = "<group>"; };
 		CF957EA51F1F8E9B0054B1AC /* disease_id1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = disease_id1.json; sourceTree = "<group>"; };
 		CF957EA61F1F8E9B0054B1AC /* disease_id2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = disease_id2.json; sourceTree = "<group>"; };
@@ -298,9 +304,11 @@
 				CF957EAF1F20E3910054B1AC /* Main.storyboard */,
 				6841C3341F29D3B80085E712 /* FamilyTree.storyboard */,
 				6841C3321F29D37B0085E712 /* CreateTreeForm.storyboard */,
+				CF859A981F330AE30008DC41 /* NavController.swift */,
 				CF859A781F320AE80008DC41 /* StartScreen.swift */,
 				CF859A741F320A3D0008DC41 /* StartScreen.storyboard */,
 				E626B3171F0D028B00125D85 /* ChooserViewController.swift */,
+				CF859A9A1F3313480008DC41 /* GradientExtension.swift */,
 				B5EAC17B1F01390800151D52 /* AppDelegate.swift */,
 				6812227D1F0E6B9000FA291C /* localizedStrings */,
 				CF703FF71F02516200FEB1C5 /* dataObjects */,
@@ -310,6 +318,7 @@
 				B5EAC1821F01390800151D52 /* iGenFamilyTree.xcdatamodeld */,
 				CFCFA7C01F0B960E00BC05E5 /* Constants.swift */,
 				B51F648A1F2E899A003D1490 /* StringExtension.swift */,
+				CF859A9E1F3315D10008DC41 /* NavBarExtension.swift */,
 				CF217ED21F26276F0066352A /* TextFieldExtension.swift */,
 				CF8DA1891F224448007EE7EC /* DismissKeyboardExtension.swift */,
 			);
@@ -637,11 +646,13 @@
 				CF217ED31F26276F0066352A /* TextFieldExtension.swift in Sources */,
 				B51F648B1F2E899A003D1490 /* StringExtension.swift in Sources */,
 				CFCFA8611F1E3A8E00BC05E5 /* PopAnimator.swift in Sources */,
+				CF859A9B1F3313480008DC41 /* GradientExtension.swift in Sources */,
 				B51B62C51F0A244400AB11CC /* Patient.swift in Sources */,
 				687F3AAA1F2F64010087F79F /* NewPatientExtension.swift in Sources */,
 				68AEA8D51F0D4B73007E5E08 /* JSONserialization.swift in Sources */,
 				E6644EB21F052D4800C66427 /* CustomCollectionViewController.swift in Sources */,
 				B51B62C31F0A23D400AB11CC /* Human.swift in Sources */,
+				CF859A991F330AE30008DC41 /* NavController.swift in Sources */,
 				B51B62C71F0A246500AB11CC /* Model.swift in Sources */,
 				B5EAC17C1F01390800151D52 /* AppDelegate.swift in Sources */,
 				CFCFA7C51F0D24DF00BC05E5 /* CellStates.swift in Sources */,
@@ -664,6 +675,7 @@
 				E6644EB41F052D4800C66427 /* CustomCollectionViewLayout.swift in Sources */,
 				CFCFA7CB1F18FA9900BC05E5 /* HumanModalViewController.swift in Sources */,
 				CFCFA8441F190C8300BC05E5 /* InfoCell.swift in Sources */,
+				CF859A9F1F3315D10008DC41 /* NavBarExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
