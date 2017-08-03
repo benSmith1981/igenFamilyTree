@@ -46,11 +46,6 @@ class StartScreen: UIViewController {
         CATransaction.begin()
         CATransaction.setCompletionBlock({
             
-            //OLD METHOD
-            self.showMenuNavigationViewController()
-            
-            //NEW METHOD
-            //ADDED "self." before storyboard and present
             let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
             let nextViewController = storyBoard.instantiateViewController(withIdentifier: "NavigationControllerID") as! NavigationControllerID
             self.present(nextViewController, animated:true, completion:nil)
@@ -60,7 +55,7 @@ class StartScreen: UIViewController {
         })
         
         let colorChangeAnimation = CABasicAnimation(keyPath: "colors")
-        colorChangeAnimation.duration = 2.0
+        colorChangeAnimation.duration = 1.5
         colorChangeAnimation.toValue = colorSets[currentColorSet]
         colorChangeAnimation.fillMode = kCAFillModeForwards
         colorChangeAnimation.isRemovedOnCompletion = false
@@ -106,36 +101,6 @@ class StartScreen: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    /// Displays the MapViewController
-    func showMenuNavigationViewController() {
-        guard !(rootViewController is NavigationControllerID) else { return }
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let nav =  storyboard.instantiateViewController(withIdentifier: "NavigationControllerID") as! UINavigationController
-        nav.willMove(toParentViewController: self)
-        addChildViewController(nav)
-        
-        if let rootViewController = self.rootViewController {
-            self.rootViewController = nav
-            rootViewController.willMove(toParentViewController: nil)
-            
-            transition(from: rootViewController, to: nav, duration: 0.55, options: [.transitionCrossDissolve, .curveEaseOut], animations: { () -> Void in
-                
-            }, completion: { _ in
-                nav.didMove(toParentViewController: self)
-                rootViewController.removeFromParentViewController()
-                rootViewController.didMove(toParentViewController: nil)
-            })
-        } else {
-            rootViewController = nav
-            view.addSubview(nav.view)
-            nav.didMove(toParentViewController: self)
-        }
-    }
-
-    
-    
     
     /*
     // MARK: - Navigation
