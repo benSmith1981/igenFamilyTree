@@ -28,6 +28,7 @@
 "placeholderNameFemale" = "Jane Doe";
 "placeholderDateOfBirth" = "YYYY";
 "placeholderDisease" = "Disorder name";
+"verifybutton" = "VERIFY WITH FAMILY MEMBER";
 
 
 //Button label
@@ -45,6 +46,8 @@
 "genderspouse" = "What gender is your spouse?";
 
 //Verify Member fields
+"sendverifybutton" = "Send Verification Email";
+"verifyalert" = "Verify Member";
 "verifyTitle" = "VERIFY MEMBER";
 "patientEmail" = "Your Email";
 "patientName" = "Your name";
