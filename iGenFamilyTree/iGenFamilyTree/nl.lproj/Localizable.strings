@@ -7,6 +7,7 @@
 */
 
 //Questions
+"titleGenerateForm" = "Vul alstublieft alle velden in";
 "numberBrothers" = "Hoeveel broers heb je?";
 "numberSisters" = "Hoeveel zussen heb je?";
 "numberSons" = "Hoeveel zonen heb je?";
@@ -17,6 +18,8 @@
 "numberSistersfromFather" = "Hoeveel zussen heeft je vader (jouw tantes)?";
 "chooseGender" = "Welk geslacht bent u?";
 "chooseGenderSpouse" = "Welk geslacht is uw partner?";
+"generateFamtree" = "GENEREER STAMBOOM";
+
 
 
 //Modal view labels
@@ -32,6 +35,8 @@
 
 //Create button tableviewcontroller
 "CreateTree" = "Genereer stamboom";
+"Logoff" = "Uitloggen";
+
 
 //Associated form translations
 "fillinform" = "Vul alstublieft het onderstaande formulier in";
@@ -50,4 +55,7 @@
 "patientName" = "Uw naam";
 "verifyEmail" = "Verificatie e-mail";
 "verifyName" = "Verificatie naam";
-"emailText" = "Dear% @, \r\n De familielid heeft een iGen-stamboom gecreëerd en heeft u gevraagd uw gegevens te verifiëren die zij over uw gezondheidshistorie hebben toegevoegd. U hoeft deze informatie niet te delen met iemand anders dan de huisarts , Maar het zal uw familie beter diagnosticeren en behandelen. \r\n\r\n 1) Download de iGen app \r\n 2) Log in met deze %@ en deze code: %@ \r\n 3) Vind uw Informatie in de boom en bevestig het \r \n \r \n We hopen dat u van de app houdt en het helpt u te verbeteren en uw gezinnen gezondheid \r\n Yours %@ ";
+"emailText" = "Beste% @, \r\n Uw familielid heeft een iGen-stamboom gecreëerd en heeft u gevraagd uw gegevens te verifiëren die hij/zij over u heeft toegevoegd. U hoeft deze informatie niet te delen met iemand anders behalve uw huisarts, maar het zal wel helpen om uw familie beter te diagnosticeren en te behandelen. \r\n\r\n 1) Download de iGen app \r\n 2) Log in met deze %@ en deze code: %@ \r\n 3) Vind uw detailinformatie in de boom en bevestig het \r \n \r \n We hopen dat deze app u en uw familie helpt helpt in uw gezondheid \r\n Met vriendelijke groet %@ ";
+
+//login screen
+"fillUsernamePassword" = "Vul hieronder uw gebruikersnaam en wachtwoord in";

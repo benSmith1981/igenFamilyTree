@@ -89,7 +89,7 @@ class CreatePatientTree: UITableViewCell, UITextFieldDelegate, UIPickerViewDeleg
     
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        numberOfMembers.text = ""
+//        numberOfMembers.text = ""
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {

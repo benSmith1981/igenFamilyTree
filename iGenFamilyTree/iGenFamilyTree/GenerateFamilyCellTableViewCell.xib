@@ -21,7 +21,7 @@
                     <button opaque="NO" contentMode="right" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MJI-Xp-yRd">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                        <state key="normal" title="GENERATE FAMILYTREE">
+                        <state key="normal" title="generateFamtree">
                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                         <connections>
