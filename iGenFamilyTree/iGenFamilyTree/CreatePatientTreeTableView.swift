@@ -137,7 +137,10 @@ class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.separatorStyle = .none
+        
+//        self.tableView.separatorStyle = .singleLineEtched
+//        self.tableView.separatorColor = UIColor.black
+        
         let nib = UINib(nibName: "CreatePatientTree", bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: CustomCellIdentifiers.CreatePatientTreeID.rawValue)
         let generate = UINib(nibName: "GenerateFamilyCellTableViewCell", bundle: nil)
