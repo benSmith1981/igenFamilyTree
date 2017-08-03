@@ -41,6 +41,11 @@
 		B5EAC1941F01390900151D52 /* iGenFamilyTreeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EAC1931F01390900151D52 /* iGenFamilyTreeTests.swift */; };
 		B5EAC19F1F01390900151D52 /* iGenFamilyTreeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EAC19E1F01390900151D52 /* iGenFamilyTreeUITests.swift */; };
 		CF217ED31F26276F0066352A /* TextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF217ED21F26276F0066352A /* TextFieldExtension.swift */; };
+		CF859A751F320A3D0008DC41 /* StartScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF859A741F320A3D0008DC41 /* StartScreen.storyboard */; };
+		CF859A791F320AE80008DC41 /* StartScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF859A781F320AE80008DC41 /* StartScreen.swift */; };
+		CF859A991F330AE30008DC41 /* NavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF859A981F330AE30008DC41 /* NavController.swift */; };
+		CF859A9B1F3313480008DC41 /* GradientExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF859A9A1F3313480008DC41 /* GradientExtension.swift */; };
+		CF859A9F1F3315D10008DC41 /* NavBarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF859A9E1F3315D10008DC41 /* NavBarExtension.swift */; };
 		CF8DA18A1F224448007EE7EC /* DismissKeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8DA1891F224448007EE7EC /* DismissKeyboardExtension.swift */; };
 		CF957EA91F1F8E9B0054B1AC /* disease_id1.json in Resources */ = {isa = PBXBuildFile; fileRef = CF957EA51F1F8E9B0054B1AC /* disease_id1.json */; };
 		CF957EAA1F1F8E9B0054B1AC /* disease_id2.json in Resources */ = {isa = PBXBuildFile; fileRef = CF957EA61F1F8E9B0054B1AC /* disease_id2.json */; };
@@ -134,6 +139,11 @@
 		B5EAC19E1F01390900151D52 /* iGenFamilyTreeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iGenFamilyTreeUITests.swift; sourceTree = "<group>"; };
 		B5EAC1A01F01390900151D52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF217ED21F26276F0066352A /* TextFieldExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldExtension.swift; sourceTree = "<group>"; };
+		CF859A741F320A3D0008DC41 /* StartScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StartScreen.storyboard; sourceTree = "<group>"; };
+		CF859A781F320AE80008DC41 /* StartScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StartScreen.swift; path = ../StartScreen.swift; sourceTree = "<group>"; };
+		CF859A981F330AE30008DC41 /* NavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NavController.swift; path = ../NavController.swift; sourceTree = "<group>"; };
+		CF859A9A1F3313480008DC41 /* GradientExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientExtension.swift; sourceTree = "<group>"; };
+		CF859A9E1F3315D10008DC41 /* NavBarExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavBarExtension.swift; sourceTree = "<group>"; };
 		CF8DA1891F224448007EE7EC /* DismissKeyboardExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissKeyboardExtension.swift; sourceTree = "<group>"; };
 		CF957EA51F1F8E9B0054B1AC /* disease_id1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = disease_id1.json; sourceTree = "<group>"; };
 		CF957EA61F1F8E9B0054B1AC /* disease_id2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = disease_id2.json; sourceTree = "<group>"; };
@@ -294,7 +304,11 @@
 				CF957EAF1F20E3910054B1AC /* Main.storyboard */,
 				6841C3341F29D3B80085E712 /* FamilyTree.storyboard */,
 				6841C3321F29D37B0085E712 /* CreateTreeForm.storyboard */,
+				CF859A981F330AE30008DC41 /* NavController.swift */,
+				CF859A781F320AE80008DC41 /* StartScreen.swift */,
+				CF859A741F320A3D0008DC41 /* StartScreen.storyboard */,
 				E626B3171F0D028B00125D85 /* ChooserViewController.swift */,
+				CF859A9A1F3313480008DC41 /* GradientExtension.swift */,
 				B5EAC17B1F01390800151D52 /* AppDelegate.swift */,
 				6812227D1F0E6B9000FA291C /* localizedStrings */,
 				CF703FF71F02516200FEB1C5 /* dataObjects */,
@@ -304,6 +318,7 @@
 				B5EAC1821F01390800151D52 /* iGenFamilyTree.xcdatamodeld */,
 				CFCFA7C01F0B960E00BC05E5 /* Constants.swift */,
 				B51F648A1F2E899A003D1490 /* StringExtension.swift */,
+				CF859A9E1F3315D10008DC41 /* NavBarExtension.swift */,
 				CF217ED21F26276F0066352A /* TextFieldExtension.swift */,
 				C5AD5AF6C9C32E3A2F8F9A31 /* Frameworks */,
 				CF8DA1891F224448007EE7EC /* DismissKeyboardExtension.swift */,
@@ -482,7 +497,7 @@
 					B5EAC1771F01390800151D52 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = HZWL927386;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 					B5EAC18E1F01390800151D52 = {
 						CreatedOnToolsVersion = 8.3.3;
@@ -538,6 +553,7 @@
 				6841C3391F29DE3F0085E712 /* CreatePatientTreeGender.xib in Resources */,
 				681222871F0E6BBE00FA291C /* LaunchScreen.strings in Resources */,
 				CF957EAB1F1F8E9B0054B1AC /* disease_id3.json in Resources */,
+				CF859A751F320A3D0008DC41 /* StartScreen.storyboard in Resources */,
 				6877CF111F28A45C00E677FA /* CreatePatientTree.xib in Resources */,
 				CFCFA84D1F190CE800BC05E5 /* DetailmageSliderCell.xib in Resources */,
 				B5E0B64F1F0D4A28001A6CAE /* smith.json in Resources */,
@@ -627,15 +643,18 @@
 				CFCFA7BC1F0A9FA800BC05E5 /* iGenCell.swift in Sources */,
 				CF8DA18A1F224448007EE7EC /* DismissKeyboardExtension.swift in Sources */,
 				6877CF101F28A45C00E677FA /* CreatePatientTree.swift in Sources */,
+				CF859A791F320AE80008DC41 /* StartScreen.swift in Sources */,
 				E6644EAD1F052CA600C66427 /* FamilyTreeGenerator.swift in Sources */,
 				CF217ED31F26276F0066352A /* TextFieldExtension.swift in Sources */,
 				B51F648B1F2E899A003D1490 /* StringExtension.swift in Sources */,
 				CFCFA8611F1E3A8E00BC05E5 /* PopAnimator.swift in Sources */,
+				CF859A9B1F3313480008DC41 /* GradientExtension.swift in Sources */,
 				B51B62C51F0A244400AB11CC /* Patient.swift in Sources */,
 				687F3AAA1F2F64010087F79F /* NewPatientExtension.swift in Sources */,
 				68AEA8D51F0D4B73007E5E08 /* JSONserialization.swift in Sources */,
 				E6644EB21F052D4800C66427 /* CustomCollectionViewController.swift in Sources */,
 				B51B62C31F0A23D400AB11CC /* Human.swift in Sources */,
+				CF859A991F330AE30008DC41 /* NavController.swift in Sources */,
 				B51B62C71F0A246500AB11CC /* Model.swift in Sources */,
 				B5EAC17C1F01390800151D52 /* AppDelegate.swift in Sources */,
 				CFCFA7C51F0D24DF00BC05E5 /* CellStates.swift in Sources */,
@@ -658,6 +677,7 @@
 				E6644EB41F052D4800C66427 /* CustomCollectionViewLayout.swift in Sources */,
 				CFCFA7CB1F18FA9900BC05E5 /* HumanModalViewController.swift in Sources */,
 				CFCFA8441F190C8300BC05E5 /* InfoCell.swift in Sources */,
+				CF859A9F1F3315D10008DC41 /* NavBarExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -830,13 +850,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = HZWL927386;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = iGenFamilyTree/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bootcamp1705.IgenFamilyTree;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "603d168a-a80c-48ab-bd28-6575ee8420d6";
-				PROVISIONING_PROFILE_SPECIFIER = "IgenFamilyTree - Development";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -848,14 +868,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				DEVELOPMENT_TEAM = HZWL927386;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = iGenFamilyTree/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bootcamp1705.IgenFamilyTree;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6251e59d-ad8e-4976-8e32-77586cb6c473";
-				PROVISIONING_PROFILE_SPECIFIER = "IgenFamilyTree - Distribution";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

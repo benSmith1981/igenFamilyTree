@@ -177,6 +177,8 @@ class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembe
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: true)
+//        self.tableView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -107,7 +107,7 @@
                             <constraint firstAttribute="height" constant="8" id="9BU-m3-EhV"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="7"/>
-                        <nil key="textColor"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>

@@ -1,5 +1,5 @@
 //
-//  IQToolbar.m
+// IQToolbar.m
 // https://github.com/hackiftekhar/IQKeyboardManager
 // Copyright (c) 2013-16 Iftekhar Qurashi.
 //
@@ -39,7 +39,7 @@
     //Tint Color
     [[self appearance] setTintColor:nil];
 
-    [[self appearance] setBarTintColor:[UIColor colorWithRed:0.85 green:0.36 blue:0.39 alpha:1.0]];
+    [[self appearance] setBarTintColor:nil];
     
     //Background image
     [[self appearance] setBackgroundImage:nil forToolbarPosition:UIBarPositionAny           barMetrics:UIBarMetricsDefault];
@@ -62,7 +62,7 @@
     [self sizeToFit];
     self.autoresizingMask = UIViewAutoresizingFlexibleWidth;// | UIViewAutoresizingFlexibleHeight;
     self.translucent = YES;
-    [self setTintColor:[UIColor whiteColor]];
+    [self setTintColor:[UIColor blackColor]];
 }
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -221,15 +221,10 @@
         {
             isTitleBarButtonFound = YES;
         }
-        else
+        //If it's UIToolbarButton or UIToolbarTextButton (which actually UIBarButtonItem)
+        else if ([barButtonItemView isKindOfClass:[UIControl class]])
         {
-            NSString *classNameString = NSStringFromClass([barButtonItemView class]);
-            
-            //If it's UIToolbarButton or UIToolbarTextButton
-            if (([classNameString hasPrefix:@"UIToolbar"] && [classNameString hasSuffix:@"Button"]))
-            {
-                leftRect = barButtonItemView.frame;
-            }
+            leftRect = barButtonItemView.frame;
         }
     }
     

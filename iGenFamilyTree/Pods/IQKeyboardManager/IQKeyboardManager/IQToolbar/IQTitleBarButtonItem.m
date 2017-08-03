@@ -1,5 +1,5 @@
 //
-//  IQTitleBarButtonItem.m
+// IQTitleBarButtonItem.m
 // https://github.com/hackiftekhar/IQKeyboardManager
 // Copyright (c) 2013-16 Iftekhar Qurashi.
 //
@@ -48,9 +48,7 @@
         _titleButton.enabled = NO;
         _titleButton.titleLabel.numberOfLines = 3;
         [_titleButton setTitleColor:[UIColor colorWithRed:0.0 green:0.5 blue:1.0 alpha:1.0] forState:UIControlStateNormal];
-//        [_titleButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
-        [_titleButton setTitleColor:[UIColor whiteColor] forState:UIControlStateDisabled];
-
+        [_titleButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
         [_titleButton setBackgroundColor:[UIColor clearColor]];
         [_titleButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
         _titleButton.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
