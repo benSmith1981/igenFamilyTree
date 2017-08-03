@@ -7,4 +7,6 @@ target 'iGenFamilyTree' do
     pod 'AGi18n', '~> 0.0'
     pod 'DeviceKit', '~> 1.0'
     pod 'SVProgressHUD', '~> 2.1'
+    pod 'IQKeyboardManager'
+
 end

@@ -8,6 +8,7 @@
 
 import UIKit
 import SVProgressHUD
+import IQKeyboardManager
 
 struct Login {
     var username: String
@@ -30,7 +31,8 @@ class ChooserViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        IQKeyboardManager.shared().disabledToolbarClasses.add(ChooserViewController.self)
+
         hideKeyboardWhenTappedAround()
         
         loginBG.layer.cornerRadius = 10
