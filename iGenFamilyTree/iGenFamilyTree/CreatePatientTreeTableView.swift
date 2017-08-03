@@ -318,7 +318,7 @@ class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembe
             cellSisterMother.layoutSubviews()
             cellSisterMother.numberOfMembers.text = String(answers.sistersOfMother)
 
-            
+
             return cellSisterMother
             
         case QuestionType.brotherFather.rawValue:
