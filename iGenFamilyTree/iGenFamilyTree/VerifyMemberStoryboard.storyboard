@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -90,12 +91,22 @@
                         </subviews>
                         <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="lJB-cn-1k7" firstAttribute="leading" secondItem="350-WL-4dt" secondAttribute="leadingMargin" constant="-3.5" id="UDk-bZ-SV9"/>
+                            <constraint firstItem="lJB-cn-1k7" firstAttribute="top" secondItem="FkZ-PQ-ntx" secondAttribute="bottom" constant="45.5" id="WsA-Qp-mMw"/>
                             <constraint firstItem="lJB-cn-1k7" firstAttribute="centerY" secondItem="350-WL-4dt" secondAttribute="centerY" id="fh1-YC-snW"/>
                             <constraint firstItem="lJB-cn-1k7" firstAttribute="centerX" secondItem="350-WL-4dt" secondAttribute="centerX" id="h25-X1-pTV"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="lJB-cn-1k7" secondAttribute="trailing" constant="-3.5" id="plr-u9-0n1"/>
+                            <constraint firstItem="fap-b7-dqL" firstAttribute="top" secondItem="lJB-cn-1k7" secondAttribute="bottom" constant="65.5" id="utJ-2z-ZGU"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bottomConstraint" destination="utJ-2z-ZGU" id="DsB-w3-JoQ"/>
+                        <outlet property="heightConstraint" destination="otT-1Z-lXB" id="eiv-eZ-wM7"/>
+                        <outlet property="leadingConstraint" destination="UDk-bZ-SV9" id="PWy-IG-OEZ"/>
                         <outlet property="modalTableView" destination="3NW-f2-SXj" id="oId-7t-cIb"/>
+                        <outlet property="topConstraint" destination="WsA-Qp-mMw" id="qyI-Mr-ONL"/>
+                        <outlet property="trailingConstraint" destination="plr-u9-0n1" id="hfW-3R-Uaa"/>
+                        <outlet property="widthConstraint" destination="gxu-Hh-HTB" id="RvZ-ix-wjC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1RP-nV-lEn" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -35,7 +35,13 @@ class VerifyMemberVC: UIViewController, UITextViewDelegate, UITableViewDelegate,
     var currentHuman: Human?
     var memberToVerify: VerifyMember!
     @IBOutlet weak var modalTableView: UITableView!
-
+    @IBOutlet weak var widthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var heightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var topConstraint: NSLayoutConstraint!
+    @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var trailingConstraint: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
@@ -66,6 +72,9 @@ class VerifyMemberVC: UIViewController, UITextViewDelegate, UITableViewDelegate,
         // Do any additional setup after loading the view.
     }
 
+    override func viewDidLayoutSubviews() {
+        modalTableView.reloadData()
+    }
     func verifyObserver(notification: NSNotification) {
         let verifyDict = notification.userInfo as! [String : Any]
         if let success = verifyDict["success"] as? Bool, let message = verifyDict["message"] as? String {
@@ -135,7 +144,7 @@ class VerifyMemberVC: UIViewController, UITextViewDelegate, UITableViewDelegate,
         if indexPath.row == verifyMemberRows.emailText.rawValue {
             return UITableViewAutomaticDimension
         }
-        return 44
+        return 34
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
