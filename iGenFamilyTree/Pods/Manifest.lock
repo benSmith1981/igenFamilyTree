@@ -2,17 +2,23 @@ PODS:
   - AGi18n (0.0.2)
   - Alamofire (4.5.0)
   - DeviceKit (1.2.3)
+  - IQKeyboardManager (4.0.11)
+  - SVProgressHUD (2.1.2)
 
 DEPENDENCIES:
   - AGi18n (~> 0.0)
   - Alamofire (~> 4.4)
   - DeviceKit (~> 1.0)
+  - IQKeyboardManager
+  - SVProgressHUD (~> 2.1)
 
 SPEC CHECKSUMS:
   AGi18n: 1ad8c0c1048b20541ce94ca161c0e5937f4677cc
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
   DeviceKit: f33cbc6e67d9bb416e42dedc647557c7c2f6d3d7
+  IQKeyboardManager: 83eae5318483a34eb2069ef413d195b97605232e
+  SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
 
-PODFILE CHECKSUM: a2d44306588bf5c1e671e8d9ecc40bdd0b0b3739
+PODFILE CHECKSUM: e2e8a0dafc1f169199dd66542dee3dd417cd265f
 
 COCOAPODS: 1.2.1

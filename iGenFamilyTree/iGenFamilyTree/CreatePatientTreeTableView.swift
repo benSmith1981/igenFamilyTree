@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import IQKeyboardManager
 
 enum QuestionType: Int {
     case brother = 0
@@ -136,7 +137,10 @@ class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.separatorStyle = .none
+        
+        
+        self.navigationItem.hidesBackButton = true
+        
         let nib = UINib(nibName: "CreatePatientTree", bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: CustomCellIdentifiers.CreatePatientTreeID.rawValue)
         let generate = UINib(nibName: "GenerateFamilyCellTableViewCell", bundle: nil)
@@ -151,7 +155,8 @@ class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembe
         
         NotificationCenter.default.addObserver(self, selector: #selector(GenerateTableViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(GenerateTableViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-
+        
+        
     }
     
     func keyboardWillShow(notification: NSNotification) {
@@ -172,11 +177,11 @@ class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembe
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: true)
 //        self.tableView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        //        if segue.identifier == segues.familytreeSegue.rawValue {
         let ccData = segue.destination as! CustomCollectionViewController
         ccData.familyTreeGenerator = familyTreeGenerator
         ccData.serverResponse = serverResponse
@@ -387,64 +392,8 @@ class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembe
         }
     }
     
-//    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-//        switch section {
-//            
-//        case 2:
-//            let generate = tableView.dequeueReusableCell(withIdentifier: "GenerateCellID") as! GenerateFamilyCellTableViewCell
-//            
-//            let screenwidth = self.view.frame.size.width
-//            var frame = generate.frame
-//            frame.size.width = screenwidth
-//
-//            generate.delegate = self
-//            generate.layoutSubviews()
-//            generate.setNeedsLayout()
-//            return generate
-//            
-//        default:
-//            return nil
-//        }
-//    }
-//    
-//
-//    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-//        switch section{
-//        case 2:
-//            return 44
-//            
-//        default:
-//            return 0
-//        }
-//    }
-    
-    
     override func viewDidAppear(_ animated: Bool) {
         familyTreeGenerator = FamilyTreeGenerator.init(familyTree: [:])
         
     }
-
-
-    
-    /*
-     // Override to support conditional editing of the table view.
-     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
-    
-    /*
-     // Override to support editing the table view.
-     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-     if editingStyle == .delete {
-     // Delete the row from the data source
-     tableView.deleteRows(at: [indexPath], with: .fade)
-     } else if editingStyle == .insert {
-     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-     }
-     }
-     */
-    
-    
 }
