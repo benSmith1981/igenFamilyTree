@@ -7,12 +7,18 @@ const express = require('express'),
     fs = require('fs'),
     request = require('request');
 
+var basicAuth = require('express-basic-auth')
 var detailRoutes = require('./detail_routes')
 
 // Create our Express application
 var app = express();
 var port = process.env.PORT || 3000;
 var router = express.Router();
+
+ 
+app.use(basicAuth({
+    users: { 'admin': 'supersecret' }
+}))
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json());
