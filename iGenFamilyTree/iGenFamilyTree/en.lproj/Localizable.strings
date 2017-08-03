@@ -6,6 +6,7 @@
   Copyright © 2017 ben. All rights reserved.
 */
 //Questions
+"titleGenerateForm" = "Please fill in all the fields";
 "numberBrothers" = "HOW MANY BROTHERS DO YOU HAVE?";
 "numberSisters" = "HOW MANY SISTERS DO YOU HAVE?";
 "numberSons" = "HOW MANY SONS DO YOU HAVE?";
@@ -16,6 +17,7 @@
 "numberSistersfromFather" = "HOW MANY SISTERS DOES YOUR FATHER HAVE?";
 "chooseGender" = "WHAT IS YOUR GENDER?";
 "chooseGenderSpouse" = "WHAT IS YOUR PARTNERS GENDER?";
+"generateFamtree" = "GENERATE FAMILYTREE";
 
 //Modal view labels
 "modalViewTitle" = "PERSONAL DETAILS";
@@ -30,6 +32,8 @@
 
 //Button label
 "CreateTree" = "Generate Tree";
+"Logoff" = "LOG OFF";
+
 
 //Associated form translations
 "fillinform" = "Please fill in the form below completely";
@@ -47,3 +51,6 @@
 "verifyEmail" = "Verifiers Email";
 "verifyName" = "Verifiers Name";
 "emailText" = "Dear %@ , \r\nYour family member has created an iGen family tree and asked you to verify your information that they have added about your health history. You don't have to share this information with anyone, other than the family doctor, but it will help to diagnose and treat your family better.\r\n\r\n1) Download the iGen app \r\n2) Login with this %@ , and this code: %@ \r\n3) Find your information in the tree and confirm it\r\n\r\nWe hope you love the app and it helps you improve you and your families health\r\nYours %@";
+
+//login screen
+"fillUsernamePassword" = "Please enter username and password";

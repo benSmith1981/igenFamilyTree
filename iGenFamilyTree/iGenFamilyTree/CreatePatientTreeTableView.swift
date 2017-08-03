@@ -201,7 +201,7 @@ class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembe
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
         case 0, 1:
-            return UITableViewAutomaticDimension
+            return 130
         default:
             return 44
         }
@@ -229,6 +229,7 @@ class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembe
                 let genderPatient = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.detailImageCellID.rawValue, for: indexPath) as! DetailmageSliderCell
                 genderPatient.delegate = self
                 genderPatient.indexPath = indexPath
+                genderPatient
                 genderPatient.humanGender = answers.patientGender.rawValue
 
                 return genderPatient
@@ -259,6 +260,7 @@ class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembe
             cellBrothers.numberOfMembers.tag = 1
             cellBrothers.layoutSubviews()
             cellBrothers.cellType = .brother
+            cellBrothers.selectionStyle = UITableViewCellSelectionStyle.none
             cellBrothers.numberOfMembers.text = String(answers.brothers)
 
             return cellBrothers
@@ -269,6 +271,7 @@ class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembe
             cellSisters.questionLabel.text = QuestionType.sister.selectQuestion()
             cellSisters.cellType = .sister
             cellSisters.numberOfMembers.tag = 2
+            cellSisters.selectionStyle = UITableViewCellSelectionStyle.none
             cellSisters.layoutSubviews()
             cellSisters.numberOfMembers.text = String(answers.sisters)
 
@@ -280,6 +283,7 @@ class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembe
             cellSons.questionLabel.text = QuestionType.sons.selectQuestion()
             cellSons.numberOfMembers.text = String(answers.sons)
             cellSons.numberOfMembers.tag = 3
+            cellSons.selectionStyle = UITableViewCellSelectionStyle.none
             cellSons.cellType = .sons
             cellSons.layoutSubviews()
             
@@ -291,6 +295,7 @@ class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembe
             cellDaughters.questionLabel.text = QuestionType.daughters.selectQuestion()
             cellDaughters.cellType = .daughters
             cellDaughters.numberOfMembers.tag = 4
+            cellDaughters.selectionStyle = UITableViewCellSelectionStyle.none
             cellDaughters.layoutSubviews()
             cellDaughters.numberOfMembers.text = String(answers.daughters)
 
@@ -303,6 +308,7 @@ class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembe
             cellBrotherMother.questionLabel.text = QuestionType.brotherMother.selectQuestion()
             cellBrotherMother.cellType = .brotherMother
             cellBrotherMother.numberOfMembers.tag = 5
+            cellBrotherMother.selectionStyle = UITableViewCellSelectionStyle.none
             cellBrotherMother.layoutSubviews()
             cellBrotherMother.numberOfMembers.text = String(answers.brothersOfMother)
 
@@ -315,6 +321,7 @@ class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembe
             cellSisterMother.questionLabel.text = QuestionType.sisterMother.selectQuestion()
             cellSisterMother.cellType = .sisterMother
             cellSisterMother.numberOfMembers.tag = 6
+            cellSisterMother.selectionStyle = UITableViewCellSelectionStyle.none
             cellSisterMother.layoutSubviews()
             cellSisterMother.numberOfMembers.text = String(answers.sistersOfMother)
 
@@ -327,6 +334,7 @@ class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembe
             cellBrotherFather.questionLabel.text = QuestionType.brotherFather.selectQuestion()
             cellBrotherFather.cellType = .brotherFather
             cellBrotherFather.numberOfMembers.tag = 7
+            cellBrotherFather.selectionStyle = UITableViewCellSelectionStyle.none
             cellBrotherFather.layoutSubviews()
             cellBrotherFather.numberOfMembers.text = String(answers.brothersOfFather)
 
@@ -339,6 +347,7 @@ class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembe
             cellSisterFather.questionLabel.text = QuestionType.sisterFather.selectQuestion()
             cellSisterFather.cellType = .sisterFather
             cellSisterFather.numberOfMembers.tag = 8
+            cellSisterFather.selectionStyle = UITableViewCellSelectionStyle.none
             cellSisterFather.layoutSubviews()
             cellSisterFather.numberOfMembers.text = String(answers.sistersOfFather)
 
