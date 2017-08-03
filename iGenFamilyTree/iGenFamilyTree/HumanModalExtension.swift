@@ -82,6 +82,7 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
             nameCell.delegate = self
             nameCell.indexPath = indexPath
             nameCell.textfieldValue.textAlignment = .center
+            nameCell.textfieldValue.keyboardType = .alphabet
             
             if self.editingHuman?.gender == JsonKeys.male.rawValue {
                 nameCell.textfieldValue.placeholder = NSLocalizedString("placeholderNameMale", comment: "")
@@ -104,7 +105,7 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
             dateOfBirthCell.textfieldValue.text = self.editingHuman?.dob
             dateOfBirthCell.textfieldValue.placeholder = NSLocalizedString("placeholderDateOfBirth", comment: "")
             dateOfBirthCell.textfieldValue.textAlignment = .center
-            
+            dateOfBirthCell.textfieldValue.keyboardType = .numberPad
             dateOfBirthCell.indexPath = indexPath
             dateOfBirthCell.cellType = .dobRow
             dateOfBirthCell.delegate = self
