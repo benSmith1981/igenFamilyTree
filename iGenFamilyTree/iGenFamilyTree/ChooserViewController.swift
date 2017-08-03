@@ -23,14 +23,19 @@ class ChooserViewController: UIViewController {
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
-    var serverResponse: ServerResponse?
+    @IBOutlet weak var registerBG: UIView!
+    @IBOutlet weak var loginBG: UIView!
     
+    var serverResponse: ServerResponse?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.hideKeyboardWhenTappedAround()
+        hideKeyboardWhenTappedAround()
         
+        loginBG.layer.cornerRadius = 10
+        registerBG.layer.cornerRadius = 10
+
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(ChooserViewController.LoginObserver),
                                                name:  NSNotification.Name(rawValue: NotificationIDs.loginNotificationID.rawValue ),
@@ -42,8 +47,14 @@ class ChooserViewController: UIViewController {
                                                object: nil)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
-        SVProgressHUD.dismiss()
+        super.viewWillDisappear(animated)
+//        SVProgressHUD.dismiss()
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,6 +63,7 @@ class ChooserViewController: UIViewController {
     }
     
     func LoginObserver(notification: NSNotification) {
+        SVProgressHUD.dismiss()
         let loginDict = notification.userInfo as! [String : Any]
         print("notify observer Login \(loginDict)")
         serverResponse = loginDict["response"] as? ServerResponse
@@ -64,6 +76,7 @@ class ChooserViewController: UIViewController {
     }
     
     func RegisterObserver(notification: NSNotification) {
+        SVProgressHUD.dismiss()
         let registerDict = notification.userInfo as! [String : Any]
         print("notify observer Register \(registerDict)")
         serverResponse = registerDict["response"] as? ServerResponse
@@ -82,7 +95,6 @@ class ChooserViewController: UIViewController {
         } else if segue.identifier == Segues.createFamilytreeSegue.rawValue {
             let destinationVC = segue.destination as! GenerateTableViewController
             destinationVC.serverResponse = serverResponse
-            
         }
     }
     
@@ -98,7 +110,6 @@ class ChooserViewController: UIViewController {
         let login = Login.init(username: usernameTextField.text!, password: passwordTextField.text!, PatientID: "", id: "")
         SVProgressHUD.show()
         iGenDataService.login(login)
-        
     }
     
     @IBAction func RegisterButton(_ sender: UIButton) {
@@ -143,15 +154,5 @@ class ChooserViewController: UIViewController {
             self.passwordTextField.text = ""}))
         self.present(alert, animated: true, completion: nil)
     }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 }
