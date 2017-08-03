@@ -48,9 +48,14 @@ class ChooserViewController: UIViewController {
                                                name:  NSNotification.Name(rawValue: NotificationIDs.registerNotificationID.rawValue ),
                                                object: nil)
         #if DEBUG
-            self.usernameTextField.text = "benjaminsmith1981@gmail.com"
-            self.passwordTextField.text = "1234"
+//            self.usernameTextField.text = "benjaminsmith1981@gmail.com"
+//            self.passwordTextField.text = "1234"
         #endif
+        
+        if let username = UserDefaults.standard.value(forKey:"username") as? String {
+            self.usernameTextField.text = username
+        }
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -77,8 +82,12 @@ class ChooserViewController: UIViewController {
             let serverResponse = loginDict["message"]
             alertMessage(serverResponse as! String)
         } else if serverResponse?.patientID == "" {
+            UserDefaults.standard.setValue(serverResponse?.userID, forKey: "userid")
+            UserDefaults.standard.setValue(serverResponse?.username, forKey: "username")
             self.performSegue(withIdentifier: Segues.createFamilytreeSegue.rawValue, sender: self)
        } else {
+            UserDefaults.standard.setValue(serverResponse?.userID, forKey: "userid")
+            UserDefaults.standard.setValue(serverResponse?.username, forKey: "username")
             self.performSegue(withIdentifier: Segues.familytreeSegue.rawValue, sender: self)
         }
     }
@@ -92,6 +101,8 @@ class ChooserViewController: UIViewController {
             let serverResponse = registerDict["message"]
             alertMessage(serverResponse as! String)
         } else {
+            UserDefaults.standard.setValue(serverResponse?.userID, forKey: "userid")
+            UserDefaults.standard.setValue(serverResponse?.username, forKey: "username")
             self.performSegue(withIdentifier: Segues.createFamilytreeSegue.rawValue, sender: self)
        }
     }

@@ -66,6 +66,12 @@ class CustomCollectionViewController: UICollectionViewController, reloadAfterEdi
 //        alertController.addAction(cancelAction)
 
     
+    @IBAction func logOff(_ sender: Any) {
+        UserDefaults.standard.setValue(nil, forKey: "username")
+        UserDefaults.standard.setValue(nil, forKey: "userid")
+        self.performSegue(withIdentifier: "returnViewController", sender: self)
+
+    }
     func returnToView() {
         self.performSegue(withIdentifier: "returnViewController", sender: nil)
     }

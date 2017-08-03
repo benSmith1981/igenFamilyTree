@@ -21,11 +21,15 @@ class CanViewDiseasesCell: UITableViewCell {
     }
 
     @IBAction func viewDiseasesSwitch(_ sender: Any) {
-        if showDiseaseSwitch.isOn {
-            delegate?.getHumanUpdates(value: true, cellType: .diseaseSwitch, indexPath: indexPath!)
-        } else {
-            delegate?.getHumanUpdates(value: false, cellType: .diseaseSwitch, indexPath: indexPath!)
-        }
+        let message = NSLocalizedString("showdiseasesmessage", comment: "")
+        let alert = UIAlertController(title: NSLocalizedString("verifyalert", comment: ""), message: message, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("diseaseresponseNo", comment: ""), style: UIAlertActionStyle.default, handler: { (action) in
+            self.showDiseaseSwitch.setOn(!self.showDiseaseSwitch.isOn, animated: true)
+        }))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("diseaseresponseYes", comment: ""), style: UIAlertActionStyle.default, handler: { (action) in
+            self.delegate?.getHumanUpdates(value: self.showDiseaseSwitch.isOn, cellType: .diseaseSwitch, indexPath: self.indexPath!)
+        }))
+        delegate?.showAlertMessage(alert: alert)
 
     }
     override func setSelected(_ selected: Bool, animated: Bool) {

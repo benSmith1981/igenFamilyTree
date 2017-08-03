@@ -114,6 +114,7 @@ class iGenDataService {
             "name": human.name,
             "dob": human.dob ?? "",
             "gender": human.gender,
+            "showDiseaseInfo": human.showDiseaseInfo,
             "editInfoID" : human.editInfoID!,
             "editInfoTimestamp" : human.editInfoTimestamp!,
             "editInfoField" : human.editInfoField!

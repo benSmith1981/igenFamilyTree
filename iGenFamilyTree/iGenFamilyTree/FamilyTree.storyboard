@@ -37,13 +37,15 @@
                                     <segue destination="JeC-zp-ZQM" kind="unwind" unwindAction="unwindToVC1WithSegue:" id="Gqp-QR-EkM"/>
                                 </connections>
                             </button>
+                            <connections>
+                                <action selector="logOff:" destination="hWx-t7-1N7" id="J1o-jG-u7B"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <segue destination="JeC-zp-ZQM" kind="unwind" identifier="returnViewController" unwindAction="unwindToVC1WithSegue:" id="QBJ-UE-bc7"/>
                         <segue destination="h7u-yl-EkI" kind="show" identifier="returnViewController" id="OcU-f5-gET"/>
                     </connections>
                 </collectionViewController>

@@ -63,12 +63,15 @@ protocol updateParametersDelegate: class {
     func removeDisease(indexPath:IndexPath)
     func showPicker()
     func hidePicker()
+    func showAlertMessage(alert: UIAlertController)
 }
+    
 extension updateParametersDelegate {
     func showPicker() {}
     func hidePicker(){}
     func addDisease() {}
     func removeDisease(indexPath:IndexPath) {}
+    func showAlertMessage(alert: UIAlertController) {}
 }
 
 class HumanModalViewController: UIViewController, UIViewControllerTransitioningDelegate, updateParametersDelegate, UIPickerViewDelegate {
@@ -187,11 +190,7 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
             }
             
         }
-        //this checks if you are the logged in person so you can change only your info
-        if currentHuman?.id != (humanDetails?.userID)! && currentHuman?.id != humanDetails?.patient.id{
-            print("THIS IS THE PERSON LOGGED IN")
-            self.modalTableView.isUserInteractionEnabled = false
-        }
+        checkIfViewerCanEditInfo()
         // Do any additional setup after loading the view.
         modalTableView.rowHeight = UITableViewAutomaticDimension
         modalTableView.estimatedRowHeight = 36
@@ -210,6 +209,33 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
         let pickerCell = UINib(nibName: "PickerTableCellTableViewCell", bundle: nil)
         self.modalTableView.register(pickerCell, forCellReuseIdentifier: "diseasePickerID")
         
+    }
+    
+    //this checks if you are the logged in person OR the patient so you can change only your info, unless you are the patient
+    func checkIfViewerCanEditInfo(){
+
+        
+        if let loggedInID = UserDefaults.standard.value(forKey:"userid") as? String {
+            let patientID = humanDetails?.patient.id
+            let currentViewedHumanID = currentHuman?.id
+            
+            print("patientID \(patientID))")
+            print("currentViewedHumanID \(currentViewedHumanID)")
+            print("loggedInID: \(loggedInID)")
+            
+            //Only let other members edit their own info
+            if currentViewedHumanID == loggedInID{
+                print("THIS IS THE PERSON LOGGED IN")
+                self.modalTableView.isUserInteractionEnabled = true
+            } else {
+                self.modalTableView.isUserInteractionEnabled = false
+            }
+            //always let patient edit
+            if loggedInID == patientID {
+                self.modalTableView.isUserInteractionEnabled = true
+            }
+            
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -245,7 +271,7 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
         case .dobRow:
             self.editingHuman?.dob = value as? String
         case .diseaseSwitch:
-            showAlertMessage(message: NSLocalizedString("showdiseasesmessage", comment: ""), showDiseases: (value as? Bool)!)
+            self.editingHuman?.showDiseaseInfo = value as! Bool
         case .disease1Row:
             self.editingDiseases?.diseaseList[0] = value as! String
         case .disease2Row:
@@ -261,31 +287,22 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
         }
     }
     
-    func showAlertMessage(message: String, showDiseases: Bool){
-        let alert = UIAlertController(title: NSLocalizedString("verifyalert", comment: ""), message: message, preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("diseaseresponseNo", comment: ""), style: UIAlertActionStyle.default, handler: { (action) in
-        }))
-        alert.addAction(UIAlertAction(title: NSLocalizedString("diseaseresponseYes", comment: ""), style: UIAlertActionStyle.default, handler: { (action) in
-            self.editingHuman?.showDiseaseInfo = showDiseases
-        }))
-        self.present(alert, animated: true, completion: nil)
+    func showAlertMessage(alert: UIAlertController){
 
+        self.present(alert, animated: true, completion: nil)
     }
     
     func addDisease() {
-//        if var editingDiseases = editingDiseases {
-        
-            if (editingDiseases?.diseaseList.count)! < 5 {
-                editingDiseases?.diseaseList.append("")
-                self.modalTableView.reloadData()
-            } else {
-                let alertController = UIAlertController(title: "Limit diseases reached", message:
-                    "Currently a person has a maximum of 5 genetic disorders at a time.", preferredStyle: UIAlertControllerStyle.alert)
-                alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
-                
-                self.present(alertController, animated: true, completion: nil)
-            }
-//        }
+        if (editingDiseases?.diseaseList.count)! < 5 {
+            editingDiseases?.diseaseList.append("")
+            self.modalTableView.reloadData()
+        } else {
+            let alertController = UIAlertController(title: "Limit diseases reached", message:
+                "Currently a person has a maximum of 5 genetic disorders at a time.", preferredStyle: UIAlertControllerStyle.alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+            
+            self.present(alertController, animated: true, completion: nil)
+        }
     }
     
     func removeDisease(indexPath:IndexPath) {
