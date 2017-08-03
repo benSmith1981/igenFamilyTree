@@ -229,7 +229,6 @@ class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembe
                 let genderPatient = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.detailImageCellID.rawValue, for: indexPath) as! DetailmageSliderCell
                 genderPatient.delegate = self
                 genderPatient.indexPath = indexPath
-                genderPatient
                 genderPatient.humanGender = answers.patientGender.rawValue
 
                 return genderPatient
