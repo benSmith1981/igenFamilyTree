@@ -12,7 +12,7 @@
         <!--Start Screen-->
         <scene sceneID="JJB-OM-d3P">
             <objects>
-                <viewController id="CNe-m6-naB" customClass="StartScreen" customModule="iGenFamilyTree" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="startScreenID" id="CNe-m6-naB" customClass="StartScreen" customModule="iGenFamilyTree" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4dP-jX-NCH"/>
                         <viewControllerLayoutGuide type="bottom" id="s9g-je-8lf"/>
