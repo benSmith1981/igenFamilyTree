@@ -79,7 +79,7 @@ class CustomCollectionViewController: UICollectionViewController, reloadAfterEdi
             loginFamilytree()
         }
         //self.collectionView?.reloadData()
-
+        
         configureCollectionView()
         let pinch = UIPinchGestureRecognizer(target: self, action: #selector(handlePinch))
         self.view.addGestureRecognizer(pinch)
@@ -91,14 +91,11 @@ class CustomCollectionViewController: UICollectionViewController, reloadAfterEdi
         // Dispose of any resources that can be recreated.
     }
     
-        override func viewWillAppear(_ animated: Bool) {
-            super.viewWillAppear(animated)
-    //        //self.collectionView?.reloadData()
-    //        if let indexPatch = selectedIndexPath {
-    //            self.collectionView?.reloadItems(at: [indexPath])
-    //        }
-        }
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
     override func viewDidDisappear(_ animated: Bool) {
         print("viewDidDisappear")
     }
