@@ -17,12 +17,6 @@ class GenerateFamilyCellTableViewCell: UITableViewCell {
     var delegate: SetNumberOfFamilyMembers?
     override func awakeFromNib() {
         super.awakeFromNib()
-
-//        let rectShapeBottom = CAShapeLayer()
-        //rectShapeBottom.bounds = self.frame.insetBy(dx: 10.0, dy: 10.0)
-        //rectShapeBottom.position = buttonOutlet.center
-//        rectShapeBottom.path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: [.bottomLeft, .bottomRight ], cornerRadii: CGSize(width: 10, height: 10)).cgPath
-//        self.layer.mask = rectShapeBottom
         
         self.layoutSubviews()
     }

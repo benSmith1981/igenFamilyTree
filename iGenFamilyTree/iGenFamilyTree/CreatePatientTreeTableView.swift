@@ -138,8 +138,6 @@ class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembe
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        self.tableView.separatorStyle = .singleLineEtched
-//        self.tableView.separatorColor = UIColor.black
         
         self.navigationItem.hidesBackButton = true
         
@@ -179,11 +177,9 @@ class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembe
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        self.tableView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        //        if segue.identifier == segues.familytreeSegue.rawValue {
         let ccData = segue.destination as! CustomCollectionViewController
         ccData.familyTreeGenerator = familyTreeGenerator
         ccData.serverResponse = serverResponse

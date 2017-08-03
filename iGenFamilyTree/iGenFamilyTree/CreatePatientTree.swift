@@ -30,24 +30,6 @@ class CreatePatientTree: UITableViewCell, UITextFieldDelegate, UIPickerViewDeleg
         pickerView.delegate = self
         numberOfMembers.inputView = pickerView
         pickerView.backgroundColor = UIColor.white
-
-        
-//        let toolBar = UIToolbar()
-//        toolBar.barStyle = UIBarStyle.default
-//        toolBar.isTranslucent = true
-//        toolBar.tintColor = UIColor.white
-//        toolBar.sizeToFit()
-//        toolBar.barTintColor = UIColor(red:0.85, green:0.36, blue:0.39, alpha:1.0)
-//        
-//        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.plain, target: self, action: #selector(pickerViewEndEditing))
-//        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
-//        let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.plain, target: self, action: #selector(textFieldShouldReturn))
-//        
-//        toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
-//        toolBar.isUserInteractionEnabled = true
-//        
-//        numberOfMembers.inputView = pickerView
-//        numberOfMembers.inputAccessoryView = toolBar
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -119,13 +101,6 @@ class CreatePatientTree: UITableViewCell, UITextFieldDelegate, UIPickerViewDeleg
         }
     }
     
-    // Move the text field in a pretty animation
 }
 
-//extension CreatePatientTree: UITextFieldDelegate{
-//    
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        nextTextField?(textField.tag)
-//        return textField.resignFirstResponder()
-//    }
-//}
+
