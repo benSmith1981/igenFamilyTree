@@ -81,6 +81,8 @@ class CustomCollectionViewController: UICollectionViewController, reloadAfterEdi
         //self.collectionView?.reloadData()
         
         configureCollectionView()
+        let pinch = UIPinchGestureRecognizer(target: self, action: #selector(handlePinch))
+        self.view.addGestureRecognizer(pinch)
     }
     
     override func didReceiveMemoryWarning() {
@@ -175,7 +177,7 @@ class CustomCollectionViewController: UICollectionViewController, reloadAfterEdi
         
     }
     
-    // MARK: UICollectionViewDataSource
+    // MARK: - UICollectionViewDataSource
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return Constants.gridSize
@@ -265,6 +267,19 @@ extension CustomCollectionViewController: UIViewControllerTransitioningDelegate 
         transition.presenting = true
         return transition
     }
+}
+
+extension CustomCollectionViewController {
     
+    // MARK: - Zoom stuff
     
+    func handlePinch(gesture: UIPinchGestureRecognizer) {
+        if gesture.state == .ended || gesture.state == .changed {
+            let trafo = CGAffineTransform.init(scaleX: gesture.scale, y: gesture.scale)
+            self.collectionView?.transform = trafo
+            if gesture.scale < 1.0 {
+                self.collectionView?.frame = self.view.bounds
+            }
+        }
+    }
 }

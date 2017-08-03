@@ -10,7 +10,7 @@ import Foundation
 
 //  Disease is an object linked to a Human (by the id) to be able to store information about the diseaseList seperately
 
-class Disease {
+struct Disease {
     var id: ID
     var diseaseList: [String] = []
     var canEditList: [ID] = []
@@ -26,7 +26,7 @@ class Disease {
         self.editInfoField = editInfoField
     }
     
-    convenience init(dictionary: NSDictionary) {
+    init(dictionary: NSDictionary) {
         
         self.init(id: (dictionary[JsonKeys.id.rawValue] as? ID)!,
                   editInfoID: (dictionary[JsonKeys.editInfoID.rawValue] as? ID)!,
@@ -53,7 +53,7 @@ class Disease {
         return models
     }
     
-    func logChangesBy(_ human: ID, _ fields: String) {
+    mutating func logChangesBy(_ human: ID, _ fields: String) {
         editInfoID = human
         editInfoTimestamp = String(describing: Date())
         editInfoField = fields

@@ -24,16 +24,16 @@ class iGenCell: UICollectionViewCell {
     @IBOutlet weak var patientName: UILabel!
     
     let diseasesColorArray: [UIColor] = [UIColor(red:0.32, green:0.71, blue:0.62, alpha:1.0),/*1*/
-                                         UIColor(red:1.00, green:0.87, blue:0.58, alpha:1.0),/*2*/
-                                         UIColor(red:0.77, green:0.89, blue:0.89, alpha:1.0),/*3*/
-                                         UIColor(red:0.94, green:0.61, blue:0.02, alpha:1.0),/*4*/
-                                         UIColor(red:0.60, green:0.52, blue:0.74, alpha:1.0),/*5*/
-                                         UIColor(red:0.76, green:0.63, blue:0.51, alpha:1.0),/*6*/
-                                         UIColor(red:0.89, green:0.54, blue:0.58, alpha:1.0),/*7*/
-                                         UIColor(red:0.96, green:0.76, blue:0.79, alpha:1.0),/*8*/
-                                         UIColor(red:0.49, green:0.89, blue:0.89, alpha:1.0),/*9*/
-                                         UIColor(red:1.00, green:0.95, blue:0.48, alpha:1.0),/*10*/
-                                        ]
+        UIColor(red:1.00, green:0.87, blue:0.58, alpha:1.0),/*2*/
+        UIColor(red:0.77, green:0.89, blue:0.89, alpha:1.0),/*3*/
+        UIColor(red:0.94, green:0.61, blue:0.02, alpha:1.0),/*4*/
+        UIColor(red:0.60, green:0.52, blue:0.74, alpha:1.0),/*5*/
+        UIColor(red:0.76, green:0.63, blue:0.51, alpha:1.0),/*6*/
+        UIColor(red:0.89, green:0.54, blue:0.58, alpha:1.0),/*7*/
+        UIColor(red:0.96, green:0.76, blue:0.79, alpha:1.0),/*8*/
+        UIColor(red:0.49, green:0.89, blue:0.89, alpha:1.0),/*9*/
+        UIColor(red:1.00, green:0.95, blue:0.48, alpha:1.0),/*10*/
+    ]
     
     override func prepareForReuse() {
         // initialize the cell
@@ -108,54 +108,27 @@ class iGenCell: UICollectionViewCell {
         // CODE TO PROCESS DISEASES BY COUNT
         print("currentDisease:", currentDisease.diseaseList)
         let diseaseCount = min(currentDisease.diseaseList.count, 3)
-        for diseaseIndex in 0 ... diseaseCount - 1 {
-            print("diseaseindex", diseaseIndex, currentDisease.diseaseList[diseaseIndex])
-            let diseaseNumber = Int(currentDisease.diseaseList[diseaseIndex])! - 1
-            self.diseaseLabel[diseaseIndex].backgroundColor = diseasesColorArray[diseaseNumber]
-            self.diseaseLabel[diseaseIndex].text = String(currentDisease.diseaseList[diseaseIndex])
-            switch diseaseCount {
-            case 1:
-                self.diseaseImg1Color.backgroundColor = diseasesColorArray[diseaseNumber]
-            case 2:
-                self.diseaseImg2Colors[diseaseIndex].backgroundColor = diseasesColorArray[diseaseNumber]
-            case 3:
-                self.diseaseImg3Colors[diseaseIndex].backgroundColor = diseasesColorArray[diseaseNumber]
-            default:
-                break
+        if diseaseCount > 0 {
+            for diseaseIndex in 0 ... diseaseCount - 1 {
+                print("diseaseindex", diseaseIndex, currentDisease.diseaseList[diseaseIndex])
+                
+                if Int(currentDisease.diseaseList[diseaseIndex]) != nil {
+                    let diseaseNumber = Int(currentDisease.diseaseList[diseaseIndex])! - 1
+                    self.diseaseLabel[diseaseIndex].backgroundColor = diseasesColorArray[diseaseNumber]
+                    self.diseaseLabel[diseaseIndex].text = String(currentDisease.diseaseList[diseaseIndex])
+                    switch diseaseCount {
+                    case 1:
+                        self.diseaseImg1Color.backgroundColor = diseasesColorArray[diseaseNumber]
+                    case 2:
+                        self.diseaseImg2Colors[diseaseIndex].backgroundColor = diseasesColorArray[diseaseNumber]
+                    case 3:
+                        self.diseaseImg3Colors[diseaseIndex].backgroundColor = diseasesColorArray[diseaseNumber]
+                    default:
+                        break
+                    }
+                }
             }
         }
-        
-        // CODE TO PROCESS DISEASES BY THEIR VALUE
-        //        let diseaseCount = currentDisease.diseaseList.count
-        //        for diseases in 0...diseaseCount {
-        //            switch diseases {
-        //            case 1:
-        //
-        //            case 2:
-        //                <#code#>
-        //            case 3:
-        //                <#code#>
-        //            default:
-        //                break
-        //            }
-        //        }
-        //
-        //        let diseaseString = currentDisease.diseaseList
-        //        for disease in diseaseString {
-        //            switch  disease {
-        //            case "1":
-        //                //self.diseaseImg1Color.backgroundColor = UIColor.diseaseColor(0)
-        //                self.diseaseImg1Color.backgroundColor = UIColor.red
-        //            case "2":
-        //                //self.diseaseImg1Color.backgroundColor = UIColor.diseaseColor(1)
-        //                self.diseaseImg2Colors[disease].backgroundColor = UIColor.green
-        //            case "3":
-        //                //self.diseaseImg1Color.backgroundColor = UIColor.diseaseColor(2)
-        //                self.diseaseImg3Colors[disease].backgroundColor = UIColor.black
-        //            default:
-        //                break
-        //            }
-        //        }
     }
     
 }
