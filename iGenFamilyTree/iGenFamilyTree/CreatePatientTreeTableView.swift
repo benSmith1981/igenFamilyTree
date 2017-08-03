@@ -141,6 +141,8 @@ class GenerateTableViewController: UITableViewController, SetNumberOfFamilyMembe
 //        self.tableView.separatorStyle = .singleLineEtched
 //        self.tableView.separatorColor = UIColor.black
         
+        self.navigationItem.hidesBackButton = true
+        
         let nib = UINib(nibName: "CreatePatientTree", bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: CustomCellIdentifiers.CreatePatientTreeID.rawValue)
         let generate = UINib(nibName: "GenerateFamilyCellTableViewCell", bundle: nil)

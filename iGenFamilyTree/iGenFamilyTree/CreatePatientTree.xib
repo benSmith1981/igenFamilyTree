@@ -34,7 +34,7 @@
                     </label>
                     <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QWh-Cg-Z8P">
                         <rect key="frame" x="267.5" y="12" width="72.5" height="35.5"/>
-                        <color key="backgroundColor" red="0.93325155973434448" green="0.93338567018508911" blue="0.93322223424911499" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.93325155969999996" green="0.93338567019999996" blue="0.93322223419999994" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="QWh-Cg-Z8P" secondAttribute="height" multiplier="73:52" constant="22.461538461538467" id="ms7-I2-xXh"/>
                             <constraint firstAttribute="width" secondItem="QWh-Cg-Z8P" secondAttribute="height" multiplier="73:52" constant="22.461538461538467" id="v6J-cU-HHq"/>
