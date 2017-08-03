@@ -109,7 +109,15 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
             dateOfBirthCell.cellType = .dobRow
             dateOfBirthCell.delegate = self
             return dateOfBirthCell
+        case detailRows.diseaseSwitch.rawValue:
+            let diseaseCell = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.CanViewDiseasesCellID.rawValue, for: indexPath) as! CanViewDiseasesCell
             
+            diseaseCell.showDiseaseSwitch.isOn = (self.editingHuman?.showDiseaseInfo)!
+            
+            diseaseCell.indexPath = indexPath
+            diseaseCell.cellType = .diseaseSwitch
+            diseaseCell.delegate = self
+            return diseaseCell
         default:
             return UITableViewCell()
         }

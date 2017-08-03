@@ -18,6 +18,7 @@ enum detailRows: Int {
     case genderRow = 0
     case nameRow
     case dobRow
+    case diseaseSwitch
     case disease1Row
     case disease2Row
     case disease3Row
@@ -193,6 +194,9 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
         modalTableView.layer.shadowRadius = 5
         modalTableView.layer.masksToBounds = true
         
+        let canViewDiseases = UINib(nibName: "CanViewDiseasesCell", bundle: nil)
+        self.modalTableView.register(canViewDiseases, forCellReuseIdentifier: CustomCellIdentifiers.CanViewDiseasesCellID.rawValue)
+        
         let imageCell = UINib(nibName: "DetailmageSliderCell", bundle: nil)
         self.modalTableView.register(imageCell, forCellReuseIdentifier: CustomCellIdentifiers.detailImageCellID.rawValue)
         
@@ -235,6 +239,8 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
                                       with: .fade)
         case .dobRow:
             self.editingHuman?.dob = value as? String
+        case .diseaseSwitch:
+            showAlertMessage(message: NSLocalizedString("showdiseasesmessage", comment: ""), showDiseases: (value as? Bool)!)
         case .disease1Row:
             self.editingDiseases?.diseaseList[0] = value as! String
         case .disease2Row:
@@ -248,6 +254,17 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
         default:
             break
         }
+    }
+    
+    func showAlertMessage(message: String, showDiseases: Bool){
+        let alert = UIAlertController(title: NSLocalizedString("verifyalert", comment: ""), message: message, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("diseaseresponseNo", comment: ""), style: UIAlertActionStyle.default, handler: { (action) in
+        }))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("diseaseresponseYes", comment: ""), style: UIAlertActionStyle.default, handler: { (action) in
+            self.editingHuman?.showDiseaseInfo = showDiseases
+        }))
+        self.present(alert, animated: true, completion: nil)
+
     }
     
     func addDisease() {

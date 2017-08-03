@@ -32,6 +32,10 @@
 "placeholderDateOfBirth" = "JJJJ";
 "placeholderDisease" = "Naam afwijking";
 "verifybutton" = "CONTROLEER MET FAMILIE LID";
+"viewdiseaselabel" = "Toon ziektes";
+"showdiseasesmessage" = "Je staat op het punt om te veranderen of jouw familie wel of niet jouw ziektes kunnen zien. Weet je het zeker?";
+"diseaseresponseNo" = "Nee, ik wil dat niet doen";
+"diseaseresponseYes" = "Ja, ik weet het zeker";
 
 //Create button tableviewcontroller
 "CreateTree" = "Genereer stamboom";
@@ -55,7 +59,7 @@
 "patientName" = "Uw naam";
 "verifyEmail" = "Verificatie e-mail";
 "verifyName" = "Verificatie naam";
-"emailText" = "Beste% @, \r\n Uw familielid heeft een iGen-stamboom gecreëerd en heeft u gevraagd uw gegevens te verifiëren die hij/zij over u heeft toegevoegd. U hoeft deze informatie niet te delen met iemand anders behalve uw huisarts, maar het zal wel helpen om uw familie beter te diagnosticeren en te behandelen. \r\n\r\n 1) Download de iGen app \r\n 2) Log in met deze %@ en deze code: %@ \r\n 3) Vind uw detailinformatie in de boom en bevestig het \r \n \r \n We hopen dat deze app u en uw familie helpt helpt in uw gezondheid \r\n Met vriendelijke groet %@ ";
+"emailText" = "Beste %@, \r\n Uw familielid heeft een iGen-stamboom aangemaakt en vraagt u om uw gegevens te verifiëren. U hoeft deze informatie niet te delen met anderen, maar het zal wel helpen om uw familie(lid) beter te diagnosticeren en te behandelen. \r\n\r\n 1) Download de iGen app \r\n 2) Log in met deze %@ en deze code: %@ \r\n 3) Vind uw detailinformatie in de boom en bevestig deze \r \n \r \n We hopen dat deze app u en uw familie helpt in uw gezondheid \r\n Met vriendelijke groeten %@ ";
 
 //login screen
 "fillUsernamePassword" = "Vul hieronder uw gebruikersnaam en wachtwoord in";
