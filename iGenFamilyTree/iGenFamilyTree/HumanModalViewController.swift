@@ -136,7 +136,7 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
+
         IQKeyboardManager.shared().disabledToolbarClasses.add(HumanModalViewController.self)
         
         self.hideKeyboardWhenTappedAround()
@@ -187,7 +187,11 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
             }
             
         }
-        
+        //this checks if you are the logged in person so you can change only your info
+        if currentHuman?.id != (humanDetails?.userID)! && currentHuman?.id != humanDetails?.patient.id{
+            print("THIS IS THE PERSON LOGGED IN")
+            self.modalTableView.isUserInteractionEnabled = false
+        }
         // Do any additional setup after loading the view.
         modalTableView.rowHeight = UITableViewAutomaticDimension
         modalTableView.estimatedRowHeight = 36

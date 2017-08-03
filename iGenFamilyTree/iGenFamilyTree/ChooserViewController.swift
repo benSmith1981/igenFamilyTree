@@ -48,8 +48,8 @@ class ChooserViewController: UIViewController {
                                                name:  NSNotification.Name(rawValue: NotificationIDs.registerNotificationID.rawValue ),
                                                object: nil)
         #if DEBUG
-            self.usernameTextField.text = "axel@axel.nu"
-            self.passwordTextField.text = "loorap"
+            self.usernameTextField.text = "benjaminsmith1981@gmail.com"
+            self.passwordTextField.text = "1234"
         #endif
     }
     
