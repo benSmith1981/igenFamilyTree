@@ -82,10 +82,10 @@
             </objects>
             <point key="canvasLocation" x="1783" y="1101"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Navigation ControllerID-->
         <scene sceneID="Q5v-UT-k5Z">
             <objects>
-                <navigationController id="2tC-LR-z4U" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NavigationControllerID" id="2tC-LR-z4U" customClass="NavigationControllerID" customModule="iGenFamilyTree" customModuleProvider="target" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="7ar-EM-ml1">
