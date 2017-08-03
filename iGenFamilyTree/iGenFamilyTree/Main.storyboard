@@ -85,7 +85,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Q5v-UT-k5Z">
             <objects>
-                <navigationController id="2tC-LR-z4U" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NavigationControllerID" id="2tC-LR-z4U" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="7ar-EM-ml1">

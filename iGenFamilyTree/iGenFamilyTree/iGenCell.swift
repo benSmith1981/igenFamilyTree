@@ -73,7 +73,7 @@ class iGenCell: UICollectionViewCell {
         print("currentHuman:", currentHuman.name)
         self.patientName.text = currentHuman.name
         self.patientAge.text = currentHuman.dob
-        self.diseaseImg1Color.backgroundColor = UIColor.darkGray
+        self.diseaseImg1Color.backgroundColor = UIColor(red:0.90, green:0.90, blue:0.90, alpha:1.0)
         // pulsating animation for loginHumanID
         if currentHuman.id == currentHuman.editInfoID {         // moet loginHumanID worden
             self.ring.layer.cornerRadius = 25
