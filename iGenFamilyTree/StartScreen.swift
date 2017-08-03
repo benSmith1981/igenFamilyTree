@@ -28,10 +28,8 @@ class StartScreen: UIViewController {
     }
     
     func createColorSets() {
-        colorSets.append([UIColor(red:0.96, green:0.36, blue:0.65, alpha:1.0).cgColor,
-                          UIColor(red:0.99, green:0.35, blue:0.36, alpha:1.0).cgColor])
-        colorSets.append([UIColor(red:0.87, green:0.36, blue:0.54, alpha:1.0).cgColor,
-                          UIColor(red:0.97, green:0.73, blue:0.58, alpha:1.0).cgColor])
+        colorSets.append([UIColor(red:0.99, green:0.35, blue:0.36, alpha:1.0).cgColor, UIColor(red:0.96, green:0.36, blue:0.65, alpha:1.0).cgColor])
+        colorSets.append([UIColor(red:0.87, green:0.36, blue:0.54, alpha:1.0).cgColor, UIColor(red:0.97, green:0.73, blue:0.58, alpha:1.0).cgColor])
         
         currentColorSet = 0
     }
@@ -47,7 +45,18 @@ class StartScreen: UIViewController {
         
         CATransaction.begin()
         CATransaction.setCompletionBlock({
-                self.showMenuNavigationViewController()
+            
+            //OLD METHOD
+            self.showMenuNavigationViewController()
+            
+            //NEW METHOD
+            //ADDED "self." before storyboard and present
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "NavigationControllerID") as! NavigationControllerID
+            self.present(nextViewController, animated:true, completion:nil)
+            //let loginScreen = self.storyboard!.instantiateViewController(withIdentifier: "NavigationControllerID") as! NavigationControllerID
+            //self.present(loginScreen, animated: true, completion: nil)
+            
         })
         
         let colorChangeAnimation = CABasicAnimation(keyPath: "colors")
