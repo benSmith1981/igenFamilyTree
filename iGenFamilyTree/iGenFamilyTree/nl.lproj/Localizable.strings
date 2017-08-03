@@ -28,6 +28,7 @@
 "placeholderNameFemale" = "Julia Janssen";
 "placeholderDateOfBirth" = "JJJJ";
 "placeholderDisease" = "Naam afwijking";
+"verifybutton" = "CONTROLEER MET FAMILIE LID";
 
 //Create button tableviewcontroller
 "CreateTree" = "Genereer stamboom";
@@ -42,6 +43,8 @@
 "genderspouse" = "Welk geslacht is uw partner?";
 
 //Verify fields
+"sendverifybutton" = "Verstuur Verificatie Email";
+"verifyalert" = "Controleer lid";
 "verifyTitle" = "VERIFISEER LID";
 "patientEmail" = "Uw e-mail";
 "patientName" = "Uw naam";

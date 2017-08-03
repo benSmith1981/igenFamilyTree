@@ -41,6 +41,8 @@ class VerifyMemberVC: UIViewController, UITextViewDelegate, UITableViewDelegate,
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
     @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var trailingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var footerBG: UIView!
+    @IBOutlet weak var headerBG: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,11 +72,29 @@ class VerifyMemberVC: UIViewController, UITextViewDelegate, UITableViewDelegate,
                                                name:  NSNotification.Name(rawValue: NotificationIDs.verifyNotificationID.rawValue),
                                                object: nil)
         // Do any additional setup after loading the view.
+        
+        let rectShapeTop = CAShapeLayer()
+        rectShapeTop.bounds = self.headerBG.frame
+        rectShapeTop.position = self.headerBG.center
+        rectShapeTop.path = UIBezierPath(roundedRect: self.headerBG.bounds, byRoundingCorners: [.topLeft, .topRight ], cornerRadii: CGSize(width: 10, height: 10)).cgPath
+        
+        let rectShapeBottom = CAShapeLayer()
+        rectShapeBottom.bounds = self.footerBG.frame
+        rectShapeBottom.position = self.footerBG.center
+        rectShapeBottom.path = UIBezierPath(roundedRect: self.footerBG.bounds, byRoundingCorners: [.bottomLeft, .bottomRight ], cornerRadii: CGSize(width: 10, height: 10)).cgPath
+        
+        self.headerBG.layer.mask = rectShapeTop
+        self.footerBG.layer.mask = rectShapeBottom
     }
 
     override func viewDidLayoutSubviews() {
         modalTableView.reloadData()
+        super.updateViewConstraints()
+        self.widthConstraint?.constant = self.view.frame.width - (leadingConstraint.constant + trailingConstraint.constant)
+        
+        self.heightConstraint?.constant = self.view.frame.height - (topConstraint.constant + bottomConstraint.constant)
     }
+    
     func verifyObserver(notification: NSNotification) {
         let verifyDict = notification.userInfo as! [String : Any]
         if let success = verifyDict["success"] as? Bool, let message = verifyDict["message"] as? String {
@@ -87,7 +107,7 @@ class VerifyMemberVC: UIViewController, UITextViewDelegate, UITableViewDelegate,
     }
     
     func showAlertMessage(message: String, success: Bool){
-        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: NSLocalizedString("verifyalert", comment: ""), message: message, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action) in
             if success{
                 self.presentingViewController?.dismiss(animated: true, completion: nil)
@@ -240,6 +260,7 @@ class VerifyMemberVC: UIViewController, UITextViewDelegate, UITableViewDelegate,
         let max = Int(pow(Double(10), Double(digits))) - 1
         return Int(Range(uncheckedBounds: (lower: min, upper: max)))
     }
+    
 }
 
 extension Int {
