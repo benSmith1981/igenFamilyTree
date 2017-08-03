@@ -40,13 +40,13 @@
                                             <textField opaque="NO" clipsSubviews="YES" alpha="0.75" contentMode="scaleToFill" verticalHuggingPriority="260" verticalCompressionResistancePriority="760" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="e-mail address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Brt-se-lMu">
                                                 <rect key="frame" x="0.0" y="0.0" width="327" height="30"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" alpha="0.75" contentMode="scaleToFill" verticalHuggingPriority="260" verticalCompressionResistancePriority="760" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hDg-VL-qzd">
                                                 <rect key="frame" x="0.0" y="32" width="327" height="30"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
                                         </subviews>
@@ -59,7 +59,7 @@
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pzv-TX-aVA">
                                                         <rect key="frame" x="0.0" y="0.0" width="153.5" height="35"/>
-                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                         <state key="normal" title="Register">
                                                             <color key="titleColor" red="0.85098039219999999" green="0.35686274509999999" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
                                                         </state>
@@ -82,7 +82,7 @@
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2vl-OR-U1U">
                                                         <rect key="frame" x="0.0" y="0.0" width="153.5" height="35"/>
-                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                         <state key="normal" title="Login">
                                                             <color key="titleColor" red="0.85098039219999999" green="0.35686274509999999" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
                                                         </state>

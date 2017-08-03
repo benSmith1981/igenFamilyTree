@@ -1,4 +1,5 @@
 const FamilySchema = require('./tree_model'),
+LoginSchema = require('./login_model'),
 date = new Date()
 
 CollectionDriver = function(db) {
@@ -10,6 +11,15 @@ exports.deletetree = function(req, res, err) {
     var familyKey =  req.query.patientID
     console.log("familyKey " + familyKey)
     FamilySchema.remove({ patientID: familyKey}, function(err, callback){
+        if (err) {
+            res.json(err)
+        }
+        else {
+            res.json(callback)
+        }
+    })
+
+    LoginSchema.remove({ patientID: familyKey}, function(err, callback){
         if (err) {
             res.json(err)
         }

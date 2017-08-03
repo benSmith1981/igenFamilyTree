@@ -320,7 +320,6 @@
 				B51F648A1F2E899A003D1490 /* StringExtension.swift */,
 				CF859A9E1F3315D10008DC41 /* NavBarExtension.swift */,
 				CF217ED21F26276F0066352A /* TextFieldExtension.swift */,
-				C5AD5AF6C9C32E3A2F8F9A31 /* Frameworks */,
 				CF8DA1891F224448007EE7EC /* DismissKeyboardExtension.swift */,
 			);
 			path = iGenFamilyTree;

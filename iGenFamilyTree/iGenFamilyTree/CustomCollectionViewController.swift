@@ -29,30 +29,42 @@ class CustomCollectionViewController: UICollectionViewController, reloadAfterEdi
     var selectedIndexPath: IndexPath?
     var serverResponse: ServerResponse?
     
-    @IBAction func goBackToOneButtonTapped(_ sender: Any) {
-        performSegue(withIdentifier: "unwindSegueToVC1", sender: self)
-    }
+//    @IBAction func goBackToOneButtonTapped(_ sender: Any) {
+//        performSegue(withIdentifier: "unwindSegueToVC1", sender: self)
+//    }
     
-    @IBAction func saveFamilyTree(_ sender: Any) {
-        print("Back Button pressed.")
-        let alertController = UIAlertController(title: "Familytree", message: "Do you want to save the familytree?", preferredStyle: .alert)
-        let currentTopVC: UIViewController? = self.currentTopViewController()
-        currentTopVC?.present(alertController, animated: true, completion: nil)
-        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
-            UIAlertAction in
-            print("Ok alertbutton was pressed")
-            // save the changed familyTree to the database
-            iGenDataService.saveFamilyTree((self.familyTreeGenerator?.familyTree)!)
-        }
-        
-        let cancelAction = UIAlertAction(title: "No", style: UIAlertActionStyle.cancel) {
-            UIAlertAction in
-            print("No alertbutton was pressed")
-            self.returnToView()
-        }
-        alertController.addAction(okAction)
-        alertController.addAction(cancelAction)
-    }
+//    @IBAction func deleteButton(_ sender: Any) {
+//        print("Delete tree")
+//        let createTreeForm: UIStoryboard = UIStoryboard(name: "CreateTreeForm", bundle: nil)
+//        let createTreeFormVC = createTreeForm.instantiateViewController(withIdentifier: "createTreeID") as! GenerateTableViewController
+//        createTreeFormVC.serverResponse = serverResponse
+//        
+//        var vcArray = self.navigationController?.viewControllers
+//        vcArray!.removeLast()
+//        vcArray!.append(createTreeFormVC)
+//        self.navigationController?.setViewControllers(vcArray!, animated: true)
+//
+//        self.present(createTreeFormVC, animated: true, completion: nil)
+//        self.performSegue(withIdentifier: Segues.createFamilytreeSegue.rawValue, sender: self)
+//    }
+//        let alertController = UIAlertController(title: "Familytree", message: "Do you want to save the familytree?", preferredStyle: .alert)
+//        let currentTopVC: UIViewController? = self.currentTopViewController()
+//        currentTopVC?.present(alertController, animated: true, completion: nil)
+//        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
+//            UIAlertAction in
+//            print("Ok alertbutton was pressed")
+//            // save the changed familyTree to the database
+//            iGenDataService.saveFamilyTree((self.familyTreeGenerator?.familyTree)!)
+//        }
+//        
+//        let cancelAction = UIAlertAction(title: "No", style: UIAlertActionStyle.cancel) {
+//            UIAlertAction in
+//            print("No alertbutton was pressed")
+//            self.returnToView()
+//        }
+//        alertController.addAction(okAction)
+//        alertController.addAction(cancelAction)
+
     
     func returnToView() {
         self.performSegue(withIdentifier: "returnViewController", sender: nil)
@@ -96,6 +108,7 @@ class CustomCollectionViewController: UICollectionViewController, reloadAfterEdi
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: true)
+        navigationItem.hidesBackButton = true
     }
     
     override func viewDidDisappear(_ animated: Bool) {
