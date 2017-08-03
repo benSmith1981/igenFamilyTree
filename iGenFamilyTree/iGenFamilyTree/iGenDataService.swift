@@ -240,7 +240,9 @@ class iGenDataService {
         Alamofire.request("\(Constants.herokuAPI)login/",
             method: .post,
             parameters: loginDetailsParams,
-            encoding: JSONEncoding.default).responseJSON { (response) in
+            encoding: JSONEncoding.default)
+//            .authenticate(user: "admin", password: "supersecret")
+            .responseJSON { (response) in
                 switch response.result {
                 case .success(let jsonData):
                     if let jsonDict = response.result.value as? NSDictionary,
