@@ -25,13 +25,20 @@
 //Modal view labels
 "modalViewTitle" = "PERSOONSGEGEVENS";
 "name" = "Naam:";
-"dateOfBirth" = "Geboortedatum:";
+"dateOfBirth" = "Geb.datum:";
 "diseases" = "Ziekte(s):";
 "placeholderNameMale" = "Jan Janssen";
 "placeholderNameFemale" = "Julia Janssen";
 "placeholderDateOfBirth" = "JJJJ";
 "placeholderDisease" = "Naam afwijking";
 "verifybutton" = "CONTROLEER MET FAMILIE LID";
+"viewdiseaselabel" = "Toon ziektes aan anderen:";
+"showdiseasesmessageOn" = "Je staat op het punt om je ziektegegevens te laten zien aan andere familieleden. Weet je het zeker?";
+"showdiseasesmessageOff" = "Je staat op het punt om je ziektegegevens te verbergen aan andere familieleden. Weet je het zeker?";
+"diseasealert" = "Ziektes laten zien?";
+
+"diseaseresponseNo" = "NEE";
+"diseaseresponseYes" = "JA";
 
 //Create button tableviewcontroller
 "CreateTree" = "Genereer stamboom";
@@ -39,7 +46,7 @@
 
 
 //Associated form translations
-"fillinform" = "Vul alstublieft het onderstaande formulier in";
+"fillinform" = "Vul uw gegevens in";
 "enternumber" = "Vul hier het aantal in";
 "whatgender" = "Welk geslacht bent u?";
 "pickgender" = "Kies een geslacht";
@@ -49,13 +56,12 @@
 
 //Verify fields
 "sendverifybutton" = "VERSTUUR VERIFICATIE EMAIL";
-"verifyalert" = "Controleer lid";
 "verifyTitle" = "VERIFISEER LID";
 "patientEmail" = "Uw e-mail";
 "patientName" = "Uw naam";
 "verifyEmail" = "Verificatie e-mail";
 "verifyName" = "Verificatie naam";
-"emailText" = "Beste% @, \r\n Uw familielid heeft een iGen-stamboom gecreëerd en heeft u gevraagd uw gegevens te verifiëren die hij/zij over u heeft toegevoegd. U hoeft deze informatie niet te delen met iemand anders behalve uw huisarts, maar het zal wel helpen om uw familie beter te diagnosticeren en te behandelen. \r\n\r\n 1) Download de iGen app \r\n 2) Log in met deze %@ en deze code: %@ \r\n 3) Vind uw detailinformatie in de boom en bevestig het \r \n \r \n We hopen dat deze app u en uw familie helpt helpt in uw gezondheid \r\n Met vriendelijke groet %@ ";
+"emailText" = "Beste %@, \r\n Uw familielid heeft een iGen-stamboom aangemaakt en vraagt u om uw gegevens te verifiëren. U hoeft deze informatie niet te delen met anderen, maar het zal wel helpen om uw familie(lid) beter te diagnosticeren en te behandelen. \r\n\r\n 1) Download de iGen app \r\n 2) Log in met deze %@ en deze code: %@ \r\n 3) Vind uw detailinformatie in de boom en bevestig deze \r \n \r \n We hopen dat deze app u en uw familie helpt in uw gezondheid \r\n Met vriendelijke groeten %@ ";
 
 //login screen
 "fillUsernamePassword" = "Vul hieronder uw gebruikersnaam en wachtwoord in";

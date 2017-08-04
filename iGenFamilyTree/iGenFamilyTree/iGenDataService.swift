@@ -114,6 +114,7 @@ class iGenDataService {
             "name": human.name,
             "dob": human.dob ?? "",
             "gender": human.gender,
+            "showDiseaseInfo": human.showDiseaseInfo,
             "editInfoID" : human.editInfoID!,
             "editInfoTimestamp" : human.editInfoTimestamp!,
             "editInfoField" : human.editInfoField!
@@ -348,6 +349,52 @@ class iGenDataService {
             encoding: JSONEncoding.default).responseJSON { (response) in
                 switch response.result {
                 case .success(let jsonData):
+                    print("success \(jsonData)")
+                    
+                case .failure(let error):
+                    print("error \(error)")
+                }
+        }
+    }
+    
+    // delete a familytree (a number of Human objects) by id
+    public static func getFamilyTree(patientID: ID) {
+        print("gettree \(patientID)")
+        Alamofire.request("\(Constants.herokuAPI)gettree?patientID=\(patientID)",
+            method: .get,
+            //            parameters: diseaseUpdate,
+            encoding: JSONEncoding.default).responseJSON { (response) in
+                switch response.result {
+                case .success(let jsonData):
+                    if let jsonDict = response.result.value as? NSDictionary,
+                        let success = jsonDict["success"] as? Bool,
+                        let message = jsonDict["message"] as? String  {
+                        if success {
+                            if let familyTree = jsonDict["familyTree"] as? NSArray {
+                                
+                                // convert array into dictionary
+                                var humans: [ID: Human] = [:]
+                                for humanDict in familyTree {
+                                    let humanObject = Human.init(dictionary: humanDict as! NSDictionary)
+                                    humans[humanObject.id] = humanObject
+                                }
+                                print(humans)
+                                
+                                let responseLogin = ["response": humans]
+                                NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationIDs.getTreeID.rawValue),
+                                                                object: self,
+                                                                userInfo: responseLogin)
+                                print("success \(jsonDict)")
+                            }
+                            
+                        } else {
+                            let responseLogin = ["message": "\(message)"]
+                            NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationIDs.getTreeID.rawValue),
+                                                            object: self,
+                                                            userInfo: responseLogin)
+                            print("failure \(jsonDict)")
+                        }
+                    }
                     print("success \(jsonData)")
                     
                 case .failure(let error):

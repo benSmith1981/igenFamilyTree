@@ -30,6 +30,23 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
             return DetailViewSections.noSection
         }
     }
+    
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        
+//        guard indexPath.section != 0 || indexPath.row !=  detailRows.diseaseSwitch.rawValue else {
+//            return UITableViewAutomaticDimension
+//        }
+//        
+//        if let loggedInID = UserDefaults.standard.value(forKey:"userid") as? String,
+//            let currentViewedHumanID = currentHuman?.id {
+//            if currentViewedHumanID == loggedInID {
+//                return UITableViewAutomaticDimension
+//            } else {
+//                return 0
+//            }
+//        }
+//        return UITableViewAutomaticDimension
+//    }
 
     func numberOfDiseasesToShow() -> Int{
         if let showDisease = self.editingHuman?.showDiseaseInfo,
@@ -59,6 +76,7 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
         case detailRows.genderRow.rawValue:
             
             let imageCell = tableView.dequeueReusableCell(withIdentifier: "detailImageCellID", for: indexPath) as! DetailmageSliderCell
+            imageCell.isUserInteractionEnabled = false
             imageCell.delegate = self
             imageCell.indexPath = indexPath
             imageCell.awakeFromNib()
@@ -110,9 +128,55 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
             dateOfBirthCell.cellType = .dobRow
             dateOfBirthCell.delegate = self
             return dateOfBirthCell
+        case detailRows.diseaseSwitch.rawValue:
+            var diseaseSwitchCell = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.CanViewDiseasesCellID.rawValue, for: indexPath) as! CanViewDiseasesCell
+            if let showDiseases = self.editingHuman?.showDiseaseInfo {
+                diseaseSwitchCell.showDiseaseSwitch.setOn(showDiseases, animated: true)
+            }
             
+            let height = getDiseaseSwitchCellHeight()
+            var frame = diseaseSwitchCell.frame
+            frame.size.height = height
+            diseaseSwitchCell.frame = frame
+
+            if height == 0{
+                diseaseSwitchCell.alpha = 0
+                diseaseSwitchCell.diseaseLabel.isHidden = true
+                diseaseSwitchCell.showDiseaseSwitch.isHidden = true
+            } else{
+                diseaseSwitchCell.alpha = 1
+                diseaseSwitchCell.diseaseLabel.isHidden = false
+                diseaseSwitchCell.showDiseaseSwitch.isHidden = false
+            }
+            print("disease swithc cell height \(height)")
+            diseaseSwitchCell.indexPath = indexPath
+            diseaseSwitchCell.cellType = .diseaseSwitch
+            diseaseSwitchCell.delegate = self
+            return diseaseSwitchCell
         default:
             return UITableViewCell()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 && indexPath.row == detailRows.diseaseSwitch.rawValue{
+            return getDiseaseSwitchCellHeight()
+        } else {
+            return UITableViewAutomaticDimension
+        }
+    }
+    
+    func getDiseaseSwitchCellHeight() -> CGFloat{
+        if let loggedInID = UserDefaults.standard.value(forKey:"userid") as? String,
+            let currentViewedHumanID = currentHuman?.id{
+            if loggedInID != currentViewedHumanID{
+                return 0
+            } else {
+                return UITableViewAutomaticDimension
+            }
+            
+        } else {
+            return UITableViewAutomaticDimension
         }
     }
     
