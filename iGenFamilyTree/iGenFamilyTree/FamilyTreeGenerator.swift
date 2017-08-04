@@ -485,22 +485,20 @@ class FamilyTreeGenerator {
         func drawPatient() {
             if let patientID = patient.id {
                 
-                //** Not sure what the use of this guard statement is? Check if this can be remove...
-                //                guard patient.myChildrenIDs.count != 0 else {
-                //                    model?.cell?[row][col] = cellState.brother(id: patientID)
-                //                return
-                //                }
-                
                 if familyTree[patientID]?.gender == JsonKeys.male.rawValue {
-                    
+                    if patient.myChildrenIDs.count == 0 {
+                        model?.cell?[row][col] = cellState.brother(id: patientID)
+                    } else {
                     model?.cell?[row][col] = cellState.malePatient(id: patientID)
-                    
+                    }
                 }
                 
                 if familyTree[patientID]?.gender != JsonKeys.male.rawValue {
-                    
-                    model?.cell?[row][col] = cellState.femalePatient(id: patientID)
-                    
+                    if patient.myChildrenIDs.count == 0 {
+                        model?.cell?[row][col] = cellState.sister(id: patientID)
+                    } else {
+                        model?.cell?[row][col] = cellState.femalePatient(id: patientID)
+                    }
                 }
             }
         }
