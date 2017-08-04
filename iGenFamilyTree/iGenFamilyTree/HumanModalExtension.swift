@@ -76,6 +76,7 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
         case detailRows.genderRow.rawValue:
             
             let imageCell = tableView.dequeueReusableCell(withIdentifier: "detailImageCellID", for: indexPath) as! DetailmageSliderCell
+            imageCell.isUserInteractionEnabled = false
             imageCell.delegate = self
             imageCell.indexPath = indexPath
             imageCell.awakeFromNib()
