@@ -75,7 +75,7 @@ class iGenCell: UICollectionViewCell {
         self.patientAge.text = currentHuman.dob
         self.diseaseImg1Color.backgroundColor = UIColor(red:0.90, green:0.90, blue:0.90, alpha:1.0)
         // pulsating animation for loginHumanID
-        if currentHuman.id == currentHuman.editInfoID {         // moet loginHumanID worden
+        if currentHuman.id == userID {
             self.ring.layer.cornerRadius = 25
             self.ring.layer.borderColor = UIColor(red:0.17, green:0.60, blue:0.75, alpha:1.0).cgColor
             self.ring.layer.borderWidth = 1
@@ -90,12 +90,11 @@ class iGenCell: UICollectionViewCell {
             self.ring.layer.add(pulseAnimation, forKey: nil)
             
             if currentHuman.id == currentHuman.editInfoID {
-                //self.infoVerified.backgroundColor = UIColor.Colors.infoVerifiedColor
-                //self.infoVerified.image.
-                //self.infoVerified.text = "✔️"
                 
+                //self.infoVerified.isHidden = false
                 self.infoVerified.alpha = 1.0
             } else {
+                //self.infoVerified.isHidden = true
                 self.infoVerified.alpha = 0.0
             }
         }
