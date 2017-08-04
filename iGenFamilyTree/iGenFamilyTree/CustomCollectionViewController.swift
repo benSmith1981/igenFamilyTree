@@ -81,10 +81,19 @@ class CustomCollectionViewController: UICollectionViewController, reloadAfterEdi
                 print("no tree!!")
             } else {
                 serverResponse?.familyTree = familyTree
-                loginFamilytree()
+                refreshFamilytree()
             }
             
         }
+        
+//        SVProgressHUD.dismiss()
+//        let loginDict = notification.userInfo as! [String : Any]
+//        print("notify observer Login \(loginDict)")
+//        serverResponse = loginDict["response"] as? ServerResponse
+//        if serverResponse == nil {
+//            let serverResponse = loginDict["message"]
+//            alertMessage(serverResponse as! String)
+//        }
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -104,6 +113,25 @@ class CustomCollectionViewController: UICollectionViewController, reloadAfterEdi
     
     // extract patientID from the first Human for function MakeTreeFor
     // update the userID in the database and save the new familyTree to the database
+    
+    func refreshFamilytree() {
+        if let firstKey = familyTreeGenerator?.familyTree.first?.key,
+            let patientID = familyTreeGenerator?.familyTree[firstKey]?.patientID {
+            familyTreeGenerator?.familyTree = (serverResponse?.familyTree)!
+            familyTreeGenerator?.userID = patientID
+            familyTreeGenerator?.username = (serverResponse?.username)!
+            storeUsernameAndIDToDefaults()
+            
+            // load the diseases
+            familyTreeGenerator?.loadDiseases()
+            
+            familyTreeGenerator?.makeTreeFor(patientID)
+            familyTreeGenerator?.makeModelFromTree()
+        } else {
+            fatalError("Family tree not complete")
+        }
+    }
+    
     func registerFamilytree() {
         if let firstKey = familyTreeGenerator?.familyTree.first?.key,
             let patientID = familyTreeGenerator?.familyTree[firstKey]?.patientID {
@@ -136,9 +164,10 @@ class CustomCollectionViewController: UICollectionViewController, reloadAfterEdi
     }
     
     @IBAction func refreshTree(_ sender: Any) {
-        if let patientID = serverResponse?.patientID {
-            SVProgressHUD.show()
-            iGenDataService.getFamilyTree(patientID: patientID)
+        if let firstKey = familyTreeGenerator?.familyTree.first?.key,
+            let patientID = familyTreeGenerator?.familyTree[firstKey]?.patientID {
+                SVProgressHUD.show()
+                iGenDataService.getFamilyTree(patientID: patientID)
         }
     }
     
