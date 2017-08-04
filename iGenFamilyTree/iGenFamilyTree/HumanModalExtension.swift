@@ -132,6 +132,7 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
             if let showDiseases = self.editingHuman?.showDiseaseInfo {
                 diseaseSwitchCell.showDiseaseSwitch.setOn(showDiseases, animated: true)
             }
+//            if self.userID == human.id 
             diseaseSwitchCell.indexPath = indexPath
             diseaseSwitchCell.cellType = .diseaseSwitch
             diseaseSwitchCell.delegate = self

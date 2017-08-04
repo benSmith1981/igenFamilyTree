@@ -29,43 +29,6 @@ class CustomCollectionViewController: UICollectionViewController, reloadAfterEdi
     var selectedIndexPath: IndexPath?
     var serverResponse: ServerResponse?
     
-//    @IBAction func goBackToOneButtonTapped(_ sender: Any) {
-//        performSegue(withIdentifier: "unwindSegueToVC1", sender: self)
-//    }
-    
-//    @IBAction func deleteButton(_ sender: Any) {
-//        print("Delete tree")
-//        let createTreeForm: UIStoryboard = UIStoryboard(name: "CreateTreeForm", bundle: nil)
-//        let createTreeFormVC = createTreeForm.instantiateViewController(withIdentifier: "createTreeID") as! GenerateTableViewController
-//        createTreeFormVC.serverResponse = serverResponse
-//        
-//        var vcArray = self.navigationController?.viewControllers
-//        vcArray!.removeLast()
-//        vcArray!.append(createTreeFormVC)
-//        self.navigationController?.setViewControllers(vcArray!, animated: true)
-//
-//        self.present(createTreeFormVC, animated: true, completion: nil)
-//        self.performSegue(withIdentifier: Segues.createFamilytreeSegue.rawValue, sender: self)
-//    }
-//        let alertController = UIAlertController(title: "Familytree", message: "Do you want to save the familytree?", preferredStyle: .alert)
-//        let currentTopVC: UIViewController? = self.currentTopViewController()
-//        currentTopVC?.present(alertController, animated: true, completion: nil)
-//        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
-//            UIAlertAction in
-//            print("Ok alertbutton was pressed")
-//            // save the changed familyTree to the database
-//            iGenDataService.saveFamilyTree((self.familyTreeGenerator?.familyTree)!)
-//        }
-//        
-//        let cancelAction = UIAlertAction(title: "No", style: UIAlertActionStyle.cancel) {
-//            UIAlertAction in
-//            print("No alertbutton was pressed")
-//            self.returnToView()
-//        }
-//        alertController.addAction(okAction)
-//        alertController.addAction(cancelAction)
-
-    
     @IBAction func logOff(_ sender: Any) {
         UserDefaults.standard.setValue(nil, forKey: "username")
         UserDefaults.standard.setValue(nil, forKey: "userid")
@@ -84,7 +47,10 @@ class CustomCollectionViewController: UICollectionViewController, reloadAfterEdi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        NotificationCenter.default.addObserver(self,
+                                             selector: #selector(CustomCollectionViewController.getreeObserver),
+                                             name:  Notification.Name(rawValue: NotificationIDs.getTreeID.rawValue),
+                                             object: nil)
         IQKeyboardManager.shared().disabledToolbarClasses.add(CustomCollectionViewController.self)
         //        iGenDataService.parseiGenDiseaseData()
         NotificationCenter.default.addObserver(self,
@@ -103,8 +69,21 @@ class CustomCollectionViewController: UICollectionViewController, reloadAfterEdi
         configureCollectionView()
         let pinch = UIPinchGestureRecognizer(target: self, action: #selector(handlePinch))
         self.view.addGestureRecognizer(pinch)
+        
     }
     
+    func getreeObserver(notification: NSNotification) {
+        let treeDict = notification.userInfo as! [String : Any]
+        if let familyTree = treeDict["response"] as? [ID : Human] {
+            if familyTree.isEmpty {
+                print("no tree!!")
+            } else {
+                serverResponse?.familyTree = familyTree
+                loginFamilytree()
+            }
+            
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         print("didReceiveMemoryWarning")
@@ -152,6 +131,12 @@ class CustomCollectionViewController: UICollectionViewController, reloadAfterEdi
         
         familyTreeGenerator?.makeTreeFor(patientID)
         familyTreeGenerator?.makeModelFromTree()
+    }
+    
+    @IBAction func refreshTree(_ sender: Any) {
+        if let patientID = serverResponse?.patientID {
+            iGenDataService.getFamilyTree(patientID: patientID)
+        }
     }
     
     func storeUsernameAndIDToDefaults() {

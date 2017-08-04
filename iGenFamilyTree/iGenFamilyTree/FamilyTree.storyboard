@@ -27,6 +27,12 @@
                     </collectionView>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="iGEN Family Tree" id="kqZ-Ux-cJd" userLabel="iGen Family Tree ">
+                        <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="wOa-JR-r2A">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="refreshTree:" destination="hWx-t7-1N7" id="fk8-wi-R7c"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="X51-DD-pvE">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Wzt-k5-5Am">
                                 <rect key="frame" x="288" y="7" width="71" height="30"/>

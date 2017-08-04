@@ -84,6 +84,7 @@ enum CustomCellNames: String {
 enum NotificationIDs: String {
     case iGenData
     case loginNotificationID
+    case getTreeID
     case registerNotificationID
     case verifyNotificationID
     case iGenDiseaseData
