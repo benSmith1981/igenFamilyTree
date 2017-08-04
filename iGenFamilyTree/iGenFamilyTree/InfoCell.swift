@@ -44,6 +44,7 @@ class InfoCell: UITableViewCell, UITextFieldDelegate, UIPickerViewDelegate, UIPi
         textfieldValue.setLeftPaddingPoints(5)
         textfieldValue.setRightPaddingPoints(5)
         textfieldValue.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        
         //pickerView.backgroundColor = UIColor.white
 
     }

@@ -86,7 +86,7 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
     let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
     let cancelButton = UIBarButtonItem(title: "Reset", style: UIBarButtonItemStyle.plain, target: self, action: #selector(cancelPickerView))
     
-    //*****TO DO: SET PICKERDIM ALPHA TO 0.4 WHEN PICKER IS SUMMONED OR
+    //*****TO DO: SET PICKERDIM ALPHA TO 0.4 WHEN PICKER IS SUMMONED
     @IBOutlet weak var pickerDim: UIView!
     @IBOutlet weak var modelViewTitle: UILabel!
     @IBOutlet var containerView: UIView!
@@ -230,9 +230,10 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
             self.editingHuman?.name = value as! String
         case .genderRow :
             self.editingHuman?.gender = value as! String
-            modalTableView.reloadRows(at: [IndexPath.init(row: detailRows.nameRow.rawValue,
-                                                          section: DetailViewSections.staticSections)],
-                                      with: .fade)
+            modalTableView.reloadData()
+//            modalTableView.reloadRows(at: [IndexPath.init(row: detailRows.nameRow.rawValue,
+//                                                          section: DetailViewSections.staticSections)],
+//                                      with: .fade)
         case .dobRow:
             self.editingHuman?.dob = value as? String
         case .disease1Row:
