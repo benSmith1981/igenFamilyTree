@@ -215,7 +215,7 @@ class CustomCollectionViewController: UICollectionViewController, reloadAfterEdi
         // if this human has a disease object, process it
         cell.bgImg.image = cellContent.switchBG()
         if let currentHuman = familyTreeGenerator?.familyTree[cellContent.getID()] {
-//            print("cell=", indexPath.section, indexPath.item, cellContent, currentHuman.name, currentHuman.id)
+            print("cell=", indexPath.section, indexPath.item, cellContent, currentHuman.name, currentHuman.id)
             cell.processHumanCellFor(currentHuman, userID: (familyTreeGenerator?.userID)!)
             cell.genderImg.image = cellContent.showGender()
             if let currentDisease = familyTreeGenerator?.diseases[cellContent.getID()] {

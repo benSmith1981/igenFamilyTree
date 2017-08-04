@@ -88,15 +88,16 @@ class iGenCell: UICollectionViewCell {
             pulseAnimation.autoreverses = true
             pulseAnimation.repeatCount = .greatestFiniteMagnitude
             self.ring.layer.add(pulseAnimation, forKey: nil)
+        }
+        if currentHuman.id == currentHuman.editInfoID {
             
-            if currentHuman.id == currentHuman.editInfoID {
-                
-                //self.infoVerified.isHidden = false
-                self.infoVerified.alpha = 1.0
-            } else {
-                //self.infoVerified.isHidden = true
-                self.infoVerified.alpha = 0.0
-            }
+            //self.infoVerified.isHidden = false
+            self.infoVerified.image = #imageLiteral(resourceName: "verified")
+            self.infoVerified.alpha = 1.0
+        } else {
+            //self.infoVerified.isHidden = true
+            self.infoVerified.image = UIImage()
+            self.infoVerified.alpha = 0.0
         }
     }
     
