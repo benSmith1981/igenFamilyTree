@@ -70,7 +70,7 @@ class iGenCell: UICollectionViewCell {
     
     //process a cell for a Human
     func processHumanCellFor(_ currentHuman: Human, userID: ID) {
-        print("currentHuman:", currentHuman.name)
+        print("currentHuman:", currentHuman.name, (currentHuman.id == currentHuman.editInfoID), currentHuman.id, currentHuman.editInfoID)
         self.patientName.text = currentHuman.name
         self.patientAge.text = currentHuman.dob
         self.diseaseImg1Color.backgroundColor = UIColor(red:0.90, green:0.90, blue:0.90, alpha:1.0)
