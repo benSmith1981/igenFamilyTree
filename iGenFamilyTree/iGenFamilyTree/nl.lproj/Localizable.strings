@@ -48,7 +48,7 @@
 "genderspouse" = "Welk geslacht is uw partner?";
 
 //Verify fields
-"sendverifybutton" = "Verstuur Verificatie Email";
+"sendverifybutton" = "VERSTUUR VERIFICATIE EMAIL";
 "verifyalert" = "Controleer lid";
 "verifyTitle" = "VERIFISEER LID";
 "patientEmail" = "Uw e-mail";
