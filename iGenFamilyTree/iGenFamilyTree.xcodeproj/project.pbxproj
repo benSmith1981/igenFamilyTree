@@ -106,6 +106,7 @@
 		6841C3341F29D3B80085E712 /* FamilyTree.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FamilyTree.storyboard; sourceTree = "<group>"; };
 		6841C3361F29DE3F0085E712 /* CreatePatientTreeGender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePatientTreeGender.swift; sourceTree = "<group>"; };
 		6841C3371F29DE3F0085E712 /* CreatePatientTreeGender.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreatePatientTreeGender.xib; sourceTree = "<group>"; };
+		68705F691F349A9B00243520 /* iGenFamilyTree-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iGenFamilyTree-Bridging-Header.h"; sourceTree = "<group>"; };
 		6877CF0E1F28A45C00E677FA /* CreatePatientTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePatientTree.swift; sourceTree = "<group>"; };
 		6877CF0F1F28A45C00E677FA /* CreatePatientTree.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreatePatientTree.xib; sourceTree = "<group>"; };
 		6877CF181F28F21F00E677FA /* GenerateFamilyCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateFamilyCellTableViewCell.swift; sourceTree = "<group>"; };
@@ -321,6 +322,7 @@
 				CF859A9E1F3315D10008DC41 /* NavBarExtension.swift */,
 				CF217ED21F26276F0066352A /* TextFieldExtension.swift */,
 				CF8DA1891F224448007EE7EC /* DismissKeyboardExtension.swift */,
+				68705F691F349A9B00243520 /* iGenFamilyTree-Bridging-Header.h */,
 			);
 			path = iGenFamilyTree;
 			sourceTree = "<group>";
