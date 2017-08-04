@@ -130,6 +130,8 @@ class CustomCollectionViewController: UICollectionViewController, reloadAfterEdi
             familyTreeGenerator?.makeModelFromTree()
             familyTreeGenerator?.userID = patientID
             familyTreeGenerator?.username = (serverResponse?.username)!
+            UserDefaults.standard.setValue(familyTreeGenerator?.userID, forKey: "userid")
+            UserDefaults.standard.setValue(familyTreeGenerator?.username, forKey: "username")
             let login = Login.init(username: (familyTreeGenerator?.username)!, password: "", PatientID: patientID, id: "")
             iGenDataService.updateUserID(withLogin: login)
             iGenDataService.saveFamilyTree((self.familyTreeGenerator?.familyTree)!)

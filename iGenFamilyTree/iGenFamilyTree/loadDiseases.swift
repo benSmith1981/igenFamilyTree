@@ -12,7 +12,7 @@ extension FamilyTreeGenerator {
     
     func loadDiseases() {
         for human in familyTree.values {
-            if human.showDiseaseInfo {
+            if human.showDiseaseInfo || self.userID == human.id {
                 iGenDataService.parseiGenDiseaseData(id: human.id)
             }
         }
