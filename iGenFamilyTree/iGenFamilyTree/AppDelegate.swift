@@ -24,7 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         IQKeyboardManager.shared().isEnabled = true
-//        IQKeyboardManager.shared().toolbarTintColor = UIColor(red:0.87, green:0.36, blue:0.54, alpha:1.0)
+        IQKeyboardManager.shared().toolbarTintColor = (UIColor .white)
+
         colors.append(UIColor(red:0.87, green:0.36, blue:0.54, alpha:1.0))
         colors.append(UIColor(red:0.97, green:0.73, blue:0.58, alpha:1.0))
         

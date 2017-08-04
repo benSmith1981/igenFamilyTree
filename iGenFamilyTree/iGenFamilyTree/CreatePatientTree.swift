@@ -88,10 +88,6 @@ class CreatePatientTree: UITableViewCell, UITextFieldDelegate, UIPickerViewDeleg
     }
     
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-//        numberOfMembers.text = ""
-    }
-    
     func textFieldDidEndEditing(_ textField: UITextField) {
         if let text = numberOfMembers.text, let textNumber = Int(text),  let cellType = cellType {
             setNumberDelegate.sendNumber(number: textNumber,cellType: cellType)
@@ -100,7 +96,4 @@ class CreatePatientTree: UITableViewCell, UITextFieldDelegate, UIPickerViewDeleg
             print("Error: Please fill in all questions!")
         }
     }
-    
 }
-
-
