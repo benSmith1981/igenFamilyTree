@@ -39,7 +39,7 @@
     //Tint Color
     [[self appearance] setTintColor:nil];
 
-    [[self appearance] setBarTintColor:nil];
+    [[self appearance] setBarTintColor:[UIColor colorWithRed:0.85 green:0.36 blue:0.39 alpha:1.0]];
     
     //Background image
     [[self appearance] setBackgroundImage:nil forToolbarPosition:UIBarPositionAny           barMetrics:UIBarMetricsDefault];
