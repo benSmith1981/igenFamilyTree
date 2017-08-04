@@ -50,7 +50,7 @@
 "genderspouse" = "What gender is your spouse?";
 
 //Verify Member fields
-"sendverifybutton" = "Send Verification Email";
+"sendverifybutton" = "SEND VERIFICATION EMAIL";
 "verifyalert" = "Verify Member";
 "verifyTitle" = "VERIFY MEMBER";
 "patientEmail" = "Your Email";

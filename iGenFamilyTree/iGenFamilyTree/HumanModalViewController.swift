@@ -322,8 +322,8 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
             editingDiseases?.diseaseList = (editingDiseases?.diseaseList.filter { $0 != "" })!
             
             currentHuman = editingHuman
-            humanDetails?.familyTree[cellContent.getID()] = currentHuman
             iGenDataService.saveHuman(&currentHuman!, userID: (humanDetails?.userID)!)
+            humanDetails?.familyTree[cellContent.getID()] = currentHuman
             if (editingDiseases?.diseaseList.count)! > 0 && editingDiseases?.diseaseList[0] != "" {
                 //save disease if they got changed
                 currentDiseases = editingDiseases
