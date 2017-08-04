@@ -14,6 +14,7 @@ class CanViewDiseasesCell: UITableViewCell {
     var cellType: detailRows?
     weak var delegate: updateParametersDelegate?
     @IBOutlet weak var showDiseaseSwitch: UISwitch!
+    @IBOutlet weak var diseaseLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,7 +25,7 @@ class CanViewDiseasesCell: UITableViewCell {
     @IBAction func viewDiseasesSwitch(_ sender: Any) {
         let message =  self.showDiseaseSwitch.isOn ? NSLocalizedString("showdiseasesmessageOn", comment: "") : NSLocalizedString("showdiseasesmessageOff", comment: "")
         
-        let alert = UIAlertController(title: NSLocalizedString("verifyalert", comment: ""), message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: NSLocalizedString("diseasealert", comment: ""), message: message, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("diseaseresponseNo", comment: ""), style: UIAlertActionStyle.default, handler: { (action) in
             self.showDiseaseSwitch.setOn(!self.showDiseaseSwitch.isOn, animated: true)
         }))

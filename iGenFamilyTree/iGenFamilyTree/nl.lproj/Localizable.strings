@@ -25,19 +25,20 @@
 //Modal view labels
 "modalViewTitle" = "PERSOONSGEGEVENS";
 "name" = "Naam:";
-"dateOfBirth" = "Geboortedatum:";
+"dateOfBirth" = "Geb.datum:";
 "diseases" = "Ziekte(s):";
 "placeholderNameMale" = "Jan Janssen";
 "placeholderNameFemale" = "Julia Janssen";
 "placeholderDateOfBirth" = "JJJJ";
 "placeholderDisease" = "Naam afwijking";
 "verifybutton" = "CONTROLEER MET FAMILIE LID";
-"viewdiseaselabel" = "Toon ziektes";
+"viewdiseaselabel" = "Toon ziektes aan anderen:";
 "showdiseasesmessageOn" = "Je staat op het punt om je ziektegegevens te laten zien aan andere familieleden. Weet je het zeker?";
 "showdiseasesmessageOff" = "Je staat op het punt om je ziektegegevens te verbergen aan andere familieleden. Weet je het zeker?";
+"diseasealert" = "Ziektes laten zien?";
 
-"diseaseresponseNo" = "Nee, ik wil dat niet doen";
-"diseaseresponseYes" = "Ja, ik weet het zeker";
+"diseaseresponseNo" = "NEE";
+"diseaseresponseYes" = "JA";
 
 //Create button tableviewcontroller
 "CreateTree" = "Genereer stamboom";
@@ -45,7 +46,7 @@
 
 
 //Associated form translations
-"fillinform" = "Vul alstublieft het onderstaande formulier in";
+"fillinform" = "Vul uw gegevens in";
 "enternumber" = "Vul hier het aantal in";
 "whatgender" = "Welk geslacht bent u?";
 "pickgender" = "Kies een geslacht";
@@ -55,7 +56,6 @@
 
 //Verify fields
 "sendverifybutton" = "VERSTUUR VERIFICATIE EMAIL";
-"verifyalert" = "Controleer lid";
 "verifyTitle" = "VERIFISEER LID";
 "patientEmail" = "Uw e-mail";
 "patientName" = "Uw naam";

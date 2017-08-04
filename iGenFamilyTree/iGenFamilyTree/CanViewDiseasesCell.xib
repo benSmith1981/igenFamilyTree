@@ -20,7 +20,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="viewdiseaselabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G0s-2R-dik">
-                        <rect key="frame" x="8" y="10" width="82" height="15"/>
+                        <rect key="frame" x="8" y="2" width="82" height="31"/>
                         <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="10"/>
                         <color key="textColor" red="0.30196078430000001" green="0.30196078430000001" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -37,16 +37,18 @@
                     </switch>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="G0s-2R-dik" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="2sz-Je-z8m"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="LzJ-40-vOp" secondAttribute="trailing" constant="20" id="eg7-QD-fR4"/>
-                    <constraint firstItem="G0s-2R-dik" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="2" id="gzr-tb-aE7"/>
-                    <constraint firstItem="G0s-2R-dik" firstAttribute="centerY" secondItem="LzJ-40-vOp" secondAttribute="centerY" id="nPW-Cr-KJd"/>
-                    <constraint firstItem="G0s-2R-dik" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="pyF-HU-To9"/>
+                    <constraint firstItem="G0s-2R-dik" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="mkb-et-uv1"/>
+                    <constraint firstItem="G0s-2R-dik" firstAttribute="top" secondItem="LzJ-40-vOp" secondAttribute="top" id="nMh-0Z-8bU"/>
+                    <constraint firstItem="G0s-2R-dik" firstAttribute="bottom" secondItem="LzJ-40-vOp" secondAttribute="bottom" id="qFB-qd-MyN"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="LzJ-40-vOp" secondAttribute="trailing" constant="20" id="qpz-C0-KaW"/>
+                    <constraint firstItem="G0s-2R-dik" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="usk-Gc-mOk"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="diseaseLabel" destination="G0s-2R-dik" id="Tcf-4B-Gpb"/>
                 <outlet property="showDiseaseSwitch" destination="LzJ-40-vOp" id="98Q-n4-7Ry"/>
             </connections>
+            <point key="canvasLocation" x="34" y="97.5"/>
         </tableViewCell>
     </objects>
 </document>

@@ -139,8 +139,12 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
             diseaseSwitchCell.frame = frame
 
             if height == 0{
+                diseaseSwitchCell.alpha = 0
+                diseaseSwitchCell.diseaseLabel.isHidden = true
                 diseaseSwitchCell.showDiseaseSwitch.isHidden = true
             } else{
+                diseaseSwitchCell.alpha = 1
+                diseaseSwitchCell.diseaseLabel.isHidden = false
                 diseaseSwitchCell.showDiseaseSwitch.isHidden = false
             }
             print("disease swithc cell height \(height)")

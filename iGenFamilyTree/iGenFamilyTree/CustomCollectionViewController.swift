@@ -118,8 +118,6 @@ class CustomCollectionViewController: UICollectionViewController, reloadAfterEdi
         if let firstKey = familyTreeGenerator?.familyTree.first?.key,
             let patientID = familyTreeGenerator?.familyTree[firstKey]?.patientID {
             familyTreeGenerator?.familyTree = (serverResponse?.familyTree)!
-            familyTreeGenerator?.userID = patientID
-            familyTreeGenerator?.username = (serverResponse?.username)!
             storeUsernameAndIDToDefaults()
             
             //empty diseases to refresh

@@ -190,7 +190,9 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
             }
             
         }
-        checkIfViewerCanEditInfo()
+        //Do we want only the patient to edit? If so uncomment this line and call the function, stops table from being interactable
+//        checkIfViewerCanEditInfo()
+        
         // Do any additional setup after loading the view.
         modalTableView.estimatedRowHeight = 36
         modalTableView.rowHeight = UITableViewAutomaticDimension

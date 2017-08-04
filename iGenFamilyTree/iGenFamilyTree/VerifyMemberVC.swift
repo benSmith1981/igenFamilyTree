@@ -107,7 +107,7 @@ class VerifyMemberVC: UIViewController, UITextViewDelegate, UITableViewDelegate,
     }
     
     func showAlertMessage(message: String, success: Bool){
-        let alert = UIAlertController(title: NSLocalizedString("verifyalert", comment: ""), message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: NSLocalizedString("verifyTitle", comment: ""), message: message, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action) in
             if success{
                 self.presentingViewController?.dismiss(animated: true, completion: nil)
