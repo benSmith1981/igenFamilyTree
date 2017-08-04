@@ -122,7 +122,10 @@ class CustomCollectionViewController: UICollectionViewController, reloadAfterEdi
             familyTreeGenerator?.username = (serverResponse?.username)!
             storeUsernameAndIDToDefaults()
             
-            // load the diseases
+            //empty diseases to refresh
+            familyTreeGenerator?.diseases = [:]
+            
+            //then load diseases stops old values being stored
             familyTreeGenerator?.loadDiseases()
             
             familyTreeGenerator?.makeTreeFor(patientID)
