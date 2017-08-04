@@ -108,9 +108,9 @@ exports.gettree = function(req, res, err) {
     FamilySchema.find({patientID: req.query.patientID}, function (err, callback) {
         if (err) {
             res.json({ err })
-            return console.error(err);
+            return console.error({success: false, message: err});
         } else {
-            res.json(callback)
+            res.json({familyTree: callback, success: true, message:"Logging in"})
         }
     })
 

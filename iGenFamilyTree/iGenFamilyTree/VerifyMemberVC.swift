@@ -52,9 +52,9 @@ class VerifyMemberVC: UIViewController, UITextViewDelegate, UITableViewDelegate,
                                                userID: currentHuman!.id,
                                                patientName: "", //name of the patient asking
                                                verifyName: "", //name of person to verify
-                                               patientEmail: "",
+                                               patientEmail: UserDefaults.standard.value(forKey: "username") as! String,
                                                emailText:"",
-                                               code: self.randomNumberWith(digits: 6)) //email of patient asking for
+                                               code: 123456 )//self.randomNumberWith(digits: 6)) //email of patient asking for
         let infoCell = UINib(nibName: "InfoCell", bundle: nil)
         self.modalTableView.register(infoCell, forCellReuseIdentifier: CustomCellIdentifiers.infoCellID.rawValue)
         
@@ -107,7 +107,7 @@ class VerifyMemberVC: UIViewController, UITextViewDelegate, UITableViewDelegate,
     }
     
     func showAlertMessage(message: String, success: Bool){
-        let alert = UIAlertController(title: NSLocalizedString("verifyalert", comment: ""), message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: NSLocalizedString("verifyTitle", comment: ""), message: message, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action) in
             if success{
                 self.presentingViewController?.dismiss(animated: true, completion: nil)
@@ -223,8 +223,11 @@ class VerifyMemberVC: UIViewController, UITextViewDelegate, UITableViewDelegate,
             patientEmail.removeRowBut.isUserInteractionEnabled = false
             
             patientEmail.titleInfo.text = NSLocalizedString("patientEmail", comment: "")
-            patientEmail.textfieldValue.text = ""
-            
+            if let username = UserDefaults.standard.value(forKey: "username") as? String {
+                patientEmail.textfieldValue.text = username
+            } else {
+                patientEmail.textfieldValue.text = ""
+            }
             patientEmail.cellType = .patientEmail
             patientEmail.delegate = self
             patientEmail.indexPath = indexPath

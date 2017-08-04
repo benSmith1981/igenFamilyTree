@@ -33,6 +33,8 @@
 		B51B62C71F0A246500AB11CC /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51B62C61F0A246500AB11CC /* Model.swift */; };
 		B51B62C91F0A258F00AB11CC /* FamilyTreeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51B62C81F0A258F00AB11CC /* FamilyTreeTests.swift */; };
 		B51F648B1F2E899A003D1490 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F648A1F2E899A003D1490 /* StringExtension.swift */; };
+		B53220A21F337F3900D45156 /* CanViewDiseasesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53220A01F337F3900D45156 /* CanViewDiseasesCell.swift */; };
+		B53220A31F337F3900D45156 /* CanViewDiseasesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B53220A11F337F3900D45156 /* CanViewDiseasesCell.xib */; };
 		B5E0B64F1F0D4A28001A6CAE /* smith.json in Resources */ = {isa = PBXBuildFile; fileRef = B5E0B64E1F0D4A28001A6CAE /* smith.json */; };
 		B5EAC17C1F01390800151D52 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EAC17B1F01390800151D52 /* AppDelegate.swift */; };
 		B5EAC1841F01390800151D52 /* iGenFamilyTree.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B5EAC1821F01390800151D52 /* iGenFamilyTree.xcdatamodeld */; };
@@ -125,6 +127,8 @@
 		B51B62C61F0A246500AB11CC /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		B51B62C81F0A258F00AB11CC /* FamilyTreeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FamilyTreeTests.swift; sourceTree = "<group>"; };
 		B51F648A1F2E899A003D1490 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		B53220A01F337F3900D45156 /* CanViewDiseasesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanViewDiseasesCell.swift; sourceTree = "<group>"; };
+		B53220A11F337F3900D45156 /* CanViewDiseasesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CanViewDiseasesCell.xib; sourceTree = "<group>"; };
 		B5E0B64E1F0D4A28001A6CAE /* smith.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = smith.json; sourceTree = "<group>"; };
 		B5EAC1781F01390800151D52 /* iGenFamilyTree.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iGenFamilyTree.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5EAC17B1F01390800151D52 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -390,6 +394,8 @@
 				CFCFA8521F190CFC00BC05E5 /* ImageSlider */,
 				CFCFA8421F190C8300BC05E5 /* InfoCell.swift */,
 				CFCFA8431F190C8300BC05E5 /* InfoCell.xib */,
+				B53220A01F337F3900D45156 /* CanViewDiseasesCell.swift */,
+				B53220A11F337F3900D45156 /* CanViewDiseasesCell.xib */,
 			);
 			name = HumanTableView;
 			sourceTree = "<group>";
@@ -556,6 +562,7 @@
 				6877CF111F28A45C00E677FA /* CreatePatientTree.xib in Resources */,
 				CFCFA84D1F190CE800BC05E5 /* DetailmageSliderCell.xib in Resources */,
 				B5E0B64F1F0D4A28001A6CAE /* smith.json in Resources */,
+				B53220A31F337F3900D45156 /* CanViewDiseasesCell.xib in Resources */,
 				681222811F0E6BB700FA291C /* Localizable.strings in Resources */,
 				68F4CAC41F0699840036946B /* iGen.json in Resources */,
 				B5EAC1891F01390800151D52 /* LaunchScreen.storyboard in Resources */,
@@ -647,6 +654,7 @@
 				CF217ED31F26276F0066352A /* TextFieldExtension.swift in Sources */,
 				B51F648B1F2E899A003D1490 /* StringExtension.swift in Sources */,
 				CFCFA8611F1E3A8E00BC05E5 /* PopAnimator.swift in Sources */,
+				B53220A21F337F3900D45156 /* CanViewDiseasesCell.swift in Sources */,
 				CF859A9B1F3313480008DC41 /* GradientExtension.swift in Sources */,
 				B51B62C51F0A244400AB11CC /* Patient.swift in Sources */,
 				687F3AAA1F2F64010087F79F /* NewPatientExtension.swift in Sources */,

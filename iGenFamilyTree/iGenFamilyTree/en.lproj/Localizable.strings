@@ -29,8 +29,13 @@
 "placeholderDateOfBirth" = "YYYY";
 "placeholderDisease" = "Disorder name";
 "verifybutton" = "VERIFY WITH FAMILY MEMBER";
+"viewdiseaselabel" = "Show diseases to others:";
+"diseasealert" = "Change Disease Visibility?";
+"showdiseasesmessageOn" = "You are about to SHOW your disease details to other family members. Are you sure?";
+"showdiseasesmessageOff" = "You are about to HIDE your disease details to other family members. Are you sure?";
 
-
+"diseaseresponseNo" = "NO";
+"diseaseresponseYes" = "YES";
 //Button label
 "CreateTree" = "Generate Tree";
 "Logoff" = "LOG OFF";
@@ -47,7 +52,6 @@
 
 //Verify Member fields
 "sendverifybutton" = "SEND VERIFICATION EMAIL";
-"verifyalert" = "Verify Member";
 "verifyTitle" = "VERIFY MEMBER";
 "patientEmail" = "Your Email";
 "patientName" = "Your name";

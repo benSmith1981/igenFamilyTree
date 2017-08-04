@@ -18,6 +18,7 @@ enum detailRows: Int {
     case genderRow = 0
     case nameRow
     case dobRow
+    case diseaseSwitch
     case disease1Row
     case disease2Row
     case disease3Row
@@ -62,12 +63,15 @@ protocol updateParametersDelegate: class {
     func removeDisease(indexPath:IndexPath)
     func showPicker()
     func hidePicker()
+    func showAlertMessage(alert: UIAlertController)
 }
+    
 extension updateParametersDelegate {
     func showPicker() {}
     func hidePicker(){}
     func addDisease() {}
     func removeDisease(indexPath:IndexPath) {}
+    func showAlertMessage(alert: UIAlertController) {}
 }
 
 class HumanModalViewController: UIViewController, UIViewControllerTransitioningDelegate, updateParametersDelegate, UIPickerViewDelegate {
@@ -135,7 +139,7 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
+
         IQKeyboardManager.shared().disabledToolbarClasses.add(HumanModalViewController.self)
         
         self.hideKeyboardWhenTappedAround()
@@ -186,12 +190,17 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
             }
             
         }
+        //Do we want only the patient to edit? If so uncomment this line and call the function, stops table from being interactable
+//        checkIfViewerCanEditInfo()
         
         // Do any additional setup after loading the view.
-        modalTableView.rowHeight = UITableViewAutomaticDimension
         modalTableView.estimatedRowHeight = 36
+        modalTableView.rowHeight = UITableViewAutomaticDimension
         modalTableView.layer.shadowRadius = 5
         modalTableView.layer.masksToBounds = true
+        
+        let canViewDiseases = UINib(nibName: "CanViewDiseasesCell", bundle: nil)
+        self.modalTableView.register(canViewDiseases, forCellReuseIdentifier: CustomCellIdentifiers.CanViewDiseasesCellID.rawValue)
         
         let imageCell = UINib(nibName: "DetailmageSliderCell", bundle: nil)
         self.modalTableView.register(imageCell, forCellReuseIdentifier: CustomCellIdentifiers.detailImageCellID.rawValue)
@@ -202,6 +211,33 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
         let pickerCell = UINib(nibName: "PickerTableCellTableViewCell", bundle: nil)
         self.modalTableView.register(pickerCell, forCellReuseIdentifier: "diseasePickerID")
         
+    }
+    
+    //this checks if you are the logged in person OR the patient so you can change only your info, unless you are the patient
+    func checkIfViewerCanEditInfo(){
+
+        
+        if let loggedInID = UserDefaults.standard.value(forKey:"userid") as? String {
+            let patientID = humanDetails?.patient.id
+            let currentViewedHumanID = currentHuman?.id
+            
+            print("patientID \(patientID))")
+            print("currentViewedHumanID \(currentViewedHumanID)")
+            print("loggedInID: \(loggedInID)")
+            
+            //Only let other members edit their own info
+            if currentViewedHumanID == loggedInID{
+                print("THIS IS THE PERSON LOGGED IN")
+                self.modalTableView.isUserInteractionEnabled = true
+            } else {
+                self.modalTableView.isUserInteractionEnabled = false
+            }
+            //always let patient edit
+            if loggedInID == patientID {
+                self.modalTableView.isUserInteractionEnabled = true
+            }
+            
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -236,6 +272,8 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
 //                                      with: .fade)
         case .dobRow:
             self.editingHuman?.dob = value as? String
+        case .diseaseSwitch:
+            self.editingHuman?.showDiseaseInfo = value as! Bool
         case .disease1Row:
             self.editingDiseases?.diseaseList[0] = value as! String
         case .disease2Row:
@@ -251,20 +289,22 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
         }
     }
     
+    func showAlertMessage(alert: UIAlertController){
+
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     func addDisease() {
-//        if var editingDiseases = editingDiseases {
-        
-            if (editingDiseases?.diseaseList.count)! < 5 {
-                editingDiseases?.diseaseList.append("")
-                self.modalTableView.reloadData()
-            } else {
-                let alertController = UIAlertController(title: "Limit diseases reached", message:
-                    "Currently a person has a maximum of 5 genetic disorders at a time.", preferredStyle: UIAlertControllerStyle.alert)
-                alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
-                
-                self.present(alertController, animated: true, completion: nil)
-            }
-//        }
+        if (editingDiseases?.diseaseList.count)! < 5 {
+            editingDiseases?.diseaseList.append("")
+            self.modalTableView.reloadData()
+        } else {
+            let alertController = UIAlertController(title: "Limit diseases reached", message:
+                "Currently a person has a maximum of 5 genetic disorders at a time.", preferredStyle: UIAlertControllerStyle.alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+            
+            self.present(alertController, animated: true, completion: nil)
+        }
     }
     
     func removeDisease(indexPath:IndexPath) {

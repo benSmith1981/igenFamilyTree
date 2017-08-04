@@ -51,6 +51,11 @@ class ChooserViewController: UIViewController {
             self.usernameTextField.text = "tvn@abc.com"
             self.passwordTextField.text = "password"
         #endif
+        
+        if let username = UserDefaults.standard.value(forKey:"username") as? String {
+            self.usernameTextField.text = username
+        }
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
