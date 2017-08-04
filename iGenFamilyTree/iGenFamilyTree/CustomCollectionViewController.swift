@@ -130,8 +130,7 @@ class CustomCollectionViewController: UICollectionViewController, reloadAfterEdi
             familyTreeGenerator?.makeModelFromTree()
             familyTreeGenerator?.userID = patientID
             familyTreeGenerator?.username = (serverResponse?.username)!
-            UserDefaults.standard.setValue(familyTreeGenerator?.userID, forKey: "userid")
-            UserDefaults.standard.setValue(familyTreeGenerator?.username, forKey: "username")
+            storeUsernameAndIDToDefaults()
             let login = Login.init(username: (familyTreeGenerator?.username)!, password: "", PatientID: patientID, id: "")
             iGenDataService.updateUserID(withLogin: login)
             iGenDataService.saveFamilyTree((self.familyTreeGenerator?.familyTree)!)
@@ -145,6 +144,7 @@ class CustomCollectionViewController: UICollectionViewController, reloadAfterEdi
         familyTreeGenerator?.familyTree = (serverResponse?.familyTree)!
         familyTreeGenerator?.userID = (serverResponse?.userID)!
         familyTreeGenerator?.username = (serverResponse?.username)!
+        storeUsernameAndIDToDefaults()
         let patientID = (serverResponse?.patientID)!
         
         // load the diseases
@@ -154,6 +154,10 @@ class CustomCollectionViewController: UICollectionViewController, reloadAfterEdi
         familyTreeGenerator?.makeModelFromTree()
     }
     
+    func storeUsernameAndIDToDefaults() {
+        UserDefaults.standard.setValue(familyTreeGenerator?.userID, forKey: "userid")
+        UserDefaults.standard.setValue(familyTreeGenerator?.username, forKey: "username")
+    }
     //  entered via iGenDataService
     func notifyObserverDisease(notification: NSNotification) {
         let diseaseDict = notification.userInfo as! [ID: Disease]

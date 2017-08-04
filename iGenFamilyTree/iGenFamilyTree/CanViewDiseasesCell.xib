@@ -16,28 +16,28 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="35"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="34.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="35"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="viewdiseaselabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G0s-2R-dik">
-                        <rect key="frame" x="8" y="10" width="81.5" height="15"/>
+                        <rect key="frame" x="8" y="10" width="82" height="15"/>
                         <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="10"/>
                         <color key="textColor" red="0.30196078430000001" green="0.30196078430000001" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" onImage="saveButton" offImage="closeButton" translatesAutoresizingMaskIntoConstraints="NO" id="LzJ-40-vOp">
-                        <rect key="frame" x="191" y="2" width="51" height="31"/>
+                        <rect key="frame" x="203" y="2" width="51" height="31"/>
                         <connections>
                             <action selector="viewDiseasesSwitch:" destination="KGk-i7-Jjw" eventType="valueChanged" id="Diz-pU-PFD"/>
                         </connections>
                     </switch>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="LzJ-40-vOp" firstAttribute="centerY" secondItem="G0s-2R-dik" secondAttribute="centerY" id="HFz-rc-Bqk"/>
-                    <constraint firstItem="G0s-2R-dik" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Vyb-Lx-XDe"/>
-                    <constraint firstItem="G0s-2R-dik" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Xph-D1-etL"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="LzJ-40-vOp" secondAttribute="trailing" constant="72" id="dco-nr-HkT"/>
-                    <constraint firstItem="G0s-2R-dik" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="2" id="qYZ-Yi-SpR"/>
+                    <constraint firstItem="G0s-2R-dik" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="2" id="1pj-g7-A6H"/>
+                    <constraint firstItem="G0s-2R-dik" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Jr9-8Z-YUA"/>
+                    <constraint firstItem="G0s-2R-dik" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="bae-EB-diR"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="LzJ-40-vOp" secondAttribute="trailing" constant="60" id="gJ3-yp-IBo"/>
+                    <constraint firstItem="G0s-2R-dik" firstAttribute="centerY" secondItem="LzJ-40-vOp" secondAttribute="centerY" id="xxv-zb-Hln"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

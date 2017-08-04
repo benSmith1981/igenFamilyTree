@@ -82,12 +82,8 @@ class ChooserViewController: UIViewController {
             let serverResponse = loginDict["message"]
             alertMessage(serverResponse as! String)
         } else if serverResponse?.patientID == "" {
-            UserDefaults.standard.setValue(serverResponse?.userID, forKey: "userid")
-            UserDefaults.standard.setValue(serverResponse?.username, forKey: "username")
             self.performSegue(withIdentifier: Segues.createFamilytreeSegue.rawValue, sender: self)
        } else {
-            UserDefaults.standard.setValue(serverResponse?.userID, forKey: "userid")
-            UserDefaults.standard.setValue(serverResponse?.username, forKey: "username")
             self.performSegue(withIdentifier: Segues.familytreeSegue.rawValue, sender: self)
         }
     }
@@ -101,8 +97,6 @@ class ChooserViewController: UIViewController {
             let serverResponse = registerDict["message"]
             alertMessage(serverResponse as! String)
         } else {
-            UserDefaults.standard.setValue(serverResponse?.userID, forKey: "userid")
-            UserDefaults.standard.setValue(serverResponse?.username, forKey: "username")
             self.performSegue(withIdentifier: Segues.createFamilytreeSegue.rawValue, sender: self)
        }
     }
