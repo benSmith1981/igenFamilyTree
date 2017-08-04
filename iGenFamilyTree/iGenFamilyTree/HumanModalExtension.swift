@@ -128,17 +128,50 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
             dateOfBirthCell.delegate = self
             return dateOfBirthCell
         case detailRows.diseaseSwitch.rawValue:
-            let diseaseSwitchCell = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.CanViewDiseasesCellID.rawValue, for: indexPath) as! CanViewDiseasesCell
+            var diseaseSwitchCell = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.CanViewDiseasesCellID.rawValue, for: indexPath) as! CanViewDiseasesCell
             if let showDiseases = self.editingHuman?.showDiseaseInfo {
                 diseaseSwitchCell.showDiseaseSwitch.setOn(showDiseases, animated: true)
             }
-//            if self.userID == human.id 
+            
+            let height = getDiseaseSwitchCellHeight()
+            var frame = diseaseSwitchCell.frame
+            frame.size.height = height
+            diseaseSwitchCell.frame = frame
+
+            if height == 0{
+                diseaseSwitchCell.showDiseaseSwitch.isHidden = true
+            } else{
+                diseaseSwitchCell.showDiseaseSwitch.isHidden = false
+            }
+            print("disease swithc cell height \(height)")
             diseaseSwitchCell.indexPath = indexPath
             diseaseSwitchCell.cellType = .diseaseSwitch
             diseaseSwitchCell.delegate = self
             return diseaseSwitchCell
         default:
             return UITableViewCell()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 && indexPath.row == detailRows.diseaseSwitch.rawValue{
+            return getDiseaseSwitchCellHeight()
+        } else {
+            return UITableViewAutomaticDimension
+        }
+    }
+    
+    func getDiseaseSwitchCellHeight() -> CGFloat{
+        if let loggedInID = UserDefaults.standard.value(forKey:"userid") as? String,
+            let currentViewedHumanID = currentHuman?.id{
+            if loggedInID != currentViewedHumanID{
+                return 0
+            } else {
+                return UITableViewAutomaticDimension
+            }
+            
+        } else {
+            return UITableViewAutomaticDimension
         }
     }
     

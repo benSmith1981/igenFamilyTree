@@ -10,6 +10,7 @@ import UIKit
 import DeviceKit
 import Alamofire
 import IQKeyboardManager
+import SVProgressHUD
 
 protocol reloadAfterEdit: class {
     func reloadCell()
@@ -73,6 +74,7 @@ class CustomCollectionViewController: UICollectionViewController, reloadAfterEdi
     }
     
     func getreeObserver(notification: NSNotification) {
+        SVProgressHUD.dismiss()
         let treeDict = notification.userInfo as! [String : Any]
         if let familyTree = treeDict["response"] as? [ID : Human] {
             if familyTree.isEmpty {
@@ -135,6 +137,7 @@ class CustomCollectionViewController: UICollectionViewController, reloadAfterEdi
     
     @IBAction func refreshTree(_ sender: Any) {
         if let patientID = serverResponse?.patientID {
+            SVProgressHUD.show()
             iGenDataService.getFamilyTree(patientID: patientID)
         }
     }

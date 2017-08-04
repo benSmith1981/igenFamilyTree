@@ -192,8 +192,8 @@ class HumanModalViewController: UIViewController, UIViewControllerTransitioningD
         }
         checkIfViewerCanEditInfo()
         // Do any additional setup after loading the view.
-        modalTableView.rowHeight = UITableViewAutomaticDimension
         modalTableView.estimatedRowHeight = 36
+        modalTableView.rowHeight = UITableViewAutomaticDimension
         modalTableView.layer.shadowRadius = 5
         modalTableView.layer.masksToBounds = true
         

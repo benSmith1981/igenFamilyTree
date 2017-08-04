@@ -25,21 +25,23 @@
                         <color key="textColor" red="0.30196078430000001" green="0.30196078430000001" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="LzJ-40-vOp">
-                        <rect key="frame" x="203" y="2" width="51" height="31"/>
-                        <color key="onTintColor" red="0.58824642409483596" green="0.88748365640640259" blue="0.26169530315121553" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="thumbTintColor" red="0.85098039219999999" green="0.35780133019999999" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
+                    <switch opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="LzJ-40-vOp">
+                        <rect key="frame" x="243" y="2" width="51" height="31"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="onTintColor" red="0.85098039219999999" green="0.35780133019999999" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="thumbTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <connections>
                             <action selector="viewDiseasesSwitch:" destination="KGk-i7-Jjw" eventType="valueChanged" id="Diz-pU-PFD"/>
                         </connections>
                     </switch>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="G0s-2R-dik" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="2" id="1pj-g7-A6H"/>
-                    <constraint firstItem="G0s-2R-dik" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Jr9-8Z-YUA"/>
-                    <constraint firstItem="G0s-2R-dik" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="bae-EB-diR"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="LzJ-40-vOp" secondAttribute="trailing" constant="60" id="gJ3-yp-IBo"/>
-                    <constraint firstItem="G0s-2R-dik" firstAttribute="centerY" secondItem="LzJ-40-vOp" secondAttribute="centerY" id="xxv-zb-Hln"/>
+                    <constraint firstItem="G0s-2R-dik" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="2sz-Je-z8m"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="LzJ-40-vOp" secondAttribute="trailing" constant="20" id="eg7-QD-fR4"/>
+                    <constraint firstItem="G0s-2R-dik" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="2" id="gzr-tb-aE7"/>
+                    <constraint firstItem="G0s-2R-dik" firstAttribute="centerY" secondItem="LzJ-40-vOp" secondAttribute="centerY" id="nPW-Cr-KJd"/>
+                    <constraint firstItem="G0s-2R-dik" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="pyF-HU-To9"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

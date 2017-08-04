@@ -17,6 +17,7 @@ class CanViewDiseasesCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        showDiseaseSwitch.layer.cornerRadius = 15
         // Initialization code
     }
 
