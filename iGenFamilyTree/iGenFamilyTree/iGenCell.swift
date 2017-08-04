@@ -70,7 +70,7 @@ class iGenCell: UICollectionViewCell {
     
     //process a cell for a Human
     func processHumanCellFor(_ currentHuman: Human, userID: ID) {
-        print("currentHuman:", currentHuman.name)
+        print("currentHuman:", currentHuman.name, (currentHuman.id == currentHuman.editInfoID), currentHuman.id, currentHuman.editInfoID)
         self.patientName.text = currentHuman.name
         self.patientAge.text = currentHuman.dob
         self.diseaseImg1Color.backgroundColor = UIColor(red:0.90, green:0.90, blue:0.90, alpha:1.0)
@@ -88,16 +88,16 @@ class iGenCell: UICollectionViewCell {
             pulseAnimation.autoreverses = true
             pulseAnimation.repeatCount = .greatestFiniteMagnitude
             self.ring.layer.add(pulseAnimation, forKey: nil)
+        }
+        if currentHuman.id == currentHuman.editInfoID {
             
-            if currentHuman.id == currentHuman.editInfoID {
-                
-                self.infoVerified.isHidden = false
-                self.infoVerified.image = #imageLiteral(resourceName: "verified")
-                self.infoVerified.alpha = 1.0
-            } else {
-                self.infoVerified.isHidden = true
-                self.infoVerified.alpha = 0.0
-            }
+            //self.infoVerified.isHidden = false
+            self.infoVerified.image = #imageLiteral(resourceName: "verified")
+            self.infoVerified.alpha = 1.0
+        } else {
+            //self.infoVerified.isHidden = true
+            self.infoVerified.image = UIImage()
+            self.infoVerified.alpha = 0.0
         }
     }
     
