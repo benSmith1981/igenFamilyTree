@@ -30,7 +30,9 @@
 "placeholderDisease" = "Disorder name";
 "verifybutton" = "VERIFY WITH FAMILY MEMBER";
 "viewdiseaselabel" = "Show Diseases";
-"showdiseasesmessage" = "You are about to change whether your other family members can see the diseases you have entered. Are you sure?";
+"showdiseasesmessageOn" = "You are about to SHOW your disease details to other family members. Are you sure?";
+"showdiseasesmessageOff" = "You are about to HIDE your disease details to other family members. Are you sure?";
+
 "diseaseresponseNo" = "NO, I don't want to do this";
 "diseaseresponseYes" = "Yes, I am sure";
 //Button label

@@ -54,7 +54,7 @@ class VerifyMemberVC: UIViewController, UITextViewDelegate, UITableViewDelegate,
                                                verifyName: "", //name of person to verify
                                                patientEmail: UserDefaults.standard.value(forKey: "username") as! String,
                                                emailText:"",
-                                               code: self.randomNumberWith(digits: 6)) //email of patient asking for
+                                               code: 123456 )//self.randomNumberWith(digits: 6)) //email of patient asking for
         let infoCell = UINib(nibName: "InfoCell", bundle: nil)
         self.modalTableView.register(infoCell, forCellReuseIdentifier: CustomCellIdentifiers.infoCellID.rawValue)
         

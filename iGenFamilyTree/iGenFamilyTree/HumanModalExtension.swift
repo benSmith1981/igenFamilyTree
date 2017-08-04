@@ -30,6 +30,23 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
             return DetailViewSections.noSection
         }
     }
+    
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        
+//        guard indexPath.section != 0 || indexPath.row !=  detailRows.diseaseSwitch.rawValue else {
+//            return UITableViewAutomaticDimension
+//        }
+//        
+//        if let loggedInID = UserDefaults.standard.value(forKey:"userid") as? String,
+//            let currentViewedHumanID = currentHuman?.id {
+//            if currentViewedHumanID == loggedInID {
+//                return UITableViewAutomaticDimension
+//            } else {
+//                return 0
+//            }
+//        }
+//        return UITableViewAutomaticDimension
+//    }
 
     func numberOfDiseasesToShow() -> Int{
         if let showDisease = self.editingHuman?.showDiseaseInfo,
@@ -111,14 +128,14 @@ extension HumanModalViewController: UITableViewDelegate, UITableViewDataSource {
             dateOfBirthCell.delegate = self
             return dateOfBirthCell
         case detailRows.diseaseSwitch.rawValue:
-            let diseaseCell = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.CanViewDiseasesCellID.rawValue, for: indexPath) as! CanViewDiseasesCell
-            
-            diseaseCell.showDiseaseSwitch.isOn = (self.editingHuman?.showDiseaseInfo)!
-            
-            diseaseCell.indexPath = indexPath
-            diseaseCell.cellType = .diseaseSwitch
-            diseaseCell.delegate = self
-            return diseaseCell
+            let diseaseSwitchCell = tableView.dequeueReusableCell(withIdentifier: CustomCellIdentifiers.CanViewDiseasesCellID.rawValue, for: indexPath) as! CanViewDiseasesCell
+            if let showDiseases = self.editingHuman?.showDiseaseInfo {
+                diseaseSwitchCell.showDiseaseSwitch.setOn(showDiseases, animated: true)
+            }
+            diseaseSwitchCell.indexPath = indexPath
+            diseaseSwitchCell.cellType = .diseaseSwitch
+            diseaseSwitchCell.delegate = self
+            return diseaseSwitchCell
         default:
             return UITableViewCell()
         }

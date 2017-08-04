@@ -33,7 +33,9 @@
 "placeholderDisease" = "Naam afwijking";
 "verifybutton" = "CONTROLEER MET FAMILIE LID";
 "viewdiseaselabel" = "Toon ziektes";
-"showdiseasesmessage" = "Je staat op het punt om te veranderen of jouw familie wel of niet jouw ziektes kunnen zien. Weet je het zeker?";
+"showdiseasesmessageOn" = "Je staat op het punt om je ziektegegevens te laten zien aan andere familieleden. Weet je het zeker?";
+"showdiseasesmessageOff" = "Je staat op het punt om je ziektegegevens te verbergen aan andere familieleden. Weet je het zeker?";
+
 "diseaseresponseNo" = "Nee, ik wil dat niet doen";
 "diseaseresponseYes" = "Ja, ik weet het zeker";
 

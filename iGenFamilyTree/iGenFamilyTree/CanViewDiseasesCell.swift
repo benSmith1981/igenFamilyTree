@@ -21,7 +21,8 @@ class CanViewDiseasesCell: UITableViewCell {
     }
 
     @IBAction func viewDiseasesSwitch(_ sender: Any) {
-        let message = NSLocalizedString("showdiseasesmessage", comment: "")
+        let message =  self.showDiseaseSwitch.isOn ? NSLocalizedString("showdiseasesmessageOn", comment: "") : NSLocalizedString("showdiseasesmessageOff", comment: "")
+        
         let alert = UIAlertController(title: NSLocalizedString("verifyalert", comment: ""), message: message, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("diseaseresponseNo", comment: ""), style: UIAlertActionStyle.default, handler: { (action) in
             self.showDiseaseSwitch.setOn(!self.showDiseaseSwitch.isOn, animated: true)

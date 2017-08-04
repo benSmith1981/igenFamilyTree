@@ -25,8 +25,10 @@
                         <color key="textColor" red="0.30196078430000001" green="0.30196078430000001" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" onImage="saveButton" offImage="closeButton" translatesAutoresizingMaskIntoConstraints="NO" id="LzJ-40-vOp">
+                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="LzJ-40-vOp">
                         <rect key="frame" x="203" y="2" width="51" height="31"/>
+                        <color key="onTintColor" red="0.58824642409483596" green="0.88748365640640259" blue="0.26169530315121553" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="thumbTintColor" red="0.85098039219999999" green="0.35780133019999999" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
                         <connections>
                             <action selector="viewDiseasesSwitch:" destination="KGk-i7-Jjw" eventType="valueChanged" id="Diz-pU-PFD"/>
                         </connections>
@@ -45,8 +47,4 @@
             </connections>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="closeButton" width="30" height="30"/>
-        <image name="saveButton" width="30" height="30"/>
-    </resources>
 </document>
