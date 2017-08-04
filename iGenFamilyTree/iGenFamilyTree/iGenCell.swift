@@ -91,10 +91,11 @@ class iGenCell: UICollectionViewCell {
             
             if currentHuman.id == currentHuman.editInfoID {
                 
-                //self.infoVerified.isHidden = false
+                self.infoVerified.isHidden = false
+                self.infoVerified.image = #imageLiteral(resourceName: "verified")
                 self.infoVerified.alpha = 1.0
             } else {
-                //self.infoVerified.isHidden = true
+                self.infoVerified.isHidden = true
                 self.infoVerified.alpha = 0.0
             }
         }
