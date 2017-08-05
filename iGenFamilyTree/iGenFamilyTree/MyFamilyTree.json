@@ -1,0 +1,202 @@
+{ 
+    "Humans": {
+		{
+			"name": "Ben",
+		    "dob": "1981",
+		    "id": "1",
+		    "race": "white",
+		    "gender": "m",
+		    "partners": [],
+		    "parents": [ { "id" : "2" }, { "id" : "3"} ],
+		    "siblings": [{ "id" : "4" }, { "id" : "5"}, { "id" : "6"}, { "id" : "7"}],
+		    "children": []
+		},
+	    {
+		    "name": "Terry Smith",
+		    "dob": "1939",
+		    "id": "2",
+		    "race": "white",
+		    "gender": "male",
+		    "partners": [{ "id" : "3" }],
+		    "parents": [],
+            "siblings": [],
+		    "children": [{ "id" : "1" }, { "id" : "4"}, { "id" : "5"}, { "id" : "6"}, { "id" : "7"}]
+		},
+	    {
+			"name": "Maureen Smith",
+		    "dob": "1940",
+		    "id": "3",
+		    "race": "w",
+			"gender": "female",
+		    "partners": [ { "id" : "2" }],
+		    "parents": [],
+            "siblings": [],
+		    "children": [{ "id" : "1" }, { "id" : "4"}, { "id" : "5"}, { "id" : "6"}, { "id" : "7"}]
+		},
+		{
+			"name": "John Smith",
+		    "dob": "1908",
+		    "id": "10",
+		    "race": "white",
+			"gender": "male",
+			"partners": [ { "id" : "11" } ],
+		    "parents": [ ],
+		    "siblings": [],
+		    "children": [{ "id" : "2" }]
+		},
+		{
+			"name": "Elsie Smith",
+		    "dob": "1912",
+		    "id": "11",
+		    "race": "white",
+			"gender": "female",
+			"partners": [ { "id" : "10" } ],
+		    "parents": [ ],
+		    "siblings": [],
+		    "children": [{ "id" : "2" }]
+		},
+		{
+			"name": "Emma Howarth",
+		    "dob": "19015",
+		    "id": "12",
+		    "race": "white",
+			"gender": "female",
+			"partners": [ { "id" : "13" }  ],
+		    "parents": [ ],
+		    "siblings": [],
+		    "children": [{ "id" : "3" }]
+		},
+		{
+			"name": "Luke Howarth",
+		    "dob": "1914",
+		    "id": "13",
+		    "race": "white",
+			"gender": "female",
+			"partners": [ { "id" : "12" } ],
+		    "parents": [ ],
+		    "siblings": [],
+		    "children": [{ "id" : "3" }]
+		},
+		{
+			"name": "Stephanie",
+		    "dob": "1964",
+		    "id": "4",
+		    "race": "white",
+			"gender": "female",
+		    "partners": [ { "id" : "9"} ],
+		    "parents": [ { "id" : "2" }, { "id" : "3"} ],
+		    "siblings": [{ "id" : "1" }, { "id" : "5"}, { "id" : "6"}, { "id" : "7"}],
+		    "children": [ { "id" : "8" }]
+		},
+		{
+			"name": "Owen",
+		    "dob": "1966",
+		    "id": "9",
+		    "race": "white",
+			"gender": "male",
+		    "partners": [ { "id" : "8"} ],
+		    "parents": [ ],
+		    "siblings": [],
+		    "children": [ { "id" : "8" }]
+		},
+		{
+			"name": "Alfred",
+		    "dob": "2007",
+		    "id": "8",
+		    "race": "white",
+			"gender": "male",
+			"partners": [],
+		    "parents": [ { "id" : "4" }, { "id" : "9"} ],
+		    "siblings": [],
+		    "children": []
+		},
+		{
+			"name": "Pauline",
+		    "dob": "1969",
+		    "id": "5",
+		    "race": "white",
+			"gender": "female",
+			"partners": [ ],
+		    "parents": [ { "id" : "2" }, { "id" : "3"} ],
+		    "siblings": [{ "id" : "1" }, { "id" : "4"}, { "id" : "6"}, { "id" : "7"}],
+		    "children": []
+		},
+		{
+			"name": "Amity",
+		    "dob": "1996",
+		    "id": "17",
+		    "race": "white",
+			"gender": "female",
+			"partners": [],
+		    "parents": [ { "id" : "5" }],
+		    "siblings": [],
+		    "children": []
+		},
+		{
+			"name": "Becky",
+		    "dob": "1979",
+		    "id": "6",
+		    "race": "white",
+			"gender": "female",
+			"partners": [ ],
+		    "parents": [ { "id" : "2" }, { "id" : "3"} ],
+		    "siblings": [{ "id" : "1" }, { "id" : "4"}, { "id" : "5"}, { "id" : "7"}],
+		    "children": []
+		},
+		{
+			"name": "Lydia",
+		    "dob": "1973",
+		    "id": "7",
+		    "race": "white",
+			"gender": "female",
+			"partners": [{ "id" : "15" } ],
+		    "parents": [ { "id" : "2" }, { "id" : "3"} ],
+		    "siblings": [{ "id" : "1" }, { "id" : "4"}, { "id" : "5"}, { "id" : "6"}],
+		    "children": []
+		},
+		{
+			"name": "Mike",
+		    "dob": "1965",
+		    "id": "15",
+		    "race": "white",
+			"gender": "male",
+			"partners": [ { "id" : "7" }],
+		    "parents": [ ],
+		    "siblings": [],
+		    "children": [{ "id" : "14" }]
+		},
+		{
+			"name": "Elsa",
+		    "dob": "2001",
+		    "id": "14",
+		    "race": "white",
+			"gender": "female",
+			"partners": [],
+		    "parents": [ { "id" : "7" }, { "id" : "15"} ],
+		    "siblings": [],
+		    "children": []
+		},
+		{
+			"name": "Frankie",
+		    "dob": "2006",
+		    "id": "16",
+		    "race": "white",
+			"gender": "male",
+			"partners": [],
+		    "parents": [ { "id" : "7" }, { "id" : "15"} ],
+		    "siblings": [],
+		    "children": []
+		},
+		{
+			"name": "Naomi",
+		    "dob": "2006",
+		    "id": "17",
+		    "race": "white",
+			"gender": "female",
+			"partners": [],
+		    "parents": [ { "id" : "7" }, { "id" : "15"} ],
+		    "siblings": [ { "id" : "16" }, { "id" : "14"}],
+		    "children": []
+		}
+    }
+}

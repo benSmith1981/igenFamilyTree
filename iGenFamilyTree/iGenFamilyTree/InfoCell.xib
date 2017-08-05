@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="6" reuseIdentifier="infoCellID" id="KGk-i7-Jjw" customClass="InfoCell" customModule="iGenFamilyTree" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="29"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="29"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="OpE-DV-VVr">
+                        <rect key="frame" x="10" y="2" width="308" height="25"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date of Birth:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xsg-ES-BtQ">
+                                <rect key="frame" x="0.0" y="0.0" width="72" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="72" id="t4d-QT-Ob2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="10"/>
+                                <color key="textColor" red="0.30196078431372547" green="0.30196078431372547" blue="0.30196078431372547" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zia-O8-lCN">
+                                <rect key="frame" x="74" y="0.0" width="20" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="9xJ-sX-V5s"/>
+                                    <constraint firstAttribute="height" constant="25" id="AWH-Gx-PCx"/>
+                                </constraints>
+                                <state key="normal" title="+"/>
+                                <connections>
+                                    <action selector="addRowButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Tbj-v1-zH1"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Values" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ULY-Au-gNm">
+                                <rect key="frame" x="96" y="0.0" width="190" height="25"/>
+                                <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.23529411764705882" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="KGk-i7-Jjw" id="NHK-kn-r9Y"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LuE-Gr-6GW">
+                                <rect key="frame" x="288" y="0.0" width="20" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="RRV-j1-ZzG"/>
+                                    <constraint firstAttribute="height" constant="25" id="YeQ-uM-j1y"/>
+                                </constraints>
+                                <state key="normal" title="-"/>
+                                <connections>
+                                    <action selector="removeRowButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Zk6-EG-Fid"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="TS1-R9-HWc"/>
+                        </constraints>
+                    </stackView>
+                </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="OpE-DV-VVr" secondAttribute="trailing" constant="2" id="GbO-jb-ume"/>
+                    <constraint firstItem="OpE-DV-VVr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="2" id="RiC-IX-LfG"/>
+                    <constraint firstAttribute="bottom" secondItem="OpE-DV-VVr" secondAttribute="bottom" constant="2" id="eFA-Jy-Eai"/>
+                    <constraint firstItem="OpE-DV-VVr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="lGf-dx-3He"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="addRowBut" destination="Zia-O8-lCN" id="Gae-8I-ZmZ"/>
+                <outlet property="removeRowBut" destination="LuE-Gr-6GW" id="QKv-Ru-JHn"/>
+                <outlet property="textfieldValue" destination="ULY-Au-gNm" id="z5N-jj-FFN"/>
+                <outlet property="titleInfo" destination="Xsg-ES-BtQ" id="ESm-lY-XPW"/>
+            </connections>
+            <point key="canvasLocation" x="33" y="98.5"/>
+        </tableViewCell>
+    </objects>
+</document>

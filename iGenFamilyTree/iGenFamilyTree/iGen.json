@@ -1,0 +1,82 @@
+{
+    "id2": {
+        "id1":{
+            "name": "Achid",
+            "dob": "1989",
+            "race": "brown",
+            "gender": "male",
+            "patientID": "id2",
+            "id": "id1",
+            "showDiseaseInfo": true,
+            "spouses": [],
+            "parents": [ { "id" : "id2" }, { "id" : "id3"} ],
+            "siblings": [],
+            "children": []
+        },
+        "id2":{
+            "name": "Aziz",
+            "dob": "1958",
+            "race": "brown",
+            "gender": "male",
+            "patientID": "id2",
+            "id": "id2",
+            "showDiseaseInfo": true,
+            "spouses": [{ "id" : "id3" }],
+            "parents": [{ "id" : "id5" }, { "id" : "id6" }],
+            "siblings": [],
+            "children": [{ "id" : "id1" }]
+        },
+        "id5":{
+            "name": "Grandad",
+            "dob": "1918",
+            "race": "brown",
+            "gender": "male",
+            "patientID": "id2",
+            "id": "id5",
+            "showDiseaseInfo": false,
+            "spouses": [{ "id" : "id6" }],
+            "parents": [],
+            "siblings": [],
+            "children": [{ "id" : "id2" }]
+        },
+        "id6":{
+            "name": "Grandmom",
+            "dob": "1918",
+            "race": "brown",
+            "gender": "female",
+            "patientID": "id2",
+            "id": "id6",
+            "showDiseaseInfo": false,
+            "spouses": [{ "id" : "id5" }],
+            "parents": [],
+            "siblings": [],
+            "children": [{ "id" : "id2" }]
+        },
+        "id3":{
+            "name": "Shekeba",
+            "dob": "1967",
+            "race": "brown",
+            "gender": "female",
+            "patientID": "id2",
+            "id": "id3",
+            "showDiseaseInfo": false,
+            "spouses": [ { "id" : "id2" }],
+            "parents": [],
+            "siblings": [],
+            "children": [{ "id" : "id1" }]
+        },
+        "id4":{
+            "name": "Ben",
+            "dob": "1981",
+            "race": "White",
+            "gender": "male",
+            "patientID": "id2",
+            "id": "id4",
+            "showDiseaseInfo": false,
+            "spouses": [ ],
+            "parents": [{ "id" : "id2" }, { "id" : "id3"} ],
+            "siblings": [{ "id" : "id1" }],
+            "children": []
+        }
+    }
+}
